@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+        /**
+         * [description]
+         *
+         * @property {number} ${1}
+         */
+]]></content>
+    <tabTrigger>propnumber</tabTrigger>
+</snippet>

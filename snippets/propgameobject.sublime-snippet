@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+        /**
+         * [description]
+         *
+         * @property {Phaser.GameObjects.GameObject} ${1}
+         */
+]]></content>
+    <tabTrigger>propgameobject</tabTrigger>
+</snippet>
