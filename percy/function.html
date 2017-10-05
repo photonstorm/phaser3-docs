@@ -336,22 +336,79 @@ module.exports = CubicBezierInterpolation;
             return out;
         }
 
+        function getTypesSelect (id, input, param)
+        {
+            var types = [
+                '[type]',
+                'string',
+                'integer',
+                'float',
+                'number',
+                'function',
+                'object',
+            ];
+
+            var select = $('<select>', { class: 'custom-select', id: id });
+
+            for (var i = 0; i < types.length; i++)
+            {
+                var type = $('<option>', { value: types[i] }).text(types[i]);
+
+                select.append(type);
+            }
+
+            select.on('change', function () {
+
+                input.val(this.value);
+
+            });
+
+            return select;
+        }
+
         function showParametersModal (module, data, src)
         {
             //  Build-up the modal content
-            var div = $('#paramsContainer');
+            var container = $('#paramsContainer');
 
+            //  Clear out anything that may have been in there already
+            container.empty();
 
+            //  Build the parameters list
 
+            for (var i = 0; i < data.parameters.length; i++)
+            {
+                var param = data.parameters[i];
 
+                var form = $('<form>', { class: 'form-inline' });
+                var group = $('<div>', { class: 'form-group' });
+                var label = $('<label>', { for: 'param' + i, class: 'mr-sm-2' }).text(param.name);
+                var input = $('<input>', { type: 'text', id: 'cp' + i, class: 'form-control ml-sm-2', value: param.type });
+                var select = getTypesSelect('param' + i, input, param);
 
+                group.append(label);
+                group.append(select);
+                group.append(input);
+
+                form.append(group);
+
+                container.append(form);
+            }
+
+            //  Show the modal
             $('#paramsModal').modal('show');
 
-
-
-
-
+            //  Button save ...
             $('#generateButton').click(function() {
+
+                //  Update the data object with the parameter settings
+
+                for (var i = 0; i < data.parameters.length; i++)
+                {
+                    var param = data.parameters[i];
+
+                    param.type = $('#cp' + i).val();
+                }
 
                 $('#paramsModal').modal('hide');
 
