@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Percy Doc Thrower</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="./lib/getQueryString.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.3/js/lib/beautify.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.3/js/lib/beautify-css.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.3/js/lib/beautify-html.js"></script>
+    </head>
+    <body>
+
+        <!--
+            https://github.com/beautify-web/js-beautify
+        -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.html">Percy</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="class.html">Class</a>
+                <a class="nav-item nav-link active" href="function.html">Function</a>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col">
+
+                    <h2>Source</h2>
+
+                    <form>
+
+                        <div class="form-group">
+                            <label for="class">Class</label>
+                            <input type="text" id="class" class="form-control" value="Phaser." />
+                        </div>
+
+                        <div class="alert alert-danger" id="sourceAlert" role="alert" style="display: none;">Alert!</div>
+
+                        <div class="form-group">
+                            <textarea id="input" class="form-control" rows="40" style="font-family: Consolas">
+function P0 (t, p)
+{
+    var k = 1 - t;
+
+    return k * k * k * p;
+}
+
+function P1 (t, p)
+{
+    var k = 1 - t;
+
+    return 3 * k * k * t * p;
+}
+
+function P2 (t, p)
+{
+    return 3 * (1 - t) * t * t * p;
+}
+
+function P3 (t, p)
+{
+    return t * t * t * p;
+}
+
+//  p0 = start point
+//  p1 = control point 1
+//  p2 = control point 2
+//  p3 = end point
+
+// https://medium.com/@adrian_cooney/bezier-interpolation-13b68563313a
+
+var CubicBezierInterpolation = function (t, p0, p1, p2, p3)
+{
+    return P0(t, p0) + P1(t, p1) + P2(t, p2) + P3(t, p3);
+};
+
+module.exports = CubicBezierInterpolation;
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="parseButton" class="btn btn-primary">Parse</button>
+                            <button type="button" id="beautifyButton" class="btn btn-success">Beautify</button>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="col">
+
+                    <h2>Output</h2>
+
+                    <form>
+
+                        <div class="form-group">
+                            <label for="filename">Filename</label>
+                            <input type="text" id="filename" class="form-control" value="" />
+                        </div>
+                        <div class="form-group">
+                            <textarea id="output" class="form-control" rows="40" style="font-family: Consolas"></textarea>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Parameters Modal -->
+        <div class="modal fade" id="paramsModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="paramsModalLabel">Set Parameter Types</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="paramsContainer">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="generateButton">Generate Docs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+        //  Scan for the module export (from the bottom, as it's usually the last line of the file)
+        function findModule (src)
+        {
+            var module = '';
+
+            for (var i = src.length - 1; i > 0; i--)
+            {
+                var line = src[i].trim();
+
+                if (line.substr(0, 14) === 'module.exports')
+                {
+                    module = line.substr(17);
+                    module = module.replace(';', '');
+                    break;
+                }
+            }
+
+            console.log('Module:', module);
+
+            return module;
+        }
+
+        function extractParameters (line)
+        {
+            var start = line.indexOf('(') + 1;
+            var end = line.lastIndexOf(')');
+
+            //  Catch broken function declarations
+
+            if (start === -1 || end === -1)
+            {
+                return false;
+            }
+
+            //  Catch: function ()
+
+            if (end === start)
+            {
+                return [];
+            }
+
+            var extraction = line.substring(start, end);
+
+            var args = extraction.split(',');
+
+            args.forEach(function(value, index, array) {
+                array[index] = { name: value.trim(), type: '[type]', description: '[description]' };
+            });
+
+            console.log(args);
+
+            return args;
+        }
+
+        function findFunction (module, src)
+        {
+            //  Now we have the module name, we can scan for the function, starting from the top (and ignoring any local functions)
+
+            var functionString = 'var ' + module + ' = function';
+            var scanLength = functionString.length;
+            var parameters;
+            var functionStartLine = -1;
+            var functionEndLine = -1;
+
+            for (var i = 0; i < src.length; i++)
+            {
+                var line = src[i].trim();
+
+                if (functionStartLine === -1 && line.substr(0, scanLength) === functionString)
+                {
+                    functionStartLine = i;
+
+                    console.log('function found at line', functionStartLine);
+                    console.log(line);
+
+                    parameters = extractParameters(line);
+                }
+
+                if (findFunction !== -1 && line === '};')
+                {
+                    functionEndLine = i;
+                    break;
+                }
+            }
+
+            var returnThis = false;
+            var returnNull = false;
+            var returnValue = false;
+
+            //  Let's try and find return statements
+            for (var i = functionStartLine; i <= functionEndLine; i++)
+            {
+                var line = src[i];
+
+                if (line.indexOf('return this') !== -1)
+                {
+                    returnThis = true;
+                }
+                else if (line.indexOf('return null') !== -1)
+                {
+                    returnNull = true;
+                }
+                else if (line.indexOf('return') !== -1)
+                {
+                    returnValue = true;
+                }
+            }
+
+            return {
+                parameters: parameters,
+                start: functionStartLine,
+                end: functionEndLine,
+                hasReturn: (returnThis || returnNull || returnValue),
+                returns: {
+                    this: returnThis,
+                    null: returnNull,
+                    value: returnValue
+                }
+            };
+        }
+
+        function buildDocBlock (module, data, src)
+        {
+            //  Build the function docblock:
+            var className = $('#class').val() + '.' + module;
+
+            var docblock = [];
+
+            docblock.push('/**');
+            docblock.push(' * [description]');
+            docblock.push(' *');
+            docblock.push(' * @function ' + className);
+            docblock.push(' * @since 3.0.0');
+
+            if (data.parameters.length > 0)
+            {
+                docblock.push(' *');
+
+                for (var i = 0; i < data.parameters.length; i++)
+                {
+                    var param = data.parameters[i];
+
+                    docblock.push(' * @param {' + param.type + '} ' + param.name + ' - ' + param.description);
+                }
+            }
+            
+            if (data.hasReturn)
+            {
+                docblock.push(' *');
+
+                var returnString = ' * @return {';
+
+                if (data.returns.this)
+                {
+                    returnString = returnString.concat(className);
+                }
+
+                if (data.returns.value)
+                {
+                    if (data.returns.this)
+                    {
+                        returnString = returnString.concat('|');
+                    }
+
+                    returnString = returnString.concat('[type]');
+                }
+
+                if (data.returns.null)
+                {
+                    if (data.returns.this || data.returns.value)
+                    {
+                        returnString = returnString.concat('|');
+                    }
+
+                    returnString = returnString.concat('null');
+                }
+
+                returnString = returnString.concat('} [description]');
+
+                docblock.push(returnString);
+            }
+
+            docblock.push(' */');
+
+            //  Inject the docblock into the source and put into the output
+
+            var out = [];
+
+            for (var i = 0; i < src.length; i++)
+            {
+                var line = src[i];
+
+                if (i === data.start)
+                {
+                    out = out.concat(docblock);
+                }
+
+                out.push(line);
+            }
+
+            return out;
+        }
+
+        function showParametersModal (module, data, src)
+        {
+            //  Build-up the modal content
+            var div = $('#paramsContainer');
+
+
+
+
+
+            $('#paramsModal').modal('show');
+
+
+
+
+
+            $('#generateButton').click(function() {
+
+                $('#paramsModal').modal('hide');
+
+                var out = buildDocBlock(module, data, src);
+
+                $('#output').text(out.join('\n'));
+
+            });
+        }
+
+        function parseSource ()
+        {
+            var src = ($('#input').val()).split('\n');
+
+            console.log(src.length, 'lines');
+
+            var module = findModule(src);
+
+            if (module === '')
+            {
+                //  Bail out
+                $('#sourceAlert').text('Module not found in function. Aborting.');
+                $('#sourceAlert').show();
+            }
+
+            var data = findFunction(module, src);
+
+            if (!Array.isArray(data.parameters))
+            {
+                //  Bail out
+                $('#sourceAlert').text('Unable to detect function parameters. Aborting.');
+                $('#sourceAlert').show();
+            }
+
+            console.log(data);
+
+            if (data.parameters.length === 0)
+            {
+                //  Skip the modal
+                var out = buildDocBlock(module, data, src);
+                $('#output').text(out.join('\n'));
+            }
+            else
+            {
+                showParametersModal(module, data, src);
+            }
+        }
+
+        //  Set-up the handlers
+
+        $(document).ready(function () {
+
+            $('#parseButton').click(function() {
+
+                parseSource();
+
+            });
+
+            $('#beautifyButton').click(function() {
+
+                var src = $('#input').val();
+
+                var options = {
+                    "indent_size": 4,
+                    "indent_char": " ",
+                    "indent_with_tabs": false,
+                    "eol": "\n",
+                    "end_with_newline": true,
+                    "indent_level": 0,
+                    "preserve_newlines": true,
+                    "max_preserve_newlines": 10,
+                    "space_in_paren": false,
+                    "space_in_empty_paren": false,
+                    "jslint_happy": false,
+                    "space_after_anon_function": true,
+                    "brace_style": "expand",
+                    "unindent_chained_methods": false,
+                    "break_chained_methods": false,
+                    "keep_array_indentation": true,
+                    "unescape_strings": false,
+                    "wrap_line_length": 0,
+                    "e4x": false,
+                    "comma_first": false,
+                    "operator_position": "before-newline"
+                };
+
+                $('#input').val(js_beautify(src, options));
+
+            });
+
+        });
+
+        </script>
+
+    </body>
+</html>
