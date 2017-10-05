@@ -113,7 +113,7 @@ module.exports = CubicBezierInterpolation;
 
         <!-- Parameters Modal -->
         <div class="modal fade" id="paramsModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="paramsModalLabel">Set Parameter Types</h5>
@@ -121,8 +121,7 @@ module.exports = CubicBezierInterpolation;
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" id="paramsContainer">
-                    </div>
+                    <div class="modal-body" id="paramsContainer"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" id="generateButton">Generate Docs</button>
@@ -346,6 +345,7 @@ module.exports = CubicBezierInterpolation;
                 'number',
                 'function',
                 'object',
+                'Phaser.Geom.Circle'
             ];
 
             var select = $('<select>', { class: 'custom-select', id: id });
@@ -380,19 +380,39 @@ module.exports = CubicBezierInterpolation;
             {
                 var param = data.parameters[i];
 
-                var form = $('<form>', { class: 'form-inline' });
-                var group = $('<div>', { class: 'form-group' });
-                var label = $('<label>', { for: 'param' + i, class: 'mr-sm-2' }).text(param.name);
-                var input = $('<input>', { type: 'text', id: 'cp' + i, class: 'form-control ml-sm-2', value: param.type });
+                var div = $('<div>', { class: 'container' });
+                var row = $('<div>', { class: 'row py-2' });
+                var col1 = $('<div>', { class: 'col col-sm-2' });
+                var col2 = $('<div>', { class: 'col col-sm-4' });
+                var col3 = $('<div>', { class: 'col' });
+
+                var label = $('<label>', { for: 'param' + i }).text(param.name);
+                var input = $('<input>', { type: 'text', id: 'cp' + i, class: 'form-control', value: param.type });
                 var select = getTypesSelect('param' + i, input, param);
 
-                group.append(label);
-                group.append(select);
-                group.append(input);
+                row.on('mouseover', function () {
 
-                form.append(group);
+                    $(this).css('background-color', '#01FF70');
 
-                container.append(form);
+                });
+
+                row.on('mouseout', function () {
+
+                    $(this).css('background-color', '#fff');
+
+                });
+
+                div.append(row);
+
+                row.append(col1);
+                row.append(col2);
+                row.append(col3);
+
+                col1.append(label);
+                col2.append(select);
+                col3.append(input);
+
+                container.append(div);
             }
 
             //  Show the modal
