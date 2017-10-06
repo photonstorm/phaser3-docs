@@ -3,7 +3,6 @@ function buildFunctionDocBlock (module, data, src)
     //  Build the function docblock:
 
     var className = data.className;
-    // var className = $('#class').val() + '.' + module;
 
     var docblock = [];
 
@@ -21,7 +20,14 @@ function buildFunctionDocBlock (module, data, src)
         {
             var param = data.parameters[i];
 
-            docblock.push(' * @param {' + param.type + '} ' + param.name + ' - ' + param.description);
+            var name = param.name;
+
+            if (param.optional)
+            {
+                name = '[' + name + ']';
+            }
+
+            docblock.push(' * @param {' + param.type + '} ' + name + ' - ' + param.description);
         }
     }
     

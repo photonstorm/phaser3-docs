@@ -17,10 +17,6 @@ function findFunction (module, src)
         if (functionStartLine === -1 && line.substr(0, scanLength) === functionString)
         {
             functionStartLine = i;
-
-            // console.log('function found at line', functionStartLine);
-            // console.log(line);
-
             parameters = extractParameters(line);
         }
 

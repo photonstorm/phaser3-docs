@@ -22,7 +22,12 @@ function extractParameters (line)
     var args = extraction.split(',');
 
     args.forEach(function(value, index, array) {
-        array[index] = { name: value.trim(), type: '[type]', description: '[description]' };
+        array[index] = {
+            name: value.trim(),
+            type: '[type]',
+            description: '[description]',
+            optional: false
+        };
     });
 
     // console.log(args);

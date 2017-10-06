@@ -210,8 +210,10 @@
                     {
                         query = query.concat(' AND done=1');
                     }
-
-                    $('#progressBar2Container').show();
+                    else
+                    {
+                        $('#progressBar2Container').show();
+                    }
                 }
 
                 if (query)
