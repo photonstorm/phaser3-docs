@@ -15,60 +15,23 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="index.html">Percy</a>
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="class.html">Class</a>
-                <a class="nav-item nav-link" href="function.html">Function</a>
+                <a class="nav-item nav-link" href="index.html">All</a>
+                <a class="nav-item nav-link" href="index.html?show=1">Done</a>
+                <a class="nav-item nav-link" href="index.html?show=0">Remaining</a>
             </div>
         </nav>
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col" id="list"></div>
+
+            <div class="progress mt-4">
+                <div id="progressBar" class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="height: 24px; color: black; font-size: 16px; font-weight: bold; line-height: 24px">0%</div>
             </div>
+
+            <ul class="list-group my-4" id="list"></ul>
+
         </div>
 
         <script type="text/javascript">
-
-        function addFolder (folder)
-        {
-            var list = $('#list');
-
-            var name = $('<h5>').text(folder.name);
-
-            list.append(name);
-
-            if (folder.type === 'directory')
-            {
-                addFiles(folder.children);
-            }
-        }
-
-        function addFiles (files)
-        {
-            for (var i = 0; i < files.length; i++)
-            {
-                var file = files[i];
-
-                if (file.type === 'directory')
-                {
-                    addFolder(file);
-                }
-                else
-                {
-                    var list = $('#list');
-
-                    if (file.name !== 'index.js' && file.extension === '.js')
-                    {
-                        var url = file.path;
-
-                        var p = $('<div>', { style: 'font-size: 14px' }).text(file.name);
-                        var a1 = $('<a>', { class: 'ml-4', href: 'function.html?f=' + url }).text('function');
-                        var a2 = $('<a>', { class: 'ml-4', href: 'class.html?f=' + url }).text('class');
-
-                        list.append(p.append(a1, a2));
-                    }
-                }
-            }
-        }
 
         function renderContents (files)
         {
@@ -78,14 +41,19 @@
             {
                 var entry = files[i];
                 var filename = entry[0];
-                var done = (entry[1] === 1);
-                var url = filename;
 
-                var p = $('<div>', { style: 'font-size: 14px' }).text(filename);
-                var a1 = $('<a>', { class: 'ml-4', href: 'function.html?f=' + url }).text('function');
-                var a2 = $('<a>', { class: 'ml-4', href: 'class.html?f=' + url }).text('class');
+                if (filename.indexOf('index.js') !== -1)
+                {
+                    continue;
+                }
 
-                list.append(p.append(a1, a2));
+                var done = (entry[1] === 1) ? 'list-group-item list-group-item-success' : 'list-group-item';
+
+                var li = $('<li>', { class: done, style: 'font-family: Consolas; font-size: 14px' }).text(filename);
+                var a1 = $('<a>', { href: 'function.html?f=' + filename, class: 'badge badge-primary mx-4' }).text('Function');
+                var a2 = $('<a>', { href: 'class.html?f=' + filename, class: 'badge badge-warning' }).text('Class');
+
+                list.append(li.append(a1, a2));
             }
         }
 
@@ -99,30 +67,43 @@
             {
                 var uInt8Array = new Uint8Array(this.response);
                 var db = new SQL.Database(uInt8Array);
-                var contents = db.exec("SELECT * FROM files");
 
-                // console.log(contents[0].values);
+                var result;
+       
+                //  Totals
+                result = db.exec("SELECT COUNT(*) FROM files");
 
-                renderContents(contents[0].values);
+                var total = result[0].values[0][0];
+
+                result = db.exec("SELECT COUNT(*) FROM files WHERE done=1");
+
+                var done = result[0].values[0][0];
+
+                var progress = Math.ceil(done / total);
+
+                // console.log(total, done, progress);
+
+                $('#progressBar').css('width', progress + '%').text(progress + '%');
+
+                var show = getQueryString('show');
+
+                if (show === '0')
+                {
+                    result = db.exec("SELECT * FROM files WHERE done=0");
+                }
+                else if (show === '1')
+                {
+                    result = db.exec("SELECT * FROM files WHERE done=1");
+                }
+                else
+                {
+                    result = db.exec("SELECT * FROM files");
+                }
+
+                renderContents(result[0].values);
             };
 
             xhr.send();
-
-            /*
-            $.getJSON('files.json', function (json) {
-
-                for (var i = 0; i < json.children.length; i++)
-                {
-                    var folder = json.children[i];
-
-                    if (folder.type === 'directory')
-                    {
-                        addFolder(folder);
-                    }
-                }
-
-            });
-            */
 
         });
 
