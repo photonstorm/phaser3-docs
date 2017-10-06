@@ -1,6 +1,19 @@
+/**
+ * [description]
+ *
+ * @method Phaser.Animations.AnimationManager#add
+ * @fires AddAnimationEvent
+ * @since 3.0.0
+ * 
+ * @param {string} key - [description]
+ * @param {Phaser.Animations.Animation} animation - [description]
+ * 
+ * @return {Phaser.Animations.AnimationManager} The Animation Manager for method chaining.
+ */
+
 function buildDocBlock (module, data, src)
 {
-    //  Build the function docblock:
+    //  Build the method docblock:
 
     var className = data.className;
 
@@ -9,7 +22,7 @@ function buildDocBlock (module, data, src)
     docblock.push('/**');
     docblock.push(' * [description]');
     docblock.push(' *');
-    docblock.push(' * @function ' + className);
+    docblock.push(' * @method ' + className);
     docblock.push(' * @since 3.0.0');
 
     if (data.parameters.length > 0)

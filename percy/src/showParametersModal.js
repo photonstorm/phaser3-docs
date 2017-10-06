@@ -135,7 +135,7 @@ function showParametersModal (module, data, src)
 
         $('#paramsModal').modal('hide');
 
-        var out = buildFunctionDocBlock(module, data, src);
+        var out = buildDocBlock(module, data, src);
 
         $('#output').text(out.join('\n'));
 

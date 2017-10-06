@@ -13,7 +13,7 @@ function parseSource ()
         $('#sourceAlert').show();
     }
 
-    var data = findFunction(module, src, '.');
+    var data = findMethod(module, src, '#');
 
     if (!Array.isArray(data.parameters))
     {

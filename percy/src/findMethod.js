@@ -1,6 +1,8 @@
-function findFunction (module, src, glue)
+function findMethod (module, src, glue)
 {
-    var className = $('#class').val() + glue + module;
+    //  Lower-case the module first-char
+    var method = module.charAt(0).toLowerCase() + module.substr(1);
+    var className = $('#class').val() + glue + method;
 
     //  Now we have the module name, we can scan for the function, starting from the top (and ignoring any local functions)
 

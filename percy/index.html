@@ -84,10 +84,11 @@
                 var state = (entry[1] === 1) ? 'list-group-item list-group-item-success' : 'list-group-item';
 
                 var li = $('<li>', { class: state, style: 'font-family: Consolas; font-size: 14px' }).text(filename);
-                var a1 = $('<a>', { href: 'function.html?f=' + filename, class: 'badge badge-primary mx-4' }).text('Function');
-                var a2 = $('<a>', { href: 'class.html?f=' + filename, class: 'badge badge-warning' }).text('Class');
+                var a1 = $('<a>', { href: 'class.html?f=' + filename, class: 'badge badge-warning mx-4' }).text('Class');
+                var a2 = $('<a>', { href: 'method.html?f=' + filename, class: 'badge badge-danger mr-4' }).text('Method');
+                var a3 = $('<a>', { href: 'function.html?f=' + filename, class: 'badge badge-primary' }).text('Function');
 
-                list.append(li.append(a1, a2));
+                list.append(li.append(a1, a2, a3));
             }
 
             var progress = Math.round((done / total) * 100);
@@ -102,32 +103,10 @@
             //  Top-level buttons
 
             var buttons = [
-                'actions',
-                'animation',
-                'boot',
-                'cache',
-                'camera',
-                'canvas',
-                'create',
-                'device',
-                'dom',
-                'events',
-                'gameobjects',
-                'geom',
-                'graphics',
-                'input',
-                'loader',
-                'math',
-                'paths',
-                'physics',
-                'renderer',
-                'scene',
-                'sound',
-                'structs',
-                'textures',
-                'time',
-                'tween',
-                'utils'
+                'actions', 'animation', 'boot', 'cache', 'camera', 'canvas', 'create',
+                'device', 'dom', 'events', 'gameobjects', 'geom', 'graphics', 'input',
+                'loader', 'math', 'paths', 'physics', 'renderer', 'scene', 'sound',
+                'structs', 'textures', 'time', 'tween', 'utils'
             ];
 
             var buttonList = $('#buttonList');

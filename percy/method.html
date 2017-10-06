@@ -11,18 +11,18 @@
         <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.3/js/lib/beautify-css.js"></script>
         <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.7.3/js/lib/beautify-html.js"></script>
         <script src="./lib/getQueryString.js"></script>
-        <script src="./src/buildFunctionDocBlock.js"></script>
+        <script src="./src/buildMethodDocBlock.js"></script>
         <script src="./src/extractParameters.js"></script>
-        <script src="./src/findFunction.js"></script>
+        <script src="./src/findMethod.js"></script>
         <script src="./src/findModule.js"></script>
         <script src="./src/getTypesList.js"></script>
-        <script src="./src/parseFunctionSource.js"></script>
+        <script src="./src/parseMethodSource.js"></script>
         <script src="./src/showParametersModal.js"></script>
     </head>
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Percy - Function</a>
+            <a class="navbar-brand" href="index.html">Percy - Method</a>
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="index.html?filter=all&show=all">All</a>
                 <a class="nav-item nav-link" href="index.html?filter=all&show=done">Done</a>
@@ -41,7 +41,13 @@
 
                         <div class="form-group">
                             <label for="class">Class</label>
-                            <input type="text" id="class" class="form-control" value="Phaser." />
+
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="button" id="saveClassButton">Save Class</button>
+                                </span>
+                                <input type="text" class="form-control" id="class" value="Phaser.">
+                            </div>
                         </div>
 
                         <div class="alert alert-danger" id="sourceAlert" role="alert" style="display: none;">Alert!</div>
@@ -124,6 +130,7 @@
                 var namespace = filename.split('\\');
 
                 namespace.pop();
+                namespace.pop();
 
                 namespace.forEach(function (value, index, array) {
 
@@ -132,6 +139,13 @@
                 });
 
                 $('#class').val('Phaser.' + namespace.join('.'));
+
+                var c = localStorage.getItem('className');
+
+                if (c)
+                {
+                    $('#class').val(c);
+                }
 
                 //  Set-up the buttons
 
@@ -198,6 +212,14 @@
 
                 });
 
+                $('#saveClassButton').click(function() {
+
+                    var c = $('#class').val();
+
+                    localStorage.setItem('className', c);
+
+                });
+
                 $('#markButton').click(function() {
 
                     var data = {
@@ -230,7 +252,7 @@
 
                         $('#nextButton').click(function() {
 
-                            window.location.href = 'function.html?f=' + result;
+                            window.location.href = 'method.html?f=' + result;
 
                         });
                     }
