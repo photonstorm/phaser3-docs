@@ -76,6 +76,7 @@
                         <div class="form-group">
                             <button type="button" id="saveButton" class="btn btn-primary">Save File</button>
                             <button type="button" id="markButton" class="btn btn-success mx-4">Mark Done</button>
+                            <button type="button" id="nextButton" class="btn btn-danger">Next File</button>
                         </div>
 
                     </form>
@@ -113,83 +114,108 @@
 
             $('#filename').val(filename);
 
-            $('#input').load('/phaser/v3/src/' + filename);
+            $('#input').load('/phaser/v3/src/' + filename, function () {
 
-            $('#parseButton').click(function() {
+                //  Success loading the source, so set-up the buttons
 
-                parseFunctionSource();
+                $('#parseButton').click(function() {
 
-            });
-
-            $('#beautifyButton').click(function() {
-
-                var src = $('#input').val();
-
-                var options = {
-                    "indent_size": 4,
-                    "indent_char": " ",
-                    "indent_with_tabs": false,
-                    "eol": "\n",
-                    "end_with_newline": true,
-                    "indent_level": 0,
-                    "preserve_newlines": true,
-                    "max_preserve_newlines": 10,
-                    "space_in_paren": false,
-                    "space_in_empty_paren": false,
-                    "jslint_happy": false,
-                    "space_after_anon_function": true,
-                    "brace_style": "expand",
-                    "unindent_chained_methods": false,
-                    "break_chained_methods": false,
-                    "keep_array_indentation": true,
-                    "unescape_strings": false,
-                    "wrap_line_length": 0,
-                    "e4x": false,
-                    "comma_first": false,
-                    "operator_position": "before-newline"
-                };
-
-                $('#input').val(js_beautify(src, options));
-
-            });
-
-            $('#saveButton').click(function() {
-
-                var data = {
-                    filename: $('#filename').val(),
-                    src: $('#output').val()
-                };
-
-                //  Save to SQL
-                $.post('save.php', data, function (result) {
-
-                    if (result == 'OK')
-                    {
-                        $('#saveAlert').show();
-                    }
+                    parseFunctionSource();
 
                 });
 
-            });
+                $('#beautifyButton').click(function() {
 
-            $('#copyButton').click(function() {
+                    var src = $('#input').val();
 
-                $('#output').val($('#input').val());
+                    var options = {
+                        "indent_size": 4,
+                        "indent_char": " ",
+                        "indent_with_tabs": false,
+                        "eol": "\n",
+                        "end_with_newline": true,
+                        "indent_level": 0,
+                        "preserve_newlines": true,
+                        "max_preserve_newlines": 10,
+                        "space_in_paren": false,
+                        "space_in_empty_paren": false,
+                        "jslint_happy": false,
+                        "space_after_anon_function": true,
+                        "brace_style": "expand",
+                        "unindent_chained_methods": false,
+                        "break_chained_methods": false,
+                        "keep_array_indentation": true,
+                        "unescape_strings": false,
+                        "wrap_line_length": 0,
+                        "e4x": false,
+                        "comma_first": false,
+                        "operator_position": "before-newline"
+                    };
 
-            });
+                    $('#input').val(js_beautify(src, options));
 
-            $('#markButton').click(function() {
+                });
+
+                $('#saveButton').click(function() {
+
+                    var data = {
+                        filename: $('#filename').val(),
+                        src: $('#output').val()
+                    };
+
+                    //  Save to SQL
+                    $.post('save.php', data, function (result) {
+
+                        if (result == 'OK')
+                        {
+                            $('#saveAlert').show();
+                        }
+
+                    });
+
+                });
+
+                $('#copyButton').click(function() {
+
+                    $('#output').val($('#input').val());
+
+                });
+
+                $('#markButton').click(function() {
+
+                    var data = {
+                        filename: $('#filename').val()
+                    };
+
+                    //  Save to SQL
+                    $.post('markdone.php', data, function (result) {
+
+                        if (result == 'OK')
+                        {
+                            $('#saveAlert').show();
+                        }
+
+                    });
+
+                });
 
                 var data = {
                     filename: $('#filename').val()
                 };
 
-                //  Save to SQL
-                $.post('markdone.php', data, function (result) {
+                $.post('getnext.php', data, function (result) {
 
-                    if (result == 'OK')
+                    if (result !== '')
                     {
-                        $('#saveAlert').show();
+                        $('#nextButton').click(function() {
+
+                            window.location.href = 'function.html?f=' + result;
+
+                        });
+                    }
+                    else
+                    {
+                        $('#nextButton').hide();
                     }
 
                 });
