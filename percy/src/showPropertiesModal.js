@@ -21,10 +21,10 @@ function showPropertiesModal (data, src)
         var col3 = $('<div>', { class: 'col' });
         var col4 = $('<div>', { class: 'col col-sm-2' });
 
-        var label = $('<label>', { for: 'param' + i }).text(param.name);
-        var input = $('<input>', { type: 'text', id: 'cp' + i, class: 'form-control', value: param.type });
-        var select = getTypesList('param' + i, input, param);
-        var def = $('<input>', { type: 'text', id: 'def' + i, class: 'form-control', value: '' });
+        var label = $('<label>', { for: 'prop' + i }).text(param.name);
+        var input = $('<input>', { type: 'text', id: 'cpp' + i, class: 'form-control', value: param.type });
+        var select = getTypesList('prop' + i, input, param);
+        var def = $('<input>', { type: 'text', id: 'def' + i, class: 'form-control', value: param.default });
 
         row.on('mouseover', function () {
 
@@ -62,7 +62,7 @@ function showPropertiesModal (data, src)
         {
             var param = props[i];
 
-            param.type = $('#cp' + i).val();
+            param.type = $('#cpp' + i).val();
             param.default = $('#def' + i).val();
         }
 

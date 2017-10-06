@@ -29,9 +29,6 @@ function parseSource ()
     if (data.constructor.parameters.length === 0)
     {
         //  There are no constructor arguments, so move on to the properties
-
-        // var out = buildDocBlock(module, data, src);
-        // $('#output').text(out.join('\n'));
     }
     else
     {
@@ -51,6 +48,11 @@ function parseSource ()
             {
                 console.log('props modal hidden');
                 console.log(data);
+
+                var out = buildDocBlock(data, src);
+
+                $('#output').text(out.join('\n'));
+
             });
         });
     }
