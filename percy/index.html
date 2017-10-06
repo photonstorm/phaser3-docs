@@ -125,7 +125,7 @@
 
                 var done = result[0].values[0][0];
 
-                var progress = Math.ceil(done / total);
+                var progress = Math.round(total / done);
 
                 console.log(total, done, progress);
 
@@ -133,7 +133,7 @@
 
                 if (filter !== '')
                 {
-                    result = db.exec("SELECT * FROM files WHERE path LIKE '" + filter + "%'");
+                    result = db.exec("SELECT path,done FROM files WHERE path LIKE '" + filter + "%'");
                 }
                 else
                 {
@@ -141,15 +141,15 @@
 
                     if (show === '0')
                     {
-                        result = db.exec("SELECT * FROM files WHERE done=0");
+                        result = db.exec("SELECT path,done FROM files WHERE done=0");
                     }
                     else if (show === '1')
                     {
-                        result = db.exec("SELECT * FROM files WHERE done=1");
+                        result = db.exec("SELECT path,done FROM files WHERE done=1");
                     }
                     else
                     {
-                        result = db.exec("SELECT * FROM files");
+                        result = db.exec("SELECT path,done FROM files");
                     }
                 }
 

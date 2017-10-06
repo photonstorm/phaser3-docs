@@ -5,7 +5,7 @@
 
     $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $select = "SELECT _rowid_ AS id FROM files WHERE files.path = :path";
+    $select = "SELECT id FROM files WHERE files.path = :path";
 
     $stmt = $file_db->prepare($select);
 
@@ -20,7 +20,7 @@
         $id = (int) $result;
         $id++;
 
-        $select = "SELECT path FROM files WHERE _rowid_ = :id";
+        $select = "SELECT path FROM files WHERE id = :id";
 
         $stmt = $file_db->prepare($select);
 
