@@ -1,5 +1,7 @@
 function findFunction (module, src)
 {
+    var className = $('#class').val() + '.' + module;
+
     //  Now we have the module name, we can scan for the function, starting from the top (and ignoring any local functions)
 
     var functionString = 'var ' + module + ' = function';
@@ -57,6 +59,7 @@ function findFunction (module, src)
     }
 
     return {
+        className: className,
         parameters: parameters,
         start: functionStartLine,
         end: functionEndLine,
@@ -64,7 +67,8 @@ function findFunction (module, src)
         returns: {
             this: returnThis,
             null: returnNull,
-            value: returnValue
+            value: returnValue,
+            type: '[type]'
         }
     };
 }

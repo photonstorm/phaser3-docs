@@ -27,6 +27,8 @@
                 <div id="progressBar" class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="height: 24px; color: black; font-size: 16px; font-weight: bold; line-height: 24px">0%</div>
             </div>
 
+            <div class="button-group my-4" id="buttonList"></div>
+
             <ul class="list-group my-4" id="list"></ul>
 
         </div>
@@ -59,6 +61,50 @@
 
         $(document).ready(function () {
 
+            //  Top-level buttons
+
+            var buttons = [
+                'actions',
+                'animation',
+                'boot',
+                'cache',
+                'camera',
+                'canvas',
+                'create',
+                'device',
+                'dom',
+                'events',
+                'gameobjects',
+                'geom',
+                'graphics',
+                'input',
+                'loader',
+                'math',
+                'paths',
+                'physics',
+                'renderer',
+                'scene',
+                'sound',
+                'structs',
+                'textures',
+                'time',
+                'tween',
+                'utils'
+            ];
+
+            var buttonList = $('#buttonList');
+            var filter = getQueryString('filter');
+
+            for (var i = 0; i < buttons.length; i++)
+            {
+                var name = buttons[i];
+                var css = (name === filter) ? 'btn btn-danger btn-sm mx-1 my-1' : 'btn btn-primary btn-sm mx-1 my-1';
+
+                var a = $('<a>', { class: css, href: 'index.html?filter=' + name, role: 'button' }).text(name);
+
+                buttonList.append(a);
+            }
+
             var xhr = new XMLHttpRequest();
             xhr.open('GET', '/phaser3-docs/percy/converted.db', true);
             xhr.responseType = 'arraybuffer';
@@ -81,23 +127,30 @@
 
                 var progress = Math.ceil(done / total);
 
-                // console.log(total, done, progress);
+                console.log(total, done, progress);
 
                 $('#progressBar').css('width', progress + '%').text(progress + '%');
 
-                var show = getQueryString('show');
-
-                if (show === '0')
+                if (filter !== '')
                 {
-                    result = db.exec("SELECT * FROM files WHERE done=0");
-                }
-                else if (show === '1')
-                {
-                    result = db.exec("SELECT * FROM files WHERE done=1");
+                    result = db.exec("SELECT * FROM files WHERE path LIKE '" + filter + "%'");
                 }
                 else
                 {
-                    result = db.exec("SELECT * FROM files");
+                    var show = getQueryString('show');
+
+                    if (show === '0')
+                    {
+                        result = db.exec("SELECT * FROM files WHERE done=0");
+                    }
+                    else if (show === '1')
+                    {
+                        result = db.exec("SELECT * FROM files WHERE done=1");
+                    }
+                    else
+                    {
+                        result = db.exec("SELECT * FROM files");
+                    }
                 }
 
                 renderContents(result[0].values);

@@ -6,9 +6,22 @@ function getTypesList (id, input, param)
         'integer',
         'float',
         'number',
+        'boolean',
         'function',
         'object',
-        'Phaser.Geom.Circle'
+        'array',
+        'Phaser.Geom.Circle',
+        'Phaser.Geom.Ellipse',
+        'Phaser.Geom.Line',
+        'Phaser.Geom.Point',
+        'Phaser.Geom.Polygon',
+        'Phaser.Geom.Rectangle',
+        'Phaser.Geom.Triangle',
+        'Phaser.Math.Vector2',
+        'Phaser.Math.Vector3',
+        'Phaser.Math.Vector4',
+        'Phaser.Math.Matrix3',
+        'Phaser.Math.Matrix4',
     ];
 
     var select = $('<select>', { class: 'custom-select', id: id });

@@ -1,7 +1,9 @@
 function buildFunctionDocBlock (module, data, src)
 {
     //  Build the function docblock:
-    var className = $('#class').val() + '.' + module;
+
+    var className = data.className;
+    // var className = $('#class').val() + '.' + module;
 
     var docblock = [];
 
@@ -26,37 +28,7 @@ function buildFunctionDocBlock (module, data, src)
     if (data.hasReturn)
     {
         docblock.push(' *');
-
-        var returnString = ' * @return {';
-
-        if (data.returns.this)
-        {
-            returnString = returnString.concat(className);
-        }
-
-        if (data.returns.value)
-        {
-            if (data.returns.this)
-            {
-                returnString = returnString.concat('|');
-            }
-
-            returnString = returnString.concat('[type]');
-        }
-
-        if (data.returns.null)
-        {
-            if (data.returns.this || data.returns.value)
-            {
-                returnString = returnString.concat('|');
-            }
-
-            returnString = returnString.concat('null');
-        }
-
-        returnString = returnString.concat('} [description]');
-
-        docblock.push(returnString);
+        docblock.push(' * @return {' + data.returns.type + '} [description]');
     }
 
     docblock.push(' */');

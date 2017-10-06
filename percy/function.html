@@ -110,13 +110,29 @@
 
         $(document).ready(function () {
 
+            $('#nextButton').hide();
+
             var filename = getQueryString('f');
 
             $('#filename').val(filename);
 
             $('#input').load('/phaser/v3/src/' + filename, function () {
 
-                //  Success loading the source, so set-up the buttons
+                //  Success loading the source
+
+                var namespace = filename.split('\\');
+
+                namespace.pop();
+
+                namespace.forEach(function (value, index, array) {
+
+                    array[index] = value.charAt(0).toUpperCase() + value.substr(1);
+
+                });
+
+                $('#class').val('Phaser.' + namespace.join('.'));
+
+                //  Set-up the buttons
 
                 $('#parseButton').click(function() {
 
@@ -207,15 +223,15 @@
 
                     if (result !== '')
                     {
+                        console.log('Next file:', result);
+
+                        $('#nextButton').show();
+
                         $('#nextButton').click(function() {
 
                             window.location.href = 'function.html?f=' + result;
 
                         });
-                    }
-                    else
-                    {
-                        $('#nextButton').hide();
                     }
 
                 });
