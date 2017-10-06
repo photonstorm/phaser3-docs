@@ -44,6 +44,14 @@ function parseSource ()
             findProperties(data, src);
 
             console.log(data);
+
+            showPropertiesModal(data, src);
+
+            $('#paramsModal').one('hidden.bs.modal', function (e)
+            {
+                console.log('props modal hidden');
+                console.log(data);
+            });
         });
     }
 }

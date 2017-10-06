@@ -18,6 +18,7 @@ function findProperties (data, src)
             //  Does it have an = sign?
 
             var type = '[type]';
+            var def = null;
 
             // this.name = '';
             var to = property.indexOf('=');
@@ -28,6 +29,47 @@ function findProperties (data, src)
                 to = property.indexOf(';') + 1;
                 type = 'null';
             }
+            else
+            {
+                var value = property.substr(to + 2).slice(0, -1);
+
+                // console.log(value);
+
+                switch (value)
+                {
+                    case 'true':
+                    case 'false':
+                        type = 'boolean';
+                        def = value;
+                        break;
+
+                    case "''":
+                        type = 'string';
+                        def = value;
+                        break;
+
+                    case '[]':
+                        type = 'array';
+                        def = value;
+                        break;
+
+                    case '{}':
+                        type = 'object';
+                        def = value;
+                        break;
+
+                    case 'null':
+                        type = '?[type]';
+                        def = value;
+                        break;
+
+                    case '0':
+                    case '1':
+                        type = 'number';
+                        def = value;
+                        break;
+                }
+            }
 
             property = property.substr(0, to - 1);
 
@@ -36,7 +78,7 @@ function findProperties (data, src)
                 name: property,
                 type: type,
                 description: '[description]',
-                default: null,
+                default: def,
                 private: (property.charAt(0) === '_')
             });
         }
