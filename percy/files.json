@@ -2069,14 +2069,14 @@
         {
           "path": "dom\\AddToDOM.js",
           "name": "AddToDOM.js",
-          "size": 837,
+          "size": 1051,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "dom\\DOMContentLoaded.js",
           "name": "DOMContentLoaded.js",
-          "size": 1116,
+          "size": 1424,
           "extension": ".js",
           "type": "file"
         },
@@ -2090,14 +2090,14 @@
         {
           "path": "dom\\ParseXML.js",
           "name": "ParseXML.js",
-          "size": 627,
+          "size": 769,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "dom\\RemoveFromDOM.js",
           "name": "RemoveFromDOM.js",
-          "size": 175,
+          "size": 291,
           "extension": ".js",
           "type": "file"
         },
@@ -2109,7 +2109,7 @@
           "type": "file"
         }
       ],
-      "size": 5205,
+      "size": 5985,
       "type": "directory"
     },
     {
@@ -2726,7 +2726,7 @@
             {
               "path": "gameobjects\\emitter\\ParticleEmitter.js",
               "name": "ParticleEmitter.js",
-              "size": 10407,
+              "size": 10408,
               "extension": ".js",
               "type": "file"
             },
@@ -2766,7 +2766,7 @@
               "type": "file"
             }
           ],
-          "size": 16215,
+          "size": 16216,
           "type": "directory"
         },
         {
@@ -3061,7 +3061,7 @@
             {
               "path": "gameobjects\\pathfollower\\PathFollower.js",
               "name": "PathFollower.js",
-              "size": 5841,
+              "size": 5843,
               "extension": ".js",
               "type": "file"
             },
@@ -3073,7 +3073,7 @@
               "type": "file"
             }
           ],
-          "size": 6582,
+          "size": 6584,
           "type": "directory"
         },
         {
@@ -3530,7 +3530,7 @@
           "type": "directory"
         }
       ],
-      "size": 327760,
+      "size": 327763,
       "type": "directory"
     },
     {
@@ -6014,7 +6014,7 @@
                 {
                   "path": "math\\easing\\back\\In.js",
                   "name": "In.js",
-                  "size": 181,
+                  "size": 389,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6028,19 +6028,19 @@
                 {
                   "path": "math\\easing\\back\\InOut.js",
                   "name": "InOut.js",
-                  "size": 340,
+                  "size": 542,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\back\\Out.js",
                   "name": "Out.js",
-                  "size": 189,
+                  "size": 398,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 854,
+              "size": 1473,
               "type": "directory"
             },
             {
@@ -6050,7 +6050,7 @@
                 {
                   "path": "math\\easing\\bounce\\In.js",
                   "name": "In.js",
-                  "size": 449,
+                  "size": 589,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6064,19 +6064,19 @@
                 {
                   "path": "math\\easing\\bounce\\InOut.js",
                   "name": "InOut.js",
-                  "size": 684,
+                  "size": 808,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\bounce\\Out.js",
                   "name": "Out.js",
-                  "size": 409,
+                  "size": 552,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 1688,
+              "size": 2095,
               "type": "directory"
             },
             {
@@ -6086,7 +6086,7 @@
                 {
                   "path": "math\\easing\\circular\\In.js",
                   "name": "In.js",
-                  "size": 92,
+                  "size": 251,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6100,19 +6100,19 @@
                 {
                   "path": "math\\easing\\circular\\InOut.js",
                   "name": "InOut.js",
-                  "size": 229,
+                  "size": 384,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\circular\\Out.js",
                   "name": "Out.js",
-                  "size": 94,
+                  "size": 254,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 563,
+              "size": 1037,
               "type": "directory"
             },
             {
@@ -6122,7 +6122,7 @@
                 {
                   "path": "math\\easing\\cubic\\In.js",
                   "name": "In.js",
-                  "size": 77,
+                  "size": 233,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6136,19 +6136,19 @@
                 {
                   "path": "math\\easing\\cubic\\InOut.js",
                   "name": "InOut.js",
-                  "size": 200,
+                  "size": 352,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\cubic\\Out.js",
                   "name": "Out.js",
-                  "size": 85,
+                  "size": 242,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 507,
+              "size": 972,
               "type": "directory"
             },
             {
@@ -6165,7 +6165,7 @@
                 {
                   "path": "math\\easing\\elastic\\In.js",
                   "name": "In.js",
-                  "size": 629,
+                  "size": 859,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6179,19 +6179,19 @@
                 {
                   "path": "math\\easing\\elastic\\InOut.js",
                   "name": "InOut.js",
-                  "size": 846,
+                  "size": 1072,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\elastic\\Out.js",
                   "name": "Out.js",
-                  "size": 628,
+                  "size": 859,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 2250,
+              "size": 2937,
               "type": "directory"
             },
             {
@@ -6201,7 +6201,7 @@
                 {
                   "path": "math\\easing\\expo\\In.js",
                   "name": "In.js",
-                  "size": 101,
+                  "size": 256,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6215,19 +6215,19 @@
                 {
                   "path": "math\\easing\\expo\\InOut.js",
                   "name": "InOut.js",
-                  "size": 226,
+                  "size": 377,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\expo\\Out.js",
                   "name": "Out.js",
-                  "size": 94,
+                  "size": 250,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 565,
+              "size": 1027,
               "type": "directory"
             },
             {
@@ -6251,12 +6251,12 @@
                 {
                   "path": "math\\easing\\linear\\Linear.js",
                   "name": "Linear.js",
-                  "size": 77,
+                  "size": 231,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 149,
+              "size": 303,
               "type": "directory"
             },
             {
@@ -6266,7 +6266,7 @@
                 {
                   "path": "math\\easing\\quadratic\\In.js",
                   "name": "In.js",
-                  "size": 73,
+                  "size": 233,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6280,19 +6280,19 @@
                 {
                   "path": "math\\easing\\quadratic\\InOut.js",
                   "name": "InOut.js",
-                  "size": 194,
+                  "size": 350,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\quadratic\\Out.js",
                   "name": "Out.js",
-                  "size": 81,
+                  "size": 242,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 497,
+              "size": 974,
               "type": "directory"
             },
             {
@@ -6302,7 +6302,7 @@
                 {
                   "path": "math\\easing\\quartic\\In.js",
                   "name": "In.js",
-                  "size": 81,
+                  "size": 239,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6316,19 +6316,19 @@
                 {
                   "path": "math\\easing\\quartic\\InOut.js",
                   "name": "InOut.js",
-                  "size": 209,
+                  "size": 363,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\quartic\\Out.js",
                   "name": "Out.js",
-                  "size": 91,
+                  "size": 250,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 528,
+              "size": 999,
               "type": "directory"
             },
             {
@@ -6338,7 +6338,7 @@
                 {
                   "path": "math\\easing\\quintic\\In.js",
                   "name": "In.js",
-                  "size": 85,
+                  "size": 243,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6352,19 +6352,19 @@
                 {
                   "path": "math\\easing\\quintic\\InOut.js",
                   "name": "InOut.js",
-                  "size": 216,
+                  "size": 370,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\quintic\\Out.js",
                   "name": "Out.js",
-                  "size": 93,
+                  "size": 252,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 541,
+              "size": 1012,
               "type": "directory"
             },
             {
@@ -6374,7 +6374,7 @@
                 {
                   "path": "math\\easing\\sine\\In.js",
                   "name": "In.js",
-                  "size": 232,
+                  "size": 376,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6388,23 +6388,23 @@
                 {
                   "path": "math\\easing\\sine\\InOut.js",
                   "name": "InOut.js",
-                  "size": 242,
+                  "size": 389,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "math\\easing\\sine\\Out.js",
                   "name": "Out.js",
-                  "size": 230,
+                  "size": 375,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 848,
+              "size": 1284,
               "type": "directory"
             }
           ],
-          "size": 11278,
+          "size": 16401,
           "type": "directory"
         },
         {
@@ -6827,7 +6827,7 @@
           "type": "file"
         }
       ],
-      "size": 124700,
+      "size": 129823,
       "type": "directory"
     },
     {
@@ -8395,12 +8395,12 @@
             {
               "path": "scene\\local\\Systems.js",
               "name": "Systems.js",
-              "size": 7371,
+              "size": 7372,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 10321,
+          "size": 10322,
           "type": "directory"
         },
         {
@@ -8489,7 +8489,7 @@
           "type": "directory"
         }
       ],
-      "size": 85628,
+      "size": 85629,
       "type": "directory"
     },
     {
@@ -8723,174 +8723,181 @@
       "type": "directory"
     },
     {
-      "path": "..\\phaser\\v3\\src\\tween",
-      "name": "tween",
+      "path": "..\\phaser\\v3\\src\\tweens",
+      "name": "tweens",
       "children": [
         {
-          "path": "..\\phaser\\v3\\src\\tween\\builder",
+          "path": "..\\phaser\\v3\\src\\tweens\\builder",
           "name": "builder",
           "children": [
             {
-              "path": "tween\\builder\\GetBoolean.js",
+              "path": "tweens\\builder\\GetBoolean.js",
               "name": "GetBoolean.js",
               "size": 295,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\GetEaseFunction.js",
+              "path": "tweens\\builder\\GetEaseFunction.js",
               "name": "GetEaseFunction.js",
               "size": 890,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\GetNewValue.js",
+              "path": "tweens\\builder\\GetNewValue.js",
               "name": "GetNewValue.js",
               "size": 826,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\GetProps.js",
+              "path": "tweens\\builder\\GetProps.js",
               "name": "GetProps.js",
               "size": 891,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\GetTargets.js",
+              "path": "tweens\\builder\\GetTargets.js",
               "name": "GetTargets.js",
               "size": 451,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\GetTweens.js",
+              "path": "tweens\\builder\\GetTweens.js",
               "name": "GetTweens.js",
               "size": 437,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\GetValueOp.js",
+              "path": "tweens\\builder\\GetValueOp.js",
               "name": "GetValueOp.js",
               "size": 3893,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\NumberTweenBuilder.js",
+              "path": "tweens\\builder\\NumberTweenBuilder.js",
               "name": "NumberTweenBuilder.js",
-              "size": 3195,
+              "size": 3235,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\TimelineBuilder.js",
+              "path": "tweens\\builder\\TimelineBuilder.js",
               "name": "TimelineBuilder.js",
-              "size": 4615,
+              "size": 4652,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\builder\\TweenBuilder.js",
+              "path": "tweens\\builder\\TweenBuilder.js",
               "name": "TweenBuilder.js",
-              "size": 4072,
+              "size": 4106,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 19565,
+          "size": 19676,
           "type": "directory"
         },
         {
-          "path": "..\\phaser\\v3\\src\\tween\\manager",
+          "path": "tweens\\index.js",
+          "name": "index.js",
+          "size": 233,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\tweens\\manager",
           "name": "manager",
           "children": [
             {
-              "path": "..\\phaser\\v3\\src\\tween\\manager\\inc",
+              "path": "..\\phaser\\v3\\src\\tweens\\manager\\inc",
               "name": "inc",
               "children": [
                 {
-                  "path": "tween\\manager\\inc\\Destroy.js",
+                  "path": "tweens\\manager\\inc\\Destroy.js",
                   "name": "Destroy.js",
                   "size": 106,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\Each.js",
+                  "path": "tweens\\manager\\inc\\Each.js",
                   "name": "Each.js",
                   "size": 642,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\GetAllTweens.js",
+                  "path": "tweens\\manager\\inc\\GetAllTweens.js",
                   "name": "GetAllTweens.js",
                   "size": 237,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\GetGlobalTimeScale.js",
+                  "path": "tweens\\manager\\inc\\GetGlobalTimeScale.js",
                   "name": "GetGlobalTimeScale.js",
                   "size": 113,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\GetTweensOf.js",
+                  "path": "tweens\\manager\\inc\\GetTweensOf.js",
                   "name": "GetTweensOf.js",
                   "size": 807,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\IsTweening.js",
+                  "path": "tweens\\manager\\inc\\IsTweening.js",
                   "name": "IsTweening.js",
                   "size": 360,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\KillAll.js",
+                  "path": "tweens\\manager\\inc\\KillAll.js",
                   "name": "KillAll.js",
                   "size": 210,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\KillTweensOf.js",
+                  "path": "tweens\\manager\\inc\\KillTweensOf.js",
                   "name": "KillTweensOf.js",
                   "size": 273,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\PauseAll.js",
+                  "path": "tweens\\manager\\inc\\PauseAll.js",
                   "name": "PauseAll.js",
                   "size": 200,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\ResumeAll.js",
+                  "path": "tweens\\manager\\inc\\ResumeAll.js",
                   "name": "ResumeAll.js",
                   "size": 203,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\SetGlobalTimeScale.js",
+                  "path": "tweens\\manager\\inc\\SetGlobalTimeScale.js",
                   "name": "SetGlobalTimeScale.js",
                   "size": 139,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\manager\\inc\\Shutdown.js",
+                  "path": "tweens\\manager\\inc\\Shutdown.js",
                   "name": "Shutdown.js",
                   "size": 262,
                   "extension": ".js",
@@ -8901,132 +8908,132 @@
               "type": "directory"
             },
             {
-              "path": "tween\\manager\\TweenManager.js",
+              "path": "tweens\\manager\\TweenManager.js",
               "name": "TweenManager.js",
-              "size": 5235,
+              "size": 5267,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 8787,
+          "size": 8819,
           "type": "directory"
         },
         {
-          "path": "..\\phaser\\v3\\src\\tween\\timeline",
+          "path": "..\\phaser\\v3\\src\\tweens\\timeline",
           "name": "timeline",
           "children": [
             {
-              "path": "tween\\timeline\\Timeline.js",
+              "path": "tweens\\timeline\\Timeline.js",
               "name": "Timeline.js",
-              "size": 12988,
+              "size": 13018,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 12988,
+          "size": 13018,
           "type": "directory"
         },
         {
-          "path": "..\\phaser\\v3\\src\\tween\\tween",
+          "path": "..\\phaser\\v3\\src\\tweens\\tween",
           "name": "tween",
           "children": [
             {
-              "path": "tween\\tween\\const.js",
+              "path": "tweens\\tween\\const.js",
               "name": "const.js",
               "size": 530,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\tween\\Defaults.js",
+              "path": "tweens\\tween\\Defaults.js",
               "name": "Defaults.js",
               "size": 270,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "..\\phaser\\v3\\src\\tween\\tween\\inc",
+              "path": "..\\phaser\\v3\\src\\tweens\\tween\\inc",
               "name": "inc",
               "children": [
                 {
-                  "path": "tween\\tween\\inc\\CalcDuration.js",
+                  "path": "tweens\\tween\\inc\\CalcDuration.js",
                   "name": "CalcDuration.js",
                   "size": 1508,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Init.js",
+                  "path": "tweens\\tween\\inc\\Init.js",
                   "name": "Init.js",
                   "size": 1139,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\NextState.js",
+                  "path": "tweens\\tween\\inc\\NextState.js",
                   "name": "NextState.js",
                   "size": 1163,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Pause.js",
+                  "path": "tweens\\tween\\inc\\Pause.js",
                   "name": "Pause.js",
                   "size": 302,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Play.js",
+                  "path": "tweens\\tween\\inc\\Play.js",
                   "name": "Play.js",
                   "size": 1383,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\ResetTweenData.js",
+                  "path": "tweens\\tween\\inc\\ResetTweenData.js",
                   "name": "ResetTweenData.js",
                   "size": 1050,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Resume.js",
+                  "path": "tweens\\tween\\inc\\Resume.js",
                   "name": "Resume.js",
                   "size": 252,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Seek.js",
+                  "path": "tweens\\tween\\inc\\Seek.js",
                   "name": "Seek.js",
                   "size": 1985,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\SetCallback.js",
+                  "path": "tweens\\tween\\inc\\SetCallback.js",
                   "name": "SetCallback.js",
                   "size": 200,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Stop.js",
+                  "path": "tweens\\tween\\inc\\Stop.js",
                   "name": "Stop.js",
                   "size": 262,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\Update.js",
+                  "path": "tweens\\tween\\inc\\Update.js",
                   "name": "Update.js",
                   "size": 2440,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "tween\\tween\\inc\\UpdateTweenData.js",
+                  "path": "tweens\\tween\\inc\\UpdateTweenData.js",
                   "name": "UpdateTweenData.js",
                   "size": 8021,
                   "extension": ".js",
@@ -9037,32 +9044,32 @@
               "type": "directory"
             },
             {
-              "path": "tween\\tween\\ReservedProps.js",
+              "path": "tweens\\tween\\ReservedProps.js",
               "name": "ReservedProps.js",
               "size": 1871,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\tween\\Tween.js",
+              "path": "tweens\\tween\\Tween.js",
               "name": "Tween.js",
-              "size": 5953,
+              "size": 5980,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tween\\tween\\TweenData.js",
+              "path": "tweens\\tween\\TweenData.js",
               "name": "TweenData.js",
-              "size": 2297,
+              "size": 2328,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 30626,
+          "size": 30684,
           "type": "directory"
         }
       ],
-      "size": 71966,
+      "size": 72430,
       "type": "directory"
     },
     {
@@ -9076,14 +9083,14 @@
             {
               "path": "utils\\array\\FindClosestInSorted.js",
               "name": "FindClosestInSorted.js",
-              "size": 798,
+              "size": 766,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\GetRandomElement.js",
               "name": "GetRandomElement.js",
-              "size": 909,
+              "size": 724,
               "extension": ".js",
               "type": "file"
             },
@@ -9101,7 +9108,7 @@
                 {
                   "path": "utils\\array\\matrix\\CheckMatrix.js",
                   "name": "CheckMatrix.js",
-                  "size": 797,
+                  "size": 940,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -9115,61 +9122,61 @@
                 {
                   "path": "utils\\array\\matrix\\MatrixToString.js",
                   "name": "MatrixToString.js",
-                  "size": 1204,
+                  "size": 1324,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\ReverseColumns.js",
                   "name": "ReverseColumns.js",
-                  "size": 194,
+                  "size": 361,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\ReverseRows.js",
                   "name": "ReverseRows.js",
-                  "size": 107,
+                  "size": 276,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\Rotate180.js",
                   "name": "Rotate180.js",
-                  "size": 161,
+                  "size": 326,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\RotateLeft.js",
                   "name": "RotateLeft.js",
-                  "size": 163,
+                  "size": 329,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\RotateMatrix.js",
                   "name": "RotateMatrix.js",
-                  "size": 1546,
+                  "size": 1525,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\RotateRight.js",
                   "name": "RotateRight.js",
-                  "size": 164,
+                  "size": 331,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "utils\\array\\matrix\\TransposeMatrix.js",
                   "name": "TransposeMatrix.js",
-                  "size": 1115,
+                  "size": 851,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 5890,
+              "size": 6702,
               "type": "directory"
             },
             {
@@ -9203,35 +9210,35 @@
             {
               "path": "utils\\array\\RemoveRandomElement.js",
               "name": "RemoveRandomElement.js",
-              "size": 942,
+              "size": 1056,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\RotateLeft.js",
               "name": "RotateLeft.js",
-              "size": 710,
+              "size": 719,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\RotateRight.js",
               "name": "RotateRight.js",
-              "size": 678,
+              "size": 725,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\Shuffle.js",
               "name": "Shuffle.js",
-              "size": 506,
+              "size": 613,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\SpliceOne.js",
               "name": "SpliceOne.js",
-              "size": 495,
+              "size": 674,
               "extension": ".js",
               "type": "file"
             },
@@ -9243,7 +9250,7 @@
               "type": "file"
             }
           ],
-          "size": 22967,
+          "size": 24018,
           "type": "directory"
         },
         {
@@ -9263,7 +9270,7 @@
         {
           "path": "utils\\NOOP.js",
           "name": "NOOP.js",
-          "size": 97,
+          "size": 306,
           "extension": ".js",
           "type": "file"
         },
@@ -9352,7 +9359,7 @@
             {
               "path": "utils\\string\\Format.js",
               "name": "Format.js",
-              "size": 528,
+              "size": 738,
               "extension": ".js",
               "type": "file"
             },
@@ -9373,19 +9380,19 @@
             {
               "path": "utils\\string\\Reverse.js",
               "name": "Reverse.js",
-              "size": 430,
+              "size": 454,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 3004,
+          "size": 3238,
           "type": "directory"
         }
       ],
-      "size": 40872,
+      "size": 42366,
       "type": "directory"
     }
   ],
-  "size": 1976327,
+  "size": 1984192,
   "type": "directory"
 }

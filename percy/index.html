@@ -37,19 +37,19 @@
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" type="radio" name="showOptions" id="showOptions1" value="all" checked>
-                    Show All
+                    Show All (<span id="filterTotalAll"></span>)
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" type="radio" name="showOptions" id="showOptions2" value="todo">
-                    Show Remaining
+                    Show Remaining (<span id="filterTotalRemaining"></span>)
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" type="radio" name="showOptions" id="showOptions3" value="done">
-                    Show Completed
+                    Show Completed (<span id="filterTotalCompleted"></span>)
                 </label>
             </div>
 
@@ -106,7 +106,7 @@
                 'actions', 'animation', 'boot', 'cache', 'camera', 'create',
                 'device', 'display', 'dom', 'events', 'gameobjects', 'geom', 'input',
                 'loader', 'math', 'paths', 'physics', 'renderer', 'scene', 'sound',
-                'structs', 'textures', 'time', 'tween', 'utils'
+                'structs', 'textures', 'time', 'tweens', 'utils'
             ];
 
             var buttonList = $('#buttonList');
@@ -159,6 +159,10 @@
 
                 $('#progressBar').css('width', progress + '%').text(progress + '%');
 
+                $('#filterTotalAll').text(total);
+                $('#filterTotalCompleted').text(done);
+                $('#filterTotalRemaining').text(total - done);
+
                 var show = getQueryString('show');
                 var query;
 
@@ -179,6 +183,18 @@
                 else if (filter !== '')
                 {
                     //  We've got a filter selected
+                    result = db.exec("SELECT COUNT(*) FROM files WHERE path LIKE '" + filter + "%'");
+
+                    var filteredTotal = result[0].values[0][0];
+
+                    result = db.exec("SELECT COUNT(*) FROM files WHERE path LIKE '" + filter + "%' AND done=1");
+
+                    var filteredTotalDone = result[0].values[0][0];
+
+                    $('#filterTotalAll').text(filteredTotal);
+                    $('#filterTotalCompleted').text(filteredTotalDone);
+                    $('#filterTotalRemaining').text(filteredTotal - filteredTotalDone);
+
                     query = "SELECT path,done FROM files WHERE path LIKE '" + filter + "%'";
 
                     if (show === 'todo')
