@@ -157,6 +157,34 @@ function showParametersModal (module, data, src)
 
     });
 
+    $('#setAllArray').click(function () {
+
+        for (var i = 0; i < data.parameters.length; i++)
+        {
+            $('#cp' + i).val('array');
+        }
+
+        if (data.hasReturn)
+        {
+            $('#returnValue').val('array');
+        }
+
+    });
+
+    $('#setAllGO').click(function () {
+
+        for (var i = 0; i < data.parameters.length; i++)
+        {
+            $('#cp' + i).val('Phaser.GameObjects.GameObject');
+        }
+
+        if (data.hasReturn)
+        {
+            $('#returnValue').val('Phaser.GameObjects.GameObject');
+        }
+
+    });
+
     //  Button save ...
     $('#generateButton').click(function() {
 

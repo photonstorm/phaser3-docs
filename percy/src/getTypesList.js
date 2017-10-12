@@ -7,6 +7,7 @@ function getTypesList (id, input, param)
         'float',
         'number',
         'boolean',
+        'any',
         'function',
         'object',
         'array',
