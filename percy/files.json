@@ -9,56 +9,56 @@
         {
           "path": "actions\\Angle.js",
           "name": "Angle.js",
-          "size": 501,
+          "size": 505,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\Call.js",
           "name": "Call.js",
-          "size": 596,
+          "size": 600,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\GetFirst.js",
           "name": "GetFirst.js",
-          "size": 922,
+          "size": 927,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\GridAlign.js",
           "name": "GridAlign.js",
-          "size": 2930,
+          "size": 2942,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\IncAlpha.js",
           "name": "IncAlpha.js",
-          "size": 510,
+          "size": 514,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\IncX.js",
           "name": "IncX.js",
-          "size": 494,
+          "size": 498,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\IncXY.js",
           "name": "IncXY.js",
-          "size": 552,
+          "size": 556,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\IncY.js",
           "name": "IncY.js",
-          "size": 494,
+          "size": 498,
           "extension": ".js",
           "type": "file"
         },
@@ -72,257 +72,257 @@
         {
           "path": "actions\\PlaceOnCircle.js",
           "name": "PlaceOnCircle.js",
-          "size": 1000,
+          "size": 1004,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\PlaceOnEllipse.js",
           "name": "PlaceOnEllipse.js",
-          "size": 1047,
+          "size": 1051,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\PlaceOnLine.js",
           "name": "PlaceOnLine.js",
-          "size": 818,
+          "size": 822,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\PlaceOnRectangle.js",
           "name": "PlaceOnRectangle.js",
-          "size": 1343,
+          "size": 1347,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\PlaceOnTriangle.js",
           "name": "PlaceOnTriangle.js",
-          "size": 1296,
+          "size": 1300,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\PlayAnimation.js",
           "name": "PlayAnimation.js",
-          "size": 603,
+          "size": 607,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RandomCircle.js",
           "name": "RandomCircle.js",
-          "size": 587,
+          "size": 591,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RandomEllipse.js",
           "name": "RandomEllipse.js",
-          "size": 595,
+          "size": 599,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RandomLine.js",
           "name": "RandomLine.js",
-          "size": 571,
+          "size": 575,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RandomRectangle.js",
           "name": "RandomRectangle.js",
-          "size": 596,
+          "size": 600,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RandomTriangle.js",
           "name": "RandomTriangle.js",
-          "size": 603,
+          "size": 607,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\Rotate.js",
           "name": "Rotate.js",
-          "size": 616,
+          "size": 620,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RotateAround.js",
           "name": "RotateAround.js",
-          "size": 911,
+          "size": 915,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\RotateAroundDistance.js",
           "name": "RotateAroundDistance.js",
-          "size": 896,
+          "size": 900,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\ScaleX.js",
           "name": "ScaleX.js",
-          "size": 505,
+          "size": 509,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\ScaleXY.js",
           "name": "ScaleXY.js",
-          "size": 568,
+          "size": 572,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\ScaleY.js",
           "name": "ScaleY.js",
-          "size": 505,
+          "size": 509,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetAlpha.js",
           "name": "SetAlpha.js",
-          "size": 618,
+          "size": 622,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetBlendMode.js",
           "name": "SetBlendMode.js",
-          "size": 527,
+          "size": 531,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetDepth.js",
           "name": "SetDepth.js",
-          "size": 618,
+          "size": 622,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetHitArea.js",
           "name": "SetHitArea.js",
-          "size": 610,
+          "size": 614,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetOrigin.js",
           "name": "SetOrigin.js",
-          "size": 547,
+          "size": 551,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetRotation.js",
           "name": "SetRotation.js",
-          "size": 630,
+          "size": 634,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetScale.js",
           "name": "SetScale.js",
-          "size": 806,
+          "size": 810,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetScaleX.js",
           "name": "SetScaleX.js",
-          "size": 622,
+          "size": 626,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetScaleY.js",
           "name": "SetScaleY.js",
-          "size": 622,
+          "size": 626,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetVisible.js",
           "name": "SetVisible.js",
-          "size": 518,
+          "size": 522,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetX.js",
           "name": "SetX.js",
-          "size": 602,
+          "size": 606,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetXY.js",
           "name": "SetXY.js",
-          "size": 776,
+          "size": 780,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SetY.js",
           "name": "SetY.js",
-          "size": 602,
+          "size": 606,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\ShiftPosition.js",
           "name": "ShiftPosition.js",
-          "size": 3025,
+          "size": 3029,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\Shuffle.js",
           "name": "Shuffle.js",
-          "size": 435,
+          "size": 439,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SmootherStep.js",
           "name": "SmootherStep.js",
-          "size": 1072,
+          "size": 1076,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\SmoothStep.js",
           "name": "SmoothStep.js",
-          "size": 1058,
+          "size": 1062,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\Spread.js",
           "name": "Spread.js",
-          "size": 939,
+          "size": 943,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "actions\\ToggleVisible.js",
           "name": "ToggleVisible.js",
-          "size": 489,
+          "size": 493,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 37012,
+      "size": 37197,
       "type": "directory"
     },
     {
@@ -646,14 +646,14 @@
         {
           "path": "boot\\Config.js",
           "name": "Config.js",
-          "size": 7689,
+          "size": 7688,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\CreateRenderer.js",
           "name": "CreateRenderer.js",
-          "size": 3305,
+          "size": 3327,
           "extension": ".js",
           "type": "file"
         },
@@ -700,7 +700,7 @@
           "type": "file"
         }
       ],
-      "size": 55428,
+      "size": 55449,
       "type": "directory"
     },
     {
@@ -765,7 +765,7 @@
             {
               "path": "camera\\2d\\Camera.js",
               "name": "Camera.js",
-              "size": 2927,
+              "size": 2926,
               "extension": ".js",
               "type": "file"
             },
@@ -846,7 +846,7 @@
                 {
                   "path": "camera\\2d\\inc\\PreRender.js",
                   "name": "PreRender.js",
-                  "size": 1545,
+                  "size": 1555,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -860,7 +860,7 @@
                 {
                   "path": "camera\\2d\\inc\\SetBackgroundColor.js",
                   "name": "SetBackgroundColor.js",
-                  "size": 353,
+                  "size": 352,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -970,11 +970,11 @@
                   "type": "file"
                 }
               ],
-              "size": 15353,
+              "size": 15362,
               "type": "directory"
             }
           ],
-          "size": 18280,
+          "size": 18288,
           "type": "directory"
         },
         {
@@ -984,26 +984,26 @@
             {
               "path": "camera\\3d\\Camera3D.js",
               "name": "Camera3D.js",
-              "size": 14705,
+              "size": 14721,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "camera\\3d\\OrthographicCamera.js",
               "name": "OrthographicCamera.js",
-              "size": 2666,
+              "size": 2692,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "camera\\3d\\PerspectiveCamera.js",
               "name": "PerspectiveCamera.js",
-              "size": 1784,
+              "size": 1809,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 19155,
+          "size": 19222,
           "type": "directory"
         },
         {
@@ -1150,22 +1150,7 @@
           "type": "directory"
         }
       ],
-      "size": 54560,
-      "type": "directory"
-    },
-    {
-      "path": "..\\phaser\\v3\\src\\canvas",
-      "name": "canvas",
-      "children": [
-        {
-          "path": "canvas\\GetContext.js",
-          "name": "GetContext.js",
-          "size": 166,
-          "extension": ".js",
-          "type": "file"
-        }
-      ],
-      "size": 166,
+      "size": 54635,
       "type": "directory"
     },
     {
@@ -1183,7 +1168,7 @@
         {
           "path": "create\\GenerateTexture.js",
           "name": "GenerateTexture.js",
-          "size": 1906,
+          "size": 1917,
           "extension": ".js",
           "type": "file"
         },
@@ -1267,7 +1252,7 @@
           "type": "directory"
         }
       ],
-      "size": 8140,
+      "size": 8151,
       "type": "directory"
     },
     {
@@ -1291,14 +1276,14 @@
         {
           "path": "device\\CanvasFeatures.js",
           "name": "CanvasFeatures.js",
-          "size": 2215,
+          "size": 2226,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "device\\Features.js",
           "name": "Features.js",
-          "size": 5567,
+          "size": 5578,
           "extension": ".js",
           "type": "file"
         },
@@ -1338,7 +1323,743 @@
           "type": "file"
         }
       ],
-      "size": 26147,
+      "size": 26169,
+      "type": "directory"
+    },
+    {
+      "path": "..\\phaser\\v3\\src\\display",
+      "name": "display",
+      "children": [
+        {
+          "path": "..\\phaser\\v3\\src\\display\\align",
+          "name": "align",
+          "children": [
+            {
+              "path": "display\\align\\const.js",
+              "name": "const.js",
+              "size": 1964,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "..\\phaser\\v3\\src\\display\\align\\in",
+              "name": "in",
+              "children": [
+                {
+                  "path": "display\\align\\in\\BottomCenter.js",
+                  "name": "BottomCenter.js",
+                  "size": 578,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\BottomLeft.js",
+                  "name": "BottomLeft.js",
+                  "size": 556,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\BottomRight.js",
+                  "name": "BottomRight.js",
+                  "size": 564,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\Center.js",
+                  "name": "Center.js",
+                  "size": 483,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\index.js",
+                  "name": "index.js",
+                  "size": 462,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\LeftCenter.js",
+                  "name": "LeftCenter.js",
+                  "size": 562,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\QuickSet.js",
+                  "name": "QuickSet.js",
+                  "size": 850,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\RightCenter.js",
+                  "name": "RightCenter.js",
+                  "size": 570,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\TopCenter.js",
+                  "name": "TopCenter.js",
+                  "size": 554,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\TopLeft.js",
+                  "name": "TopLeft.js",
+                  "size": 532,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\in\\TopRight.js",
+                  "name": "TopRight.js",
+                  "size": 540,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 6251,
+              "type": "directory"
+            },
+            {
+              "path": "display\\align\\index.js",
+              "name": "index.js",
+              "size": 107,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "..\\phaser\\v3\\src\\display\\align\\to",
+              "name": "to",
+              "children": [
+                {
+                  "path": "display\\align\\to\\BottomCenter.js",
+                  "name": "BottomCenter.js",
+                  "size": 560,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\BottomLeft.js",
+                  "name": "BottomLeft.js",
+                  "size": 538,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\BottomRight.js",
+                  "name": "BottomRight.js",
+                  "size": 546,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\index.js",
+                  "name": "index.js",
+                  "size": 550,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\LeftBottom.js",
+                  "name": "LeftBottom.js",
+                  "size": 550,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\LeftCenter.js",
+                  "name": "LeftCenter.js",
+                  "size": 556,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\LeftTop.js",
+                  "name": "LeftTop.js",
+                  "size": 526,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\RightBottom.js",
+                  "name": "RightBottom.js",
+                  "size": 552,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\RightCenter.js",
+                  "name": "RightCenter.js",
+                  "size": 552,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\RightTop.js",
+                  "name": "RightTop.js",
+                  "size": 528,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\TopCenter.js",
+                  "name": "TopCenter.js",
+                  "size": 554,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\TopLeft.js",
+                  "name": "TopLeft.js",
+                  "size": 532,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "display\\align\\to\\TopRight.js",
+                  "name": "TopRight.js",
+                  "size": 540,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 7084,
+              "type": "directory"
+            }
+          ],
+          "size": 15406,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\display\\blendmodes",
+          "name": "blendmodes",
+          "children": [
+            {
+              "path": "display\\blendmodes\\Add.js",
+              "name": "Add.js",
+              "size": 197,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Average.js",
+              "name": "Average.js",
+              "size": 157,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\ColorBurn.js",
+              "name": "ColorBurn.js",
+              "size": 254,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\ColorDodge.js",
+              "name": "ColorDodge.js",
+              "size": 256,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Darken.js",
+              "name": "Darken.js",
+              "size": 160,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Difference.js",
+              "name": "Difference.js",
+              "size": 279,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Exclusion.js",
+              "name": "Exclusion.js",
+              "size": 296,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Glow.js",
+              "name": "Glow.js",
+              "size": 242,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\HardLight.js",
+              "name": "HardLight.js",
+              "size": 831,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\HardMix.js",
+              "name": "HardMix.js",
+              "size": 518,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\index.js",
+              "name": "index.js",
+              "size": 1008,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Lighten.js",
+              "name": "Lighten.js",
+              "size": 163,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\LinearBurn.js",
+              "name": "LinearBurn.js",
+              "size": 245,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\LinearDodge.js",
+              "name": "LinearDodge.js",
+              "size": 209,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\LinearLight.js",
+              "name": "LinearLight.js",
+              "size": 578,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Multiply.js",
+              "name": "Multiply.js",
+              "size": 360,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Negation.js",
+              "name": "Negation.js",
+              "size": 143,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Normal.js",
+              "name": "Normal.js",
+              "size": 137,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Overlay.js",
+              "name": "Overlay.js",
+              "size": 443,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Phoenix.js",
+              "name": "Phoenix.js",
+              "size": 244,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\PinLight.js",
+              "name": "PinLight.js",
+              "size": 527,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Reflect.js",
+              "name": "Reflect.js",
+              "size": 240,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Screen.js",
+              "name": "Screen.js",
+              "size": 423,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\SoftLight.js",
+              "name": "SoftLight.js",
+              "size": 888,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\Subtract.js",
+              "name": "Subtract.js",
+              "size": 194,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\blendmodes\\VividLight.js",
+              "name": "VividLight.js",
+              "size": 731,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 9723,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\display\\bounds",
+          "name": "bounds",
+          "children": [
+            {
+              "path": "display\\bounds\\CenterOn.js",
+              "name": "CenterOn.js",
+              "size": 387,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetBottom.js",
+              "name": "GetBottom.js",
+              "size": 290,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetCenterX.js",
+              "name": "GetCenterX.js",
+              "size": 319,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetCenterY.js",
+              "name": "GetCenterY.js",
+              "size": 321,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetLeft.js",
+              "name": "GetLeft.js",
+              "size": 263,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetOffsetX.js",
+              "name": "GetOffsetX.js",
+              "size": 359,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetOffsetY.js",
+              "name": "GetOffsetY.js",
+              "size": 360,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetRight.js",
+              "name": "GetRight.js",
+              "size": 286,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\GetTop.js",
+              "name": "GetTop.js",
+              "size": 258,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\index.js",
+              "name": "index.js",
+              "size": 646,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\SetBottom.js",
+              "name": "SetBottom.js",
+              "size": 324,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\SetCenterX.js",
+              "name": "SetCenterX.js",
+              "size": 545,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\SetCenterY.js",
+              "name": "SetCenterY.js",
+              "size": 547,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\SetLeft.js",
+              "name": "SetLeft.js",
+              "size": 297,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\SetRight.js",
+              "name": "SetRight.js",
+              "size": 320,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\bounds\\SetTop.js",
+              "name": "SetTop.js",
+              "size": 292,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 5814,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\display\\canvas",
+          "name": "canvas",
+          "children": [
+            {
+              "path": "display\\canvas\\CanvasInterpolation.js",
+              "name": "CanvasInterpolation.js",
+              "size": 1081,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\canvas\\CanvasPool.js",
+              "name": "CanvasPool.js",
+              "size": 4339,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\canvas\\index.js",
+              "name": "index.js",
+              "size": 276,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\canvas\\Smoothing.js",
+              "name": "Smoothing.js",
+              "size": 2621,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\canvas\\TouchAction.js",
+              "name": "TouchAction.js",
+              "size": 409,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\canvas\\UserSelect.js",
+              "name": "UserSelect.js",
+              "size": 631,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 9357,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\display\\color",
+          "name": "color",
+          "children": [
+            {
+              "path": "display\\color\\Color.js",
+              "name": "Color.js",
+              "size": 5268,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\ColorToRGBA.js",
+              "name": "ColorToRGBA.js",
+              "size": 308,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\ComponentToHex.js",
+              "name": "ComponentToHex.js",
+              "size": 441,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\CSSToColor.js",
+              "name": "CSSToColor.js",
+              "size": 5296,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\GetColor.js",
+              "name": "GetColor.js",
+              "size": 209,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\GetColor32.js",
+              "name": "GetColor32.js",
+              "size": 247,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\HexStringToColor.js",
+              "name": "HexStringToColor.js",
+              "size": 912,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\HSLToColor.js",
+              "name": "HSLToColor.js",
+              "size": 565,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\HSVColorWheel.js",
+              "name": "HSVColorWheel.js",
+              "size": 426,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\HSVToRGB.js",
+              "name": "HSVToRGB.js",
+              "size": 1412,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\HueToComponent.js",
+              "name": "HueToComponent.js",
+              "size": 519,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\index.js",
+              "name": "index.js",
+              "size": 1006,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\IntegerToColor.js",
+              "name": "IntegerToColor.js",
+              "size": 253,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\IntegerToRGB.js",
+              "name": "IntegerToRGB.js",
+              "size": 688,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\Interpolate.js",
+              "name": "Interpolate.js",
+              "size": 1024,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\ObjectToColor.js",
+              "name": "ObjectToColor.js",
+              "size": 174,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\RandomRGB.js",
+              "name": "RandomRGB.js",
+              "size": 323,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\RGBStringToColor.js",
+              "name": "RGBStringToColor.js",
+              "size": 778,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\RGBToHSV.js",
+              "name": "RGBToHSV.js",
+              "size": 991,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\RGBToString.js",
+              "name": "RGBToString.js",
+              "size": 481,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "display\\color\\ValueToColor.js",
+              "name": "ValueToColor.js",
+              "size": 815,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 22136,
+          "type": "directory"
+        },
+        {
+          "path": "display\\index.js",
+          "name": "index.js",
+          "size": 225,
+          "extension": ".js",
+          "type": "file"
+        }
+      ],
+      "size": 62661,
       "type": "directory"
     },
     {
@@ -1346,30 +2067,9 @@
       "name": "dom",
       "children": [
         {
-          "path": "dom\\AddEventListener.js",
-          "name": "AddEventListener.js",
-          "size": 236,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
           "path": "dom\\AddToDOM.js",
           "name": "AddToDOM.js",
           "size": 837,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "dom\\CanvasInterpolation.js",
-          "name": "CanvasInterpolation.js",
-          "size": 1081,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "dom\\CanvasPool.js",
-          "name": "CanvasPool.js",
-          "size": 4336,
           "extension": ".js",
           "type": "file"
         },
@@ -1383,7 +2083,7 @@
         {
           "path": "dom\\index.js",
           "name": "index.js",
-          "size": 629,
+          "size": 287,
           "extension": ".js",
           "type": "file"
         },
@@ -1391,13 +2091,6 @@
           "path": "dom\\ParseXML.js",
           "name": "ParseXML.js",
           "size": 627,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "dom\\RemoveEventListener.js",
-          "name": "RemoveEventListener.js",
-          "size": 160,
           "extension": ".js",
           "type": "file"
         },
@@ -1414,30 +2107,9 @@
           "size": 2163,
           "extension": ".js",
           "type": "file"
-        },
-        {
-          "path": "dom\\Smoothing.js",
-          "name": "Smoothing.js",
-          "size": 2621,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "dom\\TouchAction.js",
-          "name": "TouchAction.js",
-          "size": 409,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "dom\\UserSelect.js",
-          "name": "UserSelect.js",
-          "size": 631,
-          "extension": ".js",
-          "type": "file"
         }
       ],
-      "size": 15021,
+      "size": 5205,
       "type": "directory"
     },
     {
@@ -1912,7 +2584,7 @@
             {
               "path": "gameobjects\\components\\Origin.js",
               "name": "Origin.js",
-              "size": 1050,
+              "size": 1560,
               "extension": ".js",
               "type": "file"
             },
@@ -1987,7 +2659,7 @@
               "type": "file"
             }
           ],
-          "size": 37768,
+          "size": 38278,
           "type": "directory"
         },
         {
@@ -2118,7 +2790,7 @@
             {
               "path": "gameobjects\\graphics\\Graphics.js",
               "name": "Graphics.js",
-              "size": 10832,
+              "size": 10843,
               "extension": ".js",
               "type": "file"
             },
@@ -2158,7 +2830,7 @@
               "type": "file"
             }
           ],
-          "size": 34480,
+          "size": 34491,
           "type": "directory"
         },
         {
@@ -2598,7 +3270,7 @@
             {
               "path": "gameobjects\\text\\MeasureText.js",
               "name": "MeasureText.js",
-              "size": 2774,
+              "size": 2785,
               "extension": ".js",
               "type": "file"
             },
@@ -2609,7 +3281,7 @@
                 {
                   "path": "gameobjects\\text\\static\\Text.js",
                   "name": "Text.js",
-                  "size": 8124,
+                  "size": 8135,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2649,7 +3321,7 @@
                   "type": "file"
                 }
               ],
-              "size": 13237,
+              "size": 13248,
               "type": "directory"
             },
             {
@@ -2660,7 +3332,7 @@
               "type": "file"
             }
           ],
-          "size": 25060,
+          "size": 25082,
           "type": "directory"
         },
         {
@@ -2785,7 +3457,7 @@
             {
               "path": "gameobjects\\tilesprite\\TileSprite.js",
               "name": "TileSprite.js",
-              "size": 3484,
+              "size": 3495,
               "extension": ".js",
               "type": "file"
             },
@@ -2825,7 +3497,7 @@
               "type": "file"
             }
           ],
-          "size": 7209,
+          "size": 7220,
           "type": "directory"
         },
         {
@@ -2858,7 +3530,7 @@
           "type": "directory"
         }
       ],
-      "size": 327029,
+      "size": 327583,
       "type": "directory"
     },
     {
@@ -4082,366 +4754,6 @@
       "type": "directory"
     },
     {
-      "path": "..\\phaser\\v3\\src\\graphics",
-      "name": "graphics",
-      "children": [
-        {
-          "path": "..\\phaser\\v3\\src\\graphics\\blendmodes",
-          "name": "blendmodes",
-          "children": [
-            {
-              "path": "graphics\\blendmodes\\Add.js",
-              "name": "Add.js",
-              "size": 197,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Average.js",
-              "name": "Average.js",
-              "size": 157,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\ColorBurn.js",
-              "name": "ColorBurn.js",
-              "size": 254,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\ColorDodge.js",
-              "name": "ColorDodge.js",
-              "size": 256,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Darken.js",
-              "name": "Darken.js",
-              "size": 160,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Difference.js",
-              "name": "Difference.js",
-              "size": 279,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Exclusion.js",
-              "name": "Exclusion.js",
-              "size": 296,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Glow.js",
-              "name": "Glow.js",
-              "size": 242,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\HardLight.js",
-              "name": "HardLight.js",
-              "size": 831,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\HardMix.js",
-              "name": "HardMix.js",
-              "size": 518,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\index.js",
-              "name": "index.js",
-              "size": 1009,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Lighten.js",
-              "name": "Lighten.js",
-              "size": 163,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\LinearBurn.js",
-              "name": "LinearBurn.js",
-              "size": 245,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\LinearDodge.js",
-              "name": "LinearDodge.js",
-              "size": 209,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\LinearLight.js",
-              "name": "LinearLight.js",
-              "size": 578,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Multiply.js",
-              "name": "Multiply.js",
-              "size": 360,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Negation.js",
-              "name": "Negation.js",
-              "size": 143,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Normal.js",
-              "name": "Normal.js",
-              "size": 137,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Overlay.js",
-              "name": "Overlay.js",
-              "size": 443,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Phoenix.js",
-              "name": "Phoenix.js",
-              "size": 244,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\PinLight.js",
-              "name": "PinLight.js",
-              "size": 527,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Reflect.js",
-              "name": "Reflect.js",
-              "size": 240,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Screen.js",
-              "name": "Screen.js",
-              "size": 423,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\SoftLight.js",
-              "name": "SoftLight.js",
-              "size": 888,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\Subtract.js",
-              "name": "Subtract.js",
-              "size": 194,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\blendmodes\\VividLight.js",
-              "name": "VividLight.js",
-              "size": 731,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 9724,
-          "type": "directory"
-        },
-        {
-          "path": "..\\phaser\\v3\\src\\graphics\\color",
-          "name": "color",
-          "children": [
-            {
-              "path": "graphics\\color\\Color.js",
-              "name": "Color.js",
-              "size": 5268,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\ColorToRGBA.js",
-              "name": "ColorToRGBA.js",
-              "size": 308,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\ComponentToHex.js",
-              "name": "ComponentToHex.js",
-              "size": 441,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\CSSToColor.js",
-              "name": "CSSToColor.js",
-              "size": 5296,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\GetColor.js",
-              "name": "GetColor.js",
-              "size": 209,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\GetColor32.js",
-              "name": "GetColor32.js",
-              "size": 247,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\HexStringToColor.js",
-              "name": "HexStringToColor.js",
-              "size": 912,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\HSLToColor.js",
-              "name": "HSLToColor.js",
-              "size": 565,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\HSVColorWheel.js",
-              "name": "HSVColorWheel.js",
-              "size": 426,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\HSVToRGB.js",
-              "name": "HSVToRGB.js",
-              "size": 1412,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\HueToComponent.js",
-              "name": "HueToComponent.js",
-              "size": 519,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\index.js",
-              "name": "index.js",
-              "size": 1006,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\IntegerToColor.js",
-              "name": "IntegerToColor.js",
-              "size": 253,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\IntegerToRGB.js",
-              "name": "IntegerToRGB.js",
-              "size": 688,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\Interpolate.js",
-              "name": "Interpolate.js",
-              "size": 1024,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\ObjectToColor.js",
-              "name": "ObjectToColor.js",
-              "size": 174,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\RandomRGB.js",
-              "name": "RandomRGB.js",
-              "size": 323,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\RGBStringToColor.js",
-              "name": "RGBStringToColor.js",
-              "size": 778,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\RGBToHSV.js",
-              "name": "RGBToHSV.js",
-              "size": 991,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\RGBToString.js",
-              "name": "RGBToString.js",
-              "size": 481,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "graphics\\color\\ValueToColor.js",
-              "name": "ValueToColor.js",
-              "size": 815,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 22136,
-          "type": "directory"
-        },
-        {
-          "path": "graphics\\index.js",
-          "name": "index.js",
-          "size": 126,
-          "extension": ".js",
-          "type": "file"
-        }
-      ],
-      "size": 31986,
-      "type": "directory"
-    },
-    {
       "path": "..\\phaser\\v3\\src\\input",
       "name": "input",
       "children": [
@@ -5514,28 +5826,28 @@
             {
               "path": "math\\angle\\Between.js",
               "name": "Between.js",
-              "size": 119,
+              "size": 407,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\BetweenPoints.js",
               "name": "BetweenPoints.js",
-              "size": 155,
+              "size": 415,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\BetweenPointsY.js",
               "name": "BetweenPointsY.js",
-              "size": 157,
+              "size": 418,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\BetweenY.js",
               "name": "BetweenY.js",
-              "size": 121,
+              "size": 410,
               "extension": ".js",
               "type": "file"
             },
@@ -5549,88 +5861,88 @@
             {
               "path": "math\\angle\\Normalize.js",
               "name": "Normalize.js",
-              "size": 229,
+              "size": 405,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\Reverse.js",
               "name": "Reverse.js",
-              "size": 151,
+              "size": 325,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\RotateTo.js",
               "name": "RotateTo.js",
-              "size": 1417,
+              "size": 1492,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\ShortestBetween.js",
               "name": "ShortestBetween.js",
-              "size": 1020,
+              "size": 1102,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\Wrap.js",
               "name": "Wrap.js",
-              "size": 148,
+              "size": 319,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\angle\\WrapDegrees.js",
               "name": "WrapDegrees.js",
-              "size": 146,
+              "size": 324,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4102,
+          "size": 6056,
           "type": "directory"
         },
         {
           "path": "math\\Average.js",
           "name": "Average.js",
-          "size": 213,
+          "size": 384,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Bernstein.js",
           "name": "Bernstein.js",
-          "size": 174,
+          "size": 378,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Between.js",
           "name": "Between.js",
-          "size": 134,
+          "size": 343,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\CatmullRom.js",
           "name": "CatmullRom.js",
-          "size": 293,
+          "size": 616,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\CeilTo.js",
           "name": "CeilTo.js",
-          "size": 247,
+          "size": 508,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Clamp.js",
           "name": "Clamp.js",
-          "size": 419,
+          "size": 461,
           "extension": ".js",
           "type": "file"
         },
@@ -5644,14 +5956,14 @@
         {
           "path": "math\\DegToRad.js",
           "name": "DegToRad.js",
-          "size": 147,
+          "size": 318,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Difference.js",
           "name": "Difference.js",
-          "size": 102,
+          "size": 307,
           "extension": ".js",
           "type": "file"
         },
@@ -5662,33 +5974,33 @@
             {
               "path": "math\\distance\\DistanceBetween.js",
               "name": "DistanceBetween.js",
-              "size": 183,
+              "size": 474,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\distance\\DistancePower.js",
               "name": "DistancePower.js",
-              "size": 209,
+              "size": 538,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\distance\\DistanceSquared.js",
               "name": "DistanceSquared.js",
-              "size": 172,
+              "size": 463,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\distance\\index.js",
               "name": "index.js",
-              "size": 155,
+              "size": 183,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 719,
+          "size": 1658,
           "type": "directory"
         },
         {
@@ -5800,21 +6112,21 @@
         {
           "path": "math\\Factorial.js",
           "name": "Factorial.js",
-          "size": 230,
+          "size": 400,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\FloatBetween.js",
           "name": "FloatBetween.js",
-          "size": 128,
+          "size": 336,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\FloorTo.js",
           "name": "FloorTo.js",
-          "size": 250,
+          "size": 511,
           "extension": ".js",
           "type": "file"
         },
@@ -5825,28 +6137,28 @@
             {
               "path": "math\\fuzzy\\Ceil.js",
               "name": "Ceil.js",
-              "size": 167,
+              "size": 390,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\fuzzy\\Equal.js",
               "name": "Equal.js",
-              "size": 167,
+              "size": 426,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\fuzzy\\Floor.js",
               "name": "Floor.js",
-              "size": 169,
+              "size": 427,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\fuzzy\\GreaterThan.js",
               "name": "GreaterThan.js",
-              "size": 169,
+              "size": 434,
               "extension": ".js",
               "type": "file"
             },
@@ -5860,18 +6172,18 @@
             {
               "path": "math\\fuzzy\\LessThan.js",
               "name": "LessThan.js",
-              "size": 163,
+              "size": 425,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 1038,
+          "size": 2305,
           "type": "directory"
         },
         {
           "path": "math\\GetSpeed.js",
           "name": "GetSpeed.js",
-          "size": 325,
+          "size": 480,
           "extension": ".js",
           "type": "file"
         },
@@ -5889,21 +6201,21 @@
             {
               "path": "math\\interpolation\\BezierInterpolation.js",
               "name": "BezierInterpolation.js",
-              "size": 325,
+              "size": 540,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\interpolation\\CatmullRomInterpolation.js",
               "name": "CatmullRomInterpolation.js",
-              "size": 829,
+              "size": 1048,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\interpolation\\CubicBezierInterpolation.js",
               "name": "CubicBezierInterpolation.js",
-              "size": 621,
+              "size": 958,
               "extension": ".js",
               "type": "file"
             },
@@ -5917,32 +6229,32 @@
             {
               "path": "math\\interpolation\\LinearInterpolation.js",
               "name": "LinearInterpolation.js",
-              "size": 417,
+              "size": 631,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 2458,
+          "size": 3443,
           "type": "directory"
         },
         {
           "path": "math\\IsEven.js",
           "name": "IsEven.js",
-          "size": 186,
+          "size": 354,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\IsEvenStrict.js",
           "name": "IsEvenStrict.js",
-          "size": 198,
+          "size": 372,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Linear.js",
           "name": "Linear.js",
-          "size": 102,
+          "size": 342,
           "extension": ".js",
           "type": "file"
         },
@@ -5963,14 +6275,14 @@
         {
           "path": "math\\MaxAdd.js",
           "name": "MaxAdd.js",
-          "size": 124,
+          "size": 372,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\MinSub.js",
           "name": "MinSub.js",
-          "size": 122,
+          "size": 372,
           "extension": ".js",
           "type": "file"
         },
@@ -5992,7 +6304,7 @@
         {
           "path": "math\\Percent.js",
           "name": "Percent.js",
-          "size": 900,
+          "size": 1260,
           "extension": ".js",
           "type": "file"
         },
@@ -6003,7 +6315,7 @@
             {
               "path": "math\\pow2\\GetPowerOfTwo.js",
               "name": "GetPowerOfTwo.js",
-              "size": 249,
+              "size": 414,
               "extension": ".js",
               "type": "file"
             },
@@ -6017,19 +6329,19 @@
             {
               "path": "math\\pow2\\IsSizePowerOfTwo.js",
               "name": "IsSizePowerOfTwo.js",
-              "size": 439,
+              "size": 565,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\pow2\\IsValuePowerOfTwo.js",
               "name": "IsValuePowerOfTwo.js",
-              "size": 174,
+              "size": 453,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 1021,
+          "size": 1591,
           "type": "directory"
         },
         {
@@ -6042,7 +6354,7 @@
         {
           "path": "math\\RadToDeg.js",
           "name": "RadToDeg.js",
-          "size": 147,
+          "size": 318,
           "extension": ".js",
           "type": "file"
         },
@@ -6064,63 +6376,63 @@
         {
           "path": "math\\RandomXY.js",
           "name": "RandomXY.js",
-          "size": 265,
+          "size": 502,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RandomXYZ.js",
           "name": "RandomXYZ.js",
-          "size": 469,
+          "size": 701,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RandomXYZW.js",
           "name": "RandomXYZW.js",
-          "size": 416,
+          "size": 645,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Rotate.js",
           "name": "Rotate.js",
-          "size": 322,
+          "size": 502,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RotateAround.js",
           "name": "RotateAround.js",
-          "size": 360,
+          "size": 622,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RotateAroundDistance.js",
           "name": "RotateAroundDistance.js",
-          "size": 457,
+          "size": 751,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RotateVec3.js",
           "name": "RotateVec3.js",
-          "size": 971,
+          "size": 1056,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RoundAwayFromZero.js",
           "name": "RoundAwayFromZero.js",
-          "size": 184,
+          "size": 362,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\RoundTo.js",
           "name": "RoundTo.js",
-          "size": 250,
+          "size": 512,
           "extension": ".js",
           "type": "file"
         },
@@ -6134,14 +6446,14 @@
         {
           "path": "math\\SmootherStep.js",
           "name": "SmootherStep.js",
-          "size": 195,
+          "size": 444,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\SmoothStep.js",
           "name": "SmoothStep.js",
-          "size": 175,
+          "size": 422,
           "extension": ".js",
           "type": "file"
         },
@@ -6159,26 +6471,26 @@
             {
               "path": "math\\snap\\SnapCeil.js",
               "name": "SnapCeil.js",
-              "size": 281,
+              "size": 537,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\snap\\SnapFloor.js",
               "name": "SnapFloor.js",
-              "size": 284,
+              "size": 541,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "math\\snap\\SnapTo.js",
               "name": "SnapTo.js",
-              "size": 278,
+              "size": 532,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 970,
+          "size": 1737,
           "type": "directory"
         },
         {
@@ -6205,19 +6517,19 @@
         {
           "path": "math\\Within.js",
           "name": "Within.js",
-          "size": 468,
+          "size": 562,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Wrap.js",
           "name": "Wrap.js",
-          "size": 167,
+          "size": 412,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 112928,
+      "size": 126195,
       "type": "directory"
     },
     {
@@ -6331,26 +6643,11 @@
       "size": 35879,
       "type": "directory"
     },
-    { "path": "phaser.js", "name": "phaser.js", "size": 1567, "extension": ".js", "type": "file" },
+    { "path": "phaser.js", "name": "phaser.js", "size": 1565, "extension": ".js", "type": "file" },
     {
       "path": "..\\phaser\\v3\\src\\physics",
       "name": "physics",
       "children": [
-        {
-          "path": "..\\phaser\\v3\\src\\physics\\arcade",
-          "name": "arcade",
-          "children": [
-            {
-              "path": "..\\phaser\\v3\\src\\physics\\arcade\\body",
-              "name": "body",
-              "children": [],
-              "size": 0,
-              "type": "directory"
-            }
-          ],
-          "size": 0,
-          "type": "directory"
-        },
         {
           "path": "..\\phaser\\v3\\src\\physics\\impact",
           "name": "impact",
@@ -6949,7 +7246,7 @@
         {
           "path": "polyfills\\AudioContextMonkeyPatch.js",
           "name": "AudioContextMonkeyPatch.js",
-          "size": 6978,
+          "size": 7160,
           "extension": ".js",
           "type": "file"
         },
@@ -6970,7 +7267,7 @@
         {
           "path": "polyfills\\index.js",
           "name": "index.js",
-          "size": 270,
+          "size": 289,
           "extension": ".js",
           "type": "file"
         },
@@ -7001,9 +7298,16 @@
           "size": 1365,
           "extension": ".js",
           "type": "file"
+        },
+        {
+          "path": "polyfills\\URL.js",
+          "name": "URL.js",
+          "size": 8550,
+          "extension": ".js",
+          "type": "file"
         }
       ],
-      "size": 13827,
+      "size": 22578,
       "type": "directory"
     },
     {
@@ -7024,7 +7328,7 @@
             {
               "path": "renderer\\canvas\\CanvasRenderer.js",
               "name": "CanvasRenderer.js",
-              "size": 8662,
+              "size": 8624,
               "extension": ".js",
               "type": "file"
             },
@@ -7058,7 +7362,7 @@
               "type": "directory"
             }
           ],
-          "size": 12099,
+          "size": 12061,
           "type": "directory"
         },
         {
@@ -7475,7 +7779,7 @@
           "type": "directory"
         }
       ],
-      "size": 173462,
+      "size": 173424,
       "type": "directory"
     },
     {
@@ -7488,13 +7792,6 @@
           "size": 178,
           "extension": ".js",
           "type": "file"
-        },
-        {
-          "path": "..\\phaser\\v3\\src\\scene\\events",
-          "name": "events",
-          "children": [],
-          "size": 0,
-          "type": "directory"
         },
         {
           "path": "..\\phaser\\v3\\src\\scene\\global",
@@ -7514,240 +7811,240 @@
                 {
                   "path": "scene\\global\\inc\\Add.js",
                   "name": "Add.js",
-                  "size": 2007,
+                  "size": 2255,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Boot.js",
                   "name": "Boot.js",
-                  "size": 570,
+                  "size": 553,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\BootScene.js",
                   "name": "BootScene.js",
-                  "size": 782,
+                  "size": 938,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\BringToTop.js",
                   "name": "BringToTop.js",
-                  "size": 717,
+                  "size": 881,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Create.js",
                   "name": "Create.js",
-                  "size": 470,
+                  "size": 623,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\CreateSceneDisplay.js",
                   "name": "CreateSceneDisplay.js",
-                  "size": 1003,
+                  "size": 1138,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\CreateSceneFromFunction.js",
                   "name": "CreateSceneFromFunction.js",
-                  "size": 1499,
+                  "size": 1750,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\CreateSceneFromInstance.js",
                   "name": "CreateSceneFromInstance.js",
-                  "size": 394,
+                  "size": 652,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\CreateSceneFromObject.js",
                   "name": "CreateSceneFromObject.js",
-                  "size": 1436,
+                  "size": 1689,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetActiveScene.js",
                   "name": "GetActiveScene.js",
-                  "size": 286,
+                  "size": 484,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetActiveSceneIndex.js",
                   "name": "GetActiveSceneIndex.js",
-                  "size": 283,
+                  "size": 489,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetActiveSceneIndexByKey.js",
                   "name": "GetActiveSceneIndexByKey.js",
-                  "size": 326,
+                  "size": 529,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetKey.js",
                   "name": "GetKey.js",
-                  "size": 736,
+                  "size": 977,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetScene.js",
                   "name": "GetScene.js",
-                  "size": 96,
+                  "size": 288,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetSceneAt.js",
                   "name": "GetSceneAt.js",
-                  "size": 210,
+                  "size": 407,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetSceneIndex.js",
                   "name": "GetSceneIndex.js",
-                  "size": 120,
+                  "size": 320,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\GetSceneIndexByKey.js",
                   "name": "GetSceneIndexByKey.js",
-                  "size": 163,
+                  "size": 360,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\IsActive.js",
                   "name": "IsActive.js",
-                  "size": 169,
+                  "size": 356,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\IsSleeping.js",
                   "name": "IsSleeping.js",
-                  "size": 257,
+                  "size": 446,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\LoadComplete.js",
                   "name": "LoadComplete.js",
-                  "size": 142,
+                  "size": 295,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\MoveDown.js",
                   "name": "MoveDown.js",
-                  "size": 588,
+                  "size": 750,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\MoveUp.js",
                   "name": "MoveUp.js",
-                  "size": 621,
+                  "size": 781,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Pause.js",
                   "name": "Pause.js",
-                  "size": 171,
+                  "size": 315,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\PayloadComplete.js",
                   "name": "PayloadComplete.js",
-                  "size": 151,
+                  "size": 307,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Resume.js",
                   "name": "Resume.js",
-                  "size": 174,
+                  "size": 319,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\SendToBack.js",
                   "name": "SendToBack.js",
-                  "size": 687,
+                  "size": 851,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Sleep.js",
                   "name": "Sleep.js",
-                  "size": 171,
+                  "size": 315,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\SortScenes.js",
                   "name": "SortScenes.js",
-                  "size": 299,
+                  "size": 534,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Start.js",
                   "name": "Start.js",
-                  "size": 1312,
+                  "size": 1497,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Stop.js",
                   "name": "Stop.js",
-                  "size": 448,
+                  "size": 591,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Swap.js",
                   "name": "Swap.js",
-                  "size": 207,
+                  "size": 390,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\SwapPosition.js",
                   "name": "SwapPosition.js",
-                  "size": 848,
+                  "size": 1071,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "scene\\global\\inc\\Wake.js",
                   "name": "Wake.js",
-                  "size": 168,
+                  "size": 311,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 17511,
+              "size": 23462,
               "type": "directory"
             }
           ],
-          "size": 20709,
+          "size": 26660,
           "type": "directory"
         },
         {
@@ -7872,7 +8169,7 @@
           "type": "directory"
         }
       ],
-      "size": 80731,
+      "size": 86682,
       "type": "directory"
     },
     {
@@ -8061,7 +8358,7 @@
         {
           "path": "textures\\TextureManager.js",
           "name": "TextureManager.js",
-          "size": 9884,
+          "size": 9894,
           "extension": ".js",
           "type": "file"
         },
@@ -8073,7 +8370,7 @@
           "type": "file"
         }
       ],
-      "size": 39972,
+      "size": 39982,
       "type": "directory"
     },
     {
@@ -8453,182 +8750,6 @@
       "name": "utils",
       "children": [
         {
-          "path": "..\\phaser\\v3\\src\\utils\\align",
-          "name": "align",
-          "children": [
-            {
-              "path": "utils\\align\\AlignIn.js",
-              "name": "AlignIn.js",
-              "size": 765,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\const.js",
-              "name": "const.js",
-              "size": 1952,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InBottomCenter.js",
-              "name": "InBottomCenter.js",
-              "size": 566,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InBottomLeft.js",
-              "name": "InBottomLeft.js",
-              "size": 544,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InBottomRight.js",
-              "name": "InBottomRight.js",
-              "size": 552,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InCenter.js",
-              "name": "InCenter.js",
-              "size": 474,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\index.js",
-              "name": "index.js",
-              "size": 995,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InLeftCenter.js",
-              "name": "InLeftCenter.js",
-              "size": 550,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InRightCenter.js",
-              "name": "InRightCenter.js",
-              "size": 558,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InTopCenter.js",
-              "name": "InTopCenter.js",
-              "size": 542,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InTopLeft.js",
-              "name": "InTopLeft.js",
-              "size": 520,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\InTopRight.js",
-              "name": "InTopRight.js",
-              "size": 528,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToBottomCenter.js",
-              "name": "ToBottomCenter.js",
-              "size": 548,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToBottomLeft.js",
-              "name": "ToBottomLeft.js",
-              "size": 526,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToBottomRight.js",
-              "name": "ToBottomRight.js",
-              "size": 534,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToLeftBottom.js",
-              "name": "ToLeftBottom.js",
-              "size": 538,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToLeftCenter.js",
-              "name": "ToLeftCenter.js",
-              "size": 544,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToLeftTop.js",
-              "name": "ToLeftTop.js",
-              "size": 514,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToRightBottom.js",
-              "name": "ToRightBottom.js",
-              "size": 540,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToRightCenter.js",
-              "name": "ToRightCenter.js",
-              "size": 540,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToRightTop.js",
-              "name": "ToRightTop.js",
-              "size": 516,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToTopCenter.js",
-              "name": "ToTopCenter.js",
-              "size": 542,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToTopLeft.js",
-              "name": "ToTopLeft.js",
-              "size": 520,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\align\\ToTopRight.js",
-              "name": "ToTopRight.js",
-              "size": 528,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 14936,
-          "type": "directory"
-        },
-        {
           "path": "..\\phaser\\v3\\src\\utils\\array",
           "name": "array",
           "children": [
@@ -8806,126 +8927,6 @@
           "type": "directory"
         },
         {
-          "path": "..\\phaser\\v3\\src\\utils\\bounds",
-          "name": "bounds",
-          "children": [
-            {
-              "path": "utils\\bounds\\CenterOn.js",
-              "name": "CenterOn.js",
-              "size": 387,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetBottom.js",
-              "name": "GetBottom.js",
-              "size": 290,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetCenterX.js",
-              "name": "GetCenterX.js",
-              "size": 319,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetCenterY.js",
-              "name": "GetCenterY.js",
-              "size": 321,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetLeft.js",
-              "name": "GetLeft.js",
-              "size": 263,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetOffsetX.js",
-              "name": "GetOffsetX.js",
-              "size": 359,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetOffsetY.js",
-              "name": "GetOffsetY.js",
-              "size": 360,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetRight.js",
-              "name": "GetRight.js",
-              "size": 286,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\GetTop.js",
-              "name": "GetTop.js",
-              "size": 258,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\index.js",
-              "name": "index.js",
-              "size": 644,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\SetBottom.js",
-              "name": "SetBottom.js",
-              "size": 324,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\SetCenterX.js",
-              "name": "SetCenterX.js",
-              "size": 545,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\SetCenterY.js",
-              "name": "SetCenterY.js",
-              "size": 547,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\SetLeft.js",
-              "name": "SetLeft.js",
-              "size": 297,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\SetRight.js",
-              "name": "SetRight.js",
-              "size": 320,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "utils\\bounds\\SetTop.js",
-              "name": "SetTop.js",
-              "size": 292,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 5812,
-          "type": "directory"
-        },
-        {
           "path": "utils\\Class.js",
           "name": "Class.js",
           "size": 5913,
@@ -8935,7 +8936,7 @@
         {
           "path": "utils\\index.js",
           "name": "index.js",
-          "size": 219,
+          "size": 151,
           "extension": ".js",
           "type": "file"
         },
@@ -9061,10 +9062,10 @@
           "type": "directory"
         }
       ],
-      "size": 61688,
+      "size": 40872,
       "type": "directory"
     }
   ],
-  "size": 1941947,
+  "size": 1970631,
   "type": "directory"
 }

@@ -5,17 +5,29 @@ var SQLite3 = require('better-sqlite3');
 
 var rootDir = '../phaser/v3/src/';
 var outputJSON = './percy/files.json';
-var db = new SQLite3('./percy/converted.db');
 
-var stmt = db.prepare('INSERT INTO files VALUES (?, ?)');
+var db = new SQLite3('./percy/files.db');
+
+db.exec(`
+    BEGIN TRANSACTION;
+    CREATE TABLE "files" (
+        'id'    INTEGER PRIMARY KEY AUTOINCREMENT,
+        'path'  TEXT NOT NULL,
+        'done'  INTEGER NOT NULL DEFAULT 0
+    );
+    COMMIT;
+`);
+
+var queries = [];
 
 var filteredTree = dirTree(rootDir, { extensions: /\.js$/ }, (item, PATH) => {
 
     item.path = item.path.replace('..\\phaser\\v3\\src\\', '');
 
-    //  Add to the database if not already saved
-
-    stmt.run(item.path, 0);
+    if (item.path.substr(-8) !== 'index.js')
+    {
+        queries.push('INSERT INTO files (path) VALUES ("' + item.path + '")');
+    }
 
 });
 
@@ -32,6 +44,11 @@ fs.writeFile(outputJSON, filteredTree, function (error) {
     else
     {
         console.log('files.json saved');
+        console.log('Running transaction ...');
+
+        db.transaction(queries).run();
+
+        console.log('Complete');
 
         db.close();
     }

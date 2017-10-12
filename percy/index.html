@@ -103,8 +103,8 @@
             //  Top-level buttons
 
             var buttons = [
-                'actions', 'animation', 'boot', 'cache', 'camera', 'canvas', 'create',
-                'device', 'dom', 'events', 'gameobjects', 'geom', 'graphics', 'input',
+                'actions', 'animation', 'boot', 'cache', 'camera', 'create',
+                'device', 'display', 'dom', 'events', 'gameobjects', 'geom', 'input',
                 'loader', 'math', 'paths', 'physics', 'renderer', 'scene', 'sound',
                 'structs', 'textures', 'time', 'tween', 'utils'
             ];
@@ -132,7 +132,7 @@
             }
 
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/phaser3-docs/percy/converted.db', true);
+            xhr.open('GET', '/phaser3-docs/percy/files.db', true);
             xhr.responseType = 'arraybuffer';
 
             xhr.onload = function (e)

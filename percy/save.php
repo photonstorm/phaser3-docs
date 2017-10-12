@@ -3,7 +3,7 @@
 
     $savepath = 'D:\wamp\www\phaser\v3\src\\' . $_POST['filename'];
 
-    $file_db = new PDO('sqlite:D:/wamp/www/phaser3-docs/percy/converted.db');
+    $file_db = new PDO('sqlite:D:/wamp/www/phaser3-docs/percy/files.db');
 
     $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
