@@ -85,7 +85,7 @@ function showParametersModal (module, data, src)
 
         var label = $('<label>', { for: 'returnValue', style: 'font-weight: bold' }).text('Returns');
         var input = $('<input>', { type: 'text', id: 'returnValue', class: 'form-control', value: typeString });
-        var select = getTypesList('returnValue', input);
+        var select = getTypesList('returnValueDrop', input);
 
         row.on('mouseover', function () {
 
@@ -112,6 +112,50 @@ function showParametersModal (module, data, src)
 
     //  Show the modal
     $('#paramsModal').modal('show');
+
+    //  Set-up quick buttons
+
+    $('#setAllNumber').click(function () {
+
+        for (var i = 0; i < data.parameters.length; i++)
+        {
+            $('#cp' + i).val('number');
+        }
+
+        if (data.hasReturn)
+        {
+            $('#returnValue').val('number');
+        }
+
+    });
+
+    $('#setAllFloat').click(function () {
+
+        for (var i = 0; i < data.parameters.length; i++)
+        {
+            $('#cp' + i).val('float');
+        }
+
+        if (data.hasReturn)
+        {
+            $('#returnValue').val('float');
+        }
+
+    });
+
+    $('#setAllString').click(function () {
+
+        for (var i = 0; i < data.parameters.length; i++)
+        {
+            $('#cp' + i).val('string');
+        }
+
+        if (data.hasReturn)
+        {
+            $('#returnValue').val('string');
+        }
+
+    });
 
     //  Button save ...
     $('#generateButton').click(function() {

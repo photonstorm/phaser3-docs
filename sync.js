@@ -1,6 +1,6 @@
 var SQLite3 = require('better-sqlite3');
 
-var srcDB = new SQLite3('./percy/converted.db');
+var srcDB = new SQLite3('./percy/files-backup.db');
 var destDB = new SQLite3('./percy/files.db');
 
 var stmt = srcDB.prepare('SELECT * FROM files WHERE done = 1');

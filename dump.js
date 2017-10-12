@@ -6,6 +6,10 @@ var SQLite3 = require('better-sqlite3');
 var rootDir = '../phaser/v3/src/';
 var outputJSON = './percy/files.json';
 
+//  Back-up the DB
+fs.renameSync('./percy/files.db', './percy/files-backup.db');
+
+//  Create a new one
 var db = new SQLite3('./percy/files.db');
 
 db.exec(`
@@ -48,7 +52,7 @@ fs.writeFile(outputJSON, filteredTree, function (error) {
 
         db.transaction(queries).run();
 
-        console.log('Complete');
+        console.log('Complete. Now run \'sync\'');
 
         db.close();
     }
