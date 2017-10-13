@@ -88,9 +88,15 @@ function showParametersModal (module, data, src)
         var col2 = $('<div>', { class: 'col col-sm-4' });
         var col3 = $('<div>', { class: 'col' });
 
-        var label = $('<label>', { for: 'returnValue', style: 'font-weight: bold' }).text('Returns');
+        var label = $('<label>', { for: 'returnValue', style: 'font-weight: bold; text-decoration: underline' }).text('Returns');
         var input = $('<input>', { type: 'text', id: 'returnValue', class: 'form-control', value: typeString });
         var select = getTypesList('returnValueDrop', input);
+
+        label.on('click', function () {
+
+            input.val($('#cp0').val());
+
+        });
 
         row.on('mouseover', function () {
 

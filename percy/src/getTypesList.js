@@ -37,6 +37,34 @@ function getTypesList (id, input, param)
         'Phaser.Math.Matrix4',
     ];
 
+    //  some quick helpers
+    var match = {
+
+        'x': 'number',
+        'y': 'number',
+        'width': 'number',
+        'height': 'number',
+        'angle': 'number',
+        'alpha': 'float',
+        'scale': 'float',
+        'scaleX': 'float',
+        'scaleY': 'float',
+        'scene': 'Phaser.Scene',
+        'gameObject': 'Phaser.GameObjects.GameObject',
+        'line': 'Phaser.Geom.Line',
+        'point': 'Phaser.Geom.Point',
+        'points': 'Phaser.Geom.Point[]',
+        'pointA': 'Phaser.Geom.Point',
+        'pointB': 'Phaser.Geom.Point',
+        'polygon': 'Phaser.Geom.Polygon',
+        'rect': 'Phaser.Geom.Rectangle',
+        'rectA': 'Phaser.Geom.Rectangle',
+        'rectB': 'Phaser.Geom.Rectangle',
+        'circle': 'Phaser.Geom.Circle',
+        'ellipse': 'Phaser.Geom.Ellipse',
+        'triangle': 'Phaser.Geom.Triangle'
+    };
+
     var select = $('<select>', { class: 'custom-select', id: id });
 
     for (var i = 0; i < types.length; i++)
@@ -51,6 +79,18 @@ function getTypesList (id, input, param)
         input.val(this.value);
 
     });
+
+    if (param)
+    {
+        for (var key in match)
+        {
+            if (param.name === key)
+            {
+                input.val(match[key]);
+                break;
+            }
+        }
+    }
 
     return select;
 }
