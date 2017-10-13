@@ -18,11 +18,14 @@ function getTypesList (id, input, param)
         'Phaser.GameObjects.GameObject',
         'Phaser.GameObjects.Sprite',
         'Phaser.GameObjects.Image',
+        'Phaser.GameObjects.Graphics',
         'Phaser.GameObjects.Components.Animation',
         'Phaser.Structs.Map',
         'Phaser.Structs.Set',
         'Phaser.Tweens.Tween',
         'Phaser.Class',
+        'Phaser.Curves.Curve',
+        'Phaser.Curves.Path',
         'Phaser.Geom.Circle',
         'Phaser.Geom.Ellipse',
         'Phaser.Geom.Line',
@@ -51,6 +54,9 @@ function getTypesList (id, input, param)
         'scaleY': 'float',
         'scene': 'Phaser.Scene',
         'gameObject': 'Phaser.GameObjects.GameObject',
+        'graphics': 'Phaser.GameObjects.Graphics',
+        'sprite': 'Phaser.GameObjects.Sprite',
+        'image': 'Phaser.GameObjects.Image',
         'line': 'Phaser.Geom.Line',
         'point': 'Phaser.Geom.Point',
         'points': 'Phaser.Geom.Point[]',
@@ -62,7 +68,8 @@ function getTypesList (id, input, param)
         'rectB': 'Phaser.Geom.Rectangle',
         'circle': 'Phaser.Geom.Circle',
         'ellipse': 'Phaser.Geom.Ellipse',
-        'triangle': 'Phaser.Geom.Triangle'
+        'triangle': 'Phaser.Geom.Triangle',
+        'curve': 'Phaser.Curves.Curve'
     };
 
     var select = $('<select>', { class: 'custom-select', id: id });

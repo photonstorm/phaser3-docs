@@ -1256,6 +1256,386 @@
       "type": "directory"
     },
     {
+      "path": "..\\phaser\\v3\\src\\curves",
+      "name": "curves",
+      "children": [
+        {
+          "path": "..\\phaser\\v3\\src\\curves\\cubicbezier",
+          "name": "cubicbezier",
+          "children": [
+            {
+              "path": "curves\\cubicbezier\\CubicBezierCurve.js",
+              "name": "CubicBezierCurve.js",
+              "size": 2754,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 2754,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\curves\\curve",
+          "name": "curve",
+          "children": [
+            {
+              "path": "curves\\curve\\Curve.js",
+              "name": "Curve.js",
+              "size": 1436,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "..\\phaser\\v3\\src\\curves\\curve\\inc",
+              "name": "inc",
+              "children": [
+                {
+                  "path": "curves\\curve\\inc\\Draw.js",
+                  "name": "Draw.js",
+                  "size": 530,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetBounds.js",
+                  "name": "GetBounds.js",
+                  "size": 649,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetDistancePoints.js",
+                  "name": "GetDistancePoints.js",
+                  "size": 507,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetEndPoint.js",
+                  "name": "GetEndPoint.js",
+                  "size": 217,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetLength.js",
+                  "name": "GetLength.js",
+                  "size": 181,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetLengths.js",
+                  "name": "GetLengths.js",
+                  "size": 834,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetPointAt.js",
+                  "name": "GetPointAt.js",
+                  "size": 238,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetPoints.js",
+                  "name": "GetPoints.js",
+                  "size": 354,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetSpacedPoints.js",
+                  "name": "GetSpacedPoints.js",
+                  "size": 428,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetStartPoint.js",
+                  "name": "GetStartPoint.js",
+                  "size": 221,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetTangent.js",
+                  "name": "GetTangent.js",
+                  "size": 742,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetTangentAt.js",
+                  "name": "GetTangentAt.js",
+                  "size": 155,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetTFromDistance.js",
+                  "name": "GetTFromDistance.js",
+                  "size": 268,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\GetUToTMapping.js",
+                  "name": "GetUToTMapping.js",
+                  "size": 1812,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\curve\\inc\\UpdateArcLengths.js",
+                  "name": "UpdateArcLengths.js",
+                  "size": 137,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 7273,
+              "type": "directory"
+            }
+          ],
+          "size": 8709,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\curves\\ellipse",
+          "name": "ellipse",
+          "children": [
+            {
+              "path": "curves\\ellipse\\EllipseCurve.js",
+              "name": "EllipseCurve.js",
+              "size": 6918,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 6918,
+          "type": "directory"
+        },
+        {
+          "path": "curves\\index.js",
+          "name": "index.js",
+          "size": 319,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\curves\\line",
+          "name": "line",
+          "children": [
+            {
+              "path": "curves\\line\\LineCurve.js",
+              "name": "LineCurve.js",
+              "size": 2508,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 2508,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\curves\\path",
+          "name": "path",
+          "children": [
+            {
+              "path": "..\\phaser\\v3\\src\\curves\\path\\inc",
+              "name": "inc",
+              "children": [
+                {
+                  "path": "curves\\path\\inc\\Add.js",
+                  "name": "Add.js",
+                  "size": 110,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\CircleTo.js",
+                  "name": "CircleTo.js",
+                  "size": 224,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\ClosePath.js",
+                  "name": "ClosePath.js",
+                  "size": 532,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\CubicBezierTo.js",
+                  "name": "CubicBezierTo.js",
+                  "size": 798,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\Destroy.js",
+                  "name": "Destroy.js",
+                  "size": 161,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\Draw.js",
+                  "name": "Draw.js",
+                  "size": 324,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\EllipseTo.js",
+                  "name": "EllipseTo.js",
+                  "size": 648,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\FromJSON.js",
+                  "name": "FromJSON.js",
+                  "size": 1164,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetBounds.js",
+                  "name": "GetBounds.js",
+                  "size": 962,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetCurveLengths.js",
+                  "name": "GetCurveLengths.js",
+                  "size": 573,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetEndPoint.js",
+                  "name": "GetEndPoint.js",
+                  "size": 369,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetLength.js",
+                  "name": "GetLength.js",
+                  "size": 144,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetPoint.js",
+                  "name": "GetPoint.js",
+                  "size": 998,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetPoints.js",
+                  "name": "GetPoints.js",
+                  "size": 958,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetSpacedPoints.js",
+                  "name": "GetSpacedPoints.js",
+                  "size": 372,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\GetStartPoint.js",
+                  "name": "GetStartPoint.js",
+                  "size": 223,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\LineTo.js",
+                  "name": "LineTo.js",
+                  "size": 508,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\MoveTo.js",
+                  "name": "MoveTo.js",
+                  "size": 144,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\SplineTo.js",
+                  "name": "SplineTo.js",
+                  "size": 310,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\ToJSON.js",
+                  "name": "ToJSON.js",
+                  "size": 356,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "curves\\path\\inc\\UpdateArcLengths.js",
+                  "name": "UpdateArcLengths.js",
+                  "size": 180,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 10058,
+              "type": "directory"
+            },
+            {
+              "path": "curves\\path\\MoveTo.js",
+              "name": "MoveTo.js",
+              "size": 869,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "curves\\path\\Path.js",
+              "name": "Path.js",
+              "size": 2318,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 13245,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\v3\\src\\curves\\spline",
+          "name": "spline",
+          "children": [
+            {
+              "path": "curves\\spline\\SplineCurve.js",
+              "name": "SplineCurve.js",
+              "size": 2918,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 2918,
+          "type": "directory"
+        }
+      ],
+      "size": 37371,
+      "type": "directory"
+    },
+    {
       "path": "..\\phaser\\v3\\src\\device",
       "name": "device",
       "children": [
@@ -5954,6 +6334,88 @@
           "type": "file"
         },
         {
+          "path": "..\\phaser\\v3\\src\\math\\curves",
+          "name": "curves",
+          "children": [
+            {
+              "path": "..\\phaser\\v3\\src\\math\\curves\\cubicbezier",
+              "name": "cubicbezier",
+              "children": [
+                {
+                  "path": "math\\curves\\cubicbezier\\CubicBezierCurve.js",
+                  "name": "CubicBezierCurve.js",
+                  "size": 2757,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 2757,
+              "type": "directory"
+            },
+            {
+              "path": "math\\curves\\Curve.js",
+              "name": "Curve.js",
+              "size": 8092,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "..\\phaser\\v3\\src\\math\\curves\\ellipse",
+              "name": "ellipse",
+              "children": [
+                {
+                  "path": "math\\curves\\ellipse\\EllipseCurve.js",
+                  "name": "EllipseCurve.js",
+                  "size": 6927,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 6927,
+              "type": "directory"
+            },
+            {
+              "path": "math\\curves\\index.js",
+              "name": "index.js",
+              "size": 253,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "..\\phaser\\v3\\src\\math\\curves\\line",
+              "name": "line",
+              "children": [
+                {
+                  "path": "math\\curves\\line\\LineCurve.js",
+                  "name": "LineCurve.js",
+                  "size": 2514,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 2514,
+              "type": "directory"
+            },
+            {
+              "path": "..\\phaser\\v3\\src\\math\\curves\\spline",
+              "name": "spline",
+              "children": [
+                {
+                  "path": "math\\curves\\spline\\SplineCurve.js",
+                  "name": "SplineCurve.js",
+                  "size": 2921,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 2921,
+              "type": "directory"
+            }
+          ],
+          "size": 23464,
+          "type": "directory"
+        },
+        {
           "path": "math\\DegToRad.js",
           "name": "DegToRad.js",
           "size": 300,
@@ -6827,276 +7289,10 @@
           "type": "file"
         }
       ],
-      "size": 129823,
+      "size": 153287,
       "type": "directory"
     },
-    {
-      "path": "..\\phaser\\v3\\src\\paths",
-      "name": "paths",
-      "children": [
-        {
-          "path": "..\\phaser\\v3\\src\\paths\\curves",
-          "name": "curves",
-          "children": [
-            {
-              "path": "..\\phaser\\v3\\src\\paths\\curves\\cubicbezier",
-              "name": "cubicbezier",
-              "children": [
-                {
-                  "path": "paths\\curves\\cubicbezier\\CubicBezierCurve.js",
-                  "name": "CubicBezierCurve.js",
-                  "size": 2757,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 2757,
-              "type": "directory"
-            },
-            {
-              "path": "paths\\curves\\Curve.js",
-              "name": "Curve.js",
-              "size": 8060,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "..\\phaser\\v3\\src\\paths\\curves\\ellipse",
-              "name": "ellipse",
-              "children": [
-                {
-                  "path": "paths\\curves\\ellipse\\EllipseCurve.js",
-                  "name": "EllipseCurve.js",
-                  "size": 6927,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 6927,
-              "type": "directory"
-            },
-            {
-              "path": "paths\\curves\\index.js",
-              "name": "index.js",
-              "size": 248,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "..\\phaser\\v3\\src\\paths\\curves\\line",
-              "name": "line",
-              "children": [
-                {
-                  "path": "paths\\curves\\line\\LineCurve.js",
-                  "name": "LineCurve.js",
-                  "size": 2514,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 2514,
-              "type": "directory"
-            },
-            {
-              "path": "..\\phaser\\v3\\src\\paths\\curves\\spline",
-              "name": "spline",
-              "children": [
-                {
-                  "path": "paths\\curves\\spline\\SplineCurve.js",
-                  "name": "SplineCurve.js",
-                  "size": 2921,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 2921,
-              "type": "directory"
-            }
-          ],
-          "size": 23427,
-          "type": "directory"
-        },
-        {
-          "path": "..\\phaser\\v3\\src\\paths\\inc",
-          "name": "inc",
-          "children": [
-            {
-              "path": "paths\\inc\\Add.js",
-              "name": "Add.js",
-              "size": 110,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\CircleTo.js",
-              "name": "CircleTo.js",
-              "size": 224,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\ClosePath.js",
-              "name": "ClosePath.js",
-              "size": 536,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\CubicBezierTo.js",
-              "name": "CubicBezierTo.js",
-              "size": 799,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\Destroy.js",
-              "name": "Destroy.js",
-              "size": 161,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\Draw.js",
-              "name": "Draw.js",
-              "size": 324,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\EllipseTo.js",
-              "name": "EllipseTo.js",
-              "size": 652,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\FromJSON.js",
-              "name": "FromJSON.js",
-              "size": 1180,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetBounds.js",
-              "name": "GetBounds.js",
-              "size": 959,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetCurveLengths.js",
-              "name": "GetCurveLengths.js",
-              "size": 573,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetEndPoint.js",
-              "name": "GetEndPoint.js",
-              "size": 366,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetLength.js",
-              "name": "GetLength.js",
-              "size": 144,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetPoint.js",
-              "name": "GetPoint.js",
-              "size": 995,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetPoints.js",
-              "name": "GetPoints.js",
-              "size": 958,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetSpacedPoints.js",
-              "name": "GetSpacedPoints.js",
-              "size": 372,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\GetStartPoint.js",
-              "name": "GetStartPoint.js",
-              "size": 220,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\LineTo.js",
-              "name": "LineTo.js",
-              "size": 509,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\MoveTo.js",
-              "name": "MoveTo.js",
-              "size": 144,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\SplineTo.js",
-              "name": "SplineTo.js",
-              "size": 314,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\ToJSON.js",
-              "name": "ToJSON.js",
-              "size": 356,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "paths\\inc\\UpdateArcLengths.js",
-              "name": "UpdateArcLengths.js",
-              "size": 180,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 10076,
-          "type": "directory"
-        },
-        {
-          "path": "paths\\index.js",
-          "name": "index.js",
-          "size": 137,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "paths\\MoveTo.js",
-          "name": "MoveTo.js",
-          "size": 863,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "paths\\Path.js",
-          "name": "Path.js",
-          "size": 2309,
-          "extension": ".js",
-          "type": "file"
-        }
-      ],
-      "size": 36812,
-      "type": "directory"
-    },
-    { "path": "phaser.js", "name": "phaser.js", "size": 1565, "extension": ".js", "type": "file" },
+    { "path": "phaser.js", "name": "phaser.js", "size": 1525, "extension": ".js", "type": "file" },
     {
       "path": "..\\phaser\\v3\\src\\physics",
       "name": "physics",
@@ -9541,6 +9737,6 @@
       "type": "directory"
     }
   ],
-  "size": 2013785,
+  "size": 2037768,
   "type": "directory"
 }
