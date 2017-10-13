@@ -341,41 +341,41 @@
               "type": "file"
             },
             {
+              "path": "animations\\frame\\AnimationFrame.js",
+              "name": "AnimationFrame.js",
+              "size": 1756,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
               "path": "..\\phaser\\v3\\src\\animations\\frame\\inc",
               "name": "inc",
               "children": [
                 {
                   "path": "animations\\frame\\inc\\AddFrame.js",
                   "name": "AddFrame.js",
-                  "size": 325,
+                  "size": 509,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "animations\\frame\\inc\\AddFrameAt.js",
                   "name": "AddFrameAt.js",
-                  "size": 966,
+                  "size": 1122,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "animations\\frame\\inc\\CheckFrame.js",
                   "name": "CheckFrame.js",
-                  "size": 116,
+                  "size": 287,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "animations\\frame\\inc\\CompleteAnimation.js",
                   "name": "CompleteAnimation.js",
-                  "size": 208,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "animations\\frame\\inc\\Frame.js",
-                  "name": "Frame.js",
-                  "size": 1546,
+                  "size": 379,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -396,7 +396,7 @@
                 {
                   "path": "animations\\frame\\inc\\GetFrames.js",
                   "name": "GetFrames.js",
-                  "size": 2696,
+                  "size": 2706,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -471,11 +471,11 @@
                   "type": "file"
                 }
               ],
-              "size": 12148,
+              "size": 11294,
               "type": "directory"
             }
           ],
-          "size": 17648,
+          "size": 18550,
           "type": "directory"
         },
         {
@@ -636,7 +636,7 @@
           "type": "directory"
         }
       ],
-      "size": 35253,
+      "size": 36155,
       "type": "directory"
     },
     {
@@ -2535,7 +2535,7 @@
             {
               "path": "gameobjects\\components\\Animation.js",
               "name": "Animation.js",
-              "size": 3118,
+              "size": 3165,
               "extension": ".js",
               "type": "file"
             },
@@ -2659,7 +2659,7 @@
               "type": "file"
             }
           ],
-          "size": 38278,
+          "size": 38325,
           "type": "directory"
         },
         {
@@ -3530,7 +3530,7 @@
           "type": "directory"
         }
       ],
-      "size": 327763,
+      "size": 327810,
       "type": "directory"
     },
     {
@@ -9386,6 +9386,6 @@
       "type": "directory"
     }
   ],
-  "size": 1979718,
+  "size": 1980667,
   "type": "directory"
 }
