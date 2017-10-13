@@ -18,6 +18,7 @@ function getTypesList (id, input, param)
         'Phaser.GameObjects.GameObject',
         'Phaser.GameObjects.Sprite',
         'Phaser.GameObjects.Image',
+        'Phaser.GameObjects.Components.Animation',
         'Phaser.Structs.Map',
         'Phaser.Structs.Set',
         'Phaser.Tweens.Tween',

@@ -326,145 +326,145 @@
       "type": "directory"
     },
     {
-      "path": "..\\phaser\\v3\\src\\animation",
-      "name": "animation",
+      "path": "..\\phaser\\v3\\src\\animations",
+      "name": "animations",
       "children": [
         {
-          "path": "..\\phaser\\v3\\src\\animation\\frame",
+          "path": "..\\phaser\\v3\\src\\animations\\frame",
           "name": "frame",
           "children": [
             {
-              "path": "animation\\frame\\Animation.js",
+              "path": "animations\\frame\\Animation.js",
               "name": "Animation.js",
-              "size": 5465,
+              "size": 5500,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "..\\phaser\\v3\\src\\animation\\frame\\inc",
+              "path": "..\\phaser\\v3\\src\\animations\\frame\\inc",
               "name": "inc",
               "children": [
                 {
-                  "path": "animation\\frame\\inc\\AddFrame.js",
+                  "path": "animations\\frame\\inc\\AddFrame.js",
                   "name": "AddFrame.js",
                   "size": 325,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\AddFrameAt.js",
+                  "path": "animations\\frame\\inc\\AddFrameAt.js",
                   "name": "AddFrameAt.js",
                   "size": 966,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\CheckFrame.js",
+                  "path": "animations\\frame\\inc\\CheckFrame.js",
                   "name": "CheckFrame.js",
                   "size": 116,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\CompleteAnimation.js",
+                  "path": "animations\\frame\\inc\\CompleteAnimation.js",
                   "name": "CompleteAnimation.js",
                   "size": 208,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\Frame.js",
+                  "path": "animations\\frame\\inc\\Frame.js",
                   "name": "Frame.js",
                   "size": 1546,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\GetFirstTick.js",
+                  "path": "animations\\frame\\inc\\GetFirstTick.js",
                   "name": "GetFirstTick.js",
                   "size": 410,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\GetFrameAt.js",
+                  "path": "animations\\frame\\inc\\GetFrameAt.js",
                   "name": "GetFrameAt.js",
                   "size": 106,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\GetFrames.js",
+                  "path": "animations\\frame\\inc\\GetFrames.js",
                   "name": "GetFrames.js",
                   "size": 2696,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\GetNextTick.js",
+                  "path": "animations\\frame\\inc\\GetNextTick.js",
                   "name": "GetNextTick.js",
                   "size": 385,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\Load.js",
+                  "path": "animations\\frame\\inc\\Load.js",
                   "name": "Load.js",
                   "size": 854,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\NextFrame.js",
+                  "path": "animations\\frame\\inc\\NextFrame.js",
                   "name": "NextFrame.js",
                   "size": 880,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\PreviousFrame.js",
+                  "path": "animations\\frame\\inc\\PreviousFrame.js",
                   "name": "PreviousFrame.js",
                   "size": 613,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\RemoveFrame.js",
+                  "path": "animations\\frame\\inc\\RemoveFrame.js",
                   "name": "RemoveFrame.js",
                   "size": 264,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\RemoveFrameAt.js",
+                  "path": "animations\\frame\\inc\\RemoveFrameAt.js",
                   "name": "RemoveFrameAt.js",
                   "size": 170,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\RepeatAnimation.js",
+                  "path": "animations\\frame\\inc\\RepeatAnimation.js",
                   "name": "RepeatAnimation.js",
                   "size": 743,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\SetFrame.js",
+                  "path": "animations\\frame\\inc\\SetFrame.js",
                   "name": "SetFrame.js",
                   "size": 290,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\ToJSON.js",
+                  "path": "animations\\frame\\inc\\ToJSON.js",
                   "name": "ToJSON.js",
                   "size": 616,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\frame\\inc\\UpdateFrameSequence.js",
+                  "path": "animations\\frame\\inc\\UpdateFrameSequence.js",
                   "name": "UpdateFrameSequence.js",
                   "size": 960,
                   "extension": ".js",
@@ -475,54 +475,54 @@
               "type": "directory"
             }
           ],
-          "size": 17613,
+          "size": 17648,
           "type": "directory"
         },
         {
-          "path": "..\\phaser\\v3\\src\\animation\\manager",
+          "path": "..\\phaser\\v3\\src\\animations\\manager",
           "name": "manager",
           "children": [
             {
-              "path": "animation\\manager\\AnimationManager.js",
+              "path": "animations\\manager\\AnimationManager.js",
               "name": "AnimationManager.js",
               "size": 3642,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "..\\phaser\\v3\\src\\animation\\manager\\events",
+              "path": "..\\phaser\\v3\\src\\animations\\manager\\events",
               "name": "events",
               "children": [
                 {
-                  "path": "animation\\manager\\events\\AddAnimationEvent.js",
+                  "path": "animations\\manager\\events\\AddAnimationEvent.js",
                   "name": "AddAnimationEvent.js",
                   "size": 632,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\events\\index.js",
+                  "path": "animations\\manager\\events\\index.js",
                   "name": "index.js",
                   "size": 285,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\events\\PauseAllAnimationEvent.js",
+                  "path": "animations\\manager\\events\\PauseAllAnimationEvent.js",
                   "name": "PauseAllAnimationEvent.js",
                   "size": 457,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\events\\RemoveAnimationEvent.js",
+                  "path": "animations\\manager\\events\\RemoveAnimationEvent.js",
                   "name": "RemoveAnimationEvent.js",
                   "size": 647,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\events\\ResumeAllAnimationEvent.js",
+                  "path": "animations\\manager\\events\\ResumeAllAnimationEvent.js",
                   "name": "ResumeAllAnimationEvent.js",
                   "size": 462,
                   "extension": ".js",
@@ -533,95 +533,95 @@
               "type": "directory"
             },
             {
-              "path": "..\\phaser\\v3\\src\\animation\\manager\\inc",
+              "path": "..\\phaser\\v3\\src\\animations\\manager\\inc",
               "name": "inc",
               "children": [
                 {
-                  "path": "animation\\manager\\inc\\AddAnimation.js",
+                  "path": "animations\\manager\\inc\\AddAnimation.js",
                   "name": "AddAnimation.js",
                   "size": 756,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\CreateFrameAnimation.js",
+                  "path": "animations\\manager\\inc\\CreateFrameAnimation.js",
                   "name": "CreateFrameAnimation.js",
                   "size": 797,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\FromJSON.js",
+                  "path": "animations\\manager\\inc\\FromJSON.js",
                   "name": "FromJSON.js",
                   "size": 1313,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\GenerateFrameNames.js",
+                  "path": "animations\\manager\\inc\\GenerateFrameNames.js",
                   "name": "GenerateFrameNames.js",
                   "size": 2118,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\GenerateFrameNumbers.js",
+                  "path": "animations\\manager\\inc\\GenerateFrameNumbers.js",
                   "name": "GenerateFrameNumbers.js",
                   "size": 1879,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\GetAnimation.js",
+                  "path": "animations\\manager\\inc\\GetAnimation.js",
                   "name": "GetAnimation.js",
                   "size": 315,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\LoadAnimationToGameObject.js",
+                  "path": "animations\\manager\\inc\\LoadAnimationToGameObject.js",
                   "name": "LoadAnimationToGameObject.js",
                   "size": 619,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\PauseAll.js",
+                  "path": "animations\\manager\\inc\\PauseAll.js",
                   "name": "PauseAll.js",
                   "size": 497,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\PlayAnimation.js",
+                  "path": "animations\\manager\\inc\\PlayAnimation.js",
                   "name": "PlayAnimation.js",
                   "size": 664,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\RemoveAnimation.js",
+                  "path": "animations\\manager\\inc\\RemoveAnimation.js",
                   "name": "RemoveAnimation.js",
                   "size": 554,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\ResumeAll.js",
+                  "path": "animations\\manager\\inc\\ResumeAll.js",
                   "name": "ResumeAll.js",
                   "size": 502,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\StaggerPlayAnimation.js",
+                  "path": "animations\\manager\\inc\\StaggerPlayAnimation.js",
                   "name": "StaggerPlayAnimation.js",
                   "size": 813,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
-                  "path": "animation\\manager\\inc\\ToJSON.js",
+                  "path": "animations\\manager\\inc\\ToJSON.js",
                   "name": "ToJSON.js",
                   "size": 653,
                   "extension": ".js",
@@ -636,7 +636,7 @@
           "type": "directory"
         }
       ],
-      "size": 35218,
+      "size": 35253,
       "type": "directory"
     },
     {
@@ -667,7 +667,7 @@
         {
           "path": "boot\\Game.js",
           "name": "Game.js",
-          "size": 7145,
+          "size": 7146,
           "extension": ".js",
           "type": "file"
         },
@@ -700,7 +700,7 @@
           "type": "file"
         }
       ],
-      "size": 55449,
+      "size": 55450,
       "type": "directory"
     },
     {
@@ -5673,7 +5673,7 @@
         {
           "path": "loader\\File.js",
           "name": "File.js",
-          "size": 4723,
+          "size": 6119,
           "extension": ".js",
           "type": "file"
         },
@@ -5719,14 +5719,14 @@
             {
               "path": "loader\\filetypes\\HTMLFile.js",
               "name": "HTMLFile.js",
-              "size": 3125,
+              "size": 3132,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "loader\\filetypes\\ImageFile.js",
               "name": "ImageFile.js",
-              "size": 2691,
+              "size": 2696,
               "extension": ".js",
               "type": "file"
             },
@@ -5754,7 +5754,7 @@
             {
               "path": "loader\\filetypes\\SVGFile.js",
               "name": "SVGFile.js",
-              "size": 2689,
+              "size": 2703,
               "extension": ".js",
               "type": "file"
             },
@@ -5780,7 +5780,7 @@
               "type": "file"
             }
           ],
-          "size": 21803,
+          "size": 21829,
           "type": "directory"
         },
         {
@@ -5812,7 +5812,7 @@
           "type": "file"
         }
       ],
-      "size": 44908,
+      "size": 46330,
       "type": "directory"
     },
     {
@@ -7580,7 +7580,7 @@
         {
           "path": "polyfills\\index.js",
           "name": "index.js",
-          "size": 289,
+          "size": 270,
           "extension": ".js",
           "type": "file"
         },
@@ -7611,16 +7611,9 @@
           "size": 1365,
           "extension": ".js",
           "type": "file"
-        },
-        {
-          "path": "polyfills\\URL.js",
-          "name": "URL.js",
-          "size": 8228,
-          "extension": ".js",
-          "type": "file"
         }
       ],
-      "size": 22074,
+      "size": 13827,
       "type": "directory"
     },
     {
@@ -8822,89 +8815,89 @@
                 {
                   "path": "tweens\\manager\\inc\\Destroy.js",
                   "name": "Destroy.js",
-                  "size": 106,
+                  "size": 169,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\Each.js",
                   "name": "Each.js",
-                  "size": 642,
+                  "size": 584,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\GetAllTweens.js",
                   "name": "GetAllTweens.js",
-                  "size": 237,
+                  "size": 370,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\GetGlobalTimeScale.js",
                   "name": "GetGlobalTimeScale.js",
-                  "size": 113,
+                  "size": 245,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\GetTweensOf.js",
                   "name": "GetTweensOf.js",
-                  "size": 807,
+                  "size": 923,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\IsTweening.js",
                   "name": "IsTweening.js",
-                  "size": 360,
+                  "size": 490,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\KillAll.js",
                   "name": "KillAll.js",
-                  "size": 210,
+                  "size": 344,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\KillTweensOf.js",
                   "name": "KillTweensOf.js",
-                  "size": 273,
+                  "size": 421,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\PauseAll.js",
                   "name": "PauseAll.js",
-                  "size": 200,
+                  "size": 335,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\ResumeAll.js",
                   "name": "ResumeAll.js",
-                  "size": 203,
+                  "size": 339,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\SetGlobalTimeScale.js",
                   "name": "SetGlobalTimeScale.js",
-                  "size": 139,
+                  "size": 332,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\manager\\inc\\Shutdown.js",
                   "name": "Shutdown.js",
-                  "size": 262,
+                  "size": 340,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 3552,
+              "size": 4892,
               "type": "directory"
             },
             {
@@ -8915,7 +8908,7 @@
               "type": "file"
             }
           ],
-          "size": 8819,
+          "size": 10159,
           "type": "directory"
         },
         {
@@ -8958,77 +8951,77 @@
                 {
                   "path": "tweens\\tween\\inc\\CalcDuration.js",
                   "name": "CalcDuration.js",
-                  "size": 1508,
+                  "size": 1540,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Init.js",
                   "name": "Init.js",
-                  "size": 1139,
+                  "size": 1222,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\NextState.js",
                   "name": "NextState.js",
-                  "size": 1163,
+                  "size": 1196,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Pause.js",
                   "name": "Pause.js",
-                  "size": 302,
+                  "size": 414,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Play.js",
                   "name": "Play.js",
-                  "size": 1383,
+                  "size": 1440,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\ResetTweenData.js",
                   "name": "ResetTweenData.js",
-                  "size": 1050,
+                  "size": 1155,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Resume.js",
                   "name": "Resume.js",
-                  "size": 252,
+                  "size": 368,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Seek.js",
                   "name": "Seek.js",
-                  "size": 1985,
+                  "size": 1984,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\SetCallback.js",
                   "name": "SetCallback.js",
-                  "size": 200,
+                  "size": 498,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Stop.js",
                   "name": "Stop.js",
-                  "size": 262,
+                  "size": 314,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tweens\\tween\\inc\\Update.js",
                   "name": "Update.js",
-                  "size": 2440,
+                  "size": 2528,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -9040,7 +9033,7 @@
                   "type": "file"
                 }
               ],
-              "size": 19705,
+              "size": 20680,
               "type": "directory"
             },
             {
@@ -9065,11 +9058,11 @@
               "type": "file"
             }
           ],
-          "size": 30684,
+          "size": 31659,
           "type": "directory"
         }
       ],
-      "size": 72430,
+      "size": 74745,
       "type": "directory"
     },
     {
@@ -9393,6 +9386,6 @@
       "type": "directory"
     }
   ],
-  "size": 1984192,
+  "size": 1979718,
   "type": "directory"
 }

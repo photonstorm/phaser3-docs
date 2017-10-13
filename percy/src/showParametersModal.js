@@ -77,6 +77,11 @@ function showParametersModal (module, data, src)
             typeString = typeString.concat('null');
         }
 
+        if (typeString.indexOf('#') !== -1)
+        {
+            typeString = typeString.substr(0, typeString.indexOf('#'));
+        }
+
         var div = $('<div>', { class: 'container' });
         var row = $('<div>', { class: 'row py-2' });
         var col1 = $('<div>', { class: 'col col-sm-2' });
