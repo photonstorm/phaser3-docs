@@ -3,7 +3,7 @@ var dirTree = require('directory-tree');
 var beautify = require('json-beautify');
 var SQLite3 = require('better-sqlite3');
 
-var rootDir = '../phaser/v3/src/';
+var rootDir = '../phaser/src/';
 var outputJSON = './percy/files.json';
 
 //  Back-up the DB
@@ -26,9 +26,9 @@ var queries = [];
 
 var filteredTree = dirTree(rootDir, { extensions: /\.js$/ }, (item, PATH) => {
 
-    item.path = item.path.replace('..\\phaser\\v3\\src\\', '');
+    item.path = item.path.replace('..\\phaser\\src\\', '');
 
-    if (item.path.substr(-8) !== 'index.js')
+    if (item.path.substr(-8) !== 'index.js' && item.path.substr(0, 21) !== 'physics\\matter-js\\lib')
     {
         queries.push('INSERT INTO files (path) VALUES ("' + item.path + '")');
     }
@@ -48,7 +48,7 @@ fs.writeFile(outputJSON, filteredTree, function (error) {
     else
     {
         console.log('files.json saved');
-        console.log('Running transaction ...');
+        console.log('Running transaction (' + queries.length + ' queries)');
 
         db.transaction(queries).run();
 
