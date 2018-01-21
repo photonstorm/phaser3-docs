@@ -1,7 +1,7 @@
 <?php
     $querypath = $_POST['filename'];
 
-    $savepath = 'D:\wamp\www\phaser\v3\src\\' . $_POST['filename'];
+    $savepath = 'D:\wamp\www\phaser\src\\' . $_POST['filename'];
 
     $file_db = new PDO('sqlite:D:/wamp/www/phaser3-docs/percy/files.db');
 
