@@ -6,11 +6,13 @@ function findClassMethods (data, src)
 
     var methods = [];
 
+    var firstLine = false;
+
     var searchStart = '    {';
     var scanLengthStart = searchStart.length;
     var methodStart = -1;
 
-    var searchEnd = '    },';
+    var searchEnd = '    }';
     var scanLengthEnd = searchEnd.length;
     var methodEnd = -1;
 
@@ -56,10 +58,11 @@ function findClassMethods (data, src)
 
             //  We've got the start and end, let's extract it
             var method = {
-                methodName: methodName,
+                name: methodName,
                 parameters: parameters,
                 start: methodStart,
                 end: methodEnd,
+                match: src[methodStart],
                 hasReturn: (returnThis || returnNull || returnValue),
                 returns: {
                     this: returnThis,
@@ -72,6 +75,12 @@ function findClassMethods (data, src)
             console.log(method);
 
             methods.push(method);
+
+            if (!firstLine)
+            {
+                data.methodsStart = methodStart;
+                firstLine = true;
+            }
 
             methodStart = -1;
             methodEnd = -1;

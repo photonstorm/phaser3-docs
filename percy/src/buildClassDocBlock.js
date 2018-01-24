@@ -17,6 +17,16 @@
          * @since 3.0.0
          */
 
+    /**
+     * [description]
+     *
+     * @method Phaser.Curves.Curve#getSpacedPoints
+     * @since 3.0.0
+     *
+     * @param {integer} [divisions] - [description]
+     *
+     * @return {Phaser.Math.Vector2[]} [description]
+     */
 
 function buildDocBlock (data, src)
 {
@@ -71,6 +81,8 @@ function buildDocBlock (data, src)
 
     docblock.push('     */');
 
+    var namespace = data.memberOf + '.' + data.className;
+
     //  Inject the constructor docblock into the output
 
         /**
@@ -122,6 +134,56 @@ function buildDocBlock (data, src)
         return result;
     };
 
+    /**
+     * [description]
+     *
+     * @method Phaser.Curves.Curve#getSpacedPoints
+     * @since 3.0.0
+     *
+     * @param {integer} [divisions] - [description]
+     *
+     * @return {Phaser.Math.Vector2[]} [description]
+     */
+    var getMethodBlock = function (method)
+    {
+        var docblock = [];
+
+        docblock.push('    /**');
+        docblock.push('     * [description]');
+        docblock.push('     *');
+        docblock.push('     * @method ' + namespace + '#' + method.name);
+        docblock.push('     * @since 3.0.0');
+
+        if (method.parameters.length > 0)
+        {
+            docblock.push('     *');
+
+            for (var i = 0; i < method.parameters.length; i++)
+            {
+                var param = method.parameters[i];
+
+                var name = param.name;
+
+                if (param.optional)
+                {
+                    name = '[' + name + ']';
+                }
+
+                docblock.push('     * @param {' + param.type + '} ' + name + ' - ' + param.description);
+            }
+        }
+
+        if (method.hasReturn)
+        {
+            docblock.push('     *');
+            docblock.push('     * @return {' + method.returns.type + '} [description]');
+        }
+
+        docblock.push('     */');
+
+        return docblock;
+    };
+
     var out = [];
 
     for (var i = 0; i < src.length; i++)
@@ -137,5 +199,31 @@ function buildDocBlock (data, src)
         }
     }
 
-    return out;
+    var out2 = [];
+
+    //  Inject method blocks
+    var methods = data.methods;
+
+    for (var i = 0; i < out.length; i++)
+    {
+        var line = out[i];
+        var found = false;
+
+        for (var m = 0; m < methods.length; m++)
+        {
+            if (line === methods[m].match)
+            {
+                out2 = out2.concat(getMethodBlock(methods[m]));
+                out2.push(line);
+                found = true;
+            }
+        }
+
+        if (!found)
+        {
+            out2.push(line);
+        }
+    }
+
+    return out2;
 }
