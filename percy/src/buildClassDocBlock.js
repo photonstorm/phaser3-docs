@@ -14,6 +14,7 @@
          *
          * @property {Phaser.Game} game
          * @protected
+         * @since 3.0.0
          */
 
 
@@ -76,6 +77,7 @@ function buildDocBlock (data, src)
          * [description]
          *
          * @property {Phaser.Game} game
+         * @since 3.0.0
          * @protected
          */
 
@@ -97,6 +99,7 @@ function buildDocBlock (data, src)
                 result.push('         * ' + prop.description);
                 result.push('         *');
                 result.push('         * @property {' + prop.type + '} ' + prop.name);
+                result.push('         * @since 3.0.0');
 
                 if (prop.private)
                 {

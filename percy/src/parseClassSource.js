@@ -1,5 +1,7 @@
 function parseSource ()
 {
+    console.log('parse class source');
+
     var src = ($('#input').val()).split('\n');
 
     // console.log(src.length, 'lines');
@@ -29,6 +31,7 @@ function parseSource ()
     if (data.constructor.parameters.length === 0)
     {
         //  There are no constructor arguments, so move on to the properties
+        console.log('no constructor arguments');
     }
     else
     {
@@ -48,6 +51,9 @@ function parseSource ()
             {
                 console.log('props modal hidden');
                 console.log(data);
+
+                //  Methods ...
+                findClassMethods(data, src);
 
                 var out = buildDocBlock(data, src);
 
