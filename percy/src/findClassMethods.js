@@ -72,7 +72,7 @@ function findClassMethods (data, src)
                 }
             };
 
-            console.log(method);
+            // console.log(method);
 
             methods.push(method);
 

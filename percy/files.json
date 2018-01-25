@@ -339,14 +339,14 @@
         {
           "path": "animations\\Animation.js",
           "name": "Animation.js",
-          "size": 22998,
+          "size": 22889,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\AnimationFrame.js",
           "name": "AnimationFrame.js",
-          "size": 3493,
+          "size": 4652,
           "extension": ".js",
           "type": "file"
         },
@@ -365,7 +365,7 @@
           "type": "file"
         }
       ],
-      "size": 40970,
+      "size": 42020,
       "type": "directory"
     },
     {
@@ -375,61 +375,47 @@
         {
           "path": "boot\\Config.js",
           "name": "Config.js",
-          "size": 8914,
+          "size": 9255,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\CreateRenderer.js",
           "name": "CreateRenderer.js",
-          "size": 3327,
+          "size": 3589,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\DebugHeader.js",
           "name": "DebugHeader.js",
-          "size": 2644,
+          "size": 2769,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\Game.js",
           "name": "Game.js",
-          "size": 7236,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "boot\\Ticker.js",
-          "name": "Ticker.js",
-          "size": 3577,
+          "size": 13989,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\TimeStep.js",
           "name": "TimeStep.js",
-          "size": 14232,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "boot\\TimeStepDebug.js",
-          "name": "TimeStepDebug.js",
-          "size": 15602,
+          "size": 16889,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\VisibilityHandler.js",
           "name": "VisibilityHandler.js",
-          "size": 1573,
+          "size": 2535,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 57105,
+      "size": 49026,
       "type": "directory"
     },
     {
@@ -690,12 +676,12 @@
             {
               "path": "curves\\curve\\Curve.js",
               "name": "Curve.js",
-              "size": 12936,
+              "size": 14312,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 12936,
+          "size": 14312,
           "type": "directory"
         },
         {
@@ -773,7 +759,7 @@
           "type": "directory"
         }
       ],
-      "size": 46258,
+      "size": 47634,
       "type": "directory"
     },
     {
@@ -2783,7 +2769,7 @@
                 {
                   "path": "gameobjects\\text\\static\\Text.js",
                   "name": "Text.js",
-                  "size": 20633,
+                  "size": 20693,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2823,7 +2809,7 @@
                   "type": "file"
                 }
               ],
-              "size": 25577,
+              "size": 25637,
               "type": "directory"
             },
             {
@@ -2834,7 +2820,7 @@
               "type": "file"
             }
           ],
-          "size": 41548,
+          "size": 41608,
           "type": "directory"
         },
         {
@@ -2960,7 +2946,7 @@
                 {
                   "path": "gameobjects\\tilemap\\components\\index.js",
                   "name": "index.js",
-                  "size": 1921,
+                  "size": 2069,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -3056,6 +3042,20 @@
                   "type": "file"
                 },
                 {
+                  "path": "gameobjects\\tilemap\\components\\SetCollisionByProperty.js",
+                  "name": "SetCollisionByProperty.js",
+                  "size": 2427,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "gameobjects\\tilemap\\components\\SetCollisionFromCollisionGroup.js",
+                  "name": "SetCollisionFromCollisionGroup.js",
+                  "size": 1738,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
                   "path": "gameobjects\\tilemap\\components\\SetLayerCollisionIndex.js",
                   "name": "SetLayerCollisionIndex.js",
                   "size": 717,
@@ -3147,7 +3147,7 @@
                   "type": "file"
                 }
               ],
-              "size": 66568,
+              "size": 70881,
               "type": "directory"
             },
             {
@@ -3157,7 +3157,7 @@
                 {
                   "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayer.js",
                   "name": "DynamicTilemapLayer.js",
-                  "size": 14815,
+                  "size": 15421,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -3183,7 +3183,7 @@
                   "type": "file"
                 }
               ],
-              "size": 19003,
+              "size": 19609,
               "type": "directory"
             },
             {
@@ -3379,7 +3379,7 @@
                 {
                   "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayer.js",
                   "name": "StaticTilemapLayer.js",
-                  "size": 17205,
+                  "size": 17811,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -3405,20 +3405,20 @@
                   "type": "file"
                 }
               ],
-              "size": 19818,
+              "size": 20424,
               "type": "directory"
             },
             {
               "path": "gameobjects\\tilemap\\Tile.js",
               "name": "Tile.js",
-              "size": 15984,
+              "size": 18495,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\tilemap\\Tilemap.js",
               "name": "Tilemap.js",
-              "size": 49696,
+              "size": 50706,
               "extension": ".js",
               "type": "file"
             },
@@ -3439,12 +3439,12 @@
             {
               "path": "gameobjects\\tilemap\\Tileset.js",
               "name": "Tileset.js",
-              "size": 10343,
+              "size": 10668,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 226637,
+          "size": 236008,
           "type": "directory"
         },
         {
@@ -3541,7 +3541,7 @@
           "type": "directory"
         }
       ],
-      "size": 626845,
+      "size": 636276,
       "type": "directory"
     },
     {
@@ -4970,7 +4970,7 @@
         {
           "path": "input\\InputManager.js",
           "name": "InputManager.js",
-          "size": 7849,
+          "size": 7938,
           "extension": ".js",
           "type": "file"
         },
@@ -5038,7 +5038,7 @@
             {
               "path": "input\\keyboard\\KeyboardManager.js",
               "name": "KeyboardManager.js",
-              "size": 6893,
+              "size": 7017,
               "extension": ".js",
               "type": "file"
             },
@@ -5082,6 +5082,13 @@
                   "type": "file"
                 },
                 {
+                  "path": "input\\keyboard\\keys\\KeyMap.js",
+                  "name": "KeyMap.js",
+                  "size": 156,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
                   "path": "input\\keyboard\\keys\\ProcessKeyDown.js",
                   "name": "ProcessKeyDown.js",
                   "size": 598,
@@ -5110,11 +5117,11 @@
                   "type": "file"
                 }
               ],
-              "size": 8234,
+              "size": 8390,
               "type": "directory"
             }
           ],
-          "size": 21505,
+          "size": 21785,
           "type": "directory"
         },
         {
@@ -5169,7 +5176,7 @@
           "type": "directory"
         }
       ],
-      "size": 88692,
+      "size": 89061,
       "type": "directory"
     },
     {
@@ -5211,7 +5218,7 @@
             {
               "path": "loader\\filetypes\\AudioFile.js",
               "name": "AudioFile.js",
-              "size": 4721,
+              "size": 4725,
               "extension": ".js",
               "type": "file"
             },
@@ -5246,7 +5253,7 @@
             {
               "path": "loader\\filetypes\\HTML5AudioFile.js",
               "name": "HTML5AudioFile.js",
-              "size": 2881,
+              "size": 2960,
               "extension": ".js",
               "type": "file"
             },
@@ -5323,7 +5330,7 @@
             {
               "path": "loader\\filetypes\\TilemapJSONFile.js",
               "name": "TilemapJSONFile.js",
-              "size": 1952,
+              "size": 1926,
               "extension": ".js",
               "type": "file"
             },
@@ -5349,7 +5356,7 @@
               "type": "file"
             }
           ],
-          "size": 45556,
+          "size": 45613,
           "type": "directory"
         },
         {
@@ -5376,7 +5383,7 @@
         {
           "path": "loader\\LoaderPlugin.js",
           "name": "LoaderPlugin.js",
-          "size": 18347,
+          "size": 18205,
           "extension": ".js",
           "type": "file"
         },
@@ -5402,7 +5409,7 @@
           "type": "file"
         }
       ],
-      "size": 77013,
+      "size": 76928,
       "type": "directory"
     },
     {
@@ -7139,12 +7146,12 @@
             {
               "path": "physics\\impact\\World.js",
               "name": "World.js",
-              "size": 15424,
+              "size": 18874,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 55055,
+          "size": 58505,
           "type": "directory"
         },
         {
@@ -7267,7 +7274,7 @@
             {
               "path": "physics\\matter-js\\Factory.js",
               "name": "Factory.js",
-              "size": 6561,
+              "size": 6764,
               "extension": ".js",
               "type": "file"
             },
@@ -7589,6 +7596,13 @@
               "type": "file"
             },
             {
+              "path": "physics\\matter-js\\MatterTileBody.js",
+              "name": "MatterTileBody.js",
+              "size": 6100,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
               "path": "physics\\matter-js\\PointerConstraint.js",
               "name": "PointerConstraint.js",
               "size": 4794,
@@ -7598,12 +7612,12 @@
             {
               "path": "physics\\matter-js\\World.js",
               "name": "World.js",
-              "size": 10805,
+              "size": 11575,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 381341,
+          "size": 388414,
           "type": "directory"
         },
         {
@@ -7622,7 +7636,7 @@
           "type": "directory"
         }
       ],
-      "size": 567749,
+      "size": 578272,
       "type": "directory"
     },
     {
@@ -8254,7 +8268,7 @@
         {
           "path": "scene\\const.js",
           "name": "const.js",
-          "size": 180,
+          "size": 198,
           "extension": ".js",
           "type": "file"
         },
@@ -8296,14 +8310,14 @@
         {
           "path": "scene\\SceneManager.js",
           "name": "SceneManager.js",
-          "size": 25561,
+          "size": 25679,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "scene\\ScenePlugin.js",
           "name": "ScenePlugin.js",
-          "size": 4922,
+          "size": 5603,
           "extension": ".js",
           "type": "file"
         },
@@ -8322,7 +8336,7 @@
           "type": "file"
         }
       ],
-      "size": 40200,
+      "size": 41017,
       "type": "directory"
     },
     {
@@ -8339,7 +8353,7 @@
         {
           "path": "sound\\BaseSoundManager.js",
           "name": "BaseSoundManager.js",
-          "size": 13310,
+          "size": 13501,
           "extension": ".js",
           "type": "file"
         },
@@ -8368,14 +8382,36 @@
         {
           "path": "sound\\index.js",
           "name": "index.js",
-          "size": 465,
+          "size": 589,
           "extension": ".js",
           "type": "file"
         },
         {
+          "path": "..\\phaser\\src\\sound\\noaudio",
+          "name": "noaudio",
+          "children": [
+            {
+              "path": "sound\\noaudio\\NoAudioSound.js",
+              "name": "NoAudioSound.js",
+              "size": 1692,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "sound\\noaudio\\NoAudioSoundManager.js",
+              "name": "NoAudioSoundManager.js",
+              "size": 1679,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 3371,
+          "type": "directory"
+        },
+        {
           "path": "sound\\SoundManagerCreator.js",
           "name": "SoundManagerCreator.js",
-          "size": 871,
+          "size": 819,
           "extension": ".js",
           "type": "file"
         },
@@ -8402,7 +8438,7 @@
           "type": "directory"
         }
       ],
-      "size": 72582,
+      "size": 76216,
       "type": "directory"
     },
     {
@@ -8590,7 +8626,7 @@
         {
           "path": "time\\Clock.js",
           "name": "Clock.js",
-          "size": 5154,
+          "size": 5091,
           "extension": ".js",
           "type": "file"
         },
@@ -8604,12 +8640,12 @@
         {
           "path": "time\\TimerEvent.js",
           "name": "TimerEvent.js",
-          "size": 3970,
+          "size": 3981,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 9244,
+      "size": 9192,
       "type": "directory"
     },
     {
@@ -9111,6 +9147,6 @@
       "type": "directory"
     }
   ],
-  "size": 2615320,
+  "size": 2634304,
   "type": "directory"
 }

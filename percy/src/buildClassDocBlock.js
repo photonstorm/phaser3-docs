@@ -111,7 +111,6 @@ function buildDocBlock (data, src)
                 result.push('         * ' + prop.description);
                 result.push('         *');
                 result.push('         * @property {' + prop.type + '} ' + prop.name);
-                result.push('         * @since 3.0.0');
 
                 if (prop.private)
                 {
@@ -123,6 +122,7 @@ function buildDocBlock (data, src)
                     result.push('         * @default ' + prop.default);
                 }
 
+                result.push('         * @since 3.0.0');
                 result.push('         */');
 
                 break;

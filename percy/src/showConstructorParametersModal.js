@@ -54,7 +54,7 @@ function showConstructorParametersModal (data, src)
     $('#paramsModal').modal('show');
 
     //  Button save ...
-    $('#updateButton').click(function() {
+    $('#updateButton').click(function(event) {
 
         //  Update the data object with the parameter settings
 
@@ -67,6 +67,8 @@ function showConstructorParametersModal (data, src)
         }
 
         $('#paramsModal').modal('hide');
+    
+        $(this).off(event);
 
     });
 }
