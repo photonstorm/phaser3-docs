@@ -28,7 +28,11 @@ var filteredTree = dirTree(rootDir, { extensions: /\.js$/ }, (item, PATH) => {
 
     item.path = item.path.replace('..\\phaser\\src\\', '');
 
-    if (item.path.substr(-8) !== 'index.js' && item.path.substr(0, 21) !== 'physics\\matter-js\\lib')
+    if (
+        item.path.substr(-8) !== 'index.js' &&
+        item.path.substr(0, 21) !== 'physics\\matter-js\\lib' &&
+        item.path.substr(0, 9) !== 'polyfills'
+        )
     {
         queries.push('INSERT INTO files (path) VALUES ("' + item.path + '")');
     }
