@@ -32,6 +32,26 @@ function parseSource ()
     {
         //  There are no constructor arguments, so move on to the properties
         console.log('no constructor arguments');
+
+        findProperties(data, src);
+
+        console.log(data);
+
+        showPropertiesModal(data, src);
+
+        $('#paramsModal').one('hidden.bs.modal', function (e)
+        {
+            console.log('props modal hidden');
+            console.log(data);
+
+            //  Methods ...
+            findClassMethods(data, src);
+
+            var out = buildDocBlock(data, src);
+
+            $('#output').text(out.join('\n'));
+
+        });
     }
     else
     {
