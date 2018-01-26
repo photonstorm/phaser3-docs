@@ -78,6 +78,7 @@
                         <div class="form-group">
                             <button type="button" id="saveButton" class="btn btn-primary">Save File</button>
                             <button type="button" id="markButton" class="btn btn-success mx-4">Mark Done</button>
+                            <button type="button" id="markNextButton" class="btn btn-warning mx-4">Mark &amp; Next</button>
                             <button type="button" id="nextButton" class="btn btn-danger">Next File</button>
                         </div>
 
@@ -129,11 +130,14 @@
 
         //  Set-up the handlers
 
+        var nextURL = '';
+
         $(document).ready(function () {
 
             $('#swapType').attr('href', 'class.html' + location.search);
 
             $('#nextButton').hide();
+            $('#markNextButton').hide();
 
             var filename = getQueryString('f');
 
@@ -238,6 +242,24 @@
 
                 });
 
+                $('#markNextButton').click(function() {
+
+                    var data = {
+                        filename: $('#filename').val()
+                    };
+
+                    //  Save to SQL
+                    $.post('markdone.php', data, function (result) {
+
+                        if (result == 'OK')
+                        {
+                            window.location.href = nextURL;
+                        }
+
+                    });
+
+                });
+
                 var data = {
                     filename: $('#filename').val()
                 };
@@ -247,8 +269,11 @@
                     if (result !== '')
                     {
                         console.log('Next file:', result);
+                        
+                        nextURL = 'function.html?f=' + result;
 
                         $('#nextButton').show();
+                        $('#markNextButton').show();
 
                         $('#nextButton').click(function() {
 
