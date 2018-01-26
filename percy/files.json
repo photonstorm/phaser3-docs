@@ -375,7 +375,7 @@
         {
           "path": "boot\\Config.js",
           "name": "Config.js",
-          "size": 9255,
+          "size": 9263,
           "extension": ".js",
           "type": "file"
         },
@@ -415,7 +415,7 @@
           "type": "file"
         }
       ],
-      "size": 49026,
+      "size": 49034,
       "type": "directory"
     },
     {
@@ -571,13 +571,6 @@
       "type": "file"
     },
     { "path": "const.js", "name": "const.js", "size": 334, "extension": ".js", "type": "file" },
-    {
-      "path": "CoreScenePlugins.js",
-      "name": "CoreScenePlugins.js",
-      "size": 525,
-      "extension": ".js",
-      "type": "file"
-    },
     {
       "path": "..\\phaser\\src\\create",
       "name": "create",
@@ -783,13 +776,6 @@
       ],
       "size": 9596,
       "type": "directory"
-    },
-    {
-      "path": "DefaultScenePlugins.js",
-      "name": "DefaultScenePlugins.js",
-      "size": 617,
-      "extension": ".js",
-      "type": "file"
     },
     {
       "path": "..\\phaser\\src\\device",
@@ -1437,14 +1423,14 @@
         {
           "path": "dom\\AddToDOM.js",
           "name": "AddToDOM.js",
-          "size": 1100,
+          "size": 1488,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "dom\\DOMContentLoaded.js",
           "name": "DOMContentLoaded.js",
-          "size": 1484,
+          "size": 1800,
           "extension": ".js",
           "type": "file"
         },
@@ -1458,26 +1444,26 @@
         {
           "path": "dom\\ParseXML.js",
           "name": "ParseXML.js",
-          "size": 812,
+          "size": 1088,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "dom\\RemoveFromDOM.js",
           "name": "RemoveFromDOM.js",
-          "size": 308,
+          "size": 391,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "dom\\RequestAnimationFrame.js",
           "name": "RequestAnimationFrame.js",
-          "size": 2163,
+          "size": 4372,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 6154,
+      "size": 9426,
       "type": "directory"
     },
     {
@@ -1487,12 +1473,12 @@
         {
           "path": "events\\EventEmitter.js",
           "name": "EventEmitter.js",
-          "size": 571,
+          "size": 995,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 571,
+      "size": 995,
       "type": "directory"
     },
     {
@@ -1848,42 +1834,6 @@
           "type": "directory"
         },
         {
-          "path": "..\\phaser\\src\\gameobjects\\container",
-          "name": "container",
-          "children": [
-            {
-              "path": "gameobjects\\container\\Container.js",
-              "name": "Container.js",
-              "size": 4233,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\container\\ContainerCreator.js",
-              "name": "ContainerCreator.js",
-              "size": 302,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\container\\ContainerFactory.js",
-              "name": "ContainerFactory.js",
-              "size": 695,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\container\\ContainerRender.js",
-              "name": "ContainerRender.js",
-              "size": 363,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 5593,
-          "type": "directory"
-        },
-        {
           "path": "gameobjects\\DisplayList.js",
           "name": "DisplayList.js",
           "size": 18457,
@@ -2057,7 +2007,7 @@
         {
           "path": "gameobjects\\index.js",
           "name": "index.js",
-          "size": 3888,
+          "size": 3716,
           "extension": ".js",
           "type": "file"
         },
@@ -3230,7 +3180,7 @@
           "type": "directory"
         }
       ],
-      "size": 583274,
+      "size": 577509,
       "type": "directory"
     },
     {
@@ -3244,63 +3194,63 @@
             {
               "path": "geom\\circle\\Area.js",
               "name": "Area.js",
-              "size": 354,
+              "size": 375,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\Circle.js",
               "name": "Circle.js",
-              "size": 5168,
+              "size": 8914,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\Circumference.js",
               "name": "Circumference.js",
-              "size": 363,
+              "size": 396,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\CircumferencePoint.js",
               "name": "CircumferencePoint.js",
-              "size": 815,
+              "size": 1035,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\Clone.js",
               "name": "Clone.js",
-              "size": 386,
+              "size": 549,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\Contains.js",
               "name": "Contains.js",
-              "size": 730,
+              "size": 900,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\ContainsPoint.js",
               "name": "ContainsPoint.js",
-              "size": 432,
+              "size": 587,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\ContainsRect.js",
               "name": "ContainsRect.js",
-              "size": 600,
+              "size": 793,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\CopyFrom.js",
               "name": "CopyFrom.js",
-              "size": 578,
+              "size": 575,
               "extension": ".js",
               "type": "file"
             },
@@ -3314,21 +3264,21 @@
             {
               "path": "geom\\circle\\GetBounds.js",
               "name": "GetBounds.js",
-              "size": 604,
+              "size": 792,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\GetPoint.js",
               "name": "GetPoint.js",
-              "size": 1138,
+              "size": 1262,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\GetPoints.js",
               "name": "GetPoints.js",
-              "size": 763,
+              "size": 1596,
               "extension": ".js",
               "type": "file"
             },
@@ -3342,26 +3292,26 @@
             {
               "path": "geom\\circle\\Offset.js",
               "name": "Offset.js",
-              "size": 410,
+              "size": 542,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\OffsetPoint.js",
               "name": "OffsetPoint.js",
-              "size": 422,
+              "size": 586,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\circle\\Random.js",
               "name": "Random.js",
-              "size": 793,
+              "size": 935,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 14976,
+          "size": 21257,
           "type": "directory"
         },
         {
@@ -3371,91 +3321,91 @@
             {
               "path": "geom\\ellipse\\Area.js",
               "name": "Area.js",
-              "size": 415,
+              "size": 466,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\Circumference.js",
               "name": "Circumference.js",
-              "size": 495,
+              "size": 575,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\CircumferencePoint.js",
               "name": "CircumferencePoint.js",
-              "size": 846,
+              "size": 1117,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\Clone.js",
               "name": "Clone.js",
-              "size": 379,
+              "size": 575,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\Contains.js",
               "name": "Contains.js",
-              "size": 705,
+              "size": 880,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\ContainsPoint.js",
               "name": "ContainsPoint.js",
-              "size": 437,
+              "size": 594,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\ContainsRect.js",
               "name": "ContainsRect.js",
-              "size": 608,
+              "size": 797,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\CopyFrom.js",
               "name": "CopyFrom.js",
-              "size": 408,
+              "size": 608,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\Ellipse.js",
               "name": "Ellipse.js",
-              "size": 2991,
+              "size": 9223,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\Equals.js",
               "name": "Equals.js",
-              "size": 518,
+              "size": 733,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\GetBounds.js",
               "name": "GetBounds.js",
-              "size": 600,
+              "size": 798,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\GetPoint.js",
               "name": "GetPoint.js",
-              "size": 1146,
+              "size": 1271,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\GetPoints.js",
               "name": "GetPoints.js",
-              "size": 766,
+              "size": 1606,
               "extension": ".js",
               "type": "file"
             },
@@ -3469,26 +3419,26 @@
             {
               "path": "geom\\ellipse\\Offset.js",
               "name": "Offset.js",
-              "size": 418,
+              "size": 555,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\OffsetPoint.js",
               "name": "OffsetPoint.js",
-              "size": 430,
+              "size": 598,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\ellipse\\Random.js",
               "name": "Random.js",
-              "size": 671,
+              "size": 885,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 12605,
+          "size": 22053,
           "type": "directory"
         },
         {
@@ -3842,13 +3792,6 @@
           "name": "point",
           "children": [
             {
-              "path": "geom\\point\\Add.js",
-              "name": "Add.js",
-              "size": 393,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
               "path": "geom\\point\\Ceil.js",
               "name": "Ceil.js",
               "size": 320,
@@ -3866,27 +3809,6 @@
               "path": "geom\\point\\CopyFrom.js",
               "name": "CopyFrom.js",
               "size": 371,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\Cross.js",
-              "name": "Cross.js",
-              "size": 372,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\Divide.js",
-              "name": "Divide.js",
-              "size": 402,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\Dot.js",
-              "name": "Dot.js",
-              "size": 366,
               "extension": ".js",
               "type": "file"
             },
@@ -3935,7 +3857,7 @@
             {
               "path": "geom\\point\\index.js",
               "name": "index.js",
-              "size": 1134,
+              "size": 746,
               "extension": ".js",
               "type": "file"
             },
@@ -3954,37 +3876,9 @@
               "type": "file"
             },
             {
-              "path": "geom\\point\\Multiply.js",
-              "name": "Multiply.js",
-              "size": 408,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
               "path": "geom\\point\\Negative.js",
               "name": "Negative.js",
               "size": 456,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\Normalize.js",
-              "name": "Normalize.js",
-              "size": 481,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\NormalizeRightHand.js",
-              "name": "NormalizeRightHand.js",
-              "size": 345,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\Perp.js",
-              "name": "Perp.js",
-              "size": 299,
               "extension": ".js",
               "type": "file"
             },
@@ -3998,40 +3892,26 @@
             {
               "path": "geom\\point\\Project.js",
               "name": "Project.js",
-              "size": 736,
+              "size": 755,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\point\\ProjectUnit.js",
               "name": "ProjectUnit.js",
-              "size": 672,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\RPerp.js",
-              "name": "RPerp.js",
-              "size": 302,
+              "size": 671,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\point\\SetMagnitude.js",
               "name": "SetMagnitude.js",
-              "size": 494,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "geom\\point\\Subtract.js",
-              "name": "Subtract.js",
-              "size": 408,
+              "size": 603,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 13456,
+          "size": 9419,
           "type": "directory"
         },
         {
@@ -4556,15 +4436,8 @@
           "type": "directory"
         }
       ],
-      "size": 180919,
+      "size": 192611,
       "type": "directory"
-    },
-    {
-      "path": "GlobalPlugins.js",
-      "name": "GlobalPlugins.js",
-      "size": 275,
-      "extension": ".js",
-      "type": "file"
     },
     {
       "path": "..\\phaser\\src\\input",
@@ -7340,9 +7213,23 @@
       "name": "plugins",
       "children": [
         {
-          "path": "plugins\\Plugin.js",
-          "name": "Plugin.js",
-          "size": 1118,
+          "path": "plugins\\CoreScenePlugins.js",
+          "name": "CoreScenePlugins.js",
+          "size": 525,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "plugins\\DefaultScenePlugins.js",
+          "name": "DefaultScenePlugins.js",
+          "size": 617,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "plugins\\GlobalPlugins.js",
+          "name": "GlobalPlugins.js",
+          "size": 275,
           "extension": ".js",
           "type": "file"
         },
@@ -7354,7 +7241,7 @@
           "type": "file"
         }
       ],
-      "size": 3752,
+      "size": 4051,
       "type": "directory"
     },
     {
@@ -7559,19 +7446,19 @@
                 {
                   "path": "renderer\\webgl\\pipelines\\FlatTintPipeline.js",
                   "name": "FlatTintPipeline.js",
-                  "size": 31529,
+                  "size": 31597,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\TextureTintPipeline.js",
                   "name": "TextureTintPipeline.js",
-                  "size": 43124,
+                  "size": 43071,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 93012,
+              "size": 93027,
               "type": "directory"
             },
             {
@@ -7584,7 +7471,7 @@
             {
               "path": "renderer\\webgl\\Utils.js",
               "name": "Utils.js",
-              "size": 1137,
+              "size": 1293,
               "extension": ".js",
               "type": "file"
             },
@@ -7603,11 +7490,11 @@
               "type": "file"
             }
           ],
-          "size": 124128,
+          "size": 124299,
           "type": "directory"
         }
       ],
-      "size": 138577,
+      "size": 138748,
       "type": "directory"
     },
     {
@@ -7652,14 +7539,14 @@
         {
           "path": "scene\\Scene.js",
           "name": "Scene.js",
-          "size": 532,
+          "size": 441,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "scene\\SceneManager.js",
           "name": "SceneManager.js",
-          "size": 25679,
+          "size": 25543,
           "extension": ".js",
           "type": "file"
         },
@@ -7673,19 +7560,19 @@
         {
           "path": "scene\\Settings.js",
           "name": "Settings.js",
-          "size": 1360,
+          "size": 1307,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "scene\\Systems.js",
           "name": "Systems.js",
-          "size": 5054,
+          "size": 5070,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 41017,
+      "size": 40753,
       "type": "directory"
     },
     {
@@ -8496,6 +8383,6 @@
       "type": "directory"
     }
   ],
-  "size": 2605411,
+  "size": 2613831,
   "type": "directory"
 }
