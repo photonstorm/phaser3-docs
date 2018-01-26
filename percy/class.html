@@ -22,7 +22,8 @@
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Percy - Method</a>
+            <a class="navbar-brand" href="index.html">Percy - Class</a>
+            <a class="navbar-brand" href="function.html" id="swapType">(swap to Function)</a>
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="index.html?filter=all&show=all">All</a>
                 <a class="nav-item nav-link" href="index.html?filter=all&show=done">Done</a>
@@ -115,6 +116,8 @@
         //  Set-up the handlers
 
         $(document).ready(function () {
+
+            $('#swapType').attr('href', 'function.html' + location.search);
 
             $('#nextButton').hide();
 
