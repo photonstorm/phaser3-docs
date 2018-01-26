@@ -43,8 +43,10 @@ function getTypesList (id, input, param)
     //  some quick helpers
     var match = {
 
+        'config': 'object',
         'x': 'number',
         'y': 'number',
+        'key': 'string',
         'width': 'number',
         'height': 'number',
         'angle': 'number',

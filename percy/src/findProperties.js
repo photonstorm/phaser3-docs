@@ -65,6 +65,7 @@ function findProperties (data, src)
 
                     case '0':
                     case '1':
+                    case '-1':
                         type = 'number';
                         def = value;
                         break;
