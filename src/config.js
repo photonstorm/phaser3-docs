@@ -1,9 +1,9 @@
 module.exports = {
 
-    SRC: '../phaser/v3/src/gameobjects/GameObject.js',
+    SRC: '../phaser/src/gameobjects/blitter/Blitter.js',
     DEST: './docs/comments.json',
 
-    SRC_PATH: '../phaser/v3/src/',
+    SRC_PATH: '../phaser/src/',
     DEST_PATH: './docs/',
 
     DOCTRINE: {
