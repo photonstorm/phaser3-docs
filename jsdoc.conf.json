@@ -2,27 +2,46 @@
     "tags": {
         "allowUnknownTags": true
     },
+    "markdown"  : {
+        "parser"   : "gfm",
+        "hardwrap" : true
+    },
     "source": {
-        "include": "../phaser/src/gameobjects/blitter",
-        "exclude": [ "../phaser/src/physics/matter-js/lib", "../phaser/src/polyfills" ],
+        "include": [
+            "../phaser/src/phaser.js",
+            "../phaser/src/gameobjects/index.js",
+            "../phaser/src/gameobjects/GameObject.js",
+            "../phaser/src/gameobjects/blitter/Blitter.js"
+        ],
+        "exclude": [
+            "../phaser/src/physics/matter-js/lib",
+            "../phaser/src/polyfills"
+        ],
         "includePattern": ".+\\.js?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
-    "plugins": [],
+    "plugins": [
+        "jsdoc-plugins/typedef"
+    ],
     "templates": {
         "cleverLinks": false,
         "monospaceLinks": false,
         "default": {
-            "outputSourceFiles": true
+            "outputSourceFiles": false,
+            "useLongnameInNav": true
         }
     },
     "opts": {
         "debug": true,
-        "template": "templates/default",
-        "encoding": "utf8",
         "destination": "./out/",
+        "__destination": "./out/docs.json",
+        "encoding": "utf8",
         "outputSourceFiles": false,
         "outputSourcePath": true,
-        "recurse": true
+        "recurse": true,
+        "private": true,
+        "lenient": true,
+        "sourceType": "script",
+        "template": "templates/default"
     }
 }

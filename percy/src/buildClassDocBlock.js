@@ -13,6 +13,7 @@
          * [description]
          *
          * @property {Phaser.Game} game
+         * @alias Namespace#property
          * @protected
          * @since 3.0.0
          */
@@ -89,6 +90,7 @@ function buildDocBlock (data, src)
          * [description]
          *
          * @property {Phaser.Game} game
+         * @alias Namespace#property
          * @since 3.0.0
          * @protected
          */
@@ -111,6 +113,7 @@ function buildDocBlock (data, src)
                 result.push('         * ' + prop.description);
                 result.push('         *');
                 result.push('         * @property {' + prop.type + '} ' + prop.name);
+                result.push('         * @alias ' + data.className + '#' + prop.name);
 
                 if (prop.private)
                 {
