@@ -9,13 +9,20 @@
     "source": {
         "include": [
             "../phaser/src/phaser.js",
-            "../phaser/src/actions/",
-            "../phaser/src/math/",
-            "../phaser/src/utils/",
             "../phaser/src/gameobjects/index.js",
             "../phaser/src/gameobjects/components/",
             "../phaser/src/gameobjects/GameObject.js",
-            "../phaser/src/gameobjects/blitter/Blitter.js"
+            "../phaser/src/gameobjects/GameObjectFactory.js",
+            "../phaser/src/gameobjects/blitter/Blitter.js",
+            "../phaser/src/gameobjects/blitter/BlitterFactory.js",
+            "../phaser/src/gameobjects/blitter/Bob.js"
+        ],
+        "test": [
+            "../phaser/src/actions/",
+            "../phaser/src/math/",
+            "../phaser/src/utils/",
+            "../phaser/src/geom/index.js",
+            "../phaser/src/geom/circle/"
         ],
         "exclude": [
             "../phaser/src/physics/matter-js/lib",
@@ -43,7 +50,7 @@
         "outputSourceFiles": false,
         "outputSourcePath": true,
         "recurse": true,
-        "private": true,
+        "private": false,
         "lenient": true,
         "sourceType": "script",
         "template": "templates/default"
