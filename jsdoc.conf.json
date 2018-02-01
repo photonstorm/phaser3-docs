@@ -13,6 +13,7 @@
             "../phaser/src/math/",
             "../phaser/src/utils/",
             "../phaser/src/gameobjects/index.js",
+            "../phaser/src/gameobjects/components/",
             "../phaser/src/gameobjects/GameObject.js",
             "../phaser/src/gameobjects/blitter/Blitter.js"
         ],

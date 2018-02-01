@@ -25,9 +25,20 @@ function findProperties (data, src)
 
             if (to === -1)
             {
-                // this.scene;
-                to = property.indexOf(';') + 1;
-                type = 'null';
+                // Avoid function calls: this.setTexture(entry.texture, entry.frame);
+
+                var brace = property.indexOf(');');
+
+                if (brace === -1)
+                {
+                    // this.scene;
+                    to = property.indexOf(';') + 1;
+                    type = 'null';
+                }
+                else
+                {
+                    continue;
+                }
             }
             else
             {

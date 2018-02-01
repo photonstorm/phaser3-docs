@@ -12,8 +12,8 @@
         /**
          * [description]
          *
-         * @property {Phaser.Game} game
-         * @alias Namespace#property
+         * @name namespace#property
+         * @type {Phaser.Game}
          * @protected
          * @since 3.0.0
          */
@@ -35,6 +35,7 @@ function buildDocBlock (data, src)
     //     className: module,
     //     memberOf: namespace,
     //     extends: extend,
+    //     components: components,
     //     constructor: {
     //         parameters: parameters,
     //         start: start,
@@ -47,23 +48,34 @@ function buildDocBlock (data, src)
 
     var docblock = [];
 
-    docblock.push('    /**');
-    docblock.push('     * [description]');
-    docblock.push('     *');
-    docblock.push('     * @class ' + className);
+    docblock.push('/**');
+    docblock.push(' * [description]');
+    docblock.push(' *');
+    docblock.push(' * @class ' + className);
 
     if (data.extends)
     {
-        docblock.push('     * @extends ' + data.memberOf + '.' + data.extends);
+        docblock.push(' * @extends ' + data.memberOf + '.' + data.extends);
     }
 
-    docblock.push('     * @memberOf ' + data.memberOf);
-    docblock.push('     * @constructor');
-    docblock.push('     * @since 3.0.0');
+    docblock.push(' * @memberOf ' + data.memberOf);
+    docblock.push(' * @constructor');
+    docblock.push(' * @since 3.0.0');
+
+    if (data.components.length > 0)
+    {
+        docblock.push(' *');
+        docblock.push(' * Mixins:');
+
+        for (var i = 0; i < data.components.length; i++)
+        {
+            docblock.push(' * @extends ' + data.memberOf + '.' + data.components[i]);
+        }
+    }
 
     if (data.constructor.parameters.length > 0)
     {
-        docblock.push('     *');
+        docblock.push(' *');
 
         for (var i = 0; i < data.constructor.parameters.length; i++)
         {
@@ -76,11 +88,11 @@ function buildDocBlock (data, src)
                 name = '[' + name + ']';
             }
 
-            docblock.push('     * @param {' + param.type + '} ' + name + ' - ' + param.description);
+            docblock.push(' * @param {' + param.type + '} ' + name + ' - ' + param.description);
         }
     }
 
-    docblock.push('     */');
+    docblock.push(' */');
 
     var namespace = data.memberOf + '.' + data.className;
 
@@ -89,10 +101,10 @@ function buildDocBlock (data, src)
         /**
          * [description]
          *
-         * @property {Phaser.Game} game
-         * @alias Namespace#property
-         * @since 3.0.0
+         * @name namespace#property
+         * @type {Phaser.Game}
          * @protected
+         * @since 3.0.0
          */
 
 
@@ -112,8 +124,8 @@ function buildDocBlock (data, src)
                 result.push('        /**');
                 result.push('         * ' + prop.description);
                 result.push('         *');
-                result.push('         * @property {' + prop.type + '} ' + prop.name);
-                result.push('         * @alias ' + data.className + '#' + prop.name);
+                result.push('         * @name ' + namespace + '#' + prop.name);
+                result.push('         * @type {' + prop.type + '}');
 
                 if (prop.private)
                 {
@@ -191,7 +203,7 @@ function buildDocBlock (data, src)
 
     for (var i = 0; i < src.length; i++)
     {
-        if (i === data.constructor.start)
+        if (i === data.constructor.classStart)
         {
             out = out.concat(docblock);
             out.push(src[i]);
