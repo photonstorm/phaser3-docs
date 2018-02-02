@@ -35,12 +35,11 @@
         "jsdoc-plugins/typedef"
     ],
     "templates": {
-        "cleverLinks": false,
-        "monospaceLinks": false,
-        "default": {
-            "outputSourceFiles": false,
-            "useLongnameInNav": true
-        }
+        "systemName": "Phaser",
+        "systemSummary": "HTML5 Game Framework",
+        "footer": "footer",
+        "copyright": "Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.",
+        "includeDate": true
     },
     "opts": {
         "debug": true,
@@ -53,6 +52,6 @@
         "private": false,
         "lenient": true,
         "sourceType": "script",
-        "template": "templates/default"
+        "template": "node_modules/foodoc/template"
     }
 }
