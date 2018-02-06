@@ -339,33 +339,33 @@
         {
           "path": "animations\\Animation.js",
           "name": "Animation.js",
-          "size": 23776,
+          "size": 22889,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\AnimationFrame.js",
           "name": "AnimationFrame.js",
-          "size": 4814,
+          "size": 4652,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\AnimationManager.js",
           "name": "AnimationManager.js",
-          "size": 14282,
+          "size": 14426,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\index.js",
           "name": "index.js",
-          "size": 197,
+          "size": 217,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 43069,
+      "size": 42184,
       "type": "directory"
     },
     {
@@ -375,7 +375,7 @@
         {
           "path": "boot\\Config.js",
           "name": "Config.js",
-          "size": 9263,
+          "size": 9264,
           "extension": ".js",
           "type": "file"
         },
@@ -389,21 +389,28 @@
         {
           "path": "boot\\DebugHeader.js",
           "name": "DebugHeader.js",
-          "size": 2769,
+          "size": 2770,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\Game.js",
           "name": "Game.js",
-          "size": 13989,
+          "size": 14331,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "boot\\index.js",
+          "name": "index.js",
+          "size": 288,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\TimeStep.js",
           "name": "TimeStep.js",
-          "size": 16889,
+          "size": 16891,
           "extension": ".js",
           "type": "file"
         },
@@ -415,7 +422,7 @@
           "type": "file"
         }
       ],
-      "size": 49034,
+      "size": 49668,
       "type": "directory"
     },
     {
@@ -432,19 +439,19 @@
         {
           "path": "cache\\CacheManager.js",
           "name": "CacheManager.js",
-          "size": 5762,
+          "size": 5827,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "cache\\index.js",
           "name": "index.js",
-          "size": 133,
+          "size": 153,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 10767,
+      "size": 10852,
       "type": "directory"
     },
     {
@@ -458,26 +465,26 @@
             {
               "path": "cameras\\2d\\Camera.js",
               "name": "Camera.js",
-              "size": 33146,
+              "size": 33701,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\2d\\CameraManager.js",
               "name": "CameraManager.js",
-              "size": 12686,
+              "size": 12255,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\2d\\index.js",
               "name": "index.js",
-              "size": 139,
+              "size": 159,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 45971,
+          "size": 46115,
           "type": "directory"
         },
         {
@@ -487,32 +494,32 @@
             {
               "path": "cameras\\controls\\FixedKeyControl.js",
               "name": "FixedKeyControl.js",
-              "size": 6776,
+              "size": 6508,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\controls\\index.js",
               "name": "index.js",
-              "size": 148,
+              "size": 168,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\controls\\SmoothedKeyControl.js",
               "name": "SmoothedKeyControl.js",
-              "size": 10740,
+              "size": 10306,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 17664,
+          "size": 16982,
           "type": "directory"
         },
         {
           "path": "cameras\\index.js",
           "name": "index.js",
-          "size": 156,
+          "size": 176,
           "extension": ".js",
           "type": "file"
         },
@@ -523,44 +530,44 @@
             {
               "path": "cameras\\sprite3d\\Camera.js",
               "name": "Camera.js",
-              "size": 25382,
+              "size": 24343,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\sprite3d\\CameraManager.js",
               "name": "CameraManager.js",
-              "size": 6435,
+              "size": 5840,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\sprite3d\\index.js",
               "name": "index.js",
-              "size": 254,
+              "size": 274,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\sprite3d\\OrthographicCamera.js",
               "name": "OrthographicCamera.js",
-              "size": 4094,
+              "size": 3929,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\sprite3d\\PerspectiveCamera.js",
               "name": "PerspectiveCamera.js",
-              "size": 3186,
+              "size": 3060,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 39351,
+          "size": 37446,
           "type": "directory"
         }
       ],
-      "size": 103142,
+      "size": 100719,
       "type": "directory"
     },
     {
@@ -578,14 +585,14 @@
         {
           "path": "create\\GenerateTexture.js",
           "name": "GenerateTexture.js",
-          "size": 2107,
+          "size": 2025,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "create\\index.js",
           "name": "index.js",
-          "size": 140,
+          "size": 160,
           "extension": ".js",
           "type": "file"
         },
@@ -640,7 +647,7 @@
           "type": "directory"
         }
       ],
-      "size": 8373,
+      "size": 8311,
       "type": "directory"
     },
     {
@@ -654,12 +661,12 @@
             {
               "path": "curves\\cubicbezier\\CubicBezierCurve.js",
               "name": "CubicBezierCurve.js",
-              "size": 4769,
+              "size": 4569,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4769,
+          "size": 4569,
           "type": "directory"
         },
         {
@@ -669,12 +676,12 @@
             {
               "path": "curves\\curve\\Curve.js",
               "name": "Curve.js",
-              "size": 14312,
+              "size": 13770,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 14312,
+          "size": 13770,
           "type": "directory"
         },
         {
@@ -684,18 +691,18 @@
             {
               "path": "curves\\ellipse\\EllipseCurve.js",
               "name": "EllipseCurve.js",
-              "size": 11100,
+              "size": 10591,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 11100,
+          "size": 10591,
           "type": "directory"
         },
         {
           "path": "curves\\index.js",
           "name": "index.js",
-          "size": 319,
+          "size": 339,
           "extension": ".js",
           "type": "file"
         },
@@ -706,12 +713,12 @@
             {
               "path": "curves\\line\\LineCurve.js",
               "name": "LineCurve.js",
-              "size": 4723,
+              "size": 4510,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4723,
+          "size": 4510,
           "type": "directory"
         },
         {
@@ -721,7 +728,7 @@
             {
               "path": "curves\\path\\MoveTo.js",
               "name": "MoveTo.js",
-              "size": 2270,
+              "size": 2155,
               "extension": ".js",
               "type": "file"
             },
@@ -733,7 +740,7 @@
               "type": "file"
             }
           ],
-          "size": 20658,
+          "size": 20543,
           "type": "directory"
         },
         {
@@ -743,16 +750,16 @@
             {
               "path": "curves\\spline\\SplineCurve.js",
               "name": "SplineCurve.js",
-              "size": 4676,
+              "size": 4475,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4676,
+          "size": 4475,
           "type": "directory"
         }
       ],
-      "size": 60557,
+      "size": 58797,
       "type": "directory"
     },
     {
@@ -760,21 +767,28 @@
       "name": "data",
       "children": [
         {
-          "path": "data\\Data.js",
-          "name": "Data.js",
-          "size": 6441,
+          "path": "data\\DataManager.js",
+          "name": "DataManager.js",
+          "size": 5571,
           "extension": ".js",
           "type": "file"
         },
         {
-          "path": "data\\DataStore.js",
-          "name": "DataStore.js",
-          "size": 3155,
+          "path": "data\\DataManagerPlugin.js",
+          "name": "DataManagerPlugin.js",
+          "size": 1165,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "data\\index.js",
+          "name": "index.js",
+          "size": 166,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 9596,
+      "size": 6902,
       "type": "directory"
     },
     {
@@ -819,7 +833,7 @@
         {
           "path": "device\\index.js",
           "name": "index.js",
-          "size": 575,
+          "size": 595,
           "extension": ".js",
           "type": "file"
         },
@@ -845,7 +859,7 @@
           "type": "file"
         }
       ],
-      "size": 28385,
+      "size": 28405,
       "type": "directory"
     },
     {
@@ -898,7 +912,7 @@
                 {
                   "path": "display\\align\\in\\index.js",
                   "name": "index.js",
-                  "size": 462,
+                  "size": 482,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -912,7 +926,7 @@
                 {
                   "path": "display\\align\\in\\QuickSet.js",
                   "name": "QuickSet.js",
-                  "size": 1683,
+                  "size": 1648,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -945,13 +959,13 @@
                   "type": "file"
                 }
               ],
-              "size": 12606,
+              "size": 12591,
               "type": "directory"
             },
             {
               "path": "display\\align\\index.js",
               "name": "index.js",
-              "size": 107,
+              "size": 127,
               "extension": ".js",
               "type": "file"
             },
@@ -983,7 +997,7 @@
                 {
                   "path": "display\\align\\to\\index.js",
                   "name": "index.js",
-                  "size": 550,
+                  "size": 570,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -1051,11 +1065,11 @@
                   "type": "file"
                 }
               ],
-              "size": 14734,
+              "size": 14754,
               "type": "directory"
             }
           ],
-          "size": 30258,
+          "size": 30283,
           "type": "directory"
         },
         {
@@ -1128,7 +1142,7 @@
             {
               "path": "display\\bounds\\index.js",
               "name": "index.js",
-              "size": 646,
+              "size": 666,
               "extension": ".js",
               "type": "file"
             },
@@ -1175,7 +1189,7 @@
               "type": "file"
             }
           ],
-          "size": 9370,
+          "size": 9390,
           "type": "directory"
         },
         {
@@ -1199,7 +1213,7 @@
             {
               "path": "display\\canvas\\index.js",
               "name": "index.js",
-              "size": 276,
+              "size": 296,
               "extension": ".js",
               "type": "file"
             },
@@ -1225,7 +1239,7 @@
               "type": "file"
             }
           ],
-          "size": 10372,
+          "size": 10392,
           "type": "directory"
         },
         {
@@ -1235,7 +1249,7 @@
             {
               "path": "display\\color\\Color.js",
               "name": "Color.js",
-              "size": 10765,
+              "size": 11258,
               "extension": ".js",
               "type": "file"
             },
@@ -1277,21 +1291,21 @@
             {
               "path": "display\\color\\HSLToColor.js",
               "name": "HSLToColor.js",
-              "size": 985,
+              "size": 1023,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\color\\HSVColorWheel.js",
               "name": "HSVColorWheel.js",
-              "size": 762,
+              "size": 791,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\color\\HSVToRGB.js",
               "name": "HSVToRGB.js",
-              "size": 1637,
+              "size": 1709,
               "extension": ".js",
               "type": "file"
             },
@@ -1305,14 +1319,14 @@
             {
               "path": "display\\color\\index.js",
               "name": "index.js",
-              "size": 960,
+              "size": 980,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\color\\IntegerToColor.js",
               "name": "IntegerToColor.js",
-              "size": 520,
+              "size": 541,
               "extension": ".js",
               "type": "file"
             },
@@ -1333,28 +1347,28 @@
             {
               "path": "display\\color\\ObjectToColor.js",
               "name": "ObjectToColor.js",
-              "size": 496,
+              "size": 514,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\color\\RandomRGB.js",
               "name": "RandomRGB.js",
-              "size": 761,
+              "size": 785,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\color\\RGBStringToColor.js",
               "name": "RGBStringToColor.js",
-              "size": 972,
+              "size": 1006,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\color\\RGBToHSV.js",
               "name": "RGBToHSV.js",
-              "size": 1311,
+              "size": 1363,
               "extension": ".js",
               "type": "file"
             },
@@ -1368,18 +1382,18 @@
             {
               "path": "display\\color\\ValueToColor.js",
               "name": "ValueToColor.js",
-              "size": 1099,
+              "size": 1143,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 28034,
+          "size": 28879,
           "type": "directory"
         },
         {
           "path": "display\\index.js",
           "name": "index.js",
-          "size": 214,
+          "size": 234,
           "extension": ".js",
           "type": "file"
         },
@@ -1390,30 +1404,30 @@
             {
               "path": "display\\mask\\BitmapMask.js",
               "name": "BitmapMask.js",
-              "size": 4882,
+              "size": 5060,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\mask\\GeometryMask.js",
               "name": "GeometryMask.js",
-              "size": 3237,
+              "size": 3361,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\mask\\index.js",
               "name": "index.js",
-              "size": 111,
+              "size": 157,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 8230,
+          "size": 8578,
           "type": "directory"
         }
       ],
-      "size": 86478,
+      "size": 87756,
       "type": "directory"
     },
     {
@@ -1430,14 +1444,14 @@
         {
           "path": "dom\\DOMContentLoaded.js",
           "name": "DOMContentLoaded.js",
-          "size": 1800,
+          "size": 1504,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "dom\\index.js",
           "name": "index.js",
-          "size": 287,
+          "size": 307,
           "extension": ".js",
           "type": "file"
         },
@@ -1458,12 +1472,12 @@
         {
           "path": "dom\\RequestAnimationFrame.js",
           "name": "RequestAnimationFrame.js",
-          "size": 4372,
+          "size": 4548,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 9426,
+      "size": 9326,
       "type": "directory"
     },
     {
@@ -1473,12 +1487,12 @@
         {
           "path": "events\\EventEmitter.js",
           "name": "EventEmitter.js",
-          "size": 995,
+          "size": 1087,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 995,
+      "size": 1087,
       "type": "directory"
     },
     {
@@ -1496,28 +1510,28 @@
                 {
                   "path": "gameobjects\\bitmaptext\\dynamic\\DynamicBitmapText.js",
                   "name": "DynamicBitmapText.js",
-                  "size": 3314,
+                  "size": 8577,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\bitmaptext\\dynamic\\DynamicBitmapTextCanvasRenderer.js",
                   "name": "DynamicBitmapTextCanvasRenderer.js",
-                  "size": 4300,
+                  "size": 5093,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\bitmaptext\\dynamic\\DynamicBitmapTextCreator.js",
                   "name": "DynamicBitmapTextCreator.js",
-                  "size": 801,
+                  "size": 1217,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\bitmaptext\\dynamic\\DynamicBitmapTextFactory.js",
                   "name": "DynamicBitmapTextFactory.js",
-                  "size": 674,
+                  "size": 1312,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -1531,12 +1545,12 @@
                 {
                   "path": "gameobjects\\bitmaptext\\dynamic\\DynamicBitmapTextWebGLRenderer.js",
                   "name": "DynamicBitmapTextWebGLRenderer.js",
-                  "size": 766,
+                  "size": 1328,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 10240,
+              "size": 17912,
               "type": "directory"
             },
             {
@@ -1574,28 +1588,28 @@
                 {
                   "path": "gameobjects\\bitmaptext\\static\\BitmapText.js",
                   "name": "BitmapText.js",
-                  "size": 2868,
+                  "size": 6062,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\bitmaptext\\static\\BitmapTextCanvasRenderer.js",
                   "name": "BitmapTextCanvasRenderer.js",
-                  "size": 3424,
+                  "size": 4203,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\bitmaptext\\static\\BitmapTextCreator.js",
                   "name": "BitmapTextCreator.js",
-                  "size": 826,
+                  "size": 1212,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\bitmaptext\\static\\BitmapTextFactory.js",
                   "name": "BitmapTextFactory.js",
-                  "size": 646,
+                  "size": 1254,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -1609,16 +1623,16 @@
                 {
                   "path": "gameobjects\\bitmaptext\\static\\BitmapTextWebGLRenderer.js",
                   "name": "BitmapTextWebGLRenderer.js",
-                  "size": 639,
+                  "size": 1287,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 8774,
+              "size": 14389,
               "type": "directory"
             }
           ],
-          "size": 30813,
+          "size": 44100,
           "type": "directory"
         },
         {
@@ -1628,28 +1642,28 @@
             {
               "path": "gameobjects\\blitter\\Blitter.js",
               "name": "Blitter.js",
-              "size": 3583,
+              "size": 8059,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\blitter\\BlitterCanvasRenderer.js",
               "name": "BlitterCanvasRenderer.js",
-              "size": 947,
+              "size": 1720,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\blitter\\BlitterCreator.js",
               "name": "BlitterCreator.js",
-              "size": 631,
+              "size": 1003,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\blitter\\BlitterFactory.js",
               "name": "BlitterFactory.js",
-              "size": 619,
+              "size": 1245,
               "extension": ".js",
               "type": "file"
             },
@@ -1663,19 +1677,19 @@
             {
               "path": "gameobjects\\blitter\\BlitterWebGLRenderer.js",
               "name": "BlitterWebGLRenderer.js",
-              "size": 433,
+              "size": 1184,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\blitter\\Bob.js",
               "name": "Bob.js",
-              "size": 2161,
+              "size": 7533,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 8733,
+          "size": 21103,
           "type": "directory"
         },
         {
@@ -1699,7 +1713,7 @@
             {
               "path": "gameobjects\\components\\Alpha.js",
               "name": "Alpha.js",
-              "size": 3081,
+              "size": 6097,
               "extension": ".js",
               "type": "file"
             },
@@ -1713,91 +1727,91 @@
             {
               "path": "gameobjects\\components\\BlendMode.js",
               "name": "BlendMode.js",
-              "size": 733,
+              "size": 2945,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\ComputedSize.js",
               "name": "ComputedSize.js",
-              "size": 561,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\components\\DataProxy.js",
-              "name": "DataProxy.js",
-              "size": 2246,
+              "size": 1657,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Depth.js",
               "name": "Depth.js",
-              "size": 516,
+              "size": 2147,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Flip.js",
               "name": "Flip.js",
-              "size": 725,
+              "size": 3813,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\GetBounds.js",
               "name": "GetBounds.js",
-              "size": 4621,
+              "size": 6012,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\index.js",
               "name": "index.js",
-              "size": 742,
+              "size": 760,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Origin.js",
               "name": "Origin.js",
-              "size": 1534,
+              "size": 4859,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "gameobjects\\components\\Pipeline.js",
+              "name": "Pipeline.js",
+              "size": 3195,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\ScaleMode.js",
               "name": "ScaleMode.js",
-              "size": 612,
+              "size": 1421,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\ScrollFactor.js",
               "name": "ScrollFactor.js",
-              "size": 297,
+              "size": 3019,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Size.js",
               "name": "Size.js",
-              "size": 1105,
+              "size": 3287,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Texture.js",
               "name": "Texture.js",
-              "size": 661,
+              "size": 2287,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Tint.js",
               "name": "Tint.js",
-              "size": 1949,
+              "size": 4406,
               "extension": ".js",
               "type": "file"
             },
@@ -1811,26 +1825,26 @@
             {
               "path": "gameobjects\\components\\Transform.js",
               "name": "Transform.js",
-              "size": 6156,
+              "size": 8332,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\TransformMatrix.js",
               "name": "TransformMatrix.js",
-              "size": 5446,
+              "size": 9618,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Visible.js",
               "name": "Visible.js",
-              "size": 714,
+              "size": 1493,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 43387,
+          "size": 77036,
           "type": "directory"
         },
         {
@@ -1850,21 +1864,21 @@
         {
           "path": "gameobjects\\GameObject.js",
           "name": "GameObject.js",
-          "size": 10288,
+          "size": 11211,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "gameobjects\\GameObjectCreator.js",
           "name": "GameObjectCreator.js",
-          "size": 1424,
+          "size": 3324,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "gameobjects\\GameObjectFactory.js",
           "name": "GameObjectFactory.js",
-          "size": 1710,
+          "size": 4074,
           "extension": ".js",
           "type": "file"
         },
@@ -1875,35 +1889,35 @@
             {
               "path": "gameobjects\\graphics\\Commands.js",
               "name": "Commands.js",
-              "size": 387,
+              "size": 455,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\graphics\\Graphics.js",
               "name": "Graphics.js",
-              "size": 17742,
+              "size": 35135,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\graphics\\GraphicsCanvasRenderer.js",
               "name": "GraphicsCanvasRenderer.js",
-              "size": 7550,
+              "size": 8424,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\graphics\\GraphicsCreator.js",
               "name": "GraphicsCreator.js",
-              "size": 302,
+              "size": 678,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\graphics\\GraphicsFactory.js",
               "name": "GraphicsFactory.js",
-              "size": 603,
+              "size": 990,
               "extension": ".js",
               "type": "file"
             },
@@ -1917,12 +1931,12 @@
             {
               "path": "gameobjects\\graphics\\GraphicsWebGLRenderer.js",
               "name": "GraphicsWebGLRenderer.js",
-              "size": 439,
+              "size": 1174,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 27488,
+          "size": 47321,
           "type": "directory"
         },
         {
@@ -1939,19 +1953,19 @@
             {
               "path": "gameobjects\\group\\GroupCreator.js",
               "name": "GroupCreator.js",
-              "size": 296,
+              "size": 660,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\group\\GroupFactory.js",
               "name": "GroupFactory.js",
-              "size": 741,
+              "size": 1169,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 12989,
+          "size": 13781,
           "type": "directory"
         },
         {
@@ -1961,28 +1975,28 @@
             {
               "path": "gameobjects\\image\\Image.js",
               "name": "Image.js",
-              "size": 931,
+              "size": 2778,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\image\\ImageCanvasRenderer.js",
               "name": "ImageCanvasRenderer.js",
-              "size": 364,
+              "size": 1133,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\image\\ImageCreator.js",
               "name": "ImageCreator.js",
-              "size": 617,
+              "size": 981,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\image\\ImageFactory.js",
               "name": "ImageFactory.js",
-              "size": 611,
+              "size": 1343,
               "extension": ".js",
               "type": "file"
             },
@@ -1996,105 +2010,34 @@
             {
               "path": "gameobjects\\image\\ImageWebGLRenderer.js",
               "name": "ImageWebGLRenderer.js",
-              "size": 398,
+              "size": 1138,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 3276,
+          "size": 7728,
           "type": "directory"
         },
         {
           "path": "gameobjects\\index.js",
           "name": "index.js",
-          "size": 3716,
+          "size": 3599,
           "extension": ".js",
           "type": "file"
         },
         {
-          "path": "..\\phaser\\src\\gameobjects\\lightlayer",
-          "name": "lightlayer",
-          "children": [
-            {
-              "path": "gameobjects\\lightlayer\\Const.js",
-              "name": "Const.js",
-              "size": 78,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\DeferredRenderer.js",
-              "name": "DeferredRenderer.js",
-              "size": 7313,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\ForwardRenderer.js",
-              "name": "ForwardRenderer.js",
-              "size": 6551,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\Light.js",
-              "name": "Light.js",
-              "size": 811,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\LightLayer.js",
-              "name": "LightLayer.js",
-              "size": 12599,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\LightLayerCanvasRenderer.js",
-              "name": "LightLayerCanvasRenderer.js",
-              "size": 146,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\LightLayerCreator.js",
-              "name": "LightLayerCreator.js",
-              "size": 502,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\LightLayerFactory.js",
-              "name": "LightLayerFactory.js",
-              "size": 640,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\LightLayerRender.js",
-              "name": "LightLayerRender.js",
-              "size": 365,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\LightLayerWebGLRenderer.js",
-              "name": "LightLayerWebGLRenderer.js",
-              "size": 34,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\lightlayer\\SpriteNormalPair.js",
-              "name": "SpriteNormalPair.js",
-              "size": 440,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 29479,
-          "type": "directory"
+          "path": "gameobjects\\LightsManager.js",
+          "name": "LightsManager.js",
+          "size": 5660,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "gameobjects\\LightsPlugin.js",
+          "name": "LightsPlugin.js",
+          "size": 932,
+          "extension": ".js",
+          "type": "file"
         },
         {
           "path": "..\\phaser\\src\\gameobjects\\mesh",
@@ -2103,28 +2046,28 @@
             {
               "path": "gameobjects\\mesh\\Mesh.js",
               "name": "Mesh.js",
-              "size": 2003,
+              "size": 4192,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\mesh\\MeshCanvasRenderer.js",
               "name": "MeshCanvasRenderer.js",
-              "size": 131,
+              "size": 703,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\mesh\\MeshCreator.js",
               "name": "MeshCreator.js",
-              "size": 892,
+              "size": 1271,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\mesh\\MeshFactory.js",
               "name": "MeshFactory.js",
-              "size": 698,
+              "size": 1060,
               "extension": ".js",
               "type": "file"
             },
@@ -2138,12 +2081,12 @@
             {
               "path": "gameobjects\\mesh\\MeshWebGLRenderer.js",
               "name": "MeshWebGLRenderer.js",
-              "size": 390,
+              "size": 1128,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4467,
+          "size": 8707,
           "type": "directory"
         },
         {
@@ -2181,7 +2124,7 @@
             {
               "path": "gameobjects\\particles\\ParticleEmitterManager.js",
               "name": "ParticleEmitterManager.js",
-              "size": 4377,
+              "size": 4458,
               "extension": ".js",
               "type": "file"
             },
@@ -2216,7 +2159,7 @@
             {
               "path": "gameobjects\\particles\\ParticleManagerWebGLRenderer.js",
               "name": "ParticleManagerWebGLRenderer.js",
-              "size": 548,
+              "size": 523,
               "extension": ".js",
               "type": "file"
             },
@@ -2250,7 +2193,7 @@
               "type": "directory"
             }
           ],
-          "size": 56465,
+          "size": 56521,
           "type": "directory"
         },
         {
@@ -2311,28 +2254,28 @@
             {
               "path": "gameobjects\\sprite\\Sprite.js",
               "name": "Sprite.js",
-              "size": 1403,
+              "size": 4268,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\sprite\\SpriteCanvasRenderer.js",
               "name": "SpriteCanvasRenderer.js",
-              "size": 366,
+              "size": 1137,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\sprite\\SpriteCreator.js",
               "name": "SpriteCreator.js",
-              "size": 833,
+              "size": 1201,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\sprite\\SpriteFactory.js",
               "name": "SpriteFactory.js",
-              "size": 692,
+              "size": 1428,
               "extension": ".js",
               "type": "file"
             },
@@ -2346,12 +2289,12 @@
             {
               "path": "gameobjects\\sprite\\SpriteWebGLRenderer.js",
               "name": "SpriteWebGLRenderer.js",
-              "size": 396,
+              "size": 1138,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4047,
+          "size": 9529,
           "type": "directory"
         },
         {
@@ -2408,7 +2351,7 @@
                 {
                   "path": "gameobjects\\text\\static\\Text.js",
                   "name": "Text.js",
-                  "size": 20650,
+                  "size": 20758,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2443,12 +2386,12 @@
                 {
                   "path": "gameobjects\\text\\static\\TextWebGLRenderer.js",
                   "name": "TextWebGLRenderer.js",
-                  "size": 1363,
+                  "size": 629,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 26334,
+              "size": 25708,
               "type": "directory"
             },
             {
@@ -2459,7 +2402,7 @@
               "type": "file"
             }
           ],
-          "size": 42305,
+          "size": 41679,
           "type": "directory"
         },
         {
@@ -2470,6 +2413,13 @@
               "path": "..\\phaser\\src\\gameobjects\\tilemap\\components",
               "name": "components",
               "children": [
+                {
+                  "path": "gameobjects\\tilemap\\components\\CalculateFacesAt.js",
+                  "name": "CalculateFacesAt.js",
+                  "size": 1857,
+                  "extension": ".js",
+                  "type": "file"
+                },
                 {
                   "path": "gameobjects\\tilemap\\components\\CalculateFacesWithin.js",
                   "name": "CalculateFacesWithin.js",
@@ -2501,7 +2451,7 @@
                 {
                   "path": "gameobjects\\tilemap\\components\\Fill.js",
                   "name": "Fill.js",
-                  "size": 1562,
+                  "size": 1501,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2585,7 +2535,7 @@
                 {
                   "path": "gameobjects\\tilemap\\components\\index.js",
                   "name": "index.js",
-                  "size": 2069,
+                  "size": 2123,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2599,7 +2549,7 @@
                 {
                   "path": "gameobjects\\tilemap\\components\\PutTileAt.js",
                   "name": "PutTileAt.js",
-                  "size": 2328,
+                  "size": 2320,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2625,16 +2575,9 @@
                   "type": "file"
                 },
                 {
-                  "path": "gameobjects\\tilemap\\components\\RecalculateFacesAt.js",
-                  "name": "RecalculateFacesAt.js",
-                  "size": 1861,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
                   "path": "gameobjects\\tilemap\\components\\RemoveTileAt.js",
                   "name": "RemoveTileAt.js",
-                  "size": 1588,
+                  "size": 1582,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2704,7 +2647,7 @@
                 {
                   "path": "gameobjects\\tilemap\\components\\SetTileCollision.js",
                   "name": "SetTileCollision.js",
-                  "size": 407,
+                  "size": 468,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2786,7 +2729,7 @@
                   "type": "file"
                 }
               ],
-              "size": 70881,
+              "size": 70917,
               "type": "directory"
             },
             {
@@ -2796,7 +2739,7 @@
                 {
                   "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayer.js",
                   "name": "DynamicTilemapLayer.js",
-                  "size": 15399,
+                  "size": 15750,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2817,12 +2760,12 @@
                 {
                   "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayerWebGLRenderer.js",
                   "name": "DynamicTilemapLayerWebGLRenderer.js",
-                  "size": 2101,
+                  "size": 546,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 19750,
+              "size": 18546,
               "type": "directory"
             },
             {
@@ -2856,9 +2799,16 @@
                   "size": 1855,
                   "extension": ".js",
                   "type": "file"
+                },
+                {
+                  "path": "gameobjects\\tilemap\\mapdata\\ObjectLayer.js",
+                  "name": "ObjectLayer.js",
+                  "size": 1283,
+                  "extension": ".js",
+                  "type": "file"
                 }
               ],
-              "size": 3920,
+              "size": 5203,
               "type": "directory"
             },
             {
@@ -2914,7 +2864,7 @@
                     {
                       "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\index.js",
                       "name": "index.js",
-                      "size": 2319,
+                      "size": 2248,
                       "extension": ".js",
                       "type": "file"
                     },
@@ -2942,7 +2892,7 @@
                     {
                       "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseObjectLayers.js",
                       "name": "ParseObjectLayers.js",
-                      "size": 1169,
+                      "size": 996,
                       "extension": ".js",
                       "type": "file"
                     },
@@ -2968,7 +2918,7 @@
                       "type": "file"
                     }
                   ],
-                  "size": 18389,
+                  "size": 18145,
                   "type": "directory"
                 },
                 {
@@ -3001,7 +2951,7 @@
                   "type": "directory"
                 }
               ],
-              "size": 29266,
+              "size": 29022,
               "type": "directory"
             },
             {
@@ -3018,7 +2968,7 @@
                 {
                   "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayer.js",
                   "name": "StaticTilemapLayer.js",
-                  "size": 17668,
+                  "size": 17908,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -3039,25 +2989,25 @@
                 {
                   "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayerWebGLRenderer.js",
                   "name": "StaticTilemapLayerWebGLRenderer.js",
-                  "size": 483,
+                  "size": 458,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 20035,
+              "size": 20250,
               "type": "directory"
             },
             {
               "path": "gameobjects\\tilemap\\Tile.js",
               "name": "Tile.js",
-              "size": 20160,
+              "size": 21096,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\tilemap\\Tilemap.js",
               "name": "Tilemap.js",
-              "size": 50710,
+              "size": 54164,
               "extension": ".js",
               "type": "file"
             },
@@ -3083,7 +3033,7 @@
               "type": "file"
             }
           ],
-          "size": 237429,
+          "size": 241905,
           "type": "directory"
         },
         {
@@ -3093,7 +3043,7 @@
             {
               "path": "gameobjects\\tilesprite\\TileSprite.js",
               "name": "TileSprite.js",
-              "size": 3125,
+              "size": 3233,
               "extension": ".js",
               "type": "file"
             },
@@ -3128,12 +3078,12 @@
             {
               "path": "gameobjects\\tilesprite\\TileSpriteWebGLRenderer.js",
               "name": "TileSpriteWebGLRenderer.js",
-              "size": 1446,
+              "size": 501,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 7844,
+          "size": 7007,
           "type": "directory"
         },
         {
@@ -3180,7 +3130,7 @@
           "type": "directory"
         }
       ],
-      "size": 577509,
+      "size": 656866,
       "type": "directory"
     },
     {
@@ -3201,7 +3151,7 @@
             {
               "path": "geom\\circle\\Circle.js",
               "name": "Circle.js",
-              "size": 8914,
+              "size": 8850,
               "extension": ".js",
               "type": "file"
             },
@@ -3285,7 +3235,7 @@
             {
               "path": "geom\\circle\\index.js",
               "name": "index.js",
-              "size": 753,
+              "size": 773,
               "extension": ".js",
               "type": "file"
             },
@@ -3311,7 +3261,7 @@
               "type": "file"
             }
           ],
-          "size": 21257,
+          "size": 21213,
           "type": "directory"
         },
         {
@@ -3377,7 +3327,7 @@
             {
               "path": "geom\\ellipse\\Ellipse.js",
               "name": "Ellipse.js",
-              "size": 9223,
+              "size": 9566,
               "extension": ".js",
               "type": "file"
             },
@@ -3412,7 +3362,7 @@
             {
               "path": "geom\\ellipse\\index.js",
               "name": "index.js",
-              "size": 772,
+              "size": 792,
               "extension": ".js",
               "type": "file"
             },
@@ -3438,13 +3388,13 @@
               "type": "file"
             }
           ],
-          "size": 22053,
+          "size": 22416,
           "type": "directory"
         },
         {
           "path": "geom\\index.js",
           "name": "index.js",
-          "size": 368,
+          "size": 388,
           "extension": ".js",
           "type": "file"
         },
@@ -3476,7 +3426,7 @@
             {
               "path": "geom\\intersects\\index.js",
               "name": "index.js",
-              "size": 815,
+              "size": 835,
               "extension": ".js",
               "type": "file"
             },
@@ -3558,7 +3508,7 @@
               "type": "file"
             }
           ],
-          "size": 18103,
+          "size": 18123,
           "type": "directory"
         },
         {
@@ -3631,7 +3581,7 @@
             {
               "path": "geom\\line\\GetPoints.js",
               "name": "GetPoints.js",
-              "size": 757,
+              "size": 1073,
               "extension": ".js",
               "type": "file"
             },
@@ -3645,7 +3595,7 @@
             {
               "path": "geom\\line\\index.js",
               "name": "index.js",
-              "size": 1105,
+              "size": 1125,
               "extension": ".js",
               "type": "file"
             },
@@ -3659,7 +3609,7 @@
             {
               "path": "geom\\line\\Line.js",
               "name": "Line.js",
-              "size": 2933,
+              "size": 5738,
               "extension": ".js",
               "type": "file"
             },
@@ -3755,7 +3705,7 @@
               "type": "file"
             }
           ],
-          "size": 17039,
+          "size": 20180,
           "type": "directory"
         },
         {
@@ -3850,14 +3800,14 @@
             {
               "path": "geom\\point\\GetRectangleFromPoints.js",
               "name": "GetRectangleFromPoints.js",
-              "size": 1281,
+              "size": 1261,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\point\\index.js",
               "name": "index.js",
-              "size": 746,
+              "size": 766,
               "extension": ".js",
               "type": "file"
             },
@@ -3885,7 +3835,7 @@
             {
               "path": "geom\\point\\Point.js",
               "name": "Point.js",
-              "size": 489,
+              "size": 1218,
               "extension": ".js",
               "type": "file"
             },
@@ -3911,7 +3861,7 @@
               "type": "file"
             }
           ],
-          "size": 9419,
+          "size": 10148,
           "type": "directory"
         },
         {
@@ -3963,14 +3913,14 @@
             {
               "path": "geom\\polygon\\index.js",
               "name": "index.js",
-              "size": 324,
+              "size": 344,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\polygon\\Polygon.js",
               "name": "Polygon.js",
-              "size": 3655,
+              "size": 4893,
               "extension": ".js",
               "type": "file"
             },
@@ -3982,7 +3932,7 @@
               "type": "file"
             }
           ],
-          "size": 27817,
+          "size": 29075,
           "type": "directory"
         },
         {
@@ -4118,7 +4068,7 @@
             {
               "path": "geom\\rectangle\\GetPoint.js",
               "name": "GetPoint.js",
-              "size": 1218,
+              "size": 1513,
               "extension": ".js",
               "type": "file"
             },
@@ -4139,7 +4089,7 @@
             {
               "path": "geom\\rectangle\\index.js",
               "name": "index.js",
-              "size": 1655,
+              "size": 1675,
               "extension": ".js",
               "type": "file"
             },
@@ -4223,7 +4173,7 @@
             {
               "path": "geom\\rectangle\\Rectangle.js",
               "name": "Rectangle.js",
-              "size": 4431,
+              "size": 9019,
               "extension": ".js",
               "type": "file"
             },
@@ -4242,7 +4192,7 @@
               "type": "file"
             }
           ],
-          "size": 29696,
+          "size": 34599,
           "type": "directory"
         },
         {
@@ -4357,14 +4307,14 @@
             {
               "path": "geom\\triangle\\GetPoint.js",
               "name": "GetPoint.js",
-              "size": 1536,
+              "size": 1815,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\triangle\\GetPoints.js",
               "name": "GetPoints.js",
-              "size": 1806,
+              "size": 2133,
               "extension": ".js",
               "type": "file"
             },
@@ -4378,7 +4328,7 @@
             {
               "path": "geom\\triangle\\index.js",
               "name": "index.js",
-              "size": 1233,
+              "size": 1253,
               "extension": ".js",
               "type": "file"
             },
@@ -4427,16 +4377,16 @@
             {
               "path": "geom\\triangle\\Triangle.js",
               "name": "Triangle.js",
-              "size": 4884,
+              "size": 8569,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 29380,
+          "size": 33691,
           "type": "directory"
         }
       ],
-      "size": 192611,
+      "size": 207312,
       "type": "directory"
     },
     {
@@ -4450,14 +4400,14 @@
             {
               "path": "input\\gamepad\\Axis.js",
               "name": "Axis.js",
-              "size": 816,
+              "size": 1881,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\gamepad\\Button.js",
               "name": "Button.js",
-              "size": 1016,
+              "size": 2248,
               "extension": ".js",
               "type": "file"
             },
@@ -4500,46 +4450,46 @@
             {
               "path": "input\\gamepad\\Gamepad.js",
               "name": "Gamepad.js",
-              "size": 1314,
+              "size": 2985,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\gamepad\\GamepadManager.js",
               "name": "GamepadManager.js",
-              "size": 4973,
+              "size": 8480,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\gamepad\\index.js",
               "name": "index.js",
-              "size": 246,
+              "size": 266,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 9718,
+          "size": 17213,
           "type": "directory"
         },
         {
           "path": "input\\index.js",
           "name": "index.js",
-          "size": 367,
+          "size": 387,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "input\\InputManager.js",
           "name": "InputManager.js",
-          "size": 7938,
+          "size": 13519,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "input\\InputPlugin.js",
           "name": "InputPlugin.js",
-          "size": 31603,
+          "size": 43175,
           "extension": ".js",
           "type": "file"
         },
@@ -4561,46 +4511,46 @@
                 {
                   "path": "input\\keyboard\\combo\\AdvanceKeyCombo.js",
                   "name": "AdvanceKeyCombo.js",
-                  "size": 411,
+                  "size": 711,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\combo\\KeyCombo.js",
                   "name": "KeyCombo.js",
-                  "size": 3844,
+                  "size": 6318,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\combo\\ProcessKeyCombo.js",
                   "name": "ProcessKeyCombo.js",
-                  "size": 1454,
+                  "size": 1716,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\combo\\ResetKeyCombo.js",
                   "name": "ResetKeyCombo.js",
-                  "size": 251,
+                  "size": 526,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 5960,
+              "size": 9271,
               "type": "directory"
             },
             {
               "path": "input\\keyboard\\index.js",
               "name": "index.js",
-              "size": 418,
+              "size": 438,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\keyboard\\KeyboardManager.js",
               "name": "KeyboardManager.js",
-              "size": 7017,
+              "size": 10417,
               "extension": ".js",
               "type": "file"
             },
@@ -4611,28 +4561,28 @@
                 {
                   "path": "input\\keyboard\\keys\\DownDuration.js",
                   "name": "DownDuration.js",
-                  "size": 379,
+                  "size": 601,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\keys\\JustDown.js",
                   "name": "JustDown.js",
-                  "size": 680,
+                  "size": 854,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\keys\\JustUp.js",
                   "name": "JustUp.js",
-                  "size": 662,
+                  "size": 834,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\keys\\Key.js",
                   "name": "Key.js",
-                  "size": 3149,
+                  "size": 4509,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -4653,37 +4603,37 @@
                 {
                   "path": "input\\keyboard\\keys\\ProcessKeyDown.js",
                   "name": "ProcessKeyDown.js",
-                  "size": 598,
+                  "size": 890,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\keys\\ProcessKeyUp.js",
                   "name": "ProcessKeyUp.js",
-                  "size": 478,
+                  "size": 768,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\keys\\ResetKey.js",
                   "name": "ResetKey.js",
-                  "size": 682,
+                  "size": 940,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\keyboard\\keys\\UpDuration.js",
                   "name": "UpDuration.js",
-                  "size": 363,
+                  "size": 585,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 8390,
+              "size": 11380,
               "type": "directory"
             }
           ],
-          "size": 21785,
+          "size": 31506,
           "type": "directory"
         },
         {
@@ -4693,25 +4643,25 @@
             {
               "path": "input\\mouse\\index.js",
               "name": "index.js",
-              "size": 106,
+              "size": 126,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\mouse\\MouseManager.js",
               "name": "MouseManager.js",
-              "size": 6125,
+              "size": 8178,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 6231,
+          "size": 8304,
           "type": "directory"
         },
         {
           "path": "input\\Pointer.js",
           "name": "Pointer.js",
-          "size": 7808,
+          "size": 14524,
           "extension": ".js",
           "type": "file"
         },
@@ -4722,23 +4672,23 @@
             {
               "path": "input\\touch\\index.js",
               "name": "index.js",
-              "size": 106,
+              "size": 126,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\touch\\TouchManager.js",
               "name": "TouchManager.js",
-              "size": 2822,
+              "size": 4330,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 2928,
+          "size": 4456,
           "type": "directory"
         }
       ],
-      "size": 89061,
+      "size": 133767,
       "type": "directory"
     },
     {
@@ -4755,7 +4705,7 @@
         {
           "path": "loader\\File.js",
           "name": "File.js",
-          "size": 6942,
+          "size": 10874,
           "extension": ".js",
           "type": "file"
         },
@@ -4766,21 +4716,21 @@
             {
               "path": "loader\\filetypes\\AnimationJSONFile.js",
               "name": "AnimationJSONFile.js",
-              "size": 1172,
+              "size": 1475,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "loader\\filetypes\\AtlasJSONFile.js",
               "name": "AtlasJSONFile.js",
-              "size": 1091,
+              "size": 1471,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "loader\\filetypes\\AudioFile.js",
               "name": "AudioFile.js",
-              "size": 4725,
+              "size": 7066,
               "extension": ".js",
               "type": "file"
             },
@@ -4829,7 +4779,7 @@
             {
               "path": "loader\\filetypes\\ImageFile.js",
               "name": "ImageFile.js",
-              "size": 2970,
+              "size": 3837,
               "extension": ".js",
               "type": "file"
             },
@@ -4918,7 +4868,7 @@
               "type": "file"
             }
           ],
-          "size": 45613,
+          "size": 49504,
           "type": "directory"
         },
         {
@@ -4938,14 +4888,14 @@
         {
           "path": "loader\\index.js",
           "name": "index.js",
-          "size": 1413,
+          "size": 1484,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "loader\\LoaderPlugin.js",
           "name": "LoaderPlugin.js",
-          "size": 18205,
+          "size": 18675,
           "extension": ".js",
           "type": "file"
         },
@@ -4971,7 +4921,7 @@
           "type": "file"
         }
       ],
-      "size": 76970,
+      "size": 85334,
       "type": "directory"
     },
     {
@@ -5013,7 +4963,7 @@
             {
               "path": "math\\angle\\index.js",
               "name": "index.js",
-              "size": 439,
+              "size": 484,
               "extension": ".js",
               "type": "file"
             },
@@ -5060,7 +5010,7 @@
               "type": "file"
             }
           ],
-          "size": 6056,
+          "size": 6101,
           "type": "directory"
         },
         {
@@ -5094,7 +5044,7 @@
         {
           "path": "math\\CeilTo.js",
           "name": "CeilTo.js",
-          "size": 508,
+          "size": 507,
           "extension": ".js",
           "type": "file"
         },
@@ -5108,7 +5058,7 @@
         {
           "path": "math\\const.js",
           "name": "const.js",
-          "size": 316,
+          "size": 1260,
           "extension": ".js",
           "type": "file"
         },
@@ -5154,12 +5104,12 @@
             {
               "path": "math\\distance\\index.js",
               "name": "index.js",
-              "size": 183,
+              "size": 203,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 1658,
+          "size": 1678,
           "type": "directory"
         },
         {
@@ -5392,7 +5342,7 @@
             {
               "path": "math\\easing\\index.js",
               "name": "index.js",
-              "size": 465,
+              "size": 485,
               "extension": ".js",
               "type": "file"
             },
@@ -5585,7 +5535,7 @@
               "type": "directory"
             }
           ],
-          "size": 17834,
+          "size": 17854,
           "type": "directory"
         },
         {
@@ -5651,7 +5601,7 @@
             {
               "path": "math\\fuzzy\\index.js",
               "name": "index.js",
-              "size": 203,
+              "size": 248,
               "extension": ".js",
               "type": "file"
             },
@@ -5663,7 +5613,7 @@
               "type": "file"
             }
           ],
-          "size": 2305,
+          "size": 2350,
           "type": "directory"
         },
         {
@@ -5676,7 +5626,7 @@
         {
           "path": "math\\index.js",
           "name": "index.js",
-          "size": 2368,
+          "size": 2316,
           "extension": ".js",
           "type": "file"
         },
@@ -5708,7 +5658,7 @@
             {
               "path": "math\\interpolation\\index.js",
               "name": "index.js",
-              "size": 266,
+              "size": 286,
               "extension": ".js",
               "type": "file"
             },
@@ -5720,7 +5670,7 @@
               "type": "file"
             }
           ],
-          "size": 3443,
+          "size": 3463,
           "type": "directory"
         },
         {
@@ -5747,14 +5697,14 @@
         {
           "path": "math\\Matrix3.js",
           "name": "Matrix3.js",
-          "size": 9163,
+          "size": 12579,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Matrix4.js",
           "name": "Matrix4.js",
-          "size": 28163,
+          "size": 35948,
           "extension": ".js",
           "type": "file"
         },
@@ -5762,20 +5712,6 @@
           "path": "math\\MaxAdd.js",
           "name": "MaxAdd.js",
           "size": 372,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "math\\MinMax2.js",
-          "name": "MinMax2.js",
-          "size": 3817,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "math\\MinMax4.js",
-          "name": "MinMax4.js",
-          "size": 4546,
           "extension": ".js",
           "type": "file"
         },
@@ -5822,7 +5758,7 @@
             {
               "path": "math\\pow2\\index.js",
               "name": "index.js",
-              "size": 159,
+              "size": 203,
               "extension": ".js",
               "type": "file"
             },
@@ -5841,13 +5777,13 @@
               "type": "file"
             }
           ],
-          "size": 1591,
+          "size": 1635,
           "type": "directory"
         },
         {
           "path": "math\\Quaternion.js",
           "name": "Quaternion.js",
-          "size": 11036,
+          "size": 15963,
           "extension": ".js",
           "type": "file"
         },
@@ -5865,12 +5801,12 @@
             {
               "path": "math\\random-data-generator\\RandomDataGenerator.js",
               "name": "RandomDataGenerator.js",
-              "size": 9620,
+              "size": 11446,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 9620,
+          "size": 11446,
           "type": "directory"
         },
         {
@@ -5939,7 +5875,7 @@
         {
           "path": "math\\SinCosTableGenerator.js",
           "name": "SinCosTableGenerator.js",
-          "size": 621,
+          "size": 935,
           "extension": ".js",
           "type": "file"
         },
@@ -5964,7 +5900,7 @@
             {
               "path": "math\\snap\\index.js",
               "name": "index.js",
-              "size": 127,
+              "size": 171,
               "extension": ".js",
               "type": "file"
             },
@@ -5990,7 +5926,7 @@
               "type": "file"
             }
           ],
-          "size": 1737,
+          "size": 1781,
           "type": "directory"
         },
         {
@@ -6003,21 +5939,21 @@
         {
           "path": "math\\Vector2.js",
           "name": "Vector2.js",
-          "size": 4925,
+          "size": 10146,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Vector3.js",
           "name": "Vector3.js",
-          "size": 11285,
+          "size": 17147,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Vector4.js",
           "name": "Vector4.js",
-          "size": 6259,
+          "size": 10655,
           "extension": ".js",
           "type": "file"
         },
@@ -6036,10 +5972,10 @@
           "type": "file"
         }
       ],
-      "size": 150259,
+      "size": 176772,
       "type": "directory"
     },
-    { "path": "phaser.js", "name": "phaser.js", "size": 1515, "extension": ".js", "type": "file" },
+    { "path": "phaser.js", "name": "phaser.js", "size": 1537, "extension": ".js", "type": "file" },
     {
       "path": "..\\phaser\\src\\physics",
       "name": "physics",
@@ -6719,7 +6655,7 @@
         {
           "path": "physics\\index.js",
           "name": "index.js",
-          "size": 197,
+          "size": 217,
           "extension": ".js",
           "type": "file"
         },
@@ -6769,14 +6705,7 @@
                 {
                   "path": "physics\\matter-js\\components\\index.js",
                   "name": "index.js",
-                  "size": 532,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\matter-js\\components\\Inertia.js",
-                  "name": "Inertia.js",
-                  "size": 423,
+                  "size": 496,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6797,7 +6726,7 @@
                 {
                   "path": "physics\\matter-js\\components\\SetBody.js",
                   "name": "SetBody.js",
-                  "size": 3961,
+                  "size": 3970,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6830,7 +6759,7 @@
                   "type": "file"
                 }
               ],
-              "size": 14790,
+              "size": 14340,
               "type": "directory"
             },
             {
@@ -7146,7 +7075,7 @@
             {
               "path": "physics\\matter-js\\MatterImage.js",
               "name": "MatterImage.js",
-              "size": 1748,
+              "size": 1857,
               "extension": ".js",
               "type": "file"
             },
@@ -7160,14 +7089,14 @@
             {
               "path": "physics\\matter-js\\MatterSprite.js",
               "name": "MatterSprite.js",
-              "size": 1887,
+              "size": 1996,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "physics\\matter-js\\MatterTileBody.js",
               "name": "MatterTileBody.js",
-              "size": 11093,
+              "size": 11096,
               "extension": ".js",
               "type": "file"
             },
@@ -7181,12 +7110,12 @@
             {
               "path": "physics\\matter-js\\World.js",
               "name": "World.js",
-              "size": 12552,
+              "size": 12859,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 394943,
+          "size": 395021,
           "type": "directory"
         },
         {
@@ -7205,7 +7134,7 @@
           "type": "directory"
         }
       ],
-      "size": 584844,
+      "size": 584942,
       "type": "directory"
     },
     {
@@ -7222,7 +7151,7 @@
         {
           "path": "plugins\\DefaultScenePlugins.js",
           "name": "DefaultScenePlugins.js",
-          "size": 617,
+          "size": 665,
           "extension": ".js",
           "type": "file"
         },
@@ -7236,12 +7165,12 @@
         {
           "path": "plugins\\PluginManager.js",
           "name": "PluginManager.js",
-          "size": 2634,
+          "size": 2928,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 4051,
+      "size": 4393,
       "type": "directory"
     },
     {
@@ -7340,7 +7269,7 @@
             {
               "path": "renderer\\canvas\\CanvasRenderer.js",
               "name": "CanvasRenderer.js",
-              "size": 8660,
+              "size": 8529,
               "extension": ".js",
               "type": "file"
             },
@@ -7374,7 +7303,7 @@
               "type": "directory"
             }
           ],
-          "size": 12097,
+          "size": 11966,
           "type": "directory"
         },
         {
@@ -7424,7 +7353,7 @@
                 {
                   "path": "renderer\\webgl\\pipelines\\BitmapMaskPipeline.js",
                   "name": "BitmapMaskPipeline.js",
-                  "size": 3671,
+                  "size": 3581,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -7435,30 +7364,37 @@
                     {
                       "path": "renderer\\webgl\\pipelines\\components\\ModelViewProjection.js",
                       "name": "ModelViewProjection.js",
-                      "size": 14688,
+                      "size": 14691,
                       "extension": ".js",
                       "type": "file"
                     }
                   ],
-                  "size": 14688,
+                  "size": 14691,
                   "type": "directory"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\FlatTintPipeline.js",
                   "name": "FlatTintPipeline.js",
-                  "size": 31597,
+                  "size": 34855,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "renderer\\webgl\\pipelines\\ForwardDiffuseLightPipeline.js",
+                  "name": "ForwardDiffuseLightPipeline.js",
+                  "size": 8463,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\TextureTintPipeline.js",
                   "name": "TextureTintPipeline.js",
-                  "size": 43071,
+                  "size": 51229,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 93027,
+              "size": 112819,
               "type": "directory"
             },
             {
@@ -7471,30 +7407,30 @@
             {
               "path": "renderer\\webgl\\Utils.js",
               "name": "Utils.js",
-              "size": 1293,
+              "size": 1527,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "renderer\\webgl\\WebGLPipeline.js",
               "name": "WebGLPipeline.js",
-              "size": 3683,
+              "size": 3896,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "renderer\\webgl\\WebGLRenderer.js",
               "name": "WebGLRenderer.js",
-              "size": 26296,
+              "size": 28286,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 124299,
+          "size": 146528,
           "type": "directory"
         }
       ],
-      "size": 138748,
+      "size": 160846,
       "type": "directory"
     },
     {
@@ -7525,14 +7461,14 @@
         {
           "path": "scene\\index.js",
           "name": "index.js",
-          "size": 212,
+          "size": 232,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "scene\\InjectionMap.js",
           "name": "InjectionMap.js",
-          "size": 783,
+          "size": 835,
           "extension": ".js",
           "type": "file"
         },
@@ -7546,7 +7482,7 @@
         {
           "path": "scene\\SceneManager.js",
           "name": "SceneManager.js",
-          "size": 25543,
+          "size": 25822,
           "extension": ".js",
           "type": "file"
         },
@@ -7567,12 +7503,12 @@
         {
           "path": "scene\\Systems.js",
           "name": "Systems.js",
-          "size": 5070,
+          "size": 5151,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 40753,
+      "size": 41185,
       "type": "directory"
     },
     {
@@ -7582,14 +7518,14 @@
         {
           "path": "sound\\BaseSound.js",
           "name": "BaseSound.js",
-          "size": 14919,
+          "size": 15748,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "sound\\BaseSoundManager.js",
           "name": "BaseSoundManager.js",
-          "size": 13501,
+          "size": 15432,
           "extension": ".js",
           "type": "file"
         },
@@ -7600,25 +7536,25 @@
             {
               "path": "sound\\html5\\HTML5AudioSound.js",
               "name": "HTML5AudioSound.js",
-              "size": 12887,
+              "size": 20668,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "sound\\html5\\HTML5AudioSoundManager.js",
               "name": "HTML5AudioSoundManager.js",
-              "size": 7176,
+              "size": 10451,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 20063,
+          "size": 31119,
           "type": "directory"
         },
         {
           "path": "sound\\index.js",
           "name": "index.js",
-          "size": 589,
+          "size": 609,
           "extension": ".js",
           "type": "file"
         },
@@ -7629,19 +7565,19 @@
             {
               "path": "sound\\noaudio\\NoAudioSound.js",
               "name": "NoAudioSound.js",
-              "size": 1692,
+              "size": 2632,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "sound\\noaudio\\NoAudioSoundManager.js",
               "name": "NoAudioSoundManager.js",
-              "size": 1679,
+              "size": 2400,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 3371,
+          "size": 5032,
           "type": "directory"
         },
         {
@@ -7658,23 +7594,23 @@
             {
               "path": "sound\\webaudio\\WebAudioSound.js",
               "name": "WebAudioSound.js",
-              "size": 16950,
+              "size": 19763,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "sound\\webaudio\\WebAudioSoundManager.js",
               "name": "WebAudioSoundManager.js",
-              "size": 6004,
+              "size": 6858,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 22954,
+          "size": 26621,
           "type": "directory"
         }
       ],
-      "size": 76216,
+      "size": 95380,
       "type": "directory"
     },
     {
@@ -7684,7 +7620,7 @@
         {
           "path": "structs\\index.js",
           "name": "index.js",
-          "size": 213,
+          "size": 233,
           "extension": ".js",
           "type": "file"
         },
@@ -7698,7 +7634,7 @@
         {
           "path": "structs\\Map.js",
           "name": "Map.js",
-          "size": 3366,
+          "size": 3374,
           "extension": ".js",
           "type": "file"
         },
@@ -7724,7 +7660,7 @@
           "type": "file"
         }
       ],
-      "size": 43585,
+      "size": 43613,
       "type": "directory"
     },
     {
@@ -7741,14 +7677,14 @@
         {
           "path": "textures\\Frame.js",
           "name": "Frame.js",
-          "size": 9975,
+          "size": 10036,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\index.js",
           "name": "index.js",
-          "size": 258,
+          "size": 278,
           "extension": ".js",
           "type": "file"
         },
@@ -7801,14 +7737,14 @@
             {
               "path": "textures\\parsers\\SpriteSheet.js",
               "name": "SpriteSheet.js",
-              "size": 2057,
+              "size": 2077,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\SpriteSheetFromAtlas.js",
               "name": "SpriteSheetFromAtlas.js",
-              "size": 4441,
+              "size": 4461,
               "extension": ".js",
               "type": "file"
             },
@@ -7827,32 +7763,32 @@
               "type": "file"
             }
           ],
-          "size": 17689,
+          "size": 17729,
           "type": "directory"
         },
         {
           "path": "textures\\Texture.js",
           "name": "Texture.js",
-          "size": 4774,
+          "size": 5793,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\TextureManager.js",
           "name": "TextureManager.js",
-          "size": 10522,
+          "size": 10900,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\TextureSource.js",
           "name": "TextureSource.js",
-          "size": 1546,
+          "size": 1649,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 44850,
+      "size": 46471,
       "type": "directory"
     },
     {
@@ -7862,14 +7798,14 @@
         {
           "path": "time\\Clock.js",
           "name": "Clock.js",
-          "size": 5091,
+          "size": 8062,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "time\\index.js",
           "name": "index.js",
-          "size": 120,
+          "size": 140,
           "extension": ".js",
           "type": "file"
         },
@@ -7881,7 +7817,7 @@
           "type": "file"
         }
       ],
-      "size": 9192,
+      "size": 12183,
       "type": "directory"
     },
     {
@@ -7969,7 +7905,7 @@
         {
           "path": "tweens\\index.js",
           "name": "index.js",
-          "size": 216,
+          "size": 236,
           "extension": ".js",
           "type": "file"
         },
@@ -8008,7 +7944,7 @@
             {
               "path": "tweens\\tween\\Tween.js",
               "name": "Tween.js",
-              "size": 28815,
+              "size": 28805,
               "extension": ".js",
               "type": "file"
             },
@@ -8020,7 +7956,7 @@
               "type": "file"
             }
           ],
-          "size": 33814,
+          "size": 33804,
           "type": "directory"
         },
         {
@@ -8031,7 +7967,7 @@
           "type": "file"
         }
       ],
-      "size": 77624,
+      "size": 77634,
       "type": "directory"
     },
     {
@@ -8059,7 +7995,7 @@
             {
               "path": "utils\\array\\index.js",
               "name": "index.js",
-              "size": 561,
+              "size": 581,
               "extension": ".js",
               "type": "file"
             },
@@ -8077,7 +8013,7 @@
                 {
                   "path": "utils\\array\\matrix\\index.js",
                   "name": "index.js",
-                  "size": 439,
+                  "size": 492,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -8138,55 +8074,55 @@
                   "type": "file"
                 }
               ],
-              "size": 6996,
+              "size": 7049,
               "type": "directory"
             },
             {
               "path": "utils\\array\\NumberArray.js",
               "name": "NumberArray.js",
-              "size": 1772,
+              "size": 1821,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\NumberArrayStep.js",
               "name": "NumberArrayStep.js",
-              "size": 1609,
+              "size": 1665,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\QuickSelect.js",
               "name": "QuickSelect.js",
-              "size": 2246,
+              "size": 2549,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\Range.js",
               "name": "Range.js",
-              "size": 2731,
+              "size": 2982,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\RemoveRandomElement.js",
               "name": "RemoveRandomElement.js",
-              "size": 1085,
+              "size": 1061,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\RotateLeft.js",
               "name": "RotateLeft.js",
-              "size": 749,
+              "size": 729,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\array\\RotateRight.js",
               "name": "RotateRight.js",
-              "size": 755,
+              "size": 735,
               "extension": ".js",
               "type": "file"
             },
@@ -8200,7 +8136,7 @@
             {
               "path": "utils\\array\\SpliceOne.js",
               "name": "SpliceOne.js",
-              "size": 711,
+              "size": 687,
               "extension": ".js",
               "type": "file"
             },
@@ -8212,7 +8148,7 @@
               "type": "file"
             }
           ],
-          "size": 24523,
+          "size": 25167,
           "type": "directory"
         },
         {
@@ -8225,7 +8161,7 @@
         {
           "path": "utils\\index.js",
           "name": "index.js",
-          "size": 151,
+          "size": 171,
           "extension": ".js",
           "type": "file"
         },
@@ -8243,96 +8179,96 @@
             {
               "path": "utils\\object\\Clone.js",
               "name": "Clone.js",
-              "size": 383,
+              "size": 534,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\Extend.js",
               "name": "Extend.js",
-              "size": 2313,
+              "size": 2388,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\GetAdvancedValue.js",
               "name": "GetAdvancedValue.js",
-              "size": 1272,
+              "size": 1541,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\GetFastValue.js",
               "name": "GetFastValue.js",
-              "size": 585,
+              "size": 850,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\GetMinMaxValue.js",
               "name": "GetMinMaxValue.js",
-              "size": 350,
+              "size": 703,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\GetValue.js",
               "name": "GetValue.js",
-              "size": 1186,
+              "size": 1447,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\HasAll.js",
               "name": "HasAll.js",
-              "size": 245,
+              "size": 465,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\HasAny.js",
               "name": "HasAny.js",
-              "size": 244,
+              "size": 464,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\HasValue.js",
               "name": "HasValue.js",
-              "size": 118,
+              "size": 337,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\index.js",
               "name": "index.js",
-              "size": 430,
+              "size": 556,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\IsPlainObject.js",
               "name": "IsPlainObject.js",
-              "size": 1295,
+              "size": 1341,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\Merge.js",
               "name": "Merge.js",
-              "size": 436,
+              "size": 628,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\object\\MergeRight.js",
               "name": "MergeRight.js",
-              "size": 519,
+              "size": 710,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 9376,
+          "size": 11964,
           "type": "directory"
         },
         {
@@ -8349,14 +8285,14 @@
             {
               "path": "utils\\string\\index.js",
               "name": "index.js",
-              "size": 202,
+              "size": 222,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "utils\\string\\Pad.js",
               "name": "Pad.js",
-              "size": 1921,
+              "size": 1982,
               "extension": ".js",
               "type": "file"
             },
@@ -8370,19 +8306,19 @@
             {
               "path": "utils\\string\\UppercaseFirst.js",
               "name": "UppercaseFirst.js",
-              "size": 136,
+              "size": 317,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 3493,
+          "size": 3755,
           "type": "directory"
         }
       ],
-      "size": 43688,
+      "size": 47202,
       "type": "directory"
     }
   ],
-  "size": 2613831,
+  "size": 2831977,
   "type": "directory"
 }
