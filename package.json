@@ -1,11 +1,12 @@
 {
   "name": "phaser3-docs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Phaser 3 Documentation Generator",
   "main": "src/index.js",
   "scripts": {
     "build": "node src/index.js",
-    "gen": "jsdoc -c jsdoc.conf.json"
+    "gen": "jsdoc -c jsdoc.conf.json",
+    "json": "jsdoc -c jsdoc.data.json"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "extract-comments": "^0.10.1",
     "fs-extra": "^4.0.2",
     "jsdoc": "^3.5.5",
+    "jsdoc-json": "^2.0.2",
     "jsdoc-to-markdown": "^4.0.1",
     "json-beautify": "^1.0.1",
     "node-gyp": "^3.6.2",

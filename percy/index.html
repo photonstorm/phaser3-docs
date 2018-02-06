@@ -86,9 +86,42 @@
                 var li = $('<li>', { class: state, style: 'font-family: Consolas; font-size: 14px' }).text(filename);
                 var a1 = $('<a>', { href: 'class.html?f=' + filename, class: 'badge badge-warning mx-4' }).text('Class');
                 var a2 = $('<a>', { href: 'method.html?f=' + filename, class: 'badge badge-danger mr-4' }).text('Method');
-                var a3 = $('<a>', { href: 'function.html?f=' + filename, class: 'badge badge-primary' }).text('Function');
+                var a3 = $('<a>', { href: 'function.html?f=' + filename, class: 'badge badge-primary mr-4' }).text('Function');
 
-                list.append(li.append(a1, a2, a3));
+                if (entry[1] === 1)
+                {
+                    list.append(li.append(a1, a2, a3));
+                }
+                else
+                {
+                    var a4 = $('<button>', { class: 'badge badge-success', data: { filename: filename, parent: li } }).text('Mark Done');
+
+                    var clickHandler = function ()
+                    {
+                        var button = $(this);
+                        var parent = $(this).data('parent');
+                        var filename = $(this).data('filename');
+
+                        var data = {
+                            filename: filename
+                        };
+
+                        //  Save to SQL
+                        $.post('markdone.php', data, function (result) {
+
+                            if (result == 'OK')
+                            {
+                                parent.addClass('list-group-item-success');
+                                button.hide();
+                            }
+
+                        });
+                    };
+
+                    a4.on('click', clickHandler);
+
+                    list.append(li.append(a1, a2, a3, a4));
+                }
             }
 
             var progress = Math.round((done / total) * 100);

@@ -34,17 +34,9 @@
     "plugins": [
         "jsdoc-plugins/typedef"
     ],
-    "templates": {
-        "systemName": "Phaser",
-        "systemSummary": "HTML5 Game Framework",
-        "footer": "footer",
-        "copyright": "Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.",
-        "includeDate": true
-    },
     "opts": {
         "debug": true,
-        "destination": "./out/",
-        "__destination": "./out/docs.json",
+        "destination": "./out/docs.json",
         "encoding": "utf8",
         "outputSourceFiles": false,
         "outputSourcePath": true,
@@ -52,6 +44,6 @@
         "private": false,
         "lenient": true,
         "sourceType": "script",
-        "template": "node_modules/foodoc/template"
+        "template": "node_modules/jsdoc-json"
     }
 }

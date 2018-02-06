@@ -65,7 +65,6 @@ function buildDocBlock (data, src)
     if (data.components.length > 0)
     {
         docblock.push(' *');
-        docblock.push(' * Mixins:');
 
         for (var i = 0; i < data.components.length; i++)
         {
