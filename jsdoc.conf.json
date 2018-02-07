@@ -9,20 +9,33 @@
     "source": {
         "include": [
             "../phaser/src/phaser.js",
+        ],
+        "gos": [
             "../phaser/src/gameobjects/index.js",
             "../phaser/src/gameobjects/components/",
             "../phaser/src/gameobjects/GameObject.js",
+            "../phaser/src/gameobjects/GameObjectCreator.js",
             "../phaser/src/gameobjects/GameObjectFactory.js",
+            "../phaser/src/gameobjects/bitmaptext/",
             "../phaser/src/gameobjects/blitter/",
-            "../phaser/src/gameobjects/bitmaptext/dynamic/",
-            "../phaser/src/gameobjects/bitmaptext/static/"
+            "../phaser/src/gameobjects/graphics/",
+            "../phaser/src/gameobjects/image/",
+            "../phaser/src/gameobjects/mesh/",
+            "../phaser/src/gameobjects/particles/",
+            "../phaser/src/gameobjects/pathfollower/",
+            "../phaser/src/gameobjects/quad/",
+            "../phaser/src/gameobjects/sprite/",
+            "../phaser/src/gameobjects/sprite3d/",
+            "../phaser/src/gameobjects/text/",
+            "../phaser/src/gameobjects/tilesprite/",
+            "../phaser/src/gameobjects/zone/"
         ],
-        "test": [
+        "done": [
             "../phaser/src/actions/",
             "../phaser/src/math/",
             "../phaser/src/utils/",
-            "../phaser/src/geom/index.js",
-            "../phaser/src/geom/circle/"
+            "../phaser/src/geom/",
+            "../phaser/src/animations/",
         ],
         "exclude": [
             "../phaser/src/physics/matter-js/lib",
@@ -44,7 +57,6 @@
     "opts": {
         "debug": true,
         "destination": "./out/",
-        "__destination": "./out/docs.json",
         "encoding": "utf8",
         "outputSourceFiles": false,
         "outputSourcePath": true,

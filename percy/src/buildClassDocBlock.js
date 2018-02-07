@@ -49,6 +49,7 @@ function buildDocBlock (data, src)
     var docblock = [];
 
     docblock.push('/**');
+    docblock.push(' * @classdesc');
     docblock.push(' * [description]');
     docblock.push(' *');
     docblock.push(' * @class ' + className);
