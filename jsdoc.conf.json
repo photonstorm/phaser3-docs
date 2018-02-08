@@ -9,6 +9,7 @@
     "source": {
         "include": [
             "../phaser/src/phaser.js",
+            "../phaser/src/textures/"
         ],
         "gos": [
             "../phaser/src/gameobjects/index.js",
@@ -36,8 +37,12 @@
             "../phaser/src/utils/",
             "../phaser/src/geom/",
             "../phaser/src/animations/",
+            "../phaser/src/math/",
+            "../phaser/src/tilemaps/",
+            ""
         ],
         "exclude": [
+            "../phaser/src/tilemaps/parsers",
             "../phaser/src/physics/matter-js/lib",
             "../phaser/src/polyfills"
         ],

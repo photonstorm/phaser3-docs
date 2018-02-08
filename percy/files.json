@@ -339,33 +339,33 @@
         {
           "path": "animations\\Animation.js",
           "name": "Animation.js",
-          "size": 22889,
+          "size": 24675,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\AnimationFrame.js",
           "name": "AnimationFrame.js",
-          "size": 4652,
+          "size": 5270,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\AnimationManager.js",
           "name": "AnimationManager.js",
-          "size": 14426,
+          "size": 14901,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "animations\\index.js",
           "name": "index.js",
-          "size": 217,
+          "size": 216,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 42184,
+      "size": 45062,
       "type": "directory"
     },
     {
@@ -375,7 +375,7 @@
         {
           "path": "boot\\Config.js",
           "name": "Config.js",
-          "size": 9264,
+          "size": 9235,
           "extension": ".js",
           "type": "file"
         },
@@ -396,7 +396,7 @@
         {
           "path": "boot\\Game.js",
           "name": "Game.js",
-          "size": 14331,
+          "size": 14282,
           "extension": ".js",
           "type": "file"
         },
@@ -410,7 +410,7 @@
         {
           "path": "boot\\TimeStep.js",
           "name": "TimeStep.js",
-          "size": 16891,
+          "size": 16862,
           "extension": ".js",
           "type": "file"
         },
@@ -422,7 +422,7 @@
           "type": "file"
         }
       ],
-      "size": 49668,
+      "size": 49561,
       "type": "directory"
     },
     {
@@ -432,14 +432,14 @@
         {
           "path": "cache\\BaseCache.js",
           "name": "BaseCache.js",
-          "size": 4872,
+          "size": 4839,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "cache\\CacheManager.js",
           "name": "CacheManager.js",
-          "size": 5827,
+          "size": 5786,
           "extension": ".js",
           "type": "file"
         },
@@ -451,7 +451,7 @@
           "type": "file"
         }
       ],
-      "size": 10852,
+      "size": 10778,
       "type": "directory"
     },
     {
@@ -465,14 +465,14 @@
             {
               "path": "cameras\\2d\\Camera.js",
               "name": "Camera.js",
-              "size": 33701,
+              "size": 33664,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\2d\\CameraManager.js",
               "name": "CameraManager.js",
-              "size": 12255,
+              "size": 12230,
               "extension": ".js",
               "type": "file"
             },
@@ -484,7 +484,7 @@
               "type": "file"
             }
           ],
-          "size": 46115,
+          "size": 46053,
           "type": "directory"
         },
         {
@@ -494,7 +494,7 @@
             {
               "path": "cameras\\controls\\FixedKeyControl.js",
               "name": "FixedKeyControl.js",
-              "size": 6508,
+              "size": 6751,
               "extension": ".js",
               "type": "file"
             },
@@ -508,12 +508,12 @@
             {
               "path": "cameras\\controls\\SmoothedKeyControl.js",
               "name": "SmoothedKeyControl.js",
-              "size": 10306,
+              "size": 10715,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 16982,
+          "size": 17634,
           "type": "directory"
         },
         {
@@ -530,14 +530,14 @@
             {
               "path": "cameras\\sprite3d\\Camera.js",
               "name": "Camera.js",
-              "size": 24343,
+              "size": 25319,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\sprite3d\\CameraManager.js",
               "name": "CameraManager.js",
-              "size": 5840,
+              "size": 5770,
               "extension": ".js",
               "type": "file"
             },
@@ -551,23 +551,23 @@
             {
               "path": "cameras\\sprite3d\\OrthographicCamera.js",
               "name": "OrthographicCamera.js",
-              "size": 3929,
+              "size": 4007,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "cameras\\sprite3d\\PerspectiveCamera.js",
               "name": "PerspectiveCamera.js",
-              "size": 3060,
+              "size": 3096,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 37446,
+          "size": 38466,
           "type": "directory"
         }
       ],
-      "size": 100719,
+      "size": 102329,
       "type": "directory"
     },
     {
@@ -661,12 +661,12 @@
             {
               "path": "curves\\cubicbezier\\CubicBezierCurve.js",
               "name": "CubicBezierCurve.js",
-              "size": 4569,
+              "size": 4695,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4569,
+          "size": 4695,
           "type": "directory"
         },
         {
@@ -676,12 +676,12 @@
             {
               "path": "curves\\curve\\Curve.js",
               "name": "Curve.js",
-              "size": 13770,
+              "size": 14279,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 13770,
+          "size": 14279,
           "type": "directory"
         },
         {
@@ -691,12 +691,12 @@
             {
               "path": "curves\\ellipse\\EllipseCurve.js",
               "name": "EllipseCurve.js",
-              "size": 10591,
+              "size": 11014,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 10591,
+          "size": 11014,
           "type": "directory"
         },
         {
@@ -713,12 +713,12 @@
             {
               "path": "curves\\line\\LineCurve.js",
               "name": "LineCurve.js",
-              "size": 4510,
+              "size": 4664,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4510,
+          "size": 4664,
           "type": "directory"
         },
         {
@@ -728,19 +728,19 @@
             {
               "path": "curves\\path\\MoveTo.js",
               "name": "MoveTo.js",
-              "size": 2155,
+              "size": 2241,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "curves\\path\\Path.js",
               "name": "Path.js",
-              "size": 18388,
+              "size": 18359,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 20543,
+          "size": 20600,
           "type": "directory"
         },
         {
@@ -750,16 +750,16 @@
             {
               "path": "curves\\spline\\SplineCurve.js",
               "name": "SplineCurve.js",
-              "size": 4475,
+              "size": 4619,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4475,
+          "size": 4619,
           "type": "directory"
         }
       ],
-      "size": 58797,
+      "size": 60210,
       "type": "directory"
     },
     {
@@ -1249,7 +1249,7 @@
             {
               "path": "display\\color\\Color.js",
               "name": "Color.js",
-              "size": 11258,
+              "size": 11221,
               "extension": ".js",
               "type": "file"
             },
@@ -1387,7 +1387,7 @@
               "type": "file"
             }
           ],
-          "size": 28879,
+          "size": 28842,
           "type": "directory"
         },
         {
@@ -1404,14 +1404,14 @@
             {
               "path": "display\\mask\\BitmapMask.js",
               "name": "BitmapMask.js",
-              "size": 5060,
+              "size": 5031,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "display\\mask\\GeometryMask.js",
               "name": "GeometryMask.js",
-              "size": 3361,
+              "size": 3332,
               "extension": ".js",
               "type": "file"
             },
@@ -1423,11 +1423,11 @@
               "type": "file"
             }
           ],
-          "size": 8578,
+          "size": 8520,
           "type": "directory"
         }
       ],
-      "size": 87756,
+      "size": 87661,
       "type": "directory"
     },
     {
@@ -1472,12 +1472,12 @@
         {
           "path": "dom\\RequestAnimationFrame.js",
           "name": "RequestAnimationFrame.js",
-          "size": 4548,
+          "size": 4527,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 9326,
+      "size": 9305,
       "type": "directory"
     },
     {
@@ -1487,12 +1487,12 @@
         {
           "path": "events\\EventEmitter.js",
           "name": "EventEmitter.js",
-          "size": 1087,
+          "size": 1066,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 1087,
+      "size": 1066,
       "type": "directory"
     },
     {
@@ -1510,7 +1510,7 @@
                 {
                   "path": "gameobjects\\bitmaptext\\dynamic\\DynamicBitmapText.js",
                   "name": "DynamicBitmapText.js",
-                  "size": 8577,
+                  "size": 8960,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -1550,7 +1550,7 @@
                   "type": "file"
                 }
               ],
-              "size": 17912,
+              "size": 18295,
               "type": "directory"
             },
             {
@@ -1588,7 +1588,7 @@
                 {
                   "path": "gameobjects\\bitmaptext\\static\\BitmapText.js",
                   "name": "BitmapText.js",
-                  "size": 6062,
+                  "size": 6333,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -1628,11 +1628,11 @@
                   "type": "file"
                 }
               ],
-              "size": 14389,
+              "size": 14660,
               "type": "directory"
             }
           ],
-          "size": 44100,
+          "size": 44754,
           "type": "directory"
         },
         {
@@ -1642,14 +1642,14 @@
             {
               "path": "gameobjects\\blitter\\Blitter.js",
               "name": "Blitter.js",
-              "size": 8059,
+              "size": 8074,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\blitter\\BlitterCanvasRenderer.js",
               "name": "BlitterCanvasRenderer.js",
-              "size": 1720,
+              "size": 2413,
               "extension": ".js",
               "type": "file"
             },
@@ -1684,12 +1684,12 @@
             {
               "path": "gameobjects\\blitter\\Bob.js",
               "name": "Bob.js",
-              "size": 7533,
+              "size": 7880,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 21103,
+          "size": 22158,
           "type": "directory"
         },
         {
@@ -1720,7 +1720,7 @@
             {
               "path": "gameobjects\\components\\Animation.js",
               "name": "Animation.js",
-              "size": 10646,
+              "size": 20963,
               "extension": ".js",
               "type": "file"
             },
@@ -1811,7 +1811,7 @@
             {
               "path": "gameobjects\\components\\Tint.js",
               "name": "Tint.js",
-              "size": 4406,
+              "size": 4746,
               "extension": ".js",
               "type": "file"
             },
@@ -1832,19 +1832,19 @@
             {
               "path": "gameobjects\\components\\TransformMatrix.js",
               "name": "TransformMatrix.js",
-              "size": 9618,
+              "size": 10013,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\components\\Visible.js",
               "name": "Visible.js",
-              "size": 1493,
+              "size": 1598,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 77036,
+          "size": 88193,
           "type": "directory"
         },
         {
@@ -1864,21 +1864,21 @@
         {
           "path": "gameobjects\\GameObject.js",
           "name": "GameObject.js",
-          "size": 11211,
+          "size": 11226,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "gameobjects\\GameObjectCreator.js",
           "name": "GameObjectCreator.js",
-          "size": 3324,
+          "size": 3339,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "gameobjects\\GameObjectFactory.js",
           "name": "GameObjectFactory.js",
-          "size": 4074,
+          "size": 4089,
           "extension": ".js",
           "type": "file"
         },
@@ -1896,7 +1896,7 @@
             {
               "path": "gameobjects\\graphics\\Graphics.js",
               "name": "Graphics.js",
-              "size": 35135,
+              "size": 36585,
               "extension": ".js",
               "type": "file"
             },
@@ -1936,7 +1936,7 @@
               "type": "file"
             }
           ],
-          "size": 47321,
+          "size": 48771,
           "type": "directory"
         },
         {
@@ -1975,7 +1975,7 @@
             {
               "path": "gameobjects\\image\\Image.js",
               "name": "Image.js",
-              "size": 2778,
+              "size": 2871,
               "extension": ".js",
               "type": "file"
             },
@@ -2015,13 +2015,13 @@
               "type": "file"
             }
           ],
-          "size": 7728,
+          "size": 7821,
           "type": "directory"
         },
         {
           "path": "gameobjects\\index.js",
           "name": "index.js",
-          "size": 3599,
+          "size": 3204,
           "extension": ".js",
           "type": "file"
         },
@@ -2046,7 +2046,7 @@
             {
               "path": "gameobjects\\mesh\\Mesh.js",
               "name": "Mesh.js",
-              "size": 4192,
+              "size": 4498,
               "extension": ".js",
               "type": "file"
             },
@@ -2067,7 +2067,7 @@
             {
               "path": "gameobjects\\mesh\\MeshFactory.js",
               "name": "MeshFactory.js",
-              "size": 1060,
+              "size": 1770,
               "extension": ".js",
               "type": "file"
             },
@@ -2086,7 +2086,7 @@
               "type": "file"
             }
           ],
-          "size": 8707,
+          "size": 9723,
           "type": "directory"
         },
         {
@@ -2096,56 +2096,63 @@
             {
               "path": "gameobjects\\particles\\EmitterOp.js",
               "name": "EmitterOp.js",
-              "size": 7730,
+              "size": 14565,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\GravityWell.js",
               "name": "GravityWell.js",
-              "size": 2405,
+              "size": 5137,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "gameobjects\\particles\\index.js",
+              "name": "index.js",
+              "size": 456,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\Particle.js",
               "name": "Particle.js",
-              "size": 8184,
+              "size": 16415,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\ParticleEmitter.js",
               "name": "ParticleEmitter.js",
-              "size": 24918,
+              "size": 52846,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\ParticleEmitterManager.js",
               "name": "ParticleEmitterManager.js",
-              "size": 4458,
+              "size": 11789,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\ParticleManagerCanvasRenderer.js",
               "name": "ParticleManagerCanvasRenderer.js",
-              "size": 2257,
+              "size": 3060,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\ParticleManagerCreator.js",
               "name": "ParticleManagerCreator.js",
-              "size": 1221,
+              "size": 1639,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\particles\\ParticleManagerFactory.js",
               "name": "ParticleManagerFactory.js",
-              "size": 763,
+              "size": 1384,
               "extension": ".js",
               "type": "file"
             },
@@ -2159,7 +2166,7 @@
             {
               "path": "gameobjects\\particles\\ParticleManagerWebGLRenderer.js",
               "name": "ParticleManagerWebGLRenderer.js",
-              "size": 523,
+              "size": 1322,
               "extension": ".js",
               "type": "file"
             },
@@ -2170,30 +2177,30 @@
                 {
                   "path": "gameobjects\\particles\\zones\\DeathZone.js",
                   "name": "DeathZone.js",
-                  "size": 556,
+                  "size": 2348,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\particles\\zones\\EdgeZone.js",
                   "name": "EdgeZone.js",
-                  "size": 2633,
+                  "size": 5544,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\particles\\zones\\RandomZone.js",
                   "name": "RandomZone.js",
-                  "size": 498,
+                  "size": 1350,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 3687,
+              "size": 9242,
               "type": "directory"
             }
           ],
-          "size": 56521,
+          "size": 118230,
           "type": "directory"
         },
         {
@@ -2203,19 +2210,19 @@
             {
               "path": "gameobjects\\pathfollower\\PathFollower.js",
               "name": "PathFollower.js",
-              "size": 5843,
+              "size": 12347,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\pathfollower\\PathFollowerFactory.js",
               "name": "PathFollowerFactory.js",
-              "size": 724,
+              "size": 1563,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 6567,
+          "size": 13910,
           "type": "directory"
         },
         {
@@ -2225,26 +2232,26 @@
             {
               "path": "gameobjects\\quad\\Quad.js",
               "name": "Quad.js",
-              "size": 6891,
+              "size": 13002,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\quad\\QuadCreator.js",
               "name": "QuadCreator.js",
-              "size": 704,
+              "size": 1083,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\quad\\QuadFactory.js",
               "name": "QuadFactory.js",
-              "size": 650,
+              "size": 1412,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 8245,
+          "size": 15497,
           "type": "directory"
         },
         {
@@ -2254,7 +2261,7 @@
             {
               "path": "gameobjects\\sprite\\Sprite.js",
               "name": "Sprite.js",
-              "size": 4268,
+              "size": 4424,
               "extension": ".js",
               "type": "file"
             },
@@ -2294,7 +2301,7 @@
               "type": "file"
             }
           ],
-          "size": 9529,
+          "size": 9685,
           "type": "directory"
         },
         {
@@ -2304,26 +2311,26 @@
             {
               "path": "gameobjects\\sprite3d\\Sprite3D.js",
               "name": "Sprite3D.js",
-              "size": 2570,
+              "size": 6118,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\sprite3d\\Sprite3DCreator.js",
               "name": "Sprite3DCreator.js",
-              "size": 841,
+              "size": 1217,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\sprite3d\\Sprite3DFactory.js",
               "name": "Sprite3DFactory.js",
-              "size": 728,
+              "size": 1506,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4139,
+          "size": 8841,
           "type": "directory"
         },
         {
@@ -2333,14 +2340,14 @@
             {
               "path": "gameobjects\\text\\GetTextSize.js",
               "name": "GetTextSize.js",
-              "size": 1560,
+              "size": 1634,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\text\\MeasureText.js",
               "name": "MeasureText.js",
-              "size": 2729,
+              "size": 2733,
               "extension": ".js",
               "type": "file"
             },
@@ -2351,28 +2358,28 @@
                 {
                   "path": "gameobjects\\text\\static\\Text.js",
                   "name": "Text.js",
-                  "size": 20758,
+                  "size": 30602,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\text\\static\\TextCanvasRenderer.js",
                   "name": "TextCanvasRenderer.js",
-                  "size": 1422,
+                  "size": 2208,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\text\\static\\TextCreator.js",
                   "name": "TextCreator.js",
-                  "size": 1928,
+                  "size": 2288,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "gameobjects\\text\\static\\TextFactory.js",
                   "name": "TextFactory.js",
-                  "size": 612,
+                  "size": 1245,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -2386,654 +2393,23 @@
                 {
                   "path": "gameobjects\\text\\static\\TextWebGLRenderer.js",
                   "name": "TextWebGLRenderer.js",
-                  "size": 629,
+                  "size": 1326,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 25708,
+              "size": 38028,
               "type": "directory"
             },
             {
               "path": "gameobjects\\text\\TextStyle.js",
               "name": "TextStyle.js",
-              "size": 11682,
+              "size": 23656,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 41679,
-          "type": "directory"
-        },
-        {
-          "path": "..\\phaser\\src\\gameobjects\\tilemap",
-          "name": "tilemap",
-          "children": [
-            {
-              "path": "..\\phaser\\src\\gameobjects\\tilemap\\components",
-              "name": "components",
-              "children": [
-                {
-                  "path": "gameobjects\\tilemap\\components\\CalculateFacesAt.js",
-                  "name": "CalculateFacesAt.js",
-                  "size": 1857,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\CalculateFacesWithin.js",
-                  "name": "CalculateFacesWithin.js",
-                  "size": 1769,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\Copy.js",
-                  "name": "Copy.js",
-                  "size": 1861,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\CreateFromTiles.js",
-                  "name": "CreateFromTiles.js",
-                  "size": 2869,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\CullTiles.js",
-                  "name": "CullTiles.js",
-                  "size": 1636,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\Fill.js",
-                  "name": "Fill.js",
-                  "size": 1501,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\FilterTiles.js",
-                  "name": "FilterTiles.js",
-                  "size": 1736,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\FindByIndex.js",
-                  "name": "FindByIndex.js",
-                  "size": 2255,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\FindTile.js",
-                  "name": "FindTile.js",
-                  "size": 1661,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\ForEachTile.js",
-                  "name": "ForEachTile.js",
-                  "size": 1485,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\GetTileAt.js",
-                  "name": "GetTileAt.js",
-                  "size": 1169,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\GetTileAtWorldXY.js",
-                  "name": "GetTileAtWorldXY.js",
-                  "size": 1028,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\GetTilesWithin.js",
-                  "name": "GetTilesWithin.js",
-                  "size": 2608,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\GetTilesWithinShape.js",
-                  "name": "GetTilesWithinShape.js",
-                  "size": 3678,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\GetTilesWithinWorldXY.js",
-                  "name": "GetTilesWithinWorldXY.js",
-                  "size": 1732,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\HasTileAt.js",
-                  "name": "HasTileAt.js",
-                  "size": 700,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\HasTileAtWorldXY.js",
-                  "name": "HasTileAtWorldXY.js",
-                  "size": 822,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\index.js",
-                  "name": "index.js",
-                  "size": 2123,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\IsInLayerBounds.js",
-                  "name": "IsInLayerBounds.js",
-                  "size": 429,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\PutTileAt.js",
-                  "name": "PutTileAt.js",
-                  "size": 2320,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\PutTileAtWorldXY.js",
-                  "name": "PutTileAtWorldXY.js",
-                  "size": 1259,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\PutTilesAt.js",
-                  "name": "PutTilesAt.js",
-                  "size": 1785,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\Randomize.js",
-                  "name": "Randomize.js",
-                  "size": 1673,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\RemoveTileAt.js",
-                  "name": "RemoveTileAt.js",
-                  "size": 1582,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\RemoveTileAtWorldXY.js",
-                  "name": "RemoveTileAtWorldXY.js",
-                  "size": 1180,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\RenderDebug.js",
-                  "name": "RenderDebug.js",
-                  "size": 3011,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\ReplaceByIndex.js",
-                  "name": "ReplaceByIndex.js",
-                  "size": 1058,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetCollision.js",
-                  "name": "SetCollision.js",
-                  "size": 1734,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetCollisionBetween.js",
-                  "name": "SetCollisionBetween.js",
-                  "size": 1944,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetCollisionByExclusion.js",
-                  "name": "SetCollisionByExclusion.js",
-                  "size": 1690,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetCollisionByProperty.js",
-                  "name": "SetCollisionByProperty.js",
-                  "size": 2427,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetCollisionFromCollisionGroup.js",
-                  "name": "SetCollisionFromCollisionGroup.js",
-                  "size": 1738,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetLayerCollisionIndex.js",
-                  "name": "SetLayerCollisionIndex.js",
-                  "size": 717,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetTileCollision.js",
-                  "name": "SetTileCollision.js",
-                  "size": 468,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetTileIndexCallback.js",
-                  "name": "SetTileIndexCallback.js",
-                  "size": 1367,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SetTileLocationCallback.js",
-                  "name": "SetTileLocationCallback.js",
-                  "size": 1111,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\Shuffle.js",
-                  "name": "Shuffle.js",
-                  "size": 1087,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\SwapByIndex.js",
-                  "name": "SwapByIndex.js",
-                  "size": 1196,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\TileToWorldX.js",
-                  "name": "TileToWorldX.js",
-                  "size": 831,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\TileToWorldXY.js",
-                  "name": "TileToWorldXY.js",
-                  "size": 968,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\TileToWorldY.js",
-                  "name": "TileToWorldY.js",
-                  "size": 837,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\WeightedRandomize.js",
-                  "name": "WeightedRandomize.js",
-                  "size": 2411,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\WorldToTileX.js",
-                  "name": "WorldToTileX.js",
-                  "size": 1239,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\WorldToTileXY.js",
-                  "name": "WorldToTileXY.js",
-                  "size": 1123,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\components\\WorldToTileY.js",
-                  "name": "WorldToTileY.js",
-                  "size": 1242,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 70917,
-              "type": "directory"
-            },
-            {
-              "path": "..\\phaser\\src\\gameobjects\\tilemap\\dynamiclayer",
-              "name": "dynamiclayer",
-              "children": [
-                {
-                  "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayer.js",
-                  "name": "DynamicTilemapLayer.js",
-                  "size": 15750,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayerCanvasRenderer.js",
-                  "name": "DynamicTilemapLayerCanvasRenderer.js",
-                  "size": 1861,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayerRender.js",
-                  "name": "DynamicTilemapLayerRender.js",
-                  "size": 389,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\dynamiclayer\\DynamicTilemapLayerWebGLRenderer.js",
-                  "name": "DynamicTilemapLayerWebGLRenderer.js",
-                  "size": 546,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 18546,
-              "type": "directory"
-            },
-            {
-              "path": "gameobjects\\tilemap\\Formats.js",
-              "name": "Formats.js",
-              "size": 99,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\tilemap\\ImageCollection.js",
-              "name": "ImageCollection.js",
-              "size": 4136,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "..\\phaser\\src\\gameobjects\\tilemap\\mapdata",
-              "name": "mapdata",
-              "children": [
-                {
-                  "path": "gameobjects\\tilemap\\mapdata\\LayerData.js",
-                  "name": "LayerData.js",
-                  "size": 2065,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\mapdata\\MapData.js",
-                  "name": "MapData.js",
-                  "size": 1855,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\mapdata\\ObjectLayer.js",
-                  "name": "ObjectLayer.js",
-                  "size": 1283,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 5203,
-              "type": "directory"
-            },
-            {
-              "path": "..\\phaser\\src\\gameobjects\\tilemap\\parsers",
-              "name": "parsers",
-              "children": [
-                {
-                  "path": "gameobjects\\tilemap\\parsers\\Parse.js",
-                  "name": "Parse.js",
-                  "size": 2396,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\parsers\\Parse2DArray.js",
-                  "name": "Parse2DArray.js",
-                  "size": 2575,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\parsers\\ParseCSV.js",
-                  "name": "ParseCSV.js",
-                  "size": 1345,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "..\\phaser\\src\\gameobjects\\tilemap\\parsers\\parsetiledjson",
-                  "name": "parsetiledjson",
-                  "children": [
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\AssignTileProperties.js",
-                      "name": "AssignTileProperties.js",
-                      "size": 1615,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\Base64Decode.js",
-                      "name": "Base64Decode.js",
-                      "size": 605,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\BuildTilesetIndex.js",
-                      "name": "BuildTilesetIndex.js",
-                      "size": 1157,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\index.js",
-                      "name": "index.js",
-                      "size": 2248,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseGID.js",
-                      "name": "ParseGID.js",
-                      "size": 2144,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseImageLayers.js",
-                      "name": "ParseImageLayers.js",
-                      "size": 751,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseObject.js",
-                      "name": "ParseObject.js",
-                      "size": 1824,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseObjectLayers.js",
-                      "name": "ParseObjectLayers.js",
-                      "size": 996,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseTileLayers.js",
-                      "name": "ParseTileLayers.js",
-                      "size": 3461,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\ParseTilesets.js",
-                      "name": "ParseTilesets.js",
-                      "size": 2991,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parsetiledjson\\Pick.js",
-                      "name": "Pick.js",
-                      "size": 353,
-                      "extension": ".js",
-                      "type": "file"
-                    }
-                  ],
-                  "size": 18145,
-                  "type": "directory"
-                },
-                {
-                  "path": "..\\phaser\\src\\gameobjects\\tilemap\\parsers\\parseweltmeister",
-                  "name": "parseweltmeister",
-                  "children": [
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parseweltmeister\\index.js",
-                      "name": "index.js",
-                      "size": 1811,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parseweltmeister\\ParseTileLayers.js",
-                      "name": "ParseTileLayers.js",
-                      "size": 1765,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "gameobjects\\tilemap\\parsers\\parseweltmeister\\ParseTilesets.js",
-                      "name": "ParseTilesets.js",
-                      "size": 985,
-                      "extension": ".js",
-                      "type": "file"
-                    }
-                  ],
-                  "size": 4561,
-                  "type": "directory"
-                }
-              ],
-              "size": 29022,
-              "type": "directory"
-            },
-            {
-              "path": "gameobjects\\tilemap\\ParseToTilemap.js",
-              "name": "ParseToTilemap.js",
-              "size": 2897,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "..\\phaser\\src\\gameobjects\\tilemap\\staticlayer",
-              "name": "staticlayer",
-              "children": [
-                {
-                  "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayer.js",
-                  "name": "StaticTilemapLayer.js",
-                  "size": 17908,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayerCanvasRenderer.js",
-                  "name": "StaticTilemapLayerCanvasRenderer.js",
-                  "size": 1497,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayerRender.js",
-                  "name": "StaticTilemapLayerRender.js",
-                  "size": 387,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "gameobjects\\tilemap\\staticlayer\\StaticTilemapLayerWebGLRenderer.js",
-                  "name": "StaticTilemapLayerWebGLRenderer.js",
-                  "size": 458,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 20250,
-              "type": "directory"
-            },
-            {
-              "path": "gameobjects\\tilemap\\Tile.js",
-              "name": "Tile.js",
-              "size": 21096,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\tilemap\\Tilemap.js",
-              "name": "Tilemap.js",
-              "size": 54164,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\tilemap\\TilemapCreator.js",
-              "name": "TilemapCreator.js",
-              "size": 2065,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\tilemap\\TilemapFactory.js",
-              "name": "TilemapFactory.js",
-              "size": 2842,
-              "extension": ".js",
-              "type": "file"
-            },
-            {
-              "path": "gameobjects\\tilemap\\Tileset.js",
-              "name": "Tileset.js",
-              "size": 10668,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 241905,
+          "size": 66051,
           "type": "directory"
         },
         {
@@ -3043,28 +2419,28 @@
             {
               "path": "gameobjects\\tilesprite\\TileSprite.js",
               "name": "TileSprite.js",
-              "size": 3233,
+              "size": 7066,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\tilesprite\\TileSpriteCanvasRenderer.js",
               "name": "TileSpriteCanvasRenderer.js",
-              "size": 1392,
+              "size": 2171,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\tilesprite\\TileSpriteCreator.js",
               "name": "TileSpriteCreator.js",
-              "size": 855,
+              "size": 1239,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\tilesprite\\TileSpriteFactory.js",
               "name": "TileSpriteFactory.js",
-              "size": 661,
+              "size": 1531,
               "extension": ".js",
               "type": "file"
             },
@@ -3078,12 +2454,12 @@
             {
               "path": "gameobjects\\tilesprite\\TileSpriteWebGLRenderer.js",
               "name": "TileSpriteWebGLRenderer.js",
-              "size": 501,
+              "size": 1191,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 7007,
+          "size": 13563,
           "type": "directory"
         },
         {
@@ -3107,30 +2483,30 @@
             {
               "path": "gameobjects\\zone\\Zone.js",
               "name": "Zone.js",
-              "size": 3705,
+              "size": 8133,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\zone\\ZoneCreator.js",
               "name": "ZoneCreator.js",
-              "size": 583,
+              "size": 943,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\zone\\ZoneFactory.js",
               "name": "ZoneFactory.js",
-              "size": 613,
+              "size": 1221,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4901,
+          "size": 10297,
           "type": "directory"
         }
       ],
-      "size": 656866,
+      "size": 547522,
       "type": "directory"
     },
     {
@@ -3151,7 +2527,7 @@
             {
               "path": "geom\\circle\\Circle.js",
               "name": "Circle.js",
-              "size": 8850,
+              "size": 8981,
               "extension": ".js",
               "type": "file"
             },
@@ -3235,7 +2611,7 @@
             {
               "path": "geom\\circle\\index.js",
               "name": "index.js",
-              "size": 773,
+              "size": 727,
               "extension": ".js",
               "type": "file"
             },
@@ -3261,7 +2637,7 @@
               "type": "file"
             }
           ],
-          "size": 21213,
+          "size": 21298,
           "type": "directory"
         },
         {
@@ -3327,7 +2703,7 @@
             {
               "path": "geom\\ellipse\\Ellipse.js",
               "name": "Ellipse.js",
-              "size": 9566,
+              "size": 9703,
               "extension": ".js",
               "type": "file"
             },
@@ -3362,7 +2738,7 @@
             {
               "path": "geom\\ellipse\\index.js",
               "name": "index.js",
-              "size": 792,
+              "size": 745,
               "extension": ".js",
               "type": "file"
             },
@@ -3388,7 +2764,7 @@
               "type": "file"
             }
           ],
-          "size": 22416,
+          "size": 22506,
           "type": "directory"
         },
         {
@@ -3595,7 +2971,7 @@
             {
               "path": "geom\\line\\index.js",
               "name": "index.js",
-              "size": 1125,
+              "size": 1081,
               "extension": ".js",
               "type": "file"
             },
@@ -3609,7 +2985,7 @@
             {
               "path": "geom\\line\\Line.js",
               "name": "Line.js",
-              "size": 5738,
+              "size": 5966,
               "extension": ".js",
               "type": "file"
             },
@@ -3705,7 +3081,7 @@
               "type": "file"
             }
           ],
-          "size": 20180,
+          "size": 20364,
           "type": "directory"
         },
         {
@@ -3807,7 +3183,7 @@
             {
               "path": "geom\\point\\index.js",
               "name": "index.js",
-              "size": 766,
+              "size": 721,
               "extension": ".js",
               "type": "file"
             },
@@ -3835,7 +3211,7 @@
             {
               "path": "geom\\point\\Point.js",
               "name": "Point.js",
-              "size": 1218,
+              "size": 1435,
               "extension": ".js",
               "type": "file"
             },
@@ -3861,7 +3237,7 @@
               "type": "file"
             }
           ],
-          "size": 10148,
+          "size": 10320,
           "type": "directory"
         },
         {
@@ -3913,14 +3289,14 @@
             {
               "path": "geom\\polygon\\index.js",
               "name": "index.js",
-              "size": 344,
+              "size": 297,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "geom\\polygon\\Polygon.js",
               "name": "Polygon.js",
-              "size": 4893,
+              "size": 4073,
               "extension": ".js",
               "type": "file"
             },
@@ -3932,7 +3308,7 @@
               "type": "file"
             }
           ],
-          "size": 29075,
+          "size": 28208,
           "type": "directory"
         },
         {
@@ -4089,7 +3465,7 @@
             {
               "path": "geom\\rectangle\\index.js",
               "name": "index.js",
-              "size": 1675,
+              "size": 1626,
               "extension": ".js",
               "type": "file"
             },
@@ -4173,7 +3549,7 @@
             {
               "path": "geom\\rectangle\\Rectangle.js",
               "name": "Rectangle.js",
-              "size": 9019,
+              "size": 9253,
               "extension": ".js",
               "type": "file"
             },
@@ -4192,7 +3568,7 @@
               "type": "file"
             }
           ],
-          "size": 34599,
+          "size": 34784,
           "type": "directory"
         },
         {
@@ -4328,7 +3704,7 @@
             {
               "path": "geom\\triangle\\index.js",
               "name": "index.js",
-              "size": 1253,
+              "size": 1205,
               "extension": ".js",
               "type": "file"
             },
@@ -4377,16 +3753,16 @@
             {
               "path": "geom\\triangle\\Triangle.js",
               "name": "Triangle.js",
-              "size": 8569,
+              "size": 8870,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 33691,
+          "size": 33944,
           "type": "directory"
         }
       ],
-      "size": 207312,
+      "size": 207414,
       "type": "directory"
     },
     {
@@ -4400,14 +3776,14 @@
             {
               "path": "input\\gamepad\\Axis.js",
               "name": "Axis.js",
-              "size": 1881,
+              "size": 1819,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\gamepad\\Button.js",
               "name": "Button.js",
-              "size": 2248,
+              "size": 2184,
               "extension": ".js",
               "type": "file"
             },
@@ -4450,14 +3826,14 @@
             {
               "path": "input\\gamepad\\Gamepad.js",
               "name": "Gamepad.js",
-              "size": 2985,
+              "size": 2916,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "input\\gamepad\\GamepadManager.js",
               "name": "GamepadManager.js",
-              "size": 8480,
+              "size": 8412,
               "extension": ".js",
               "type": "file"
             },
@@ -4469,7 +3845,7 @@
               "type": "file"
             }
           ],
-          "size": 17213,
+          "size": 16950,
           "type": "directory"
         },
         {
@@ -4482,14 +3858,14 @@
         {
           "path": "input\\InputManager.js",
           "name": "InputManager.js",
-          "size": 13519,
+          "size": 13457,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "input\\InputPlugin.js",
           "name": "InputPlugin.js",
-          "size": 43175,
+          "size": 43146,
           "extension": ".js",
           "type": "file"
         },
@@ -4518,7 +3894,7 @@
                 {
                   "path": "input\\keyboard\\combo\\KeyCombo.js",
                   "name": "KeyCombo.js",
-                  "size": 6318,
+                  "size": 6261,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -4537,7 +3913,7 @@
                   "type": "file"
                 }
               ],
-              "size": 9271,
+              "size": 9214,
               "type": "directory"
             },
             {
@@ -4550,7 +3926,7 @@
             {
               "path": "input\\keyboard\\KeyboardManager.js",
               "name": "KeyboardManager.js",
-              "size": 10417,
+              "size": 10360,
               "extension": ".js",
               "type": "file"
             },
@@ -4582,7 +3958,7 @@
                 {
                   "path": "input\\keyboard\\keys\\Key.js",
                   "name": "Key.js",
-                  "size": 4509,
+                  "size": 4480,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -4629,11 +4005,11 @@
                   "type": "file"
                 }
               ],
-              "size": 11380,
+              "size": 11351,
               "type": "directory"
             }
           ],
-          "size": 31506,
+          "size": 31363,
           "type": "directory"
         },
         {
@@ -4650,18 +4026,18 @@
             {
               "path": "input\\mouse\\MouseManager.js",
               "name": "MouseManager.js",
-              "size": 8178,
+              "size": 8153,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 8304,
+          "size": 8279,
           "type": "directory"
         },
         {
           "path": "input\\Pointer.js",
           "name": "Pointer.js",
-          "size": 14524,
+          "size": 14495,
           "extension": ".js",
           "type": "file"
         },
@@ -4679,16 +4055,16 @@
             {
               "path": "input\\touch\\TouchManager.js",
               "name": "TouchManager.js",
-              "size": 4330,
+              "size": 4305,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 4456,
+          "size": 4431,
           "type": "directory"
         }
       ],
-      "size": 133767,
+      "size": 133191,
       "type": "directory"
     },
     {
@@ -4705,7 +4081,7 @@
         {
           "path": "loader\\File.js",
           "name": "File.js",
-          "size": 10874,
+          "size": 10776,
           "extension": ".js",
           "type": "file"
         },
@@ -4730,7 +4106,7 @@
             {
               "path": "loader\\filetypes\\AudioFile.js",
               "name": "AudioFile.js",
-              "size": 7066,
+              "size": 7021,
               "extension": ".js",
               "type": "file"
             },
@@ -4835,14 +4211,14 @@
             {
               "path": "loader\\filetypes\\TilemapCSVFile.js",
               "name": "TilemapCSVFile.js",
-              "size": 1822,
+              "size": 1811,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "loader\\filetypes\\TilemapJSONFile.js",
               "name": "TilemapJSONFile.js",
-              "size": 1926,
+              "size": 1915,
               "extension": ".js",
               "type": "file"
             },
@@ -4868,7 +4244,7 @@
               "type": "file"
             }
           ],
-          "size": 49504,
+          "size": 49437,
           "type": "directory"
         },
         {
@@ -4921,7 +4297,7 @@
           "type": "file"
         }
       ],
-      "size": 85334,
+      "size": 85169,
       "type": "directory"
     },
     {
@@ -5697,14 +5073,14 @@
         {
           "path": "math\\Matrix3.js",
           "name": "Matrix3.js",
-          "size": 12579,
+          "size": 12588,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Matrix4.js",
           "name": "Matrix4.js",
-          "size": 35948,
+          "size": 35955,
           "extension": ".js",
           "type": "file"
         },
@@ -5783,7 +5159,7 @@
         {
           "path": "math\\Quaternion.js",
           "name": "Quaternion.js",
-          "size": 15963,
+          "size": 16750,
           "extension": ".js",
           "type": "file"
         },
@@ -5801,12 +5177,12 @@
             {
               "path": "math\\random-data-generator\\RandomDataGenerator.js",
               "name": "RandomDataGenerator.js",
-              "size": 11446,
+              "size": 11420,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 11446,
+          "size": 11420,
           "type": "directory"
         },
         {
@@ -5939,21 +5315,21 @@
         {
           "path": "math\\Vector2.js",
           "name": "Vector2.js",
-          "size": 10146,
+          "size": 10792,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Vector3.js",
           "name": "Vector3.js",
-          "size": 17147,
+          "size": 17711,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "math\\Vector4.js",
           "name": "Vector4.js",
-          "size": 10655,
+          "size": 11414,
           "extension": ".js",
           "type": "file"
         },
@@ -5972,10 +5348,10 @@
           "type": "file"
         }
       ],
-      "size": 176772,
+      "size": 179518,
       "type": "directory"
     },
-    { "path": "phaser.js", "name": "phaser.js", "size": 1537, "extension": ".js", "type": "file" },
+    { "path": "phaser.js", "name": "phaser.js", "size": 1575, "extension": ".js", "type": "file" },
     {
       "path": "..\\phaser\\src\\physics",
       "name": "physics",
@@ -6644,12 +6020,12 @@
             {
               "path": "physics\\impact\\World.js",
               "name": "World.js",
-              "size": 18874,
+              "size": 18863,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 58548,
+          "size": 58537,
           "type": "directory"
         },
         {
@@ -7096,7 +6472,7 @@
             {
               "path": "physics\\matter-js\\MatterTileBody.js",
               "name": "MatterTileBody.js",
-              "size": 11096,
+              "size": 10919,
               "extension": ".js",
               "type": "file"
             },
@@ -7115,7 +6491,7 @@
               "type": "file"
             }
           ],
-          "size": 395021,
+          "size": 394844,
           "type": "directory"
         },
         {
@@ -7134,7 +6510,7 @@
           "type": "directory"
         }
       ],
-      "size": 584942,
+      "size": 584754,
       "type": "directory"
     },
     {
@@ -7280,7 +6656,7 @@
                 {
                   "path": "renderer\\canvas\\utils\\BlitImage.js",
                   "name": "BlitImage.js",
-                  "size": 485,
+                  "size": 443,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -7299,11 +6675,11 @@
                   "type": "file"
                 }
               ],
-              "size": 3437,
+              "size": 3395,
               "type": "directory"
             }
           ],
-          "size": 11966,
+          "size": 11924,
           "type": "directory"
         },
         {
@@ -7375,26 +6751,26 @@
                 {
                   "path": "renderer\\webgl\\pipelines\\FlatTintPipeline.js",
                   "name": "FlatTintPipeline.js",
-                  "size": 34855,
+                  "size": 34839,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\ForwardDiffuseLightPipeline.js",
                   "name": "ForwardDiffuseLightPipeline.js",
-                  "size": 8463,
+                  "size": 8465,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\TextureTintPipeline.js",
                   "name": "TextureTintPipeline.js",
-                  "size": 51229,
+                  "size": 51192,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 112819,
+              "size": 112768,
               "type": "directory"
             },
             {
@@ -7421,16 +6797,16 @@
             {
               "path": "renderer\\webgl\\WebGLRenderer.js",
               "name": "WebGLRenderer.js",
-              "size": 28286,
+              "size": 28558,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 146528,
+          "size": 146749,
           "type": "directory"
         }
       ],
-      "size": 160846,
+      "size": 161025,
       "type": "directory"
     },
     {
@@ -7792,13 +7168,651 @@
       "type": "directory"
     },
     {
+      "path": "..\\phaser\\src\\tilemaps",
+      "name": "tilemaps",
+      "children": [
+        {
+          "path": "..\\phaser\\src\\tilemaps\\components",
+          "name": "components",
+          "children": [
+            {
+              "path": "tilemaps\\components\\CalculateFacesAt.js",
+              "name": "CalculateFacesAt.js",
+              "size": 1857,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\CalculateFacesWithin.js",
+              "name": "CalculateFacesWithin.js",
+              "size": 1769,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\Copy.js",
+              "name": "Copy.js",
+              "size": 1861,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\CreateFromTiles.js",
+              "name": "CreateFromTiles.js",
+              "size": 2869,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\CullTiles.js",
+              "name": "CullTiles.js",
+              "size": 1636,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\Fill.js",
+              "name": "Fill.js",
+              "size": 1501,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\FilterTiles.js",
+              "name": "FilterTiles.js",
+              "size": 1736,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\FindByIndex.js",
+              "name": "FindByIndex.js",
+              "size": 2255,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\FindTile.js",
+              "name": "FindTile.js",
+              "size": 1661,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\ForEachTile.js",
+              "name": "ForEachTile.js",
+              "size": 1485,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\GetTileAt.js",
+              "name": "GetTileAt.js",
+              "size": 1169,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\GetTileAtWorldXY.js",
+              "name": "GetTileAtWorldXY.js",
+              "size": 1028,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\GetTilesWithin.js",
+              "name": "GetTilesWithin.js",
+              "size": 2605,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\GetTilesWithinShape.js",
+              "name": "GetTilesWithinShape.js",
+              "size": 3669,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\GetTilesWithinWorldXY.js",
+              "name": "GetTilesWithinWorldXY.js",
+              "size": 1732,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\HasTileAt.js",
+              "name": "HasTileAt.js",
+              "size": 700,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\HasTileAtWorldXY.js",
+              "name": "HasTileAtWorldXY.js",
+              "size": 822,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\index.js",
+              "name": "index.js",
+              "size": 2123,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\IsInLayerBounds.js",
+              "name": "IsInLayerBounds.js",
+              "size": 429,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\PutTileAt.js",
+              "name": "PutTileAt.js",
+              "size": 2320,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\PutTileAtWorldXY.js",
+              "name": "PutTileAtWorldXY.js",
+              "size": 1259,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\PutTilesAt.js",
+              "name": "PutTilesAt.js",
+              "size": 1785,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\Randomize.js",
+              "name": "Randomize.js",
+              "size": 1670,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\RemoveTileAt.js",
+              "name": "RemoveTileAt.js",
+              "size": 1582,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\RemoveTileAtWorldXY.js",
+              "name": "RemoveTileAtWorldXY.js",
+              "size": 1180,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\RenderDebug.js",
+              "name": "RenderDebug.js",
+              "size": 3008,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\ReplaceByIndex.js",
+              "name": "ReplaceByIndex.js",
+              "size": 1058,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetCollision.js",
+              "name": "SetCollision.js",
+              "size": 1734,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetCollisionBetween.js",
+              "name": "SetCollisionBetween.js",
+              "size": 1944,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetCollisionByExclusion.js",
+              "name": "SetCollisionByExclusion.js",
+              "size": 1690,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetCollisionByProperty.js",
+              "name": "SetCollisionByProperty.js",
+              "size": 2424,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetCollisionFromCollisionGroup.js",
+              "name": "SetCollisionFromCollisionGroup.js",
+              "size": 1738,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetLayerCollisionIndex.js",
+              "name": "SetLayerCollisionIndex.js",
+              "size": 717,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetTileCollision.js",
+              "name": "SetTileCollision.js",
+              "size": 468,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetTileIndexCallback.js",
+              "name": "SetTileIndexCallback.js",
+              "size": 1367,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SetTileLocationCallback.js",
+              "name": "SetTileLocationCallback.js",
+              "size": 1111,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\Shuffle.js",
+              "name": "Shuffle.js",
+              "size": 1084,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\SwapByIndex.js",
+              "name": "SwapByIndex.js",
+              "size": 1196,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\TileToWorldX.js",
+              "name": "TileToWorldX.js",
+              "size": 831,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\TileToWorldXY.js",
+              "name": "TileToWorldXY.js",
+              "size": 965,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\TileToWorldY.js",
+              "name": "TileToWorldY.js",
+              "size": 837,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\WeightedRandomize.js",
+              "name": "WeightedRandomize.js",
+              "size": 2411,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\WorldToTileX.js",
+              "name": "WorldToTileX.js",
+              "size": 1239,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\WorldToTileXY.js",
+              "name": "WorldToTileXY.js",
+              "size": 1120,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\components\\WorldToTileY.js",
+              "name": "WorldToTileY.js",
+              "size": 1242,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 70887,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\src\\tilemaps\\dynamiclayer",
+          "name": "dynamiclayer",
+          "children": [
+            {
+              "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayer.js",
+              "name": "DynamicTilemapLayer.js",
+              "size": 15710,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayerCanvasRenderer.js",
+              "name": "DynamicTilemapLayerCanvasRenderer.js",
+              "size": 1971,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayerRender.js",
+              "name": "DynamicTilemapLayerRender.js",
+              "size": 383,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayerWebGLRenderer.js",
+              "name": "DynamicTilemapLayerWebGLRenderer.js",
+              "size": 503,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 18567,
+          "type": "directory"
+        },
+        {
+          "path": "tilemaps\\Formats.js",
+          "name": "Formats.js",
+          "size": 99,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "tilemaps\\ImageCollection.js",
+          "name": "ImageCollection.js",
+          "size": 4128,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "tilemaps\\index.js",
+          "name": "index.js",
+          "size": 701,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "..\\phaser\\src\\tilemaps\\mapdata",
+          "name": "mapdata",
+          "children": [
+            {
+              "path": "tilemaps\\mapdata\\LayerData.js",
+              "name": "LayerData.js",
+              "size": 2034,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\mapdata\\MapData.js",
+              "name": "MapData.js",
+              "size": 1824,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\mapdata\\ObjectLayer.js",
+              "name": "ObjectLayer.js",
+              "size": 1238,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 5096,
+          "type": "directory"
+        },
+        {
+          "path": "..\\phaser\\src\\tilemaps\\parsers",
+          "name": "parsers",
+          "children": [
+            {
+              "path": "tilemaps\\parsers\\Parse.js",
+              "name": "Parse.js",
+              "size": 2394,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\parsers\\Parse2DArray.js",
+              "name": "Parse2DArray.js",
+              "size": 2575,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\parsers\\ParseCSV.js",
+              "name": "ParseCSV.js",
+              "size": 1345,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "..\\phaser\\src\\tilemaps\\parsers\\parsetiledjson",
+              "name": "parsetiledjson",
+              "children": [
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\AssignTileProperties.js",
+                  "name": "AssignTileProperties.js",
+                  "size": 1550,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\Base64Decode.js",
+                  "name": "Base64Decode.js",
+                  "size": 605,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\BuildTilesetIndex.js",
+                  "name": "BuildTilesetIndex.js",
+                  "size": 1157,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\index.js",
+                  "name": "index.js",
+                  "size": 2248,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\ParseGID.js",
+                  "name": "ParseGID.js",
+                  "size": 2144,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\ParseImageLayers.js",
+                  "name": "ParseImageLayers.js",
+                  "size": 748,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\ParseObject.js",
+                  "name": "ParseObject.js",
+                  "size": 1824,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\ParseObjectLayers.js",
+                  "name": "ParseObjectLayers.js",
+                  "size": 993,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\ParseTileLayers.js",
+                  "name": "ParseTileLayers.js",
+                  "size": 3405,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\ParseTilesets.js",
+                  "name": "ParseTilesets.js",
+                  "size": 2991,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parsetiledjson\\Pick.js",
+                  "name": "Pick.js",
+                  "size": 350,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 18015,
+              "type": "directory"
+            },
+            {
+              "path": "..\\phaser\\src\\tilemaps\\parsers\\parseweltmeister",
+              "name": "parseweltmeister",
+              "children": [
+                {
+                  "path": "tilemaps\\parsers\\parseweltmeister\\index.js",
+                  "name": "index.js",
+                  "size": 1811,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parseweltmeister\\ParseTileLayers.js",
+                  "name": "ParseTileLayers.js",
+                  "size": 1765,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\parseweltmeister\\ParseTilesets.js",
+                  "name": "ParseTilesets.js",
+                  "size": 985,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 4561,
+              "type": "directory"
+            }
+          ],
+          "size": 28890,
+          "type": "directory"
+        },
+        {
+          "path": "tilemaps\\ParseToTilemap.js",
+          "name": "ParseToTilemap.js",
+          "size": 2897,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "..\\phaser\\src\\tilemaps\\staticlayer",
+          "name": "staticlayer",
+          "children": [
+            {
+              "path": "tilemaps\\staticlayer\\StaticTilemapLayer.js",
+              "name": "StaticTilemapLayer.js",
+              "size": 17880,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\staticlayer\\StaticTilemapLayerCanvasRenderer.js",
+              "name": "StaticTilemapLayerCanvasRenderer.js",
+              "size": 1509,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\staticlayer\\StaticTilemapLayerRender.js",
+              "name": "StaticTilemapLayerRender.js",
+              "size": 381,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tilemaps\\staticlayer\\StaticTilemapLayerWebGLRenderer.js",
+              "name": "StaticTilemapLayerWebGLRenderer.js",
+              "size": 470,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 20240,
+          "type": "directory"
+        },
+        {
+          "path": "tilemaps\\Tile.js",
+          "name": "Tile.js",
+          "size": 21092,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "tilemaps\\Tilemap.js",
+          "name": "Tilemap.js",
+          "size": 54075,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "tilemaps\\TilemapCreator.js",
+          "name": "TilemapCreator.js",
+          "size": 2077,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "tilemaps\\TilemapFactory.js",
+          "name": "TilemapFactory.js",
+          "size": 2854,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "tilemaps\\Tileset.js",
+          "name": "Tileset.js",
+          "size": 10608,
+          "extension": ".js",
+          "type": "file"
+        }
+      ],
+      "size": 242211,
+      "type": "directory"
+    },
+    {
       "path": "..\\phaser\\src\\time",
       "name": "time",
       "children": [
         {
           "path": "time\\Clock.js",
           "name": "Clock.js",
-          "size": 8062,
+          "size": 8432,
           "extension": ".js",
           "type": "file"
         },
@@ -7817,7 +7831,7 @@
           "type": "file"
         }
       ],
-      "size": 12183,
+      "size": 12553,
       "type": "directory"
     },
     {
@@ -8319,6 +8333,6 @@
       "type": "directory"
     }
   ],
-  "size": 2831977,
+  "size": 2972933,
   "type": "directory"
 }

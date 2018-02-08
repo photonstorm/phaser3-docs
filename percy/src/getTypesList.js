@@ -40,6 +40,8 @@ function getTypesList (id, input, param)
         'Phaser.Math.Vector4',
         'Phaser.Math.Matrix3',
         'Phaser.Math.Matrix4',
+        'Phaser.Textures.Texture',
+        'Phaser.Textures.Frame',
     ];
 
     //  some quick helpers
@@ -57,7 +59,9 @@ function getTypesList (id, input, param)
         'scaleX': 'float',
         'scaleY': 'float',
         'scene': 'Phaser.Scene',
-        'texture': 'string',
+        '_texture': 'string',
+        'texture': 'Phaser.Textures.Texture',
+        'sourceIndex': 'integer',
         'frame': 'string|integer',
         'gameObject': 'Phaser.GameObjects.GameObject',
         'graphics': 'Phaser.GameObjects.Graphics',
