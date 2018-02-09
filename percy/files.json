@@ -4074,14 +4074,14 @@
         {
           "path": "loader\\const.js",
           "name": "const.js",
-          "size": 1069,
+          "size": 3493,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "loader\\File.js",
           "name": "File.js",
-          "size": 10776,
+          "size": 12420,
           "extension": ".js",
           "type": "file"
         },
@@ -4092,14 +4092,14 @@
             {
               "path": "loader\\filetypes\\AnimationJSONFile.js",
               "name": "AnimationJSONFile.js",
-              "size": 1475,
+              "size": 2579,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "loader\\filetypes\\AtlasJSONFile.js",
               "name": "AtlasJSONFile.js",
-              "size": 1471,
+              "size": 1669,
               "extension": ".js",
               "type": "file"
             },
@@ -4156,6 +4156,13 @@
               "path": "loader\\filetypes\\ImageFile.js",
               "name": "ImageFile.js",
               "size": 3837,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "loader\\filetypes\\index.js",
+              "name": "index.js",
+              "size": 1755,
               "extension": ".js",
               "type": "file"
             },
@@ -4244,7 +4251,7 @@
               "type": "file"
             }
           ],
-          "size": 49437,
+          "size": 52494,
           "type": "directory"
         },
         {
@@ -4257,14 +4264,14 @@
         {
           "path": "loader\\GetURL.js",
           "name": "GetURL.js",
-          "size": 304,
+          "size": 597,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "loader\\index.js",
           "name": "index.js",
-          "size": 1484,
+          "size": 412,
           "extension": ".js",
           "type": "file"
         },
@@ -4278,26 +4285,26 @@
         {
           "path": "loader\\MergeXHRSettings.js",
           "name": "MergeXHRSettings.js",
-          "size": 669,
+          "size": 1010,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "loader\\XHRLoader.js",
           "name": "XHRLoader.js",
-          "size": 1164,
+          "size": 1635,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "loader\\XHRSettings.js",
           "name": "XHRSettings.js",
-          "size": 1133,
+          "size": 1590,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 85169,
+      "size": 92784,
       "type": "directory"
     },
     {
@@ -4434,7 +4441,7 @@
         {
           "path": "math\\const.js",
           "name": "const.js",
-          "size": 1260,
+          "size": 1194,
           "extension": ".js",
           "type": "file"
         },
@@ -5002,7 +5009,7 @@
         {
           "path": "math\\index.js",
           "name": "index.js",
-          "size": 2316,
+          "size": 2252,
           "extension": ".js",
           "type": "file"
         },
@@ -5348,7 +5355,7 @@
           "type": "file"
         }
       ],
-      "size": 179518,
+      "size": 179388,
       "type": "directory"
     },
     { "path": "phaser.js", "name": "phaser.js", "size": 1575, "extension": ".js", "type": "file" },
@@ -5402,63 +5409,63 @@
                 {
                   "path": "physics\\arcade\\components\\Acceleration.js",
                   "name": "Acceleration.js",
-                  "size": 431,
+                  "size": 1257,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Angular.js",
                   "name": "Angular.js",
-                  "size": 432,
+                  "size": 1208,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Bounce.js",
                   "name": "Bounce.js",
-                  "size": 516,
+                  "size": 1531,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Debug.js",
                   "name": "Debug.js",
-                  "size": 1111,
+                  "size": 2162,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Drag.js",
                   "name": "Drag.js",
-                  "size": 367,
+                  "size": 1137,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Enable.js",
                   "name": "Enable.js",
-                  "size": 1013,
+                  "size": 1770,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Friction.js",
                   "name": "Friction.js",
-                  "size": 383,
+                  "size": 1173,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Gravity.js",
                   "name": "Gravity.js",
-                  "size": 375,
+                  "size": 1158,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Immovable.js",
                   "name": "Immovable.js",
-                  "size": 224,
+                  "size": 538,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -5472,26 +5479,26 @@
                 {
                   "path": "physics\\arcade\\components\\Mass.js",
                   "name": "Mass.js",
-                  "size": 150,
+                  "size": 451,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Size.js",
                   "name": "Size.js",
-                  "size": 442,
+                  "size": 1401,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\arcade\\components\\Velocity.js",
                   "name": "Velocity.js",
-                  "size": 546,
+                  "size": 1597,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 6486,
+              "size": 15879,
               "type": "directory"
             },
             {
@@ -5509,200 +5516,23 @@
               "type": "file"
             },
             {
-              "path": "..\\phaser\\src\\physics\\arcade\\inc",
-              "name": "inc",
-              "children": [
-                {
-                  "path": "physics\\arcade\\inc\\CircleBodyIntersects.js",
-                  "name": "CircleBodyIntersects.js",
-                  "size": 458,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\Collide.js",
-                  "name": "Collide.js",
-                  "size": 456,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\CollideGroupVsTilemapLayer.js",
-                  "name": "CollideGroupVsTilemapLayer.js",
-                  "size": 664,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\CollideHandler.js",
-                  "name": "CollideHandler.js",
-                  "size": 2185,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\CollideObjects.js",
-                  "name": "CollideObjects.js",
-                  "size": 1491,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\CollideSpriteVsGroup.js",
-                  "name": "CollideSpriteVsGroup.js",
-                  "size": 1258,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\CollideSpriteVsSprite.js",
-                  "name": "CollideSpriteVsSprite.js",
-                  "size": 532,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\CollideSpriteVsTilemapLayer.js",
-                  "name": "CollideSpriteVsTilemapLayer.js",
-                  "size": 3171,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\ComputeVelocity.js",
-                  "name": "ComputeVelocity.js",
-                  "size": 999,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\GetOverlapX.js",
-                  "name": "GetOverlapX.js",
-                  "size": 1688,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\GetOverlapY.js",
-                  "name": "GetOverlapY.js",
-                  "size": 1660,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\Intersects.js",
-                  "name": "Intersects.js",
-                  "size": 1210,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\Overlap.js",
-                  "name": "Overlap.js",
-                  "size": 455,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\Separate.js",
-                  "name": "Separate.js",
-                  "size": 2988,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\SeparateCircle.js",
-                  "name": "SeparateCircle.js",
-                  "size": 6554,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\SeparateX.js",
-                  "name": "SeparateX.js",
-                  "size": 2062,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\SeparateY.js",
-                  "name": "SeparateY.js",
-                  "size": 2062,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "..\\phaser\\src\\physics\\arcade\\inc\\tilemap",
-                  "name": "tilemap",
-                  "children": [
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\ProcessTileCallbacks.js",
-                      "name": "ProcessTileCallbacks.js",
-                      "size": 538,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\ProcessTileSeparationX.js",
-                      "name": "ProcessTileSeparationX.js",
-                      "size": 707,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\ProcessTileSeparationY.js",
-                      "name": "ProcessTileSeparationY.js",
-                      "size": 704,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\SeparateTile.js",
-                      "name": "SeparateTile.js",
-                      "size": 3093,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\TileCheckX.js",
-                      "name": "TileCheckX.js",
-                      "size": 1522,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\TileCheckY.js",
-                      "name": "TileCheckY.js",
-                      "size": 1512,
-                      "extension": ".js",
-                      "type": "file"
-                    },
-                    {
-                      "path": "physics\\arcade\\inc\\tilemap\\TileIntersectsBody.js",
-                      "name": "TileIntersectsBody.js",
-                      "size": 490,
-                      "extension": ".js",
-                      "type": "file"
-                    }
-                  ],
-                  "size": 8566,
-                  "type": "directory"
-                },
-                {
-                  "path": "physics\\arcade\\inc\\UpdateMotion.js",
-                  "name": "UpdateMotion.js",
-                  "size": 651,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 39110,
-              "type": "directory"
+              "path": "physics\\arcade\\GetOverlapX.js",
+              "name": "GetOverlapX.js",
+              "size": 1688,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "physics\\arcade\\GetOverlapY.js",
+              "name": "GetOverlapY.js",
+              "size": 1660,
+              "extension": ".js",
+              "type": "file"
             },
             {
               "path": "physics\\arcade\\index.js",
               "name": "index.js",
-              "size": 452,
+              "size": 472,
               "extension": ".js",
               "type": "file"
             },
@@ -5710,6 +5540,20 @@
               "path": "physics\\arcade\\PhysicsGroup.js",
               "name": "PhysicsGroup.js",
               "size": 3698,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "physics\\arcade\\SeparateX.js",
+              "name": "SeparateX.js",
+              "size": 2062,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "physics\\arcade\\SeparateY.js",
+              "name": "SeparateY.js",
+              "size": 2062,
               "extension": ".js",
               "type": "file"
             },
@@ -5726,6 +5570,63 @@
               "size": 1691,
               "extension": ".js",
               "type": "file"
+            },
+            {
+              "path": "..\\phaser\\src\\physics\\arcade\\tilemap",
+              "name": "tilemap",
+              "children": [
+                {
+                  "path": "physics\\arcade\\tilemap\\ProcessTileCallbacks.js",
+                  "name": "ProcessTileCallbacks.js",
+                  "size": 538,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "physics\\arcade\\tilemap\\ProcessTileSeparationX.js",
+                  "name": "ProcessTileSeparationX.js",
+                  "size": 707,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "physics\\arcade\\tilemap\\ProcessTileSeparationY.js",
+                  "name": "ProcessTileSeparationY.js",
+                  "size": 704,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "physics\\arcade\\tilemap\\SeparateTile.js",
+                  "name": "SeparateTile.js",
+                  "size": 3093,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "physics\\arcade\\tilemap\\TileCheckX.js",
+                  "name": "TileCheckX.js",
+                  "size": 1522,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "physics\\arcade\\tilemap\\TileCheckY.js",
+                  "name": "TileCheckY.js",
+                  "size": 1512,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "physics\\arcade\\tilemap\\TileIntersectsBody.js",
+                  "name": "TileIntersectsBody.js",
+                  "size": 490,
+                  "extension": ".js",
+                  "type": "file"
+                }
+              ],
+              "size": 8566,
+              "type": "directory"
             },
             {
               "path": "..\\phaser\\src\\physics\\arcade\\utils",
@@ -5794,12 +5695,12 @@
             {
               "path": "physics\\arcade\\World.js",
               "name": "World.js",
-              "size": 11712,
+              "size": 35562,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 110874,
+          "size": 121065,
           "type": "directory"
         },
         {
@@ -5834,63 +5735,63 @@
                 {
                   "path": "physics\\impact\\components\\Acceleration.js",
                   "name": "Acceleration.js",
-                  "size": 402,
+                  "size": 1219,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\BodyScale.js",
                   "name": "BodyScale.js",
-                  "size": 803,
+                  "size": 1422,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\BodyType.js",
                   "name": "BodyType.js",
-                  "size": 478,
+                  "size": 1246,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\Bounce.js",
                   "name": "Bounce.js",
-                  "size": 511,
+                  "size": 1180,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\CheckAgainst.js",
                   "name": "CheckAgainst.js",
-                  "size": 907,
+                  "size": 2028,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\Collides.js",
                   "name": "Collides.js",
-                  "size": 1173,
+                  "size": 2517,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\Debug.js",
                   "name": "Debug.js",
-                  "size": 1111,
+                  "size": 2162,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\Friction.js",
                   "name": "Friction.js",
-                  "size": 394,
+                  "size": 1183,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\Gravity.js",
                   "name": "Gravity.js",
-                  "size": 393,
+                  "size": 837,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -5904,26 +5805,26 @@
                 {
                   "path": "physics\\impact\\components\\Offset.js",
                   "name": "Offset.js",
-                  "size": 293,
+                  "size": 722,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\SetGameObject.js",
                   "name": "SetGameObject.js",
-                  "size": 751,
+                  "size": 1285,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\impact\\components\\Velocity.js",
                   "name": "Velocity.js",
-                  "size": 594,
+                  "size": 1641,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 8350,
+              "size": 17982,
               "type": "directory"
             },
             {
@@ -6025,7 +5926,7 @@
               "type": "file"
             }
           ],
-          "size": 58537,
+          "size": 68169,
           "type": "directory"
         },
         {
@@ -6046,35 +5947,35 @@
                 {
                   "path": "physics\\matter-js\\components\\Bounce.js",
                   "name": "Bounce.js",
-                  "size": 163,
+                  "size": 470,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Collision.js",
                   "name": "Collision.js",
-                  "size": 748,
+                  "size": 1521,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Force.js",
                   "name": "Force.js",
-                  "size": 1720,
+                  "size": 3149,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Friction.js",
                   "name": "Friction.js",
-                  "size": 631,
+                  "size": 1479,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Gravity.js",
                   "name": "Gravity.js",
-                  "size": 174,
+                  "size": 490,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6088,54 +5989,54 @@
                 {
                   "path": "physics\\matter-js\\components\\Mass.js",
                   "name": "Mass.js",
-                  "size": 320,
+                  "size": 837,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Sensor.js",
                   "name": "Sensor.js",
-                  "size": 240,
+                  "size": 715,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\SetBody.js",
                   "name": "SetBody.js",
-                  "size": 3970,
+                  "size": 5783,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Sleep.js",
                   "name": "Sleep.js",
-                  "size": 1235,
+                  "size": 2239,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Static.js",
                   "name": "Static.js",
-                  "size": 289,
+                  "size": 762,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Transform.js",
                   "name": "Transform.js",
-                  "size": 3591,
+                  "size": 5616,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "physics\\matter-js\\components\\Velocity.js",
                   "name": "Velocity.js",
-                  "size": 763,
+                  "size": 1775,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 14340,
+              "size": 25332,
               "type": "directory"
             },
             {
@@ -6491,7 +6392,7 @@
               "type": "file"
             }
           ],
-          "size": 394844,
+          "size": 405836,
           "type": "directory"
         },
         {
@@ -6510,7 +6411,7 @@
           "type": "directory"
         }
       ],
-      "size": 584754,
+      "size": 615569,
       "type": "directory"
     },
     {
@@ -7046,21 +6947,21 @@
         {
           "path": "textures\\FilterMode.js",
           "name": "FilterMode.js",
-          "size": 86,
+          "size": 423,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\Frame.js",
           "name": "Frame.js",
-          "size": 10036,
+          "size": 13628,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\index.js",
           "name": "index.js",
-          "size": 278,
+          "size": 317,
           "extension": ".js",
           "type": "file"
         },
@@ -7071,100 +6972,100 @@
             {
               "path": "textures\\parsers\\Canvas.js",
               "name": "Canvas.js",
-              "size": 229,
+              "size": 555,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\Image.js",
               "name": "Image.js",
-              "size": 227,
+              "size": 552,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\index.js",
               "name": "index.js",
-              "size": 391,
+              "size": 444,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\JSONArray.js",
               "name": "JSONArray.js",
-              "size": 1971,
+              "size": 2434,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\JSONHash.js",
               "name": "JSONHash.js",
-              "size": 1947,
+              "size": 2409,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\Pyxel.js",
               "name": "Pyxel.js",
-              "size": 1421,
+              "size": 1706,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\SpriteSheet.js",
               "name": "SpriteSheet.js",
-              "size": 2077,
+              "size": 2723,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\SpriteSheetFromAtlas.js",
               "name": "SpriteSheetFromAtlas.js",
-              "size": 4461,
+              "size": 4959,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\StarlingXML.js",
               "name": "StarlingXML.js",
-              "size": 1612,
+              "size": 1896,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "textures\\parsers\\UnityYAML.js",
               "name": "UnityYAML.js",
-              "size": 3393,
+              "size": 3699,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 17729,
+          "size": 21377,
           "type": "directory"
         },
         {
           "path": "textures\\Texture.js",
           "name": "Texture.js",
-          "size": 5793,
+          "size": 12423,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\TextureManager.js",
           "name": "TextureManager.js",
-          "size": 10900,
+          "size": 23934,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "textures\\TextureSource.js",
           "name": "TextureSource.js",
-          "size": 1649,
+          "size": 5508,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 46471,
+      "size": 77610,
       "type": "directory"
     },
     {
@@ -7178,320 +7079,320 @@
             {
               "path": "tilemaps\\components\\CalculateFacesAt.js",
               "name": "CalculateFacesAt.js",
-              "size": 1857,
+              "size": 1978,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\CalculateFacesWithin.js",
               "name": "CalculateFacesWithin.js",
-              "size": 1769,
+              "size": 1885,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\Copy.js",
               "name": "Copy.js",
-              "size": 1861,
+              "size": 1961,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\CreateFromTiles.js",
               "name": "CreateFromTiles.js",
-              "size": 2869,
+              "size": 3034,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\CullTiles.js",
               "name": "CullTiles.js",
-              "size": 1636,
+              "size": 1826,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\Fill.js",
               "name": "Fill.js",
-              "size": 1501,
+              "size": 1601,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\FilterTiles.js",
               "name": "FilterTiles.js",
-              "size": 1736,
+              "size": 1863,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\FindByIndex.js",
               "name": "FindByIndex.js",
-              "size": 2255,
+              "size": 2383,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\FindTile.js",
               "name": "FindTile.js",
-              "size": 1661,
+              "size": 1786,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\ForEachTile.js",
               "name": "ForEachTile.js",
-              "size": 1485,
+              "size": 1592,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\GetTileAt.js",
               "name": "GetTileAt.js",
-              "size": 1169,
+              "size": 1295,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\GetTileAtWorldXY.js",
               "name": "GetTileAtWorldXY.js",
-              "size": 1028,
+              "size": 1184,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\GetTilesWithin.js",
               "name": "GetTilesWithin.js",
-              "size": 2605,
+              "size": 2736,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\GetTilesWithinShape.js",
               "name": "GetTilesWithinShape.js",
-              "size": 3669,
+              "size": 3874,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\GetTilesWithinWorldXY.js",
               "name": "GetTilesWithinWorldXY.js",
-              "size": 1732,
+              "size": 1893,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\HasTileAt.js",
               "name": "HasTileAt.js",
-              "size": 700,
+              "size": 810,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\HasTileAtWorldXY.js",
               "name": "HasTileAtWorldXY.js",
-              "size": 822,
+              "size": 962,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\index.js",
               "name": "index.js",
-              "size": 2123,
+              "size": 2177,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\IsInLayerBounds.js",
               "name": "IsInLayerBounds.js",
-              "size": 429,
+              "size": 545,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\PutTileAt.js",
               "name": "PutTileAt.js",
-              "size": 2320,
+              "size": 2462,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\PutTileAtWorldXY.js",
               "name": "PutTileAtWorldXY.js",
-              "size": 1259,
+              "size": 1431,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\PutTilesAt.js",
               "name": "PutTilesAt.js",
-              "size": 1785,
+              "size": 1923,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\Randomize.js",
               "name": "Randomize.js",
-              "size": 1670,
+              "size": 1775,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\RemoveTileAt.js",
               "name": "RemoveTileAt.js",
-              "size": 1582,
+              "size": 1727,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\RemoveTileAtWorldXY.js",
               "name": "RemoveTileAtWorldXY.js",
-              "size": 1180,
+              "size": 1355,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\RenderDebug.js",
               "name": "RenderDebug.js",
-              "size": 3008,
+              "size": 3134,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\ReplaceByIndex.js",
               "name": "ReplaceByIndex.js",
-              "size": 1058,
+              "size": 1168,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetCollision.js",
               "name": "SetCollision.js",
-              "size": 1734,
+              "size": 1842,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetCollisionBetween.js",
               "name": "SetCollisionBetween.js",
-              "size": 1944,
+              "size": 2059,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetCollisionByExclusion.js",
               "name": "SetCollisionByExclusion.js",
-              "size": 1690,
+              "size": 1809,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetCollisionByProperty.js",
               "name": "SetCollisionByProperty.js",
-              "size": 2424,
+              "size": 2542,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetCollisionFromCollisionGroup.js",
               "name": "SetCollisionFromCollisionGroup.js",
-              "size": 1738,
+              "size": 1864,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetLayerCollisionIndex.js",
               "name": "SetLayerCollisionIndex.js",
-              "size": 717,
+              "size": 835,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetTileCollision.js",
               "name": "SetTileCollision.js",
-              "size": 468,
+              "size": 563,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetTileIndexCallback.js",
               "name": "SetTileIndexCallback.js",
-              "size": 1367,
+              "size": 1483,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SetTileLocationCallback.js",
               "name": "SetTileLocationCallback.js",
-              "size": 1111,
+              "size": 1229,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\Shuffle.js",
               "name": "Shuffle.js",
-              "size": 1084,
+              "size": 1187,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\SwapByIndex.js",
               "name": "SwapByIndex.js",
-              "size": 1196,
+              "size": 1303,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\TileToWorldX.js",
               "name": "TileToWorldX.js",
-              "size": 831,
+              "size": 966,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\TileToWorldXY.js",
               "name": "TileToWorldXY.js",
-              "size": 965,
+              "size": 1125,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\TileToWorldY.js",
               "name": "TileToWorldY.js",
-              "size": 837,
+              "size": 972,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\WeightedRandomize.js",
               "name": "WeightedRandomize.js",
-              "size": 2411,
+              "size": 2525,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\WorldToTileX.js",
               "name": "WorldToTileX.js",
-              "size": 1239,
+              "size": 1374,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\WorldToTileXY.js",
               "name": "WorldToTileXY.js",
-              "size": 1120,
+              "size": 1280,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\components\\WorldToTileY.js",
               "name": "WorldToTileY.js",
-              "size": 1242,
+              "size": 1377,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 70887,
+          "size": 76695,
           "type": "directory"
         },
         {
@@ -7501,14 +7402,14 @@
             {
               "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayer.js",
               "name": "DynamicTilemapLayer.js",
-              "size": 15710,
+              "size": 49845,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayerCanvasRenderer.js",
               "name": "DynamicTilemapLayerCanvasRenderer.js",
-              "size": 1971,
+              "size": 2643,
               "extension": ".js",
               "type": "file"
             },
@@ -7522,32 +7423,32 @@
             {
               "path": "tilemaps\\dynamiclayer\\DynamicTilemapLayerWebGLRenderer.js",
               "name": "DynamicTilemapLayerWebGLRenderer.js",
-              "size": 503,
+              "size": 1238,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 18567,
+          "size": 54109,
           "type": "directory"
         },
         {
           "path": "tilemaps\\Formats.js",
           "name": "Formats.js",
-          "size": 99,
+          "size": 744,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tilemaps\\ImageCollection.js",
           "name": "ImageCollection.js",
-          "size": 4128,
+          "size": 5055,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tilemaps\\index.js",
           "name": "index.js",
-          "size": 701,
+          "size": 746,
           "extension": ".js",
           "type": "file"
         },
@@ -7558,26 +7459,26 @@
             {
               "path": "tilemaps\\mapdata\\LayerData.js",
               "name": "LayerData.js",
-              "size": 2034,
+              "size": 5582,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\mapdata\\MapData.js",
               "name": "MapData.js",
-              "size": 1824,
+              "size": 4933,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\mapdata\\ObjectLayer.js",
               "name": "ObjectLayer.js",
-              "size": 1238,
+              "size": 2497,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 5096,
+          "size": 13012,
           "type": "directory"
         },
         {
@@ -7726,7 +7627,7 @@
         {
           "path": "tilemaps\\ParseToTilemap.js",
           "name": "ParseToTilemap.js",
-          "size": 2897,
+          "size": 3016,
           "extension": ".js",
           "type": "file"
         },
@@ -7737,14 +7638,14 @@
             {
               "path": "tilemaps\\staticlayer\\StaticTilemapLayer.js",
               "name": "StaticTilemapLayer.js",
-              "size": 17880,
+              "size": 43760,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\staticlayer\\StaticTilemapLayerCanvasRenderer.js",
               "name": "StaticTilemapLayerCanvasRenderer.js",
-              "size": 1509,
+              "size": 2186,
               "extension": ".js",
               "type": "file"
             },
@@ -7758,51 +7659,51 @@
             {
               "path": "tilemaps\\staticlayer\\StaticTilemapLayerWebGLRenderer.js",
               "name": "StaticTilemapLayerWebGLRenderer.js",
-              "size": 470,
+              "size": 1233,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 20240,
+          "size": 47560,
           "type": "directory"
         },
         {
           "path": "tilemaps\\Tile.js",
           "name": "Tile.js",
-          "size": 21092,
+          "size": 25937,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tilemaps\\Tilemap.js",
           "name": "Tilemap.js",
-          "size": 54075,
+          "size": 91649,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tilemaps\\TilemapCreator.js",
           "name": "TilemapCreator.js",
-          "size": 2077,
+          "size": 2250,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tilemaps\\TilemapFactory.js",
           "name": "TilemapFactory.js",
-          "size": 2854,
+          "size": 2954,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tilemaps\\Tileset.js",
           "name": "Tileset.js",
-          "size": 10608,
+          "size": 12690,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 242211,
+      "size": 365307,
       "type": "directory"
     },
     {
@@ -8333,6 +8234,6 @@
       "type": "directory"
     }
   ],
-  "size": 2972933,
+  "size": 3165468,
   "type": "directory"
 }
