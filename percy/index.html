@@ -188,7 +188,9 @@
 
                 var progress = Math.round((done / total) * 100);
 
-                $('#totalDisplay').text('Total Files: ' + total + ' - Done: ' + done + ' - Complete: ' + progress + '%');
+                var filesLeft = total - done;
+
+                $('#totalDisplay').text('Total Files: ' + total + ' - Done: ' + done + ' - Remaining: ' + filesLeft + ' - Complete: ' + progress + '%');
 
                 // console.log(total, done, progress);
 
