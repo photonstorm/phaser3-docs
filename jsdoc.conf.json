@@ -9,10 +9,7 @@
     "source": {
         "include": [
             "../phaser/src/phaser.js",
-            "../phaser/src/physics/index.js",
-            "../phaser/src/gameobjects/components/",
-            "../phaser/src/physics/arcade",
-            "../phaser/src/physics/impact"
+            "../phaser/src/loader/"
         ],
         "gos": [
             "../phaser/src/gameobjects/index.js",
@@ -44,6 +41,7 @@
             "../phaser/src/tilemaps/",
             "../phaser/src/textures/",
             "../phaser/src/physics/arcade",
+            "../phaser/src/physics/impact",
             "../phaser/src/loader/"
         ],
         "exclude": [
