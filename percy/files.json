@@ -5377,7 +5377,7 @@
             {
               "path": "physics\\arcade\\ArcadePhysics.js",
               "name": "ArcadePhysics.js",
-              "size": 3179,
+              "size": 13370,
               "extension": ".js",
               "type": "file"
             },
@@ -5629,78 +5629,14 @@
               "type": "directory"
             },
             {
-              "path": "..\\phaser\\src\\physics\\arcade\\utils",
-              "name": "utils",
-              "children": [
-                {
-                  "path": "physics\\arcade\\utils\\AccelerateTo.js",
-                  "name": "AccelerateTo.js",
-                  "size": 1813,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\AccelerateToObject.js",
-                  "name": "AccelerateToObject.js",
-                  "size": 1655,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\Closest.js",
-                  "name": "Closest.js",
-                  "size": 588,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\Furthest.js",
-                  "name": "Furthest.js",
-                  "size": 579,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\MoveTo.js",
-                  "name": "MoveTo.js",
-                  "size": 1961,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\MoveToObject.js",
-                  "name": "MoveToObject.js",
-                  "size": 1593,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\VelocityFromAngle.js",
-                  "name": "VelocityFromAngle.js",
-                  "size": 1130,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
-                  "path": "physics\\arcade\\utils\\VelocityFromRotation.js",
-                  "name": "VelocityFromRotation.js",
-                  "size": 971,
-                  "extension": ".js",
-                  "type": "file"
-                }
-              ],
-              "size": 10290,
-              "type": "directory"
-            },
-            {
               "path": "physics\\arcade\\World.js",
               "name": "World.js",
-              "size": 35562,
+              "size": 35566,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 121065,
+          "size": 120970,
           "type": "directory"
         },
         {
@@ -6411,7 +6347,7 @@
           "type": "directory"
         }
       ],
-      "size": 615569,
+      "size": 615474,
       "type": "directory"
     },
     {
@@ -8234,6 +8170,6 @@
       "type": "directory"
     }
   ],
-  "size": 3165468,
+  "size": 3165373,
   "type": "directory"
 }
