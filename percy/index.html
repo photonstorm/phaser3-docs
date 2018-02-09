@@ -86,7 +86,8 @@
 
                 var li = $('<li>', { class: state, style: 'font-family: Consolas; font-size: 14px' }).text(filename);
                 var a1 = $('<a>', { href: 'class.html?f=' + filename, class: 'badge badge-warning mx-4' }).text('Class');
-                var a2 = $('<a>', { href: 'method.html?f=' + filename, class: 'badge badge-danger mr-4' }).text('Method');
+                // var a2 = $('<a>', { href: 'method.html?f=' + filename, class: 'badge badge-danger mr-4' }).text('Method');
+                var a2 = $('<a>', { href: 'component.html?f=' + filename, class: 'badge badge-danger mr-4' }).text('Component');
                 var a3 = $('<a>', { href: 'function.html?f=' + filename, class: 'badge badge-primary mr-4' }).text('Function');
 
                 if (entry[1] === 1)

@@ -61,6 +61,8 @@ function getTypesList (id, input, param)
         'scene': 'Phaser.Scene',
         '_texture': 'string',
         'texture': 'Phaser.Textures.Texture',
+        'file': 'Phaser.Loader.File',
+        'baseURL': 'string',
         'sourceIndex': 'integer',
         'frame': 'string|integer',
         'gameObject': 'Phaser.GameObjects.GameObject',
