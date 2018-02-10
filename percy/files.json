@@ -3794,33 +3794,33 @@
                 {
                   "path": "input\\gamepad\\configs\\index.js",
                   "name": "index.js",
-                  "size": 221,
+                  "size": 241,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\gamepad\\configs\\SNES_USB_Controller.js",
                   "name": "SNES_USB_Controller.js",
-                  "size": 311,
+                  "size": 431,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\gamepad\\configs\\Sony_PlayStation_DualShock_4.js",
                   "name": "Sony_PlayStation_DualShock_4.js",
-                  "size": 444,
+                  "size": 596,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "input\\gamepad\\configs\\XBox360_Controller.js",
                   "name": "XBox360_Controller.js",
-                  "size": 377,
+                  "size": 487,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 1353,
+              "size": 1755,
               "type": "directory"
             },
             {
@@ -3845,7 +3845,7 @@
               "type": "file"
             }
           ],
-          "size": 16950,
+          "size": 17352,
           "type": "directory"
         },
         {
@@ -3965,7 +3965,7 @@
                 {
                   "path": "input\\keyboard\\keys\\KeyCodes.js",
                   "name": "KeyCodes.js",
-                  "size": 1243,
+                  "size": 10400,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -4005,11 +4005,11 @@
                   "type": "file"
                 }
               ],
-              "size": 11351,
+              "size": 20508,
               "type": "directory"
             }
           ],
-          "size": 31363,
+          "size": 40520,
           "type": "directory"
         },
         {
@@ -4064,7 +4064,7 @@
           "type": "directory"
         }
       ],
-      "size": 133191,
+      "size": 142750,
       "type": "directory"
     },
     {
@@ -5106,21 +5106,6 @@
           "type": "file"
         },
         {
-          "path": "..\\phaser\\src\\math\\noise",
-          "name": "noise",
-          "children": [
-            {
-              "path": "math\\noise\\SimplexNoise.js",
-              "name": "SimplexNoise.js",
-              "size": 5435,
-              "extension": ".js",
-              "type": "file"
-            }
-          ],
-          "size": 5435,
-          "type": "directory"
-        },
-        {
           "path": "math\\Percent.js",
           "name": "Percent.js",
           "size": 1256,
@@ -5355,7 +5340,7 @@
           "type": "file"
         }
       ],
-      "size": 179388,
+      "size": 173953,
       "type": "directory"
     },
     { "path": "phaser.js", "name": "phaser.js", "size": 1575, "extension": ".js", "type": "file" },
@@ -6616,12 +6601,12 @@
                 {
                   "path": "renderer\\webgl\\pipelines\\TextureTintPipeline.js",
                   "name": "TextureTintPipeline.js",
-                  "size": 56018,
+                  "size": 57431,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 133191,
+              "size": 134604,
               "type": "directory"
             },
             {
@@ -6653,11 +6638,11 @@
               "type": "file"
             }
           ],
-          "size": 192222,
+          "size": 193635,
           "type": "directory"
         }
       ],
-      "size": 216572,
+      "size": 217985,
       "type": "directory"
     },
     {
@@ -7456,39 +7441,39 @@
                 {
                   "path": "tilemaps\\parsers\\impact\\ParseWeltmeister.js",
                   "name": "ParseWeltmeister.js",
-                  "size": 1811,
+                  "size": 1885,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 4882,
+              "size": 4956,
               "type": "directory"
             },
             {
               "path": "tilemaps\\parsers\\index.js",
               "name": "index.js",
-              "size": 262,
+              "size": 294,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\parsers\\Parse.js",
               "name": "Parse.js",
-              "size": 2404,
+              "size": 2454,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\parsers\\Parse2DArray.js",
               "name": "Parse2DArray.js",
-              "size": 2575,
+              "size": 2688,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "tilemaps\\parsers\\ParseCSV.js",
               "name": "ParseCSV.js",
-              "size": 1345,
+              "size": 1454,
               "extension": ".js",
               "type": "file"
             },
@@ -7499,86 +7484,86 @@
                 {
                   "path": "tilemaps\\parsers\\tiled\\AssignTileProperties.js",
                   "name": "AssignTileProperties.js",
-                  "size": 1550,
+                  "size": 1651,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\Base64Decode.js",
                   "name": "Base64Decode.js",
-                  "size": 605,
+                  "size": 763,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\BuildTilesetIndex.js",
                   "name": "BuildTilesetIndex.js",
-                  "size": 1157,
+                  "size": 1293,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseGID.js",
                   "name": "ParseGID.js",
-                  "size": 2144,
+                  "size": 2229,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseImageLayers.js",
                   "name": "ParseImageLayers.js",
-                  "size": 748,
+                  "size": 901,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseJSONTiled.js",
                   "name": "ParseJSONTiled.js",
-                  "size": 2248,
+                  "size": 2325,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseObject.js",
                   "name": "ParseObject.js",
-                  "size": 1822,
+                  "size": 2046,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseObjectLayers.js",
                   "name": "ParseObjectLayers.js",
-                  "size": 993,
+                  "size": 1140,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseTileLayers.js",
                   "name": "ParseTileLayers.js",
-                  "size": 3405,
+                  "size": 3531,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\ParseTilesets.js",
                   "name": "ParseTilesets.js",
-                  "size": 2991,
+                  "size": 3070,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\tiled\\Pick.js",
                   "name": "Pick.js",
-                  "size": 546,
+                  "size": 545,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 18209,
+              "size": 19494,
               "type": "directory"
             }
           ],
-          "size": 29677,
+          "size": 31340,
           "type": "directory"
         },
         {
@@ -7660,7 +7645,7 @@
           "type": "file"
         }
       ],
-      "size": 366130,
+      "size": 367793,
       "type": "directory"
     },
     {
@@ -8191,6 +8176,6 @@
       "type": "directory"
     }
   ],
-  "size": 3374878,
+  "size": 3382078,
   "type": "directory"
 }
