@@ -2096,7 +2096,7 @@
             {
               "path": "gameobjects\\particles\\EmitterOp.js",
               "name": "EmitterOp.js",
-              "size": 14565,
+              "size": 14566,
               "extension": ".js",
               "type": "file"
             },
@@ -2200,7 +2200,7 @@
               "type": "directory"
             }
           ],
-          "size": 118230,
+          "size": 118231,
           "type": "directory"
         },
         {
@@ -2210,7 +2210,7 @@
             {
               "path": "gameobjects\\pathfollower\\PathFollower.js",
               "name": "PathFollower.js",
-              "size": 12347,
+              "size": 12348,
               "extension": ".js",
               "type": "file"
             },
@@ -2222,7 +2222,7 @@
               "type": "file"
             }
           ],
-          "size": 13910,
+          "size": 13911,
           "type": "directory"
         },
         {
@@ -2506,7 +2506,7 @@
           "type": "directory"
         }
       ],
-      "size": 548309,
+      "size": 548311,
       "type": "directory"
     },
     {
@@ -7669,12 +7669,12 @@
         {
           "path": "time\\TimerEvent.js",
           "name": "TimerEvent.js",
-          "size": 3981,
+          "size": 6772,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 12553,
+      "size": 15344,
       "type": "directory"
     },
     {
@@ -7682,94 +7682,101 @@
       "name": "tweens",
       "children": [
         {
-          "path": "..\\phaser\\src\\tweens\\builder",
-          "name": "builder",
+          "path": "..\\phaser\\src\\tweens\\builders",
+          "name": "builders",
           "children": [
             {
-              "path": "tweens\\builder\\GetBoolean.js",
+              "path": "tweens\\builders\\GetBoolean.js",
               "name": "GetBoolean.js",
               "size": 295,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\GetEaseFunction.js",
+              "path": "tweens\\builders\\GetEaseFunction.js",
               "name": "GetEaseFunction.js",
               "size": 890,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\GetNewValue.js",
+              "path": "tweens\\builders\\GetNewValue.js",
               "name": "GetNewValue.js",
               "size": 826,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\GetProps.js",
+              "path": "tweens\\builders\\GetProps.js",
               "name": "GetProps.js",
               "size": 891,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\GetTargets.js",
+              "path": "tweens\\builders\\GetTargets.js",
               "name": "GetTargets.js",
               "size": 451,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\GetTweens.js",
+              "path": "tweens\\builders\\GetTweens.js",
               "name": "GetTweens.js",
               "size": 437,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\GetValueOp.js",
+              "path": "tweens\\builders\\GetValueOp.js",
               "name": "GetValueOp.js",
               "size": 3893,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\NumberTweenBuilder.js",
+              "path": "tweens\\builders\\index.js",
+              "name": "index.js",
+              "size": 534,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "tweens\\builders\\NumberTweenBuilder.js",
               "name": "NumberTweenBuilder.js",
               "size": 3321,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\TimelineBuilder.js",
+              "path": "tweens\\builders\\TimelineBuilder.js",
               "name": "TimelineBuilder.js",
               "size": 4643,
               "extension": ".js",
               "type": "file"
             },
             {
-              "path": "tweens\\builder\\TweenBuilder.js",
+              "path": "tweens\\builders\\TweenBuilder.js",
               "name": "TweenBuilder.js",
               "size": 4106,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 19753,
+          "size": 20287,
           "type": "directory"
         },
         {
           "path": "tweens\\index.js",
           "name": "index.js",
-          "size": 236,
+          "size": 276,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "tweens\\Timeline.js",
           "name": "Timeline.js",
-          "size": 13013,
+          "size": 13014,
           "extension": ".js",
           "type": "file"
         },
@@ -7819,12 +7826,12 @@
         {
           "path": "tweens\\TweenManager.js",
           "name": "TweenManager.js",
-          "size": 10828,
+          "size": 10831,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 79939,
+      "size": 80517,
       "type": "directory"
     },
     {
@@ -8176,6 +8183,6 @@
       "type": "directory"
     }
   ],
-  "size": 3382078,
+  "size": 3385449,
   "type": "directory"
 }
