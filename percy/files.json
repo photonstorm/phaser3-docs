@@ -6580,7 +6580,7 @@
                 {
                   "path": "renderer\\webgl\\pipelines\\BitmapMaskPipeline.js",
                   "name": "BitmapMaskPipeline.js",
-                  "size": 3581,
+                  "size": 5445,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -6602,26 +6602,26 @@
                 {
                   "path": "renderer\\webgl\\pipelines\\FlatTintPipeline.js",
                   "name": "FlatTintPipeline.js",
-                  "size": 34839,
+                  "size": 44640,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\ForwardDiffuseLightPipeline.js",
                   "name": "ForwardDiffuseLightPipeline.js",
-                  "size": 8465,
+                  "size": 12397,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "renderer\\webgl\\pipelines\\TextureTintPipeline.js",
                   "name": "TextureTintPipeline.js",
-                  "size": 51192,
+                  "size": 56018,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 112768,
+              "size": 133191,
               "type": "directory"
             },
             {
@@ -6641,23 +6641,23 @@
             {
               "path": "renderer\\webgl\\WebGLPipeline.js",
               "name": "WebGLPipeline.js",
-              "size": 3896,
+              "size": 9136,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "renderer\\webgl\\WebGLRenderer.js",
               "name": "WebGLRenderer.js",
-              "size": 28558,
+              "size": 48368,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 146749,
+          "size": 192222,
           "type": "directory"
         }
       ],
-      "size": 171099,
+      "size": 216572,
       "type": "directory"
     },
     {
@@ -7440,28 +7440,28 @@
               "name": "impact",
               "children": [
                 {
-                  "path": "tilemaps\\parsers\\impact\\index.js",
-                  "name": "index.js",
-                  "size": 1811,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
                   "path": "tilemaps\\parsers\\impact\\ParseTileLayers.js",
                   "name": "ParseTileLayers.js",
-                  "size": 1765,
+                  "size": 1934,
                   "extension": ".js",
                   "type": "file"
                 },
                 {
                   "path": "tilemaps\\parsers\\impact\\ParseTilesets.js",
                   "name": "ParseTilesets.js",
-                  "size": 985,
+                  "size": 1137,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\impact\\ParseWeltmeister.js",
+                  "name": "ParseWeltmeister.js",
+                  "size": 1811,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 4561,
+              "size": 4882,
               "type": "directory"
             },
             {
@@ -7474,7 +7474,7 @@
             {
               "path": "tilemaps\\parsers\\Parse.js",
               "name": "Parse.js",
-              "size": 2375,
+              "size": 2404,
               "extension": ".js",
               "type": "file"
             },
@@ -7518,13 +7518,6 @@
                   "type": "file"
                 },
                 {
-                  "path": "tilemaps\\parsers\\tiled\\index.js",
-                  "name": "index.js",
-                  "size": 2248,
-                  "extension": ".js",
-                  "type": "file"
-                },
-                {
                   "path": "tilemaps\\parsers\\tiled\\ParseGID.js",
                   "name": "ParseGID.js",
                   "size": 2144,
@@ -7535,6 +7528,13 @@
                   "path": "tilemaps\\parsers\\tiled\\ParseImageLayers.js",
                   "name": "ParseImageLayers.js",
                   "size": 748,
+                  "extension": ".js",
+                  "type": "file"
+                },
+                {
+                  "path": "tilemaps\\parsers\\tiled\\ParseJSONTiled.js",
+                  "name": "ParseJSONTiled.js",
+                  "size": 2248,
                   "extension": ".js",
                   "type": "file"
                 },
@@ -7569,16 +7569,16 @@
                 {
                   "path": "tilemaps\\parsers\\tiled\\Pick.js",
                   "name": "Pick.js",
-                  "size": 352,
+                  "size": 546,
                   "extension": ".js",
                   "type": "file"
                 }
               ],
-              "size": 18015,
+              "size": 18209,
               "type": "directory"
             }
           ],
-          "size": 29133,
+          "size": 29677,
           "type": "directory"
         },
         {
@@ -7660,7 +7660,7 @@
           "type": "file"
         }
       ],
-      "size": 365586,
+      "size": 366130,
       "type": "directory"
     },
     {
@@ -8191,6 +8191,6 @@
       "type": "directory"
     }
   ],
-  "size": 3328861,
+  "size": 3374878,
   "type": "directory"
 }
