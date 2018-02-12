@@ -9,7 +9,6 @@
     "source": {
         "include": [
             "../phaser/src/phaser.js",
-            "../phaser/src/sound/"
         ],
         "gos": [
             "../phaser/src/gameobjects/index.js",
@@ -33,6 +32,7 @@
         ],
         "done": [
             "../phaser/src/actions/",
+            "../phaser/src/display/"
             "../phaser/src/math/",
             "../phaser/src/utils/",
             "../phaser/src/geom/",
