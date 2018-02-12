@@ -769,14 +769,14 @@
         {
           "path": "data\\DataManager.js",
           "name": "DataManager.js",
-          "size": 5773,
+          "size": 9188,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "data\\DataManagerPlugin.js",
           "name": "DataManagerPlugin.js",
-          "size": 1367,
+          "size": 2452,
           "extension": ".js",
           "type": "file"
         },
@@ -788,7 +788,7 @@
           "type": "file"
         }
       ],
-      "size": 7508,
+      "size": 12008,
       "type": "directory"
     },
     {
@@ -2014,23 +2014,38 @@
         {
           "path": "gameobjects\\index.js",
           "name": "index.js",
-          "size": 3302,
+          "size": 3342,
           "extension": ".js",
           "type": "file"
         },
         {
-          "path": "gameobjects\\LightsManager.js",
-          "name": "LightsManager.js",
-          "size": 5862,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "gameobjects\\LightsPlugin.js",
-          "name": "LightsPlugin.js",
-          "size": 1134,
-          "extension": ".js",
-          "type": "file"
+          "path": "..\\phaser\\src\\gameobjects\\lights",
+          "name": "lights",
+          "children": [
+            {
+              "path": "gameobjects\\lights\\Light.js",
+              "name": "Light.js",
+              "size": 1746,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "gameobjects\\lights\\LightsManager.js",
+              "name": "LightsManager.js",
+              "size": 4494,
+              "extension": ".js",
+              "type": "file"
+            },
+            {
+              "path": "gameobjects\\lights\\LightsPlugin.js",
+              "name": "LightsPlugin.js",
+              "size": 1140,
+              "extension": ".js",
+              "type": "file"
+            }
+          ],
+          "size": 7380,
+          "type": "directory"
         },
         {
           "path": "..\\phaser\\src\\gameobjects\\mesh",
@@ -2492,7 +2507,7 @@
           "type": "directory"
         }
       ],
-      "size": 561767,
+      "size": 562191,
       "type": "directory"
     },
     {
@@ -6569,7 +6584,7 @@
             {
               "path": "renderer\\webgl\\Utils.js",
               "name": "Utils.js",
-              "size": 1729,
+              "size": 3214,
               "extension": ".js",
               "type": "file"
             },
@@ -6588,11 +6603,11 @@
               "type": "file"
             }
           ],
-          "size": 199290,
+          "size": 200775,
           "type": "directory"
         }
       ],
-      "size": 225742,
+      "size": 227227,
       "type": "directory"
     },
     {
@@ -8133,6 +8148,6 @@
       "type": "directory"
     }
   ],
-  "size": 3646156,
+  "size": 3652565,
   "type": "directory"
 }
