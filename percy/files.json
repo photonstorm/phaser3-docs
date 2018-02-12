@@ -375,7 +375,7 @@
         {
           "path": "boot\\Config.js",
           "name": "Config.js",
-          "size": 9437,
+          "size": 9412,
           "extension": ".js",
           "type": "file"
         },
@@ -396,14 +396,21 @@
         {
           "path": "boot\\Game.js",
           "name": "Game.js",
-          "size": 14497,
+          "size": 14500,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "boot\\index.js",
           "name": "index.js",
-          "size": 490,
+          "size": 544,
+          "extension": ".js",
+          "type": "file"
+        },
+        {
+          "path": "boot\\PluginManager.js",
+          "name": "PluginManager.js",
+          "size": 2944,
           "extension": ".js",
           "type": "file"
         },
@@ -422,7 +429,7 @@
           "type": "file"
         }
       ],
-      "size": 50988,
+      "size": 53964,
       "type": "directory"
     },
     {
@@ -472,7 +479,7 @@
             {
               "path": "cameras\\2d\\CameraManager.js",
               "name": "CameraManager.js",
-              "size": 12466,
+              "size": 12463,
               "extension": ".js",
               "type": "file"
             },
@@ -484,7 +491,7 @@
               "type": "file"
             }
           ],
-          "size": 48508,
+          "size": 48505,
           "type": "directory"
         },
         {
@@ -537,7 +544,7 @@
             {
               "path": "cameras\\sprite3d\\CameraManager.js",
               "name": "CameraManager.js",
-              "size": 5972,
+              "size": 5975,
               "extension": ".js",
               "type": "file"
             },
@@ -563,7 +570,7 @@
               "type": "file"
             }
           ],
-          "size": 39476,
+          "size": 39479,
           "type": "directory"
         }
       ],
@@ -776,7 +783,7 @@
         {
           "path": "data\\DataManagerPlugin.js",
           "name": "DataManagerPlugin.js",
-          "size": 2452,
+          "size": 2449,
           "extension": ".js",
           "type": "file"
         },
@@ -788,7 +795,7 @@
           "type": "file"
         }
       ],
-      "size": 12008,
+      "size": 12005,
       "type": "directory"
     },
     {
@@ -1487,12 +1494,12 @@
         {
           "path": "events\\EventEmitter.js",
           "name": "EventEmitter.js",
-          "size": 1268,
+          "size": 1271,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 1268,
+      "size": 1271,
       "type": "directory"
     },
     {
@@ -1850,7 +1857,7 @@
         {
           "path": "gameobjects\\DisplayList.js",
           "name": "DisplayList.js",
-          "size": 4154,
+          "size": 4151,
           "extension": ".js",
           "type": "file"
         },
@@ -1864,14 +1871,14 @@
         {
           "path": "gameobjects\\GameObjectCreator.js",
           "name": "GameObjectCreator.js",
-          "size": 3541,
+          "size": 3544,
           "extension": ".js",
           "type": "file"
         },
         {
           "path": "gameobjects\\GameObjectFactory.js",
           "name": "GameObjectFactory.js",
-          "size": 4291,
+          "size": 4294,
           "extension": ".js",
           "type": "file"
         },
@@ -2014,7 +2021,7 @@
         {
           "path": "gameobjects\\index.js",
           "name": "index.js",
-          "size": 3342,
+          "size": 3343,
           "extension": ".js",
           "type": "file"
         },
@@ -2025,26 +2032,26 @@
             {
               "path": "gameobjects\\lights\\Light.js",
               "name": "Light.js",
-              "size": 1746,
+              "size": 5718,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\lights\\LightsManager.js",
               "name": "LightsManager.js",
-              "size": 4494,
+              "size": 7950,
               "extension": ".js",
               "type": "file"
             },
             {
               "path": "gameobjects\\lights\\LightsPlugin.js",
               "name": "LightsPlugin.js",
-              "size": 1140,
+              "size": 1939,
               "extension": ".js",
               "type": "file"
             }
           ],
-          "size": 7380,
+          "size": 15607,
           "type": "directory"
         },
         {
@@ -2473,7 +2480,7 @@
         {
           "path": "gameobjects\\UpdateList.js",
           "name": "UpdateList.js",
-          "size": 5911,
+          "size": 5908,
           "extension": ".js",
           "type": "file"
         },
@@ -2507,7 +2514,7 @@
           "type": "directory"
         }
       ],
-      "size": 562191,
+      "size": 570419,
       "type": "directory"
     },
     {
@@ -3837,7 +3844,7 @@
         {
           "path": "input\\InputPlugin.js",
           "name": "InputPlugin.js",
-          "size": 41802,
+          "size": 41799,
           "extension": ".js",
           "type": "file"
         },
@@ -4036,7 +4043,7 @@
           "type": "directory"
         }
       ],
-      "size": 147739,
+      "size": 147736,
       "type": "directory"
     },
     {
@@ -4155,7 +4162,7 @@
             {
               "path": "loader\\filetypes\\PluginFile.js",
               "name": "PluginFile.js",
-              "size": 3153,
+              "size": 3156,
               "extension": ".js",
               "type": "file"
             },
@@ -4216,7 +4223,7 @@
               "type": "file"
             }
           ],
-          "size": 69178,
+          "size": 69181,
           "type": "directory"
         },
         {
@@ -4243,7 +4250,7 @@
         {
           "path": "loader\\LoaderPlugin.js",
           "name": "LoaderPlugin.js",
-          "size": 25235,
+          "size": 25238,
           "extension": ".js",
           "type": "file"
         },
@@ -4269,7 +4276,7 @@
           "type": "file"
         }
       ],
-      "size": 117811,
+      "size": 117817,
       "type": "directory"
     },
     {
@@ -5308,7 +5315,7 @@
       "size": 194908,
       "type": "directory"
     },
-    { "path": "phaser.js", "name": "phaser.js", "size": 1777, "extension": ".js", "type": "file" },
+    { "path": "phaser.js", "name": "phaser.js", "size": 1622, "extension": ".js", "type": "file" },
     {
       "path": "..\\phaser\\src\\physics",
       "name": "physics",
@@ -5327,7 +5334,7 @@
             {
               "path": "physics\\arcade\\ArcadePhysics.js",
               "name": "ArcadePhysics.js",
-              "size": 20051,
+              "size": 20054,
               "extension": ".js",
               "type": "file"
             },
@@ -5586,7 +5593,7 @@
               "type": "file"
             }
           ],
-          "size": 208459,
+          "size": 208462,
           "type": "directory"
         },
         {
@@ -5751,7 +5758,7 @@
             {
               "path": "physics\\impact\\ImpactPhysics.js",
               "name": "ImpactPhysics.js",
-              "size": 4134,
+              "size": 4137,
               "extension": ".js",
               "type": "file"
             },
@@ -5812,7 +5819,7 @@
               "type": "file"
             }
           ],
-          "size": 114218,
+          "size": 114221,
           "type": "directory"
         },
         {
@@ -6245,7 +6252,7 @@
             {
               "path": "physics\\matter-js\\MatterPhysics.js",
               "name": "MatterPhysics.js",
-              "size": 5508,
+              "size": 5511,
               "extension": ".js",
               "type": "file"
             },
@@ -6293,48 +6300,19 @@
               "type": "file"
             }
           ],
-          "size": 460640,
+          "size": 460643,
           "type": "directory"
         }
       ],
-      "size": 783693,
+      "size": 783702,
       "type": "directory"
     },
     {
-      "path": "..\\phaser\\src\\plugins",
-      "name": "plugins",
-      "children": [
-        {
-          "path": "plugins\\CoreScenePlugins.js",
-          "name": "CoreScenePlugins.js",
-          "size": 721,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "plugins\\DefaultScenePlugins.js",
-          "name": "DefaultScenePlugins.js",
-          "size": 867,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "plugins\\GlobalPlugins.js",
-          "name": "GlobalPlugins.js",
-          "size": 477,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "plugins\\PluginManager.js",
-          "name": "PluginManager.js",
-          "size": 3130,
-          "extension": ".js",
-          "type": "file"
-        }
-      ],
-      "size": 5195,
-      "type": "directory"
+      "path": "plugins.js",
+      "name": "plugins.js",
+      "size": 2298,
+      "extension": ".js",
+      "type": "file"
     },
     {
       "path": "..\\phaser\\src\\polyfills",
@@ -6666,7 +6644,7 @@
         {
           "path": "scene\\ScenePlugin.js",
           "name": "ScenePlugin.js",
-          "size": 11779,
+          "size": 11776,
           "extension": ".js",
           "type": "file"
         },
@@ -6680,12 +6658,12 @@
         {
           "path": "scene\\Systems.js",
           "name": "Systems.js",
-          "size": 12462,
+          "size": 12381,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 60350,
+      "size": 60266,
       "type": "directory"
     },
     {
@@ -7620,7 +7598,7 @@
         {
           "path": "time\\Clock.js",
           "name": "Clock.js",
-          "size": 8634,
+          "size": 8637,
           "extension": ".js",
           "type": "file"
         },
@@ -7639,7 +7617,7 @@
           "type": "file"
         }
       ],
-      "size": 16241,
+      "size": 16244,
       "type": "directory"
     },
     {
@@ -7791,12 +7769,12 @@
         {
           "path": "tweens\\TweenManager.js",
           "name": "TweenManager.js",
-          "size": 14706,
+          "size": 14709,
           "extension": ".js",
           "type": "file"
         }
       ],
-      "size": 107001,
+      "size": 107004,
       "type": "directory"
     },
     {
@@ -8148,6 +8126,6 @@
       "type": "directory"
     }
   ],
-  "size": 3652565,
+  "size": 3660651,
   "type": "directory"
 }
