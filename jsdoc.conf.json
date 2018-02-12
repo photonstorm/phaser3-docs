@@ -9,7 +9,7 @@
     "source": {
         "include": [
             "../phaser/src/phaser.js",
-            "../phaser/src/loader/"
+            "../phaser/src/sound/"
         ],
         "gos": [
             "../phaser/src/gameobjects/index.js",
