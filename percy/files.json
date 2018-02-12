@@ -1850,7 +1850,7 @@
         {
           "path": "gameobjects\\DisplayList.js",
           "name": "DisplayList.js",
-          "size": 2327,
+          "size": 4154,
           "extension": ".js",
           "type": "file"
         },
@@ -2014,7 +2014,7 @@
         {
           "path": "gameobjects\\index.js",
           "name": "index.js",
-          "size": 3356,
+          "size": 3302,
           "extension": ".js",
           "type": "file"
         },
@@ -2458,14 +2458,7 @@
         {
           "path": "gameobjects\\UpdateList.js",
           "name": "UpdateList.js",
-          "size": 2681,
-          "extension": ".js",
-          "type": "file"
-        },
-        {
-          "path": "gameobjects\\UpdateListPlugin.js",
-          "name": "UpdateListPlugin.js",
-          "size": 1262,
+          "size": 5911,
           "extension": ".js",
           "type": "file"
         },
@@ -2499,7 +2492,7 @@
           "type": "directory"
         }
       ],
-      "size": 558026,
+      "size": 561767,
       "type": "directory"
     },
     {
@@ -6299,7 +6292,7 @@
         {
           "path": "plugins\\CoreScenePlugins.js",
           "name": "CoreScenePlugins.js",
-          "size": 727,
+          "size": 721,
           "extension": ".js",
           "type": "file"
         },
@@ -6325,7 +6318,7 @@
           "type": "file"
         }
       ],
-      "size": 5201,
+      "size": 5195,
       "type": "directory"
     },
     {
@@ -8140,6 +8133,6 @@
       "type": "directory"
     }
   ],
-  "size": 3642421,
+  "size": 3646156,
   "type": "directory"
 }
