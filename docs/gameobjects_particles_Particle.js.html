@@ -1,0 +1,724 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>gameobjects/particles/Particle.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">gameobjects/particles/Particle.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var DegToRad = require('../../math/DegToRad');
+var DistanceBetween = require('../../math/distance/DistanceBetween');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class Particle
+ * @memberOf Phaser.GameObjects.Particles
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - The Emitter to which this Particle belongs.
+ */
+var Particle = new Class({
+
+    initialize:
+
+    function Particle (emitter)
+    {
+        /**
+         * The Emitter to which this Particle belongs.
+         *
+         * A Particle can only belong to a single Emitter and is created, updated and destroyed via it.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#emitter
+         * @type {Phaser.GameObjects.Particles.ParticleEmitter}
+         * @since 3.0.0
+         */
+        this.emitter = emitter;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.GameObjects.Particles.Particle#frame
+         * @type {Phaser.Texture.Frame}
+         * @default null
+         * @since 3.0.0
+         */
+        this.frame = null;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.GameObjects.Particles.Particle#index
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.index = 0;
+
+        /**
+         * The x coordinate of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#x
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.x = 0;
+
+        /**
+         * The y coordinate of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#y
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.y = 0;
+
+        /**
+         * The x velocity of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#velocityX
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.velocityX = 0;
+
+        /**
+         * The y velocity of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#velocityY
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.velocityY = 0;
+
+        /**
+         * The x acceleration of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#accelerationX
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.accelerationX = 0;
+
+        /**
+         * The y acceleration of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#accelerationY
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.accelerationY = 0;
+
+        /**
+         * The maximum horizontal velocity this Particle can travel at.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#maxVelocityX
+         * @type {number}
+         * @default 10000
+         * @since 3.0.0
+         */
+        this.maxVelocityX = 10000;
+
+        /**
+         * The maximum vertical velocity this Particle can travel at.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#maxVelocityY
+         * @type {number}
+         * @default 10000
+         * @since 3.0.0
+         */
+        this.maxVelocityY = 10000;
+
+        /**
+         * The bounciness, or restitution, of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#bounce
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.bounce = 0;
+
+        /**
+         * The horizontal scale of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#scaleX
+         * @type {float}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.scaleX = 1;
+
+        /**
+         * The vertical scale of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#scaleY
+         * @type {float}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.scaleY = 1;
+
+        /**
+         * The alpha value of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#alpha
+         * @type {float}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.alpha = 1;
+
+        /**
+         * The angle of this Particle in degrees.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#angle
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.angle = 0;
+
+        /**
+         * The angle of this Particle in radians.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#rotation
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.rotation = 0;
+
+        /**
+         * The horizontal scroll factor of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#scrollFactorX
+         * @type {number}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.scrollFactorX = 1;
+
+        /**
+         * The vertical scroll factor of this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#scrollFactorY
+         * @type {number}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.scrollFactorY = 1;
+
+        /**
+         * The tint applied to this Particle.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#tint
+         * @type {number}
+         * @webglOnly
+         * @since 3.0.0
+         */
+        this.tint = 0xffffffff;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.GameObjects.Particles.Particle#color
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.color = 0xffffffff;
+
+        /**
+         * The lifespan of this Particle in ms.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#life
+         * @type {number}
+         * @default 1000
+         * @since 3.0.0
+         */
+        this.life = 1000;
+
+        /**
+         * The current life of this Particle in ms.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#lifeCurrent
+         * @type {number}
+         * @default 1000
+         * @since 3.0.0
+         */
+        this.lifeCurrent = 1000;
+
+        /**
+         * The delay applied to this Particle upon emission, in ms.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#delayCurrent
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.delayCurrent = 0;
+
+        /**
+         * The normalized lifespan T value.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#lifeT
+         * @type {float}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.lifeT = 0;
+
+        /**
+         * The data used by the ease equation.
+         *
+         * @name Phaser.GameObjects.Particles.Particle#data
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.data = {
+            tint: { min: 0xffffff, max: 0xffffff, current: 0xffffff },
+            alpha: { min: 1, max: 1 },
+            rotate: { min: 0, max: 0 },
+            scaleX: { min: 1, max: 1 },
+            scaleY: { min: 1, max: 1 }
+        };
+    },
+
+    /**
+     * Checks to see if this Particle is alive and updating.
+     *
+     * @method Phaser.GameObjects.Particles.Particle#isAlive
+     * @since 3.0.0
+     *
+     * @return {boolean} `true` if this Particle is alive and updating, otherwise `false`.
+     */
+    isAlive: function ()
+    {
+        return (this.lifeCurrent > 0);
+    },
+
+    /**
+     * Starts this Particle from the given coordinates.
+     *
+     * @method Phaser.GameObjects.Particles.Particle#fire
+     * @since 3.0.0
+     *
+     * @param {number} x - The x coordinate to launch this Particle from.
+     * @param {number} y - The y coordinate to launch this Particle from.
+     */
+    fire: function (x, y)
+    {
+        var emitter = this.emitter;
+
+        this.frame = emitter.getFrame();
+
+        if (emitter.emitZone)
+        {
+            //  Updates particle.x and particle.y during this call
+            emitter.emitZone.getPoint(this);
+        }
+
+        if (x === undefined)
+        {
+            if (emitter.follow)
+            {
+                this.x += emitter.follow.x + emitter.followOffset.x;
+            }
+
+            this.x += emitter.x.onEmit(this, 'x');
+        }
+        else
+        {
+            this.x += x;
+        }
+
+        if (y === undefined)
+        {
+            if (emitter.follow)
+            {
+                this.y += emitter.follow.y + emitter.followOffset.y;
+            }
+
+            this.y += emitter.y.onEmit(this, 'y');
+        }
+        else
+        {
+            this.y += y;
+        }
+
+        this.life = emitter.lifespan.onEmit(this, 'lifespan');
+        this.lifeCurrent = this.life;
+        this.lifeT = 0;
+
+        var sx = emitter.speedX.onEmit(this, 'speedX');
+        var sy = (emitter.speedY) ? emitter.speedY.onEmit(this, 'speedY') : sx;
+
+        if (emitter.radial)
+        {
+            var rad = DegToRad(emitter.angle.onEmit(this, 'angle'));
+
+            this.velocityX = Math.cos(rad) * Math.abs(sx);
+            this.velocityY = Math.sin(rad) * Math.abs(sy);
+        }
+        else if (emitter.moveTo)
+        {
+            var mx = emitter.moveToX.onEmit(this, 'moveToX');
+            var my = (emitter.moveToY) ? emitter.moveToY.onEmit(this, 'moveToY') : mx;
+
+            var angle = Math.atan2(my - this.y, mx - this.x);
+
+            var speed = DistanceBetween(this.x, this.y, mx, my) / (this.life / 1000);
+
+            //  We know how many pixels we need to move, but how fast?
+            // var speed = this.distanceToXY(displayObject, x, y) / (maxTime / 1000);
+
+            this.velocityX = Math.cos(angle) * speed;
+            this.velocityY = Math.sin(angle) * speed;
+        }
+        else
+        {
+            this.velocityX = sx;
+            this.velocityY = sy;
+        }
+
+        if (emitter.acceleration)
+        {
+            this.accelerationX = emitter.accelerationX.onEmit(this, 'accelerationX');
+            this.accelerationY = emitter.accelerationY.onEmit(this, 'accelerationY');
+        }
+
+        this.maxVelocityX = emitter.maxVelocityX.onEmit(this, 'maxVelocityX');
+        this.maxVelocityY = emitter.maxVelocityY.onEmit(this, 'maxVelocityY');
+
+        this.delayCurrent = emitter.delay.onEmit(this, 'delay');
+
+        this.scaleX = emitter.scaleX.onEmit(this, 'scaleX');
+        this.scaleY = (emitter.scaleY) ? emitter.scaleY.onEmit(this, 'scaleY') : this.scaleX;
+
+        this.angle = emitter.rotate.onEmit(this, 'rotate');
+        this.rotation = DegToRad(this.angle);
+
+        this.bounce = emitter.bounce.onEmit(this, 'bounce');
+
+        this.alpha = emitter.alpha.onEmit(this, 'alpha');
+
+        this.tint = emitter.tint.onEmit(this, 'tint');
+
+        this.color = (this.tint &amp; 0x00FFFFFF) | (((this.alpha * 0xFF) | 0) &lt;&lt; 24);
+
+        this.index = emitter.alive.length;
+    },
+
+    /**
+     * An internal method that calculates the velocity of the Particle.
+     *
+     * @method Phaser.GameObjects.Particles.Particle#computeVelocity
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - The Emitter that is updating this Particle.
+     * @param {number} delta - The delta time in ms.
+     * @param {float} step - The delta value divided by 1000.
+     * @param {array} processors - [description]
+     */
+    computeVelocity: function (emitter, delta, step, processors)
+    {
+        var vx = this.velocityX;
+        var vy = this.velocityY;
+
+        var ax = this.accelerationX;
+        var ay = this.accelerationY;
+
+        var mx = this.maxVelocityX;
+        var my = this.maxVelocityY;
+
+        vx += (emitter.gravityX * step);
+        vy += (emitter.gravityY * step);
+
+        if (ax)
+        {
+            vx += (ax * step);
+        }
+
+        if (ay)
+        {
+            vy += (ay * step);
+        }
+
+        if (vx > mx)
+        {
+            vx = mx;
+        }
+        else if (vx &lt; -mx)
+        {
+            vx = -mx;
+        }
+
+        if (vy > my)
+        {
+            vy = my;
+        }
+        else if (vy &lt; -my)
+        {
+            vy = -my;
+        }
+
+        this.velocityX = vx;
+        this.velocityY = vy;
+
+        //  Apply any additional processors
+        for (var i = 0; i &lt; processors.length; i++)
+        {
+            processors[i].update(this, delta, step);
+        }
+    },
+
+    /**
+     * Checks if this Particle is still within the bounds defined by the given Emitter.
+     *
+     * If not, and depending on the Emitter collision flags, the Particle may either stop or rebound.
+     *
+     * @method Phaser.GameObjects.Particles.Particle#checkBounds
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - The Emitter to check the bounds against.
+     */
+    checkBounds: function (emitter)
+    {
+        var bounds = emitter.bounds;
+        var bounce = -this.bounce;
+
+        if (this.x &lt; bounds.x &amp;&amp; emitter.collideLeft)
+        {
+            this.x = bounds.x;
+            this.velocityX *= bounce;
+        }
+        else if (this.x > bounds.right &amp;&amp; emitter.collideRight)
+        {
+            this.x = bounds.right;
+            this.velocityX *= bounce;
+        }
+
+        if (this.y &lt; bounds.y &amp;&amp; emitter.collideTop)
+        {
+            this.y = bounds.y;
+            this.velocityY *= bounce;
+        }
+        else if (this.y > bounds.bottom &amp;&amp; emitter.collideBottom)
+        {
+            this.y = bounds.bottom;
+            this.velocityY *= bounce;
+        }
+    },
+
+    /**
+     * The main update method for this Particle.
+     *
+     * Updates its life values, computes the velocity and repositions the Particle.
+     *
+     * @method Phaser.GameObjects.Particles.Particle#update
+     * @since 3.0.0
+     *
+     * @param {number} delta - The delta time in ms.
+     * @param {float} step - The delta value divided by 1000.
+     * @param {array} processors - An optional array of update processors.
+     *
+     * @return {boolean} Returns `true` if this Particle has now expired and should be removed, otherwise `false` if still active.
+     */
+    update: function (delta, step, processors)
+    {
+        if (this.delayCurrent > 0)
+        {
+            this.delayCurrent -= delta;
+
+            return false;
+        }
+
+        var emitter = this.emitter;
+
+        //  How far along in life is this particle? (t = 0 to 1)
+        var t = 1 - (this.lifeCurrent / this.life);
+
+        this.lifeT = t;
+
+        this.computeVelocity(emitter, delta, step, processors);
+
+        this.x += this.velocityX * step;
+        this.y += this.velocityY * step;
+
+        if (emitter.bounds)
+        {
+            this.checkBounds(emitter);
+        }
+
+        if (emitter.deathZone &amp;&amp; emitter.deathZone.willKill(this))
+        {
+            this.lifeCurrent = 0;
+
+            //  No need to go any further, particle has been killed
+            return true;
+        }
+
+        this.scaleX = emitter.scaleX.onUpdate(this, 'scaleX', t, this.scaleX);
+
+        if (emitter.scaleY)
+        {
+            this.scaleY = emitter.scaleY.onUpdate(this, 'scaleY', t, this.scaleY);
+        }
+        else
+        {
+            this.scaleY = this.scaleX;
+        }
+
+        this.angle = emitter.rotate.onUpdate(this, 'rotate', t, this.angle);
+        this.rotation = DegToRad(this.angle);
+
+        this.alpha = emitter.alpha.onUpdate(this, 'alpha', t, this.alpha);
+
+        this.tint = emitter.tint.onUpdate(this, 'tint', t, this.tint);
+
+        this.color = (this.tint &amp; 0x00FFFFFF) | (((this.alpha * 0xFF) | 0) &lt;&lt; 24);
+
+        this.lifeCurrent -= delta;
+
+        return (this.lifeCurrent &lt;= 0);
+    }
+
+});
+
+module.exports = Particle;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

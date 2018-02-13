@@ -1,0 +1,302 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>loader/const.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">loader/const.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var FILE_CONST = {
+
+    /**
+     * The Loader is idle.
+     * 
+     * @name Phaser.Loader.LOADER_IDLE
+     * @type {integer}
+     * @since 3.0.0
+     */
+    LOADER_IDLE: 0,
+
+    /**
+     * The Loader is actively loading.
+     * 
+     * @name Phaser.Loader.LOADER_LOADING
+     * @type {integer}
+     * @since 3.0.0
+     */
+    LOADER_LOADING: 1,
+
+    /**
+     * The Loader is processing files is has loaded.
+     * 
+     * @name Phaser.Loader.LOADER_PROCESSING
+     * @type {integer}
+     * @since 3.0.0
+     */
+    LOADER_PROCESSING: 2,
+
+    /**
+     * The Loader has completed loading and processing.
+     * 
+     * @name Phaser.Loader.LOADER_COMPLETE
+     * @type {integer}
+     * @since 3.0.0
+     */
+    LOADER_COMPLETE: 3,
+
+    /**
+     * The Loader is shutting down.
+     * 
+     * @name Phaser.Loader.LOADER_SHUTDOWN
+     * @type {integer}
+     * @since 3.0.0
+     */
+    LOADER_SHUTDOWN: 4,
+
+    /**
+     * The Loader has been destroyed.
+     * 
+     * @name Phaser.Loader.LOADER_DESTROYED
+     * @type {integer}
+     * @since 3.0.0
+     */
+    LOADER_DESTROYED: 5,
+
+    /**
+     * File is in the load queue but not yet started
+     * 
+     * @name Phaser.Loader.FILE_PENDING
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_PENDING: 10,
+
+    /**
+     * File has been started to load by the loader (onLoad called)
+     * 
+     * @name Phaser.Loader.FILE_LOADING
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_LOADING: 11,
+
+    /**
+     * File has loaded successfully, awaiting processing    
+     * 
+     * @name Phaser.Loader.FILE_LOADED
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_LOADED: 12,
+
+    /**
+     * File failed to load
+     * 
+     * @name Phaser.Loader.FILE_FAILED
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_FAILED: 13,
+
+    /**
+     * File is being processed (onProcess callback)
+     * 
+     * @name Phaser.Loader.FILE_PROCESSING
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_PROCESSING: 14,
+
+    /**
+     * File is waiting for its linkfile to load.
+     * 
+     * @name Phaser.Loader.FILE_WAITING_LINKFILE
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_WAITING_LINKFILE: 15,
+
+    /**
+     * The File has errored somehow during processing.
+     * 
+     * @name Phaser.Loader.FILE_ERRORED
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_ERRORED: 16,
+
+    /**
+     * File has finished processing.
+     * 
+     * @name Phaser.Loader.FILE_COMPLETE
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_COMPLETE: 17,
+
+    /**
+     * File has been destroyed
+     * 
+     * @name Phaser.Loader.FILE_DESTROYED
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_DESTROYED: 18,
+
+    /**
+     * File was populated from local data and doesn't need an HTTP request
+     * 
+     * @name Phaser.Loader.FILE_POPULATED
+     * @type {integer}
+     * @since 3.0.0
+     */
+    FILE_POPULATED: 19,
+
+    /**
+     * A special Texture Atlas const.
+     * 
+     * @name Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY
+     * @type {integer}
+     * @since 3.0.0
+     */
+    TEXTURE_ATLAS_JSON_ARRAY: 20,
+
+    /**
+     * A special Texture Atlas const.
+     * 
+     * @name Phaser.Loader.TEXTURE_ATLAS_JSON_HASH
+     * @type {integer}
+     * @since 3.0.0
+     */
+    TEXTURE_ATLAS_JSON_HASH: 21
+
+};
+
+module.exports = FILE_CONST;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

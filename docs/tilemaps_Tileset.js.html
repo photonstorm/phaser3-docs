@@ -1,0 +1,515 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>tilemaps/Tileset.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">tilemaps/Tileset.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+
+/**
+ * @classdesc
+ * A Tileset is a combination of an image containing the tiles and a container for data about
+ * each tile.
+ *
+ * @class Tileset
+ * @memberOf Phaser.Tilemaps
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {string} name - The name of the tileset in the map data.
+ * @param {integer} firstgid - The first tile index this tileset contains.
+ * @param {integer} [tileWidth=32] - Width of each tile (in pixels).
+ * @param {integer} [tileHeight=32] - Height of each tile (in pixels).
+ * @param {integer} [tileMargin=0] - The margin around all tiles in the sheet (in pixels).
+ * @param {integer} [tileSpacing=0] - The spacing between each tile in the sheet (in pixels).
+ * @param {object} [tileProperties={}] - Custom properties defined per tile in the Tileset.
+ * These typically are custom properties created in Tiled when editing a tileset.
+ * @param {object} [tileData={}] - Data stored per tile. These typically are created in Tiled
+ * when editing a tileset, e.g. from Tiled's tile collision editor or terrain editor.
+ */
+var Tileset = new Class({
+
+    initialize:
+
+    function Tileset (name, firstgid, tileWidth, tileHeight, tileMargin, tileSpacing, tileProperties, tileData)
+    {
+        if (tileWidth === undefined || tileWidth &lt;= 0) { tileWidth = 32; }
+        if (tileHeight === undefined || tileHeight &lt;= 0) { tileHeight = 32; }
+        if (tileMargin === undefined) { tileMargin = 0; }
+        if (tileSpacing === undefined) { tileSpacing = 0; }
+        if (tileProperties === undefined) { tileProperties = {}; }
+        if (tileData === undefined) { tileData = {}; }
+
+        /**
+         * The name of the Tileset.
+         * 
+         * @name Phaser.Tilemaps.Tileset#name
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.name = name;
+
+        /**
+         * The starting index of the first tile index this Tileset contains.
+         * 
+         * @name Phaser.Tilemaps.Tileset#firstgid
+         * @type {integer}
+         * @since 3.0.0
+         */
+        this.firstgid = firstgid;
+
+        /**
+         * The width of each tile (in pixels). Use setTileSize to change.
+         * 
+         * @name Phaser.Tilemaps.Tileset#tileWidth
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.tileWidth = tileWidth;
+
+        /**
+         * The height of each tile (in pixels). Use setTileSize to change.
+         * 
+         * @name Phaser.Tilemaps.Tileset#tileHeight
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.tileHeight = tileHeight;
+
+        /**
+         * The margin around the tiles in the sheet (in pixels). Use `setSpacing` to change.
+         * 
+         * @name Phaser.Tilemaps.Tileset#tileMargin
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.tileMargin = tileMargin;
+
+        /**
+         * The spacing between each the tile in the sheet (in pixels). Use `setSpacing` to change.
+         * 
+         * @name Phaser.Tilemaps.Tileset#tileSpacing
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.tileSpacing = tileSpacing;
+
+        /**
+         * Tileset-specific properties per tile that are typically defined in the Tiled editor in the
+         * Tileset editor.
+         * 
+         * @name Phaser.Tilemaps.Tileset#tileProperties
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.tileProperties = tileProperties;
+
+        /**
+         * Tileset-specific data per tile that are typically defined in the Tiled editor, e.g. within
+         * the Tileset collision editor. This is where collision objects and terrain are stored.
+         * 
+         * @name Phaser.Tilemaps.Tileset#tileData
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.tileData = tileData;
+
+        /**
+         * The cached image that contains the individual tiles. Use setImage to set.
+         * 
+         * @name Phaser.Tilemaps.Tileset#image
+         * @type {Phaser.Textures.Texture|null}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.image = null;
+
+        /**
+         * The number of tile rows in the the tileset.
+         * 
+         * @name Phaser.Tilemaps.Tileset#rows
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.rows = 0;
+
+        /**
+         * The number of tile columns in the tileset.
+         * 
+         * @name Phaser.Tilemaps.Tileset#columns
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.columns = 0;
+
+        /**
+         * The total number of tiles in the tileset.
+         * 
+         * @name Phaser.Tilemaps.Tileset#total
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.total = 0;
+
+        /**
+         * The look-up table to specific tile image texture coordinates (UV in pixels). Each element
+         * contains the coordinates for a tile in an object of the form {x, y}.
+         * 
+         * @name Phaser.Tilemaps.Tileset#texCoordinates
+         * @type {object[]}
+         * @readOnly
+         * @since 3.0.0
+        */
+        this.texCoordinates = [];
+    },
+
+    /**
+     * Get a tiles properties that are stored in the Tileset. Returns null if tile index is not
+     * contained in this Tileset. This is typically defined in Tiled under the Tileset editor.
+     *
+     * @method Phaser.Tilemaps.Tileset#getTileProperties
+     * @since 3.0.0
+     *
+     * @param {integer} tileIndex - The unique id of the tile across all tilesets in the map.
+     * 
+     * @return {object|undefined|null}
+     */
+    getTileProperties: function (tileIndex)
+    {
+        if (!this.containsTileIndex(tileIndex)) { return null; }
+
+        return this.tileProperties[tileIndex - this.firstgid];
+    },
+
+    /**
+     * Get a tile's data that is stored in the Tileset. Returns null if tile index is not contained
+     * in this Tileset. This is typically defined in Tiled and will contain both Tileset collision
+     * info and terrain mapping.
+     *
+     * @method Phaser.Tilemaps.Tileset#getTileData
+     * @since 3.0.0
+     *
+     * @param {integer} tileIndex - The unique id of the tile across all tilesets in the map.
+     * 
+     * @return {object|undefined|null}
+     */
+    getTileData: function (tileIndex)
+    {
+        if (!this.containsTileIndex(tileIndex)) { return null; }
+
+        return this.tileData[tileIndex - this.firstgid];
+    },
+
+    /**
+     * Get a tile's collision group that is stored in the Tileset. Returns null if tile index is not
+     * contained in this Tileset. This is typically defined within Tiled's tileset collision editor.
+     *
+     * @method Phaser.Tilemaps.Tileset#getTileCollisionGroup
+     * @since 3.0.0
+     *
+     * @param {integer} tileIndex - The unique id of the tile across all tilesets in the map.
+     * 
+     * @return {object|null}
+     */
+    getTileCollisionGroup: function (tileIndex)
+    {
+        var data = this.getTileData(tileIndex);
+
+        return (data &amp;&amp; data.objectgroup) ? data.objectgroup : null;
+    },
+
+    /**
+     * Returns true if and only if this Tileset contains the given tile index.
+     *
+     * @method Phaser.Tilemaps.Tileset#containsTileIndex
+     * @since 3.0.0
+     *
+     * @param {integer} tileIndex - The unique id of the tile across all tilesets in the map.
+     * 
+     * @return {boolean}
+     */
+    containsTileIndex: function (tileIndex)
+    {
+        return (
+            tileIndex >= this.firstgid &amp;&amp;
+            tileIndex &lt; (this.firstgid + this.total)
+        );
+    },
+
+    /**
+     * Returns the texture coordinates (UV in pixels) in the Tileset image for the given tile index.
+     * Returns null if tile index is not contained in this Tileset.
+     *
+     * @method Phaser.Tilemaps.Tileset#getTileTextureCoordinates
+     * @since 3.0.0
+     *
+     * @param {integer} tileIndex - The unique id of the tile across all tilesets in the map.
+     * 
+     * @return {object|null} Object in the form { x, y } representing the top-left UV coordinate
+     * within the Tileset image.
+     */
+    getTileTextureCoordinates: function (tileIndex)
+    {
+        if (!this.containsTileIndex(tileIndex)) { return null; }
+
+        return this.texCoordinates[tileIndex - this.firstgid];
+    },
+
+    /**
+     * Sets the image associated with this Tileset and updates the tile data (rows, columns, etc.).
+     *
+     * @method Phaser.Tilemaps.Tileset#setImage
+     * @since 3.0.0
+     *
+     * @param {Phaser.Textures.Texture} texture - The image that contains the tiles.
+     * 
+     * @return {Phaser.Tilemaps.Tileset} This Tileset object.
+     */
+    setImage: function (texture)
+    {
+        this.image = texture;
+
+        this.updateTileData(this.image.source[0].width, this.image.source[0].height);
+
+        return this;
+    },
+
+    /**
+     * Sets the tile width &amp; height and updates the tile data (rows, columns, etc.).
+     *
+     * @method Phaser.Tilemaps.Tileset#setTileSize
+     * @since 3.0.0
+     *
+     * @param {integer} [tileWidth] - The width of a tile in pixels.
+     * @param {integer} [tileHeight] - The height of a tile in pixels.
+     * 
+     * @return {Phaser.Tilemaps.Tileset} This Tileset object.
+     */
+    setTileSize: function (tileWidth, tileHeight)
+    {
+        if (tileWidth !== undefined) { this.tileWidth = tileWidth; }
+        if (tileHeight !== undefined) { this.tileHeight = tileHeight; }
+
+        if (this.image)
+        {
+            this.updateTileData(this.image.source[0].width, this.image.source[0].height);
+        }
+
+        return this;
+    },
+
+    /**
+     * Sets the tile margin &amp; spacing and updates the tile data (rows, columns, etc.).
+     *
+     * @method Phaser.Tilemaps.Tileset#setSpacing
+     * @since 3.0.0
+     *
+     * @param {integer} [margin] - The margin around the tiles in the sheet (in pixels).
+     * @param {integer} [spacing] - The spacing between the tiles in the sheet (in pixels).
+     * 
+     * @return {Phaser.Tilemaps.Tileset} This Tileset object.
+     */
+    setSpacing: function (margin, spacing)
+    {
+        if (margin !== undefined) { this.tileMargin = margin; }
+        if (spacing !== undefined) { this.tileSpacing = spacing; }
+
+        if (this.image)
+        {
+            this.updateTileData(this.image.source[0].width, this.image.source[0].height);
+        }
+
+        return this;
+    },
+
+    /**
+     * Updates tile texture coordinates and tileset data.
+     *
+     * @method Phaser.Tilemaps.Tileset#updateTileData
+     * @since 3.0.0
+     *
+     * @param {integer} imageWidth - The (expected) width of the image to slice.
+     * @param {integer} imageHeight - The (expected) height of the image to slice.
+     * 
+     * @return {Phaser.Tilemaps.Tileset} This Tileset object.
+     */
+    updateTileData: function (imageWidth, imageHeight)
+    {
+        var rowCount = (imageHeight - this.tileMargin * 2 + this.tileSpacing) / (this.tileHeight + this.tileSpacing);
+        var colCount = (imageWidth - this.tileMargin * 2 + this.tileSpacing) / (this.tileWidth + this.tileSpacing);
+
+        if (rowCount % 1 !== 0 || colCount % 1 !== 0)
+        {
+            console.warn('Tileset ' + this.name + ' image tile area is not an even multiple of tile size');
+        }
+
+        // In Tiled a tileset image that is not an even multiple of the tile dimensions is truncated
+        // - hence the floor when calculating the rows/columns.
+        rowCount = Math.floor(rowCount);
+        colCount = Math.floor(colCount);
+
+        this.rows = rowCount;
+        this.columns = colCount;
+
+        // In Tiled, "empty" spaces in a tileset count as tiles and hence count towards the gid
+        this.total = rowCount * colCount;
+
+        this.texCoordinates.length = 0;
+
+        var tx = this.tileMargin;
+        var ty = this.tileMargin;
+
+        for (var y = 0; y &lt; this.rows; y++)
+        {
+            for (var x = 0; x &lt; this.columns; x++)
+            {
+                this.texCoordinates.push({ x: tx, y: ty });
+                tx += this.tileWidth + this.tileSpacing;
+            }
+
+            tx = this.tileMargin;
+            ty += this.tileHeight + this.tileSpacing;
+        }
+
+        return this;
+    }
+
+});
+
+module.exports = Tileset;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

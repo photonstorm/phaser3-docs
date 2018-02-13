@@ -1,0 +1,388 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>sound/webaudio/WebAudioSoundManager.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">sound/webaudio/WebAudioSoundManager.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var BaseSoundManager = require('../BaseSoundManager');
+var WebAudioSound = require('./WebAudioSound');
+
+/**
+ * @classdesc
+ * Web Audio API implementation of the sound manager.
+ *
+ * @class WebAudioSoundManager
+ * @extends Phaser.Sound.BaseSoundManager
+ * @memberOf Phaser.Sound
+ * @constructor
+ * @author Pavle Goloskokovic &lt;pgoloskokovic@gmail.com> (http://prunegames.com)
+ * @since 3.0.0
+ * 
+ * @param {Phaser.Game} game - Reference to the current game instance.
+ */
+var WebAudioSoundManager = new Class({
+
+    Extends: BaseSoundManager,
+
+    initialize:
+
+    function WebAudioSoundManager (game)
+    {
+        /**
+         * The AudioContext being used for playback.
+         *
+         * @name Phaser.Sound.WebAudioSoundManager#context
+         * @type {AudioContext}
+         * @since 3.0.0
+         */
+        this.context = this.createAudioContext(game);
+
+        /**
+         * Gain node responsible for controlling global muting.
+         *
+         * @name Phaser.Sound.WebAudioSoundManager#masterMuteNode
+         * @type {GainNode}
+         * @since 3.0.0
+         */
+        this.masterMuteNode = this.context.createGain();
+
+        /**
+         * Gain node responsible for controlling global volume.
+         *
+         * @name Phaser.Sound.WebAudioSoundManager#masterVolumeNode
+         * @type {GainNode}
+         * @since 3.0.0
+         */
+        this.masterVolumeNode = this.context.createGain();
+
+        this.masterMuteNode.connect(this.masterVolumeNode);
+
+        this.masterVolumeNode.connect(this.context.destination);
+
+        /**
+         * Destination node for connecting individual sounds to.
+         *
+         * @name Phaser.Sound.WebAudioSoundManager#destination
+         * @type {AudioNode}
+         * @since 3.0.0
+         */
+        this.destination = this.masterMuteNode;
+
+        /**
+         * Is the Sound Manager touch locked?
+         *
+         * @name Phaser.Sound.WebAudioSoundManager#locked
+         * @type {boolean}
+         * @since 3.0.0
+         */
+        this.locked = this.context.state === 'suspended' &amp;&amp; 'ontouchstart' in window;
+
+        BaseSoundManager.call(this, game);
+    },
+
+    /**
+     * Method responsible for instantiating and returning AudioContext instance.
+     * If an instance of an AudioContext class was provided trough the game config,
+     * that instance will be returned instead. This can come in handy if you are reloading
+     * a Phaser game on a page that never properly refreshes (such as in an SPA project)
+     * and you want to reuse already instantiated AudioContext.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#createAudioContext
+     * @private
+     * @since 3.0.0
+     * 
+     * @param {Phaser.Game} game - Reference to the current game instance.
+     * 
+     * @return {AudioContext} The AudioContext instance to be used for playback.
+     */
+    createAudioContext: function (game)
+    {
+        var audioConfig = game.config.audio;
+
+        if (audioConfig &amp;&amp; audioConfig.context)
+        {
+            audioConfig.context.resume();
+            return audioConfig.context;
+        }
+
+        return new AudioContext();
+    },
+
+    /**
+     * Adds a new sound into the sound manager.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#add
+     * @since 3.0.0
+     * 
+     * @param {string} key - Asset key for the sound.
+     * @param {ISoundConfig} [config] - An optional config object containing default sound settings.
+     * 
+     * @return {Phaser.Sound.WebAudioSound} The new sound instance.
+     */
+    add: function (key, config)
+    {
+        var sound = new WebAudioSound(this, key, config);
+
+        this.sounds.push(sound);
+
+        return sound;
+    },
+
+    /**
+     * Unlocks Web Audio API on iOS devices on the initial touch event.
+     *
+     * Read more about how this issue is handled here in [this article](https://medium.com/@pgoloskokovic/unlocking-web-audio-the-smarter-way-8858218c0e09).
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#unlock
+     * @private
+     * @since 3.0.0
+     */
+    unlock: function ()
+    {
+        var _this = this;
+
+        var unlock = function ()
+        {
+            _this.context.resume().then(function ()
+            {
+                document.body.removeEventListener('touchstart', unlock);
+                document.body.removeEventListener('touchend', unlock);
+                _this.unlocked = true;
+            });
+        };
+
+        document.body.addEventListener('touchstart', unlock, false);
+        document.body.addEventListener('touchend', unlock, false);
+    },
+
+    /**
+     * Method used internally for pausing sound manager if
+     * Phaser.Sound.WebAudioSoundManager#pauseOnBlur is set to true.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#onBlur
+     * @protected
+     * @since 3.0.0
+     */
+    onBlur: function ()
+    {
+        this.context.suspend();
+    },
+
+    /**
+     * Method used internally for resuming sound manager if
+     * Phaser.Sound.WebAudioSoundManager#pauseOnBlur is set to true.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#onFocus
+     * @protected
+     * @since 3.0.0
+     */
+    onFocus: function ()
+    {
+        this.context.resume();
+    },
+
+    /**
+     * Calls Phaser.Sound.BaseSoundManager#destroy method
+     * and cleans up all Web Audio API related stuff.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        BaseSoundManager.prototype.destroy.call(this);
+        this.destination = null;
+        this.masterVolumeNode.disconnect();
+        this.masterVolumeNode = null;
+        this.masterMuteNode.disconnect();
+        this.masterMuteNode = null;
+        this.context.suspend();
+        this.context = null;
+    }
+});
+
+/**
+ * Global mute setting.
+ *
+ * @name Phaser.Sound.WebAudioSoundManager#mute
+ * @type {boolean}
+ */
+Object.defineProperty(WebAudioSoundManager.prototype, 'mute', {
+
+    get: function ()
+    {
+        return this.masterMuteNode.gain.value === 0;
+    },
+
+    set: function (value)
+    {
+        this.masterMuteNode.gain.setValueAtTime(value ? 0 : 1, 0);
+
+        /**
+         * @event Phaser.Sound.WebAudioSoundManager#mute
+         * @param {Phaser.Sound.WebAudioSoundManager} soundManager - Reference to the sound manager that emitted event.
+         * @param {boolean} value - An updated value of Phaser.Sound.WebAudioSoundManager#mute property.
+         */
+        this.emit('mute', this, value);
+    }
+
+});
+
+/**
+ * Global volume setting.
+ *
+ * @name Phaser.Sound.WebAudioSoundManager#volume
+ * @type {number}
+ */
+Object.defineProperty(WebAudioSoundManager.prototype, 'volume', {
+
+    get: function ()
+    {
+        return this.masterVolumeNode.gain.value;
+    },
+
+    set: function (value)
+    {
+        this.masterVolumeNode.gain.setValueAtTime(value, 0);
+
+        /**
+         * @event Phaser.Sound.WebAudioSoundManager#volume
+         * @param {Phaser.Sound.WebAudioSoundManager} soundManager - Reference to the sound manager that emitted event.
+         * @param {number} value - An updated value of Phaser.Sound.WebAudioSoundManager#volume property.
+         */
+        this.emit('volume', this, value);
+    }
+
+});
+
+module.exports = WebAudioSoundManager;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

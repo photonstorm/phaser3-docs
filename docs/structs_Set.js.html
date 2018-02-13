@@ -1,0 +1,516 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>structs/Set.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">structs/Set.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+
+/**
+ * @classdesc
+ * A Set is a collection of unique elements.
+ *
+ * @class Set
+ * @memberOf Phaser.Structs
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {array} [elements] - [description]
+ */
+var Set = new Class({
+
+    initialize:
+
+    function Set (elements)
+    {
+        /**
+         * [description]
+         *
+         * @name Phaser.Structs.Set#entries
+         * @type {array}
+         * @default []
+         * @since 3.0.0
+         */
+        this.entries = [];
+
+        if (Array.isArray(elements))
+        {
+            for (var i = 0; i &lt; elements.length; i++)
+            {
+                this.set(elements[i]);
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#set
+     * @since 3.0.0
+     *
+     * @param {any} value - [description]
+     *
+     * @return {Phaser.Structs.Set} This Set object.
+     */
+    set: function (value)
+    {
+        if (this.entries.indexOf(value) === -1)
+        {
+            this.entries.push(value);
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#get
+     * @since 3.0.0
+     *
+     * @param {string} property - [description]
+     * @param {any} value - [description]
+     *
+     * @return {any} [description]
+     */
+    get: function (property, value)
+    {
+        for (var i = 0; i &lt; this.entries.length; i++)
+        {
+            var entry = this.entries[i];
+
+            if (entry[property] === value)
+            {
+                return entry;
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#getArray
+     * @since 3.0.0
+     *
+     * @return {array} [description]
+     */
+    getArray: function ()
+    {
+        return this.entries.slice(0);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#delete
+     * @since 3.0.0
+     *
+     * @param {any} value - [description]
+     *
+     * @return {Phaser.Structs.Set} This Set object.
+     */
+    delete: function (value)
+    {
+        var index = this.entries.indexOf(value);
+
+        if (index > -1)
+        {
+            this.entries.splice(index, 1);
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#dump
+     * @since 3.0.0
+     */
+    dump: function ()
+    {
+        console.group('Set');
+
+        for (var i = 0; i &lt; this.entries.length; i++)
+        {
+            var entry = this.entries[i];
+            console.log(entry);
+        }
+
+        console.groupEnd();
+    },
+
+    /**
+     * For when you know this Set will be modified during the iteration.
+     *
+     * @method Phaser.Structs.Set#each
+     * @since 3.0.0
+     *
+     * @param {function} callback - [description]
+     * @param {object} callbackScope - [description]
+     *
+     * @return {Phaser.Structs.Set} This Set object.
+     */
+    each: function (callback, callbackScope)
+    {
+        var i;
+        var temp = this.entries.slice();
+        var len = temp.length;
+
+        if (callbackScope)
+        {
+            for (i = 0; i &lt; len; i++)
+            {
+                if (callback.call(callbackScope, temp[i], i) === false)
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (i = 0; i &lt; len; i++)
+            {
+                if (callback(temp[i], i) === false)
+                {
+                    break;
+                }
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * For when you absolutely know this Set won't be modified during the iteration.
+     *
+     * @method Phaser.Structs.Set#iterate
+     * @since 3.0.0
+     *
+     * @param {function} callback - [description]
+     * @param {object} callbackScope - [description]
+     *
+     * @return {Phaser.Structs.Set} This Set object.
+     */
+    iterate: function (callback, callbackScope)
+    {
+        var i;
+        var len = this.entries.length;
+
+        if (callbackScope)
+        {
+            for (i = 0; i &lt; len; i++)
+            {
+                if (callback.call(callbackScope, this.entries[i], i) === false)
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (i = 0; i &lt; len; i++)
+            {
+                if (callback(this.entries[i], i) === false)
+                {
+                    break;
+                }
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#iterateLocal
+     * @since 3.0.0
+     *
+     * @param {string} callbackKey - [description]
+     * @param {...*} [arguments] - Additional arguments that will be passed to the callback, after the child.
+     *
+     * @return {Phaser.Structs.Set} This Set object.
+     */
+    iterateLocal: function (callbackKey)
+    {
+        var i;
+        var args = [];
+
+        for (i = 1; i &lt; arguments.length; i++)
+        {
+            args.push(arguments[i]);
+        }
+
+        var len = this.entries.length;
+
+        for (i = 0; i &lt; len; i++)
+        {
+            var entry = this.entries[i];
+
+            entry[callbackKey].apply(entry, args);
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#clear
+     * @since 3.0.0
+     *
+     * @return {Phaser.Structs.Set} This Set object.
+     */
+    clear: function ()
+    {
+        this.entries.length = 0;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#contains
+     * @since 3.0.0
+     *
+     * @param {any} value - [description]
+     *
+     * @return {boolean} [description]
+     */
+    contains: function (value)
+    {
+        return (this.entries.indexOf(value) > -1);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#union
+     * @since 3.0.0
+     *
+     * @param {Phaser.Structs.Set} set - [description]
+     *
+     * @return {Phaser.Structs.Set} [description]
+     */
+    union: function (set)
+    {
+        var newSet = new Set();
+
+        set.values.forEach(function (value)
+        {
+            newSet.add(value);
+        });
+
+        this.entries.forEach(function (value)
+        {
+            newSet.add(value);
+        });
+
+        return newSet;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#intersect
+     * @since 3.0.0
+     *
+     * @param {Phaser.Structs.Set} set - [description]
+     *
+     * @return {Phaser.Structs.Set} [description]
+     */
+    intersect: function (set)
+    {
+        var newSet = new Set();
+
+        this.entries.forEach(function (value)
+        {
+            if (set.contains(value))
+            {
+                newSet.add(value);
+            }
+        });
+
+        return newSet;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.Set#difference
+     * @since 3.0.0
+     *
+     * @param {Phaser.Structs.Set} set - [description]
+     *
+     * @return {Phaser.Structs.Set} [description]
+     */
+    difference: function (set)
+    {
+        var newSet = new Set();
+
+        this.entries.forEach(function (value)
+        {
+            if (!set.contains(value))
+            {
+                newSet.add(value);
+            }
+        });
+
+        return newSet;
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.Structs.Set#size
+     * @type {integer}
+     * @since 3.0.0
+     */
+    size: {
+
+        get: function ()
+        {
+            return this.entries.length;
+        },
+
+        set: function (value)
+        {
+            return this.entries.length = value;
+        }
+
+    }
+
+});
+
+module.exports = Set;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

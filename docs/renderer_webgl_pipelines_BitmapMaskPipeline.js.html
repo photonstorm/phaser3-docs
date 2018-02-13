@@ -1,0 +1,334 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>renderer/webgl/pipelines/BitmapMaskPipeline.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">renderer/webgl/pipelines/BitmapMaskPipeline.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../../utils/Class');
+var ShaderSourceFS = require('../shaders/BitmapMask.frag');
+var ShaderSourceVS = require('../shaders/BitmapMask.vert'); 
+var Utils = require('../Utils');
+var WebGLPipeline = require('../WebGLPipeline');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class BitmapMaskPipeline
+ * @extends Phaser.Renderer.WebGL.WebGLPipeline
+ * @memberOf Phaser.Renderer.WebGL
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Game} game - [description]
+ * @param {WebGLRenderingContext} gl - [description]
+ * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - [description]
+ */
+var BitmapMaskPipeline = new Class({
+
+    Extends: WebGLPipeline,
+    
+    initialize:
+
+    function BitmapMaskPipeline (game, gl, renderer)
+    {
+        WebGLPipeline.call(this, {
+            game: game,
+            gl: gl,
+            renderer: renderer,
+            topology: gl.TRIANGLES,
+            vertShader: ShaderSourceVS,
+            fragShader: ShaderSourceFS,
+            vertexCapacity: 3,
+
+            vertexSize: 
+                Float32Array.BYTES_PER_ELEMENT * 2,
+
+            vertices: new Float32Array([
+                -1, +1, -1, -7, +7, +1
+            ]).buffer,
+
+            attributes: [
+                {
+                    name: 'inPosition',
+                    size: 2,
+                    type: gl.FLOAT,
+                    normalized: false,
+                    offset: 0
+                }
+            ]
+        });
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Renderer.WebGL.BitmapMaskPipeline#vertexViewF32
+         * @type {Float32Array}
+         * @since 3.0.0
+         */
+        this.vertexViewF32 = new Float32Array(this.vertexData);
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Renderer.WebGL.BitmapMaskPipeline#maxQuads
+         * @type {number}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.maxQuads = 1;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Renderer.WebGL.BitmapMaskPipeline#resolutionDirty
+         * @type {boolean}
+         * @default true
+         * @since 3.0.0
+         */
+        this.resolutionDirty = true;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Renderer.WebGL.BitmapMaskPipeline#onBind
+     * @since 3.0.0
+     *
+     * @return {Phaser.Renderer.WebGL.BitmapMaskPipeline} [description]
+     */
+    onBind: function ()
+    {
+        WebGLPipeline.prototype.onBind.call(this);
+
+        var renderer = this.renderer;
+        var program = this.program;
+        
+        if (this.resolutionDirty)
+        {
+            renderer.setFloat2(program, 'uResolution', this.width, this.height);
+            renderer.setInt1(program, 'uMainSampler', 0);
+            renderer.setInt1(program, 'uMaskSampler', 1);
+            this.resolutionDirty = false;
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Renderer.WebGL.BitmapMaskPipeline#resize
+     * @since 3.0.0
+     *
+     * @param {number} width - [description]
+     * @param {number} height - [description]
+     * @param {number} resolution - [description]
+     *
+     * @return {Phaser.Renderer.WebGL.BitmapMaskPipeline} [description]
+     */
+    resize: function (width, height, resolution)
+    {
+        WebGLPipeline.prototype.resize.call(this, width, height, resolution);
+        this.resolutionDirty = true;
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Renderer.WebGL.BitmapMaskPipeline#beginMask
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.GameObject} mask - [description]
+     * @param {Phaser.GameObjects.GameObject} maskedObject - [description]
+     * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
+     */
+    beginMask: function (mask, maskedObject, camera)
+    {
+        var bitmapMask = mask.bitmapMask;
+        var renderer = this.renderer;
+        var gl = this.gl;
+        var visible = bitmapMask.visible;
+
+        if (bitmapMask &amp;&amp; gl)
+        {
+            // First we clear the mask framebuffer
+            renderer.setFramebuffer(mask.maskFramebuffer);
+            gl.clearColor(0, 0, 0, 0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            // We render out mask source
+            bitmapMask.visible = true;
+            bitmapMask.renderWebGL(renderer, bitmapMask, 0.0, camera);
+            bitmapMask.visible = visible;
+            renderer.flush();
+
+            // Bind and clear our main source (masked object)
+            renderer.setFramebuffer(mask.mainFramebuffer);
+            gl.clearColor(0, 0, 0, 0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Renderer.WebGL.BitmapMaskPipeline#endMask
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.GameObject} mask - [description]
+     */
+    endMask: function (mask)
+    {
+        var bitmapMask = mask.bitmapMask;
+        var renderer = this.renderer;
+        var gl = this.gl;
+
+        if (bitmapMask)
+        {
+            // Return to default framebuffer
+            renderer.setFramebuffer(null);
+            
+            // Bind bitmap mask pipeline and draw
+            renderer.setPipeline(this);
+            renderer.setTexture2D(mask.mainTexture, 0);
+            renderer.setTexture2D(mask.maskTexture, 1);
+
+            // Finally draw a triangle filling the whole screen
+            gl.drawArrays(this.topology, 0, 3);
+        }
+    }
+
+});
+
+module.exports = BitmapMaskPipeline;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

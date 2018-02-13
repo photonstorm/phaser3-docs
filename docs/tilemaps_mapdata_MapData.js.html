@@ -1,0 +1,325 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>tilemaps/mapdata/MapData.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">tilemaps/mapdata/MapData.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var GetFastValue = require('../../utils/object/GetFastValue');
+
+/**
+ * @classdesc
+ * A class for representing data about a map. Maps are parsed from CSV, Tiled, etc. into this
+ * format. A Tilemap object get a copy of this data and then unpacks the needed properties into
+ * itself.
+ *
+ * @class MapData
+ * @memberOf Phaser.Tilemaps
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {object} [config] - [description]
+ */
+var MapData = new Class({
+
+    initialize:
+
+    function MapData (config)
+    {
+        if (config === undefined) { config = {}; }
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#name
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.name = GetFastValue(config, 'name', 'map');
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#width
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.width = GetFastValue(config, 'width', 0);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#height
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.height = GetFastValue(config, 'height', 0);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#tileWidth
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.tileWidth = GetFastValue(config, 'tileWidth', 0);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#tileHeight
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.tileHeight = GetFastValue(config, 'tileHeight', 0);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#widthInPixels
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.widthInPixels = GetFastValue(config, 'widthInPixels', this.width * this.tileWidth);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#heightInPixels
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.heightInPixels = GetFastValue(config, 'heightInPixels', this.height * this.tileHeight);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#format
+         * @type {integer}
+         * @since 3.0.0
+         */
+        this.format = GetFastValue(config, 'format', null);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#orientation
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.orientation = GetFastValue(config, 'orientation', 'orthogonal');
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#version
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.version = GetFastValue(config, 'version', '1');
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#properties
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.properties = GetFastValue(config, 'properties', {});
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#layers
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.layers = GetFastValue(config, 'layers', []);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#images
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.images = GetFastValue(config, 'images', []);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#objects
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.objects = GetFastValue(config, 'objects', {});
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#collision
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.collision = GetFastValue(config, 'collision', {});
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#tilesets
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.tilesets = GetFastValue(config, 'tilesets', []);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#imageCollections
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.imageCollections = GetFastValue(config, 'imageCollections', []);
+
+        /**
+         * [description]
+         * 
+         * @name Phaser.Tilemaps.MapData#tiles
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.tiles = GetFastValue(config, 'tiles', []);
+    }
+
+});
+
+module.exports = MapData;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

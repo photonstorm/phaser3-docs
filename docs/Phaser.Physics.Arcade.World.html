@@ -1,0 +1,4724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>Phaser.Physics.Arcade.World</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = true;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">class</span>
+				<h1><span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.Physics.html">.Physics</a><a href="Phaser.Physics.Arcade.html">.Arcade</a>.</span><span class="name">World</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-9 main-content">
+						<ol class="breadcrumb">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="list_class.html">Classes</a></li>
+							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Physics.html">.Physics</a><a href="Phaser.Physics.Arcade.html">.Arcade</a>.World</li>
+						</ol>
+						<div class="access-filter">
+								<label class="checkbox-inline">
+									<input class="toggle-inherited" type="checkbox" value="" checked>
+									Inherited
+								</label>
+								<label class="checkbox-inline">
+									<input class="toggle-public" type="checkbox" value="" checked>
+									Public
+								</label>
+						</div>
+					<section>
+							<dl class="symbol primary">
+								<dt class="symbol-title class">
+			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">World</span><span class="signature-params">( <span class="signature-param">scene</span>, <span class="signature-param">config</span>&nbsp;)</span></h2>
+</dt>
+<dd class="symbol-details class" style="max-height: 9999px;">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>scene</code></td>
+							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>config</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+							<!-- augments -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Augments</label>
+								<div class="col-sm-9">
+										<p class="form-control-static"><a href="EventEmitter.html">EventEmitter</a></p>
+								</div>
+							</div>
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-27">line 27</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+							</dl>
+							<article class="secondary">
+									<h3>Members</h3>
+									<dl class="symbol">
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="bodies" class="member public"><span class="name">bodies</span><span class="signature-type"> :<a href="Phaser.Structs.Set.html">Phaser.Structs.Set</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Dynamic Bodies</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Structs.Set.html">Phaser.Structs.Set</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-59">line 59</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="bounds" class="member public"><span class="name">bounds</span><span class="signature-type"> :<a href="Phaser.Geom.Rectangle.html">Phaser.Geom.Rectangle</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Geom.Rectangle.html">Phaser.Geom.Rectangle</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-95">line 95</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="checkCollision" class="member public"><span class="name">checkCollision</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-109">line 109</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="colliders" class="member public"><span class="name">colliders</span><span class="signature-type"> :<a href="Phaser.Structs.ProcessQueue.html">Phaser.Structs.ProcessQueue</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Structs.ProcessQueue.html">Phaser.Structs.ProcessQueue</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-77">line 77</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="debugGraphic" class="member public"><span class="name">debugGraphic</span><span class="signature-type"> :<a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-184">line 184</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="defaults" class="member public"><span class="name">defaults</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-193">line 193</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="drawDebug" class="member public"><span class="name">drawDebug</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">false</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-174">line 174</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="forceX" class="member public"><span class="name">forceX</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">false</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-143">line 143</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="gravity" class="member public"><span class="name">gravity</span><span class="signature-type"> :<a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-86">line 86</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="isPaused" class="member public"><span class="name">isPaused</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">false</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-153">line 153</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="maxEntries" class="member public"><span class="name">maxEntries</span><span class="signature-type"> :integer</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">integer</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">16</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-209">line 209</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="OVERLAP_BIAS" class="member public"><span class="name">OVERLAP_BIAS</span><span class="signature-type"> :number</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">number</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">4</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-123">line 123</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="scene" class="member public"><span class="name">scene</span><span class="signature-type"> :<a href="Phaser.Scene.html">Phaser.Scene</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-50">line 50</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="staticBodies" class="member public"><span class="name">staticBodies</span><span class="signature-type"> :<a href="Phaser.Structs.Set.html">Phaser.Structs.Set</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Static Bodies</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Structs.Set.html">Phaser.Structs.Set</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-68">line 68</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="staticTree" class="member public"><span class="name">staticTree</span><span class="signature-type"> :<a href="Phaser.Structs.RTree.html">Phaser.Structs.RTree</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Structs.RTree.html">Phaser.Structs.RTree</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-228">line 228</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="TILE_BIAS" class="member public"><span class="name">TILE_BIAS</span><span class="signature-type"> :number</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">number</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">16</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-133">line 133</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="tree" class="member public"><span class="name">tree</span><span class="signature-type"> :<a href="Phaser.Structs.RTree.html">Phaser.Structs.RTree</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Structs.RTree.html">Phaser.Structs.RTree</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-219">line 219</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="treeMinMax" class="member public"><span class="name">treeMinMax</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-237">line 237</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+									</dl>
+									<h3>Methods</h3>
+									<dl class="symbol">
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="addCollider" class="function public"><span class="name">addCollider</span><span class="signature-params">( <span class="signature-param">object1</span>, <span class="signature-param">object2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object1</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									The first object to check for collision.
+							</td>
+						</tr>
+						<tr>
+								<td><code>object2</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									The second object to check for collision.
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									The callback to invoke when the two objects collide.
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									The callback to invoke when the two objects collide. Must return a boolean.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									The scope in which to call the callbacks.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.Collider.html">Phaser.Physics.Arcade.Collider</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The Collider that was created.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-525">line 525</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="addListener" class="function public inherited"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The listener function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>this</td>
+							<td class="last">
+									The context to invoke the listener with.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#addListener">EventEmitter#addListener</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-114">line 114</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="addOverlap" class="function public"><span class="name">addOverlap</span><span class="signature-params">( <span class="signature-param">object1</span>, <span class="signature-param">object2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object1</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									The first object to check for overlap.
+							</td>
+						</tr>
+						<tr>
+								<td><code>object2</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									The second object to check for overlap.
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									The callback to invoke when the two objects overlap.
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									The callback to invoke when the two objects overlap. Must return a boolean.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									The scope in which to call the callbacks.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.Collider.html">Phaser.Physics.Arcade.Collider</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The Collider that was created.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-552">line 552</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="circleBodyIntersects" class="function public"><span class="name">circleBodyIntersects</span><span class="signature-params">( <span class="signature-param">circle</span>, <span class="signature-param">body</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>circle</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>body</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1152">line 1152</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collide" class="function public"><span class="name">collide</span><span class="signature-params">( <span class="signature-param">object1</span>, <span class="signature-param">object2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object1</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>object2</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1197">line 1197</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideGroupVsGroup" class="function public"><span class="name">collideGroupVsGroup</span><span class="signature-params">( <span class="signature-param">group1</span>, <span class="signature-param">group2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">TODO!</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>group1</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.Group.html">Phaser.GameObjects.Group</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>group2</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.Group.html">Phaser.GameObjects.Group</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1590">line 1590</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideGroupVsTilemapLayer" class="function public"><span class="name">collideGroupVsTilemapLayer</span><span class="signature-params">( <span class="signature-param">group</span>, <span class="signature-param">tilemapLayer</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>group</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.Group.html">Phaser.GameObjects.Group</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>tilemapLayer</code></td>
+							<td><span class="param-type">any</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1452">line 1452</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideHandler" class="function public"><span class="name">collideHandler</span><span class="signature-params">( <span class="signature-param">object1</span>, <span class="signature-param">object2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object1</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>object2</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1279">line 1279</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideObjects" class="function public"><span class="name">collideObjects</span><span class="signature-params">( <span class="signature-param">object1</span>, <span class="signature-param">object2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object1</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>object2</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1220">line 1220</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideSpriteVsGroup" class="function public"><span class="name">collideSpriteVsGroup</span><span class="signature-params">( <span class="signature-param">sprite</span>, <span class="signature-param">group</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>sprite</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>group</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.Group.html">Phaser.GameObjects.Group</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1389">line 1389</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideSpriteVsSprite" class="function public"><span class="name">collideSpriteVsSprite</span><span class="signature-params">( <span class="signature-param">sprite1</span>, <span class="signature-param">sprite2</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>sprite1</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>sprite2</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1354">line 1354</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="collideSpriteVsTilemapLayer" class="function public"><span class="name">collideSpriteVsTilemapLayer</span><span class="signature-params">( <span class="signature-param">sprite</span>, <span class="signature-param">tilemapLayer</span>, <span class="signature-param">collideCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>sprite</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>tilemapLayer</code></td>
+							<td><span class="param-type">any</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>collideCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1491">line 1491</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="computeVelocity" class="function public"><span class="name">computeVelocity</span><span class="signature-params">( <span class="signature-param">axis</span>, <span class="signature-param">body</span>, <span class="signature-param">velocity</span>, <span class="signature-param">acceleration</span>, <span class="signature-param">drag</span>, <span class="signature-param">max</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>axis</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>body</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>velocity</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>acceleration</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>drag</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>max</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-728">line 728</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="createDebugGraphic" class="function public"><span class="name">createDebugGraphic</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-413">line 413</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="destroy" class="function public"><span class="name">destroy</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1624">line 1624</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="disable" class="function public"><span class="name">disable</span><span class="signature-params">( <span class="signature-param">object</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-342">line 342</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="disableBody" class="function public"><span class="name">disableBody</span><span class="signature-params">( <span class="signature-param">object</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-382">line 382</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calls each of the listeners registered for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">Boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#emit">EventEmitter#emit</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-92">line 92</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="enable" class="function public"><span class="name">enable</span><span class="signature-params">( <span class="signature-param">object</span> [,&nbsp;<span class="signature-param">type</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>type</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-252">line 252</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="enableBody" class="function public"><span class="name">enableBody</span><span class="signature-params">( <span class="signature-param">object</span>, <span class="signature-param">type</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>type</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-295">line 295</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="eventNames" class="function public inherited"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return an array listing the events for which the emitter has registered listeners.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#eventNames">EventEmitter#eventNames</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="intersects" class="function public"><span class="name">intersects</span><span class="signature-params">( <span class="signature-param">body1</span>, <span class="signature-param">body2</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>body1</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>body2</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1089">line 1089</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="listenerCount" class="function public inherited"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the number of listeners listening to a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The number of listeners.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#listenerCount">EventEmitter#listenerCount</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-82">line 82</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="listeners" class="function public inherited"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the listeners registered for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The registered listeners.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#listeners">EventEmitter#listeners</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-72">line 72</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="off" class="function public inherited"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									Only remove the listeners that match this function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									Only remove the listeners that have this context.
+							</td>
+						</tr>
+						<tr>
+								<td><code>once</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Only remove one-time listeners.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#off">EventEmitter#off</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="on" class="function public inherited"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The listener function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>this</td>
+							<td class="last">
+									The context to invoke the listener with.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#on">EventEmitter#on</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="once" class="function public inherited"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a one-time listener for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The listener function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>this</td>
+							<td class="last">
+									The context to invoke the listener with.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#once">EventEmitter#once</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-126">line 126</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="overlap" class="function public"><span class="name">overlap</span><span class="signature-params">( <span class="signature-param">object1</span>, <span class="signature-param">object2</span>, <span class="signature-param">overlapCallback</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object1</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>object2</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1174">line 1174</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="pause" class="function public"><span class="name">pause</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.World.html">Phaser.Physics.Arcade.World</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This World object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-491">line 491</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="postUpdate" class="function public"><span class="name">postUpdate</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-652">line 652</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="remove" class="function public"><span class="name">remove</span><span class="signature-params">( <span class="signature-param">object</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>object</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-329">line 329</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeAllListeners" class="function public inherited"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove all listeners, or those of the specified event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#removeAllListeners">EventEmitter#removeAllListeners</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-164">line 164</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="removeCollider" class="function public"><span class="name">removeCollider</span><span class="signature-params">( <span class="signature-param">collider</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>collider</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Collider.html">Phaser.Physics.Arcade.Collider</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.World.html">Phaser.Physics.Arcade.World</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This World object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-579">line 579</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeListener" class="function public inherited"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									Only remove the listeners that match this function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									Only remove the listeners that have this context.
+							</td>
+						</tr>
+						<tr>
+								<td><code>once</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Only remove one-time listeners.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="EventEmitter.html#removeListener">EventEmitter#removeListener</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-138">line 138</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="resume" class="function public"><span class="name">resume</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.World.html">Phaser.Physics.Arcade.World</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This World object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-508">line 508</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="separate" class="function public"><span class="name">separate</span><span class="signature-params">( <span class="signature-param">body1</span>, <span class="signature-param">body2</span>, <span class="signature-param">processCallback</span>, <span class="signature-param">callbackContext</span>, <span class="signature-param">overlapOnly</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>body1</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>body2</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>processCallback</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>callbackContext</code></td>
+							<td><span class="param-type">object</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-790">line 790</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="separateCircle" class="function public"><span class="name">separateCircle</span><span class="signature-params">( <span class="signature-param">body1</span>, <span class="signature-param">body2</span>, <span class="signature-param">overlapOnly</span>, <span class="signature-param">bias</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>body1</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>body2</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>overlapOnly</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>bias</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-897">line 897</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setBounds" class="function public"><span class="name">setBounds</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span> [,&nbsp;<span class="signature-param">checkLeft</span> [,&nbsp;<span class="signature-param">checkRight</span> [,&nbsp;<span class="signature-param">checkUp</span> [,&nbsp;<span class="signature-param">checkDown</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>width</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>height</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>checkLeft</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>checkRight</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>checkUp</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>checkDown</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.World.html">Phaser.Physics.Arcade.World</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This World object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-434">line 434</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setBoundsCollision" class="function public"><span class="name">setBoundsCollision</span><span class="signature-params">( [&nbsp;<span class="signature-param">left</span> [,&nbsp;<span class="signature-param">right</span> [,&nbsp;<span class="signature-param">up</span> [,&nbsp;<span class="signature-param">down</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>left</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>true</td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>right</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>true</td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>up</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>true</td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>down</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>true</td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Physics.Arcade.World.html">Phaser.Physics.Arcade.World</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This World object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-463">line 463</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="shutdown" class="function public"><span class="name">shutdown</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-1613">line 1613</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="update" class="function public"><span class="name">update</span><span class="signature-params">( <span class="signature-param">time</span>, <span class="signature-param">delta</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>time</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>delta</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-596">line 596</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="updateMotion" class="function public"><span class="name">updateMotion</span><span class="signature-params">( <span class="signature-param">body</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>body</code></td>
+							<td><span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="physics_arcade_World.js.html">physics/arcade/World.js</a>, <a href="physics_arcade_World.js.html#line-706">line 706</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+									</dl>
+							</article>
+					</section>
+			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>

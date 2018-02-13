@@ -1,0 +1,234 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>device/Browser.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">device/Browser.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var OS = require('./OS');
+
+/**
+ * Determines the browser type and version running this Phaser Game instance.
+ * These values are read-only and populated during the boot sequence of the game.
+ * They are then referenced by internal game systems and are available for you to access
+ * via `this.sys.game.device.browser` from within any Scene.
+ * 
+ * @name Phaser.Device.Browser
+ * @since 3.0.0
+ *
+ * @type {object}
+ * @property {boolean} chrome - Set to true if running in Chrome.
+ * @property {boolean} edge - Set to true if running in Microsoft Edge browser.
+ * @property {boolean} firefox - Set to true if running in Firefox.
+ * @property {boolean} ie - Set to true if running in Internet Explorer 11 or less (not Edge).
+ * @property {boolean} mobileSafari - Set to true if running in Mobile Safari.
+ * @property {boolean} opera - Set to true if running in Opera.
+ * @property {boolean} safari - Set to true if running in Safari.
+ * @property {boolean} silk - Set to true if running in the Silk browser (as used on the Amazon Kindle)
+ * @property {boolean} trident - Set to true if running a Trident version of Internet Explorer (IE11+)
+ * @property {number} chromeVersion - If running in Chrome this will contain the major version number.
+ * @property {number} firefoxVersion - If running in Firefox this will contain the major version number.
+ * @property {number} ieVersion - If running in Internet Explorer this will contain the major version number. Beyond IE10 you should use Browser.trident and Browser.tridentVersion.
+ * @property {number} safariVersion - If running in Safari this will contain the major version number.
+ * @property {number} tridentVersion - If running in Internet Explorer 11 this will contain the major version number. See {@link http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx}
+ */
+var Browser = {
+
+    chrome: false,
+    chromeVersion: 0,
+    edge: false,
+    firefox: false,
+    firefoxVersion: 0,
+    ie: false,
+    ieVersion: 0,
+    mobileSafari: false,
+    opera: false,
+    safari: false,
+    safariVersion: 0,
+    silk: false,
+    trident: false,
+    tridentVersion: 0
+
+};
+
+function init ()
+{
+    var ua = navigator.userAgent;
+
+    if (/Edge\/\d+/.test(ua))
+    {
+        Browser.edge = true;
+    }
+    else if ((/Chrome\/(\d+)/).test(ua) &amp;&amp; !OS.windowsPhone)
+    {
+        Browser.chrome = true;
+        Browser.chromeVersion = parseInt(RegExp.$1, 10);
+    }
+    else if ((/Firefox\D+(\d+)/).test(ua))
+    {
+        Browser.firefox = true;
+        Browser.firefoxVersion = parseInt(RegExp.$1, 10);
+    }
+    else if ((/AppleWebKit/).test(ua) &amp;&amp; OS.iOS)
+    {
+        Browser.mobileSafari = true;
+    }
+    else if ((/MSIE (\d+\.\d+);/).test(ua))
+    {
+        Browser.ie = true;
+        Browser.ieVersion = parseInt(RegExp.$1, 10);
+    }
+    else if ((/Opera/).test(ua))
+    {
+        Browser.opera = true;
+    }
+    else if ((/Safari/).test(ua) &amp;&amp; !OS.windowsPhone)
+    {
+        Browser.safari = true;
+    }
+    else if ((/Trident\/(\d+\.\d+)(.*)rv:(\d+\.\d+)/).test(ua))
+    {
+        Browser.ie = true;
+        Browser.trident = true;
+        Browser.tridentVersion = parseInt(RegExp.$1, 10);
+        Browser.ieVersion = parseInt(RegExp.$3, 10);
+    }
+
+    //  Silk gets its own if clause because its ua also contains 'Safari'
+    if ((/Silk/).test(ua))
+    {
+        Browser.silk = true;
+    }
+
+    return Browser;
+}
+
+module.exports = init();
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

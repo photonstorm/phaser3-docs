@@ -1,0 +1,491 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>time/Clock.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">time/Clock.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+var PluginManager = require('../boot/PluginManager');
+var TimerEvent = require('./TimerEvent');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class Clock
+ * @memberOf Phaser.Time
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Scene} scene - [description]
+ */
+var Clock = new Class({
+
+    initialize:
+
+    function Clock (scene)
+    {
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#scene
+         * @type {Phaser.Scene}
+         * @since 3.0.0
+         */
+        this.scene = scene;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#systems
+         * @type {Phaser.Scenes.Systems}
+         * @since 3.0.0
+         */
+        this.systems = scene.sys;
+
+        if (!scene.sys.settings.isBooted)
+        {
+            scene.sys.events.once('boot', this.boot, this);
+        }
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#now
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.now = Date.now();
+
+        //  Scale the delta time coming into the Clock by this factor
+        //  which then influences anything using this Clock for calculations, like TimerEvents
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#timeScale
+         * @type {float}
+         * @default 1
+         * @since 3.0.0
+         */
+        this.timeScale = 1;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#paused
+         * @type {boolean}
+         * @default false
+         * @since 3.0.0
+         */
+        this.paused = false;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#_active
+         * @type {Phaser.Time.TimerEvent[]}
+         * @private
+         * @default []
+         * @since 3.0.0
+         */
+        this._active = [];
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#_pendingInsertion
+         * @type {Phaser.Time.TimerEvent[]}
+         * @private
+         * @default []
+         * @since 3.0.0
+         */
+        this._pendingInsertion = [];
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Time.Clock#_pendingRemoval
+         * @type {Phaser.Time.TimerEvent[]}
+         * @private
+         * @default []
+         * @since 3.0.0
+         */
+        this._pendingRemoval = [];
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#boot
+     * @since 3.0.0
+     */
+    boot: function ()
+    {
+        var eventEmitter = this.systems.events;
+
+        eventEmitter.on('preupdate', this.preUpdate, this);
+        eventEmitter.on('update', this.update, this);
+        eventEmitter.on('shutdown', this.shutdown, this);
+        eventEmitter.on('destroy', this.destroy, this);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#addEvent
+     * @since 3.0.0
+     *
+     * @param {object} config - [description]
+     *
+     * @return {Phaser.Time.TimerEvent} [description]
+     */
+    addEvent: function (config)
+    {
+        var event = new TimerEvent(config);
+
+        this._pendingInsertion.push(event);
+
+        return event;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#delayedCall
+     * @since 3.0.0
+     *
+     * @param {number} delay - [description]
+     * @param {function} callback - [description]
+     * @param {array} args - [description]
+     * @param {object} callbackScope - [description]
+     *
+     * @return {[type]} [description]
+     */
+    delayedCall: function (delay, callback, args, callbackScope)
+    {
+        return this.addEvent({ delay: delay, callback: callback, args: args, callbackScope: callbackScope });
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#clearPendingEvents
+     * @since 3.0.0
+     * 
+     * @return {Phaser.Time.Clock} [description]
+     */
+    clearPendingEvents: function ()
+    {
+        this._pendingInsertion = [];
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#removeAllEvents
+     * @since 3.0.0
+     *
+     * @return {Phaser.Time.Clock} [description]
+     */
+    removeAllEvents: function ()
+    {
+        this._pendingRemoval = this._pendingRemoval.concat(this._active);
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#preUpdate
+     * @since 3.0.0
+     *
+     * @param {number} time - [description]
+     * @param {number} delta - [description]
+     */
+    preUpdate: function (time, delta)
+    {
+        var toRemove = this._pendingRemoval.length;
+        var toInsert = this._pendingInsertion.length;
+
+        if (toRemove === 0 &amp;&amp; toInsert === 0)
+        {
+            //  Quick bail
+            return;
+        }
+
+        var i;
+        var event;
+
+        //  Delete old events
+        for (i = 0; i &lt; toRemove; i++)
+        {
+            event = this._pendingRemoval[i];
+
+            var index = this._active.indexOf(event);
+
+            if (index > -1)
+            {
+                this._active.splice(index, 1);
+            }
+
+            //  Pool them?
+            event.destroy();
+        }
+
+        for (i = 0; i &lt; toInsert; i++)
+        {
+            event = this._pendingInsertion[i];
+
+            this._active.push(event);
+        }
+
+        //  Clear the lists
+        this._pendingRemoval.length = 0;
+        this._pendingInsertion.length = 0;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#update
+     * @since 3.0.0
+     *
+     * @param {number} time - [description]
+     * @param {number} delta - [description]
+     */
+    update: function (time, delta)
+    {
+        this.now = time;
+
+        if (this.paused)
+        {
+            return;
+        }
+
+        delta *= this.timeScale;
+
+        for (var i = 0; i &lt; this._active.length; i++)
+        {
+            var event = this._active[i];
+
+            if (event.paused)
+            {
+                continue;
+            }
+
+            //  Use delta time to increase elapsed.
+            //  Avoids needing to adjust for pause / resume.
+            //  Automatically smoothed by TimeStep class.
+            //  In testing accurate to +- 1ms!
+            event.elapsed += delta * event.timeScale;
+
+            if (event.elapsed >= event.delay)
+            {
+                var remainder = event.elapsed - event.delay;
+
+                //  Limit it, in case it's checked in the callback
+                event.elapsed = event.delay;
+
+                //  Process the event
+                if (!event.hasDispatched &amp;&amp; event.callback)
+                {
+                    event.hasDispatched = true;
+                    event.callback.apply(event.callbackScope, event.args);
+                }
+
+                if (event.repeatCount > 0)
+                {
+                    event.repeatCount--;
+
+                    event.elapsed = remainder;
+                    event.hasDispatched = false;
+                }
+                else
+                {
+                    this._pendingRemoval.push(event);
+                }
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#shutdown
+     * @since 3.0.0
+     */
+    shutdown: function ()
+    {
+        var i;
+
+        for (i = 0; i &lt; this._pendingInsertion.length; i++)
+        {
+            this._pendingInsertion[i].destroy();
+        }
+
+        for (i = 0; i &lt; this._active.length; i++)
+        {
+            this._active[i].destroy();
+        }
+
+        for (i = 0; i &lt; this._pendingRemoval.length; i++)
+        {
+            this._pendingRemoval[i].destroy();
+        }
+
+        this._active.length = 0;
+        this._pendingRemoval.length = 0;
+        this._pendingInsertion.length = 0;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Time.Clock#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.shutdown();
+
+        this.scene = undefined;
+    }
+
+});
+
+PluginManager.register('Clock', Clock, 'time');
+
+module.exports = Clock;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

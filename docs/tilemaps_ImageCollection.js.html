@@ -1,0 +1,295 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>tilemaps/ImageCollection.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">tilemaps/ImageCollection.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+
+/**
+ * @classdesc
+ * An Image Collection is a special Tile Set containing multiple images, with no slicing into each image.
+ *
+ * Image Collections are normally created automatically when Tiled data is loaded.
+ *
+ * @class ImageCollection
+ * @memberOf Phaser.Tilemaps
+ * @constructor
+ * @since 3.0.0
+ * 
+ * @param {string} name - The name of the image collection in the map data.
+ * @param {integer} firstgid - The first image index this image collection contains.
+ * @param {integer} [width=32] - Width of widest image (in pixels).
+ * @param {integer} [height=32] - Height of tallest image (in pixels).
+ * @param {integer} [margin=0] - The margin around all images in the collection (in pixels).
+ * @param {integer} [spacing=0] - The spacing between each image in the collection (in pixels).
+ * @param {object} [properties={}] - Custom Image Collection properties.
+ */
+var ImageCollection = new Class({
+
+    initialize:
+
+    function ImageCollection (name, firstgid, width, height, margin, spacing, properties)
+    {
+        if (width === undefined || width &lt;= 0) { width = 32; }
+        if (height === undefined || height &lt;= 0) { height = 32; }
+        if (margin === undefined) { margin = 0; }
+        if (spacing === undefined) { spacing = 0; }
+
+        /**
+         * The name of the Image Collection.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#name
+         * @type {string}
+         * @since 3.0.0
+        */
+        this.name = name;
+
+        /**
+         * The Tiled firstgid value.
+         * This is the starting index of the first image index this Image Collection contains.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#firstgid
+         * @type {integer}
+         * @since 3.0.0
+         */
+        this.firstgid = firstgid | 0;
+
+        /**
+         * The width of the widest image (in pixels).
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#imageWidth
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.imageWidth = width | 0;
+
+        /**
+         * The height of the tallest image (in pixels).
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#imageHeight
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.imageHeight = height | 0;
+
+        /**
+         * The margin around the images in the collection (in pixels).
+         * Use `setSpacing` to change.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#imageMarge
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.imageMargin = margin | 0;
+
+        /**
+         * The spacing between each image in the collection (in pixels).
+         * Use `setSpacing` to change.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#imageSpacing
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.imageSpacing = spacing | 0;
+
+        /**
+         * Image Collection-specific properties that are typically defined in the Tiled editor.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#properties
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.properties = properties || {};
+
+        /**
+         * The cached images that are a part of this collection.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#images
+         * @type {array}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.images = [];
+
+        /**
+         * The total number of images in the image collection.
+         * 
+         * @name Phaser.Tilemaps.ImageCollection#total
+         * @type {integer}
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.total = 0;
+    },
+
+    /**
+     * Returns true if and only if this image collection contains the given image index.
+     *
+     * @method Phaser.Tilemaps.ImageCollection#containsImageIndex
+     * @since 3.0.0
+     * 
+     * @param {integer} imageIndex - The image index to search for.
+     * 
+     * @return {boolean} True if this Image Collection contains the given index.
+     */
+    containsImageIndex: function (imageIndex)
+    {
+        return (imageIndex >= this.firstgid &amp;&amp; imageIndex &lt; (this.firstgid + this.total));
+    },
+
+    /**
+     * Add an image to this Image Collection.
+     *
+     * @method Phaser.Tilemaps.ImageCollection#addImage
+     * @since 3.0.0
+     * 
+     * @param {integer} gid - The gid of the image in the Image Collection.
+     * @param {string} image - The the key of the image in the Image Collection and in the cache.
+     *
+     * @return {Phaser.Tilemaps.ImageCollection} This ImageCollection object.
+     */
+    addImage: function (gid, image)
+    {
+        this.images.push({ gid: gid, image: image });
+        this.total++;
+
+        return this;
+    }
+
+});
+
+module.exports = ImageCollection;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

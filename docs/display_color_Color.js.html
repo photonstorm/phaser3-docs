@@ -1,0 +1,637 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>display/color/Color.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">display/color/Color.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var GetColor = require('./GetColor');
+var GetColor32 = require('./GetColor32');
+
+/**
+ * @classdesc
+ * The Color class holds a single color value and allows for easy modification and reading of it.
+ *
+ * @class Color
+ * @memberOf Phaser.Display
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {integer} [red=0] - The red color value. A number between 0 and 255.
+ * @param {integer} [green=0] - The green color value. A number between 0 and 255.
+ * @param {integer} [blue=0] - The blue color value. A number between 0 and 255.
+ * @param {integer} [alpha=255] - The alpha value. A number between 0 and 255.
+ */
+var Color = new Class({
+
+    initialize:
+
+    function Color (red, green, blue, alpha)
+    {
+        if (red === undefined) { red = 0; }
+        if (green === undefined) { green = 0; }
+        if (blue === undefined) { blue = 0; }
+        if (alpha === undefined) { alpha = 255; }
+
+        /**
+         * The internal red color value.
+         *
+         * @name Phaser.Display.Color#r
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this.r = 0;
+
+        /**
+         * The internal green color value.
+         *
+         * @name Phaser.Display.Color#g
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this.g = 0;
+
+        /**
+         * The internal blue color value.
+         *
+         * @name Phaser.Display.Color#b
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this.b = 0;
+
+        /**
+         * The internal alpha color value.
+         *
+         * @name Phaser.Display.Color#a
+         * @type {number}
+         * @private
+         * @default 255
+         * @since 3.0.0
+         */
+        this.a = 255;
+
+        /**
+         * An array containing the calculated color values for WebGL use.
+         *
+         * @name Phaser.Display.Color#gl
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.gl = [ 0, 0, 0, 1 ];
+
+        /**
+         * Pre-calculated internal color value.
+         *
+         * @name Phaser.Display.Color#_color
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this._color = 0;
+
+        /**
+         * Pre-calculated internal color32 value.
+         *
+         * @name Phaser.Display.Color#_color32
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this._color32 = 0;
+
+        /**
+         * Pre-calculated internal color rgb string value.
+         *
+         * @name Phaser.Display.Color#_rgba
+         * @type {string}
+         * @private
+         * @default ''
+         * @since 3.0.0
+         */
+        this._rgba = '';
+
+        this.setTo(red, green, blue, alpha);
+    },
+
+    /**
+     * Sets this color to be transparent. Sets all values to zero.
+     *
+     * @method Phaser.Curves.Color#transparent
+     * @since 3.0.0
+     *
+     * @return {Phaser.Display.Color} This Color object.
+     */
+    transparent: function ()
+    {
+        this.red = 0;
+        this.green = 0;
+        this.blue = 0;
+        this.alpha = 0;
+
+        return this.update();
+    },
+
+    /**
+     * Sets the color of this Color component.
+     *
+     * @method Phaser.Curves.Color#setTo
+     * @since 3.0.0
+     *
+     * @param {integer} red - The red color value. A number between 0 and 255.
+     * @param {integer} green - The green color value. A number between 0 and 255.
+     * @param {integer} blue - The blue color value. A number between 0 and 255.
+     * @param {integer} [alpha=255] - The alpha value. A number between 0 and 255.
+     *
+     * @return {Phaser.Display.Color} This Color object.
+     */
+    setTo: function (red, green, blue, alpha)
+    {
+        if (alpha === undefined) { alpha = 255; }
+
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.alpha = alpha;
+
+        return this.update();
+    },
+
+    /**
+     * Sets the red, green, blue and alpha GL values of this Color component.
+     *
+     * @method Phaser.Curves.Color#setGLTo
+     * @since 3.0.0
+     *
+     * @param {float} red - The red color value. A number between 0 and 1.
+     * @param {float} green - The green color value. A number between 0 and 1.
+     * @param {float} blue - The blue color value. A number between 0 and 1.
+     * @param {float} [alpha=1] - The alpha value. A number between 0 and 1.
+     *
+     * @return {Phaser.Display.Color} This Color object.
+     */
+    setGLTo: function (red, green, blue, alpha)
+    {
+        if (alpha === undefined) { alpha = 1; }
+
+        this.redGL = red;
+        this.greenGL = green;
+        this.blueGL = blue;
+        this.alphaGL = alpha;
+
+        return this.update();
+    },
+
+    /**
+     * Sets the color based on the color object given.
+     *
+     * @method Phaser.Curves.Color#setFromRGB
+     * @since 3.0.0
+     *
+     * @param {object} color - An object containing `r`, `g`, `b` and optionally `a` values in the range 0 to 255.
+     *
+     * @return {Phaser.Display.Color} This Color object.
+     */
+    setFromRGB: function (color)
+    {
+        this.red = color.r;
+        this.green = color.g;
+        this.blue = color.b;
+
+        if (color.hasOwnProperty('a'))
+        {
+            this.alpha = color.a;
+        }
+
+        return this.update();
+    },
+
+    /**
+     * Updates the internal cache values.
+     *
+     * @method Phaser.Curves.Color#update
+     * @since 3.0.0
+     *
+     * @return {Phaser.Display.Color} This Color object.
+     */
+    update: function ()
+    {
+        this._color = GetColor(this.r, this.g, this.b);
+        this._color32 = GetColor32(this.r, this.g, this.b, this.a);
+        this._rgba = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',' + (this.a / 255) + ')';
+
+        return this;
+    },
+
+    /**
+     * Returns a new Color component using the values from this one.
+     *
+     * @method Phaser.Curves.Color#clone
+     * @since 3.0.0
+     *
+     * @return {Phaser.Display.Color} A new Color object.
+     */
+    clone: function ()
+    {
+        return new Color(this.r, this.g, this.b, this.a);
+    },
+
+    /**
+     * The color of this Color component, not including the alpha channel.
+     * 
+     * @name Phaser.Display.Color#color
+     * @type {number}
+     * @readOnly
+     * @since 3.0.0
+     */
+    color: {
+
+        get: function ()
+        {
+            return this._color;
+        }
+
+    },
+
+    /**
+     * The color of this Color component, including the alpha channel.
+     * 
+     * @name Phaser.Display.Color#color32
+     * @type {number}
+     * @readOnly
+     * @since 3.0.0
+     */
+    color32: {
+
+        get: function ()
+        {
+            return this._color32;
+        }
+
+    },
+
+    /**
+     * The color of this Color component as a string which can be used in CSS color values.
+     * 
+     * @name Phaser.Display.Color#rgba
+     * @type {string}
+     * @readOnly
+     * @since 3.0.0
+     */
+    rgba: {
+
+        get: function ()
+        {
+            return this._rgba;
+        }
+
+    },
+
+    /**
+     * The red color value, normalized to the range 0 to 1.
+     * 
+     * @name Phaser.Display.Color#redGL
+     * @type {float}
+     * @since 3.0.0
+     */
+    redGL: {
+
+        get: function ()
+        {
+            return this.gl[0];
+        },
+
+        set: function (value)
+        {
+            this.gl[0] = Math.min(Math.abs(value), 1);
+
+            this.r = Math.floor(this.gl[0] * 255);
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The green color value, normalized to the range 0 to 1.
+     * 
+     * @name Phaser.Display.Color#greenGL
+     * @type {float}
+     * @since 3.0.0
+     */
+    greenGL: {
+
+        get: function ()
+        {
+            return this.gl[1];
+        },
+
+        set: function (value)
+        {
+            this.gl[1] = Math.min(Math.abs(value), 1);
+
+            this.g = Math.floor(this.gl[1] * 255);
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The blue color value, normalized to the range 0 to 1.
+     * 
+     * @name Phaser.Display.Color#blueGL
+     * @type {float}
+     * @since 3.0.0
+     */
+    blueGL: {
+
+        get: function ()
+        {
+            return this.gl[2];
+        },
+
+        set: function (value)
+        {
+            this.gl[2] = Math.min(Math.abs(value), 1);
+
+            this.b = Math.floor(this.gl[2] * 255);
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The alpha color value, normalized to the range 0 to 1.
+     * 
+     * @name Phaser.Display.Color#alphaGL
+     * @type {float}
+     * @since 3.0.0
+     */
+    alphaGL: {
+
+        get: function ()
+        {
+            return this.gl[3];
+        },
+
+        set: function (value)
+        {
+            this.gl[3] = Math.min(Math.abs(value), 1);
+
+            this.a = Math.floor(this.gl[3] * 255);
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The red color value, normalized to the range 0 to 255.
+     * 
+     * @name Phaser.Display.Color#red
+     * @type {float}
+     * @since 3.0.0
+     */
+    red: {
+
+        get: function ()
+        {
+            return this.r;
+        },
+
+        set: function (value)
+        {
+            value = Math.floor(Math.abs(value));
+
+            this.r = Math.min(value, 255);
+
+            this.gl[0] = value / 255;
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The green color value, normalized to the range 0 to 255.
+     * 
+     * @name Phaser.Display.Color#green
+     * @type {float}
+     * @since 3.0.0
+     */
+    green: {
+
+        get: function ()
+        {
+            return this.g;
+        },
+
+        set: function (value)
+        {
+            value = Math.floor(Math.abs(value));
+
+            this.g = Math.min(value, 255);
+
+            this.gl[1] = value / 255;
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The blue color value, normalized to the range 0 to 255.
+     * 
+     * @name Phaser.Display.Color#blue
+     * @type {float}
+     * @since 3.0.0
+     */
+    blue: {
+
+        get: function ()
+        {
+            return this.b;
+        },
+
+        set: function (value)
+        {
+            value = Math.floor(Math.abs(value));
+
+            this.b = Math.min(value, 255);
+
+            this.gl[2] = value / 255;
+
+            this.update();
+        }
+
+    },
+
+    /**
+     * The alpha color value, normalized to the range 0 to 255.
+     * 
+     * @name Phaser.Display.Color#alpha
+     * @type {float}
+     * @since 3.0.0
+     */
+    alpha: {
+
+        get: function ()
+        {
+            return this.a;
+        },
+
+        set: function (value)
+        {
+            value = Math.floor(Math.abs(value));
+
+            this.a = Math.min(value, 255);
+
+            this.gl[3] = value / 255;
+
+            this.update();
+        }
+
+    }
+
+});
+
+module.exports = Color;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

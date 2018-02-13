@@ -1,0 +1,682 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>input/InputManager.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">input/InputManager.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+var EventEmitter = require('eventemitter3');
+var Gamepad = require('./gamepad/GamepadManager');
+var Keyboard = require('./keyboard/KeyboardManager');
+var Mouse = require('./mouse/MouseManager');
+var Pointer = require('./Pointer');
+var Rectangle = require('../geom/rectangle/Rectangle');
+var Touch = require('./touch/TouchManager');
+var TransformXY = require('../math/TransformXY');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class InputManager
+ * @memberOf Phaser.Input
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Game} game - [description]
+ * @param {object} config - [description]
+ */
+var InputManager = new Class({
+
+    initialize:
+
+    function InputManager (game, config)
+    {
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#game
+         * @type {Phaser.Game}
+         * @since 3.0.0
+         */
+        this.game = game;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#canvas
+         * @type {HTMLCanvasElement}
+         * @since 3.0.0
+         */
+        this.canvas;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#config
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.config = config;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#enabled
+         * @type {boolean}
+         * @default true
+         * @since 3.0.0
+         */
+        this.enabled = true;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#events
+         * @type {EventEmitter}
+         * @since 3.0.0
+         */
+        this.events = new EventEmitter();
+
+        /**
+         * Standard FIFO queue.
+         *
+         * @name Phaser.Input.InputManager#queue
+         * @type {array}
+         * @default []
+         * @since 3.0.0
+         */
+        this.queue = [];
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#keyboard
+         * @type {Phaser.Input.Keyboard.KeyboardManager}
+         * @since 3.0.0
+         */
+        this.keyboard = new Keyboard(this);
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#mouse
+         * @type {Phaser.Input.Mouse.MouseManager}
+         * @since 3.0.0
+         */
+        this.mouse = new Mouse(this);
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#touch
+         * @type {Phaser.Input.Touch.TouchManager}
+         * @since 3.0.0
+         */
+        this.touch = new Touch(this);
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#gamepad
+         * @type {Phaser.Input.Gamepad.GamepadManager}
+         * @since 3.0.0
+         */
+        this.gamepad = new Gamepad(this);
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#activePointer
+         * @type {[type]}
+         * @since 3.0.0
+         */
+        this.activePointer = new Pointer(this, 0);
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#scale
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.scale = { x: 1, y: 1 };
+
+        /**
+         * If the top-most Scene in the Scene List receives an input it will stop input from
+         * propagating any lower down the scene list, i.e. if you have a UI Scene at the top
+         * and click something on it, that click will not then be passed down to any other
+         * Scene below. Disable this to have input events passed through all Scenes, all the time.
+         *
+         * @name Phaser.Input.InputManager#globalTopOnly
+         * @type {boolean}
+         * @default true
+         * @since 3.0.0
+         */
+        this.globalTopOnly = true;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#ignoreEvents
+         * @type {boolean}
+         * @default false
+         * @since 3.0.0
+         */
+        this.ignoreEvents = false;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#bounds
+         * @type {Phaser.Geom.Rectangle}
+         * @since 3.0.0
+         */
+        this.bounds = new Rectangle();
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#_tempPoint
+         * @type {object}
+         * @private
+         * @since 3.0.0
+         */
+        this._tempPoint = { x: 0, y: 0 };
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.InputManager#_tempHitTest
+         * @type {array}
+         * @private
+         * @default []
+         * @since 3.0.0
+         */
+        this._tempHitTest = [];
+
+        game.events.once('boot', this.boot, this);
+    },
+
+    /**
+     * The Boot handler is called by Phaser.Game when it first starts up.
+     * The renderer is available by now.
+     *
+     * @method Phaser.Input.InputManager#boot
+     * @since 3.0.0
+     */
+    boot: function ()
+    {
+        this.canvas = this.game.canvas;
+
+        this.updateBounds();
+
+        this.keyboard.boot();
+        this.mouse.boot();
+        this.touch.boot();
+        this.gamepad.boot();
+
+        this.game.events.once('destroy', this.destroy, this);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#updateBounds
+     * @since 3.0.0
+     */
+    updateBounds: function ()
+    {
+        var clientRect = this.canvas.getBoundingClientRect();
+        var bounds = this.bounds;
+
+        bounds.left = clientRect.left + window.pageXOffset;
+        bounds.top = clientRect.top + window.pageYOffset;
+        bounds.width = clientRect.width;
+        bounds.height = clientRect.height;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#update
+     * @since 3.0.0
+     *
+     * @param {number} time - [description]
+     */
+    update: function (time)
+    {
+        this.keyboard.update();
+        this.gamepad.update();
+
+        this.ignoreEvents = false;
+
+        var len = this.queue.length;
+
+        //  Currently just 1 pointer supported
+        var pointer = this.activePointer;
+
+        pointer.reset();
+
+        if (!this.enabled || len === 0)
+        {
+            return;
+        }
+
+        this.updateBounds();
+
+        this.scale.x = this.game.config.width / this.bounds.width;
+        this.scale.y = this.game.config.height / this.bounds.height;
+
+        //  Clears the queue array, and also means we don't work on array data that could potentially
+        //  be modified during the processing phase
+        var queue = this.queue.splice(0, len);
+
+        //  Process the event queue, dispatching all of the events that have stored up
+        for (var i = 0; i &lt; len; i++)
+        {
+            var event = queue[i];
+
+            //  TODO: Move to CONSTs so we can do integer comparisons instead of strings.
+            switch (event.type)
+            {
+                case 'mousemove':
+
+                    pointer.move(event, time);
+                    break;
+
+                case 'mousedown':
+
+                    pointer.down(event, time);
+                    break;
+
+                case 'mouseup':
+
+                    pointer.up(event, time);
+                    break;
+
+                case 'touchmove':
+
+                    pointer.touchmove(event, time);
+                    break;
+
+                case 'touchstart':
+
+                    pointer.touchstart(event, time);
+                    break;
+
+                case 'touchend':
+
+                    pointer.touchend(event, time);
+                    break;
+
+                case 'pointerlockchange':
+
+                    this.events.emit('pointerlockchange', event, this.mouse.locked);
+                    break;
+            }
+        }
+    },
+
+    /**
+     * Will always return an array.
+     * Array contains matching Interactive Objects.
+     * Array will be empty if no objects were matched.
+     * x/y = pointer x/y (un-translated)
+     *
+     * @method Phaser.Input.InputManager#hitTest
+     * @since 3.0.0
+     *
+     * @param {number} x - [description]
+     * @param {number} y - [description]
+     * @param {array} gameObjects - [description]
+     * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
+     * @param {array} output - [description]
+     *
+     * @return {array} [description]
+     */
+    hitTest: function (x, y, gameObjects, camera, output)
+    {
+        if (output === undefined) { output = this._tempHitTest; }
+
+        var tempPoint = this._tempPoint;
+        var cameraW = camera.width;
+        var cameraH = camera.height;
+
+        output.length = 0;
+
+        if (!(x >= camera.x &amp;&amp; y >= camera.y &amp;&amp; x &lt;= camera.x + cameraW &amp;&amp; y &lt;= camera.y + cameraH))
+        {
+            return output;
+        }
+
+        //  Stores the world point inside of tempPoint
+        camera.getWorldPoint(x, y, tempPoint);
+
+        var culledGameObjects = camera.cull(gameObjects);
+
+        var point = { x: 0, y: 0 };
+
+        for (var i = 0; i &lt; culledGameObjects.length; i++)
+        {
+            var gameObject = culledGameObjects[i];
+
+            if (!gameObject.input || !gameObject.input.enabled || !gameObject.willRender())
+            {
+                continue;
+            }
+
+            var px = tempPoint.x + (camera.scrollX * gameObject.scrollFactorX) - camera.scrollX;
+            var py = tempPoint.y + (camera.scrollY * gameObject.scrollFactorY) - camera.scrollY;
+
+            TransformXY(px, py, gameObject.x, gameObject.y, gameObject.rotation, gameObject.scaleX, gameObject.scaleY, point);
+
+            if (this.pointWithinHitArea(gameObject, point.x, point.y))
+            {
+                output.push(gameObject);
+            }
+        }
+
+        return output;
+    },
+
+    /**
+     * x/y MUST be translated before being passed to this function,
+     * unless the gameObject is guaranteed to not be rotated or scaled in any way.
+     *
+     * @method Phaser.Input.InputManager#pointWithinHitArea
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.GameObject} gameObject - [description]
+     * @param {number} x - [description]
+     * @param {number} y - [description]
+     *
+     * @return {boolean} [description]
+     */
+    pointWithinHitArea: function (gameObject, x, y)
+    {
+        var input = gameObject.input;
+
+        //  Normalize the origin
+        x += gameObject.displayOriginX;
+        y += gameObject.displayOriginY;
+
+        if (input.hitAreaCallback(input.hitArea, x, y, gameObject))
+        {
+            input.localX = x;
+            input.localY = y;
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    },
+
+    /**
+     * x/y MUST be translated before being passed to this function,
+     * unless the gameObject is guaranteed to not be rotated or scaled in any way.
+     *
+     * @method Phaser.Input.InputManager#pointWithinInteractiveObject
+     * @since 3.0.0
+     *
+     * @param {Phaser.Input.InteractiveObject} object - [description]
+     * @param {number} x - [description]
+     * @param {number} y - [description]
+     *
+     * @return {boolean} [description]
+     */
+    pointWithinInteractiveObject: function (object, x, y)
+    {
+        if (!object.hitArea)
+        {
+            return false;
+        }
+
+        //  Normalize the origin
+        x += object.gameObject.displayOriginX;
+        y += object.gameObject.displayOriginY;
+
+        object.localX = x;
+        object.localY = y;
+
+        return object.hitAreaCallback(object.hitArea, x, y, object);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#transformX
+     * @since 3.0.0
+     *
+     * @param {number} pageX - [description]
+     *
+     * @return {number} [description]
+     */
+    transformX: function (pageX)
+    {
+        return (pageX - this.bounds.left) * this.scale.x;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#transformY
+     * @since 3.0.0
+     *
+     * @param {number} pageY - [description]
+     *
+     * @return {number} [description]
+     */
+    transformY: function (pageY)
+    {
+        return (pageY - this.bounds.top) * this.scale.y;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#getOffsetX
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    getOffsetX: function ()
+    {
+        return this.bounds.left;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#getOffsetY
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    getOffsetY: function ()
+    {
+        return this.bounds.top;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#getScaleX
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    getScaleX: function ()
+    {
+        return this.game.config.width / this.bounds.width;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#getScaleY
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    getScaleY: function ()
+    {
+        return this.game.config.height / this.bounds.height;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.events.removeAllListeners();
+
+        this.keyboard.destroy();
+        this.mouse.destroy();
+        this.touch.destroy();
+        this.gamepad.destroy();
+
+        this.activePointer.destroy();
+
+        this.queue = [];
+
+        this.game = null;
+    }
+
+});
+
+module.exports = InputManager;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

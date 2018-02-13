@@ -1,0 +1,368 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>display/canvas/CanvasPool.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">display/canvas/CanvasPool.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var CONST = require('../../const');
+var Smoothing = require('./Smoothing');
+
+// The pool into which the canvas elements are placed.
+var pool = [];
+
+//  Automatically apply smoothing(false) to created Canvas elements
+var _disableContextSmoothing = false;
+
+/**
+ * The CanvasPool is a global static object, that allows Phaser to recycle and pool Canvas DOM elements.
+ *
+ * This singleton is instantiated as soon as Phaser loads,
+ * before a Phaser.Game instance has even been created.
+ * Which means all instances of Phaser Games on the same page
+ * can share the one single pool
+ * 
+ * @namespace Phaser.Display.Canvas.CanvasPool
+ * @since 3.0.0
+ */
+var CanvasPool = function ()
+{
+    /**
+     * Creates a new Canvas DOM element, or pulls one from the pool if free.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.create
+     * @since 3.0.0
+     * 
+     * @param {any} parent - [description]
+     * @param {integer} [width=1] - [description]
+     * @param {integer} [height=1] - [description]
+     * @param {integer} [type] - [description]
+     * 
+     * @return {HTMLCanvasElement} [description]
+     */
+    var create = function (parent, width, height, type)
+    {
+        if (width === undefined) { width = 1; }
+        if (height === undefined) { height = 1; }
+        if (type === undefined) { type = CONST.CANVAS; }
+
+        var canvas;
+        var container = first(type);
+
+        if (container === null)
+        {
+            container = {
+                parent: parent,
+                canvas: document.createElement('canvas'),
+                type: type
+            };
+
+            pool.push(container);
+
+            canvas = container.canvas;
+        }
+        else
+        {
+            container.parent = parent;
+
+            canvas = container.canvas;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        if (_disableContextSmoothing &amp;&amp; type === CONST.CANVAS)
+        {
+            Smoothing.disable(canvas.getContext('2d'));
+        }
+        
+        return canvas;
+    };
+
+    /**
+     * Creates a new Canvas DOM element, or pulls one from the pool if free.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.create2D
+     * @since 3.0.0
+     * 
+     * @param {any} parent - [description]
+     * @param {integer} [width=1] - [description]
+     * @param {integer} [height=1] - [description]
+     * 
+     * @return {HTMLCanvasElement} [description]
+     */
+    var create2D = function (parent, width, height)
+    {
+        return create(parent, width, height, CONST.CANVAS);
+    };
+
+    /**
+     * Creates a new Canvas DOM element, or pulls one from the pool if free.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.createWebGL
+     * @since 3.0.0
+     * 
+     * @param {any} parent - [description]
+     * @param {integer} [width=1] - [description]
+     * @param {integer} [height=1] - [description]
+     * 
+     * @return {HTMLCanvasElement} [description]
+     */
+    var createWebGL = function (parent, width, height)
+    {
+        return create(parent, width, height, CONST.WEBGL);
+    };
+
+    /**
+     * Gets the first free canvas index from the pool.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.first
+     * @since 3.0.0
+     * 
+     * @param {integer} [type] - [description]
+     * 
+     * @return {HTMLCanvasElement} [description]
+     */
+    var first = function (type)
+    {
+        if (type === undefined) { type = CONST.CANVAS; }
+
+        pool.forEach(function (container)
+        {
+            if (!container.parent &amp;&amp; container.type === type)
+            {
+                return container;
+            }
+        });
+
+        return null;
+    };
+
+    /**
+     * Looks up a canvas based on its parent, and if found puts it back in the pool, freeing it up for re-use.
+     * The canvas has its width and height set to 1, and its parent attribute nulled.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.remove
+     * @since 3.0.0
+     * 
+     * @param {any} parent - [description]
+     */
+    var remove = function (parent)
+    {
+        //  Check to see if the parent is a canvas object
+        var isCanvas = parent instanceof HTMLCanvasElement;
+
+        pool.forEach(function (container)
+        {
+            if ((isCanvas &amp;&amp; container.canvas === parent) || (!isCanvas &amp;&amp; container.parent === parent))
+            {
+                // console.log('CanvasPool.remove found and removed');
+                container.parent = null;
+                container.canvas.width = 1;
+                container.canvas.height = 1;
+            }
+        });
+    };
+
+    /**
+     * Gets the total number of used canvas elements in the pool.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.total
+     * @since 3.0.0
+     * 
+     * @return {integer} [description]
+     */
+    var total = function ()
+    {
+        var c = 0;
+
+        pool.forEach(function (container)
+        {
+            if (container.parent)
+            {
+                c++;
+            }
+        });
+
+        return c;
+    };
+
+    /**
+     * Gets the total number of free canvas elements in the pool.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.free
+     * @since 3.0.0
+     * 
+     * @return {integer} [description]
+     */
+    var free = function ()
+    {
+        return pool.length - total();
+    };
+
+    /**
+     * Disable context smoothing on any new Canvas element created.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.disableSmoothing
+     * @since 3.0.0
+     */
+    var disableSmoothing = function ()
+    {
+        _disableContextSmoothing = true;
+    };
+
+    /**
+     * Enable context smoothing on any new Canvas element created.
+     *
+     * @function Phaser.Display.Canvas.CanvasPool.enableSmoothing
+     * @since 3.0.0
+     */
+    var enableSmoothing = function ()
+    {
+        _disableContextSmoothing = false;
+    };
+
+    return {
+        create2D: create2D,
+        create: create,
+        createWebGL: createWebGL,
+        disableSmoothing: disableSmoothing,
+        enableSmoothing: enableSmoothing,
+        first: first,
+        free: free,
+        pool: pool,
+        remove: remove,
+        total: total
+    };
+};
+
+//  If we export the called function here, it'll only be invoked once (not every time it's required).
+module.exports = CanvasPool();
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

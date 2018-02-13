@@ -1,0 +1,268 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>physics/impact/Factory.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">physics/impact/Factory.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var ImpactBody = require('./ImpactBody');
+var ImpactImage = require('./ImpactImage');
+var ImpactSprite = require('./ImpactSprite');
+
+/**
+ * @classdesc
+ * The Impact Physics Factory allows you to easily create Impact Physics enabled Game Objects.
+ * Objects that are created by this Factory are automatically added to the physics world.
+ *
+ * @class Factory
+ * @memberOf Phaser.Physics.Impact
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Physics.Impact.World} world - [description]
+ */
+var Factory = new Class({
+
+    initialize:
+
+    function Factory (world)
+    {
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Impact.Factory#world
+         * @type {Phaser.Physics.Impact.World}
+         * @since 3.0.0
+         */
+        this.world = world;
+
+        /**
+         * A reference to the Scene.Systems this Impact Physics instance belongs to.
+         *
+         * @name Phaser.Physics.Impact.Factory#sys
+         * @type {Phaser.Scenes.Systems}
+         * @since 3.0.0
+         */
+        this.sys = world.scene.sys;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Impact.Factory#body
+     * @since 3.0.0
+     *
+     * @param {number} x - [description]
+     * @param {number} y - [description]
+     * @param {number} width - [description]
+     * @param {number} height - [description]
+     *
+     * @return {Phaser.Physics.Impact.ImpactBody} The ImpactBody object that was created.
+     */
+    body: function (x, y, width, height)
+    {
+        return new ImpactBody(this.world, x, y, width, height);
+    },
+
+    /**
+     * Adds an Impact Physics Body to the given Game Object.
+     *
+     * @method Phaser.Physics.Impact.Factory#existing
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.GameObject} gameObject - [description]
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object.
+     */
+    existing: function (gameObject)
+    {
+        var x = gameObject.x - gameObject.frame.centerX;
+        var y = gameObject.y - gameObject.frame.centerY;
+        var w = gameObject.width;
+        var h = gameObject.height;
+
+        gameObject.body = this.world.create(x, y, w, h);
+
+        gameObject.body.parent = gameObject;
+        gameObject.body.gameObject = gameObject;
+
+        return gameObject;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Impact.Factory#image
+     * @since 3.0.0
+     *
+     * @param {number} x - The horizontal position of this Game Object in the world.
+     * @param {number} y - The vertical position of this Game Object in the world.
+     * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
+     * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+     *
+     * @return {Phaser.Physics.Impact.ImpactImage} The ImpactImage object that was created.
+     */
+    image: function (x, y, key, frame)
+    {
+        var image = new ImpactImage(this.world, x, y, key, frame);
+
+        this.sys.displayList.add(image);
+
+        return image;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Impact.Factory#sprite
+     * @since 3.0.0
+     *
+     * @param {number} x - The horizontal position of this Game Object in the world.
+     * @param {number} y - The vertical position of this Game Object in the world.
+     * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
+     * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+     *
+     * @return {Phaser.Physics.Impact.ImpactSprite} The ImpactSprite object that was created.
+     */
+    sprite: function (x, y, key, frame)
+    {
+        var sprite = new ImpactSprite(this.world, x, y, key, frame);
+
+        this.sys.displayList.add(sprite);
+        this.sys.updateList.add(sprite);
+
+        return sprite;
+    }
+
+});
+
+module.exports = Factory;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

@@ -1,0 +1,655 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>scene/ScenePlugin.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">scene/ScenePlugin.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+var CONST = require('./const');
+var PluginManager = require('../boot/PluginManager');
+
+/**
+ * @classdesc
+ * A proxy class to the Global Scene Manager.
+ *
+ * @class ScenePlugin
+ * @memberOf Phaser.Scenes
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Scene} scene - [description]
+ */
+var ScenePlugin = new Class({
+
+    initialize:
+
+    function ScenePlugin (scene)
+    {
+        /**
+         * [description]
+         *
+         * @name Phaser.Scenes.ScenePlugin#scene
+         * @type {Phaser.Scene}
+         * @since 3.0.0
+         */
+        this.scene = scene;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Scenes.ScenePlugin#systems
+         * @type {Phaser.Scenes.Systems}
+         * @since 3.0.0
+         */
+        this.systems = scene.sys;
+
+        if (!scene.sys.settings.isBooted)
+        {
+            scene.sys.events.once('boot', this.boot, this);
+        }
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Scenes.ScenePlugin#settings
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.settings = scene.sys.settings;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Scenes.ScenePlugin#key
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.key = scene.sys.settings.key;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Scenes.ScenePlugin#manager
+         * @type {Phaser.Scenes.SceneManager}
+         * @since 3.0.0
+         */
+        this.manager = scene.sys.game.scene;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Scenes.ScenePlugin#_queue
+         * @type {array}
+         * @private
+         * @since 3.0.0
+         */
+        this._queue = [];
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#boot
+     * @since 3.0.0
+     */
+    boot: function ()
+    {
+        var eventEmitter = this.systems.events;
+
+        eventEmitter.on('shutdown', this.shutdown, this);
+        eventEmitter.on('destroy', this.destroy, this);
+    },
+
+    /**
+     * Shutdown this Scene and run the given one.
+     *
+     * @method Phaser.Scenes.ScenePlugin#start
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     * @param {object} [data] - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    start: function (key, data)
+    {
+        if (key === undefined) { key = this.key; }
+
+        if (key !== this.key)
+        {
+            if (this.settings.status !== CONST.RUNNING)
+            {
+                this.manager.queueOp('stop', this.key);
+                this.manager.queueOp('start', key);
+            }
+            else
+            {
+                this.manager.stop(this.key);
+                this.manager.start(key);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Add the Scene into the Scene Manager and start it if 'autoStart' is true or the Scene config 'active' property is set.
+     *
+     * @method Phaser.Scenes.ScenePlugin#add
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     * @param {object} sceneConfig - [description]
+     * @param {boolean} autoStart - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    add: function (key, sceneConfig, autoStart)
+    {
+        this.manager.add(key, sceneConfig, autoStart);
+
+        return this;
+    },
+
+    /**
+     * Launch the given Scene and run it in parallel with this one.
+     *
+     * @method Phaser.Scenes.ScenePlugin#launch
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     * @param {object} [data] - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    launch: function (key, data)
+    {
+        if (key &amp;&amp; key !== this.key)
+        {
+            if (this.settings.status !== CONST.RUNNING)
+            {
+                this.manager.queueOp('start', key);
+            }
+            else
+            {
+                this.manager.start(key);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Pause the Scene - this stops the update step from happening but it still renders.
+     *
+     * @method Phaser.Scenes.ScenePlugin#pause
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    pause: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.pause(key);
+
+        return this;
+    },
+
+    /**
+     * Resume the Scene - starts the update loop again.
+     *
+     * @method Phaser.Scenes.ScenePlugin#resume
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    resume: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.resume(key);
+
+        return this;
+    },
+
+    /**
+     * Makes the Scene sleep (no update, no render) but doesn't shutdown.
+     *
+     * @method Phaser.Scenes.ScenePlugin#sleep
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    sleep: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.sleep(key);
+
+        return this;
+    },
+
+    /**
+     * Makes the Scene wake-up (starts update and render)
+     *
+     * @method Phaser.Scenes.ScenePlugin#wake
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    wake: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.wake(key);
+
+        return this;
+    },
+
+    /**
+     * Makes this Scene sleep then starts the Scene given.
+     *
+     * @method Phaser.Scenes.ScenePlugin#switch
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    switch: function (key)
+    {
+        if (key !== this.key)
+        {
+            if (this.settings.status !== CONST.RUNNING)
+            {
+                this.manager.queueOp('switch', this.key, key);
+            }
+            else
+            {
+                this.manager.switch(this.key, key);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Shutdown the Scene, clearing display list, timers, etc.
+     *
+     * @method Phaser.Scenes.ScenePlugin#stop
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    stop: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.stop(key);
+
+        return this;
+    },
+
+    /**
+     * Sets the active state of the given Scene.
+     *
+     * @method Phaser.Scenes.ScenePlugin#setActive
+     * @since 3.0.0
+     *
+     * @param {boolean} value - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    setActive: function (value)
+    {
+        this.settings.active = value;
+
+        return this;
+    },
+
+    /**
+     * Sets the visible state of the given Scene.
+     *
+     * @method Phaser.Scenes.ScenePlugin#setVisible
+     * @since 3.0.0
+     *
+     * @param {boolean} value - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    setVisible: function (value)
+    {
+        this.settings.visible = value;
+
+        return this;
+    },
+
+    /**
+     * Checks if the given Scene is sleeping or not?
+     *
+     * @method Phaser.Scenes.ScenePlugin#isSleeping
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {boolean} [description]
+     */
+    isSleeping: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        return this.manager.isSleeping(key);
+    },
+
+    /**
+     * Checks if the given Scene is active or not?
+     *
+     * @method Phaser.Scenes.ScenePlugin#isActive
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {boolean} [description]
+     */
+    isActive: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        return this.manager.isActive(key);
+    },
+
+    /**
+     * Checks if the given Scene is visible or not?
+     *
+     * @method Phaser.Scenes.ScenePlugin#isVisible
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {boolean} [description]
+     */
+    isVisible: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        return this.manager.isVisible(key);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#swapPosition
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    swapPosition: function (key)
+    {
+        if (key &amp;&amp; key !== this.key)
+        {
+            this.manager.swapPosition(this.key, key);
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#moveUp
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    moveUp: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.moveUp(key);
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#moveDown
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    moveDown: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.moveDown(key);
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#bringToTop
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    bringToTop: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.bringToTop(key);
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#sendToBack
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    sendToBack: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.sendToBack(key);
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#get
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     *
+     * @return {Phaser.Scene} [description]
+     */
+    get: function (key)
+    {
+        return this.manager.getScene(key);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#shutdown
+     * @since 3.0.0
+     */
+    shutdown: function ()
+    {
+        //  TODO
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Scenes.ScenePlugin#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        //  TODO
+    }
+
+});
+
+PluginManager.register('ScenePlugin', ScenePlugin, 'scenePlugin');
+
+module.exports = ScenePlugin;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

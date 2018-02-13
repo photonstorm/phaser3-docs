@@ -1,0 +1,665 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>math/Vector2.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">math/Vector2.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+//  Adapted from [gl-matrix](https://github.com/toji/gl-matrix) by toji 
+//  and [vecmath](https://github.com/mattdesl/vecmath) by mattdesl
+
+var Class = require('../utils/Class');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class Vector2
+ * @memberOf Phaser.Math
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {number} [x] - [description]
+ * @param {number} [y] - [description]
+ */
+var Vector2 = new Class({
+
+    initialize:
+
+    function Vector2 (x, y)
+    {
+        /**
+         * The x component of this Vector.
+         *
+         * @name Phaser.Math.Vector2#x
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+
+        /**
+         * The y component of this Vector.
+         *
+         * @name Phaser.Math.Vector2#y
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+
+        if (typeof x === 'object')
+        {
+            this.x = x.x || 0;
+            this.y = x.y || 0;
+        }
+        else
+        {
+            if (y === undefined) { y = x; }
+
+            this.x = x || 0;
+            this.y = y || 0;
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#clone
+     * @since 3.0.0
+     *
+     * @return {Phaser.Math.Vector2} A clone of this Vector2.
+     */
+    clone: function ()
+    {
+        return new Vector2(this.x, this.y);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#copy
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    copy: function (src)
+    {
+        this.x = src.x || 0;
+        this.y = src.y || 0;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#setFromObject
+     * @since 3.0.0
+     *
+     * @param {[type]} obj - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    setFromObject: function (obj)
+    {
+        this.x = obj.x || 0;
+        this.y = obj.y || 0;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#set
+     * @since 3.0.0
+     *
+     * @param {[type]} x - [description]
+     * @param {[type]} y - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    set: function (x, y)
+    {
+        if (y === undefined) { y = x; }
+
+        this.x = x;
+        this.y = y;
+
+        return this;
+    },
+
+    // Sets the `x` and `y` values of this object from a given polar coordinate.
+    // @param {number} azimuth - The angular coordinate, in radians.
+    // @param {number} [radius=1] - The radial coordinate (length).
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#setToPolar
+     * @since 3.0.0
+     *
+     * @param {[type]} azimuth - [description]
+     * @param {[type]} radius - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    setToPolar: function (azimuth, radius)
+    {
+        if (radius == null) { radius = 1; }
+
+        this.x = Math.cos(azimuth) * radius;
+        this.y = Math.sin(azimuth) * radius;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#equals
+     * @since 3.0.0
+     *
+     * @param {[type]} v - [description]
+     *
+     * @return {boolean} [description]
+     */
+    equals: function (v)
+    {
+        return ((this.x === v.x) &amp;&amp; (this.y === v.y));
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#angle
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    angle: function ()
+    {
+        // computes the angle in radians with respect to the positive x-axis
+
+        var angle = Math.atan2(this.y, this.x);
+
+        if (angle &lt; 0)
+        {
+            angle += 2 * Math.PI;
+        }
+
+        return angle;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#add
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    add: function (src)
+    {
+        this.x += src.x;
+        this.y += src.y;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#subtract
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    subtract: function (src)
+    {
+        this.x -= src.x;
+        this.y -= src.y;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#multiply
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    multiply: function (src)
+    {
+        this.x *= src.x;
+        this.y *= src.y;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#scale
+     * @since 3.0.0
+     *
+     * @param {[type]} value - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    scale: function (value)
+    {
+        if (isFinite(value))
+        {
+            this.x *= value;
+            this.y *= value;
+        }
+        else
+        {
+            this.x = 0;
+            this.y = 0;
+        }
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#divide
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    divide: function (src)
+    {
+        this.x /= src.x;
+        this.y /= src.y;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#negate
+     * @since 3.0.0
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    negate: function ()
+    {
+        this.x = -this.x;
+        this.y = -this.y;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#distance
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {number} [description]
+     */
+    distance: function (src)
+    {
+        var dx = src.x - this.x;
+        var dy = src.y - this.y;
+
+        return Math.sqrt(dx * dx + dy * dy);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#distanceSq
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {number} [description]
+     */
+    distanceSq: function (src)
+    {
+        var dx = src.x - this.x;
+        var dy = src.y - this.y;
+
+        return dx * dx + dy * dy;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#length
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    length: function ()
+    {
+        var x = this.x;
+        var y = this.y;
+
+        return Math.sqrt(x * x + y * y);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#lengthSq
+     * @since 3.0.0
+     *
+     * @return {number} [description]
+     */
+    lengthSq: function ()
+    {
+        var x = this.x;
+        var y = this.y;
+
+        return x * x + y * y;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#normalize
+     * @since 3.0.0
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    normalize: function ()
+    {
+        var x = this.x;
+        var y = this.y;
+        var len = x * x + y * y;
+
+        if (len > 0)
+        {
+            len = 1 / Math.sqrt(len);
+            this.x = x * len;
+            this.y = y * len;
+        }
+    
+        return this;
+    },
+
+    /**
+    * Right-hand normalize (make unit length) this Vector
+    */
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#normalizeRightHand
+     * @since 3.0.0
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    normalizeRightHand: function ()
+    {
+        var x = this.x;
+
+        this.x = this.y * -1;
+        this.y = x;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#dot
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {number} [description]
+     */
+    dot: function (src)
+    {
+        return this.x * src.x + this.y * src.y;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#cross
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     *
+     * @return {number} [description]
+     */
+    cross: function (src)
+    {
+        return this.x * src.y - this.y * src.x;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#lerp
+     * @since 3.0.0
+     *
+     * @param {[type]} src - [description]
+     * @param {[type]} t - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    lerp: function (src, t)
+    {
+        if (t === undefined) { t = 0; }
+
+        var ax = this.x;
+        var ay = this.y;
+
+        this.x = ax + t * (src.x - ax);
+        this.y = ay + t * (src.y - ay);
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#transformMat3
+     * @since 3.0.0
+     *
+     * @param {[type]} mat - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    transformMat3: function (mat)
+    {
+        var x = this.x;
+        var y = this.y;
+        var m = mat.val;
+
+        this.x = m[0] * x + m[3] * y + m[6];
+        this.y = m[1] * x + m[4] * y + m[7];
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#transformMat4
+     * @since 3.0.0
+     *
+     * @param {[type]} mat - [description]
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    transformMat4: function (mat)
+    {
+        var x = this.x;
+        var y = this.y;
+        var m = mat.val;
+
+        this.x = m[0] * x + m[4] * y + m[12];
+        this.y = m[1] * x + m[5] * y + m[13];
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Math.Vector2#reset
+     * @since 3.0.0
+     *
+     * @return {Phaser.Math.Vector2} This Vector2.
+     */
+    reset: function ()
+    {
+        this.x = 0;
+        this.y = 0;
+
+        return this;
+    }
+
+});
+
+module.exports = Vector2;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

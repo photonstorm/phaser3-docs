@@ -1,0 +1,416 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>cameras/controls/FixedKeyControl.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">cameras/controls/FixedKeyControl.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var GetValue = require('../../utils/object/GetValue');
+
+//  var camControl = new CameraControl({
+//      camera: this.cameras.main,
+//      left: cursors.left,
+//      right: cursors.right,
+//      speed: float OR { x: 0, y: 0 }
+//  })
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class FixedKeyControl
+ * @memberOf Phaser.Cameras.Controls
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {object} config - [description]
+ */
+var FixedKeyControl = new Class({
+
+    initialize:
+
+    function FixedKeyControl (config)
+    {
+        /**
+         * The Camera that this Control will update.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#camera
+         * @type {Phaser.Cameras.Scene2D.Camera}
+         * @default null
+         * @since 3.0.0
+         */
+        this.camera = GetValue(config, 'camera', null);
+
+        /**
+         * The Key to be pressed that will move the Camera left.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#left
+         * @type {Phaser.Input.Keyboard}
+         * @default null
+         * @since 3.0.0
+         */
+        this.left = GetValue(config, 'left', null);
+
+        /**
+         * The Key to be pressed that will move the Camera right.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#right
+         * @type {Phaser.Input.Keyboard}
+         * @default null
+         * @since 3.0.0
+         */
+        this.right = GetValue(config, 'right', null);
+
+        /**
+         * The Key to be pressed that will move the Camera up.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#up
+         * @type {Phaser.Input.Keyboard}
+         * @default null
+         * @since 3.0.0
+         */
+        this.up = GetValue(config, 'up', null);
+
+        /**
+         * The Key to be pressed that will move the Camera down.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#down
+         * @type {Phaser.Input.Keyboard}
+         * @default null
+         * @since 3.0.0
+         */
+        this.down = GetValue(config, 'down', null);
+
+        /**
+         * The Key to be pressed that will zoom the Camera in.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#zoomIn
+         * @type {Phaser.Input.Keyboard}
+         * @default null
+         * @since 3.0.0
+         */
+        this.zoomIn = GetValue(config, 'zoomIn', null);
+
+        /**
+         * The Key to be pressed that will zoom the Camera out.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#zoomOut
+         * @type {Phaser.Input.Keyboard}
+         * @default null
+         * @since 3.0.0
+         */
+        this.zoomOut = GetValue(config, 'zoomOut', null);
+
+        /**
+         * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#zoomSpeed
+         * @type {float}
+         * @default 0.01
+         * @since 3.0.0
+         */
+        this.zoomSpeed = GetValue(config, 'zoomSpeed', 0.01);
+
+        /**
+         * The horizontal speed the camera will move.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#speedX
+         * @type {float}
+         * @default 0
+         * @since 3.0.0
+         */
+
+        /**
+         * The vertical speed the camera will move.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#speedY
+         * @type {float}
+         * @default 0
+         * @since 3.0.0
+         */
+        var speed = GetValue(config, 'speed', null);
+
+        if (typeof speed === 'number')
+        {
+            this.speedX = speed;
+            this.speedY = speed;
+        }
+        else
+        {
+            this.speedX = GetValue(config, 'speed.x', 0);
+            this.speedY = GetValue(config, 'speed.y', 0);
+        }
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#_zoom
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this._zoom = 0;
+
+        /**
+         * A flag controlling if the Controls will update the Camera or not.
+         *
+         * @name Phaser.Cameras.Controls.FixedKeyControl#active
+         * @type {boolean}
+         * @since 3.0.0
+         */
+        this.active = (this.camera !== null);
+    },
+
+    /**
+     * Starts the Key Control running, providing it has been linked to a camera.
+     *
+     * @method Phaser.Cameras.Controls.FixedKeyControl#start
+     * @since 3.0.0
+     *
+     * @return {Phaser.Cameras.Controls.FixedKeyControl} This Key Control instance.
+     */
+    start: function ()
+    {
+        this.active = (this.camera !== null);
+
+        return this;
+    },
+
+    /**
+     * Stops this Key Control from running. Call `start` to start it again.
+     *
+     * @method Phaser.Cameras.Controls.FixedKeyControl#stop
+     * @since 3.0.0
+     *
+     * @return {Phaser.Cameras.Controls.FixedKeyControl} This Key Control instance.
+     */
+    stop: function ()
+    {
+        this.active = false;
+
+        return this;
+    },
+
+    /**
+     * Binds this Key Control to a camera.
+     *
+     * @method Phaser.Cameras.Controls.FixedKeyControl#setCamera
+     * @since 3.0.0
+     *
+     * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera to bind this Key Control to.
+     *
+     * @return {Phaser.Cameras.Controls.FixedKeyControl} This Key Control instance.
+     */
+    setCamera: function (camera)
+    {
+        this.camera = camera;
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Cameras.Controls.FixedKeyControl#update
+     * @since 3.0.0
+     *
+     * @param {number} delta - [description]
+     */
+    update: function (delta)
+    {
+        if (!this.active)
+        {
+            return;
+        }
+
+        if (delta === undefined) { delta = 1; }
+
+        var cam = this.camera;
+
+        if (this.up &amp;&amp; this.up.isDown)
+        {
+            cam.scrollY -= ((this.speedY * delta) | 0);
+        }
+        else if (this.down &amp;&amp; this.down.isDown)
+        {
+            cam.scrollY += ((this.speedY * delta) | 0);
+        }
+
+        if (this.left &amp;&amp; this.left.isDown)
+        {
+            cam.scrollX -= ((this.speedX * delta) | 0);
+        }
+        else if (this.right &amp;&amp; this.right.isDown)
+        {
+            cam.scrollX += ((this.speedX * delta) | 0);
+        }
+
+        //  Camera zoom
+
+        if (this.zoomIn &amp;&amp; this.zoomIn.isDown)
+        {
+            cam.zoom -= this.zoomSpeed;
+
+            if (cam.zoom &lt; 0.1)
+            {
+                cam.zoom = 0.1;
+            }
+        }
+        else if (this.zoomOut &amp;&amp; this.zoomOut.isDown)
+        {
+            cam.zoom += this.zoomSpeed;
+        }
+    },
+
+    /**
+     * Destroys this Key Control.
+     *
+     * @method Phaser.Cameras.Controls.FixedKeyControl#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.camera = null;
+
+        this.left = null;
+        this.right = null;
+        this.up = null;
+        this.down = null;
+
+        this.zoomIn = null;
+        this.zoomOut = null;
+    }
+
+});
+
+module.exports = FixedKeyControl;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

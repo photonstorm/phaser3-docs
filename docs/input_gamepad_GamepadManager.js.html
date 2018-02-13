@@ -1,0 +1,515 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>input/gamepad/GamepadManager.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">input/gamepad/GamepadManager.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var Gamepad = require('./Gamepad');
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API
+// https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
+// https://www.smashingmagazine.com/2015/11/gamepad-api-in-web-games/
+// http://html5gamepad.com/
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class GamepadManager
+ * @memberOf Phaser.Input.Gamepad
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Input.InputManager} inputManager - [description]
+ */
+var GamepadManager = new Class({
+
+    initialize:
+
+    function GamepadManager (inputManager)
+    {
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#manager
+         * @type {Phaser.Input.InputManager}
+         * @since 3.0.0
+         */
+        this.manager = inputManager;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#events
+         * @type {[type]}
+         * @since 3.0.0
+         */
+        this.events = inputManager.events;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#enabled
+         * @type {boolean}
+         * @default false
+         * @since 3.0.0
+         */
+        this.enabled = false;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#target
+         * @type {null}
+         * @since 3.0.0
+         */
+        this.target;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#handler
+         * @type {null}
+         * @since 3.0.0
+         */
+        this.handler;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#gamepads
+         * @type {array}
+         * @default []
+         * @since 3.0.0
+         */
+        this.gamepads = [];
+
+        /**
+         * Standard FIFO queue.
+         *
+         * @name Phaser.Input.Gamepad.GamepadManager#queue
+         * @type {array}
+         * @default []
+         * @since 3.0.0
+         */
+        this.queue = [];
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#boot
+     * @since 3.0.0
+     */
+    boot: function ()
+    {
+        var config = this.manager.config;
+
+        this.enabled = config.inputGamepad &amp;&amp; this.manager.game.device.input.gamepads;
+
+        this.target = window;
+
+        if (this.enabled)
+        {
+            this.startListeners();
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#startListeners
+     * @since 3.0.0
+     *
+     * @return {[type]} [description]
+     */
+    startListeners: function ()
+    {
+        var queue = this.queue;
+
+        var handler = function handler (event)
+        {
+            if (event.defaultPrevented)
+            {
+                // Do nothing if event already handled
+                return;
+            }
+
+            queue.push(event);
+        };
+
+        this.handler = handler;
+
+        var target = this.target;
+
+        target.addEventListener('gamepadconnected', handler, false);
+        target.addEventListener('gamepaddisconnected', handler, false);
+
+        //  FF only for now:
+        target.addEventListener('gamepadbuttondown', handler, false);
+        target.addEventListener('gamepadbuttonup', handler, false);
+        target.addEventListener('gamepadaxismove', handler, false);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#stopListeners
+     * @since 3.0.0
+     */
+    stopListeners: function ()
+    {
+        var target = this.target;
+        var handler = this.handler;
+
+        target.removeEventListener('gamepadconnected', handler);
+        target.removeEventListener('gamepaddisconnected', handler);
+
+        target.removeEventListener('gamepadbuttondown', handler);
+        target.removeEventListener('gamepadbuttonup', handler);
+        target.removeEventListener('gamepadaxismove', handler);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#disconnectAll
+     * @since 3.0.0
+     */
+    disconnectAll: function ()
+    {
+        for (var i = 0; i &lt; this.gamepads.length; i++)
+        {
+            this.gamepads.connected = false;
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#addPad
+     * @since 3.0.0
+     *
+     * @param {[type]} pad - [description]
+     *
+     * @return {[type]} [description]
+     */
+    addPad: function (pad)
+    {
+        var gamepad = new Gamepad(this, pad.id, pad.index);
+
+        this.gamepads[pad.index] = gamepad;
+
+        return gamepad;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#removePad
+     * @since 3.0.0
+     *
+     * @param {[type]} index - [description]
+     * @param {[type]} pad - [description]
+     */
+    removePad: function (index, pad)
+    {
+        //  TODO
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#refreshPads
+     * @since 3.0.0
+     *
+     * @param {[type]} pads - [description]
+     */
+    refreshPads: function (pads)
+    {
+        if (!pads)
+        {
+            this.disconnectAll();
+        }
+        else
+        {
+            for (var i = 0; i &lt; pads.length; i++)
+            {
+                var pad = pads[i];
+
+                if (!pad)
+                {
+                    //  removePad?
+                    continue;
+                }
+
+                if (this.gamepads[pad.index] === undefined)
+                {
+                    this.addPad(pad);
+                }
+
+                this.gamepads[pad.index].update(pad);
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#getAll
+     * @since 3.0.0
+     *
+     * @return {[type]} [description]
+     */
+    getAll: function ()
+    {
+        var out = [];
+
+        for (var i = 0; i &lt; this.gamepads.length; i++)
+        {
+            if (this.gamepads[i])
+            {
+                out.push(this.gamepads[i]);
+            }
+        }
+
+        return out;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#getPad
+     * @since 3.0.0
+     *
+     * @param {[type]} index - [description]
+     *
+     * @return {[type]} [description]
+     */
+    getPad: function (index)
+    {
+        for (var i = 0; i &lt; this.gamepads.length; i++)
+        {
+            if (this.gamepads[i].index === index)
+            {
+                return this.gamepads[i];
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#update
+     * @since 3.0.0
+     *
+     * @return {[type]} [description]
+     */
+    update: function ()
+    {
+        if (!this.enabled)
+        {
+            return;
+        }
+
+        this.refreshPads(navigator.getGamepads());
+
+        var len = this.queue.length;
+
+        if (len === 0)
+        {
+            return;
+        }
+
+        var queue = this.queue.splice(0, len);
+
+        //  Process the event queue, dispatching all of the events that have stored up
+        for (var i = 0; i &lt; len; i++)
+        {
+            var event = queue[i];
+            var pad;
+
+            switch (event.type)
+            {
+                case 'gamepadconnected':
+
+                    pad = this.getPad(event.gamepad.index);
+
+                    this.events.emit('connected', pad, event);
+
+                    break;
+
+                case 'gamepaddisconnected':
+
+                    pad = this.getPad(event.gamepad.index);
+
+                    this.events.emit('disconnected', pad, event);
+
+                    break;
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.Gamepad.GamepadManager#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.stopListeners();
+        this.disconnectAll();
+
+        this.gamepads = [];
+    },
+
+    /**
+     * The total number of connected game pads.
+     * 
+     * @name Phaser.Input.Gamepad.GamepadManager#total
+     * @type {number}
+     * @since 3.0.0
+     */
+    total: {
+
+        get: function ()
+        {
+            return this.gamepads.length;
+        }
+
+    }
+
+});
+
+module.exports = GamepadManager;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

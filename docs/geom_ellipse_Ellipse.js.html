@@ -1,0 +1,487 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>geom/ellipse/Ellipse.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">geom/ellipse/Ellipse.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+var Contains = require('./Contains');
+var GetPoint = require('./GetPoint');
+var GetPoints = require('./GetPoints');
+var Random = require('./Random');
+
+/**
+ * @classdesc
+ * An Ellipse object.
+ *
+ * This is a geometry object, containing numerical values and related methods to inspect and modify them.
+ * It is not a Game Object, in that you cannot add it to the display list, and it has no texture.
+ * To render an Ellipse you should look at the capabilities of the Graphics class.
+ *
+ * @class Ellipse
+ * @memberOf Phaser.Geom
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {number} [x=0] - The x position of the center of the ellipse.
+ * @param {number} [y=0] - The y position of the center of the ellipse.
+ * @param {number} [width=0] - The width of the ellipse.
+ * @param {number} [height=0] - The height of the ellipse.
+ */
+var Ellipse = new Class({
+
+    initialize:
+
+    function Ellipse (x, y, width, height)
+    {
+        if (x === undefined) { x = 0; }
+        if (y === undefined) { y = 0; }
+        if (width === undefined) { width = 0; }
+        if (height === undefined) { height = 0; }
+
+        /**
+         * The x position of the center of the ellipse.
+         *
+         * @name Phaser.Geom.Ellipse#x
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.x = x;
+
+        /**
+         * The y position of the center of the ellipse.
+         *
+         * @name Phaser.Geom.Ellipse#y
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.y = y;
+
+        /**
+         * The width of the ellipse.
+         *
+         * @name Phaser.Geom.Ellipse#width
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.width = width;
+
+        /**
+         * The height of the ellipse.
+         *
+         * @name Phaser.Geom.Ellipse#height
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.height = height;
+    },
+
+    /**
+     * Check to see if the Ellipse contains the given x / y coordinates.
+     *
+     * @method Phaser.Geom.Ellipse#contains
+     * @since 3.0.0
+     *
+     * @param {number} x - The x coordinate to check within the ellipse.
+     * @param {number} y - The y coordinate to check within the ellipse.
+     *
+     * @return {boolean} True if the coordinates are within the ellipse, otherwise false.
+     */
+    contains: function (x, y)
+    {
+        return Contains(this, x, y);
+    },
+
+    /**
+     * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse
+     * based on the given angle normalized to the range 0 to 1. I.e. a value of 0.5 will give the point
+     * at 180 degrees around the circle.
+     *
+     * @method Phaser.Geom.Ellipse#getPoint
+     * @since 3.0.0
+     *
+     * @param {float} position - A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the ellipse.
+     * @param {Phaser.Geom.Point|object} [out] - An object to store the return values in. If not given a Point object will be created.
+     *
+     * @return {Phaser.Geom.Point|object} A Point, or point-like object, containing the coordinates of the point around the ellipse.
+     */
+    getPoint: function (position, point)
+    {
+        return GetPoint(this, position, point);
+    },
+
+    /**
+     * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
+     * based on the given quantity or stepRate values.
+     *
+     * @method Phaser.Geom.Ellipse#getPoints
+     * @since 3.0.0
+     *
+     * @param {integer} quantity - The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
+     * @param {number} [stepRate] - Sets the quantity by getting the circumference of the ellipse and dividing it by the stepRate.
+     * @param {array} [output] - An array to insert the points in to. If not provided a new array will be created.
+     *
+     * @return {Phaser.Geom.Point[]} An array of Point objects pertaining to the points around the circumference of the ellipse.
+     */
+    getPoints: function (quantity, stepRate, output)
+    {
+        return GetPoints(this, quantity, stepRate, output);
+    },
+
+    /**
+     * Returns a uniformly distributed random point from anywhere within the given Ellipse.
+     *
+     * @method Phaser.Geom.Ellipse#getRandomPoint
+     * @since 3.0.0
+     *
+     * @param {Phaser.Geom.Point|object} [point] - A Point or point-like object to set the random `x` and `y` values in.
+     *
+     * @return {Phaser.Geom.Point|object} A Point object with the random values set in the `x` and `y` properties.
+     */
+    getRandomPoint: function (point)
+    {
+        return Random(this, point);
+    },
+
+    /**
+     * Sets the x, y, width and height of this ellipse.
+     *
+     * @method Phaser.Geom.Ellipse#setTo
+     * @since 3.0.0
+     *
+     * @param {number} x - The x position of the center of the ellipse.
+     * @param {number} y - The y position of the center of the ellipse.
+     * @param {number} width - The width of the ellipse.
+     * @param {number} height - The height of the ellipse.
+     *
+     * @return {Phaser.Geom.Ellipse} This Ellipse object.
+     */
+    setTo: function (x, y, width, height)
+    {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+
+        return this;
+    },
+
+    /**
+     * Sets this Ellipse to be empty with a width and height of zero.
+     * Does not change its position.
+     *
+     * @method Phaser.Geom.Ellipse#setEmpty
+     * @since 3.0.0
+     *
+     * @return {Phaser.Geom.Ellipse} This Ellipse object.
+     */
+    setEmpty: function ()
+    {
+        this.width = 0;
+        this.height = 0;
+
+        return this;
+    },
+
+    /**
+     * Sets the position of this Ellipse.
+     *
+     * @method Phaser.Geom.Ellipse#setPosition
+     * @since 3.0.0
+     *
+     * @param {number} x - The x position of the center of the ellipse.
+     * @param {number} y - The y position of the center of the ellipse.
+     *
+     * @return {Phaser.Geom.Ellipse} This Ellipse object.
+     */
+    setPosition: function (x, y)
+    {
+        if (y === undefined) { y = x; }
+
+        this.x = x;
+        this.y = y;
+
+        return this;
+    },
+
+    /**
+     * Sets the size of this Ellipse.
+     * Does not change its position.
+     *
+     * @method Phaser.Geom.Ellipse#setSize
+     * @since 3.0.0
+     *
+     * @param {number} width - The width of the ellipse.
+     * @param {number} [height=width] - The height of the ellipse.
+     *
+     * @return {Phaser.Geom.Ellipse} This Ellipse object.
+     */
+    setSize: function (width, height)
+    {
+        if (height === undefined) { height = width; }
+
+        this.width = width;
+        this.height = height;
+
+        return this;
+    },
+
+    /**
+     * Checks to see if the Ellipse is empty: has a width or height equal to zero.
+     *
+     * @method Phaser.Geom.Ellipse#isEmpty
+     * @since 3.0.0
+     *
+     * @return {boolean} True if the Ellipse is empty, otherwise false.
+     */
+    isEmpty: function ()
+    {
+        return (this.width &lt;= 0 || this.height &lt;= 0);
+    },
+
+    /**
+     * Returns the minor radius of the ellipse. Also known as the Semi Minor Axis.
+     *
+     * @method Phaser.Geom.Ellipse#getMinorRadius
+     * @since 3.0.0
+     *
+     * @return {number} The minor radius.
+     */
+    getMinorRadius: function ()
+    {
+        return Math.min(this.width, this.height) / 2;
+    },
+
+    /**
+     * Returns the major radius of the ellipse. Also known as the Semi Major Axis.
+     *
+     * @method Phaser.Geom.Ellipse#getMajorRadius
+     * @since 3.0.0
+     *
+     * @return {number} The major radius.
+     */
+    getMajorRadius: function ()
+    {
+        return Math.max(this.width, this.height) / 2;
+    },
+
+    /**
+     * The left position of the Ellipse.
+     * 
+     * @name Phaser.Geom.Ellipse#left
+     * @type {number}
+     * @since 3.0.0
+     */
+    left: {
+
+        get: function ()
+        {
+            return this.x - (this.width / 2);
+        },
+
+        set: function (value)
+        {
+            this.x = value + (this.width / 2);
+        }
+
+    },
+
+    /**
+     * The right position of the Ellipse.
+     * 
+     * @name Phaser.Geom.Ellipse#right
+     * @type {number}
+     * @since 3.0.0
+     */
+    right: {
+
+        get: function ()
+        {
+            return this.x + (this.width / 2);
+        },
+
+        set: function (value)
+        {
+            this.x = value - (this.width / 2);
+        }
+
+    },
+
+    /**
+     * The top position of the Ellipse.
+     * 
+     * @name Phaser.Geom.Ellipse#top
+     * @type {number}
+     * @since 3.0.0
+     */
+    top: {
+
+        get: function ()
+        {
+            return this.y - (this.height / 2);
+        },
+
+        set: function (value)
+        {
+            this.y = value + (this.height / 2);
+        }
+
+    },
+
+    /**
+     * The bottom position of the Ellipse.
+     * 
+     * @name Phaser.Geom.Ellipse#bottom
+     * @type {number}
+     * @since 3.0.0
+     */
+    bottom: {
+
+        get: function ()
+        {
+            return this.y + (this.height / 2);
+        },
+
+        set: function (value)
+        {
+            this.y = value - (this.height / 2);
+        }
+
+    }
+
+});
+
+module.exports = Ellipse;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

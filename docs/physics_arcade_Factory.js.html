@@ -1,0 +1,381 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>physics/arcade/Factory.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">physics/arcade/Factory.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var ArcadeImage = require('./ArcadeImage');
+var ArcadeSprite = require('./ArcadeSprite');
+var Class = require('../../utils/Class');
+var CONST = require('./const');
+var PhysicsGroup = require('./PhysicsGroup');
+var StaticPhysicsGroup = require('./StaticPhysicsGroup');
+
+/**
+ * @classdesc
+ * The Arcade Physics Factory allows you to easily create Arcade Physics enabled Game Objects.
+ * Objects that are created by this Factory are automatically added to the physics world.
+ *
+ * @class Factory
+ * @memberOf Phaser.Physics.Arcade
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Physics.Arcade.World} world - The Arcade Physics World instance.
+ */
+var Factory = new Class({
+
+    initialize:
+
+    function Factory (world)
+    {
+        /**
+         * A reference to the Arcade Physics World.
+         *
+         * @name Phaser.Physics.Arcade.Factory#world
+         * @type {Phaser.Physics.Arcade.World}
+         * @since 3.0.0
+         */
+        this.world = world;
+
+        /**
+         * A reference to the Scene this Arcade Physics instance belongs to.
+         *
+         * @name Phaser.Physics.Arcade.Factory#scene
+         * @type {Phaser.Scene}
+         * @since 3.0.0
+         */
+        this.scene = world.scene;
+
+        /**
+         * A reference to the Scene.Systems this Arcade Physics instance belongs to.
+         *
+         * @name Phaser.Physics.Arcade.Factory#sys
+         * @type {Phaser.Scenes.Systems}
+         * @since 3.0.0
+         */
+        this.sys = world.scene.sys;
+    },
+
+    /**
+     * Create a new Arcade Physics Collider object.
+     *
+     * @method Phaser.Physics.Arcade.Factory#collider
+     * @since 3.0.0
+     *
+     * @param {Phaser.Physics.Arcade.Body} object1 - The first object to check for collision.
+     * @param {Phaser.Physics.Arcade.Body} object2 - The second object to check for collision.
+     * @param {function} collideCallback - The callback to invoke when the two objects collide.
+     * @param {function} processCallback - The callback to invoke when the two objects collide. Must return a boolean.
+     * @param {object} callbackContext - The scope in which to call the callbacks.
+     *
+     * @return {Phaser.Physics.Arcade.Collider} The Collider that was created.
+     */
+    collider: function (object1, object2, collideCallback, processCallback, callbackContext)
+    {
+        return this.world.addCollider(object1, object2, collideCallback, processCallback, callbackContext);
+    },
+
+    /**
+     * Create a new Arcade Physics Collider Overlap object.
+     *
+     * @method Phaser.Physics.Arcade.Factory#overlap
+     * @since 3.0.0
+     *
+     * @param {Phaser.Physics.Arcade.Body} object1 - The first object to check for overlap.
+     * @param {Phaser.Physics.Arcade.Body} object2 - The second object to check for overlap.
+     * @param {function} collideCallback - The callback to invoke when the two objects collide.
+     * @param {function} processCallback - The callback to invoke when the two objects collide. Must return a boolean.
+     * @param {object} callbackContext - The scope in which to call the callbacks.
+     *
+     * @return {Phaser.Physics.Arcade.Collider} The Collider that was created.
+     */
+    overlap: function (object1, object2, collideCallback, processCallback, callbackContext)
+    {
+        return this.world.addOverlap(object1, object2, collideCallback, processCallback, callbackContext);
+    },
+
+    /**
+     * Adds an Arcade Physics Body to the given Game Object.
+     *
+     * @method Phaser.Physics.Arcade.Factory#existing
+     * @since 3.0.0
+     *
+     * @param {Phaser.GameObjects.GameObject} gameObject - [description]
+     * @param {boolean} [isStatic=false] - Set to true to create a Static body, otherwise it will create a Dynamic body.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object.
+     */
+    existing: function (gameObject, isStatic)
+    {
+        var type = (isStatic) ? CONST.STATIC_BODY : CONST.DYNAMIC_BODY;
+
+        this.world.enableBody(gameObject, type);
+
+        return gameObject;
+    },
+
+    /**
+     * Creates a new Arcade Image object with a Static body.
+     *
+     * @method Phaser.Physics.Arcade.Factory#staticImage
+     * @since 3.0.0
+     *
+     * @param {number} x - The horizontal position of this Game Object in the world.
+     * @param {number} y - The vertical position of this Game Object in the world.
+     * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
+     * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+     *
+     * @return {Phaser.Physics.Arcade.Image} The Image object that was created.
+     */
+    staticImage: function (x, y, key, frame)
+    {
+        var image = new ArcadeImage(this.scene, x, y, key, frame);
+
+        this.sys.displayList.add(image);
+
+        this.world.enableBody(image, CONST.STATIC_BODY);
+
+        return image;
+    },
+
+    /**
+     * Creates a new Arcade Image object with a Dynamic body.
+     *
+     * @method Phaser.Physics.Arcade.Factory#image
+     * @since 3.0.0
+     *
+     * @param {number} x - The horizontal position of this Game Object in the world.
+     * @param {number} y - The vertical position of this Game Object in the world.
+     * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
+     * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+     *
+     * @return {Phaser.Physics.Arcade.Image} The Image object that was created.
+     */
+    image: function (x, y, key, frame)
+    {
+        var image = new ArcadeImage(this.scene, x, y, key, frame);
+
+        this.sys.displayList.add(image);
+
+        this.world.enableBody(image, CONST.DYNAMIC_BODY);
+
+        return image;
+    },
+
+    /**
+     * Creates a new Arcade Sprite object with a Static body.
+     *
+     * @method Phaser.Physics.Arcade.Factory#staticSprite
+     * @since 3.0.0
+     *
+     * @param {number} x - The horizontal position of this Game Object in the world.
+     * @param {number} y - The vertical position of this Game Object in the world.
+     * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
+     * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+     *
+     * @return {Phaser.Physics.Arcade.Sprite} The Sprite object that was created.
+     */
+    staticSprite: function (x, y, key, frame)
+    {
+        var sprite = new ArcadeSprite(this.scene, x, y, key, frame);
+
+        this.sys.displayList.add(sprite);
+        this.sys.updateList.add(sprite);
+
+        this.world.enableBody(sprite, CONST.STATIC_BODY);
+
+        return sprite;
+    },
+
+    /**
+     * Creates a new Arcade Sprite object with a Dynamic body.
+     *
+     * @method Phaser.Physics.Arcade.Factory#sprite
+     * @since 3.0.0
+     *
+     * @param {number} x - The horizontal position of this Game Object in the world.
+     * @param {number} y - The vertical position of this Game Object in the world.
+     * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
+     * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+     *
+     * @return {Phaser.Physics.Arcade.Sprite} The Sprite object that was created.
+     */
+    sprite: function (x, y, key, frame)
+    {
+        var sprite = new ArcadeSprite(this.scene, x, y, key, frame);
+
+        this.sys.displayList.add(sprite);
+        this.sys.updateList.add(sprite);
+
+        this.world.enableBody(sprite, CONST.DYNAMIC_BODY);
+
+        return sprite;
+    },
+
+    /**
+     * Creates a Static Physics Group object.
+     * All Game Objects created by this Group will automatically be static Arcade Physics objects.
+     *
+     * @method Phaser.Physics.Arcade.Factory#staticGroup
+     * @since 3.0.0
+     *
+     * @param {array} [children] - [description]
+     * @param {object} [config] - [description]
+     *
+     * @return {Phaser.Physics.Arcade.StaticGroup} The Static Group object that was created.
+     */
+    staticGroup: function (children, config)
+    {
+        return this.sys.updateList.add(new StaticPhysicsGroup(this.world, this.world.scene, children, config));
+    },
+
+    /**
+     * Creates a Physics Group object.
+     * All Game Objects created by this Group will automatically be dynamic Arcade Physics objects.
+     *
+     * @method Phaser.Physics.Arcade.Factory#group
+     * @since 3.0.0
+     *
+     * @param {array} [children] - [description]
+     * @param {object} [config] - [description]
+     *
+     * @return {Phaser.Physics.Arcade.Group} The Group object that was created.
+     */
+    group: function (children, config)
+    {
+        return this.sys.updateList.add(new PhysicsGroup(this.world, this.world.scene, children, config));
+    }
+
+});
+
+module.exports = Factory;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

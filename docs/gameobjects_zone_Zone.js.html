@@ -1,0 +1,414 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>gameobjects/zone/Zone.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">gameobjects/zone/Zone.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var BlendModes = require('../../renderer/BlendModes');
+var Circle = require('../../geom/circle/Circle');
+var CircleContains = require('../../geom/circle/Contains');
+var Class = require('../../utils/Class');
+var Components = require('../components');
+var GameObject = require('../GameObject');
+var Rectangle = require('../../geom/rectangle/Rectangle');
+var RectangleContains = require('../../geom/rectangle/Contains');
+
+/**
+ * @classdesc
+ * A Zone Game Object.
+ *
+ * A Zone is a non-rendering rectangular Game Object that has a position and size.
+ * It has no texture and never displays, but does live on the display list and
+ * can be moved, scaled and rotated like any other Game Object.
+ *
+ * Its primary use is for creating Drop Zones and Input Hit Areas and it has a couple of helper methods
+ * specifically for this. It is also useful for object overlap checks, or as a base for your own
+ * non-displaying Game Objects.
+
+ * The default origin is 0.5, the center of the Zone, the same as with Game Objects.
+ *
+ * @class Zone
+ * @extends Phaser.GameObjects.GameObject
+ * @memberOf Phaser.GameObjects
+ * @constructor
+ * @since 3.0.0
+ *
+ * @extends Phaser.GameObjects.Components.GetBounds
+ * @extends Phaser.GameObjects.Components.Origin
+ * @extends Phaser.GameObjects.Components.ScaleMode
+ * @extends Phaser.GameObjects.Components.Transform
+ * @extends Phaser.GameObjects.Components.ScrollFactor
+ * @extends Phaser.GameObjects.Components.Visible
+ *
+ * @param {Phaser.Scene} scene - [description]
+ * @param {number} x - The horizontal position of this Game Object in the world.
+ * @param {number} y - The vertical position of this Game Object in the world.
+ * @param {number} [width=1] - The width of the Game Object.
+ * @param {number} [height=1] - The height of the Game Object.
+ */
+var Zone = new Class({
+
+    Extends: GameObject,
+
+    Mixins: [
+        Components.GetBounds,
+        Components.Origin,
+        Components.ScaleMode,
+        Components.Transform,
+        Components.ScrollFactor,
+        Components.Visible
+    ],
+
+    initialize:
+
+    function Zone (scene, x, y, width, height)
+    {
+        if (width === undefined) { width = 1; }
+        if (height === undefined) { height = width; }
+
+        GameObject.call(this, scene, 'Zone');
+
+        this.setPosition(x, y);
+
+        /**
+         * The native (un-scaled) width of this Game Object.
+         *
+         * @name Phaser.GameObjects.Zone#width
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.width = width;
+
+        /**
+         * The native (un-scaled) height of this Game Object.
+         *
+         * @name Phaser.GameObjects.Zone#height
+         * @type {number}
+         * @since 3.0.0
+         */
+        this.height = height;
+
+        /**
+         * The Blend Mode of the Game Object.
+         * Although a Zone never renders, it still has a blend mode to allow it to fit seamlessly into
+         * display lists without causing a batch flush.
+         *
+         * @name Phaser.GameObjects.Zone#blendMode
+         * @type {integer}
+         * @since 3.0.0
+         */
+        this.blendMode = BlendModes.NORMAL;
+    },
+
+    /**
+     * The displayed width of this Game Object.
+     * This value takes into account the scale factor.
+     * 
+     * @name Phaser.GameObjects.Zone#displayWidth
+     * @type {number}
+     * @since 3.0.0
+     */
+    displayWidth: {
+
+        get: function ()
+        {
+            return this.scaleX * this.width;
+        },
+
+        set: function (value)
+        {
+            this.scaleX = value / this.width;
+        }
+
+    },
+
+    /**
+     * The displayed height of this Game Object.
+     * This value takes into account the scale factor.
+     * 
+     * @name Phaser.GameObjects.Zone#displayHeight
+     * @type {number}
+     * @since 3.0.0
+     */
+    displayHeight: {
+
+        get: function ()
+        {
+            return this.scaleY * this.height;
+        },
+
+        set: function (value)
+        {
+            this.scaleY = value / this.height;
+        }
+
+    },
+
+    /**
+     * Sets the size of this Game Object.
+     *
+     * @method Phaser.GameObjects.Zone#setSize
+     * @since 3.0.0
+     *
+     * @param {number} width - The width of this Game Object.
+     * @param {number} height - The height of this Game Object.
+     * @param {boolean} [resizeInput=true] - If this Zone has a Rectangle for a hit area this argument will resize the hit area as well.
+     *
+     * @return {Phaser.GameObjects.Zone} This Game Object.
+     */
+    setSize: function (width, height, resizeInput)
+    {
+        if (resizeInput === undefined) { resizeInput = true; }
+
+        this.width = width;
+        this.height = height;
+
+        if (resizeInput &amp;&amp; this.input &amp;&amp; this.input.hitArea instanceof Rectangle)
+        {
+            this.input.hitArea.width = width;
+            this.input.hitArea.height = height;
+        }
+
+        return this;
+    },
+
+    /**
+     * Sets the display size of this Game Object.
+     * Calling this will adjust the scale.
+     *
+     * @method Phaser.GameObjects.Zone#setDisplaySize
+     * @since 3.0.0
+     *
+     * @param {number} width - The width of this Game Object.
+     * @param {number} height - The height of this Game Object.
+     *
+     * @return {Phaser.GameObjects.Zone} This Game Object.
+     */
+    setDisplaySize: function (width, height)
+    {
+        this.displayWidth = width;
+        this.displayHeight = height;
+
+        return this;
+    },
+
+    /**
+     * Sets this Zone to be a Circular Drop Zone.
+     * The circle is centered on this Zones `x` and `y` coordinates.
+     *
+     * @method Phaser.GameObjects.Zone#setCircleDropZone
+     * @since 3.0.0
+     *
+     * @param {number} radius - The radius of the Circle that will form the Drop Zone.
+     *
+     * @return {Phaser.GameObjects.Zone} This Game Object.
+     */
+    setCircleDropZone: function (radius)
+    {
+        return this.setDropZone(new Circle(0, 0, radius), CircleContains);
+    },
+
+    /**
+     * Sets this Zone to be a Rectangle Drop Zone.
+     * The rectangle is centered on this Zones `x` and `y` coordinates.
+     *
+     * @method Phaser.GameObjects.Zone#setRectangleDropZone
+     * @since 3.0.0
+     *
+     * @param {number} width - The width of the rectangle drop zone.
+     * @param {number} height - The height of the rectangle drop zone.
+     *
+     * @return {Phaser.GameObjects.Zone} This Game Object.
+     */
+    setRectangleDropZone: function (width, height)
+    {
+        var x = -(width / 2);
+        var y = -(height / 2);
+
+        return this.setDropZone(new Rectangle(x, y, width, height), RectangleContains);
+    },
+
+    /**
+     * Allows you to define your own Geometry shape to be used as a Drop Zone.
+     *
+     * @method Phaser.GameObjects.Zone#setDropZone
+     * @since 3.0.0
+     *
+     * @param {object} shape - A Geometry shape instance, such as Phaser.Geom.Ellipse, or your own custom shape.
+     * @param {function} callback - A function that will return `true` if the given x/y coords it is sent are within the shape.
+     *
+     * @return {Phaser.GameObjects.Zone} This Game Object.
+     */
+    setDropZone: function (shape, callback)
+    {
+        if (shape === undefined)
+        {
+            this.setRectangleDropZone(this.width, this.height);
+        }
+        else
+        {
+            if (!this.input)
+            {
+                this.setInteractive(shape, callback);
+            }
+
+            this.input.dropZone = true;
+        }
+
+        return this;
+    },
+
+    /**
+     * A Zone does not render.
+     *
+     * @method Phaser.GameObjects.Zone#renderCanvas
+     * @private
+     * @since 3.0.0
+     */
+    renderCanvas: function ()
+    {
+    },
+
+    /**
+     * A Zone does not render.
+     *
+     * @method Phaser.GameObjects.Zone#renderWebGL
+     * @private
+     * @since 3.0.0
+     */
+    renderWebGL: function ()
+    {
+    }
+
+});
+
+module.exports = Zone;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

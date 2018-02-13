@@ -1,0 +1,414 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>physics/matter-js/PointerConstraint.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">physics/matter-js/PointerConstraint.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Bounds = require('./lib/geometry/Bounds');
+var Class = require('../../utils/Class');
+var Composite = require('./lib/body/Composite');
+var Constraint = require('./lib/constraint/Constraint');
+var Detector = require('./lib/collision/Detector');
+var GetFastValue = require('../../utils/object/GetFastValue');
+var Merge = require('../../utils/object/Merge');
+var Sleeping = require('./lib/core/Sleeping');
+var Vector2 = require('../../math/Vector2');
+var Vertices = require('./lib/geometry/Vertices');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class PointerConstraint
+ * @memberOf Phaser.Physics.Matter
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Scene} scene - [description]
+ * @param {Phaser.Physics.Matter.World} world - [description]
+ * @param {object} options - [description]
+ */
+var PointerConstraint = new Class({
+
+    initialize:
+
+    function PointerConstraint (scene, world, options)
+    {
+        if (options === undefined) { options = {}; }
+
+        //  Defaults
+        var defaults = {
+            label: 'Pointer Constraint',
+            pointA: { x: 0, y: 0 },
+            pointB: { x: 0, y: 0 },
+            damping: 0,
+            length: 0.01,
+            stiffness: 0.1,
+            angularStiffness: 1,
+            collisionFilter: {
+                category: 0x0001,
+                mask: 0xFFFFFFFF,
+                group: 0
+            }
+        };
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#scene
+         * @type {Phaser.Scene}
+         * @since 3.0.0
+         */
+        this.scene = scene;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#world
+         * @type {Phaser.Physics.Matter.World}
+         * @since 3.0.0
+         */
+        this.world = world;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#camera
+         * @type {Phaser.Cameras.Scene2D.Camera}
+         * @since 3.0.0
+         */
+        var camera = GetFastValue(options, 'camera', null);
+
+        if (!camera)
+        {
+            this.camera = scene.sys.cameras.main;
+        }
+        else
+        {
+            this.camera = camera;
+
+            delete options.camera;
+        }
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#pointer
+         * @type {Phaser.Input.Pointer}
+         * @default null
+         * @since 3.0.0
+         */
+        this.pointer = null;
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#active
+         * @type {boolean}
+         * @default true
+         * @since 3.0.0
+         */
+        this.active = true;
+
+        /**
+         * The transformed position.
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#position
+         * @type {Phaser.Math.Vector2}
+         * @since 3.0.0
+         */
+        this.position = new Vector2();
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Physics.Matter.PointerConstraint#constraint
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.constraint = Constraint.create(Merge(options, defaults));
+
+        this.world.on('beforeupdate', this.update, this);
+
+        scene.sys.input.on('pointerdown', this.onDown, this);
+
+        scene.sys.input.on('pointerup', this.onUp, this);
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Matter.PointerConstraint#onDown
+     * @since 3.0.0
+     *
+     * @param {Phaser.Input.Pointer} pointer - [description]
+     */
+    onDown: function (pointer)
+    {
+        this.pointer = pointer;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Matter.PointerConstraint#onUp
+     * @since 3.0.0
+     */
+    onUp: function ()
+    {
+        this.pointer = null;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Matter.PointerConstraint#getBodyPart
+     * @since 3.0.0
+     *
+     * @param {[type]} body - [description]
+     * @param {[type]} position - [description]
+     *
+     * @return {boolean} [description]
+     */
+    getBodyPart: function (body, position)
+    {
+        var constraint = this.constraint;
+
+        var start = (body.parts.length > 1) ? 1 : 0;
+
+        for (var i = start; i &lt; body.parts.length; i++)
+        {
+            var part = body.parts[i];
+
+            if (Vertices.contains(part.vertices, position))
+            {
+                constraint.bodyB = body;
+
+                constraint.pointA.x = position.x;
+                constraint.pointA.y = position.y;
+
+                constraint.pointB.x = position.x - body.position.x;
+                constraint.pointB.y = position.y - body.position.y;
+
+                constraint.angleB = body.angle;
+
+                Sleeping.set(body, false);
+
+                return true;
+            }
+        }
+        
+        return false;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Matter.PointerConstraint#update
+     * @since 3.0.0
+     */
+    update: function ()
+    {
+        if (!this.active)
+        {
+            return;
+        }
+
+        var pointer = this.pointer;
+        var constraint = this.constraint;
+
+        if (!pointer)
+        {
+            //  Pointer is up / released
+            if (constraint.bodyB)
+            {
+                constraint.bodyB = null;
+            }
+        }
+        else
+        {
+            var pos = this.position;
+
+            this.camera.getWorldPoint(pointer.x, pointer.y, pos);
+
+            if (constraint.bodyB)
+            {
+                //  Pointer is down and we have bodyB, so wake it up
+                Sleeping.set(constraint.bodyB, false);
+
+                constraint.pointA.x = pos.x;
+                constraint.pointA.y = pos.y;
+            }
+            else
+            {
+                var bodies = Composite.allBodies(this.world.localWorld);
+
+                //  Pointer is down and no bodyB, so check if we've hit anything
+                for (var i = 0; i &lt; bodies.length; i++)
+                {
+                    var body = bodies[i];
+
+                    if (!body.ignorePointer &amp;&amp; Bounds.contains(body.bounds, pos) &amp;&amp;
+                        Detector.canCollide(body.collisionFilter, constraint.collisionFilter))
+                    {
+                        if (this.getBodyPart(body, pos))
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Physics.Matter.PointerConstraint#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.world.removeConstraint(this.constraint);
+
+        this.constraint = null;
+
+        this.world.off('beforeupdate', this.update);
+
+        this.scene.sys.input.off('pointerdown', this.onDown, this);
+
+        this.scene.sys.input.off('pointerup', this.onUp, this);
+    }
+
+});
+
+module.exports = PointerConstraint;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

@@ -1,0 +1,300 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>cache/BaseCache.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">cache/BaseCache.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+var CustomMap = require('../structs/Map');
+var EventEmitter = require('eventemitter3');
+
+/**
+ * @classdesc
+ * The BaseCache is a base Cache class that can be used for storing references to any kind of data.
+ *
+ * Data can be added, retrieved and removed based on the given keys.
+ *
+ * Keys are string-based.
+ *
+ * @class BaseCache
+ * @memberOf Phaser.Cache
+ * @constructor
+ * @since 3.0.0
+ */
+var BaseCache = new Class({
+
+    initialize:
+
+    function BaseCache ()
+    {
+        /**
+         * The Map in which the cache objects are stored.
+         *
+         * You can query the Map directly or use the BaseCache methods.
+         *
+         * @name Phaser.Cache.BaseCache#entries
+         * @type {Phaser.Structs.Map}
+         * @since 3.0.0
+         */
+        this.entries = new CustomMap();
+
+        /**
+         * An instance of EventEmitter used by the cache to emit related events.
+         *
+         * @name Phaser.Cache.BaseCache#events
+         * @type {EventEmitter}
+         * @since 3.0.0
+         */
+        this.events = new EventEmitter();
+    },
+
+    /**
+     * Cache add event.
+     *
+     * This event is fired by the Cache each time a new object is added to it.
+     *
+     * @event Phaser.Cache.BaseCache#addEvent
+     * @param {Phaser.Cache.BaseCache} The BaseCache to which the object was added.
+     * @param {string} The key of the object added to the cache.
+     * @param {any} A reference to the object added to the cache.
+     */
+
+    /**
+     * Adds an item to this cache. The item is referenced by a unique string, which you are responsible
+     * for setting and keeping track of. The item can only be retrieved by using this string.
+     *
+     * @method Phaser.Cache.BaseCache#add
+     * @fires Phaser.Cache.BaseCache#addEvent
+     * @since 3.0.0
+     *
+     * @param {string} key - The unique key by which the data added to the cache will be referenced.
+     * @param {any} data - The data to be stored in the cache.
+     *
+     * @return {Phaser.Cache.BaseCache} This BaseCache object.
+     */
+    add: function (key, data)
+    {
+        this.entries.set(key, data);
+
+        this.events.emit('add', this, key, data);
+
+        return this;
+    },
+
+    /**
+     * Checks if this cache contains an item matching the given key.
+     *
+     * @method Phaser.Cache.BaseCache#has
+     * @since 3.0.0
+     *
+     * @param {string} key - The unique key of the item to be checked in this cache.
+     * 
+     * @return {boolean} Returns `true` if the cache contains an item matching the given key, otherwise `false`.
+     */
+    has: function (key)
+    {
+        return this.entries.has(key);
+    },
+
+    /**
+     * Gets an item from this cache based on the given key.
+     *
+     * @method Phaser.Cache.BaseCache#get
+     * @since 3.0.0
+     *
+     * @param {string} key - The unique key of the item to be retrieved from this cache.
+     * 
+     * @return {any} The item in the cache, or `null` if no item matching the given key was found.
+     */
+    get: function (key)
+    {
+        return this.entries.get(key);
+    },
+
+    /**
+     * Cache remove event.
+     *
+     * This event is fired by the Cache each time an object is removed from it.
+     *
+     * @event Phaser.Cache.BaseCache#removeEvent
+     * @param {Phaser.Cache.BaseCache} The BaseCache from which the object was removed.
+     * @param {string} The key of the object removed from the cache.
+     * @param {any} The object that was removed from the cache.
+     */
+
+    /**
+     * Removes and item from this cache based on the given key.
+     *
+     * If an entry matching the key is found it is removed from the cache and a `remove` event emitted.
+     * No additional checks are done on the item removed. If other systems or parts of your game code
+     * are relying on this item, it is up to you to sever those relationships prior to removing the item.
+     *
+     * @method Phaser.Cache.BaseCache#remove
+     * @fires Phaser.Cache.BaseCache#removeEvent
+     * @since 3.0.0
+     *
+     * @param {string} key - The unique key of the item to remove from the cache.
+     *
+     * @return {Phaser.Cache.BaseCache} This BaseCache object.
+     */
+    remove: function (key)
+    {
+        var entry = this.get(key);
+
+        if (entry)
+        {
+            this.entries.delete(key);
+
+            this.events.emit('remove', this, key, entry.data);
+        }
+
+        return this;
+    },
+
+    /**
+     * Destroys this cache and all items within it.
+     *
+     * @method Phaser.Cache.BaseCache#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.entries.clear();
+        this.events.removeAllListeners();
+
+        this.entries = null;
+        this.events = null;
+    }
+
+});
+
+module.exports = BaseCache;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

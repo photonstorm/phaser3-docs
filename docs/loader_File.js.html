@@ -1,0 +1,569 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>loader/File.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">loader/File.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+var CONST = require('./const');
+var GetFastValue = require('../utils/object/GetFastValue');
+var GetURL = require('./GetURL');
+var MergeXHRSettings = require('./MergeXHRSettings');
+var XHRLoader = require('./XHRLoader');
+var XHRSettings = require('./XHRSettings');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class File
+ * @memberOf Phaser.Loader
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {object} fileConfig - [description]
+ */
+var File = new Class({
+
+    initialize:
+
+    function File (fileConfig)
+    {
+        /**
+         * The file type string (image, json, etc) for sorting within the Loader.
+         * 
+         * @name Phaser.Loader.File#type
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.type = GetFastValue(fileConfig, 'type', false);
+
+        /**
+         * Unique cache key (unique within its file type)
+         *
+         * @name Phaser.Loader.File#key
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.key = GetFastValue(fileConfig, 'key', false);
+
+        if (!this.type || !this.key)
+        {
+            throw new Error('Error calling \'Loader.' + this.type + '\' invalid key provided.');
+        }
+
+        /**
+         * The URL of the file, not including baseURL.
+         *
+         * @name Phaser.Loader.File#url
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.url = GetFastValue(fileConfig, 'url');
+
+        if (this.url === undefined)
+        {
+            this.url = GetFastValue(fileConfig, 'path', '') + this.key + '.' + GetFastValue(fileConfig, 'extension', '');
+        }
+        else
+        {
+            this.url = GetFastValue(fileConfig, 'path', '').concat(this.url);
+        }
+
+        /**
+         * Set when the Loader calls 'load' on this file.
+         *
+         * @name Phaser.Loader.File#src
+         * @type {string}
+         * @since 3.0.0
+         */
+        this.src = '';
+
+        /**
+         * The merged XHRSettings for this file.
+         *
+         * @name Phaser.Loader.File#xhrSettings
+         * @type {Phaser.Loader.XHRSettings}
+         * @since 3.0.0
+         */
+        this.xhrSettings = XHRSettings(GetFastValue(fileConfig, 'responseType', undefined));
+
+        if (GetFastValue(fileConfig, 'xhrSettings', false))
+        {
+            this.xhrSettings = MergeXHRSettings(this.xhrSettings, GetFastValue(fileConfig, 'xhrSettings', {}));
+        }
+
+        /**
+         * The LoaderPlugin instance that is loading this file.
+         *
+         * @name Phaser.Loader.File#loader
+         * @type {?Phaser.Loader.LoaderPlugin}
+         * @since 3.0.0
+         */
+        this.loader = null;
+
+        /**
+         * The XHR Loader instance that is loading this File.
+         *
+         * @name Phaser.Loader.File#xhrLoader
+         * @type {?Phaser.Loader.XHRLoader}
+         * @since 3.0.0
+         */
+        this.xhrLoader = null;
+
+        /**
+         * The current state of the file. One of the FILE_CONST values.
+         *
+         * @name Phaser.Loader.File#state
+         * @type {integer}
+         * @since 3.0.0
+         */
+        this.state = CONST.FILE_PENDING;
+
+        /**
+         * The total size of this file.
+         * Set by onProgress and only if loading via XHR.
+         *
+         * @name Phaser.Loader.File#bytesTotal
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.bytesTotal = 0;
+
+        /**
+         * Updated as the file loads.
+         * Only set if loading via XHR.
+         *
+         * @name Phaser.Loader.File#bytesLoaded
+         * @type {number}
+         * @default -1
+         * @since 3.0.0
+         */
+        this.bytesLoaded = -1;
+
+        /**
+         * A percentage value between 0 and 1 indicating how much of this file has loaded.
+         * Only set if loading via XHR.
+         *
+         * @name Phaser.Loader.File#percentComplete
+         * @type {float}
+         * @default -1
+         * @since 3.0.0
+         */
+        this.percentComplete = -1;
+
+        /**
+         * For CORs based loading.
+         * If this is undefined then the File will check BaseLoader.crossOrigin and use that (if set)
+         *
+         * @name Phaser.Loader.File#crossOrigin
+         * @type {string|undefined}
+         * @since 3.0.0
+         */
+        this.crossOrigin = undefined;
+
+        /**
+         * The processed file data, stored in here after the file has loaded.
+         *
+         * @name Phaser.Loader.File#data
+         * @type {any}
+         * @since 3.0.0
+         */
+        this.data = undefined;
+
+        /**
+         * A config object that can be used by file types to store transitional data.
+         *
+         * @name Phaser.Loader.File#config
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.config = GetFastValue(fileConfig, 'config', {});
+
+        /**
+         * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
+         * to the linked file. Set and used internally by the Loader.
+         *
+         * @name Phaser.Loader.File#linkFile
+         * @type {?Phaser.Loader.File}
+         * @since 3.0.0
+         */
+        this.linkFile = undefined;
+
+        /**
+         * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
+         * to the type of linked association. Set and used internally by the Loader.
+         *
+         * @name Phaser.Loader.File#linkType
+         * @type {string}
+         * @default ''
+         * @since 3.0.0
+         */
+        this.linkType = '';
+
+        /**
+         * If this is a link file, is this the parent or the sibbling?
+         *
+         * @name Phaser.Loader.File#linkParent
+         * @type {boolean}
+         * @default false
+         * @since 3.0.0
+         */
+        this.linkParent = false;
+    },
+
+    /**
+     * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
+     * to the linked file. Set and used internally by the Loader.
+     *
+     * @method Phaser.Loader.File#setLinkFile
+     * @since 3.0.0
+     * 
+     * @param {Phaser.Loader.File} fileB - The linked file.
+     * @param {string} linkType - The type of association.
+     */
+    setLinkFile: function (fileB, linkType)
+    {
+        this.linkFile = fileB;
+        fileB.linkFile = this;
+
+        this.linkType = linkType;
+        fileB.linkType = linkType;
+
+        this.linkParent = true;
+    },
+
+    /**
+     * Resets the XHRLoader instance.
+     *
+     * @method Phaser.Loader.File#resetXHR
+     * @since 3.0.0
+     */
+    resetXHR: function ()
+    {
+        this.xhrLoader.onload = undefined;
+        this.xhrLoader.onerror = undefined;
+        this.xhrLoader.onprogress = undefined;
+    },
+
+    /**
+     * Called by the Loader, starts the actual file downloading.
+     * During the load the methods onLoad, onProgress, etc are called based on the XHR events.
+     *
+     * @method Phaser.Loader.File#load
+     * @since 3.0.0
+     *
+     * @param {Phaser.Loader.LoaderPlugin} loader - The Loader that will load this File.
+     */
+    load: function (loader)
+    {
+        this.loader = loader;
+
+        if (this.state === CONST.FILE_POPULATED)
+        {
+            this.onComplete();
+
+            loader.nextFile(this);
+        }
+        else
+        {
+            this.src = GetURL(this, loader.baseURL);
+
+            if (this.src.indexOf('data:') === 0)
+            {
+                console.log('Local data URI');
+            }
+            else
+            {
+                this.xhrLoader = XHRLoader(this, loader.xhr);
+            }
+        }
+    },
+
+    /**
+     * Called when the file finishes loading, is sent a DOM ProgressEvent.
+     *
+     * @method Phaser.Loader.File#onLoad
+     * @since 3.0.0
+     *
+     * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this load.
+     */
+    onLoad: function (event)
+    {
+        this.resetXHR();
+
+        if (event.target &amp;&amp; event.target.status !== 200)
+        {
+            this.loader.nextFile(this, false);
+        }
+        else
+        {
+            this.loader.nextFile(this, true);
+        }
+    },
+
+    /**
+     * Called if the file errors while loading, is sent a DOM ProgressEvent.
+     *
+     * @method Phaser.Loader.File#onError
+     * @since 3.0.0
+     *
+     * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this error.
+     */
+    onError: function (event)
+    {
+        this.resetXHR();
+
+        this.loader.nextFile(this, false);
+    },
+
+    /**
+     * Called during the file load progress. Is sent a DOM ProgressEvent.
+     *
+     * @method Phaser.Loader.File#onProgress
+     * @since 3.0.0
+     *
+     * @param {ProgressEvent} event - The DOM ProgressEvent.
+     */
+    onProgress: function (event)
+    {
+        if (event.lengthComputable)
+        {
+            this.bytesLoaded = event.loaded;
+            this.bytesTotal = event.total;
+
+            this.percentComplete = Math.min((this.bytesLoaded / this.bytesTotal), 1);
+
+            // console.log(this.percentComplete + '% (' + this.bytesLoaded + ' bytes)');
+            this.loader.emit('fileprogress', this, this.percentComplete);
+        }
+    },
+
+    /**
+     * Usually overridden by the FileTypes and is called by Loader.finishedLoading.
+     * The callback is Loader.processUpdate
+     *
+     * @method Phaser.Loader.File#onProcess
+     * @since 3.0.0
+     *
+     * @param {function} callback - The callback to invoke to process this File.
+     */
+    onProcess: function (callback)
+    {
+        this.state = CONST.FILE_PROCESSING;
+
+        this.onComplete();
+
+        callback(this);
+    },
+
+    /**
+     * Called with the File has completed loading.
+     * Checks on the state of its linkfile, if set.
+     *
+     * @method Phaser.Loader.File#onComplete
+     * @since 3.0.0
+     */
+    onComplete: function ()
+    {
+        if (this.linkFile)
+        {
+            if (this.linkFile.state === CONST.FILE_WAITING_LINKFILE)
+            {
+                //  The linkfile has finished processing, and is waiting for this file, so let's do them both
+                this.state = CONST.FILE_COMPLETE;
+                this.linkFile.state = CONST.FILE_COMPLETE;
+            }
+            else
+            {
+                //  The linkfile still hasn't finished loading and/or processing yet
+                this.state = CONST.FILE_WAITING_LINKFILE;
+            }
+        }
+        else
+        {
+            this.state = CONST.FILE_COMPLETE;
+        }
+    }
+
+});
+
+/**
+ * Static method for creating object URL using URL API and setting it as image 'src' attribute.
+ * If URL API is not supported (usually on old browsers) it falls back to creating Base64 encoded url using FileReader.
+ *
+ * @method Phaser.Loader.File.createObjectURL
+ * @static
+ * @param {Image} image - Image object which 'src' attribute should be set to object URL.
+ * @param {Blob} blob - A Blob object to create an object URL for.
+ * @param {string} defaultType - Default mime type used if blob type is not available.
+ */
+File.createObjectURL = function (image, blob, defaultType)
+{
+    if (typeof URL === 'function')
+    {
+        image.src = URL.createObjectURL(blob);
+    }
+    else
+    {
+        var reader = new FileReader();
+
+        reader.onload = function ()
+        {
+            image.removeAttribute('crossOrigin');
+            image.src = 'data:' + (blob.type || defaultType) + ';base64,' + reader.result.split(',')[1];
+        };
+
+        reader.onerror = image.onerror;
+
+        reader.readAsDataURL(blob);
+    }
+};
+
+/**
+ * Static method for releasing an existing object URL which was previously created
+ * by calling {@link File#createObjectURL} method.
+ *
+ * @method Phaser.Loader.File.revokeObjectURL
+ * @static
+ * @param {Image} image - Image object which 'src' attribute should be revoked.
+ */
+File.revokeObjectURL = function (image)
+{
+    if (typeof URL === 'function')
+    {
+        URL.revokeObjectURL(image.src);
+    }
+};
+
+module.exports = File;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

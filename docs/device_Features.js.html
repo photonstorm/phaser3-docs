@@ -1,0 +1,324 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>device/Features.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">device/Features.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var OS = require('./OS');
+var Browser = require('./Browser');
+var CanvasPool = require('../display/canvas/CanvasPool');
+
+/**
+ * Determines the features of the browser running this Phaser Game instance.
+ * These values are read-only and populated during the boot sequence of the game.
+ * They are then referenced by internal game systems and are available for you to access
+ * via `this.sys.game.device.features` from within any Scene.
+ * 
+ * @name Phaser.Device.Features
+ * @since 3.0.0
+ * 
+ * @type {object}
+ * @property {?boolean} canvasBitBltShift - True if canvas supports a 'copy' bitblt onto itself when the source and destination regions overlap.
+ * @property {boolean} canvas - Is canvas available?
+ * @property {boolean} file - Is file available?
+ * @property {boolean} fileSystem - Is fileSystem available?
+ * @property {boolean} getUserMedia - Does the device support the getUserMedia API?
+ * @property {boolean} littleEndian - Is the device big or little endian? (only detected if the browser supports TypedArrays)
+ * @property {boolean} localStorage - Is localStorage available?
+ * @property {boolean} pointerLock - Is Pointer Lock available?
+ * @property {boolean} support32bit - Does the device context support 32bit pixel manipulation using array buffer views?
+ * @property {boolean} vibration - Does the device support the Vibration API?
+ * @property {boolean} webGL - Is webGL available?
+ * @property {boolean} worker - Is worker available?
+ */
+var Features = {
+
+    canvas: false,
+    canvasBitBltShift: null,
+    file: false,
+    fileSystem: false,
+    getUserMedia: true,
+    littleEndian: false,
+    localStorage: false,
+    pointerLock: false,
+    support32bit: false,
+    vibration: false,
+    webGL: false,
+    worker: false
+
+};
+
+// Check Little or Big Endian system.
+// @author Matt DesLauriers (@mattdesl)
+function checkIsLittleEndian ()
+{
+    var a = new ArrayBuffer(4);
+    var b = new Uint8Array(a);
+    var c = new Uint32Array(a);
+
+    b[0] = 0xa1;
+    b[1] = 0xb2;
+    b[2] = 0xc3;
+    b[3] = 0xd4;
+
+    if (c[0] === 0xd4c3b2a1)
+    {
+        return true;
+    }
+
+    if (c[0] === 0xa1b2c3d4)
+    {
+        return false;
+    }
+    else
+    {
+        //  Could not determine endianness
+        return null;
+    }
+}
+
+function init ()
+{
+    Features.canvas = !!window['CanvasRenderingContext2D'] || OS.cocoonJS;
+
+    try
+    {
+        Features.localStorage = !!localStorage.getItem;
+    }
+    catch (error)
+    {
+        Features.localStorage = false;
+    }
+
+    Features.file = !!window['File'] &amp;&amp; !!window['FileReader'] &amp;&amp; !!window['FileList'] &amp;&amp; !!window['Blob'];
+    Features.fileSystem = !!window['requestFileSystem'];
+
+    var isUint8 = false;
+
+    var testWebGL = function ()
+    {
+        if (window['WebGLRenderingContext'])
+        {
+            try
+            {
+                var canvas = CanvasPool.createWebGL(this);
+
+                if (OS.cocoonJS)
+                {
+                    canvas.screencanvas = false;
+                }
+
+                var ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+
+                var canvas2D = CanvasPool.create2D(this);
+
+                var ctx2D = canvas2D.getContext('2d');
+
+                //  Can't be done on a webgl context
+                var image = ctx2D.createImageData(1, 1);
+
+                /**
+                * Test to see if ImageData uses CanvasPixelArray or Uint8ClampedArray.
+                *
+                * @author Matt DesLauriers (@mattdesl)
+                */
+                isUint8 = image.data instanceof Uint8ClampedArray;
+
+                CanvasPool.remove(canvas);
+                CanvasPool.remove(canvas2D);
+
+                return !!ctx;
+            }
+            catch (e)
+            {
+                return false;
+            }
+        }
+
+        return false;
+    };
+
+    Features.webGL = testWebGL();
+
+    Features.worker = !!window['Worker'];
+
+    Features.pointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+    window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
+    Features.getUserMedia = Features.getUserMedia &amp;&amp; !!navigator.getUserMedia &amp;&amp; !!window.URL;
+
+    // Older versions of firefox (&lt; 21) apparently claim support but user media does not actually work
+    if (Browser.firefox &amp;&amp; Browser.firefoxVersion &lt; 21)
+    {
+        Features.getUserMedia = false;
+    }
+
+    // Excludes iOS versions as they generally wrap UIWebView (eg. Safari WebKit) and it
+    // is safer to not try and use the fast copy-over method.
+    if (!OS.iOS &amp;&amp; (Browser.ie || Browser.firefox || Browser.chrome))
+    {
+        Features.canvasBitBltShift = true;
+    }
+
+    // Known not to work
+    if (Browser.safari || Browser.mobileSafari)
+    {
+        Features.canvasBitBltShift = false;
+    }
+
+    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+
+    if (navigator.vibrate)
+    {
+        Features.vibration = true;
+    }
+
+    if (typeof ArrayBuffer !== 'undefined' &amp;&amp; typeof Uint8Array !== 'undefined' &amp;&amp; typeof Uint32Array !== 'undefined')
+    {
+        Features.littleEndian = checkIsLittleEndian();
+    }
+
+    Features.support32bit = (
+        typeof ArrayBuffer !== 'undefined' &amp;&amp;
+        typeof Uint8ClampedArray !== 'undefined' &amp;&amp;
+        typeof Int32Array !== 'undefined' &amp;&amp;
+        Features.littleEndian !== null &amp;&amp;
+        isUint8
+    );
+
+    return Features;
+}
+
+module.exports = init();
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

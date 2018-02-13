@@ -1,0 +1,389 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>gameobjects/graphics/GraphicsCanvasRenderer.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">gameobjects/graphics/GraphicsCanvasRenderer.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Commands = require('./Commands');
+var GameObject = require('../GameObject');
+
+/**
+ * Renders this Game Object with the Canvas Renderer to the given Camera.
+ * The object will not render if any of its renderFlags are set or it is being actively filtered out by the Camera.
+ * This method should not be called directly. It is a utility function of the Render module.
+ *
+ * @method Phaser.GameObjects.Graphics#renderCanvas
+ * @since 3.0.0
+ * @private
+ *
+ * @param {Phaser.Renderer.CanvasRenderer} renderer - A reference to the current active Canvas renderer.
+ * @param {Phaser.GameObjects.Graphics} src - The Game Object being rendered in this call.
+ * @param {number} interpolationPercentage - Reserved for future use and custom pipelines.
+ * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
+ * @param {[type]} renderTargetCtx - [description]
+ * @param {boolean} allowClip - [description]
+ */
+var GraphicsCanvasRenderer = function (renderer, src, interpolationPercentage, camera, renderTargetCtx, allowClip)
+{
+    if (GameObject.RENDER_MASK !== src.renderFlags || (src.cameraFilter > 0 &amp;&amp; (src.cameraFilter &amp; camera._id)))
+    {
+        return;
+    }
+
+    var cameraScrollX = camera.scrollX * src.scrollFactorX;
+    var cameraScrollY = camera.scrollY * src.scrollFactorY;
+    var srcX = src.x;
+    var srcY = src.y;
+    var srcScaleX = src.scaleX;
+    var srcScaleY = src.scaleY;
+    var srcRotation = src.rotation;
+    var commandBuffer = src.commandBuffer;
+    var ctx = renderTargetCtx || renderer.currentContext;
+    var lineAlpha = 1.0;
+    var fillAlpha = 1.0;
+    var lineColor = 0;
+    var fillColor = 0;
+    var lineWidth = 1.0;
+    var red = 0;
+    var green = 0;
+    var blue = 0;
+
+    //  Blend Mode
+    if (renderer.currentBlendMode !== src.blendMode)
+    {
+        renderer.currentBlendMode = src.blendMode;
+        ctx.globalCompositeOperation = renderer.blendModes[src.blendMode];
+    }
+
+    //  Alpha
+    if (renderer.currentAlpha !== src.alpha)
+    {
+        renderer.currentAlpha = src.alpha;
+        ctx.globalAlpha = src.alpha;
+    }
+
+    //  Smoothing
+    if (renderer.currentScaleMode !== src.scaleMode)
+    {
+        renderer.currentScaleMode = src.scaleMode;
+    }
+
+    ctx.save();
+    ctx.translate(srcX - cameraScrollX, srcY - cameraScrollY);
+    ctx.rotate(srcRotation);
+    ctx.scale(srcScaleX, srcScaleY);
+    ctx.fillStyle = '#fff';
+    ctx.globalAlpha = src.alpha;
+
+    for (var index = 0, length = commandBuffer.length; index &lt; length; ++index)
+    {
+        var commandID = commandBuffer[index];
+
+        switch (commandID)
+        {
+            case Commands.ARC:
+                ctx.arc(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2],
+                    commandBuffer[index + 3],
+                    commandBuffer[index + 4],
+                    commandBuffer[index + 5],
+                    commandBuffer[index + 6]
+                );
+                index += 6;
+                break;
+
+            case Commands.LINE_STYLE:
+                lineWidth = commandBuffer[index + 1];
+                lineColor = commandBuffer[index + 2];
+                lineAlpha = commandBuffer[index + 3];
+                red = ((lineColor &amp; 0xFF0000) >>> 16);
+                green = ((lineColor &amp; 0xFF00) >>> 8);
+                blue = (lineColor &amp; 0xFF);
+                ctx.strokeStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + lineAlpha + ')';
+                ctx.lineWidth = lineWidth;
+                index += 3;
+                break;
+
+            case Commands.FILL_STYLE:
+                fillColor = commandBuffer[index + 1];
+                fillAlpha = commandBuffer[index + 2];
+                red = ((fillColor &amp; 0xFF0000) >>> 16);
+                green = ((fillColor &amp; 0xFF00) >>> 8);
+                blue = (fillColor &amp; 0xFF);
+                ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + fillAlpha + ')';
+                index += 2;
+                break;
+
+            case Commands.BEGIN_PATH:
+                ctx.beginPath();
+                break;
+
+            case Commands.CLOSE_PATH:
+                ctx.closePath();
+                break;
+
+            case Commands.FILL_PATH:
+                if (!allowClip)
+                {
+                    ctx.fill();
+                }
+                break;
+
+            case Commands.STROKE_PATH:
+                if (!allowClip)
+                {
+                    ctx.stroke();
+                }
+                break;
+
+            case Commands.FILL_RECT:
+                if (!allowClip)
+                {
+                    ctx.fillRect(
+                        commandBuffer[index + 1],
+                        commandBuffer[index + 2],
+                        commandBuffer[index + 3],
+                        commandBuffer[index + 4]
+                    );
+                }
+                else
+                {
+                    ctx.rect(
+                        commandBuffer[index + 1],
+                        commandBuffer[index + 2],
+                        commandBuffer[index + 3],
+                        commandBuffer[index + 4]
+                    );
+                }
+                index += 4;
+                break;
+
+            case Commands.FILL_TRIANGLE:
+                ctx.beginPath();
+                ctx.moveTo(commandBuffer[index + 1], commandBuffer[index + 2]);
+                ctx.lineTo(commandBuffer[index + 3], commandBuffer[index + 4]);
+                ctx.lineTo(commandBuffer[index + 5], commandBuffer[index + 6]);
+                ctx.closePath();
+                if (!allowClip)
+                {
+                    ctx.fill();
+                }
+                index += 6;
+                break;
+
+            case Commands.STROKE_TRIANGLE:
+                ctx.beginPath();
+                ctx.moveTo(commandBuffer[index + 1], commandBuffer[index + 2]);
+                ctx.lineTo(commandBuffer[index + 3], commandBuffer[index + 4]);
+                ctx.lineTo(commandBuffer[index + 5], commandBuffer[index + 6]);
+                ctx.closePath();
+                if (!allowClip)
+                {
+                    ctx.stroke();
+                }
+                index += 6;
+                break;
+
+            case Commands.LINE_TO:
+                ctx.lineTo(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2]
+                );
+                index += 2;
+                break;
+
+            case Commands.MOVE_TO:
+                ctx.moveTo(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2]
+                );
+                index += 2;
+                break;
+
+            case Commands.LINE_FX_TO:
+                ctx.lineTo(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2]
+                );
+                index += 5;
+                break;
+
+            case Commands.MOVE_FX_TO:
+                ctx.moveTo(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2]
+                );
+                index += 5;
+                break;
+
+            case Commands.SAVE:
+                ctx.save();
+                break;
+
+            case Commands.RESTORE:
+                ctx.restore();
+                break;
+
+            case Commands.TRANSLATE:
+                ctx.translate(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2]
+                );
+                index += 2;
+                break;
+
+            case Commands.SCALE:
+                ctx.scale(
+                    commandBuffer[index + 1],
+                    commandBuffer[index + 2]
+                );
+                index += 2;
+                break;
+
+            case Commands.ROTATE:
+                ctx.rotate(
+                    commandBuffer[index + 1]
+                );
+                index += 1;
+                break;
+
+            default:
+                console.error('Phaser: Invalid Graphics Command ID ' + commandID);
+                break;
+        }
+    }
+
+    ctx.restore();
+};
+
+module.exports = GraphicsCanvasRenderer;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

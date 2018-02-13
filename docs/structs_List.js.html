@@ -1,0 +1,1038 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>structs/List.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">structs/List.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+
+/**
+ * @classdesc
+ * [description]
+ *
+ * @class List
+ * @memberOf Phaser.Structs
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {any} parent - [description]
+ */
+var List = new Class({
+
+    initialize:
+
+    function List (parent)
+    {
+        /**
+         * The parent of this list.
+         *
+         * @name Phaser.Structs.List#parent
+         * @type {any}
+         * @since 3.0.0
+         */
+        this.parent = parent;
+
+        /**
+         * The objects that belong to this collection.
+         *
+         * @name Phaser.Structs.List#list
+         * @type {array}
+         * @default []
+         * @since 3.0.0
+         */
+        this.list = [];
+
+        /**
+         * [description]
+         *
+         * @name Phaser.Structs.List#position
+         * @type {integer}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.position = 0;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#add
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {object} [description]
+     */
+    add: function (child)
+    {
+        //  Is child already in this display list?
+
+        if (this.getIndex(child) === -1)
+        {
+            this.list.push(child);
+        }
+
+        return child;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#addAt
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     * @param {integer} index - [description]
+     *
+     * @return {object} [description]
+     */
+    addAt: function (child, index)
+    {
+        if (index === undefined) { index = 0; }
+
+        if (this.list.length === 0)
+        {
+            return this.add(child);
+        }
+
+        if (index >= 0 &amp;&amp; index &lt;= this.list.length)
+        {
+            if (this.getIndex(child) === -1)
+            {
+                this.list.splice(index, 0, child);
+            }
+        }
+
+        return child;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#addMultiple
+     * @since 3.0.0
+     *
+     * @param {array} children - [description]
+     *
+     * @return {array} [description]
+     */
+    addMultiple: function (children)
+    {
+        if (Array.isArray(children))
+        {
+            for (var i = 0; i &lt; children.length; i++)
+            {
+                this.add(children[i]);
+            }
+        }
+
+        return children;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#getAt
+     * @since 3.0.0
+     *
+     * @param {integer} index - [description]
+     *
+     * @return {object} [description]
+     */
+    getAt: function (index)
+    {
+        return this.list[index];
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#getIndex
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {integer} [description]
+     */
+    getIndex: function (child)
+    {
+        //  Return -1 if given child isn't a child of this display list
+        return this.list.indexOf(child);
+    },
+
+    /**
+     * Given an array of objects, sort the array and return it,
+     * so that the objects are in index order with the lowest at the bottom.
+     *
+     * @method Phaser.Structs.List#sort
+     * @since 3.0.0
+     *
+     * @param {array} children - [description]
+     *
+     * @return {array} [description]
+     */
+    sort: function (children)
+    {
+        if (children === undefined) { children = this.list; }
+
+        return children.sort(this.sortIndexHandler.bind(this));
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#sortIndexHandler
+     * @since 3.0.0
+     *
+     * @param {object} childA - [description]
+     * @param {object} childB - [description]
+     *
+     * @return {integer} [description]
+     */
+    sortIndexHandler: function (childA, childB)
+    {
+        //  The lower the index, the lower down the display list they are
+        var indexA = this.getIndex(childA);
+        var indexB = this.getIndex(childB);
+
+        if (indexA &lt; indexB)
+        {
+            return -1;
+        }
+        else if (indexA > indexB)
+        {
+            return 1;
+        }
+
+        //  Technically this shouldn't happen, but if the GO wasn't part of this display list then it'll
+        //  have an index of -1, so in some cases it can
+        return 0;
+    },
+
+    /**
+     * Gets the first item from the set based on the property strictly equaling the value given.
+     * Returns null if not found.
+     *
+     * @method Phaser.Structs.List#getByKey
+     * @since 3.0.0
+     *
+     * @param {string} property - The property to check against the value.
+     * @param {any} value - The value to check if the property strictly equals.
+     *
+     * @return {any} The item that was found, or null if nothing matched.
+     */
+    getByKey: function (property, value)
+    {
+        for (var i = 0; i &lt; this.list.length; i++)
+        {
+            if (this.list[i][property] === value)
+            {
+                return this.list[i];
+            }
+        }
+
+        return null;
+    },
+
+    /**
+     * Searches the Group for the first instance of a child with the `name`
+     * property matching the given argument. Should more than one child have
+     * the same name only the first instance is returned.
+     *
+     * @method Phaser.Structs.List#getByName
+     * @since 3.0.0
+     *
+     * @param {string} name - The name to search for.
+     *
+     * @return {any} The first child with a matching name, or null if none were found.
+     */
+    getByName: function (name)
+    {
+        return this.getByKey('name', name);
+    },
+
+    /**
+     * Returns a random child from the group.
+     *
+     * @method Phaser.Structs.List#getRandom
+     * @since 3.0.0
+     *
+     * @param {integer} [startIndex=0] - Offset from the front of the group (lowest child).
+     * @param {integer} [length=(to top)] - Restriction on the number of values you want to randomly select from.
+     *
+     * @return {any} A random child of this Group.
+     */
+    getRandom: function (startIndex, length)
+    {
+        if (startIndex === undefined) { startIndex = 0; }
+        if (length === undefined) { length = this.list.length; }
+
+        if (length === 0 || length > this.list.length)
+        {
+            return null;
+        }
+
+        var randomIndex = startIndex + Math.floor(Math.random() * length);
+
+        return this.list[randomIndex];
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#getFirst
+     * @since 3.0.0
+     *
+     * @param {[type]} property - [description]
+     * @param {[type]} value - [description]
+     * @param {[type]} startIndex - [description]
+     * @param {[type]} endIndex - [description]
+     *
+     * @return {[type]} [description]
+     */
+    getFirst: function (property, value, startIndex, endIndex)
+    {
+        if (startIndex === undefined) { startIndex = 0; }
+        if (endIndex === undefined) { endIndex = this.list.length; }
+
+        for (var i = startIndex; i &lt; endIndex; i++)
+        {
+            var child = this.list[i];
+
+            if (child[property] === value)
+            {
+                return child;
+            }
+        }
+
+        return null;
+    },
+
+    /**
+     * Returns all children in this List.
+     *
+     * You can optionally specify a matching criteria using the `property` and `value` arguments.
+     *
+     * For example: `getAll('visible', true)` would return only children that have their visible property set.
+     *
+     * Optionally you can specify a start and end index. For example if this List had 100 children,
+     * and you set `startIndex` to 0 and `endIndex` to 50, it would return matches from only
+     * the first 50 children in the List.
+     *
+     * @method Phaser.Structs.List#getAll
+     * @since 3.0.0
+     *
+     * @param {string} [property] - An optional property to test against the value argument.
+     * @param {any} [value] - If property is set then Child.property must strictly equal this value to be included in the results.
+     * @param {integer} [startIndex=0] - The first child index to start the search from.
+     * @param {integer} [endIndex] - The last child index to search up until.
+     *
+     * @return {array} [description]
+     */
+    getAll: function (property, value, startIndex, endIndex)
+    {
+        if (startIndex === undefined) { startIndex = 0; }
+        if (endIndex === undefined) { endIndex = this.list.length; }
+
+        var output = [];
+
+        for (var i = startIndex; i &lt; endIndex; i++)
+        {
+            var child = this.list[i];
+
+            if (property)
+            {
+                if (child[property] === value)
+                {
+                    output.push(child);
+                }
+            }
+            else
+            {
+                output.push(child);
+            }
+        }
+
+        return output;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#count
+     * @since 3.0.0
+     *
+     * @param {string} property - [description]
+     * @param {any} value - [description]
+     *
+     * @return {integer} [description]
+     */
+    count: function (property, value)
+    {
+        var total = 0;
+
+        for (var i = 0; i &lt; this.list.length; i++)
+        {
+            var child = this.list[i];
+
+            if (child[property] === value)
+            {
+                total++;
+            }
+        }
+
+        return total;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#swap
+     * @since 3.0.0
+     *
+     * @param {object} child1 - [description]
+     * @param {object} child2 - [description]
+     */
+    swap: function (child1, child2)
+    {
+        if (child1 === child2)
+        {
+            return;
+        }
+
+        var index1 = this.getIndex(child1);
+        var index2 = this.getIndex(child2);
+
+        if (index1 &lt; 0 || index2 &lt; 0)
+        {
+            throw new Error('List.swap: Supplied objects must be children of the same list');
+        }
+
+        this.list[index1] = child2;
+        this.list[index2] = child1;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#moveTo
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     * @param {integer} index - [description]
+     *
+     * @return {object} [description]
+     */
+    moveTo: function (child, index)
+    {
+        var currentIndex = this.getIndex(child);
+
+        if (currentIndex === -1 || index &lt; 0 || index >= this.list.length)
+        {
+            throw new Error('List.moveTo: The supplied index is out of bounds');
+        }
+
+        //  Remove
+        this.list.splice(currentIndex, 1);
+
+        //  Add in new location
+        this.list.splice(index, 0, child);
+
+        return child;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#remove
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {object} [description]
+     */
+    remove: function (child)
+    {
+        var index = this.list.indexOf(child);
+
+        if (index !== -1)
+        {
+            this.list.splice(index, 1);
+        }
+        
+        return child;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#removeAt
+     * @since 3.0.0
+     *
+     * @param {integer} index - [description]
+     *
+     * @return {object} [description]
+     */
+    removeAt: function (index)
+    {
+        var child = this.list[index];
+
+        if (child)
+        {
+            this.children.splice(index, 1);
+        }
+
+        return child;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#removeBetween
+     * @since 3.0.0
+     *
+     * @param {integer} beginIndex - [description]
+     * @param {integer} endIndex - [description]
+     *
+     * @return {array} [description]
+     */
+    removeBetween: function (beginIndex, endIndex)
+    {
+        if (beginIndex === undefined) { beginIndex = 0; }
+        if (endIndex === undefined) { endIndex = this.list.length; }
+
+        var range = endIndex - beginIndex;
+
+        if (range > 0 &amp;&amp; range &lt;= endIndex)
+        {
+            var removed = this.list.splice(beginIndex, range);
+
+            return removed;
+        }
+        else if (range === 0 &amp;&amp; this.list.length === 0)
+        {
+            return [];
+        }
+        else
+        {
+            throw new Error('List.removeBetween: Range Error, numeric values are outside the acceptable range');
+        }
+    },
+
+    /**
+     * Removes all the items.
+     *
+     * @method Phaser.Structs.List#removeAll
+     * @since 3.0.0
+     *
+     * @return {Phaser.Structs.List} This List object.
+     */
+    removeAll: function ()
+    {
+        var i = this.list.length;
+
+        while (i--)
+        {
+            this.remove(this.list[i]);
+        }
+
+        return this;
+    },
+
+    /**
+     * Brings the given child to the top of this List.
+     *
+     * @method Phaser.Structs.List#bringToTop
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {object} [description]
+     */
+    bringToTop: function (child)
+    {
+        if (this.getIndex(child) &lt; this.list.length)
+        {
+            this.remove(child);
+            this.add(child);
+        }
+
+        return child;
+    },
+
+    /**
+     * Sends the given child to the bottom of this List.
+     *
+     * @method Phaser.Structs.List#sendToBack
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {object} [description]
+     */
+    sendToBack: function (child)
+    {
+        if (this.getIndex(child) > 0)
+        {
+            this.remove(child);
+            this.addAt(child, 0);
+        }
+
+        return child;
+    },
+
+    /**
+     * Moves the given child up one place in this group unless it's already at the top.
+     *
+     * @method Phaser.Structs.List#moveUp
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {object} [description]
+     */
+    moveUp: function (child)
+    {
+        var a = this.getIndex(child);
+
+        if (a !== -1 &amp;&amp; a &lt; this.list.length - 1)
+        {
+            var b = this.getAt(a + 1);
+
+            if (b)
+            {
+                this.swap(child, b);
+            }
+        }
+
+        return child;
+    },
+
+    /**
+     * Moves the given child down one place in this group unless it's already at the bottom.
+     *
+     * @method Phaser.Structs.List#moveDown
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {object} [description]
+     */
+    moveDown: function (child)
+    {
+        var a = this.getIndex(child);
+
+        if (a > 0)
+        {
+            var b = this.getAt(a - 1);
+
+            if (b)
+            {
+                this.swap(child, b);
+            }
+        }
+
+        return child;
+    },
+
+    /**
+     * Reverses the order of all children in this List.
+     *
+     * @method Phaser.Structs.List#reverse
+     * @since 3.0.0
+     *
+     * @return {Phaser.Structs.List} This List object.
+     */
+    reverse: function ()
+    {
+        this.list.reverse();
+
+        return this;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#shuffle
+     * @since 3.0.0
+     *
+     * @return {Phaser.Structs.List} This List object.
+     */
+    shuffle: function ()
+    {
+        for (var i = this.list.length - 1; i > 0; i--)
+        {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = this.list[i];
+            this.list[i] = this.list[j];
+            this.list[j] = temp;
+        }
+
+        return this;
+    },
+
+    /**
+     * Replaces a child of this List with the given newChild. The newChild cannot be a member of this List.
+     *
+     * @method Phaser.Structs.List#replace
+     * @since 3.0.0
+     *
+     * @param {object} oldChild - The child in this List that will be replaced.
+     * @param {object} newChild - The child to be inserted into this List.
+     *
+     * @return {object} Returns the oldChild that was replaced within this group.
+     */
+    replace: function (oldChild, newChild)
+    {
+        var index = this.getIndex(oldChild);
+
+        if (index !== -1)
+        {
+            this.remove(oldChild);
+
+            this.addAt(newChild, index);
+
+            return oldChild;
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#exists
+     * @since 3.0.0
+     *
+     * @param {object} child - [description]
+     *
+     * @return {boolean} True if the item is found in the list, otherwise false.
+     */
+    exists: function (child)
+    {
+        return (this.list.indexOf(child) > -1);
+    },
+
+    /**
+     * Sets the property `key` to the given value on all members of this List.
+     *
+     * @method Phaser.Structs.List#setAll
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     * @param {any} value - [description]
+     */
+    setAll: function (key, value)
+    {
+        for (var i = 0; i &lt; this.list.length; i++)
+        {
+            if (this.list[i])
+            {
+                this.list[i][key] = value;
+            }
+        }
+    },
+
+    /**
+     * Passes all children to the given callback.
+     *
+     * @method Phaser.Structs.List#each
+     * @since 3.0.0
+     *
+     * @param {function} callback - The function to call.
+     * @param {object} [thisArg] - Value to use as `this` when executing callback.
+     * @param {...*} [arguments] - Additional arguments that will be passed to the callback, after the child.
+     */
+    each: function (callback, thisArg)
+    {
+        var args = [ null ];
+
+        for (var i = 1; i &lt; arguments.length; i++)
+        {
+            args.push(arguments[i]);
+        }
+
+        for (i = 0; i &lt; this.list.length; i++)
+        {
+            args[0] = this.list[i];
+            callback.apply(thisArg, args);
+        }
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#shutdown
+     * @since 3.0.0
+     */
+    shutdown: function ()
+    {
+        this.removeAll();
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Structs.List#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.removeAll();
+
+        this.list = [];
+
+        this.parent = null;
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.Structs.List#length
+     * @type {integer}
+     * @readOnly
+     * @since 3.0.0
+     */
+    length: {
+
+        get: function ()
+        {
+            return this.list.length;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.Structs.List#first
+     * @type {integer}
+     * @readOnly
+     * @since 3.0.0
+     */
+    first: {
+
+        get: function ()
+        {
+            this.position = 0;
+
+            if (this.list.length > 0)
+            {
+                return this.list[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.Structs.List#last
+     * @type {integer}
+     * @readOnly
+     * @since 3.0.0
+     */
+    last: {
+
+        get: function ()
+        {
+            if (this.list.length > 0)
+            {
+                this.position = this.list.length - 1;
+
+                return this.list[this.position];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.Structs.List#next
+     * @type {integer}
+     * @readOnly
+     * @since 3.0.0
+     */
+    next: {
+
+        get: function ()
+        {
+            if (this.position &lt; this.list.length)
+            {
+                this.position++;
+
+                return this.list[this.position];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.Structs.List#previous
+     * @type {integer}
+     * @readOnly
+     * @since 3.0.0
+     */
+    previous: {
+
+        get: function ()
+        {
+            if (this.position > 0)
+            {
+                this.position--;
+
+                return this.list[this.position];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    }
+
+});
+
+module.exports = List;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

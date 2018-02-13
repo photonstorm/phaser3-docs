@@ -1,0 +1,347 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>cache/CacheManager.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">cache/CacheManager.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var BaseCache = require('./BaseCache');
+var Class = require('../utils/Class');
+
+/**
+ * @classdesc
+ * The Cache Manager is the global cache owned and maintained by the Game instance.
+ * 
+ * Various systems, such as the file Loader, rely on this cache in order to store the files
+ * it has loaded. The manager itself doesn't store any files, but instead owns multiple BaseCache
+ * instances, one per type of file. You can also add your own custom caches.
+ *
+ * @class CacheManager
+ * @memberOf Phaser.Cache
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Game} game - A reference to the Phaser.Game instance that owns this CacheManager.
+ */
+var CacheManager = new Class({
+
+    initialize:
+
+    function CacheManager (game)
+    {
+        /**
+         * A reference to the Phaser.Game instance that owns this CacheManager.
+         *
+         * @name Phaser.Cache.CacheManager#game
+         * @type {Phaser.Game}
+         * @protected
+         * @since 3.0.0
+         */
+        this.game = game;
+
+        /**
+         * A Cache storing all binary files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#binary
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.binary = new BaseCache();
+
+        /**
+         * A Cache storing all bitmap font data files, typically added via the Loader.
+         * Only the font data is stored in this cache, the textures are part of the Texture Manager.
+         *
+         * @name Phaser.Cache.CacheManager#bitmapFont
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.bitmapFont = new BaseCache();
+
+        /**
+         * A Cache storing all JSON data files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#json
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.json = new BaseCache();
+
+        /**
+         * A Cache storing all physics data files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#physics
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.physics = new BaseCache();
+
+        /**
+         * A Cache storing all shader source files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#shader
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.shader = new BaseCache();
+
+        /**
+         * A Cache storing all non-streaming audio files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#audio
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.audio = new BaseCache();
+
+        /**
+         * A Cache storing all text files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#text
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.text = new BaseCache();
+
+        /**
+         * A Cache storing all WaveFront OBJ files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#obj
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.obj = new BaseCache();
+
+        /**
+         * A Cache storing all tilemap data files, typically added via the Loader.
+         * Only the data is stored in this cache, the textures are part of the Texture Manager.
+         *
+         * @name Phaser.Cache.CacheManager#tilemap
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.tilemap = new BaseCache();
+
+        /**
+         * A Cache storing all xml data files, typically added via the Loader.
+         *
+         * @name Phaser.Cache.CacheManager#xml
+         * @type {Phaser.Cache.BaseCache}
+         * @protected
+         * @since 3.0.0
+         */
+        this.xml = new BaseCache();
+
+        /**
+         * An object that contains your own custom BaseCache entries.
+         * Add to this via the `addCustom` method.
+         *
+         * @name Phaser.Cache.CacheManager#custom
+         * @type {object.&lt;Phaser.Cache.BaseCache>}
+         * @protected
+         * @since 3.0.0
+         */
+        this.custom = {};
+
+        this.game.events.once('destroy', this.destroy, this);
+    },
+
+    /**
+     * Add your own custom Cache for storing your own files.
+     * The cache will be available under `Cache.custom.key`.
+     * The cache will only be created if the key is not already in use.
+     *
+     * @method Phaser.Cache.CacheManager#addCustom
+     * @since 3.0.0
+     *
+     * @param {string} key - The unique key of your custom cache.
+     *
+     * @return {Phaser.Cache.BaseCache} A reference to the BaseCache that was created. If the key was already in use, a reference to the existing cache is returned instead.
+     */
+    addCustom: function (key)
+    {
+        if (!this.custom.hasOwnProperty(key))
+        {
+            this.custom[key] = new BaseCache();
+        }
+
+        return this.custom[key];
+    },
+
+    /**
+     * Removes all entries from all BaseCaches and destroys all custom caches.
+     *
+     * @method Phaser.Cache.CacheManager#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        var keys = [
+            'binary',
+            'bitmapFont',
+            'json',
+            'physics',
+            'shader',
+            'audio',
+            'text',
+            'obj',
+            'tilemap',
+            'xml'
+        ];
+
+        for (var i = 0; i &lt; keys.length; i++)
+        {
+            this[keys[i]].destroy();
+            this[keys[i]] = null;
+        }
+
+        for (var key in this.custom)
+        {
+            this.custom[key].destroy();
+        }
+
+        this.custom = null;
+
+        this.game = null;
+    }
+
+});
+
+module.exports = CacheManager;
+</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

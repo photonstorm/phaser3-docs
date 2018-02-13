@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>Phaser.Device</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #0f0019;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #0f0019;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #0f0019;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #0f0019;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Phaser
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">namespace</span>
+				<h1><span class="ancestors"><a href="Phaser.html">Phaser</a>.</span><span class="name">Device</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-9 main-content">
+						<ol class="breadcrumb">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
+							<li class="active"><a href="Phaser.html">Phaser</a>.Device</li>
+						</ol>
+					<section>
+							<dl class="symbol primary">
+								<dt class="symbol-title namespace">
+			<h2 class="namespace"><span class="name">Device</span></h2>
+</dt>
+<dd class="symbol-details namespace" style="max-height: 9999px;">
+	<div class="symbol-details-inner">
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_index.js.html">device/index.js</a>, <a href="device_index.js.html#line-12">line 12</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+							</dl>
+							<article class="secondary">
+									<h3>Members</h3>
+									<dl class="symbol">
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".Audio" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">Audio</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the audio playback capabilities of the device running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.audio` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>audioData</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play HTML Audio tags?
+							</td>
+						</tr>
+						<tr>
+								<td><code>dolby</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play EC-3 Dolby Digital Plus files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>m4a</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device can play m4a files.
+							</td>
+						</tr>
+						<tr>
+								<td><code>mp3</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play mp3 files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>ogg</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play ogg files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>opus</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play opus files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>wav</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play wav files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>webAudio</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Does this device have the Web Audio API?
+							</td>
+						</tr>
+						<tr>
+								<td><code>webm</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play webm files?
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_Audio.js.html">device/Audio.js</a>, <a href="device_Audio.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".Browser" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">Browser</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the browser type and version running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.browser` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>chrome</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Chrome.
+							</td>
+						</tr>
+						<tr>
+								<td><code>edge</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Microsoft Edge browser.
+							</td>
+						</tr>
+						<tr>
+								<td><code>firefox</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Firefox.
+							</td>
+						</tr>
+						<tr>
+								<td><code>ie</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Internet Explorer 11 or less (not Edge).
+							</td>
+						</tr>
+						<tr>
+								<td><code>mobileSafari</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Mobile Safari.
+							</td>
+						</tr>
+						<tr>
+								<td><code>opera</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Opera.
+							</td>
+						</tr>
+						<tr>
+								<td><code>safari</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in Safari.
+							</td>
+						</tr>
+						<tr>
+								<td><code>silk</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running in the Silk browser (as used on the Amazon Kindle)
+							</td>
+						</tr>
+						<tr>
+								<td><code>trident</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running a Trident version of Internet Explorer (IE11+)
+							</td>
+						</tr>
+						<tr>
+								<td><code>chromeVersion</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									If running in Chrome this will contain the major version number.
+							</td>
+						</tr>
+						<tr>
+								<td><code>firefoxVersion</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									If running in Firefox this will contain the major version number.
+							</td>
+						</tr>
+						<tr>
+								<td><code>ieVersion</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									If running in Internet Explorer this will contain the major version number. Beyond IE10 you should use Browser.trident and Browser.tridentVersion.
+							</td>
+						</tr>
+						<tr>
+								<td><code>safariVersion</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									If running in Safari this will contain the major version number.
+							</td>
+						</tr>
+						<tr>
+								<td><code>tridentVersion</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									If running in Internet Explorer 11 this will contain the major version number. See <a href="http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_Browser.js.html">device/Browser.js</a>, <a href="device_Browser.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".CanvasFeatures" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">CanvasFeatures</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the canvas features of the browser running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.canvasFeatures` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>supportInverseAlpha</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if the browser supports inversed alpha.
+							</td>
+						</tr>
+						<tr>
+								<td><code>supportNewBlendModes</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if the browser supports new canvas blend modes.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_CanvasFeatures.js.html">device/CanvasFeatures.js</a>, <a href="device_CanvasFeatures.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".Features" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">Features</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the features of the browser running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.features` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>canvasBitBltShift</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;nullable&gt;<br/></td>
+							<td class="last">
+									True if canvas supports a 'copy' bitblt onto itself when the source and destination regions overlap.
+							</td>
+						</tr>
+						<tr>
+								<td><code>canvas</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is canvas available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>file</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is file available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>fileSystem</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is fileSystem available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>getUserMedia</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Does the device support the getUserMedia API?
+							</td>
+						</tr>
+						<tr>
+								<td><code>littleEndian</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is the device big or little endian? (only detected if the browser supports TypedArrays)
+							</td>
+						</tr>
+						<tr>
+								<td><code>localStorage</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is localStorage available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>pointerLock</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is Pointer Lock available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>support32bit</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Does the device context support 32bit pixel manipulation using array buffer views?
+							</td>
+						</tr>
+						<tr>
+								<td><code>vibration</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Does the device support the Vibration API?
+							</td>
+						</tr>
+						<tr>
+								<td><code>webGL</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is webGL available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>worker</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is worker available?
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_Features.js.html">device/Features.js</a>, <a href="device_Features.js.html#line-11">line 11</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".Fullscreen" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">Fullscreen</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the full screen support of the browser running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.fullscreen` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>available</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Does the browser support the Full Screen API?
+							</td>
+						</tr>
+						<tr>
+								<td><code>keyboard</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Does the browser support access to the Keyboard during Full Screen mode?
+							</td>
+						</tr>
+						<tr>
+								<td><code>cancel</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									If the browser supports the Full Screen API this holds the call you need to use to cancel it.
+							</td>
+						</tr>
+						<tr>
+								<td><code>request</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									If the browser supports the Full Screen API this holds the call you need to use to activate it.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_Fullscreen.js.html">device/Fullscreen.js</a>, <a href="device_Fullscreen.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".Input" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">Input</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the input support of the browser running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.input` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>wheelType</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes">&lt;nullable&gt;<br/></td>
+							<td class="last">
+									The newest type of Wheel/Scroll event supported: 'wheel', 'mousewheel', 'DOMMouseScroll'
+							</td>
+						</tr>
+						<tr>
+								<td><code>gamepads</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is navigator.getGamepads available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>mspointer</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is mspointer available?
+							</td>
+						</tr>
+						<tr>
+								<td><code>touch</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Is touch available?
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_Input.js.html">device/Input.js</a>, <a href="device_Input.js.html#line-10">line 10</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".OS" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">OS</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the operating system of the device running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.os` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>android</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on android?
+							</td>
+						</tr>
+						<tr>
+								<td><code>chromeOS</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on chromeOS?
+							</td>
+						</tr>
+						<tr>
+								<td><code>cocoonJS</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under CocoonJS?
+							</td>
+						</tr>
+						<tr>
+								<td><code>cocoonJSApp</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is this game running with CocoonJS.App?
+							</td>
+						</tr>
+						<tr>
+								<td><code>cordova</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under Apache Cordova?
+							</td>
+						</tr>
+						<tr>
+								<td><code>crosswalk</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under the Intel Crosswalk XDK?
+							</td>
+						</tr>
+						<tr>
+								<td><code>desktop</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on a desktop?
+							</td>
+						</tr>
+						<tr>
+								<td><code>ejecta</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under Ejecta?
+							</td>
+						</tr>
+						<tr>
+								<td><code>electron</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under GitHub Electron?
+							</td>
+						</tr>
+						<tr>
+								<td><code>iOS</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on iOS?
+							</td>
+						</tr>
+						<tr>
+								<td><code>iPad</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on iPad?
+							</td>
+						</tr>
+						<tr>
+								<td><code>iPhone</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on iPhone?
+							</td>
+						</tr>
+						<tr>
+								<td><code>kindle</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on an Amazon Kindle?
+							</td>
+						</tr>
+						<tr>
+								<td><code>linux</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on linux?
+							</td>
+						</tr>
+						<tr>
+								<td><code>macOS</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on macOS?
+							</td>
+						</tr>
+						<tr>
+								<td><code>node</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under Node.js?
+							</td>
+						</tr>
+						<tr>
+								<td><code>nodeWebkit</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is the game running under Node-Webkit?
+							</td>
+						</tr>
+						<tr>
+								<td><code>webApp</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Set to true if running as a WebApp, i.e. within a WebView
+							</td>
+						</tr>
+						<tr>
+								<td><code>windows</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on windows?
+							</td>
+						</tr>
+						<tr>
+								<td><code>windowsPhone</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Is running on a Windows Phone?
+							</td>
+						</tr>
+						<tr>
+								<td><code>iOSVersion</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									If running in iOS this will contain the major version number.
+							</td>
+						</tr>
+						<tr>
+								<td><code>pixelRatio</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									PixelRatio of the host device?
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_OS.js.html">device/OS.js</a>, <a href="device_OS.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id=".Video" class="member public"><span class="signature-attribs">&lt;static> </span><span class="name">Video</span><span class="signature-type"> :object</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines the video support of the browser running this Phaser Game instance.These values are read-only and populated during the boot sequence of the game.They are then referenced by internal game systems and are available for you to accessvia `this.sys.game.device.video` from within any Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>h264Video</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play h264 mp4 video files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>hlsVideo</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play hls video files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>mp4Video</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play h264 mp4 video files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>oggVideo</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play ogg video files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>vp9Video</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play vp9 video files?
+							</td>
+						</tr>
+						<tr>
+								<td><code>webmVideo</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Can this device play webm video files?
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="device_Video.js.html">device/Video.js</a>, <a href="device_Video.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+									</dl>
+							</article>
+					</section>
+			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
+		</div>
+	</div>
+	<footer>
+				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
+				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
