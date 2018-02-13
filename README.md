@@ -1,10 +1,5 @@
-# phaser3-docs
+# Phaser 3 API Documentation
 
-Phaser 3 Documentation Generator WIP
+Read the documentation by pointing your browser to `docs/`
 
-References:
-
-https://github.com/jonschlinkert/extract-comments
-https://github.com/eslint/doctrine
-https://nodejs.org/api/fs.html
-https://github.com/jprichardson/node-fs-extra
+Generate new docs by running `npm run gen` (and waiting a long time, it takes over an hour to build)

@@ -1,5 +1,4 @@
 **/.*
-dist/
-docs/
-merge/
-examples/
+out/
+percy/
+src/
