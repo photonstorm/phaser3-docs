@@ -85,18 +85,20 @@
         "includeDate": true,
         "collapseSymbols": false,
         "methodHeadingReturns": false,
-        "sort": "longname, version, since"
+        "sort": "longname, version, since",
+        "theme": "cerulean"
     },
     "opts": {
-        "debug": false,
+        "debug": true,
         "destination": "./out/",
         "encoding": "utf8",
-        "outputSourceFiles": true,
+        "outputSourceFiles": false,
         "outputSourcePath": true,
         "recurse": true,
         "private": false,
         "lenient": true,
         "sourceType": "script",
-        "template": "node_modules/foodoc/template"
+        "template": "node_modules/ink-docstrap/template",
+        "_template": "node_modules/foodoc/template"
     }
 }

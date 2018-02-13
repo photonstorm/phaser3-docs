@@ -8,21 +8,7 @@
     },
     "source": {
         "include": [
-            "../phaser/src/phaser.js",
-            "../phaser/src/gameobjects/index.js",
-            "../phaser/src/gameobjects/components/",
-            "../phaser/src/gameobjects/GameObject.js",
-            "../phaser/src/gameobjects/GameObjectFactory.js",
-            "../phaser/src/gameobjects/blitter/",
-            "../phaser/src/gameobjects/bitmaptext/dynamic/",
-            "../phaser/src/gameobjects/bitmaptext/static/"
-        ],
-        "test": [
-            "../phaser/src/actions/",
-            "../phaser/src/math/",
-            "../phaser/src/utils/",
-            "../phaser/src/geom/index.js",
-            "../phaser/src/geom/circle/"
+            "../phaser/src/"
         ],
         "exclude": [
             "../phaser/src/physics/matter-js/lib",
@@ -36,7 +22,7 @@
     ],
     "opts": {
         "debug": true,
-        "destination": "./out/docs.json",
+        "destination": "./json/phaser.json",
         "encoding": "utf8",
         "outputSourceFiles": false,
         "outputSourcePath": true,
