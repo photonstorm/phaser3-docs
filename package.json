@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node src/index.js",
     "gen": "jsdoc -c jsdoc.conf.json -R ../phaser/README.md",
-    "json": "jsdoc -c jsdoc.data.json"
+    "json": "jsdoc -c jsdoc.data.json",
+    "sql": "node src/jsdoc-to-sqlite.js"
   },
   "repository": {
     "type": "git",
