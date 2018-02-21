@@ -15,6 +15,30 @@ var data = fs.readJsonSync('./json/phaser.json');
 
 console.log('Scanning for classes ...');
 
+/*
+      "tags": [
+        {
+          "originalTitle": "webglOnly",
+          "title": "webglonly",
+          "text": ""
+        }
+*/
+var hasTag = function (block, tag)
+{
+    if (Array.isArray(block.tags))
+    {
+        for (var i = 0; i < block.tags.length; i++)
+        {
+            if (block.tags[i].originalTitle === tag)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+};
+
 var getPath = function (path)
 {
     // "D:\\wamp\\www\\phaser\\src\\gameobjects\\zone"
@@ -49,38 +73,23 @@ var insertFunction = function (block, queries)
     var returnType = '';
     var returnDescription = '';
 
-    if (Array.isArray(block.returns) && block.returns.length > 0)
+    if (Array.isArray(block.returns))
     {
-        //  There could be multiple return types (like object|null)
+        //  For Phaser we only need concern ourselves with the first returns element
         returns = 1;
-
-
+        returnType = block.returns[0].type.names.join('|');
+        returnDescription = block.returns[0].description;
     }
 
-/*
-      "returns": [
-        {
-          "type": {
-            "names": [
-              "array"
-            ],
-            "parsedType": {
-              "type": "NameExpression",
-              "name": "array"
-            }
-          },
-          "description": "The array of Game Objects that was passed to this Action."
-        }
-      ],
-
-*/
-
-
+    query = query.concat(returns + ',');
+    query = query.concat('"' + escape(returnType) + '",');
+    query = query.concat('"' + escape(returnDescription) + '",');
 
     //  Meta
     query = query.concat('"' + escape(block.meta.filename) + '",');
     query = query.concat(escape(block.meta.lineno) + ',');
-    query = query.concat('"' + escape(getPath(block.meta.path)) + '"');
+    query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
+    query = query.concat(hasTag(block, 'webglOnly'));
 
     query = query.concat(')');
 
@@ -135,7 +144,8 @@ var insertClass = function (block, queries)
     query = query.concat('"' + escape(block.classdesc) + '",');
     query = query.concat('"' + escape(block.meta.filename) + '",');
     query = query.concat(escape(block.meta.lineno) + ',');
-    query = query.concat('"' + escape(getPath(block.meta.path)) + '"');
+    query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
+    query = query.concat(hasTag(block, 'webglOnly'));
 
     query = query.concat(')');
 
@@ -197,9 +207,15 @@ for (var i = 0; i < data.docs.length; i++)
 {
     var block = data.docs[i];
 
-    if (block.kind === 'class')
+    switch (block.kind)
     {
-        insertClass(block, queries);
+        case 'class':
+            insertClass(block, queries);
+            break;
+
+        case 'function':
+            insertFunction(block, queries);
+            break;
     }
 }
 
