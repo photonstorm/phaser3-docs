@@ -48,8 +48,12 @@ var getPath = function (path)
 */
 var insertMember = function (block, queries)
 {
-    //  Quick bail-out check
-    if (block.scope === 'global' && block.longname === block.name)
+    //  Quick bail-out check where it picks-up the copyright header by mistake
+    if (
+        (block.longname === 'module.exports') ||
+        (block.scope === 'global' && block.longname === block.name) ||
+        (block.hasOwnProperty('access') && block.access === 'private')
+        )
     {
         return;
     }
@@ -64,13 +68,24 @@ var insertMember = function (block, queries)
     query = query.concat('"' + block.memberof + '",');
     query = query.concat('"' + escape(block.description) + '",');
 
-    var types = block.type.names.join('|');
+    // if (!block.hasOwnProperty('type'))
+    // {
+    //     console.log('>>> Member Type Error');
+    //     console.log(memberName);
+    //     process.exit(0);
+    // }
+
+    var types = (block.hasOwnProperty('type')) ? block.type.names.join('|') : '';
 
     query = query.concat('"' + types + '",');
 
     var defaultValue = (block.hasOwnProperty('defaultvalue')) ? block.defaultvalue : '';
 
-    query = query.concat('"' + escape(defaultValue) + '"');
+    query = query.concat('"' + escape(defaultValue) + '",');
+
+    var readOnly = (block.hasOwnProperty('readonly') && block.readonly) ? 1 : 0;
+
+    query = query.concat(readOnly + ',');
 
     query = query.concat('"' + block.scope + '",');
 
@@ -78,7 +93,7 @@ var insertMember = function (block, queries)
     query = query.concat('"' + block.meta.filename + '",');
     query = query.concat(block.meta.lineno + ',');
     query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
-    query = query.concat(hasTag(block, 'webglOnly'));
+    query = query.concat(hasTag(block, 'webglOnly') + ',');
 
     //  Inherited
     var inherited = 0;
@@ -109,6 +124,12 @@ var insertMember = function (block, queries)
 
 var insertFunction = function (block, queries)
 {
+    //  Ignore private: "access": "private"
+    if (block.hasOwnProperty('access') && block.access === 'private')
+    {
+        return;
+    }
+
     var funcName = block.longname;
 
     var query = 'INSERT INTO functions VALUES (';
@@ -199,6 +220,12 @@ var insertFunction = function (block, queries)
 
 var insertClass = function (block, queries)
 {
+    //  Ignore private: "access": "private"
+    if (block.hasOwnProperty('access') && block.access === 'private')
+    {
+        return;
+    }
+
     var className = escape(block.longname);
 
     var query = 'INSERT INTO class VALUES (';
@@ -301,23 +328,23 @@ for (var i = 0; i < data.docs.length; i++)
 
 // db.transaction(functionQueries).run();
 
-console.log('Processing Property Queries: ', memberQueries.length);
+// console.log('Processing Property Queries: ', memberQueries.length);
 
-db.transaction(propertyQueries).run();
+// db.transaction(memberQueries).run();
 
-console.log('Complete');
+// console.log('Complete');
 
-db.close();
+// db.close();
 
 //  Debug insert
-/*
-for (var i = 0; i < queries.length; i++)
+for (var i = 0; i < memberQueries.length; i++)
 {
-    var query = queries[i];
-    console.log(query.substr(0, 120));
+    var query = memberQueries[i];
+    console.log(i, query.substr(0, 120));
     db.exec(query);
 }
-*/
+
+db.close();
 
 /*
 fs.writeFileSync('./sqldump.txt', queries.join('\n\n'), function (error) {
