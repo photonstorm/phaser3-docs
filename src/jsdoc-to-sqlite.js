@@ -320,31 +320,31 @@ for (var i = 0; i < data.docs.length; i++)
 
 //  Transactional insert
 
-// console.log('Processing Class Queries: ', classQueries.length);
+console.log('Processing Class Queries: ', classQueries.length);
 
-// db.transaction(classQueries).run();
+db.transaction(classQueries).run();
 
-// console.log('Processing Function Queries: ', functionQueries.length);
+console.log('Processing Function Queries: ', functionQueries.length);
 
-// db.transaction(functionQueries).run();
+db.transaction(functionQueries).run();
 
-// console.log('Processing Property Queries: ', memberQueries.length);
+console.log('Processing Member Queries: ', memberQueries.length);
 
-// db.transaction(memberQueries).run();
+db.transaction(memberQueries).run();
 
-// console.log('Complete');
-
-// db.close();
-
-//  Debug insert
-for (var i = 0; i < memberQueries.length; i++)
-{
-    var query = memberQueries[i];
-    console.log(i, query.substr(0, 120));
-    db.exec(query);
-}
+console.log('Complete');
 
 db.close();
+
+//  Debug insert
+// for (var i = 0; i < memberQueries.length; i++)
+// {
+//     var query = memberQueries[i];
+//     console.log(i, query.substr(0, 120));
+//     db.exec(query);
+// }
+
+// db.close();
 
 /*
 fs.writeFileSync('./sqldump.txt', queries.join('\n\n'), function (error) {
