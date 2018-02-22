@@ -11,18 +11,6 @@ var db = new SQLite3('./db/phaser-working.db');
 //  Open the JSON file to parse
 var data = fs.readJsonSync('./json/phaser.json');
 
-//  For our first test let's parse classes only
-
-console.log('Scanning for classes ...');
-
-/*
-      "tags": [
-        {
-          "originalTitle": "webglOnly",
-          "title": "webglonly",
-          "text": ""
-        }
-*/
 var hasTag = function (block, tag)
 {
     if (Array.isArray(block.tags))
@@ -31,12 +19,12 @@ var hasTag = function (block, tag)
         {
             if (block.tags[i].originalTitle === tag)
             {
-                return true;
+                return 1;
             }
         }
     }
 
-    return false;
+    return 0;
 };
 
 var getPath = function (path)
@@ -55,39 +43,109 @@ var getPath = function (path)
     return section.replace(/\\/g, '/');
 };
 
+/*
+
+*/
+var insertMember = function (block, queries)
+{
+    //  Quick bail-out check
+    if (block.scope === 'global' && block.longname === block.name)
+    {
+        return;
+    }
+
+    var memberName = block.longname;
+
+    var query = 'INSERT INTO members VALUES (';
+
+    query = query.concat('"' + memberName + '",');
+    query = query.concat('"' + block.since + '",');
+    query = query.concat('"' + block.name + '",');
+    query = query.concat('"' + block.memberof + '",');
+    query = query.concat('"' + escape(block.description) + '",');
+
+    var types = block.type.names.join('|');
+
+    query = query.concat('"' + types + '",');
+
+    var defaultValue = (block.hasOwnProperty('defaultvalue')) ? block.defaultvalue : '';
+
+    query = query.concat('"' + escape(defaultValue) + '"');
+
+    query = query.concat('"' + block.scope + '",');
+
+    //  Meta
+    query = query.concat('"' + block.meta.filename + '",');
+    query = query.concat(block.meta.lineno + ',');
+    query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
+    query = query.concat(hasTag(block, 'webglOnly'));
+
+    //  Inherited
+    var inherited = 0;
+    var inherits = '';
+
+    if (block.hasOwnProperty('inherited') && block.inherited)
+    {
+        inherited = 1;
+        inherits = block.inherits;
+    }
+
+    query = query.concat(inherited + ',');
+    query = query.concat('"' + inherits + '",');
+
+    var nullable = 0;
+
+    if (block.hasOwnProperty('nullable') && block.nullable)
+    {
+        nullable = 1;
+    }
+
+    query = query.concat(nullable);
+
+    query = query.concat(')');
+
+    queries.push(query);
+};
+
 var insertFunction = function (block, queries)
 {
-    var funcName = escape(block.longname);
+    var funcName = block.longname;
 
     var query = 'INSERT INTO functions VALUES (';
 
     query = query.concat('"' + funcName + '",');
-    query = query.concat('"' + escape(block.since) + '",');
-    query = query.concat('"' + escape(block.name) + '",');
-    query = query.concat('"' + escape(block.memberof) + '",');
+    query = query.concat('"' + block.since + '",');
+    query = query.concat('"' + block.name + '",');
+    query = query.concat('"' + block.memberof + '",');
     query = query.concat('"' + escape(block.description) + '",');
-    query = query.concat('"' + escape(block.scope) + '",');
+    query = query.concat('"' + block.scope + '",');
 
     //  Returns
-    var returns = 0;
-    var returnType = '';
-    var returnDescription = '';
-
-    if (Array.isArray(block.returns))
+    if (Array.isArray(block.returns) && block.returns.length > 0)
     {
         //  For Phaser we only need concern ourselves with the first returns element
-        returns = 1;
-        returnType = block.returns[0].type.names.join('|');
-        returnDescription = block.returns[0].description;
+        if (!block.returns[0].hasOwnProperty('type'))
+        {
+            console.log('>>> Returns Error');
+            console.log(funcName);
+            console.log(block.returns[0]);
+            process.exit();
+        }
+
+        query = query.concat('1,');
+        query = query.concat('"' + block.returns[0].type.names.join('|') + '",');
+        query = query.concat('"' + escape(block.returns[0].description) + '",');
+    }
+    else
+    {
+        query = query.concat('0,');
+        query = query.concat('"",');
+        query = query.concat('"",');
     }
 
-    query = query.concat(returns + ',');
-    query = query.concat('"' + escape(returnType) + '",');
-    query = query.concat('"' + escape(returnDescription) + '",');
-
     //  Meta
-    query = query.concat('"' + escape(block.meta.filename) + '",');
-    query = query.concat(escape(block.meta.lineno) + ',');
+    query = query.concat('"' + block.meta.filename + '",');
+    query = query.concat(block.meta.lineno + ',');
     query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
     query = query.concat(hasTag(block, 'webglOnly'));
 
@@ -100,6 +158,14 @@ var insertFunction = function (block, queries)
         for (var i = 0; i < block.params.length; i++)
         {
             var param = block.params[i];
+
+            if (!param.type)
+            {
+                console.log('>>> Parameter Error');
+                console.log(funcName);
+                console.log(param);
+                process.exit();
+            }
 
             var types = param.type.names.join('|');
             var optional = -1;
@@ -114,11 +180,11 @@ var insertFunction = function (block, queries)
             query = 'INSERT INTO params VALUES (';
 
             query = query.concat('"' + funcName + '",');
-            query = query.concat('"' + escape(param.name) + '",');
+            query = query.concat('"' + param.name + '",');
             query = query.concat('"' + escape(param.description) + '",');
             query = query.concat('"' + types + '",');
-            query = query.concat('"' + optional + '",');
-            query = query.concat('"' + defaultValue + '"');
+            query = query.concat(optional + ',');
+            query = query.concat('"' + escape(defaultValue) + '"');
 
             query = query.concat(')');
 
@@ -126,7 +192,7 @@ var insertFunction = function (block, queries)
         }
     }
 
-    console.log(funcName);
+    // console.log(funcName);
 
     return query;
 };
@@ -138,12 +204,12 @@ var insertClass = function (block, queries)
     var query = 'INSERT INTO class VALUES (';
 
     query = query.concat('"' + className + '",');
-    query = query.concat('"' + escape(block.since) + '",');
-    query = query.concat('"' + escape(block.name) + '",');
-    query = query.concat('"' + escape(block.memberof) + '",');
+    query = query.concat('"' + block.since + '",');
+    query = query.concat('"' + block.name + '",');
+    query = query.concat('"' + block.memberof + '",');
     query = query.concat('"' + escape(block.classdesc) + '",');
-    query = query.concat('"' + escape(block.meta.filename) + '",');
-    query = query.concat(escape(block.meta.lineno) + ',');
+    query = query.concat('"' + block.meta.filename + '",');
+    query = query.concat(block.meta.lineno + ',');
     query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
     query = query.concat(hasTag(block, 'webglOnly'));
 
@@ -184,11 +250,11 @@ var insertClass = function (block, queries)
             query = 'INSERT INTO params VALUES (';
 
             query = query.concat('"' + className + '",');
-            query = query.concat('"' + escape(param.name) + '",');
+            query = query.concat('"' + param.name + '",');
             query = query.concat('"' + escape(param.description) + '",');
             query = query.concat('"' + types + '",');
-            query = query.concat('"' + optional + '",');
-            query = query.concat('"' + defaultValue + '"');
+            query = query.concat(optional + ',');
+            query = query.concat('"' + escape(defaultValue) + '"');
 
             query = query.concat(')');
 
@@ -196,12 +262,14 @@ var insertClass = function (block, queries)
         }
     }
 
-    console.log(className);
+    // console.log(className);
 
     return query;
 };
 
-var queries = [];
+var classQueries = [];
+var functionQueries = [];
+var memberQueries = [];
 
 for (var i = 0; i < data.docs.length; i++)
 {
@@ -210,19 +278,58 @@ for (var i = 0; i < data.docs.length; i++)
     switch (block.kind)
     {
         case 'class':
-            insertClass(block, queries);
+            insertClass(block, classQueries);
             break;
 
         case 'function':
-            insertFunction(block, queries);
+            insertFunction(block, functionQueries);
+            break;
+
+        case 'member':
+            insertMember(block, memberQueries);
             break;
     }
 }
 
-console.log('Processing Queries: ', queries.length);
+//  Transactional insert
 
-db.transaction(queries).run();
+// console.log('Processing Class Queries: ', classQueries.length);
 
-console.log('Complete.');
+// db.transaction(classQueries).run();
+
+// console.log('Processing Function Queries: ', functionQueries.length);
+
+// db.transaction(functionQueries).run();
+
+console.log('Processing Property Queries: ', memberQueries.length);
+
+db.transaction(propertyQueries).run();
+
+console.log('Complete');
 
 db.close();
+
+//  Debug insert
+/*
+for (var i = 0; i < queries.length; i++)
+{
+    var query = queries[i];
+    console.log(query.substr(0, 120));
+    db.exec(query);
+}
+*/
+
+/*
+fs.writeFileSync('./sqldump.txt', queries.join('\n\n'), function (error) {
+
+    if (error)
+    {
+        throw error;
+    }
+    else
+    {
+        console.log('sql dump saved');
+    }
+
+});
+*/
