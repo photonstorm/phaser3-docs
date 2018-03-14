@@ -43,6 +43,11 @@ var getPath = function (path)
     return section.replace(/\\/g, '/');
 };
 
+var insertTypeDef = function (block, queries)
+{
+    //  TODO
+};
+
 var insertMember = function (block, queries)
 {
     //  Quick bail-out check where it picks-up the copyright header by mistake
@@ -211,6 +216,7 @@ var insertFunction = function (block, queries)
 
             query = query.concat('"' + funcName + '",');
             query = query.concat('"' + param.name + '",');
+            query = query.concat(i + ',');
             query = query.concat('"' + escape(param.description) + '",');
             query = query.concat('"' + types + '",');
             query = query.concat(optional + ',');
@@ -287,6 +293,7 @@ var insertClass = function (block, queries)
 
             query = query.concat('"' + className + '",');
             query = query.concat('"' + param.name + '",');
+            query = query.concat(i + ',');
             query = query.concat('"' + escape(param.description) + '",');
             query = query.concat('"' + types + '",');
             query = query.concat(optional + ',');
@@ -350,6 +357,7 @@ var insertEvent = function (block, queries)
 
             query = query.concat('"' + eventName+ '",');
             query = query.concat('"' + param.name + '",');
+            query = query.concat(i + ',');
             query = query.concat('"' + escape(param.description) + '",');
             query = query.concat('"' + types + '",');
             query = query.concat(optional + ',');
@@ -365,7 +373,6 @@ var insertEvent = function (block, queries)
 
     return query;
 };
-
 
 var classQueries = [];
 var functionQueries = [];
@@ -417,6 +424,8 @@ db.transaction(eventQueries).run();
 console.log('Complete');
 
 db.close();
+
+fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
 
 //  Debug insert
 // for (var i = 0; i < memberQueries.length; i++)
