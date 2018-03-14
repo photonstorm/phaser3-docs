@@ -132,61 +132,11 @@ var insertFunction = function (block, queries)
         return;
     }
 
+    var query = '';
+    var params = [];
     var funcName = block.longname;
 
-    var query = 'INSERT INTO functions VALUES (';
-
-    query = query.concat('"' + funcName + '",');
-    query = query.concat('"' + block.since + '",');
-    query = query.concat('"' + block.name + '",');
-    query = query.concat('"' + block.memberof + '",');
-    query = query.concat('"' + escape(block.description) + '",');
-    query = query.concat('"' + block.scope + '",');
-
-    //  Fires
-    if (Array.isArray(block.fires) && block.fires.length > 0)
-    {
-        var events = block.fires.join(',');
-
-        query = query.concat('"' + events + '",');
-    }
-    else
-    {
-        query = query.concat('"",');
-    }
-
-    //  Returns
-    if (Array.isArray(block.returns) && block.returns.length > 0)
-    {
-        //  For Phaser we only need concern ourselves with the first returns element
-        if (!block.returns[0].hasOwnProperty('type'))
-        {
-            console.log('>>> Returns Error');
-            console.log(funcName);
-            console.log(block.returns[0]);
-            process.exit();
-        }
-
-        query = query.concat('1,');
-        query = query.concat('"' + block.returns[0].type.names.join('|') + '",');
-        query = query.concat('"' + escape(block.returns[0].description) + '",');
-    }
-    else
-    {
-        query = query.concat('0,');
-        query = query.concat('"",');
-        query = query.concat('"",');
-    }
-
-    //  Meta
-    query = query.concat('"' + block.meta.filename + '",');
-    query = query.concat(block.meta.lineno + ',');
-    query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
-    query = query.concat(hasTag(block, 'webglOnly'));
-
-    query = query.concat(')');
-
-    queries.push(query);
+    //  Insert parameters first
 
     if (Array.isArray(block.params) && block.params.length > 0)
     {
@@ -225,10 +175,78 @@ var insertFunction = function (block, queries)
             query = query.concat(')');
 
             queries.push(query);
+
+            //  Add to the params array (for injection to the functions table)
+
+            var paramStr = param.name + ':' + types;
+
+            if (defaultValue !== '')
+            {
+                paramStr += ' = ' + escape(defaultValue);
+            }
+
+            params.push(paramStr);
         }
     }
 
-    // console.log(funcName);
+    //  Now insert the function / method itself
+
+    query = 'INSERT INTO functions VALUES (';
+
+    query = query.concat('"' + funcName + '",');
+    query = query.concat('"' + block.since + '",');
+    query = query.concat('"' + block.name + '",');
+    query = query.concat('"' + block.memberof + '",');
+    query = query.concat('"' + escape(block.description) + '",');
+    query = query.concat('"' + block.scope + '",');
+
+    //  Fires
+    if (Array.isArray(block.fires) && block.fires.length > 0)
+    {
+        var events = block.fires.join(',');
+
+        query = query.concat('"' + events + '",');
+    }
+    else
+    {
+        query = query.concat('"",');
+    }
+
+    //  Method signature
+    query = query.concat('"' + params.join(',')  + '",');
+
+    //  Returns
+    if (Array.isArray(block.returns) && block.returns.length > 0)
+    {
+        //  For Phaser we only need concern ourselves with the first returns element
+        if (!block.returns[0].hasOwnProperty('type'))
+        {
+            console.log('>>> Returns Error');
+            console.log(funcName);
+            console.log(block.returns[0]);
+            process.exit();
+        }
+
+        query = query.concat('1,');
+        query = query.concat('"' + block.returns[0].type.names.join('|') + '",');
+        query = query.concat('"' + escape(block.returns[0].description) + '",');
+    }
+    else
+    {
+        query = query.concat('0,');
+        query = query.concat('"",');
+        query = query.concat('"",');
+    }
+
+    //  Meta
+    query = query.concat('"' + block.meta.filename + '",');
+    query = query.concat(block.meta.lineno + ',');
+    query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
+    query = query.concat(hasTag(block, 'webglOnly'));
+
+    query = query.concat(')');
+
+    queries.push(query);
 
     return query;
 };
