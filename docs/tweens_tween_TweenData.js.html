@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -98,6 +98,45 @@
  */
 
 /**
+ * @typedef {object} TweenDataGenConfig
+ *
+ * @property {function} delay - [description]
+ * @property {function} duration - [description]
+ * @property {function} hold - [description]
+ * @property {function} repeat - [description]
+ * @property {function} repeatDelay - [description]
+ */
+
+/**
+ * @typedef {object} Phaser.Tweens.TweenDataConfig
+ *
+ * @property {object} target - The target to tween.
+ * @property {string} key - The property of the target being tweened.
+ * @property {function} getEndValue - The returned value sets what the property will be at the END of the Tween.
+ * @property {function} getStartValue - The returned value sets what the property will be at the START of the Tween.
+ * @property {function} ease - The ease function this tween uses.
+ * @property {number} [duration=0] - Duration of the tween in ms/frames, excludes time for yoyo or repeats.
+ * @property {number} [totalDuration=0] - The total calculated duration of this TweenData (based on duration, repeat, delay and yoyo)
+ * @property {number} [delay=0] - Time in ms/frames before tween will start.
+ * @property {boolean} [yoyo=false] - Cause the tween to return back to its start value after hold has expired.
+ * @property {number} [hold=0] - Time in ms/frames the tween will pause before running the yoyo or starting a repeat.
+ * @property {integer} [repeat=0] - Number of times to repeat the tween. The tween will always run once regardless, so a repeat value of '1' will play the tween twice.
+ * @property {number} [repeatDelay=0] - Time in ms/frames before the repeat will start.
+ * @property {boolean} [flipX=false] - Automatically call toggleFlipX when the TweenData yoyos or repeats
+ * @property {boolean} [flipY=false] - Automatically call toggleFlipY when the TweenData yoyos or repeats
+ * @property {float} [progress=0] - Between 0 and 1 showing completion of this TweenData.
+ * @property {float} [elapsed=0] - Delta counter
+ * @property {integer} [repeatCounter=0] - How many repeats are left to run?
+ * @property {number} [start=0] - Ease value data.
+ * @property {number} [current=0] - Ease value data.
+ * @property {number} [end=0] - Ease value data.
+ * @property {number} [t1=0] - Time duration 1.
+ * @property {number} [t2=0] - Time duration 2.
+ * @property {TweenDataGenConfig} [gen] - LoadValue generation functions.
+ * @property {integer} [state=0] - TWEEN_CONST.CREATED
+ */
+
+/**
  * [description]
  *
  * @function Phaser.Tweens.TweenData
@@ -117,7 +156,7 @@
  * @param {boolean} flipX - [description]
  * @param {boolean} flipY - [description]
  *
- * @return {Phaser.Tweens.TweenData} [description]
+ * @return {TweenDataConfig} [description]
  */
 var TweenData = function (target, key, getEnd, getStart, ease, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY)
 {
@@ -207,7 +246,7 @@ module.exports = TweenData;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

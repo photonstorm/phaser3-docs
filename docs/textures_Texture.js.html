@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -120,7 +120,7 @@ var TextureSource = require('./TextureSource');
  *
  * @param {Phaser.Textures.TextureManager} manager - A reference to the Texture Manager this Texture belongs to.
  * @param {string} key - The unique string-based key of this Texture.
- * @param {Image|HTMLCanvasElement} source - The source that is used to create the texture. Usually an Image, but can also be a Canvas.
+ * @param {(Image|HTMLCanvasElement)} source - The source that is used to create the texture. Usually an Image, but can also be a Canvas.
  * @param {number} [width] - The width of the Texture. This is optional and automatically derived from the source images.
  * @param {number} [height] - The height of the Texture. This is optional and automatically derived from the source images.
  */
@@ -226,7 +226,7 @@ var Texture = new Class({
      * @method Phaser.Textures.Texture#add
      * @since 3.0.0
      *
-     * @param {integer|string} name - The name of this Frame. The name is unique within the Texture.
+     * @param {(integer|string)} name - The name of this Frame. The name is unique within the Texture.
      * @param {integer} sourceIndex - The index of the TextureSource that this Frame is a part of.
      * @param {number} x - The x coordinate of the top-left of this Frame.
      * @param {number} y - The y coordinate of the top-left of this Frame.
@@ -280,15 +280,16 @@ var Texture = new Class({
      * @method Phaser.Textures.Texture#get
      * @since 3.0.0
      *
-     * @param {string|integer} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
+     * @param {(string|integer)} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
      *
      * @return {Phaser.Textures.Frame} The Texture Frame.
      */
     get: function (name)
     {
-        if (name === undefined || name === null || (typeof name !== 'string' &amp;&amp; typeof name !== 'number'))
+        //  null, undefined, empty string, zero
+        if (!name)
         {
-            name = (this.frameTotal === 1) ? '__BASE' : this.firstFrame;
+            name = this.firstFrame;
         }
 
         var frame = this.frames[name];
@@ -297,12 +298,10 @@ var Texture = new Class({
         {
             console.warn('No Texture.frame found with name ' + name);
 
-            return this.frames['__BASE'];
+            frame = this.frames[this.firstFrame];
         }
-        else
-        {
-            return frame;
-        }
+
+        return frame;
     },
 
     /**
@@ -365,7 +364,7 @@ var Texture = new Class({
 
     /**
      * Returns an array with all of the names of the Frames in this Texture.
-     * 
+     *
      * Useful if you want to randomly assign a Frame to a Game Object, as you can
      * pick a random element from the returned array.
      *
@@ -403,9 +402,9 @@ var Texture = new Class({
      * @method Phaser.Textures.Texture#getSourceImage
      * @since 3.0.0
      *
-     * @param {string|integer} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
+     * @param {(string|integer)} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
      *
-     * @return {Image|HTMLCanvasElement} The DOM Image or Canvas Element.
+     * @return {(HTMLImageElement|HTMLCanvasElement)} The DOM Image or Canvas Element.
      */
     getSourceImage: function (name)
     {
@@ -430,14 +429,14 @@ var Texture = new Class({
 
     /**
      * Adds a data source image to this Texture.
-     * 
+     *
      * An example of a data source image would be a normal map, where all of the Frames for this Texture
      * equally apply to the normal map.
      *
      * @method Phaser.Textures.Texture#setDataSource
      * @since 3.0.0
      *
-     * @param {Image|HTMLCanvasElement} data - The source image.
+     * @param {(Image|HTMLCanvasElement)} data - The source image.
      */
     setDataSource: function (data)
     {
@@ -466,7 +465,7 @@ var Texture = new Class({
      * @method Phaser.Textures.Texture#setFilter
      * @since 3.0.0
      *
-     * @param {Phaser.Textures.FilterMode.LINEAR|Phaser.Textures.FilterMode.NEAREST} filterMode - The Filter Mode.
+     * @param {(Phaser.Textures.LINEAR|Phaser.Textures.NEAREST)} filterMode - The Filter Mode.
      */
     setFilter: function (filterMode)
     {
@@ -526,7 +525,7 @@ module.exports = Texture;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

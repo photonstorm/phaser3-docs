@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = true;
 		</script>
@@ -102,6 +102,10 @@
 									<input class="toggle-public" type="checkbox" value="" checked>
 									Public
 								</label>
+								<label class="checkbox-inline">
+									<input class="toggle-protected" type="checkbox" value="" checked>
+									Protected
+								</label>
 						</div>
 					<section>
 							<dl class="symbol primary">
@@ -140,7 +144,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Augments</label>
 								<div class="col-sm-9">
-										<p class="form-control-static"><a href="EventEmitter.html">EventEmitter</a></p>
+										<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></p>
 								</div>
 							</div>
 			
@@ -159,13 +163,6 @@
 			
 			
 			
-							<!-- author -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Author</label>
-								<div class="col-sm-9">
-										<p class="form-control-static">Pavle Goloskokovic <pgoloskokovic@gmail.com> (http://prunegames.com)</p>
-								</div>
-							</div>
 			
 			
 			
@@ -173,7 +170,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-13">line 13</a></p>
+									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-14">line 14</a></p>
 								</div>
 							</div>
 			
@@ -188,12 +185,12 @@
 									<h3>Members</h3>
 									<dl class="symbol">
 											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="detune" class="member public"><span class="name">detune</span><span class="signature-type"> :number</span></h4>
+											<dt class="symbol-title member public inherited">
+			<h4 id="detune" class="member public inherited"><span class="name">detune</span><span class="signature-type"> :number</span></h4>
 		</dt>
-<dd class="symbol-details member public">
+<dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Global detuning of all sounds in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -222,6 +219,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#detune">Phaser.Sound.BaseSoundManager#detune</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -235,7 +239,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-90">line 90</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-615">line 615</a></p>
 								</div>
 							</div>
 			
@@ -246,12 +250,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="game" class="member public"><span class="name">game</span><span class="signature-type"> :<a href="Phaser.Game.html">Phaser.Game</a></span></h4>
+											<dt class="symbol-title member public inherited">
+			<h4 id="game" class="member public inherited"><span class="signature-attribs">&lt;readonly> </span><span class="name">game</span><span class="signature-type"> :<a href="Phaser.Game.html">Phaser.Game</a></span></h4>
 		</dt>
-<dd class="symbol-details member public">
+<dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Reference to the current game instance.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Local reference to game.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -273,6 +277,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#game">Phaser.Sound.BaseSoundManager#game</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -286,7 +297,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-41">line 41</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-57">line 57</a></p>
 								</div>
 							</div>
 			
@@ -297,12 +308,70 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="locked" class="member public"><span class="name">locked</span><span class="signature-type"> :boolean</span></h4>
+											<dt class="symbol-title member public inherited">
+			<h4 id="locked" class="member public inherited"><span class="signature-attribs">&lt;readonly> </span><span class="name">locked</span><span class="signature-type"> :boolean</span></h4>
 		</dt>
-<dd class="symbol-details member public">
+<dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Mobile devices require sounds to be triggered from an explicit user action,such as a tap, before any sound can be loaded/played on a web page.Set to true if the audio system is currently locked awaiting user interaction.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#locked">Phaser.Sound.BaseSoundManager#locked</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-149">line 149</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public inherited">
+			<h4 id="mute" class="member public inherited"><span class="name">mute</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Global mute setting.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -331,6 +400,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#mute">Phaser.Sound.BaseSoundManager#mute</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -344,7 +420,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-110">line 110</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-78">line 78</a></p>
 								</div>
 							</div>
 			
@@ -355,70 +431,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="mute" class="member public"><span class="name">mute</span><span class="signature-type"> :boolean</span></h4>
+											<dt class="symbol-title member public inherited">
+			<h4 id="pauseOnBlur" class="member public inherited"><span class="name">pauseOnBlur</span><span class="signature-type"> :boolean</span></h4>
 		</dt>
-<dd class="symbol-details member public">
+<dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
-								</div>
-							</div>
-			
-							<!-- defaultvalue -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Default Value</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">false</p>
-								</div>
-							</div>
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-60">line 60</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="pauseOnBlur" class="member public"><span class="name">pauseOnBlur</span><span class="signature-type"> :boolean</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Flag indicating if sounds should be paused when game looses focus,for instance when user switches to another tab/program/app.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -447,6 +465,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#pauseOnBlur">Phaser.Sound.BaseSoundManager#pauseOnBlur</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -460,7 +485,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-100">line 100</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-98">line 98</a></p>
 								</div>
 							</div>
 			
@@ -471,12 +496,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="rate" class="member public"><span class="name">rate</span><span class="signature-type"> :number</span></h4>
+											<dt class="symbol-title member public inherited">
+			<h4 id="rate" class="member public inherited"><span class="name">rate</span><span class="signature-type"> :number</span></h4>
 		</dt>
-<dd class="symbol-details member public">
+<dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Global playback rate at which all the sounds will be played.Value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speedand 2.0 doubles the audio's playback speed.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -505,6 +530,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#rate">Phaser.Sound.BaseSoundManager#rate</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -518,7 +550,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-80">line 80</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-559">line 559</a></p>
 								</div>
 							</div>
 			
@@ -529,70 +561,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="sounds" class="member public"><span class="name">sounds</span><span class="signature-type"> :array</span></h4>
+											<dt class="symbol-title member public inherited">
+			<h4 id="volume" class="member public inherited"><span class="name">volume</span><span class="signature-type"> :number</span></h4>
 		</dt>
-<dd class="symbol-details member public">
+<dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
-								</div>
-							</div>
-			
-							<!-- defaultvalue -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Default Value</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">[]</p>
-								</div>
-							</div>
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-50">line 50</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="volume" class="member public"><span class="name">volume</span><span class="signature-type"> :number</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Global volume setting.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -621,6 +595,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#volume">Phaser.Sound.BaseSoundManager#volume</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -634,7 +615,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-70">line 70</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-88">line 88</a></p>
 								</div>
 							</div>
 			
@@ -648,12 +629,12 @@
 									<h3>Methods</h3>
 									<dl class="symbol">
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="add" class="function public"><span class="name">add</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">config</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="add" class="function public inherited"><span class="name">add</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">config</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds a new sound into the sound manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -676,7 +657,7 @@
 						</tr>
 						<tr>
 								<td><code>config</code></td>
-							<td><span class="param-type">ISoundConfig</span></td>
+							<td><span class="param-type"><a href="global.html#SoundConfig">SoundConfig</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
 									An optional config object containing default sound settings.
@@ -687,7 +668,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">ISound</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Sound.BaseSound.html">Phaser.Sound.BaseSound</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">The new sound instance.</div>
 								</div>
@@ -707,6 +688,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#add">Phaser.Sound.BaseSoundManager#add</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -720,7 +708,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-121">line 121</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-179">line 179</a></p>
 								</div>
 							</div>
 			
@@ -731,12 +719,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="addAudioSprite" class="function public"><span class="name">addAudioSprite</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">config</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="addAudioSprite" class="function public inherited"><span class="name">addAudioSprite</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">config</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds a new audio sprite sound into the sound manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -759,7 +747,7 @@
 						</tr>
 						<tr>
 								<td><code>config</code></td>
-							<td><span class="param-type">ISoundConfig</span></td>
+							<td><span class="param-type"><a href="global.html#SoundConfig">SoundConfig</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
 									An optional config object containing default sound settings.
@@ -770,7 +758,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">IAudioSpriteSound</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="global.html#AudioSpriteSound">AudioSpriteSound</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">The new audio sprite sound instance.</div>
 								</div>
@@ -790,6 +778,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#addAudioSprite">Phaser.Sound.BaseSoundManager#addAudioSprite</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -803,7 +798,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-141">line 141</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-193">line 193</a></p>
 								</div>
 							</div>
 			
@@ -815,106 +810,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="addListener" class="function public inherited"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id="destroy" class="function public inherited"><span class="name">destroy</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#addListener">EventEmitter#addListener</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-114">line 114</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="destroy" class="function public"><span class="name">destroy</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroys all the sounds in the game and all associated events.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
@@ -929,77 +829,11 @@
 								</div>
 							</div>
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-223">line 223</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calls each of the listeners registered for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">Boolean</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#emit">EventEmitter#emit</a></p>
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#destroy">Phaser.Sound.BaseSoundManager#destroy</a></p>
 								</div>
 							</div>
 			
@@ -1015,7 +849,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-488">line 488</a></p>
 								</div>
 							</div>
 			
@@ -1026,96 +860,13 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="eventNames" class="function public inherited"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
+											<dt class="symbol-title function protected inherited">
+			<h4 id="onBlur" class="function protected inherited"><span class="signature-attribs">&lt;protected> </span><span class="name">onBlur</span><span class="signature-params">()</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function protected inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return an array listing the events for which the emitter has registered listeners.</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description"></div>
-								</div>
-							</div>
-					</form>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Method used internally for pausing sound manager ifPhaser.Sound.BaseSoundManager#pauseOnBlur is set to true.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#eventNames">EventEmitter#eventNames</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="forEachActiveSound" class="function public"><span class="name">forEachActiveSound</span><span class="signature-params">( <span class="signature-param">callbackfn</span> [,&nbsp;<span class="signature-param">scope</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>callbackfn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									Callback function. (sound: ISound, index: number, array: ISound[]) => void
-							</td>
-						</tr>
-						<tr>
-								<td><code>scope</code></td>
-							<td></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									Callback context.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -1129,6 +880,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#onBlur">Phaser.Sound.BaseSoundManager#onBlur</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1142,7 +900,58 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-234">line 234</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-427">line 427</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function protected inherited">
+			<h4 id="onFocus" class="function protected inherited"><span class="signature-attribs">&lt;protected> </span><span class="name">onFocus</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function protected inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Method used internally for resuming sound manager ifPhaser.Sound.BaseSoundManager#pauseOnBlur is set to true.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#onFocus">Phaser.Sound.BaseSoundManager#onFocus</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-438">line 438</a></p>
 								</div>
 							</div>
 			
@@ -1154,37 +963,16 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="listenerCount" class="function public inherited"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+			<h4 id="pauseAll" class="function public inherited"><span class="name">pauseAll</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the number of listeners listening to a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Pauses all the sounds in the game.</div>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Sound.BaseSoundManager.html#event:pauseall">Phaser.Sound.BaseSoundManager#pauseall</a></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The number of listeners.</div>
+									<div class="form-control-static fires-summary"></div>
 								</div>
 							</div>
 					</form>
@@ -1194,12 +982,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listenerCount">EventEmitter#listenerCount</a></p>
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#pauseAll">Phaser.Sound.BaseSoundManager#pauseAll</a></p>
 								</div>
 							</div>
 			
@@ -1215,7 +1010,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-82">line 82</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-353">line 353</a></p>
 								</div>
 							</div>
 			
@@ -1227,178 +1022,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="listeners" class="function public inherited"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+			<h4 id="play" class="function public inherited"><span class="name">play</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">extra</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the listeners registered for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The registered listeners.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listeners">EventEmitter#listeners</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-72">line 72</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="off" class="function public inherited"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-							<td class="last">
-									Only remove the listeners that match this function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-							<td class="last">
-									Only remove the listeners that have this context.
-							</td>
-						</tr>
-						<tr>
-								<td><code>once</code></td>
-							<td><span class="param-type">boolean</span></td>
-							<td class="last">
-									Only remove one-time listeners.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#off">EventEmitter#off</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="on" class="function public inherited"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Enables playing sound on the fly without the need to keep a reference to it.Sound will auto destroy once its playback ends.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1407,193 +1035,34 @@
 							<th>Name</th>
 						<th>Type</th>
 							<th>Attributes</th>
-							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span></td>
 								<td class="attributes"></td>
-								<td></td>
 							<td class="last">
-									The event name.
+									Asset key for the sound.
 							</td>
 						</tr>
 						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
+								<td><code>extra</code></td>
+							<td><span class="param-type"><a href="global.html#SoundConfig">SoundConfig</a></span> | <span class="param-type"><a href="global.html#SoundMarker">SoundMarker</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
 							<td class="last">
-									The context to invoke the listener with.
+									An optional additional object containing settings to be applied to the sound. It could be either config or marker object.
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#on">EventEmitter#on</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="once" class="function public inherited"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a one-time listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#once">EventEmitter#once</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-126">line 126</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="play" class="function public"><span class="name">play</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">No Audio methods always return `false`.</div>
+									<div class="form-control-static returns-description">Whether the sound started playing successfully.</div>
 								</div>
 							</div>
 					</form>
@@ -1611,6 +1080,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#play">Phaser.Sound.BaseSoundManager#play</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1624,7 +1100,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-159">line 159</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-230">line 230</a></p>
 								</div>
 							</div>
 			
@@ -1635,17 +1111,56 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="playAudioSprite" class="function public"><span class="name">playAudioSprite</span><span class="signature-params">()</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="playAudioSprite" class="function public inherited"><span class="name">playAudioSprite</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">spriteName</span> [,&nbsp;<span class="signature-param">config</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Enables playing audio sprite sound on the fly without the need to keep a reference to it.Sound will auto destroy once its playback ends.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									Asset key for the sound.
+							</td>
+						</tr>
+						<tr>
+								<td><code>spriteName</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The name of the sound sprite to play.
+							</td>
+						</tr>
+						<tr>
+								<td><code>config</code></td>
+							<td><span class="param-type"><a href="global.html#SoundConfig">SoundConfig</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional config object containing default sound settings.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">No Audio methods always return `false`.</div>
+									<div class="form-control-static returns-description">Whether the audio sprite sound started playing successfully.</div>
 								</div>
 							</div>
 					</form>
@@ -1663,6 +1178,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#playAudioSprite">Phaser.Sound.BaseSoundManager#playAudioSprite</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1676,7 +1198,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-172">line 172</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-267">line 267</a></p>
 								</div>
 							</div>
 			
@@ -1687,12 +1209,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="remove" class="function public"><span class="name">remove</span><span class="signature-params">( <span class="signature-param">sound</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="remove" class="function public inherited"><span class="name">remove</span><span class="signature-params">( <span class="signature-param">sound</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes a sound from the sound manager.The removed sound is destroyed before removal.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1706,7 +1228,7 @@
 					<tbody>
 						<tr>
 								<td><code>sound</code></td>
-							<td><span class="param-type">ISound</span></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSound.html">Phaser.Sound.BaseSound</a></span></td>
 							<td class="last">
 									The sound object to remove.
 							</td>
@@ -1736,6 +1258,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#remove">Phaser.Sound.BaseSoundManager#remove</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1749,7 +1278,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-185">line 185</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-289">line 289</a></p>
 								</div>
 							</div>
 			
@@ -1761,86 +1290,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="removeAllListeners" class="function public inherited"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id="removeByKey" class="function public inherited"><span class="name">removeByKey</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove all listeners, or those of the specified event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeAllListeners">EventEmitter#removeAllListeners</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-164">line 164</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="removeByKey" class="function public"><span class="name">removeByKey</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes all sounds from the sound manager that have an asset key matching the given value.The removed sounds are destroyed before removal.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1884,6 +1338,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#removeByKey">Phaser.Sound.BaseSoundManager#removeByKey</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1897,7 +1358,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="sound_noaudio_NoAudioSoundManager.js.html">sound/noaudio/NoAudioSoundManager.js</a>, <a href="sound_noaudio_NoAudioSoundManager.js.html#line-200">line 200</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-316">line 316</a></p>
 								</div>
 							</div>
 			
@@ -1909,11 +1370,70 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="removeListener" class="function public inherited"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+			<h4 id="resumeAll" class="function public inherited"><span class="name">resumeAll</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Resumes all the sounds in the game.</div>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Sound.BaseSoundManager.html#event:resumeall">Phaser.Sound.BaseSoundManager#resumeall</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#resumeAll">Phaser.Sound.BaseSoundManager#resumeAll</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-375">line 375</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setDetune" class="function public inherited"><span class="name">setDetune</span><span class="signature-params">( <span class="signature-param">value</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the global detuning of all sounds in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1926,31 +1446,10 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
 							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-							<td class="last">
-									Only remove the listeners that match this function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-							<td class="last">
-									Only remove the listeners that have this context.
-							</td>
-						</tr>
-						<tr>
-								<td><code>once</code></td>
-							<td><span class="param-type">boolean</span></td>
-							<td class="last">
-									Only remove one-time listeners.
+									The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
 							</td>
 						</tr>
 					</tbody>
@@ -1958,9 +1457,17 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
+									<div class="form-control-static returns-description">This Sound Manager.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Sound.BaseSoundManager.html#event:detune">Phaser.Sound.BaseSoundManager#detune</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
 								</div>
 							</div>
 					</form>
@@ -1970,12 +1477,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.3.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeListener">EventEmitter#removeListener</a></p>
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#setDetune">Phaser.Sound.BaseSoundManager#setDetune</a></p>
 								</div>
 							</div>
 			
@@ -1991,7 +1505,685 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-138">line 138</a></p>
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-590">line 590</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setRate" class="function public inherited"><span class="name">setRate</span><span class="signature-params">( <span class="signature-param">value</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the global playback rate at which all the sounds will be played.For example, a value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speedand 2.0 doubles the audios playback speed.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									Global playback rate at which all the sounds will be played.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Sound Manager.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Sound.BaseSoundManager.html#event:rate">Phaser.Sound.BaseSoundManager#rate</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.3.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#setRate">Phaser.Sound.BaseSoundManager#setRate</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-538">line 538</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="stopAll" class="function public inherited"><span class="name">stopAll</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Stops all the sounds in the game.</div>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Sound.BaseSoundManager.html#event:stopall">Phaser.Sound.BaseSoundManager#stopall</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#stopAll">Phaser.Sound.BaseSoundManager#stopAll</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-397">line 397</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function protected inherited">
+			<h4 id="unlock" class="function protected inherited"><span class="signature-attribs">&lt;protected> </span><span class="name">unlock</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function protected inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Method used internally for unlocking audio playback on devices thatrequire user interaction before any sound can be played on a web page.Read more about how this issue is handled here in [this article](https://medium.com/@pgoloskokovic/unlocking-web-audio-the-smarter-way-8858218c0e09).</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#unlock">Phaser.Sound.BaseSoundManager#unlock</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-414">line 414</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function protected inherited">
+			<h4 id="update" class="function protected inherited"><span class="signature-attribs">&lt;protected> </span><span class="name">update</span><span class="signature-params">( <span class="signature-param">time</span>, <span class="signature-param">delta</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function protected inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Update method called on every game step.Removes destroyed sounds and updates every active sound in the game.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>time</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									The current timestamp as generated by the Request Animation Frame or SetTimeout.
+							</td>
+						</tr>
+						<tr>
+								<td><code>delta</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									The delta time elapsed since the last frame.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#update">Phaser.Sound.BaseSoundManager#update</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-449">line 449</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+									</dl>
+									<h3>Events</h3>
+									<dl class="symbol">
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:detune" class="event public inherited"><span class="name">detune</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>soundManager</code></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></td>
+							<td class="last">
+									Reference to the sound manager that emitted event.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									An updated value of Phaser.Sound.BaseSoundManager#detune property.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#event:detune">Phaser.Sound.BaseSoundManager#detune</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-609">line 609</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:pauseall" class="event public inherited"><span class="name">pauseall</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>soundManager</code></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></td>
+							<td class="last">
+									Reference to the sound manager that emitted event.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#event:pauseall">Phaser.Sound.BaseSoundManager#pauseall</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-348">line 348</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:rate" class="event public inherited"><span class="name">rate</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>soundManager</code></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></td>
+							<td class="last">
+									Reference to the sound manager that emitted event.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									An updated value of Phaser.Sound.BaseSoundManager#rate property.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#event:rate">Phaser.Sound.BaseSoundManager#rate</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-532">line 532</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:resumeall" class="event public inherited"><span class="name">resumeall</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>soundManager</code></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></td>
+							<td class="last">
+									Reference to the sound manager that emitted event.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#event:resumeall">Phaser.Sound.BaseSoundManager#resumeall</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-370">line 370</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:stopall" class="event public inherited"><span class="name">stopall</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>soundManager</code></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></td>
+							<td class="last">
+									Reference to the sound manager that emitted event.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#event:stopall">Phaser.Sound.BaseSoundManager#stopall</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-392">line 392</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:unlocked" class="event public inherited"><span class="name">unlocked</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>soundManager</code></td>
+							<td><span class="param-type"><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></span></td>
+							<td class="last">
+									Reference to the sound manager that emitted event.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Sound.BaseSoundManager.html#event:unlocked">Phaser.Sound.BaseSoundManager#unlocked</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="sound_BaseSoundManager.js.html">sound/BaseSoundManager.js</a>, <a href="sound_BaseSoundManager.js.html#line-467">line 467</a></p>
 								</div>
 							</div>
 			
@@ -2013,7 +2205,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

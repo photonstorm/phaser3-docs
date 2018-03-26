@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -97,10 +97,17 @@
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-//  Adapted from [gl-matrix](https://github.com/toji/gl-matrix) by toji 
+//  Adapted from [gl-matrix](https://github.com/toji/gl-matrix) by toji
 //  and [vecmath](https://github.com/mattdesl/vecmath) by mattdesl
 
 var Class = require('../utils/Class');
+
+/**
+ * @typedef {object} Vector2Like
+ *
+ * @property {number} x - [description]
+ * @property {number} y - [description]
+ */
 
 /**
  * @classdesc
@@ -128,6 +135,7 @@ var Vector2 = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.x = 0;
 
         /**
          * The y component of this Vector.
@@ -137,6 +145,7 @@ var Vector2 = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.y = 0;
 
         if (typeof x === 'object')
         {
@@ -171,7 +180,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#copy
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -189,7 +198,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#setFromObject
      * @since 3.0.0
      *
-     * @param {[type]} obj - [description]
+     * @param {Vector2Like} obj - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -207,8 +216,8 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#set
      * @since 3.0.0
      *
-     * @param {[type]} x - [description]
-     * @param {[type]} y - [description]
+     * @param {number} x - [description]
+     * @param {number} [y=x] - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -222,17 +231,14 @@ var Vector2 = new Class({
         return this;
     },
 
-    // Sets the `x` and `y` values of this object from a given polar coordinate.
-    // @param {number} azimuth - The angular coordinate, in radians.
-    // @param {number} [radius=1] - The radial coordinate (length).
     /**
-     * [description]
+     * Sets the `x` and `y` values of this object from a given polar coordinate.
      *
      * @method Phaser.Math.Vector2#setToPolar
      * @since 3.0.0
      *
-     * @param {[type]} azimuth - [description]
-     * @param {[type]} radius - [description]
+     * @param {float} azimuth - The angular coordinate, in radians.
+     * @param {float} [radius=1] - The radial coordinate (length).
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -252,7 +258,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#equals
      * @since 3.0.0
      *
-     * @param {[type]} v - [description]
+     * @param {Phaser.Math.Vector2} v - [description]
      *
      * @return {boolean} [description]
      */
@@ -289,7 +295,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#add
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -307,7 +313,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#subtract
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -325,7 +331,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#multiply
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -343,7 +349,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#scale
      * @since 3.0.0
      *
-     * @param {[type]} value - [description]
+     * @param {number} value - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -369,7 +375,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#divide
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -403,7 +409,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#distance
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {number} [description]
      */
@@ -421,7 +427,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#distanceSq
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {number} [description]
      */
@@ -485,7 +491,7 @@ var Vector2 = new Class({
             this.x = x * len;
             this.y = y * len;
         }
-    
+
         return this;
     },
 
@@ -516,7 +522,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#dot
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {number} [description]
      */
@@ -531,7 +537,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#cross
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
      *
      * @return {number} [description]
      */
@@ -546,8 +552,8 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#lerp
      * @since 3.0.0
      *
-     * @param {[type]} src - [description]
-     * @param {[type]} t - [description]
+     * @param {Phaser.Math.Vector2} src - [description]
+     * @param {number} [t=0] - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -570,7 +576,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#transformMat3
      * @since 3.0.0
      *
-     * @param {[type]} mat - [description]
+     * @param {Phaser.Math.Matrix3} mat - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -592,7 +598,7 @@ var Vector2 = new Class({
      * @method Phaser.Math.Vector2#transformMat4
      * @since 3.0.0
      *
-     * @param {[type]} mat - [description]
+     * @param {Phaser.Math.Matrix4} mat - [description]
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -626,6 +632,14 @@ var Vector2 = new Class({
 
 });
 
+/**
+ * A static zero Vector2 for use by reference.
+ *
+ * @method Phaser.Math.Vector2.ZERO
+ * @since 3.1.0
+ */
+Vector2.ZERO = new Vector2();
+
 module.exports = Vector2;
 </code></pre>
 		</section>
@@ -635,7 +649,7 @@ module.exports = Vector2;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

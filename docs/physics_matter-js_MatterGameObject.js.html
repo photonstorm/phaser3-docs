@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-		<title>gameobjects/bitmaptext/ParseXMLBitmapFont.js</title>
+		<title>physics/matter-js/MatterGameObject.js</title>
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -83,7 +83,7 @@
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
 				<span class="kind">source</span>
-				<h1><span class="name">gameobjects/bitmaptext/ParseXMLBitmapFont.js</span></h1>
+				<h1><span class="name">physics/matter-js/MatterGameObject.js</span></h1>
 			</div>
 		</div>
 	<div class="container content">
@@ -97,127 +97,105 @@
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-function getValue (node, attribute)
+var Components = require('./components');
+var GetFastValue = require('../../utils/object/GetFastValue');
+var Vector2 = require('../../math/Vector2');
+
+/**
+ * [description]
+ *
+ * @function hasGetterOrSetter
+ * @private
+ *
+ * @param {object} def - The object to check.
+ *
+ * @return {boolean} True if it has a getter or setter, otherwise false.
+ */
+function hasGetterOrSetter (def)
 {
-    return parseInt(node.getAttribute(attribute), 10);
+    return (!!def.get &amp;&amp; typeof def.get === 'function') || (!!def.set &amp;&amp; typeof def.set === 'function');
 }
 
-var ParseXMLBitmapFont = function (xml, xSpacing, ySpacing, frame)
+/**
+ * [description]
+ *
+ * @function Phaser.Physics.Matter.MatterGameObject
+ * @since 3.3.0
+ *
+ * @param {Phaser.Physics.Matter.World} world - [description]
+ * @param {Phaser.GameObjects.GameObject} gameObject - [description]
+ * @param {object} options - [description]
+ *
+ * @return {Phaser.GameObjects.GameObject} [description]
+ */
+var MatterGameObject = function (world, gameObject, options)
 {
-    if (xSpacing === undefined) { xSpacing = 0; }
-    if (ySpacing === undefined) { ySpacing = 0; }
+    if (options === undefined) { options = {}; }
 
-    var data = {};
-    var info = xml.getElementsByTagName('info')[0];
-    var common = xml.getElementsByTagName('common')[0];
+    var x = gameObject.x;
+    var y = gameObject.y;
 
-    data.font = info.getAttribute('face');
-    data.size = getValue(info, 'size');
-    data.lineHeight = getValue(common, 'lineHeight') + ySpacing;
-    data.chars = {};
+    //  Temp body pos to avoid body null checks
+    gameObject.body = {
+        position: {
+            x: x,
+            y: y
+        }
+    };
 
-    var letters = xml.getElementsByTagName('char');
+    var mixins = [
+        Components.Bounce,
+        Components.Collision,
+        Components.Force,
+        Components.Friction,
+        Components.Gravity,
+        Components.Mass,
+        Components.Sensor,
+        Components.SetBody,
+        Components.Sleep,
+        Components.Static,
+        Components.Transform,
+        Components.Velocity
+    ];
 
-    var x = 0;
-    var y = 0;
-    var cx = 0;
-    var cy = 0;
-    var adjustForTrim = (frame !== undefined &amp;&amp; frame.trimmed);
-
-    if (adjustForTrim)
+    //  First let's inject all of the components into the Game Object
+    mixins.forEach(function (mixin)
     {
-        var top = frame.height;
-        var left = frame.width;
-    }
 
-    var diff = 0;
-
-    for (var i = 0; i &lt; letters.length; i++)
-    {
-        var node = letters[i];
-
-        var charCode = getValue(node, 'id');
-        var gx = getValue(node, 'x');
-        var gy = getValue(node, 'y');
-        var gw = getValue(node, 'width');
-        var gh = getValue(node, 'height');
-
-        //  Handle frame trim issues
-
-        if (adjustForTrim)
+        for (var key in mixin)
         {
-            // if (gx + gw > frame.width)
-            // {
-            //     diff = frame.width - (gx + gw);
-                // gw -= diff;
-            // }
-
-            // if (gy + gh > frame.height)
-            // {
-            //     diff = frame.height - (gy + gh);
-                // gh -= diff;
-            // }
-
-            if (gx &lt; left)
+            if (hasGetterOrSetter(mixin[key]))
             {
-                left = gx;
+                Object.defineProperty(gameObject, key, {
+                    get: mixin[key].get,
+                    set: mixin[key].set
+                });
             }
-
-            if (gy &lt; top)
+            else
             {
-                top = gy;
+                Object.defineProperty(gameObject, key, {value: mixin[key]});
             }
         }
 
-        data.chars[charCode] =
-        {
-            x: gx,
-            y: gy,
-            width: gw,
-            height: gh,
-            centerX: Math.floor(gw / 2),
-            centerY: Math.floor(gh / 2),
-            xOffset: getValue(node, 'xoffset'),
-            yOffset: getValue(node, 'yoffset'),
-            xAdvance: getValue(node, 'xadvance') + xSpacing,
-            data: {},
-            kerning: {}
-        };
-    }
+    });
 
-    if (adjustForTrim &amp;&amp; top !== 0 &amp;&amp; left !== 0)
+    gameObject.world = world;
+
+    gameObject._tempVec2 = new Vector2(x, y);
+
+    var shape = GetFastValue(options, 'shape', null);
+
+    if (!shape)
     {
-        // console.log('top and left', top, left, frame.x, frame.y);
-
-        //  Now we know the top and left coordinates of the glyphs in the original data
-        //  so we can work out how much to adjust the glyphs by
-
-        for (var code in data.chars)
-        {
-            var glyph = data.chars[code];
-
-            glyph.x -= frame.x;
-            glyph.y -= frame.y;
-        }
+        shape = 'rectangle';
     }
 
-    var kernings = xml.getElementsByTagName('kerning');
+    gameObject.setBody(shape, options);
 
-    for (i = 0; i &lt; kernings.length; i++)
-    {
-        var kern = kernings[i];
-
-        var first = getValue(kern, 'first');
-        var second = getValue(kern, 'second');
-        var amount = getValue(kern, 'amount');
-
-        data.chars[second].kerning[first] = amount;
-    }
-
-    return data;
+    return gameObject;
 };
 
-module.exports = ParseXMLBitmapFont;
+module.exports = MatterGameObject;
 </code></pre>
 		</section>
 			</div>
@@ -226,7 +204,7 @@ module.exports = ParseXMLBitmapFont;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

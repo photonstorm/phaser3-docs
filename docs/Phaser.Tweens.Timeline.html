@@ -40,9 +40,9 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
-			window.DOCLET_AFILTER_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
 </head>
 <body>
@@ -93,16 +93,6 @@
 							<li><a href="list_class.html">Classes</a></li>
 							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Tweens.html">.Tweens</a>.Timeline</li>
 						</ol>
-						<div class="access-filter">
-								<label class="checkbox-inline">
-									<input class="toggle-inherited" type="checkbox" value="" checked>
-									Inherited
-								</label>
-								<label class="checkbox-inline">
-									<input class="toggle-public" type="checkbox" value="" checked>
-									Public
-								</label>
-						</div>
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
@@ -140,7 +130,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Augments</label>
 								<div class="col-sm-9">
-										<p class="form-control-static"><a href="EventEmitter.html">EventEmitter</a></p>
+										<p class="form-control-static">EventEmitter</p>
 								</div>
 							</div>
 			
@@ -1291,7 +1281,7 @@
 					<tbody>
 						<tr>
 								<td><code>config</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">object</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -1335,101 +1325,6 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-288">line 288</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="addListener" class="function public inherited"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#addListener">EventEmitter#addListener</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-114">line 114</a></p>
 								</div>
 							</div>
 			
@@ -1517,132 +1412,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-830">line 830</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calls each of the listeners registered for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">Boolean</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#emit">EventEmitter#emit</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-92">line 92</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="eventNames" class="function public inherited"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return an array listing the events for which the emitter has registered listeners.</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description"></div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#eventNames">EventEmitter#eventNames</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-845">line 845</a></p>
 								</div>
 							</div>
 			
@@ -1920,7 +1690,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-807">line 807</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-822">line 822</a></p>
 								</div>
 							</div>
 			
@@ -2181,12 +1951,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="listenerCount" class="function public inherited"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="makeActive" class="function public"><span class="name">makeActive</span><span class="signature-params">( <span class="signature-param">tween</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the number of listeners listening to a given event.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Delegates #makeActive to the Tween manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2199,10 +1969,10 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td><code>tween</code></td>
+							<td><span class="param-type"><a href="Phaser.Tweens.Tween.html">Phaser.Tweens.Tween</a></span></td>
 							<td class="last">
-									The event name.
+									The tween object to make active.
 							</td>
 						</tr>
 					</tbody>
@@ -2210,9 +1980,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tweens.TweenManager.html">Phaser.Tweens.TweenManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The number of listeners.</div>
+									<div class="form-control-static returns-description">The Timeline's Tween Manager object.</div>
 								</div>
 							</div>
 					</form>
@@ -2222,14 +1992,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listenerCount">EventEmitter#listenerCount</a></p>
+									<p class="form-control-static">3.3.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -2243,80 +2013,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-82">line 82</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="listeners" class="function public inherited"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the listeners registered for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The registered listeners.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listeners">EventEmitter#listeners</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-72">line 72</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-548">line 548</a></p>
 								</div>
 							</div>
 			
@@ -2360,291 +2057,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-586">line 586</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="off" class="function public inherited"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-							<td class="last">
-									Only remove the listeners that match this function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-							<td class="last">
-									Only remove the listeners that have this context.
-							</td>
-						</tr>
-						<tr>
-								<td><code>once</code></td>
-							<td><span class="param-type">boolean</span></td>
-							<td class="last">
-									Only remove one-time listeners.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#off">EventEmitter#off</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="on" class="function public inherited"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#on">EventEmitter#on</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="once" class="function public inherited"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a one-time listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#once">EventEmitter#once</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-126">line 126</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-601">line 601</a></p>
 								</div>
 							</div>
 			
@@ -2696,7 +2109,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-759">line 759</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-774">line 774</a></p>
 								</div>
 							</div>
 			
@@ -2740,7 +2153,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-548">line 548</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-563">line 563</a></p>
 								</div>
 							</div>
 			
@@ -2770,7 +2183,7 @@
 					<tbody>
 						<tr>
 								<td><code>tween</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Tweens.Tween.html">Phaser.Tweens.Tween</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2814,175 +2227,6 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-303">line 303</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="removeAllListeners" class="function public inherited"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove all listeners, or those of the specified event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeAllListeners">EventEmitter#removeAllListeners</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-164">line 164</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="removeListener" class="function public inherited"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-							<td class="last">
-									Only remove the listeners that match this function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-							<td class="last">
-									Only remove the listeners that have this context.
-							</td>
-						</tr>
-						<tr>
-								<td><code>once</code></td>
-							<td><span class="param-type">boolean</span></td>
-							<td class="last">
-									Only remove one-time listeners.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeListener">EventEmitter#removeListener</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-138">line 138</a></p>
 								</div>
 							</div>
 			
@@ -3099,7 +2343,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-785">line 785</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-800">line 800</a></p>
 								</div>
 							</div>
 			
@@ -3315,7 +2559,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-748">line 748</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-763">line 763</a></p>
 								</div>
 							</div>
 			
@@ -3395,7 +2639,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-646">line 646</a></p>
+									<p class="form-control-static"><a href="tweens_Timeline.js.html">tweens/Timeline.js</a>, <a href="tweens_Timeline.js.html#line-661">line 661</a></p>
 								</div>
 							</div>
 			
@@ -3417,7 +2661,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

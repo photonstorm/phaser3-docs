@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = true;
 		</script>
@@ -82,7 +82,7 @@
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
 				<span class="kind">class</span>
-				<h1><span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.GameObjects_.html">.GameObjects</a>.</span><span class="name">Zone</span></h1>
+				<h1><span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.GameObjects.html">.GameObjects</a>.</span><span class="name">Zone</span></h1>
 			</div>
 		</div>
 	<div class="container content">
@@ -91,7 +91,7 @@
 						<ol class="breadcrumb">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="list_class.html">Classes</a></li>
-							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.GameObjects_.html">.GameObjects</a>.Zone</li>
+							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.GameObjects.html">.GameObjects</a>.Zone</li>
 						</ol>
 						<div class="access-filter">
 								<label class="checkbox-inline">
@@ -186,6 +186,7 @@
 								<div class="col-sm-9">
 										<ul class="form-control-static">
 												<li><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></li>
+												<li><a href="Phaser.GameObjects.Components.html#.Depth">Phaser.GameObjects.Components.Depth</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.GetBounds">Phaser.GameObjects.Components.GetBounds</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.Origin">Phaser.GameObjects.Components.Origin</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.ScaleMode">Phaser.GameObjects.Components.ScaleMode</a></li>
@@ -403,7 +404,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-91">line 91</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-93">line 93</a></p>
 								</div>
 							</div>
 			
@@ -609,6 +610,64 @@
 			</div>	</div>
 </dd>
 											<hr/>
+											<dt class="symbol-title member public inherited">
+			<h4 id="depth" class="member public inherited"><span class="name">depth</span><span class="signature-type"> :number</span></h4>
+		</dt>
+<dd class="symbol-details member public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The depth of this Game Object within the Scene.The depth is also known as the 'z-index' in some environments, and allows you to change the rendering orderof Game Objects, without actually moving their position in the display list.The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depthvalue will always render in front of one with a lower value.Setting the depth will queue a depth sort event within the Scene.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">number</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Depth#depth">Phaser.GameObjects.Components.Depth#depth</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Depth.js.html">gameobjects/components/Depth.js</a>, <a href="gameobjects_components_Depth.js.html#line-19">line 19</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
 											<dt class="symbol-title member public">
 			<h4 id="displayHeight" class="member public"><span class="name">displayHeight</span><span class="signature-type"> :number</span></h4>
 		</dt>
@@ -649,7 +708,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-125">line 125</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-127">line 127</a></p>
 								</div>
 							</div>
 			
@@ -707,7 +766,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-49">line 49</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-60">line 60</a></p>
 								</div>
 							</div>
 			
@@ -765,7 +824,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-73">line 73</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-84">line 84</a></p>
 								</div>
 							</div>
 			
@@ -816,7 +875,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-103">line 103</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-105">line 105</a></p>
 								</div>
 							</div>
 			
@@ -867,7 +926,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-82">line 82</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-84">line 84</a></p>
 								</div>
 							</div>
 			
@@ -1062,7 +1121,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-19">line 19</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-30">line 30</a></p>
 								</div>
 							</div>
 			
@@ -1127,7 +1186,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-32">line 32</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-43">line 43</a></p>
 								</div>
 							</div>
 			
@@ -1930,7 +1989,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-73">line 73</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-75">line 75</a></p>
 								</div>
 							</div>
 			
@@ -2190,7 +2249,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -2202,12 +2261,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#addListener">EventEmitter#addListener</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#addListener">Phaser.Events.EventEmitter#addListener</a></p>
 								</div>
 							</div>
 			
@@ -2274,7 +2340,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-304">line 304</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-305">line 305</a></p>
 								</div>
 							</div>
 			
@@ -2314,7 +2380,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">Boolean</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
 								</div>
@@ -2326,12 +2392,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#emit">EventEmitter#emit</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#emit">Phaser.Events.EventEmitter#emit</a></p>
 								</div>
 							</div>
 			
@@ -2347,7 +2420,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-90">line 90</a></p>
 								</div>
 							</div>
 			
@@ -2378,12 +2451,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#eventNames">EventEmitter#eventNames</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#eventNames">Phaser.Events.EventEmitter#eventNames</a></p>
 								</div>
 							</div>
 			
@@ -2399,7 +2479,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-59">line 59</a></p>
 								</div>
 							</div>
 			
@@ -2767,7 +2847,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">*</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">The data, if present in the Data Store.</div>
 								</div>
@@ -3023,12 +3103,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listenerCount">EventEmitter#listenerCount</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#listenerCount">Phaser.Events.EventEmitter#listenerCount</a></p>
 								</div>
 							</div>
 			
@@ -3044,7 +3131,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-82">line 82</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-79">line 79</a></p>
 								</div>
 							</div>
 			
@@ -3096,12 +3183,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listeners">EventEmitter#listeners</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#listeners">Phaser.Events.EventEmitter#listeners</a></p>
 								</div>
 							</div>
 			
@@ -3117,7 +3211,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-72">line 72</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-68">line 68</a></p>
 								</div>
 							</div>
 			
@@ -3178,7 +3272,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -3190,12 +3284,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#off">EventEmitter#off</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#off">Phaser.Events.EventEmitter#off</a></p>
 								</div>
 							</div>
 			
@@ -3211,7 +3312,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-154">line 154</a></p>
 								</div>
 							</div>
 			
@@ -3273,7 +3374,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -3285,12 +3386,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#on">EventEmitter#on</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#on">Phaser.Events.EventEmitter#on</a></p>
 								</div>
 							</div>
 			
@@ -3306,7 +3414,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-101">line 101</a></p>
 								</div>
 							</div>
 			
@@ -3368,7 +3476,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -3380,12 +3488,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#once">EventEmitter#once</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#once">Phaser.Events.EventEmitter#once</a></p>
 								</div>
 							</div>
 			
@@ -3401,7 +3516,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-126">line 126</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-127">line 127</a></p>
 								</div>
 							</div>
 			
@@ -3443,7 +3558,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -3455,12 +3570,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeAllListeners">EventEmitter#removeAllListeners</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#removeAllListeners">Phaser.Events.EventEmitter#removeAllListeners</a></p>
 								</div>
 							</div>
 			
@@ -3476,7 +3598,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-164">line 164</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-168">line 168</a></p>
 								</div>
 							</div>
 			
@@ -3537,7 +3659,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -3549,12 +3671,19 @@
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 							<!-- inherits -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeListener">EventEmitter#removeListener</a></p>
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#removeListener">Phaser.Events.EventEmitter#removeListener</a></p>
 								</div>
 							</div>
 			
@@ -3570,7 +3699,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-138">line 138</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-140">line 140</a></p>
 								</div>
 							</div>
 			
@@ -3807,7 +3936,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-195">line 195</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-197">line 197</a></p>
 								</div>
 							</div>
 			
@@ -3844,7 +3973,7 @@
 						</tr>
 						<tr>
 								<td><code>value</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">*</span></td>
 							<td class="last">
 									The value to store with the key. Can be a string, number, array or object.
 							</td>
@@ -3965,6 +4094,86 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
+			<h4 id="setDepth" class="function public inherited"><span class="name">setDepth</span><span class="signature-params">( <span class="signature-param">value</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The depth of this Game Object within the Scene.The depth is also known as the 'z-index' in some environments, and allows you to change the rendering orderof Game Objects, without actually moving their position in the display list.The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depthvalue will always render in front of one with a lower value.Setting the depth will queue a depth sort event within the Scene.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									The depth of this Game Object.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Game Object instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Depth#setDepth">Phaser.GameObjects.Components.Depth#setDepth</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Depth.js.html">gameobjects/components/Depth.js</a>, <a href="gameobjects_components_Depth.js.html#line-49">line 49</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
 			<h4 id="setDisplayOrigin" class="function public inherited"><span class="name">setDisplayOrigin</span><span class="signature-params">( [&nbsp;<span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
@@ -4046,7 +4255,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-144">line 144</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-155">line 155</a></p>
 								</div>
 							</div>
 			
@@ -4126,7 +4335,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-175">line 175</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-177">line 177</a></p>
 								</div>
 							</div>
 			
@@ -4163,7 +4372,7 @@
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
 							<td class="last">
 									A function that will return `true` if the given x/y coords it is sent are within the shape.
 							</td>
@@ -4206,7 +4415,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-231">line 231</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-233">line 233</a></p>
 								</div>
 							</div>
 			
@@ -4218,7 +4427,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="setInteractive" class="function public inherited"><span class="name">setInteractive</span><span class="signature-params">( [&nbsp;<span class="signature-param">shape</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id="setInteractive" class="function public inherited"><span class="name">setInteractive</span><span class="signature-params">( [&nbsp;<span class="signature-param">shape</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">dropZone</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
@@ -4231,24 +4440,36 @@
 							<th>Name</th>
 						<th>Type</th>
 							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>shape</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">*</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
 							<td class="last">
 									A geometric shape that defines the hit area for the Game Object. If not specified a Rectangle will be used.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
 							<td class="last">
 									A callback to be invoked when the Game Object is interacted with.
+							</td>
+						</tr>
+						<tr>
+								<td><code>dropZone</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>false</td>
+							<td class="last">
+									Should this Game Object be treated as a drop zone target?
 							</td>
 						</tr>
 					</tbody>
@@ -4469,7 +4690,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-97">line 97</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-108">line 108</a></p>
 								</div>
 							</div>
 			
@@ -4528,7 +4749,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-121">line 121</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-132">line 132</a></p>
 								</div>
 							</div>
 			
@@ -4719,7 +4940,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-211">line 211</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-213">line 213</a></p>
 								</div>
 							</div>
 			
@@ -4828,6 +5049,7 @@
 							<th>Name</th>
 						<th>Type</th>
 							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
@@ -4836,6 +5058,7 @@
 								<td><code>x</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									The horizontal scale of this Game Object.
 							</td>
@@ -4844,6 +5067,7 @@
 								<td><code>y</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>x</td>
 							<td class="last">
 									The vertical scale of this Game Object. If not set it will use the `x` value.
 							</td>
@@ -5158,7 +5382,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-147">line 147</a></p>
+									<p class="form-control-static"><a href="gameobjects_zone_Zone.js.html">gameobjects/zone/Zone.js</a>, <a href="gameobjects_zone_Zone.js.html#line-149">line 149</a></p>
 								</div>
 							</div>
 			
@@ -5586,6 +5810,57 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
+			<h4 id="shutdown" class="function public inherited"><span class="name">shutdown</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes all listeners.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#shutdown">Phaser.Events.EventEmitter#shutdown</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-35">line 35</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
 			<h4 id="toJSON" class="function public inherited"><span class="name">toJSON</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
@@ -5593,7 +5868,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns a JSON representation of the Game Object.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">object</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="global.html#JSONGameObject">JSONGameObject</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">A JSON representation of the Game Object.</div>
 								</div>
@@ -5633,7 +5908,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-278">line 278</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-279">line 279</a></p>
 								</div>
 							</div>
 			
@@ -5684,7 +5959,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-268">line 268</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-269">line 269</a></p>
 								</div>
 							</div>
 			
@@ -5743,7 +6018,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-167">line 167</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Origin.js.html">gameobjects/components/Origin.js</a>, <a href="gameobjects_components_Origin.js.html#line-178">line 178</a></p>
 								</div>
 							</div>
 			
@@ -5802,7 +6077,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-291">line 291</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-292">line 292</a></p>
 								</div>
 							</div>
 			
@@ -5824,7 +6099,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

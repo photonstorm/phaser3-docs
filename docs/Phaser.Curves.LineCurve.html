@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = true;
 		</script>
@@ -319,7 +319,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="cacheArcLengths" class="member public inherited"><span class="name">cacheArcLengths</span><span class="signature-type"> :array</span></h4>
+			<h4 id="cacheArcLengths" class="member public inherited"><span class="name">cacheArcLengths</span><span class="signature-type"> :Array.&lt;number></span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -330,7 +330,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
+									<div class="form-control-static type-names"><span class="param-type">Array.&lt;number></span></div>
 								</div>
 							</div>
 			
@@ -626,7 +626,7 @@
 									<dl class="symbol">
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="draw" class="function public"><span class="name">draw</span><span class="signature-params">( <span class="signature-param">graphics</span>&nbsp;)</span></h4>
+			<h4 id=".fromJSON" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">fromJSON</span><span class="signature-params">( <span class="signature-param">data</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -643,10 +643,10 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>graphics</code></td>
-							<td><span class="param-type">any</span></td>
+								<td><code>data</code></td>
+							<td><span class="param-type"><a href="global.html#JSONCurve">JSONCurve</a></span></td>
 							<td class="last">
-									[description]
+									The JSON object containing this curve data.
 							</td>
 						</tr>
 					</tbody>
@@ -654,9 +654,82 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Curves.LineCurve.html">Phaser.Curves.LineCurve</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-215">line 215</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="draw" class="function public"><span class="name">draw</span><span class="signature-params">( <span class="signature-param">graphics</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Draws this curve on the given Graphics object.The curve is drawn using `Graphics.lineBetween` so will be drawn at whatever the present Graphics line color is.The Graphics object is not cleared before the draw, so the curve will appear on-top of anything else already rendered to it.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>graphics</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></span></td>
+							<td class="last">
+									The Graphics instance onto which this curve will be drawn.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The Graphics object to which the curve was drawn.</div>
 								</div>
 							</div>
 					</form>
@@ -694,7 +767,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-171">line 171</a></p>
+									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-173">line 173</a></p>
 								</div>
 							</div>
 			
@@ -706,11 +779,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getBounds" class="function public"><span class="name">getBounds</span><span class="signature-params">( <span class="signature-param">out</span>&nbsp;)</span></h4>
+			<h4 id="getBounds" class="function public"><span class="name">getBounds</span><span class="signature-params">( [&nbsp;<span class="signature-param">out</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns a Rectangle where the position and dimensions match the bounds of this Curve.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -718,15 +791,17 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>out</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Geom.Rectangle.html">Phaser.Geom.Rectangle</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									A Rectangle object to store the bounds in. If not given a new Rectangle will be created.
 							</td>
 						</tr>
 					</tbody>
@@ -734,9 +809,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Geom.Rectangle.html">Phaser.Geom.Rectangle</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">A Rectangle object holding the bounds of this curve. If `out` was given it will be this object.</div>
 								</div>
 							</div>
 					</form>
@@ -1087,11 +1162,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getPoint" class="function public"><span class="name">getPoint</span><span class="signature-params">( <span class="signature-param">t</span>, <span class="signature-param">out</span>&nbsp;)</span></h4>
+			<h4 id="getPoint" class="function public"><span class="name">getPoint</span><span class="signature-params">( <span class="signature-param">t</span> [,&nbsp;<span class="signature-param">out</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Get point at relative position in curve according to length.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1099,22 +1174,25 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>t</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The position along the curve to return. Where 0 is the start and 1 is the end.
 							</td>
 						</tr>
 						<tr>
 								<td><code>out</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									A Vector2 object to store the result in. If not given will be created.
 							</td>
 						</tr>
 					</tbody>
@@ -1122,9 +1200,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The coordinates of the point on the curve. If an `out` object was given this will be returned.</div>
 								</div>
 							</div>
 					</form>
@@ -1167,7 +1245,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getPointAt" class="function public"><span class="name">getPointAt</span><span class="signature-params">( <span class="signature-param">u</span>, <span class="signature-param">out</span>&nbsp;)</span></h4>
+			<h4 id="getPointAt" class="function public"><span class="name">getPointAt</span><span class="signature-params">( <span class="signature-param">u</span> [,&nbsp;<span class="signature-param">out</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -1179,22 +1257,25 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>u</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The position along the curve to return. Where 0 is the start and 1 is the end.
 							</td>
 						</tr>
 						<tr>
 								<td><code>out</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									A Vector2 object to store the result in. If not given will be created.
 							</td>
 						</tr>
 					</tbody>
@@ -1202,9 +1283,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The coordinates of the point on the curve. If an `out` object was given this will be returned.</div>
 								</div>
 							</div>
 					</form>
@@ -1242,7 +1323,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-139">line 139</a></p>
+									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-140">line 140</a></p>
 								</div>
 							</div>
 			
@@ -1552,11 +1633,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getStartPoint" class="function public"><span class="name">getStartPoint</span><span class="signature-params">( <span class="signature-param">out</span>&nbsp;)</span></h4>
+			<h4 id="getStartPoint" class="function public"><span class="name">getStartPoint</span><span class="signature-params">( [&nbsp;<span class="signature-param">out</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets the starting point on the curve.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1564,15 +1645,17 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>out</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									A Vector2 object to store the result in. If not given will be created.
 							</td>
 						</tr>
 					</tbody>
@@ -1580,9 +1663,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The coordinates of the point on the curve. If an `out` object was given this will be returned.</div>
 								</div>
 							</div>
 					</form>
@@ -1639,7 +1722,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -1679,7 +1762,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-155">line 155</a></p>
+									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-156">line 156</a></p>
 								</div>
 							</div>
 			
@@ -1976,9 +2059,9 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="global.html#JSONCurve">JSONCurve</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The JSON object containing this curve data.</div>
 								</div>
 							</div>
 					</form>
@@ -2009,7 +2092,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-189">line 189</a></p>
+									<p class="form-control-static"><a href="curves_LineCurve.js.html">curves/LineCurve.js</a>, <a href="curves_LineCurve.js.html#line-194">line 194</a></p>
 								</div>
 							</div>
 			
@@ -2082,7 +2165,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

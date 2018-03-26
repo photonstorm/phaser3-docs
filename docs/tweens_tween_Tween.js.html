@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -111,8 +111,8 @@ var TWEEN_CONST = require('./const');
  * @constructor
  * @since 3.0.0
  *
- * @param {Phaser.Tweens.TweenManager|Phaser.Tweens.Timeline} parent - [description]
- * @param {Phaser.Tweens.TweenData[]} data - [description]
+ * @param {(Phaser.Tweens.TweenManager|Phaser.Tweens.Timeline)} parent - [description]
+ * @param {Phaser.Tweens.TweenDataConfig[]} data - [description]
  * @param {array} targets - [description]
  */
 var Tween = new Class({
@@ -125,7 +125,7 @@ var Tween = new Class({
          * [description]
          *
          * @name Phaser.Tweens.Tween#parent
-         * @type {Phaser.Tweens.TweenManager|Phaser.Tweens.Timeline}
+         * @type {(Phaser.Tweens.TweenManager|Phaser.Tweens.Timeline)}
          * @since 3.0.0
          */
         this.parent = parent;
@@ -143,7 +143,7 @@ var Tween = new Class({
          * An array of TweenData objects, each containing a unique property and target being tweened.
          *
          * @name Phaser.Tweens.Tween#data
-         * @type {Phaser.Tweens.TweenData[]}
+         * @type {Phaser.Tweens.TweenDataConfig[]}
          * @since 3.0.0
          */
         this.data = data;
@@ -382,7 +382,7 @@ var Tween = new Class({
      * @method Phaser.Tweens.Tween#getValue
      * @since 3.0.0
      *
-     * @return {[type]} [description]
+     * @return {number} [description]
      */
     getValue: function ()
     {
@@ -467,7 +467,7 @@ var Tween = new Class({
      * @since 3.0.0
      *
      * @param {string} key - [description]
-     * @param {any} value - [description]
+     * @param {*} value - [description]
      * @param {boolean} startToCurrent - [description]
      *
      * @return {Phaser.Tweens.Tween} This Tween object.
@@ -603,12 +603,14 @@ var Tween = new Class({
         //  You can't have a paused Tween if it's part of a Timeline
         if (this.paused &amp;&amp; !this.parentIsTimeline)
         {
-            this.state = TWEEN_CONST.PAUSED;
+            this.state = TWEEN_CONST.PENDING_ADD;
 
             return false;
         }
         else
         {
+            this.state = TWEEN_CONST.INIT;
+
             return true;
         }
     },
@@ -689,8 +691,6 @@ var Tween = new Class({
 
         this.state = TWEEN_CONST.PAUSED;
 
-        this.emit('pause', this);
-
         return this;
     },
 
@@ -711,7 +711,7 @@ var Tween = new Class({
         else if (this.state === TWEEN_CONST.PENDING_REMOVE || this.state === TWEEN_CONST.REMOVED)
         {
             this.init();
-            this.parent.manager.makeActive(this);
+            this.parent.makeActive(this);
             resetFromTimeline = true;
         }
 
@@ -820,8 +820,6 @@ var Tween = new Class({
             this.state = this._pausedState;
         }
 
-        this.emit('resume', this);
-
         return this;
     },
 
@@ -871,7 +869,7 @@ var Tween = new Class({
                 ms -= tweenData.delay;
                 ms -= tweenData.t1;
 
-                var repeats = Math.floor(ms / tweenData.t2);
+                // var repeats = Math.floor(ms / tweenData.t2);
 
                 //  remainder
                 ms = ((ms / tweenData.t2) % 1) * tweenData.t2;
@@ -890,7 +888,12 @@ var Tween = new Class({
 
             tweenData.current = tweenData.start + ((tweenData.end - tweenData.start) * v);
 
-            // console.log(tweenData.key, 'Seek', tweenData.target[tweenData.key], 'to', tweenData.current, 'pro', tweenData.progress, 'marker', marker, progress);
+            // console.log(tweenData.key, 'Seek', tweenData.target[tweenData.key], 'to', tweenData.current, 'pro', tweenData.progress, 'marker', toPosition, progress);
+
+            // if (tweenData.current === 0)
+            // {
+            //     console.log('zero', tweenData.start, tweenData.end, v, 'progress', progress);
+            // }
 
             tweenData.target[tweenData.key] = tweenData.current;
         }
@@ -917,6 +920,43 @@ var Tween = new Class({
     },
 
     /**
+     * Flags the Tween as being complete, whatever stage of progress it is at.
+     *
+     * If an onComplete callback has been defined it will automatically invoke it, unless a `delay`
+     * argument is provided, in which case the Tween will delay for that period of time before calling the callback.
+     *
+     * If you don't need a delay, or have an onComplete callback, then call `Tween.stop` instead.
+     *
+     * @method Phaser.Tweens.Tween#complete
+     * @since 3.2.0
+     *
+     * @param {number} [delay=0] - The time to wait before invoking the complete callback. If zero it will fire immediately.
+     */
+    complete: function (delay)
+    {
+        if (delay === undefined) { delay = 0; }
+
+        if (delay)
+        {
+            this.countdown = delay;
+            this.state = TWEEN_CONST.COMPLETE_DELAY;
+        }
+        else
+        {
+            var onComplete = this.callbacks.onComplete;
+
+            if (onComplete)
+            {
+                onComplete.params[1] = this.targets;
+
+                onComplete.func.apply(onComplete.scope, onComplete.params);
+            }
+
+            this.state = TWEEN_CONST.PENDING_REMOVE;
+        }
+    },
+
+    /**
      * Stops the Tween immediately, whatever stage of progress it is at and flags it for removal by the TweenManager.
      *
      * @method Phaser.Tweens.Tween#stop
@@ -926,12 +966,18 @@ var Tween = new Class({
      */
     stop: function (resetTo)
     {
-        if (resetTo !== undefined)
+        if (this.state === TWEEN_CONST.ACTIVE)
         {
-            this.seek(resetTo);
+            if (resetTo !== undefined)
+            {
+                this.seek(resetTo);
+            }
         }
 
-        this.state = TWEEN_CONST.PENDING_REMOVE;
+        if (this.state !== TWEEN_CONST.REMOVED)
+        {
+            this.state = TWEEN_CONST.PENDING_REMOVE;
+        }
     },
 
     /**
@@ -1047,7 +1093,7 @@ var Tween = new Class({
      * @since 3.0.0
      *
      * @param {Phaser.Tweens.Tween} tween - [description]
-     * @param {Phaser.Tweens.TweenData} tweenData - [description]
+     * @param {Phaser.Tweens.TweenDataConfig} tweenData - [description]
      * @param {number} diff - [description]
      *
      * @return {integer} The state of this Tween.
@@ -1151,7 +1197,7 @@ var Tween = new Class({
      * @since 3.0.0
      *
      * @param {Phaser.Tweens.Tween} tween - [description]
-     * @param {Phaser.Tweens.TweenData} tweenData - [description]
+     * @param {Phaser.Tweens.TweenDataConfig} tweenData - [description]
      * @param {number} diff - [description]
      *
      * @return {integer} The state of this Tween.
@@ -1208,7 +1254,7 @@ var Tween = new Class({
         return TWEEN_CONST.COMPLETE;
     },
 
-    //  
+    //
     /**
      * [description]
      *
@@ -1216,7 +1262,7 @@ var Tween = new Class({
      * @since 3.0.0
      *
      * @param {Phaser.Tweens.Tween} tween - [description]
-     * @param {Phaser.Tweens.TweenData} tweenData - [description]
+     * @param {Phaser.Tweens.TweenDataConfig} tweenData - [description]
      * @param {number} delta - Either a value in ms, or 1 if Tween.useFrames is true
      *
      * @return {boolean} [description]
@@ -1227,6 +1273,12 @@ var Tween = new Class({
         {
             case TWEEN_CONST.PLAYING_FORWARD:
             case TWEEN_CONST.PLAYING_BACKWARD:
+
+                if (!tweenData.target)
+                {
+                    tweenData.state = TWEEN_CONST.COMPLETE;
+                    break;
+                }
 
                 var elapsed = tweenData.elapsed;
                 var duration = tweenData.duration;
@@ -1332,15 +1384,22 @@ var Tween = new Class({
 
             case TWEEN_CONST.PENDING_RENDER:
 
-                tweenData.start = tweenData.getStartValue(tweenData.target, tweenData.key, tweenData.target[tweenData.key]);
+                if (tweenData.target)
+                {
+                    tweenData.start = tweenData.getStartValue(tweenData.target, tweenData.key, tweenData.target[tweenData.key]);
 
-                tweenData.end = tweenData.getEndValue(tweenData.target, tweenData.key, tweenData.start);
+                    tweenData.end = tweenData.getEndValue(tweenData.target, tweenData.key, tweenData.start);
 
-                tweenData.current = tweenData.start;
+                    tweenData.current = tweenData.start;
 
-                tweenData.target[tweenData.key] = tweenData.start;
+                    tweenData.target[tweenData.key] = tweenData.start;
 
-                tweenData.state = TWEEN_CONST.PLAYING_FORWARD;
+                    tweenData.state = TWEEN_CONST.PLAYING_FORWARD;
+                }
+                else
+                {
+                    tweenData.state = TWEEN_CONST.COMPLETE;
+                }
 
                 break;
         }
@@ -1369,7 +1428,7 @@ Tween.TYPES = [
  * @since 3.0.0
  *
  * @param {object} config - The Tween configuration.
- * 
+ *
  * @return {Phaser.Tweens.Tween} The Tween that was created.
  */
 GameObjectFactory.register('tween', function (config)
@@ -1394,7 +1453,7 @@ GameObjectFactory.register('tween', function (config)
  * @since 3.0.0
  *
  * @param {object} config - The Tween configuration.
- * 
+ *
  * @return {Phaser.Tweens.Tween} The Tween that was created.
  */
 GameObjectCreator.register('tween', function (config)
@@ -1413,7 +1472,7 @@ module.exports = Tween;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

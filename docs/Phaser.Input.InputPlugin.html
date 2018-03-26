@@ -40,9 +40,9 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
-			window.DOCLET_AFILTER_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
 </head>
 <body>
@@ -93,16 +93,6 @@
 							<li><a href="list_class.html">Classes</a></li>
 							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Input.html">.Input</a>.InputPlugin</li>
 						</ol>
-						<div class="access-filter">
-								<label class="checkbox-inline">
-									<input class="toggle-inherited" type="checkbox" value="" checked>
-									Inherited
-								</label>
-								<label class="checkbox-inline">
-									<input class="toggle-public" type="checkbox" value="" checked>
-									Public
-								</label>
-						</div>
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
@@ -140,7 +130,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Augments</label>
 								<div class="col-sm-9">
-										<p class="form-control-static"><a href="EventEmitter.html">EventEmitter</a></p>
+										<p class="form-control-static">EventEmitter</p>
 								</div>
 							</div>
 			
@@ -221,7 +211,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1519">line 1519</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1580">line 1580</a></p>
 								</div>
 							</div>
 			
@@ -659,11 +649,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">How often should the pointer input be checked?
-			Time given in ms
-			Pointer will *always* be checked if it has been moved by the user.
-			This controls how often it will be polled if it hasn't been moved.
-			Set to 0 to poll constantly. Set to -1 to only poll on user movement.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">How often should the pointer input be checked?Time given in msPointer will *always* be checked if it has been moved by the user.This controls how often it will be polled if it hasn't been moved.Set to 0 to poll constantly. Set to -1 to only poll on user movement.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -823,8 +809,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Only fire callbacks and events on the top-most Game Object in the display list (emulating DOM behavior)
-			and ignore any GOs below it, or call them all?</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Only fire callbacks and events on the top-most Game Object in the display list (emulating DOM behavior)and ignore any GOs below it, or call them all?</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -882,8 +867,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The x coordinates of the ActivePointer based on the first camera in the camera list.
-			This is only safe to use if your game has just 1 non-transformed camera and doesn't use multi-touch.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The x coordinates of the ActivePointer based on the first camera in the camera list.This is only safe to use if your game has just 1 non-transformed camera and doesn't use multi-touch.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -918,7 +902,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1536">line 1536</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1597">line 1597</a></p>
 								</div>
 							</div>
 			
@@ -934,8 +918,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The y coordinates of the ActivePointer based on the first camera in the camera list.
-			This is only safe to use if your game has just 1 non-transformed camera and doesn't use multi-touch.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The y coordinates of the ActivePointer based on the first camera in the camera list.This is only safe to use if your game has just 1 non-transformed camera and doesn't use multi-touch.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -970,7 +953,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1554">line 1554</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1615">line 1615</a></p>
 								</div>
 							</div>
 			
@@ -983,101 +966,6 @@
 									</dl>
 									<h3>Methods</h3>
 									<dl class="symbol">
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="addListener" class="function public inherited"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#addListener">EventEmitter#addListener</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-114">line 114</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
 											<hr/>
 											<dt class="symbol-title function public">
 			<h4 id="boot" class="function public"><span class="name">boot</span><span class="signature-params">()</span></h4>
@@ -1112,7 +1000,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-262">line 262</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-273">line 273</a></p>
 								</div>
 							</div>
 			
@@ -1142,7 +1030,7 @@
 					<tbody>
 						<tr>
 								<td><code>gameObject</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -1152,7 +1040,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -1185,7 +1073,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-330">line 330</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-337">line 337</a></p>
 								</div>
 							</div>
 			
@@ -1229,7 +1117,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1500">line 1500</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1561">line 1561</a></p>
 								</div>
 							</div>
 			
@@ -1259,7 +1147,7 @@
 					<tbody>
 						<tr>
 								<td><code>gameObject</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -1294,80 +1182,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-355">line 355</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calls each of the listeners registered for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">Boolean</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#emit">EventEmitter#emit</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-384">line 384</a></p>
 								</div>
 							</div>
 			
@@ -1379,7 +1194,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="enable" class="function public"><span class="name">enable</span><span class="signature-params">( <span class="signature-param">gameObject</span>, <span class="signature-param">shape</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="enable" class="function public"><span class="name">enable</span><span class="signature-params">( <span class="signature-param">gameObject</span>, <span class="signature-param">shape</span>, <span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">dropZone</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -1391,27 +1206,44 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObject</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>shape</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>dropZone</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>false</td>
 							<td class="last">
 									[description]
 							</td>
@@ -1421,9 +1253,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This Input Plugin.</div>
 								</div>
 							</div>
 					</form>
@@ -1454,59 +1286,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-368">line 368</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="eventNames" class="function public inherited"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return an array listing the events for which the emitter has registered listeners.</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description"></div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#eventNames">EventEmitter#eventNames</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-397">line 397</a></p>
 								</div>
 							</div>
 			
@@ -1536,7 +1316,7 @@
 					<tbody>
 						<tr>
 								<td><code>pointer</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Input.Pointer.html">Phaser.Input.Pointer</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -1546,7 +1326,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -1579,437 +1359,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-396">line 396</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="listenerCount" class="function public inherited"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the number of listeners listening to a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The number of listeners.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listenerCount">EventEmitter#listenerCount</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-82">line 82</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="listeners" class="function public inherited"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the listeners registered for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The registered listeners.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listeners">EventEmitter#listeners</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-72">line 72</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="off" class="function public inherited"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-							<td class="last">
-									Only remove the listeners that match this function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-							<td class="last">
-									Only remove the listeners that have this context.
-							</td>
-						</tr>
-						<tr>
-								<td><code>once</code></td>
-							<td><span class="param-type">boolean</span></td>
-							<td class="last">
-									Only remove one-time listeners.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#off">EventEmitter#off</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="on" class="function public inherited"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#on">EventEmitter#on</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="once" class="function public inherited"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a one-time listener for a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The listener function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>this</td>
-							<td class="last">
-									The context to invoke the listener with.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#once">EventEmitter#once</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-126">line 126</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-430">line 430</a></p>
 								</div>
 							</div>
 			
@@ -2026,14 +1376,6 @@
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
-								</div>
-							</div>
-					</form>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
@@ -2061,7 +1403,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-282">line 282</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-293">line 293</a></p>
 								</div>
 							</div>
 			
@@ -2091,9 +1433,9 @@
 					<tbody>
 						<tr>
 								<td><code>pointer</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Input.Pointer.html">Phaser.Input.Pointer</a></span></td>
 							<td class="last">
-									[description]
+									The Pointer to check for events against.
 							</td>
 						</tr>
 					</tbody>
@@ -2101,9 +1443,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The total number of objects interacted with.</div>
 								</div>
 							</div>
 					</form>
@@ -2134,7 +1476,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-424">line 424</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-471">line 471</a></p>
 								</div>
 							</div>
 			
@@ -2164,14 +1506,14 @@
 					<tbody>
 						<tr>
 								<td><code>pointer</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>time</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2181,7 +1523,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -2214,7 +1556,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-463">line 463</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-510">line 510</a></p>
 								</div>
 							</div>
 			
@@ -2244,9 +1586,9 @@
 					<tbody>
 						<tr>
 								<td><code>pointer</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Input.Pointer.html">Phaser.Input.Pointer</a></span></td>
 							<td class="last">
-									[description]
+									The pointer to check for events against.
 							</td>
 						</tr>
 					</tbody>
@@ -2254,9 +1596,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The total number of objects interacted with.</div>
 								</div>
 							</div>
 					</form>
@@ -2287,7 +1629,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-733">line 733</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-772">line 772</a></p>
 								</div>
 							</div>
 			
@@ -2317,7 +1659,7 @@
 					<tbody>
 						<tr>
 								<td><code>pointer</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Input.Pointer.html">Phaser.Input.Pointer</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2327,9 +1669,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The number of objects interacted with.</div>
 								</div>
 							</div>
 					</form>
@@ -2360,7 +1702,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-776">line 776</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-815">line 815</a></p>
 								</div>
 							</div>
 			
@@ -2390,7 +1732,7 @@
 					<tbody>
 						<tr>
 								<td><code>pointer</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Input.Pointer.html">Phaser.Input.Pointer</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2425,7 +1767,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-891">line 891</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-937">line 937</a></p>
 								</div>
 							</div>
 			
@@ -2455,9 +1797,9 @@
 					<tbody>
 						<tr>
 								<td><code>child</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
 							<td class="last">
-									[description]
+									The Game Object to add.
 							</td>
 						</tr>
 					</tbody>
@@ -2465,9 +1807,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -2498,7 +1840,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-922">line 922</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-972">line 972</a></p>
 								</div>
 							</div>
 			
@@ -2528,9 +1870,9 @@
 					<tbody>
 						<tr>
 								<td><code>child</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
 							<td class="last">
-									[description]
+									The Game Object to remove.
 							</td>
 						</tr>
 					</tbody>
@@ -2538,9 +1880,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -2571,176 +1913,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-942">line 942</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="removeAllListeners" class="function public inherited"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove all listeners, or those of the specified event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeAllListeners">EventEmitter#removeAllListeners</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-164">line 164</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="removeListener" class="function public inherited"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>event</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
-							<td class="last">
-									The event name.
-							</td>
-						</tr>
-						<tr>
-								<td><code>fn</code></td>
-							<td><span class="param-type">function</span></td>
-							<td class="last">
-									Only remove the listeners that match this function.
-							</td>
-						</tr>
-						<tr>
-								<td><code>context</code></td>
-							<td><span class="param-type">*</span></td>
-							<td class="last">
-									Only remove the listeners that have this context.
-							</td>
-						</tr>
-						<tr>
-								<td><code>once</code></td>
-							<td><span class="param-type">boolean</span></td>
-							<td class="last">
-									Only remove one-time listeners.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`this`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeListener">EventEmitter#removeListener</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-138">line 138</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-992">line 992</a></p>
 								</div>
 							</div>
 			
@@ -2752,7 +1925,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setDraggable" class="function public"><span class="name">setDraggable</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id="setDraggable" class="function public"><span class="name">setDraggable</span><span class="signature-params">( <span class="signature-param">gameObjects</span> [,&nbsp;<span class="signature-param">value</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -2764,22 +1937,28 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to change the draggable state on.
 							</td>
 						</tr>
 						<tr>
 								<td><code>value</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>true</td>
 							<td class="last">
-									[description]
+									Set to `true` if the Game Objects should be made draggable, `false` if they should be unset.
 							</td>
 						</tr>
 					</tbody>
@@ -2787,9 +1966,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -2820,7 +1999,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-959">line 959</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1009">line 1009</a></p>
 								</div>
 							</div>
 			
@@ -2850,7 +2029,7 @@
 					<tbody>
 						<tr>
 								<td><code>value</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">boolean</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2860,9 +2039,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -2893,7 +2072,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1233">line 1233</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1283">line 1283</a></p>
 								</div>
 							</div>
 			
@@ -2905,7 +2084,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setHitArea" class="function public"><span class="name">setHitArea</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">shape</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="setHitArea" class="function public"><span class="name">setHitArea</span><span class="signature-params">( <span class="signature-param">gameObjects</span> [,&nbsp;<span class="signature-param">shape</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -2917,29 +2096,33 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to set the hit area on.
 							</td>
 						</tr>
 						<tr>
 								<td><code>shape</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The shape or object to check if the pointer is within for hit area checks.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The 'contains' function to invoke to check if the pointer is within the hit area.
 							</td>
 						</tr>
 					</tbody>
@@ -2947,9 +2130,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -2980,7 +2163,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1000">line 1000</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1050">line 1050</a></p>
 								</div>
 							</div>
 			
@@ -2992,7 +2175,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setHitAreaCircle" class="function public"><span class="name">setHitAreaCircle</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">radius</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="setHitAreaCircle" class="function public"><span class="name">setHitAreaCircle</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">radius</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -3004,43 +2187,49 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to set as having a circle hit area.
 							</td>
 						</tr>
 						<tr>
 								<td><code>x</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The center of the circle.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The center of the circle.
 							</td>
 						</tr>
 						<tr>
 								<td><code>radius</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The radius of the circle.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The hit area callback. If undefined it uses Circle.Contains.
 							</td>
 						</tr>
 					</tbody>
@@ -3048,9 +2237,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3081,7 +2270,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1036">line 1036</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1086">line 1086</a></p>
 								</div>
 							</div>
 			
@@ -3093,7 +2282,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setHitAreaEllipse" class="function public"><span class="name">setHitAreaEllipse</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="setHitAreaEllipse" class="function public"><span class="name">setHitAreaEllipse</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -3105,50 +2294,57 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to set as having an ellipse hit area.
 							</td>
 						</tr>
 						<tr>
 								<td><code>x</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The center of the ellipse.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The center of the ellipse.
 							</td>
 						</tr>
 						<tr>
 								<td><code>width</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The width of the ellipse.
 							</td>
 						</tr>
 						<tr>
 								<td><code>height</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The height of the ellipse.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The hit area callback. If undefined it uses Ellipse.Contains.
 							</td>
 						</tr>
 					</tbody>
@@ -3156,9 +2352,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3189,7 +2385,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1059">line 1059</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1109">line 1109</a></p>
 								</div>
 							</div>
 			
@@ -3201,7 +2397,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setHitAreaFromTexture" class="function public"><span class="name">setHitAreaFromTexture</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="setHitAreaFromTexture" class="function public"><span class="name">setHitAreaFromTexture</span><span class="signature-params">( <span class="signature-param">gameObjects</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -3213,22 +2409,25 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to set as having an ellipse hit area.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The hit area callback. If undefined it uses Rectangle.Contains.
 							</td>
 						</tr>
 					</tbody>
@@ -3236,117 +2435,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1083">line 1083</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setHitAreaRectangle" class="function public"><span class="name">setHitAreaRectangle</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>x</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>width</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>height</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3389,7 +2480,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setHitAreaTriangle" class="function public"><span class="name">setHitAreaTriangle</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x1</span>, <span class="signature-param">y1</span>, <span class="signature-param">x2</span>, <span class="signature-param">y2</span>, <span class="signature-param">x3</span>, <span class="signature-param">y3</span>, <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="setHitAreaRectangle" class="function public"><span class="name">setHitAreaRectangle</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -3401,64 +2492,57 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to set as having a rectangular hit area.
 							</td>
 						</tr>
 						<tr>
-								<td><code>x1</code></td>
-							<td><span class="param-type">any</span></td>
+								<td><code>x</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The top-left of the rectangle.
 							</td>
 						</tr>
 						<tr>
-								<td><code>y1</code></td>
-							<td><span class="param-type">any</span></td>
+								<td><code>y</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The top-left of the rectangle.
 							</td>
 						</tr>
 						<tr>
-								<td><code>x2</code></td>
-							<td><span class="param-type">any</span></td>
+								<td><code>width</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The width of the rectangle.
 							</td>
 						</tr>
 						<tr>
-								<td><code>y2</code></td>
-							<td><span class="param-type">any</span></td>
+								<td><code>height</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>x3</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y3</code></td>
-							<td><span class="param-type">any</span></td>
-							<td class="last">
-									[description]
+									The height of the rectangle.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callback</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The hit area callback. If undefined it uses Rectangle.Contains.
 							</td>
 						</tr>
 					</tbody>
@@ -3466,61 +2550,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1157">line 1157</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setPollAlways" class="function public"><span class="name">setPollAlways</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3563,16 +2595,95 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setPollOnMove" class="function public"><span class="name">setPollOnMove</span><span class="signature-params">()</span></h4>
+			<h4 id="setHitAreaTriangle" class="function public"><span class="name">setHitAreaTriangle</span><span class="signature-params">( <span class="signature-param">gameObjects</span>, <span class="signature-param">x1</span>, <span class="signature-param">y1</span>, <span class="signature-param">x2</span>, <span class="signature-param">y2</span>, <span class="signature-param">x3</span>, <span class="signature-param">y3</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>gameObjects</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									An array of Game Objects to set as having a  triangular hit area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>x1</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The x coordinate of the first point of the triangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y1</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The y coordinate of the first point of the triangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>x2</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The x coordinate of the second point of the triangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y2</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The y coordinate of the second point of the triangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>x3</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The x coordinate of the third point of the triangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y3</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The y coordinate of the third point of the triangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The hit area callback. If undefined it uses Triangle.Contains.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3603,7 +2714,111 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1199">line 1199</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1207">line 1207</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setPollAlways" class="function public"><span class="name">setPollAlways</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1233">line 1233</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setPollOnMove" class="function public"><span class="name">setPollOnMove</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1249">line 1249</a></p>
 								</div>
 							</div>
 			
@@ -3633,7 +2848,7 @@
 					<tbody>
 						<tr>
 								<td><code>value</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -3643,9 +2858,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3676,7 +2891,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1215">line 1215</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1265">line 1265</a></p>
 								</div>
 							</div>
 			
@@ -3706,7 +2921,7 @@
 					<tbody>
 						<tr>
 								<td><code>value</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">boolean</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -3716,9 +2931,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -3749,7 +2964,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1250">line 1250</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1300">line 1300</a></p>
 								</div>
 							</div>
 			
@@ -3793,7 +3008,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1477">line 1477</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1538">line 1538</a></p>
 								</div>
 							</div>
 			
@@ -3809,8 +3024,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Given an array of Game Objects, sort the array and return it,
-			so that the objects are in index order with the lowest at the bottom.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Given an array of Game Objects, sort the array and return it,so that the objects are in index order with the lowest at the bottom.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3824,7 +3038,7 @@
 					<tbody>
 						<tr>
 								<td><code>gameObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -3834,7 +3048,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -3867,7 +3081,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1267">line 1267</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1317">line 1317</a></p>
 								</div>
 							</div>
 			
@@ -3897,14 +3111,14 @@
 					<tbody>
 						<tr>
 								<td><code>childA</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>childB</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -3914,7 +3128,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -3947,7 +3161,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1290">line 1290</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1340">line 1340</a></p>
 								</div>
 							</div>
 			
@@ -3977,14 +3191,14 @@
 					<tbody>
 						<tr>
 								<td><code>childA</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">Phaser.Input.InteractiveObject</span></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>childB</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">Phaser.Input.InteractiveObject</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -3994,7 +3208,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -4027,7 +3241,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1322">line 1322</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1372">line 1372</a></p>
 								</div>
 							</div>
 			
@@ -4043,8 +3257,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Given an array of Interactive Objects, sort the array and return it,
-			so that the objects are in index order with the lowest at the bottom.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Given an array of Interactive Objects, sort the array and return it,so that the objects are in index order with the lowest at the bottom.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -4058,7 +3271,7 @@
 					<tbody>
 						<tr>
 								<td><code>interactiveObjects</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">Array.&lt;Phaser.Input.InteractiveObject></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -4068,7 +3281,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">Array.&lt;Phaser.Input.InteractiveObject></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -4101,7 +3314,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1354">line 1354</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1404">line 1404</a></p>
 								</div>
 							</div>
 			
@@ -4120,9 +3333,9 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This InputPlugin object.</div>
 								</div>
 							</div>
 					</form>
@@ -4153,7 +3366,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1377">line 1377</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1427">line 1427</a></p>
 								</div>
 							</div>
 			
@@ -4183,14 +3396,14 @@
 					<tbody>
 						<tr>
 								<td><code>time</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>delta</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">number</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -4198,15 +3411,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -4233,7 +3438,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1395">line 1395</a></p>
+									<p class="form-control-static"><a href="input_InputPlugin.js.html">input/InputPlugin.js</a>, <a href="input_InputPlugin.js.html#line-1445">line 1445</a></p>
 								</div>
 							</div>
 			
@@ -4255,7 +3460,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

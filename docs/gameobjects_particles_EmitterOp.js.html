@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -102,6 +102,29 @@ var FloatBetween = require('../../math/FloatBetween');
 var GetEaseFunction = require('../../tweens/builders/GetEaseFunction');
 var GetFastValue = require('../../utils/object/GetFastValue');
 var Wrap = require('../../math/Wrap');
+
+/**
+ * The returned value sets what the property will be at the START of the particles life, on emit.
+ * @callback EmitterOpOnEmitCallback
+ *
+ * @param {Phaser.GameObjects.Particles.Particle} particle - [description]
+ * @param {string} key - [description]
+ * @param {number} value - [description]
+ *
+ * @return {number} [description]
+ */
+
+/**
+ * The returned value updates the property for the duration of the particles life.
+ * @callback EmitterOpOnUpdateCallback
+ *
+ * @param {Phaser.GameObjects.Particles.Particle} particle - [description]
+ * @param {string} key - [description]
+ * @param {float} t - The T value (between 0 and 1)
+ * @param {number} value - [description]
+ *
+ * @return {number} [description]
+ */
 
 /**
  * @classdesc
@@ -214,7 +237,7 @@ var EmitterOp = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.EmitterOp#onEmit
-         * @type {[type]}
+         * @type {EmitterOpOnEmitCallback}
          * @since 3.0.0
          */
         this.onEmit = this.defaultEmit;
@@ -223,7 +246,7 @@ var EmitterOp = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.EmitterOp#onUpdate
-         * @type {[type]}
+         * @type {EmitterOpOnUpdateCallback}
          * @since 3.0.0
          */
         this.onUpdate = this.defaultUpdate;
@@ -279,7 +302,7 @@ var EmitterOp = new Class({
      * @method Phaser.GameObjects.Particles.EmitterOp#onChange
      * @since 3.0.0
      *
-     * @param {[type]} value - [description]
+     * @param {number} value - [description]
      *
      * @return {Phaser.GameObjects.Particles.EmitterOp} This Emitter Op object.
      */
@@ -631,11 +654,10 @@ var EmitterOp = new Class({
      * @param {Phaser.GameObjects.Particles.Particle} particle - [description]
      * @param {string} key - [description]
      * @param {float} t - The T value (between 0 and 1)
-     * @param {number} value - [description]
      *
      * @return {number} [description]
      */
-    easeValueUpdate: function (particle, key, t, value)
+    easeValueUpdate: function (particle, key, t)
     {
         var data = particle.data[key];
 
@@ -653,7 +675,7 @@ module.exports = EmitterOp;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -105,7 +105,6 @@ var EdgeZone = require('./zones/EdgeZone');
 var EmitterOp = require('./EmitterOp');
 var GetFastValue = require('../../utils/object/GetFastValue');
 var GetRandomElement = require('../../utils/array/GetRandomElement');
-var GetValue = require('../../utils/object/GetValue');
 var HasAny = require('../../utils/object/HasAny');
 var HasValue = require('../../utils/object/HasValue');
 var Particle = require('./Particle');
@@ -114,6 +113,19 @@ var Rectangle = require('../../geom/rectangle/Rectangle');
 var StableSort = require('../../utils/array/StableSort');
 var Vector2 = require('../../math/Vector2');
 var Wrap = require('../../math/Wrap');
+
+/**
+ * @callback ParticleEmitterCallback
+ *
+ * @param {Phaser.GameObjects.Particles.Particle} particle - [description]
+ * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - [description]
+ */
+
+/**
+ * @callback ParticleDeathCallback
+ *
+ * @param {Phaser.GameObjects.Particles.Particle} particle - [description]
+ */
 
 /**
  * @classdesc
@@ -243,7 +255,7 @@ var ParticleEmitter = new Class({
 
         /**
          * The name of this Game Object.
-         * 
+         *
          * Empty by default and never populated by Phaser, this is left for developers to use.
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#name
@@ -494,7 +506,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#emitCallback
-         * @type {?function}
+         * @type {?ParticleEmitterCallback}
          * @default null
          * @since 3.0.0
          */
@@ -504,7 +516,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#emitCallbackScope
-         * @type {?object}
+         * @type {?*}
          * @default null
          * @since 3.0.0
          */
@@ -514,7 +526,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#deathCallback
-         * @type {?function}
+         * @type {?ParticleDeathCallback}
          * @default null
          * @since 3.0.0
          */
@@ -524,7 +536,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#deathCallbackScope
-         * @type {?object}
+         * @type {?*}
          * @default null
          * @since 3.0.0
          */
@@ -708,7 +720,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#follow
-         * @type {?[type]}
+         * @type {?Phaser.GameObjects.Particles.Particle}
          * @default null
          * @since 3.0.0
          */
@@ -767,7 +779,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#dead
-         * @type {array}
+         * @type {Phaser.GameObjects.Particles.Particle[]}
          * @private
          * @since 3.0.0
          */
@@ -777,7 +789,7 @@ var ParticleEmitter = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.Particles.ParticleEmitter#alive
-         * @type {array}
+         * @type {Phaser.GameObjects.Particles.Particle[]}
          * @private
          * @since 3.0.0
          */
@@ -971,10 +983,10 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#startFollow
      * @since 3.0.0
      *
-     * @param {[type]} target - [description]
-     * @param {number} offsetX - [description]
-     * @param {number} offsetY - [description]
-     * @param {boolean} trackVisible - [description]
+     * @param {Phaser.GameObjects.Particles.Particle} target - [description]
+     * @param {number} [offsetX=0] - [description]
+     * @param {number} [offsetY=0] - [description]
+     * @param {boolean} [trackVisible=false] - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1035,7 +1047,7 @@ var ParticleEmitter = new Class({
             if (this._frameCounter === this.frameQuantity)
             {
                 this._frameCounter = 0;
-                this.currentFrame = Wrap(this.currentFrame + 1, 0, this._frameLength);                
+                this.currentFrame = Wrap(this.currentFrame + 1, 0, this._frameLength);
             }
 
             return frame;
@@ -1054,7 +1066,7 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#setFrame
      * @since 3.0.0
      *
-     * @param {array|string|integer|object} frames - [description]
+     * @param {(array|string|integer|object)} frames - [description]
      * @param {boolean} [pickRandom=true] - [description]
      * @param {integer} [quantity=1] - [description]
      *
@@ -1079,7 +1091,8 @@ var ParticleEmitter = new Class({
         else if (t === 'object')
         {
             var frameConfig = frames;
-            var frames = GetFastValue(frameConfig, 'frames', null);
+
+            frames = GetFastValue(frameConfig, 'frames', null);
 
             if (frames)
             {
@@ -1148,7 +1161,7 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#setBounds
      * @since 3.0.0
      *
-     * @param {number|object} x - [description]
+     * @param {(number|object)} x - [description]
      * @param {number} y - [description]
      * @param {number} width - [description]
      * @param {number} height - [description]
@@ -1161,10 +1174,10 @@ var ParticleEmitter = new Class({
         {
             var obj = x;
 
-            var x = obj.x;
-            var y = obj.y;
-            var width = (HasValue(obj, 'w')) ? obj.w : obj.width;
-            var height = (HasValue(obj, 'h')) ? obj.h : obj.height;
+            x = obj.x;
+            y = obj.y;
+            width = (HasValue(obj, 'w')) ? obj.w : obj.width;
+            height = (HasValue(obj, 'h')) ? obj.h : obj.height;
         }
 
         if (this.bounds)
@@ -1465,7 +1478,7 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#setEmitZone
      * @since 3.0.0
      *
-     * @param {[type]} zoneConfig - [description]
+     * @param {object} [zoneConfig] - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1517,7 +1530,7 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#setDeathZone
      * @since 3.0.0
      *
-     * @param {[type]} zoneConfig - [description]
+     * @param {object} [zoneConfig] - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1627,8 +1640,8 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#onParticleEmit
      * @since 3.0.0
      *
-     * @param {[type]} callback - [description]
-     * @param {[type]} context - [description]
+     * @param {ParticleEmitterCallback} callback - [description]
+     * @param {*} [context] - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1659,8 +1672,8 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#onParticleDeath
      * @since 3.0.0
      *
-     * @param {[type]} callback - [description]
-     * @param {[type]} context - [description]
+     * @param {ParticleDeathCallback} callback - [description]
+     * @param {*} [context] - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1712,8 +1725,8 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#forEachAlive
      * @since 3.0.0
      *
-     * @param {[type]} callback - [description]
-     * @param {[type]} thisArg - [description]
+     * @param {ParticleEmitterCallback} callback - [description]
+     * @param {*} thisArg - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1737,8 +1750,8 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#forEachDead
      * @since 3.0.0
      *
-     * @param {[type]} callback - [description]
-     * @param {[type]} thisArg - [description]
+     * @param {ParticleEmitterCallback} callback - [description]
+     * @param {*} thisArg - [description]
      *
      * @return {Phaser.GameObjects.Particles.ParticleEmitter} This Particle Emitter.
      */
@@ -1946,8 +1959,8 @@ var ParticleEmitter = new Class({
      * @method Phaser.GameObjects.Particles.ParticleEmitter#preUpdate
      * @since 3.0.0
      *
-     * @param {[type]} time - [description]
-     * @param {[type]} delta - [description]
+     * @param {integer} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
+     * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
     preUpdate: function (time, delta)
     {
@@ -2007,7 +2020,7 @@ var ParticleEmitter = new Class({
 
             StableSort.inplace(particles, this.indexSortCallback);
         }
-        
+
         if (!this.on)
         {
             return;
@@ -2074,7 +2087,7 @@ module.exports = ParticleEmitter;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

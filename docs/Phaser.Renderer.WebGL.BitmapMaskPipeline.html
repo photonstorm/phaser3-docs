@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = true;
 		</script>
@@ -106,7 +106,7 @@
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
-			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">BitmapMaskPipeline</span><span class="signature-params">( <span class="signature-param">game</span>, <span class="signature-param">gl</span>, <span class="signature-param">renderer</span>&nbsp;)</span></h2>
+			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">BitmapMaskPipeline</span><span class="signature-params">( <span class="signature-param">config</span>&nbsp;)</span></h2>
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
@@ -123,22 +123,8 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>game</code></td>
-							<td><span class="param-type"><a href="Phaser.Game.html">Phaser.Game</a></span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>gl</code></td>
-							<td><span class="param-type">WebGLRenderingContext</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>renderer</code></td>
-							<td><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLRenderer.html">Phaser.Renderer.WebGL.WebGLRenderer</a></span></td>
+								<td><code>config</code></td>
+							<td><span class="param-type">object</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -180,7 +166,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-13">line 13</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-12">line 12</a></p>
 								</div>
 							</div>
 			
@@ -301,6 +287,64 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-172">line 172</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public inherited">
+			<h4 id="flushLocked" class="member public inherited"><span class="name">flushLocked</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Indicates if the current pipeline is flushing the contents to the GPU.When the variable is set the flush function will be locked.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.1.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#flushLocked">Phaser.Renderer.WebGL.WebGLPipeline#flushLocked</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-190">line 190</a></p>
 								</div>
 							</div>
 			
@@ -532,7 +576,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-71">line 71</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-68">line 68</a></p>
 								</div>
 							</div>
 			
@@ -822,7 +866,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-81">line 81</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-78">line 78</a></p>
 								</div>
 							</div>
 			
@@ -834,7 +878,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="topology" class="member public inherited"><span class="name">topology</span><span class="signature-type"> :int</span></h4>
+			<h4 id="topology" class="member public inherited"><span class="name">topology</span><span class="signature-type"> :integer</span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -845,7 +889,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">int</span></div>
+									<div class="form-control-static type-names"><span class="param-type">integer</span></div>
 								</div>
 							</div>
 			
@@ -1008,7 +1052,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="vertexComponentCount" class="member public inherited"><span class="name">vertexComponentCount</span><span class="signature-type"> :int</span></h4>
+			<h4 id="vertexComponentCount" class="member public inherited"><span class="name">vertexComponentCount</span><span class="signature-type"> :integer</span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -1019,7 +1063,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">int</span></div>
+									<div class="form-control-static type-names"><span class="param-type">integer</span></div>
 								</div>
 							</div>
 			
@@ -1189,7 +1233,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="vertexSize" class="member public inherited"><span class="name">vertexSize</span><span class="signature-type"> :int</span></h4>
+			<h4 id="vertexSize" class="member public inherited"><span class="name">vertexSize</span><span class="signature-type"> :integer</span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -1200,7 +1244,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">int</span></div>
+									<div class="form-control-static type-names"><span class="param-type">integer</span></div>
 								</div>
 							</div>
 			
@@ -1286,7 +1330,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-62">line 62</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-59">line 59</a></p>
 								</div>
 							</div>
 			
@@ -1416,6 +1460,114 @@
 									<h3>Methods</h3>
 									<dl class="symbol">
 											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="addAttribute" class="function public inherited"><span class="name">addAttribute</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">size</span>, <span class="signature-param">type</span>, <span class="signature-param">normalized</span>, <span class="signature-param">offset</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>size</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>type</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>normalized</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>offset</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#addAttribute">Phaser.Renderer.WebGL.WebGLPipeline#addAttribute</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-201">line 201</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
 											<dt class="symbol-title function public">
 			<h4 id="beginMask" class="function public"><span class="name">beginMask</span><span class="signature-params">( <span class="signature-param">mask</span>, <span class="signature-param">maskedObject</span>, <span class="signature-param">camera</span>&nbsp;)</span></h4>
 		</dt>
@@ -1484,7 +1636,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-137">line 137</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-134">line 134</a></p>
 								</div>
 							</div>
 			
@@ -1543,7 +1695,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-223">line 223</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-260">line 260</a></p>
 								</div>
 							</div>
 			
@@ -1602,7 +1754,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-348">line 348</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-392">line 392</a></p>
 								</div>
 							</div>
 			
@@ -1667,7 +1819,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-174">line 174</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-171">line 171</a></p>
 								</div>
 							</div>
 			
@@ -1726,7 +1878,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-321">line 321</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-358">line 358</a></p>
 								</div>
 							</div>
 			
@@ -1785,7 +1937,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-89">line 89</a></p>
 								</div>
 							</div>
 			
@@ -1844,7 +1996,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-307">line 307</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-344">line 344</a></p>
 								</div>
 							</div>
 			
@@ -1903,7 +2055,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-276">line 276</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-313">line 313</a></p>
 								</div>
 							</div>
 			
@@ -1990,7 +2142,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-290">line 290</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-327">line 327</a></p>
 								</div>
 							</div>
 			
@@ -2084,7 +2236,1069 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-118">line 118</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html">renderer/webgl/pipelines/BitmapMaskPipeline.js</a>, <a href="renderer_webgl_pipelines_BitmapMaskPipeline.js.html#line-115">line 115</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setFloat1" class="function public inherited"><span class="name">setFloat1</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setFloat1">Phaser.Renderer.WebGL.WebGLPipeline#setFloat1</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-414">line 414</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setFloat2" class="function public inherited"><span class="name">setFloat2</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setFloat2">Phaser.Renderer.WebGL.WebGLPipeline#setFloat2</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-431">line 431</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setFloat3" class="function public inherited"><span class="name">setFloat3</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">z</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>z</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setFloat3">Phaser.Renderer.WebGL.WebGLPipeline#setFloat3</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-450">line 450</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setFloat4" class="function public inherited"><span class="name">setFloat4</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">z</span>, <span class="signature-param">w</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>z</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>w</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setFloat4">Phaser.Renderer.WebGL.WebGLPipeline#setFloat4</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-470">line 470</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setInt1" class="function public inherited"><span class="name">setInt1</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setInt1">Phaser.Renderer.WebGL.WebGLPipeline#setInt1</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-491">line 491</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setInt2" class="function public inherited"><span class="name">setInt2</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setInt2">Phaser.Renderer.WebGL.WebGLPipeline#setInt2</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-508">line 508</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setInt3" class="function public inherited"><span class="name">setInt3</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">z</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>z</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setInt3">Phaser.Renderer.WebGL.WebGLPipeline#setInt3</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-526">line 526</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setInt4" class="function public inherited"><span class="name">setInt4</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">z</span>, <span class="signature-param">w</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>z</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>w</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setInt4">Phaser.Renderer.WebGL.WebGLPipeline#setInt4</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-545">line 545</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setMatrix2" class="function public inherited"><span class="name">setMatrix2</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">transpose</span>, <span class="signature-param">matrix</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>transpose</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>matrix</code></td>
+							<td><span class="param-type">Float32Array</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setMatrix2">Phaser.Renderer.WebGL.WebGLPipeline#setMatrix2</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-565">line 565</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setMatrix3" class="function public inherited"><span class="name">setMatrix3</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">transpose</span>, <span class="signature-param">matrix</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>transpose</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>matrix</code></td>
+							<td><span class="param-type">Float32Array</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setMatrix3">Phaser.Renderer.WebGL.WebGLPipeline#setMatrix3</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-583">line 583</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setMatrix4" class="function public inherited"><span class="name">setMatrix4</span><span class="signature-params">( <span class="signature-param">name</span>, <span class="signature-param">transpose</span>, <span class="signature-param">matrix</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>name</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>transpose</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+						<tr>
+								<td><code>matrix</code></td>
+							<td><span class="param-type">Float32Array</span></td>
+							<td class="last">
+									[description]
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html#setMatrix4">Phaser.Renderer.WebGL.WebGLPipeline#setMatrix4</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-601">line 601</a></p>
 								</div>
 							</div>
 			
@@ -2143,7 +3357,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-191">line 191</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-228">line 228</a></p>
 								</div>
 							</div>
 			
@@ -2165,7 +3379,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

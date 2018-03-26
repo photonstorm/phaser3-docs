@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -109,10 +109,10 @@ var Class = require('../../utils/Class');
  * @since 3.0.0
  *
  * @param {Phaser.Scene} scene - [description]
- * @param {[type]} renderable - [description]
+ * @param {Phaser.GameObjects.GameObject} renderable - A renderable Game Object that uses a texture, such as a Sprite.
  */
 var BitmapMask = new Class({
-    
+
     initialize:
 
     function BitmapMask (scene, renderable)
@@ -120,10 +120,10 @@ var BitmapMask = new Class({
         var renderer = scene.sys.game.renderer;
 
         /**
-         * [description]
+         * A renderable Game Object that uses a texture, such as a Sprite.
          *
          * @name Phaser.Display.Masks.BitmapMask#bitmapMask
-         * @type {[type]}
+         * @type {Phaser.GameObjects.GameObject}
          * @since 3.0.0
          */
         this.bitmapMask = renderable;
@@ -131,28 +131,8 @@ var BitmapMask = new Class({
         /**
          * [description]
          *
-         * @name Phaser.Display.Masks.BitmapMask#maskRenderTarget
-         * @type {[type]}
-         * @default null
-         * @since 3.0.0
-         */
-        this.maskRenderTarget = null;
-
-        /**
-         * [description]
-         *
-         * @name Phaser.Display.Masks.BitmapMask#mainRenderTarget
-         * @type {[type]}
-         * @default null
-         * @since 3.0.0
-         */
-        this.mainRenderTarget = null;
-
-        /**
-         * [description]
-         *
          * @name Phaser.Display.Masks.BitmapMask#maskTexture
-         * @type {[type]}
+         * @type {WebGLTexture}
          * @default null
          * @since 3.0.0
          */
@@ -162,7 +142,7 @@ var BitmapMask = new Class({
          * [description]
          *
          * @name Phaser.Display.Masks.BitmapMask#mainTexture
-         * @type {[type]}
+         * @type {WebGLTexture}
          * @default null
          * @since 3.0.0
          */
@@ -182,7 +162,7 @@ var BitmapMask = new Class({
          * [description]
          *
          * @name Phaser.Display.Masks.BitmapMask#mainFramebuffer
-         * @type {[type]}
+         * @type {WebGLFramebuffer}
          * @since 3.0.0
          */
         this.mainFramebuffer = null;
@@ -191,12 +171,21 @@ var BitmapMask = new Class({
          * [description]
          *
          * @name Phaser.Display.Masks.BitmapMask#maskFramebuffer
-         * @type {[type]}
+         * @type {WebGLFramebuffer}
          * @since 3.0.0
          */
         this.maskFramebuffer = null;
 
-        if (renderer.gl)
+        /**
+         * [description]
+         *
+         * @name Phaser.Display.Masks.BitmapMask#invertAlpha
+         * @type {boolean}
+         * @since 3.1.2
+         */
+        this.invertAlpha = false;
+
+        if (renderer &amp;&amp; renderer.gl)
         {
             var width = renderer.width;
             var height = renderer.height;
@@ -209,7 +198,7 @@ var BitmapMask = new Class({
             this.maskTexture = renderer.createTexture2D(0, filter, filter, wrap, wrap, gl.RGBA, null, width, height);
             this.mainFramebuffer = renderer.createFramebuffer(width, height, this.mainTexture, false);
             this.maskFramebuffer = renderer.createFramebuffer(width, height, this.maskTexture, false);
-            
+
             renderer.onContextRestored(function (renderer)
             {
                 var width = renderer.width;
@@ -234,7 +223,7 @@ var BitmapMask = new Class({
      * @method Phaser.Display.Masks.BitmapMask#setBitmap
      * @since 3.0.0
      *
-     * @param {[type]} renderable - [description]
+     * @param {Phaser.GameObjects.GameObject} renderable - A renderable Game Object that uses a texture, such as a Sprite.
      */
     setBitmap: function (renderable)
     {
@@ -247,8 +236,8 @@ var BitmapMask = new Class({
      * @method Phaser.Display.Masks.BitmapMask#preRenderWebGL
      * @since 3.0.0
      *
-     * @param {[type]} renderer - [description]
-     * @param {[type]} maskedObject - [description]
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - [description]
+     * @param {Phaser.GameObjects.GameObject} maskedObject - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
      */
     preRenderWebGL: function (renderer, maskedObject, camera)
@@ -262,7 +251,7 @@ var BitmapMask = new Class({
      * @method Phaser.Display.Masks.BitmapMask#postRenderWebGL
      * @since 3.0.0
      *
-     * @param {[type]} renderer - [description]
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - [description]
      */
     postRenderWebGL: function (renderer)
     {
@@ -275,11 +264,11 @@ var BitmapMask = new Class({
      * @method Phaser.Display.Masks.BitmapMask#preRenderCanvas
      * @since 3.0.0
      *
-     * @param {[type]} renderer - [description]
-     * @param {[type]} mask - [description]
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - [description]
+     * @param {Phaser.GameObjects.GameObject} mask - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
      */
-    preRenderCanvas: function (renderer, mask, camera)
+    preRenderCanvas: function ()
     {
         // NOOP
     },
@@ -290,9 +279,9 @@ var BitmapMask = new Class({
      * @method Phaser.Display.Masks.BitmapMask#postRenderCanvas
      * @since 3.0.0
      *
-     * @param {[type]} renderer - [description]
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - [description]
      */
-    postRenderCanvas: function (renderer)
+    postRenderCanvas: function ()
     {
         // NOOP
     }
@@ -308,7 +297,7 @@ module.exports = BitmapMask;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

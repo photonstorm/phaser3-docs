@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -93,6 +93,7 @@
 			<article></article>
 			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
  * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @author       Pavle Goloskokovic &lt;pgoloskokovic@gmail.com> (http://prunegames.com)
  * @copyright    2018 Photon Storm Ltd.
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
@@ -104,18 +105,17 @@ var NOOP = require('../utils/NOOP');
 
 /**
  * @classdesc
- * [description]
+ * Class containing all the shared state and behaviour of a sound object, independent of the implementation.
  *
  * @class BaseSound
  * @extends EventEmitter
  * @memberOf Phaser.Sound
  * @constructor
- * @author Pavle Goloskokovic &lt;pgoloskokovic@gmail.com> (http://prunegames.com)
  * @since 3.0.0
  *
  * @param {Phaser.Sound.BaseSoundManager} manager - Reference to the current sound manager instance.
  * @param {string} key - Asset key for the sound.
- * @param {object} config - An optional config object containing default sound settings.
+ * @param {SoundConfig} [config] - An optional config object containing default sound settings.
  */
 var BaseSound = new Class({
 
@@ -208,7 +208,8 @@ var BaseSound = new Class({
          * Default values will be set by properties' setters.
          *
          * @name Phaser.Sound.BaseSound#config
-         * @type {object}
+         * @type {SoundConfig}
+         * @private
          * @since 3.0.0
          */
         this.config = {
@@ -223,7 +224,7 @@ var BaseSound = new Class({
          * It could be default config or marker config.
          *
          * @name Phaser.Sound.BaseSound#currentConfig
-         * @type {object}
+         * @type {SoundConfig}
          * @private
          * @since 3.0.0
          */
@@ -297,21 +298,13 @@ var BaseSound = new Class({
          * @since 3.0.0
          */
         this.loop = false;
-
-        /**
-         * [description]
-         *
-         * @name Phaser.Sound.BaseSound#config
-         * @type {object}
-         * @since 3.0.0
-         */
         this.config = Extend(this.config, config);
 
         /**
-         * Object containing markers definitions (Object.&lt;string, ISoundMarker>)
+         * Object containing markers definitions.
          *
          * @name Phaser.Sound.BaseSound#markers
-         * @type {object}
+         * @type {Object.&lt;string, SoundMarker>}
          * @default {}
          * @readOnly
          * @since 3.0.0
@@ -323,7 +316,7 @@ var BaseSound = new Class({
          * 'null' if whole sound is playing.
          *
          * @name Phaser.Sound.BaseSound#currentMarker
-         * @type {?ISoundMarker}
+         * @type {SoundMarker}
          * @default null
          * @readOnly
          * @since 3.0.0
@@ -349,34 +342,29 @@ var BaseSound = new Class({
      * @method Phaser.Sound.BaseSound#addMarker
      * @since 3.0.0
      *
-     * @param {ISoundMarker} marker - Marker object
+     * @param {SoundMarker} marker - Marker object.
      *
-     * @return {boolean} Whether the marker was added successfully
+     * @return {boolean} Whether the marker was added successfully.
      */
     addMarker: function (marker)
     {
-        if (!marker)
+        if (!marker || !marker.name || typeof marker.name !== 'string')
         {
-            console.error('addMarker - Marker object has to be provided!');
-            return false;
-        }
-
-        if (!marker.name || typeof marker.name !== 'string')
-        {
-            console.error('addMarker - Marker has to have a valid name!');
             return false;
         }
 
         if (this.markers[marker.name])
         {
+            // eslint-disable-next-line no-console
             console.error('addMarker - Marker with name \'' + marker.name + '\' already exists for sound \'' + this.key + '\'!');
+
             return false;
         }
 
         marker = Extend(true, {
             name: '',
             start: 0,
-            duration: this.totalDuration,
+            duration: this.totalDuration - (marker.start || 0),
             config: {
                 mute: false,
                 volume: 1,
@@ -399,27 +387,22 @@ var BaseSound = new Class({
      * @method Phaser.Sound.BaseSound#updateMarker
      * @since 3.0.0
      *
-     * @param {ISoundMarker} marker - Marker object with updated values.
+     * @param {SoundMarker} marker - Marker object with updated values.
      *
      * @return {boolean} Whether the marker was updated successfully.
      */
     updateMarker: function (marker)
     {
-        if (!marker)
+        if (!marker || !marker.name || typeof marker.name !== 'string')
         {
-            console.error('updateMarker - Marker object has to be provided!');
-            return false;
-        }
-
-        if (!marker.name || typeof marker.name !== 'string')
-        {
-            console.error('updateMarker - Marker has to have a valid name!');
             return false;
         }
 
         if (!this.markers[marker.name])
         {
+            // eslint-disable-next-line no-console
             console.error('updateMarker - Marker with name \'' + marker.name + '\' does not exist for sound \'' + this.key + '\'!');
+
             return false;
         }
 
@@ -436,7 +419,7 @@ var BaseSound = new Class({
      *
      * @param {string} markerName - The name of the marker to remove.
      *
-     * @return {ISoundMarker|null} Removed marker object or 'null' if there was no marker with provided name.
+     * @return {?SoundMarker} Removed marker object or 'null' if there was no marker with provided name.
      */
     removeMarker: function (markerName)
     {
@@ -444,7 +427,6 @@ var BaseSound = new Class({
 
         if (!marker)
         {
-            console.error('removeMarker - Marker with name \'' + marker.name + '\' does not exist for sound \'' + this.key + '\'!');
             return null;
         }
 
@@ -462,13 +444,13 @@ var BaseSound = new Class({
      * @since 3.0.0
      *
      * @param {string} [markerName=''] - If you want to play a marker then provide the marker name here, otherwise omit it to play the full sound.
-     * @param {ISoundConfig} [config] - Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
+     * @param {SoundConfig} [config] - Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
      *
      * @return {boolean} Whether the sound started playing successfully.
      */
     play: function (markerName, config)
     {
-        if (markerName === void 0) { markerName = ''; }
+        if (markerName === undefined) { markerName = ''; }
 
         if (typeof markerName === 'object')
         {
@@ -478,7 +460,9 @@ var BaseSound = new Class({
 
         if (typeof markerName !== 'string')
         {
+            // eslint-disable-next-line no-console
             console.error('Sound marker name has to be a string!');
+
             return false;
         }
 
@@ -492,7 +476,9 @@ var BaseSound = new Class({
         {
             if (!this.markers[markerName])
             {
+                // eslint-disable-next-line no-console
                 console.error('No marker with name \'' + markerName + '\' found for sound \'' + this.key + '\'!');
+
                 return false;
             }
 
@@ -502,7 +488,9 @@ var BaseSound = new Class({
         }
 
         this.resetConfig();
+
         this.currentConfig = Extend(this.currentConfig, config);
+
         this.isPlaying = true;
         this.isPaused = false;
 
@@ -514,7 +502,7 @@ var BaseSound = new Class({
      *
      * @method Phaser.Sound.BaseSound#pause
      * @since 3.0.0
-     * 
+     *
      * @return {boolean} Whether the sound was paused successfully.
      */
     pause: function ()
@@ -535,7 +523,7 @@ var BaseSound = new Class({
      *
      * @method Phaser.Sound.BaseSound#resume
      * @since 3.0.0
-     * 
+     *
      * @return {boolean} Whether the sound was resumed successfully.
      */
     resume: function ()
@@ -556,7 +544,7 @@ var BaseSound = new Class({
      *
      * @method Phaser.Sound.BaseSound#stop
      * @since 3.0.0
-     * 
+     *
      * @return {boolean} Whether the sound was stopped successfully.
      */
     stop: function ()
@@ -565,9 +553,12 @@ var BaseSound = new Class({
         {
             return false;
         }
+
         this.isPlaying = false;
         this.isPaused = false;
+
         this.resetConfig();
+
         return true;
     },
 
@@ -607,11 +598,134 @@ var BaseSound = new Class({
      * @override
      * @protected
      * @since 3.0.0
-     * 
+     *
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time elapsed since the last frame.
      */
     update: NOOP,
+
+    /**
+     * Method used internally to calculate total playback rate of the sound.
+     *
+     * @method Phaser.Sound.BaseSound#calculateRate
+     * @protected
+     * @since 3.0.0
+     */
+    calculateRate: function ()
+    {
+        var cent = 1.0005777895065548; // Math.pow(2, 1/1200);
+        var totalDetune = this.currentConfig.detune + this.manager.detune;
+        var detuneRate = Math.pow(cent, totalDetune);
+
+        this.totalRate = this.currentConfig.rate * this.manager.rate * detuneRate;
+    },
+
+    /**
+     * @event Phaser.Sound.BaseSound#rate
+     * @param {Phaser.Sound.BaseSound} sound - Reference to the sound that emitted the event.
+     * @param {number} value - An updated value of Phaser.Sound.BaseSound#rate property.
+     */
+
+    /**
+     * Sets the playback rate of this Sound.
+     * 
+     * For example, a value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
+     * and 2.0 doubles the audios playback speed.
+     *
+     * @method Phaser.Sound.BaseSound#setRate
+     * @fires Phaser.Sound.BaseSound#rate
+     * @since 3.3.0
+     *
+     * @param {number} value - The playback rate at of this Sound.
+     *
+     * @return {Phaser.Sound.BaseSound} This Sound.
+     */
+    setRate: function (value)
+    {
+        this.rate = value;
+
+        return this;
+    },
+
+    /**
+     * Rate at which this Sound will be played.
+     * Value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
+     * and 2.0 doubles the audios playback speed.
+     *
+     * @name Phaser.Sound.BaseSound#rate
+     * @type {number}
+     * @default 1
+     * @since 3.0.0
+     */
+    rate: {
+
+        get: function ()
+        {
+            return this.currentConfig.rate;
+        },
+
+        set: function (value)
+        {
+            this.currentConfig.rate = value;
+
+            this.calculateRate();
+
+            this.emit('rate', this, value);
+        }
+
+    },
+
+    /**
+     * Sets the detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
+     * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
+     *
+     * @method Phaser.Sound.BaseSound#setDetune
+     * @fires Phaser.Sound.BaseSound#detune
+     * @since 3.3.0
+     *
+     * @param {number} value - The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
+     *
+     * @return {Phaser.Sound.BaseSound} This Sound.
+     */
+    setDetune: function (value)
+    {
+        this.detune = value;
+
+        return this;
+    },
+
+    /**
+     * @event Phaser.Sound.BaseSound#detune
+     * @param {Phaser.Sound.BaseSound} sound - Reference to the Sound that emitted event.
+     * @param {number} value - An updated value of Phaser.Sound.BaseSound#detune property.
+     */
+
+    /**
+     * The detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
+     * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
+     *
+     * @name Phaser.Sound.BaseSound#detune
+     * @type {number}
+     * @default 0
+     * @since 3.0.0
+     */
+    detune: {
+
+        get: function ()
+        {
+            return this.currentConfig.detune;
+        },
+
+        set: function (value)
+        {
+            this.currentConfig.detune = value;
+
+            this.calculateRate();
+
+            this.emit('detune', this, value);
+        }
+
+    },
 
     /**
      * Destroys this sound and all associated events and marks it for removal from the sound manager.
@@ -636,79 +750,8 @@ var BaseSound = new Class({
         this.currentConfig = null;
         this.markers = null;
         this.currentMarker = null;
-    },
-
-    /**
-     * Method used internally to calculate total playback rate of the sound.
-     *
-     * @method Phaser.Sound.BaseSound#setRate
-     * @protected
-     * @since 3.0.0
-     */
-    setRate: function ()
-    {
-        var cent = 1.0005777895065548; // Math.pow(2, 1/1200);
-        var totalDetune = this.currentConfig.detune + this.manager.detune;
-        var detuneRate = Math.pow(cent, totalDetune);
-
-        this.totalRate = this.currentConfig.rate * this.manager.rate * detuneRate;
     }
-});
 
-/**
- * Playback rate.
- *
- * @name Phaser.Sound.BaseSound#rate
- * @type {number}
- * @since 3.0.0
- */
-Object.defineProperty(BaseSound.prototype, 'rate', {
-
-    get: function ()
-    {
-        return this.currentConfig.rate;
-    },
-
-    set: function (value)
-    {
-        this.currentConfig.rate = value;
-        this.setRate();
-
-        /**
-         * @event Phaser.Sound.BaseSound#rate
-         * @param {Phaser.Sound.BaseSound} sound - Reference to the sound that emitted event.
-         * @param {number} value - An updated value of Phaser.Sound.BaseSound#rate property.
-         */
-        this.emit('rate', this, value);
-    }
-});
-
-/**
- * Detuning of sound.
- *
- * @name Phaser.Sound.BaseSound#detune
- * @property {number} detune
- * @since 3.0.0
- */
-Object.defineProperty(BaseSound.prototype, 'detune', {
-
-    get: function ()
-    {
-        return this.currentConfig.detune;
-    },
-
-    set: function (value)
-    {
-        this.currentConfig.detune = value;
-        this.setRate();
-
-        /**
-         * @event Phaser.Sound.BaseSound#detune
-         * @param {Phaser.Sound.BaseSound} sound - Reference to the sound that emitted event.
-         * @param {number} value - An updated value of Phaser.Sound.BaseSound#detune property.
-         */
-        this.emit('detune', this, value);
-    }
 });
 
 module.exports = BaseSound;
@@ -720,7 +763,7 @@ module.exports = BaseSound;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

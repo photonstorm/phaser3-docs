@@ -40,9 +40,9 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
-			window.DOCLET_AFILTER_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
 </head>
 <body>
@@ -93,16 +93,6 @@
 							<li><a href="list_class.html">Classes</a></li>
 							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Events.html">.Events</a>.EventEmitter</li>
 						</ol>
-						<div class="access-filter">
-								<label class="checkbox-inline">
-									<input class="toggle-inherited" type="checkbox" value="" checked>
-									Inherited
-								</label>
-								<label class="checkbox-inline">
-									<input class="toggle-public" type="checkbox" value="" checked>
-									Public
-								</label>
-						</div>
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
@@ -115,13 +105,6 @@
 			
 			
 			
-							<!-- augments -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Augments</label>
-								<div class="col-sm-9">
-										<p class="form-control-static"><a href="EventEmitter.html">EventEmitter</a></p>
-								</div>
-							</div>
 			
 			
 							<!-- since -->
@@ -160,10 +143,10 @@
 									<h3>Methods</h3>
 									<dl class="symbol">
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="addListener" class="function public inherited"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="addListener" class="function public"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -211,7 +194,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -223,14 +206,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#addListener">EventEmitter#addListener</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -288,7 +271,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-47">line 47</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-46">line 46</a></p>
 								</div>
 							</div>
 			
@@ -299,10 +282,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="emit" class="function public"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calls each of the listeners registered for a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -328,7 +311,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">Boolean</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
 								</div>
@@ -340,14 +323,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#emit">EventEmitter#emit</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -361,7 +344,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-90">line 90</a></p>
 								</div>
 							</div>
 			
@@ -372,10 +355,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="eventNames" class="function public inherited"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="eventNames" class="function public"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return an array listing the events for which the emitter has registered listeners.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
@@ -392,14 +375,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#eventNames">EventEmitter#eventNames</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -413,7 +396,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-59">line 59</a></p>
 								</div>
 							</div>
 			
@@ -424,10 +407,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="listenerCount" class="function public inherited"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="listenerCount" class="function public"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the number of listeners listening to a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -465,14 +448,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listenerCount">EventEmitter#listenerCount</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -486,7 +469,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-82">line 82</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-79">line 79</a></p>
 								</div>
 							</div>
 			
@@ -497,10 +480,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="listeners" class="function public inherited"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="listeners" class="function public"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the listeners registered for a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -538,14 +521,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#listeners">EventEmitter#listeners</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -559,7 +542,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-72">line 72</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-68">line 68</a></p>
 								</div>
 							</div>
 			
@@ -570,10 +553,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="off" class="function public inherited"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="off" class="function public"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -620,7 +603,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -632,14 +615,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#off">EventEmitter#off</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -653,7 +636,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-154">line 154</a></p>
 								</div>
 							</div>
 			
@@ -664,10 +647,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="on" class="function public inherited"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="on" class="function public"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -715,7 +698,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -727,14 +710,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#on">EventEmitter#on</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -748,7 +731,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-101">line 101</a></p>
 								</div>
 							</div>
 			
@@ -759,10 +742,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="once" class="function public inherited"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="once" class="function public"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a one-time listener for a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -810,7 +793,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -822,14 +805,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#once">EventEmitter#once</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -843,7 +826,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-126">line 126</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-127">line 127</a></p>
 								</div>
 							</div>
 			
@@ -854,10 +837,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="removeAllListeners" class="function public inherited"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="removeAllListeners" class="function public"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove all listeners, or those of the specified event.</div>
 			</div>			<div class="callout callout-info">
@@ -885,7 +868,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -897,14 +880,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeAllListeners">EventEmitter#removeAllListeners</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -918,7 +901,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-164">line 164</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-168">line 168</a></p>
 								</div>
 							</div>
 			
@@ -929,10 +912,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="removeListener" class="function public inherited"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public">
+			<h4 id="removeListener" class="function public"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public inherited">
+<dd class="symbol-details function public">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
 			</div>			<div class="callout callout-info">
@@ -979,7 +962,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">`this`.</div>
 								</div>
@@ -991,14 +974,14 @@
 			
 			
 			
-			
-							<!-- inherits -->
+							<!-- since -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
+								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="EventEmitter.html#removeListener">EventEmitter#removeListener</a></p>
+									<p class="form-control-static">3.0.0</p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -1012,7 +995,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-138">line 138</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-140">line 140</a></p>
 								</div>
 							</div>
 			
@@ -1056,7 +1039,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-36">line 36</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-35">line 35</a></p>
 								</div>
 							</div>
 			
@@ -1078,7 +1061,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -103,6 +103,12 @@ var LightPipeline = require('../../renderer/webgl/pipelines/ForwardDiffuseLightP
 var Utils = require('../../renderer/webgl/Utils');
 
 /**
+ * @callback LightForEach
+ *
+ * @param {Phaser.GameObjects.Light} light - [description]
+ */
+
+/**
  * @classdesc
  * [description]
  *
@@ -121,7 +127,7 @@ var LightsManager = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.LightsManager#lightPool
-         * @type {array}
+         * @type {Phaser.GameObjects.Light[]}
          * @default []
          * @since 3.0.0
          */
@@ -131,7 +137,7 @@ var LightsManager = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.LightsManager#lights
-         * @type {array}
+         * @type {Phaser.GameObjects.Light[]}
          * @default []
          * @since 3.0.0
          */
@@ -141,7 +147,7 @@ var LightsManager = new Class({
          * [description]
          *
          * @name Phaser.GameObjects.LightsManager#culledLights
-         * @type {array}
+         * @type {Phaser.GameObjects.Light[]}
          * @default []
          * @since 3.0.0
          */
@@ -227,7 +233,7 @@ var LightsManager = new Class({
 
             cameraMatrix.transformPoint(light.x, light.y, point);
 
-            // We'll just use bounding spheres to test 
+            // We'll just use bounding spheres to test
             // if lights should be rendered
             var dx = cameraCenterX - (point.x - (camera.scrollX * light.scrollFactorX * camera.zoom));
             var dy = cameraCenterY - (viewportHeight - (point.y - (camera.scrollY * light.scrollFactorY) * camera.zoom));
@@ -248,7 +254,7 @@ var LightsManager = new Class({
      * @method Phaser.GameObjects.LightsManager#forEachLight
      * @since 3.0.0
      *
-     * @param {function} callback - [description]
+     * @param {LightForEach} callback - [description]
      *
      * @return {Phaser.GameObjects.LightsManager} This Lights Manager object.
      */
@@ -276,14 +282,14 @@ var LightsManager = new Class({
      * @method Phaser.GameObjects.LightsManager#setAmbientColor
      * @since 3.0.0
      *
-     * @param {[type]} rgb - [description]
+     * @param {number} rgb - [description]
      *
      * @return {Phaser.GameObjects.LightsManager} This Lights Manager object.
      */
     setAmbientColor: function (rgb)
     {
         var color = Utils.getFloatsFromUintRGB(rgb);
-        
+
         this.ambientColor.r = color[0];
         this.ambientColor.g = color[1];
         this.ambientColor.b = color[2];
@@ -367,7 +373,7 @@ var LightsManager = new Class({
      * @since 3.0.0
      *
      * @param {Phaser.GameObjects.Light} light - [description]
-     * 
+     *
      * @return {Phaser.GameObjects.LightsManager} This Lights Manager object.
      */
     removeLight: function (light)
@@ -395,7 +401,7 @@ var LightsManager = new Class({
         {
             this.lightPool.push(this.lights.pop());
         }
-        
+
         this.ambientColor = { r: 0.1, g: 0.1, b: 0.1 };
         this.culledLights.length = 0;
         this.lights.length = 0;
@@ -423,7 +429,7 @@ module.exports = LightsManager;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

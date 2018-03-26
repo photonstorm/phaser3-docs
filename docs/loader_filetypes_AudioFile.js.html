@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -117,8 +117,8 @@ var HTML5AudioFile = require('./HTML5AudioFile');
  * @param {string} key - [description]
  * @param {string} url - [description]
  * @param {string} path - [description]
- * @param {object} xhrSettings - [description]
- * @param {[type]} audioContext - [description]
+ * @param {XHRSettingsObject} xhrSettings - [description]
+ * @param {AudioContext} audioContext - [description]
  */
 var AudioFile = new Class({
 
@@ -131,7 +131,7 @@ var AudioFile = new Class({
         /**
          * [description]
          *
-         * @property {[type]} context
+         * @property {AudioContext} context
          * @since 3.0.0
          */
         this.context = audioContext;
@@ -155,7 +155,7 @@ var AudioFile = new Class({
      * @method Phaser.Loader.FileTypes.AudioFile#onProcess
      * @since 3.0.0
      *
-     * @param {[type]} callback - [description]
+     * @param {FileProcessCallback} callback - [description]
      */
     onProcess: function (callback)
     {
@@ -175,6 +175,7 @@ var AudioFile = new Class({
             },
             function (e)
             {
+                // eslint-disable-next-line no-console
                 console.error('Error with decoding audio data for \'' + this.key + '\':', e.message);
 
                 _this.state = CONST.FILE_ERRORED;
@@ -196,7 +197,7 @@ AudioFile.create = function (loader, key, urls, config, xhrSettings)
 
     if ((audioConfig &amp;&amp; audioConfig.noAudio) || (!deviceAudio.webAudio &amp;&amp; !deviceAudio.audioData))
     {
-        console.info('Skipping loading audio \'' + key + '\' since sounds are disabled.');
+        // console.info('Skipping loading audio \'' + key + '\' since sounds are disabled.');
         return null;
     }
 
@@ -204,7 +205,7 @@ AudioFile.create = function (loader, key, urls, config, xhrSettings)
 
     if (!url)
     {
-        console.warn('No supported url provided for audio \'' + key + '\'!');
+        // console.warn('No supported url provided for audio \'' + key + '\'!');
         return null;
     }
 
@@ -220,7 +221,7 @@ AudioFile.create = function (loader, key, urls, config, xhrSettings)
 
 /**
  * Adds an Audio file to the current load queue.
- * 
+ *
  * Note: This method will only be available if the Audio File type has been built into Phaser.
  *
  * The file is **not** loaded immediately after calling this method.
@@ -230,10 +231,10 @@ AudioFile.create = function (loader, key, urls, config, xhrSettings)
  * @since 3.0.0
  *
  * @param {string} key - [description]
- * @param {string|string[]} urls - [description]
+ * @param {(string|string[])} urls - [description]
  * @param {object} config - [description]
  * @param {object} xhrSettings - [description]
- * 
+ *
  * @return {Phaser.Loader.LoaderPlugin} The Loader.
  */
 FileTypesManager.register('audio', function (key, urls, config, xhrSettings)
@@ -308,14 +309,15 @@ AudioFile.findAudioURL = function (game, urls)
             return url;
         }
 
-        var type = url.match(/\.([a-zA-Z0-9]+)($|\?)/);
-        type = GetFastValue(urls[i], 'type', type ? type[1] : '').toLowerCase();
+        var audioType = url.match(/\.([a-zA-Z0-9]+)($|\?)/);
 
-        if (game.device.audio[type])
+        audioType = GetFastValue(urls[i], 'type', (audioType) ? audioType[1] : '').toLowerCase();
+
+        if (game.device.audio[audioType])
         {
             return {
                 uri: url,
-                type: type
+                type: audioType
             };
         }
     }
@@ -332,7 +334,7 @@ module.exports = AudioFile;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

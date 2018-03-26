@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -136,11 +136,11 @@
 									<dl class="symbol">
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".Angle" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Angle</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".Angle" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Angle</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `angle` property,and then adds the given value to each of their `angle` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `Angle(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -148,196 +148,55 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>value</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_Angle.js.html">actions/Angle.js</a>, <a href="actions_Angle.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".Call" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Call</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">callback</span>, <span class="signature-param">thisArg</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The amount to be added to the `angle` property.
 							</td>
 						</tr>
 						<tr>
-								<td><code>callback</code></td>
-							<td><span class="param-type">function</span></td>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
 							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>thisArg</code></td>
-							<td><span class="param-type">object</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_Call.js.html">actions/Call.js</a>, <a href="actions_Call.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".GetFirst" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetFirst</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">compare</span>, <span class="signature-param">index</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>compare</code></td>
-							<td><span class="param-type">object</span></td>
-							<td class="last">
-									[description]
+									This is added to the `value` amount, multiplied by the iteration counter.
 							</td>
 						</tr>
 						<tr>
 								<td><code>index</code></td>
 							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
 							<td class="last">
-									[description]
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -347,7 +206,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -378,7 +237,284 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_GetFirst.js.html">actions/GetFirst.js</a>, <a href="actions_GetFirst.js.html#line-13">line 13</a></p>
+									<p class="form-control-static"><a href="actions_Angle.js.html">actions/Angle.js</a>, <a href="actions_Angle.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".Call" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Call</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">callback</span>, <span class="signature-param">context</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of objects and passes each of them to the given callback.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type"><a href="global.html#CallCallback">CallCallback</a></span></td>
+							<td class="last">
+									The callback to be invoked. It will be passed just one argument: the item from the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The scope in which the callback will be invoked.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that was passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_Call.js.html">actions/Call.js</a>, <a href="actions_Call.js.html#line-13">line 13</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".GetFirst" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetFirst</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">compare</span> [,&nbsp;<span class="signature-param">index</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of objects and returns the first element in the array that has properties which matchall of those specified in the `compare` object. For example, if the compare object was: `{ scaleX: 0.5, alpha: 1 }`then it would return the first item which had the property `scaleX` set to 0.5 and `alpha` set to 1.To use this with a Group: `GetFirst(group.getChildren(), compare, index)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be searched by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>compare</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The comparison object. Each property in this object will be checked against the items of the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">object</span> | <span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The first object in the array that matches the comparison object, or `null` if no match was found.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_GetFirst.js.html">actions/GetFirst.js</a>, <a href="actions_GetFirst.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".GetLast" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetLast</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">compare</span> [,&nbsp;<span class="signature-param">index</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of objects and returns the last element in the array that has properties which matchall of those specified in the `compare` object. For example, if the compare object was: `{ scaleX: 0.5, alpha: 1 }`then it would return the last item which had the property `scaleX` set to 0.5 and `alpha` set to 1.To use this with a Group: `GetLast(group.getChildren(), compare, index)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be searched by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>compare</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The comparison object. Each property in this object will be checked against the items of the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">object</span> | <span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The last object in the array that matches the comparison object, or `null` if no match was found.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.3.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_GetLast.js.html">actions/GetLast.js</a>, <a href="actions_GetLast.js.html#line-7">line 7</a></p>
 								</div>
 							</div>
 			
@@ -394,7 +530,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have public `x` and `y` properties,and then aligns them based on the grid configuration given to this action.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -408,16 +544,16 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>options</code></td>
-							<td><span class="param-type">object</span></td>
+							<td><span class="param-type"><a href="global.html#GridAlignConfig">GridAlignConfig</a></span></td>
 							<td class="last">
-									[description]
+									The GridAlign Configuration object.
 							</td>
 						</tr>
 					</tbody>
@@ -427,7 +563,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -458,7 +594,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_GridAlign.js.html">actions/GridAlign.js</a>, <a href="actions_GridAlign.js.html#line-15">line 15</a></p>
+									<p class="form-control-static"><a href="actions_GridAlign.js.html">actions/GridAlign.js</a>, <a href="actions_GridAlign.js.html#line-29">line 29</a></p>
 								</div>
 							</div>
 			
@@ -470,11 +606,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".IncAlpha" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncAlpha</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".IncAlpha" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncAlpha</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `alpha` property,and then adds the given value to each of their `alpha` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `IncAlpha(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -482,22 +618,55 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>value</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `alpha` property.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -507,7 +676,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -538,7 +707,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_IncAlpha.js.html">actions/IncAlpha.js</a>, <a href="actions_IncAlpha.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_IncAlpha.js.html">actions/IncAlpha.js</a>, <a href="actions_IncAlpha.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -550,11 +719,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".IncX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".IncX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `x` property,and then adds the given value to each of their `x` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `IncX(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -562,22 +731,55 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>value</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `x` property.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -587,7 +789,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -618,7 +820,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_IncX.js.html">actions/IncX.js</a>, <a href="actions_IncX.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_IncX.js.html">actions/IncX.js</a>, <a href="actions_IncX.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -630,11 +832,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".IncXY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncXY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>&nbsp;)</span></h4>
+			<h4 id=".IncXY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncXY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have public `x` and `y` properties,and then adds the given value to each of them.The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.To use this with a Group: `IncXY(group.getChildren(), x, y, stepX, stepY)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -642,29 +844,73 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>x</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `x` property.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>x</td>
 							<td class="last">
-									[description]
+									The amount to be added to the `y` property. If `undefined` or `null` it uses the `x` value.
+							</td>
+						</tr>
+						<tr>
+								<td><code>stepX</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `x` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>stepY</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `y` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -674,7 +920,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -705,7 +951,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_IncXY.js.html">actions/IncXY.js</a>, <a href="actions_IncXY.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_IncXY.js.html">actions/IncXY.js</a>, <a href="actions_IncXY.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -717,11 +963,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".IncY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".IncY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">IncY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `y` property,and then adds the given value to each of their `y` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `IncY(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -729,22 +975,55 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>value</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `y` property.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -754,7 +1033,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -785,7 +1064,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_IncY.js.html">actions/IncY.js</a>, <a href="actions_IncY.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_IncY.js.html">actions/IncY.js</a>, <a href="actions_IncY.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -817,7 +1096,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
@@ -921,7 +1200,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
@@ -1023,7 +1302,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1105,7 +1384,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
@@ -1200,7 +1479,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
@@ -1294,7 +1573,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
@@ -1366,6 +1645,250 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
+			<h4 id=".PropertyValueInc" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">PropertyValueInc</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">key</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public property as defined in `key`,and then adds the given value to it.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `PropertyValueInc(group.getChildren(), key, value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The property to be updated.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to be added to the property.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.3.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_PropertyValueInc.js.html">actions/PropertyValueInc.js</a>, <a href="actions_PropertyValueInc.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".PropertyValueSet" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">PropertyValueSet</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">key</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public property as defined in `key`,and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `PropertyValueSet(group.getChildren(), key, value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The property to be updated.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.3.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_PropertyValueSet.js.html">actions/PropertyValueSet.js</a>, <a href="actions_PropertyValueSet.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
 			<h4 id=".RandomCircle" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">RandomCircle</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">circle</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
@@ -1384,7 +1907,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1464,7 +1987,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1544,7 +2067,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1624,7 +2147,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1704,7 +2227,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1766,11 +2289,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".Rotate" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Rotate</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".Rotate" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Rotate</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `rotation` property,and then adds the given value to each of their `rotation` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `Rotate(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1786,11 +2309,11 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
@@ -1799,7 +2322,7 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `rotation` property (in radians).
 							</td>
 						</tr>
 						<tr>
@@ -1808,7 +2331,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -1818,7 +2359,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -1849,7 +2390,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_Rotate.js.html">actions/Rotate.js</a>, <a href="actions_Rotate.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_Rotate.js.html">actions/Rotate.js</a>, <a href="actions_Rotate.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -1879,7 +2420,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -1966,7 +2507,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -2042,258 +2583,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".ScaleX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">ScaleX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".ScaleX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">ScaleX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>value</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_ScaleX.js.html">actions/ScaleX.js</a>, <a href="actions_ScaleX.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".ScaleXY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">ScaleXY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_ScaleXY.js.html">actions/ScaleXY.js</a>, <a href="actions_ScaleXY.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".ScaleY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">ScaleY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>value</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_ScaleY.js.html">actions/ScaleY.js</a>, <a href="actions_ScaleY.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".SetAlpha" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetAlpha</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `scaleX` property,and then adds the given value to each of their `scaleX` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `ScaleX(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2309,11 +2603,11 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
@@ -2322,7 +2616,7 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `scaleX` property.
 							</td>
 						</tr>
 						<tr>
@@ -2331,7 +2625,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -2341,7 +2653,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -2372,7 +2684,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetAlpha.js.html">actions/SetAlpha.js</a>, <a href="actions_SetAlpha.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_ScaleX.js.html">actions/ScaleX.js</a>, <a href="actions_ScaleX.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -2384,91 +2696,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetBlendMode" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetBlendMode</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".ScaleXY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">ScaleXY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">scaleX</span> [,&nbsp;<span class="signature-param">scaleY</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>value</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetBlendMode.js.html">actions/SetBlendMode.js</a>, <a href="actions_SetBlendMode.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".SetDepth" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetDepth</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have public `scaleX` and `scaleY` properties,and then adds the given value to each of them.The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.To use this with a Group: `ScaleXY(group.getChildren(), scaleX, scaleY, stepX, stepY)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2484,29 +2716,65 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
-								<td><code>value</code></td>
+								<td><code>scaleX</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to be added to the `scaleX` property.
 							</td>
 						</tr>
 						<tr>
-								<td><code>step</code></td>
+								<td><code>scaleY</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The amount to be added to the `scaleY` property. If `undefined` or `null` it uses the `scaleX` value.
+							</td>
+						</tr>
+						<tr>
+								<td><code>stepX</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `scaleX` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>stepY</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `y` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -2516,7 +2784,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -2547,7 +2815,450 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetDepth.js.html">actions/SetDepth.js</a>, <a href="actions_SetDepth.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_ScaleXY.js.html">actions/ScaleXY.js</a>, <a href="actions_ScaleXY.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".ScaleY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">ScaleY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have a public `scaleY` property,and then adds the given value to each of their `scaleY` properties.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `ScaleY(group.getChildren(), value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to be added to the `scaleY` property.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_ScaleY.js.html">actions/ScaleY.js</a>, <a href="actions_ScaleY.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SetAlpha" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetAlpha</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `alpha`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetAlpha(group.getChildren(), value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_SetAlpha.js.html">actions/SetAlpha.js</a>, <a href="actions_SetAlpha.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SetBlendMode" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetBlendMode</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `blendMode`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetBlendMode(group.getChildren(), value)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_SetBlendMode.js.html">actions/SetBlendMode.js</a>, <a href="actions_SetBlendMode.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SetDepth" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetDepth</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `depth`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetDepth(group.getChildren(), value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_SetDepth.js.html">actions/SetDepth.js</a>, <a href="actions_SetDepth.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -2577,21 +3288,21 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>hitArea</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">*</span></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>hitAreaCallback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#HitAreaCallback">HitAreaCallback</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2646,98 +3357,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetOrigin" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetOrigin</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>&nbsp;)</span></h4>
+			<h4 id=".SetOrigin" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetOrigin</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">originX</span> [,&nbsp;<span class="signature-param">originY</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetOrigin.js.html">actions/SetOrigin.js</a>, <a href="actions_SetOrigin.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".SetRotation" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetRotation</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public properties `originX` and `originY`and then sets them to the given values.The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.To use this with a Group: `SetOrigin(group.getChildren(), originX, originY, stepX, stepY)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2753,124 +3377,29 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
-								<td><code>value</code></td>
+								<td><code>originX</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to set the `originX` property to.
 							</td>
 						</tr>
 						<tr>
-								<td><code>step</code></td>
+								<td><code>originY</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetRotation.js.html">actions/SetRotation.js</a>, <a href="actions_SetRotation.js.html#line-7">line 7</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id=".SetScale" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetScale</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
-								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
-							</td>
-						</tr>
-						<tr>
-								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									[description]
+									The amount to set the `originY` property to. If `undefined` or `null` it uses the `originX` value.
 							</td>
 						</tr>
 						<tr>
@@ -2879,7 +3408,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `originX` amount, multiplied by the iteration counter.
 							</td>
 						</tr>
 						<tr>
@@ -2888,7 +3417,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `originY` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -2898,7 +3445,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -2929,7 +3476,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetScale.js.html">actions/SetScale.js</a>, <a href="actions_SetScale.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetOrigin.js.html">actions/SetOrigin.js</a>, <a href="actions_SetOrigin.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -2941,11 +3488,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetScaleX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetScaleX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".SetRotation" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetRotation</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `rotation`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetRotation(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2961,11 +3508,11 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
@@ -2974,7 +3521,7 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to set the property to.
 							</td>
 						</tr>
 						<tr>
@@ -2983,7 +3530,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -2993,7 +3558,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -3024,7 +3589,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetScaleX.js.html">actions/SetScaleX.js</a>, <a href="actions_SetScaleX.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetRotation.js.html">actions/SetRotation.js</a>, <a href="actions_SetRotation.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3036,11 +3601,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetScaleY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetScaleY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".SetScale" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetScale</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">scaleX</span> [,&nbsp;<span class="signature-param">scaleY</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public properties `scaleX` and `scaleY`and then sets them to the given values.The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.To use this with a Group: `SetScale(group.getChildren(), scaleX, scaleY, stepX, stepY)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3056,29 +3621,65 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
-								<td><code>value</code></td>
+								<td><code>scaleX</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to set the `scaleX` property to.
 							</td>
 						</tr>
 						<tr>
-								<td><code>step</code></td>
+								<td><code>scaleY</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The amount to set the `scaleY` property to. If `undefined` or `null` it uses the `scaleX` value.
+							</td>
+						</tr>
+						<tr>
+								<td><code>stepX</code></td>
 							<td><span class="param-type">number</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `scaleX` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>stepY</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `scaleY` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -3088,7 +3689,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -3119,7 +3720,233 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetScaleY.js.html">actions/SetScaleY.js</a>, <a href="actions_SetScaleY.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetScale.js.html">actions/SetScale.js</a>, <a href="actions_SetScale.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SetScaleX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetScaleX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `scaleX`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetScaleX(group.getChildren(), value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_SetScaleX.js.html">actions/SetScaleX.js</a>, <a href="actions_SetScaleX.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SetScaleY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetScaleY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `scaleY`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetScaleY(group.getChildren(), value, step)`</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array of items to be updated by this action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The amount to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>step</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_SetScaleY.js.html">actions/SetScaleY.js</a>, <a href="actions_SetScaleY.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3150,7 +3977,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
@@ -3238,11 +4065,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetVisible" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetVisible</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id=".SetVisible" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetVisible</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `visible`and then sets it to the given value.To use this with a Group: `SetVisible(group.getChildren(), value)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3250,22 +4077,46 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
 								<td><code>value</code></td>
 							<td><span class="param-type">boolean</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The value to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -3275,7 +4126,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -3306,7 +4157,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetVisible.js.html">actions/SetVisible.js</a>, <a href="actions_SetVisible.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetVisible.js.html">actions/SetVisible.js</a>, <a href="actions_SetVisible.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3318,11 +4169,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".SetX" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetX</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `x`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetX(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3338,11 +4189,11 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
@@ -3351,7 +4202,7 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to set the property to.
 							</td>
 						</tr>
 						<tr>
@@ -3360,7 +4211,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -3370,7 +4239,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -3401,7 +4270,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetX.js.html">actions/SetX.js</a>, <a href="actions_SetX.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetX.js.html">actions/SetX.js</a>, <a href="actions_SetX.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3413,11 +4282,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetXY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetXY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".SetXY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetXY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span> [,&nbsp;<span class="signature-param">stepX</span> [,&nbsp;<span class="signature-param">stepY</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public properties `x` and `y`and then sets them to the given values.The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.To use this with a Group: `SetXY(group.getChildren(), x, y, stepX, stepY)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3433,11 +4302,11 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
@@ -3446,16 +4315,16 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to set the `x` property to.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
 							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>x</td>
 							<td class="last">
-									[description]
+									The amount to set the `y` property to. If `undefined` or `null` it uses the `x` value.
 							</td>
 						</tr>
 						<tr>
@@ -3464,7 +4333,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `x` amount, multiplied by the iteration counter.
 							</td>
 						</tr>
 						<tr>
@@ -3473,7 +4342,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `y` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -3483,7 +4370,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -3514,7 +4401,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetXY.js.html">actions/SetXY.js</a>, <a href="actions_SetXY.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetXY.js.html">actions/SetXY.js</a>, <a href="actions_SetXY.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3526,11 +4413,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".SetY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".SetY" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetY</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">step</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">direction</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects, or any objects that have the public property `y`and then sets it to the given value.The optional `step` property is applied incrementally, multiplied by each item in the array.To use this with a Group: `SetY(group.getChildren(), value, step)`</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3546,11 +4433,11 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									An array of Game Objects. The contents of this array are updated by this Action.
+									The array of items to be updated by this action.
 							</td>
 						</tr>
 						<tr>
@@ -3559,7 +4446,7 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The amount to set the property to.
 							</td>
 						</tr>
 						<tr>
@@ -3568,7 +4455,25 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									This is added to the `value` amount, multiplied by the iteration counter.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional offset to start searching from within the items array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>direction</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1</td>
+							<td class="last">
+									The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning.
 							</td>
 						</tr>
 					</tbody>
@@ -3578,7 +4483,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The array of objects that were passed to this Action.</div>
 								</div>
 							</div>
 					</form>
@@ -3609,7 +4514,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_SetY.js.html">actions/SetY.js</a>, <a href="actions_SetY.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="actions_SetY.js.html">actions/SetY.js</a>, <a href="actions_SetY.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3625,7 +4530,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Iterate through items changing the position of each element tobe that of the element that came before it in the array (or after it if direction = 1)The first items position is set to x/y.The final x/y coords are returned</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3641,7 +4546,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
@@ -3689,9 +4594,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+									<div class="form-control-static returns-description">The output vector.</div>
 								</div>
 							</div>
 					</form>
@@ -3722,7 +4627,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="actions_ShiftPosition.js.html">actions/ShiftPosition.js</a>, <a href="actions_ShiftPosition.js.html#line-14">line 14</a></p>
+									<p class="form-control-static"><a href="actions_ShiftPosition.js.html">actions/ShiftPosition.js</a>, <a href="actions_ShiftPosition.js.html#line-9">line 9</a></p>
 								</div>
 							</div>
 			
@@ -3752,7 +4657,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -3825,7 +4730,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -3926,7 +4831,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -4009,7 +4914,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".Spread" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Spread</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">property</span>, <span class="signature-param">min</span>, <span class="signature-param">max</span>, <span class="signature-param">inc</span>&nbsp;)</span></h4>
+			<h4 id=".Spread" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Spread</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">property</span>, <span class="signature-param">min</span>, <span class="signature-param">max</span> [,&nbsp;<span class="signature-param">inc</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -4021,13 +4926,17 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -4035,6 +4944,8 @@
 						<tr>
 								<td><code>property</code></td>
 							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									[description]
 							</td>
@@ -4042,6 +4953,8 @@
 						<tr>
 								<td><code>min</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									[description]
 							</td>
@@ -4049,6 +4962,8 @@
 						<tr>
 								<td><code>max</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
 									[description]
 							</td>
@@ -4056,6 +4971,8 @@
 						<tr>
 								<td><code>inc</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>false</td>
 							<td class="last">
 									[description]
 							</td>
@@ -4128,7 +5045,7 @@
 					<tbody>
 						<tr>
 								<td><code>items</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
 									An array of Game Objects. The contents of this array are updated by this Action.
 							</td>
@@ -4181,6 +5098,108 @@
 					</form>
 			</div>	</div>
 </dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".WrapInRectangle" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">WrapInRectangle</span><span class="signature-params">( <span class="signature-param">items</span>, <span class="signature-param">rect</span> [,&nbsp;<span class="signature-param">padding</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Wrap each item's coordinates within a rectangle's area.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>items</code></td>
+							<td><span class="param-type">array</span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									An array of Game Objects. The contents of this array are updated by this Action.
+							</td>
+						</tr>
+						<tr>
+								<td><code>rect</code></td>
+							<td><span class="param-type"><a href="Phaser.Geom.Rectangle.html">Phaser.Geom.Rectangle</a></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The rectangle.
+							</td>
+						</tr>
+						<tr>
+								<td><code>padding</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An amount added to each side of the rectangle during the operation.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The array of Game Objects that was passed to this Action.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="actions_WrapInRectangle.js.html">actions/WrapInRectangle.js</a>, <a href="actions_WrapInRectangle.js.html#line-10">line 10</a></p>
+								</div>
+							</div>
+			
+			
+							<!-- see -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">See</label>
+								<div class="col-sm-9">
+										<p class="form-control-static"><a href="Phaser.Math.html#.Wrap">Phaser.Math.Wrap</a></p>
+								</div>
+							</div>
+			
+			
+					</form>
+			</div>	</div>
+</dd>
 									</dl>
 							</article>
 					</section>
@@ -4193,7 +5212,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

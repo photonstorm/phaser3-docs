@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -221,7 +221,7 @@ var InputManager = new Class({
          * [description]
          *
          * @name Phaser.Input.InputManager#activePointer
-         * @type {[type]}
+         * @type {Phaser.Input.Pointer}
          * @since 3.0.0
          */
         this.activePointer = new Pointer(this, 0);
@@ -230,7 +230,7 @@ var InputManager = new Class({
          * [description]
          *
          * @name Phaser.Input.InputManager#scale
-         * @type {object}
+         * @type {{x:number,y:number}}
          * @since 3.0.0
          */
         this.scale = { x: 1, y: 1 };
@@ -271,7 +271,7 @@ var InputManager = new Class({
          * [description]
          *
          * @name Phaser.Input.InputManager#_tempPoint
-         * @type {object}
+         * @type {{x:number,y:number}}
          * @private
          * @since 3.0.0
          */
@@ -320,13 +320,37 @@ var InputManager = new Class({
      */
     updateBounds: function ()
     {
-        var clientRect = this.canvas.getBoundingClientRect();
         var bounds = this.bounds;
 
-        bounds.left = clientRect.left + window.pageXOffset;
-        bounds.top = clientRect.top + window.pageYOffset;
+        var clientRect = this.canvas.getBoundingClientRect();
+
+        bounds.x = clientRect.left + window.pageXOffset - document.documentElement.clientLeft;
+        bounds.y = clientRect.top + window.pageYOffset - document.documentElement.clientTop;
         bounds.width = clientRect.width;
         bounds.height = clientRect.height;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Input.InputManager#resize
+     * @since 3.2.0
+     */
+    resize: function ()
+    {
+        this.updateBounds();
+
+        //  Game config size
+        var gw = this.game.config.width;
+        var gh = this.game.config.height;
+
+        //  Actual canvas size
+        var bw = this.bounds.width;
+        var bh = this.bounds.height;
+
+        //  Scale factor
+        this.scale.x = gw / bw;
+        this.scale.y = gh / bh;
     },
 
     /**
@@ -450,6 +474,8 @@ var InputManager = new Class({
 
         var point = { x: 0, y: 0 };
 
+        var res = this.game.config.resolution;
+
         for (var i = 0; i &lt; culledGameObjects.length; i++)
         {
             var gameObject = culledGameObjects[i];
@@ -459,8 +485,8 @@ var InputManager = new Class({
                 continue;
             }
 
-            var px = tempPoint.x + (camera.scrollX * gameObject.scrollFactorX) - camera.scrollX;
-            var py = tempPoint.y + (camera.scrollY * gameObject.scrollFactorY) - camera.scrollY;
+            var px = tempPoint.x * res + (camera.scrollX * gameObject.scrollFactorX) - camera.scrollX;
+            var py = tempPoint.y * res + (camera.scrollY * gameObject.scrollFactorY) - camera.scrollY;
 
             TransformXY(px, py, gameObject.x, gameObject.y, gameObject.rotation, gameObject.scaleX, gameObject.scaleY, point);
 
@@ -652,7 +678,7 @@ module.exports = InputManager;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

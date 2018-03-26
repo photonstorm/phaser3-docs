@@ -98,7 +98,7 @@
         "private": false,
         "lenient": true,
         "sourceType": "script",
-        "template": "node_modules/ink-docstrap/template",
-        "_template": "node_modules/foodoc/template"
+        "_template": "node_modules/ink-docstrap/template",
+        "template": "node_modules/foodoc/template"
     }
 }

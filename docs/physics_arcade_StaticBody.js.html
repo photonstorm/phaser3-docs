@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -100,7 +100,6 @@
 var CircleContains = require('../../geom/circle/Contains');
 var Class = require('../../utils/Class');
 var CONST = require('./const');
-var Rectangle = require('../../geom/rectangle/Rectangle');
 var RectangleContains = require('../../geom/rectangle/Contains');
 var Vector2 = require('../../math/Vector2');
 
@@ -213,7 +212,7 @@ var StaticBody = new Class({
          * @type {number}
          * @since 3.0.0
          */
-        this.width = gameObject.width;
+        this.width = gameObject.displayWidth;
 
         /**
          * [description]
@@ -222,31 +221,7 @@ var StaticBody = new Class({
          * @type {number}
          * @since 3.0.0
          */
-        this.height = gameObject.height;
-
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Arcade.StaticBody#sourceWidth
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.sourceWidth = gameObject.width;
-
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Arcade.StaticBody#sourceHeight
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.sourceHeight = gameObject.height;
-
-        if (gameObject.frame)
-        {
-            this.sourceWidth = gameObject.frame.realWidth;
-            this.sourceHeight = gameObject.frame.realHeight;
-        }
+        this.height = gameObject.displayHeight;
 
         /**
          * [description]
@@ -255,7 +230,7 @@ var StaticBody = new Class({
          * @type {number}
          * @since 3.0.0
          */
-        this.halfWidth = Math.abs(gameObject.width / 2);
+        this.halfWidth = Math.abs(this.width / 2);
 
         /**
          * [description]
@@ -264,7 +239,7 @@ var StaticBody = new Class({
          * @type {number}
          * @since 3.0.0
          */
-        this.halfHeight = Math.abs(gameObject.height / 2);
+        this.halfHeight = Math.abs(this.height / 2);
 
         /**
          * [description]
@@ -282,7 +257,7 @@ var StaticBody = new Class({
          * @type {Phaser.Math.Vector2}
          * @since 3.0.0
          */
-        this.velocity = new Vector2();
+        this.velocity = Vector2.ZERO;
 
         /**
          * [description]
@@ -301,7 +276,7 @@ var StaticBody = new Class({
          * @type {Phaser.Math.Vector2}
          * @since 3.0.0
          */
-        this.gravity = new Vector2();
+        this.gravity = Vector2.ZERO;
 
         /**
          * [description]
@@ -310,7 +285,7 @@ var StaticBody = new Class({
          * @type {Phaser.Math.Vector2}
          * @since 3.0.0
          */
-        this.bounce = new Vector2();
+        this.bounce = Vector2.ZERO;
 
         //  If true this Body will dispatch events
 
@@ -363,16 +338,6 @@ var StaticBody = new Class({
          * @since 3.0.0
          */
         this.immovable = true;
-
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Arcade.StaticBody#moves
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.moves = false;
 
         /**
          * [description]
@@ -448,7 +413,7 @@ var StaticBody = new Class({
          * [description]
          *
          * @name Phaser.Physics.Arcade.StaticBody#checkCollision
-         * @type {object}
+         * @type {ArcadeBodyCollision}
          * @since 3.0.0
          */
         this.checkCollision = { none: false, up: true, down: true, left: true, right: true };
@@ -457,7 +422,7 @@ var StaticBody = new Class({
          * [description]
          *
          * @name Phaser.Physics.Arcade.StaticBody#touching
-         * @type {object}
+         * @type {ArcadeBodyCollision}
          * @since 3.0.0
          */
         this.touching = { none: true, up: false, down: false, left: false, right: false };
@@ -466,7 +431,7 @@ var StaticBody = new Class({
          * [description]
          *
          * @name Phaser.Physics.Arcade.StaticBody#wasTouching
-         * @type {object}
+         * @type {ArcadeBodyCollision}
          * @since 3.0.0
          */
         this.wasTouching = { none: true, up: false, down: false, left: false, right: false };
@@ -475,7 +440,7 @@ var StaticBody = new Class({
          * [description]
          *
          * @name Phaser.Physics.Arcade.StaticBody#blocked
-         * @type {object}
+         * @type {ArcadeBodyCollision}
          * @since 3.0.0
          */
         this.blocked = { none: true, up: false, down: false, left: false, right: false };
@@ -488,36 +453,70 @@ var StaticBody = new Class({
          * @since 3.0.0
          */
         this.physicsType = CONST.STATIC_BODY;
+    },
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Arcade.StaticBody#_sx
-         * @type {number}
-         * @private
-         * @since 3.0.0
-         */
-        this._sx = gameObject.scaleX;
+    /**
+     * Changes the Game Object this Body is bound to.
+     * First it removes its reference from the old Game Object, then sets the new one.
+     * You can optionally update the position and dimensions of this Body to reflect that of the new Game Object.
+     *
+     * @method Phaser.Physics.Arcade.StaticBody#setGameObject
+     * @since 3.1.0
+     *
+     * @param {Phaser.GameObjects.GameObject} gameObject - The new Game Object that will own this Body.
+     * @param {boolean} [update=true] - Reposition and resize this Body to match the new Game Object?
+     *
+     * @return {Phaser.Physics.Arcade.StaticBody} This Static Body object.
+     */
+    setGameObject: function (gameObject, update)
+    {
+        if (gameObject &amp;&amp; gameObject !== this.gameObject)
+        {
+            //  Remove this body from the old game object
+            this.gameObject.body = null;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Arcade.StaticBody#_sy
-         * @type {number}
-         * @private
-         * @since 3.0.0
-         */
-        this._sy = gameObject.scaleY;
+            gameObject.body = this;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Arcade.StaticBody#_bounds
-         * @type {Phaser.Geom.Rectangle}
-         * @private
-         * @since 3.0.0
-         */
-        this._bounds = new Rectangle();
+            //  Update our reference
+            this.gameObject = gameObject;
+        }
+
+        if (update)
+        {
+            this.updateFromGameObject();
+        }
+
+        return this;
+    },
+
+    /**
+     * Updates this Static Body so that its position and dimensions are updated
+     * based on the current Game Object it is bound to.
+     *
+     * @method Phaser.Physics.Arcade.StaticBody#updateFromGameObject
+     * @since 3.1.0
+     *
+     * @return {Phaser.Physics.Arcade.StaticBody} This Static Body object.
+     */
+    updateFromGameObject: function ()
+    {
+        this.world.staticTree.remove(this);
+
+        var gameObject = this.gameObject;
+
+        gameObject.getTopLeft(this.position);
+
+        this.width = gameObject.displayWidth;
+        this.height = gameObject.displayHeight;
+
+        this.halfWidth = Math.abs(this.width / 2);
+        this.halfHeight = Math.abs(this.height / 2);
+
+        this.center.set(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
+
+        this.world.staticTree.insert(this);
+
+        return this;
     },
 
     /**
@@ -540,12 +539,12 @@ var StaticBody = new Class({
 
         this.world.staticTree.remove(this);
 
-        this.sourceWidth = width;
-        this.sourceHeight = height;
-        this.width = this.sourceWidth * this._sx;
-        this.height = this.sourceHeight * this._sy;
-        this.halfWidth = Math.floor(this.width / 2);
-        this.halfHeight = Math.floor(this.height / 2);
+        this.width = width;
+        this.height = height;
+
+        this.halfWidth = Math.floor(width / 2);
+        this.halfHeight = Math.floor(height / 2);
+
         this.offset.set(offsetX, offsetY);
 
         this.updateCenter();
@@ -580,13 +579,11 @@ var StaticBody = new Class({
             this.world.staticTree.remove(this);
 
             this.isCircle = true;
+
             this.radius = radius;
 
-            this.sourceWidth = radius * 2;
-            this.sourceHeight = radius * 2;
-
-            this.width = this.sourceWidth * this._sx;
-            this.height = this.sourceHeight * this._sy;
+            this.width = radius * 2;
+            this.height = radius * 2;
 
             this.halfWidth = Math.floor(this.width / 2);
             this.halfHeight = Math.floor(this.height / 2);
@@ -627,17 +624,14 @@ var StaticBody = new Class({
      */
     reset: function (x, y)
     {
-        var sprite = this.gameObject;
+        var gameObject = this.gameObject;
 
-        if (x === undefined) { x = sprite.x; }
-        if (y === undefined) { y = sprite.y; }
+        if (x === undefined) { x = gameObject.x; }
+        if (y === undefined) { y = gameObject.y; }
 
         this.world.staticTree.remove(this);
 
-        this.position.x = x - sprite.displayOriginX + (sprite.scaleX * this.offset.x);
-        this.position.y = y - sprite.displayOriginY + (sprite.scaleY * this.offset.y);
-
-        this.rotation = this.gameObject.angle;
+        gameObject.getTopLeft(this.position);
 
         this.updateCenter();
 
@@ -663,9 +657,9 @@ var StaticBody = new Class({
      * @method Phaser.Physics.Arcade.StaticBody#getBounds
      * @since 3.0.0
      *
-     * @param {object} obj - [description]
+     * @param {ArcadeBodyBounds} obj - [description]
      *
-     * @return {object} [description]
+     * @return {ArcadeBodyBounds} [description]
      */
     getBounds: function (obj)
     {
@@ -766,8 +760,9 @@ var StaticBody = new Class({
      */
     destroy: function ()
     {
-        this.gameObject.body = null;
-        this.gameObject = null;
+        this.enable = false;
+
+        this.world.pendingDestroy.set(this);
     },
 
     /**
@@ -841,9 +836,10 @@ var StaticBody = new Class({
 
         set: function (value)
         {
+            this.world.staticTree.remove(this);
+
             this.position.x = value;
 
-            this.world.staticTree.remove(this);
             this.world.staticTree.insert(this);
         }
 
@@ -865,9 +861,10 @@ var StaticBody = new Class({
 
         set: function (value)
         {
+            this.world.staticTree.remove(this);
+
             this.position.y = value;
 
-            this.world.staticTree.remove(this);
             this.world.staticTree.insert(this);
         }
 
@@ -952,7 +949,7 @@ module.exports = StaticBody;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

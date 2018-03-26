@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -119,7 +119,7 @@ var Transform = {
      * [description]
      *
      * @name Phaser.Physics.Matter.Components.Transform#x
-     * @type {[type]}
+     * @type {number}
      * @since 3.0.0
      */
     x: {
@@ -142,7 +142,7 @@ var Transform = {
      * [description]
      *
      * @name Phaser.Physics.Matter.Components.Transform#y
-     * @type {[type]}
+     * @type {number}
      * @since 3.0.0
      */
     y: {
@@ -165,7 +165,7 @@ var Transform = {
      * [description]
      *
      * @name Phaser.Physics.Matter.Components.Transform#scaleX
-     * @type {[type]}
+     * @type {number}
      * @since 3.0.0
      */
     scaleX: {
@@ -197,7 +197,7 @@ var Transform = {
      * [description]
      *
      * @name Phaser.Physics.Matter.Components.Transform#scaleY
-     * @type {[type]}
+     * @type {number}
      * @since 3.0.0
      */
     scaleY: {
@@ -229,7 +229,7 @@ var Transform = {
      * [description]
      *
      * @name Phaser.Physics.Matter.Components.Transform#angle
-     * @type {[type]}
+     * @type {number}
      * @since 3.0.0
      */
     angle: {
@@ -250,7 +250,7 @@ var Transform = {
      * [description]
      *
      * @name Phaser.Physics.Matter.Components.Transform#rotation
-     * @type {[type]}
+     * @type {number}
      * @since 3.0.0
      */
     rotation: {
@@ -275,10 +275,10 @@ var Transform = {
      * @method Phaser.Physics.Matter.Components.Transform#setPosition
      * @since 3.0.0
      *
-     * @param {[type]} x - [description]
-     * @param {[type]} y - [description]
+     * @param {number} [x=0] - [description]
+     * @param {number} [y=x] - [description]
      *
-     * @return {[type]} [description]
+     * @return{Phaser.GameObjects.GameObject} This Game Object.
      */
     setPosition: function (x, y)
     {
@@ -298,9 +298,9 @@ var Transform = {
      * @method Phaser.Physics.Matter.Components.Transform#setRotation
      * @since 3.0.0
      *
-     * @param {[type]} radians - [description]
+     * @param {number} [radians=0] - [description]
      *
-     * @return {[type]} [description]
+     * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
     setRotation: function (radians)
     {
@@ -319,7 +319,7 @@ var Transform = {
      * @method Phaser.Physics.Matter.Components.Transform#setFixedRotation
      * @since 3.0.0
      *
-     * @return {[type]} [description]
+     * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
     setFixedRotation: function ()
     {
@@ -334,9 +334,9 @@ var Transform = {
      * @method Phaser.Physics.Matter.Components.Transform#setAngle
      * @since 3.0.0
      *
-     * @param {[type]} degrees - [description]
+     * @param {number} [degrees=0] - [description]
      *
-     * @return {[type]} [description]
+     * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
     setAngle: function (degrees)
     {
@@ -355,11 +355,11 @@ var Transform = {
      * @method Phaser.Physics.Matter.Components.Transform#setScale
      * @since 3.0.0
      *
-     * @param {[type]} x - [description]
-     * @param {[type]} y - [description]
-     * @param {[type]} point - [description]
+     * @param {number} [x=1] - [description]
+     * @param {number} [y=x] - [description]
+     * @param {Phaser.Math.Vector2} [point] - [description]
      *
-     * @return {[type]} [description]
+     * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
     setScale: function (x, y, point)
     {
@@ -385,7 +385,7 @@ module.exports = Transform;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

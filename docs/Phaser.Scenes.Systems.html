@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -100,11 +100,7 @@
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">The Scene Systems class.
-			
-			This class is available from within a Scene under the property `sys`.
-			It is responsible for managing all of the plugins a Scene has running, including the display list, and
-			handling the update step and renderer. It also contains references to global systems belonging to Game.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">The Scene Systems class.This class is available from within a Scene under the property `sys`.It is responsible for managing all of the plugins a Scene has running, including the display list, andhandling the update step and renderer. It also contains references to global systems belonging to Game.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -125,7 +121,7 @@
 						</tr>
 						<tr>
 								<td><code>config</code></td>
-							<td><span class="param-type">object</span></td>
+							<td><span class="param-type">string</span> | <span class="param-type"><a href="global.html#SettingsConfig">SettingsConfig</a></span></td>
 							<td class="last">
 									Scene specific configuration settings.
 							</td>
@@ -431,7 +427,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="config" class="member public"><span class="name">config</span><span class="signature-type"> :object</span></h4>
+			<h4 id="config" class="member public"><span class="name">config</span><span class="signature-type"> :string|<a href="global.html#SettingsConfig">SettingsConfig</a></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -442,7 +438,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+									<div class="form-control-static type-names"><span class="param-type">string</span> | <span class="param-type"><a href="global.html#SettingsConfig">SettingsConfig</a></span></div>
 								</div>
 							</div>
 			
@@ -584,7 +580,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="events" class="member public"><span class="name">events</span><span class="signature-type"> :<a href="EventEmitter.html">EventEmitter</a></span></h4>
+			<h4 id="events" class="member public"><span class="name">events</span><span class="signature-type"> :EventEmitter</span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -595,7 +591,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type"><a href="EventEmitter.html">EventEmitter</a></span></div>
+									<div class="form-control-static type-names"><span class="param-type">EventEmitter</span></div>
 								</div>
 							</div>
 			
@@ -788,7 +784,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="registry" class="member public"><span class="name">registry</span><span class="signature-type"> :any</span></h4>
+			<h4 id="registry" class="member public"><span class="name">registry</span><span class="signature-type"> :<a href="Phaser.Data.DataManager.html">Phaser.Data.DataManager</a></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -799,7 +795,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">any</span></div>
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Data.DataManager.html">Phaser.Data.DataManager</a></span></div>
 								</div>
 							</div>
 			
@@ -941,7 +937,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="settings" class="member public"><span class="name">settings</span><span class="signature-type"> :any</span></h4>
+			<h4 id="settings" class="member public"><span class="name">settings</span><span class="signature-type"> :<a href="global.html#SettingsObject">SettingsObject</a></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -952,7 +948,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">any</span></div>
+									<div class="form-control-static type-names"><span class="param-type"><a href="global.html#SettingsObject">SettingsObject</a></span></div>
 								</div>
 							</div>
 			
@@ -1094,7 +1090,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="updateList" class="member public"><span class="name">updateList</span><span class="signature-type"> :any</span></h4>
+			<h4 id="updateList" class="member public"><span class="name">updateList</span><span class="signature-type"> :<a href="Phaser.GameObjects.UpdateList.html">Phaser.GameObjects.UpdateList</a></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -1105,7 +1101,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">any</span></div>
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.GameObjects.UpdateList.html">Phaser.GameObjects.UpdateList</a></span></div>
 								</div>
 							</div>
 			
@@ -1224,7 +1220,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_Systems.js.html">scene/Systems.js</a>, <a href="scene_Systems.js.html#line-528">line 528</a></p>
+									<p class="form-control-static"><a href="scene_Systems.js.html">scene/Systems.js</a>, <a href="scene_Systems.js.html#line-543">line 543</a></p>
 								</div>
 							</div>
 			
@@ -1461,8 +1457,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Pause this Scene.
-			A paused Scene still renders, it just doesn't run ANY of its update handlers or systems.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Pause this Scene.A paused Scene still renders, it just doesn't run ANY of its update handlers or systems.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.Systems.html">Phaser.Scenes.Systems</a></span></label>
@@ -1608,6 +1603,78 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="scene_Systems.js.html">scene/Systems.js</a>, <a href="scene_Systems.js.html#line-285">line 285</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="resize" class="function public"><span class="name">resize</span><span class="signature-params">( <span class="signature-param">width</span>, <span class="signature-param">height</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called automatically by the SceneManager if the Game resizes.Dispatches an event you can respond to in your game code.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>width</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									The new width of the game.
+							</td>
+						</tr>
+						<tr>
+								<td><code>height</code></td>
+							<td><span class="param-type">number</span></td>
+							<td class="last">
+									The new height of the game.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="scene_Systems.js.html">scene/Systems.js</a>, <a href="scene_Systems.js.html#line-512">line 512</a></p>
 								</div>
 							</div>
 			
@@ -1849,7 +1916,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_Systems.js.html">scene/Systems.js</a>, <a href="scene_Systems.js.html#line-512">line 512</a></p>
+									<p class="form-control-static"><a href="scene_Systems.js.html">scene/Systems.js</a>, <a href="scene_Systems.js.html#line-527">line 527</a></p>
 								</div>
 							</div>
 			
@@ -1865,10 +1932,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Send this Scene to sleep.
-			
-			A sleeping Scene doesn't run it's update step or render anything, but it also isn't destroyed,
-			or have any of its systems or children removed, meaning it can be re-activated at any point.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Send this Scene to sleep.A sleeping Scene doesn't run it's update step or render anything, but it also isn't destroyed,or have any of its systems or children removed, meaning it can be re-activated at any point.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.Systems.html">Phaser.Scenes.Systems</a></span></label>
@@ -2115,7 +2179,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

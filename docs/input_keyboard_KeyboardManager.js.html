@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -158,7 +158,7 @@ var KeyboardManager = new Class({
          * [description]
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#target
-         * @type {null}
+         * @type {?object}
          * @since 3.0.0
          */
         this.target;
@@ -167,7 +167,7 @@ var KeyboardManager = new Class({
          * [description]
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#keys
-         * @type {array}
+         * @type {Phaser.Input.Keyboard.Key[]}
          * @default []
          * @since 3.0.0
          */
@@ -177,7 +177,7 @@ var KeyboardManager = new Class({
          * [description]
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#combos
-         * @type {array}
+         * @type {Phaser.Input.Keyboard.KeyCombo[]}
          * @default []
          * @since 3.0.0
          */
@@ -197,7 +197,7 @@ var KeyboardManager = new Class({
          * [description]
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#queue
-         * @type {array}
+         * @type {KeyboardEvent[]}
          * @default []
          * @since 3.0.0
          */
@@ -207,7 +207,7 @@ var KeyboardManager = new Class({
          * [description]
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#handler
-         * @type {any}
+         * @type {?function}
          * @since 3.0.0
          */
         this.handler;
@@ -237,8 +237,6 @@ var KeyboardManager = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#startListeners
      * @since 3.0.0
-     *
-     * @return {[type]} [description]
      */
     startListeners: function ()
     {
@@ -285,7 +283,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#createCursorKeys
      * @since 3.0.0
      *
-     * @return {[type]} [description]
+     * @return {object} [description]
      */
     createCursorKeys: function ()
     {
@@ -311,9 +309,9 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#addKeys
      * @since 3.0.0
      *
-     * @param {[type]} keys - [description]
+     * @param {object} keys - [description]
      *
-     * @return {[type]} [description]
+     * @return {object} [description]
      */
     addKeys: function (keys)
     {
@@ -334,9 +332,9 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#addKey
      * @since 3.0.0
      *
-     * @param {[type]} keyCode - [description]
+     * @param {(string|integer)} keyCode - [description]
      *
-     * @return {[type]} [description]
+     * @return {Phaser.Input.Keyboard.Key} [description]
      */
     addKey: function (keyCode)
     {
@@ -357,7 +355,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#removeKey
      * @since 3.0.0
      *
-     * @param {[type]} keyCode - [description]
+     * @param {(string|integer)} keyCode - [description]
      */
     removeKey: function (keyCode)
     {
@@ -374,7 +372,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#addKeyCapture
      * @since 3.0.0
      *
-     * @param {[type]} keyCodes - [description]
+     * @param {(string|integer|string[]|integer[])} keyCodes - [description]
      */
     addKeyCapture: function (keyCodes)
     {
@@ -395,7 +393,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#removeKeyCapture
      * @since 3.0.0
      *
-     * @param {[type]} keyCodes - [description]
+     * @param {(string|integer|string[]|integer[])} keyCodes - [description]
      */
     removeKeyCapture: function (keyCodes)
     {
@@ -416,10 +414,10 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#createCombo
      * @since 3.0.0
      *
-     * @param {[type]} keys - [description]
-     * @param {[type]} config - [description]
+     * @param {(string|integer[]|object[])} keys - [description]
+     * @param {KeyComboConfig} config - [description]
      *
-     * @return {[type]} [description]
+     * @return {Phaser.Input.Keyboard.KeyCombo} [description]
      */
     createCombo: function (keys, config)
     {
@@ -431,8 +429,6 @@ var KeyboardManager = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#update
      * @since 3.0.0
-     *
-     * @return {[type]} [description]
      */
     update: function ()
     {
@@ -455,13 +451,13 @@ var KeyboardManager = new Class({
             var event = queue[i];
             var code = event.keyCode;
 
-            //  Will emit a keyboard or keyup event
-            this.emit(event.type, event);
-
             if (event.type === 'keydown')
             {
-                if (KeyMap[code])
+                if (KeyMap[code] &amp;&amp; (keys[code] === undefined || keys[code].isDown === false))
                 {
+                    //  Will emit a keyboard or keyup event
+                    this.emit(event.type, event);
+
                     this.emit('keydown_' + KeyMap[code], event);
                 }
 
@@ -472,6 +468,9 @@ var KeyboardManager = new Class({
             }
             else
             {
+                //  Will emit a keyboard or keyup event
+                this.emit(event.type, event);
+
                 this.emit('keyup_' + KeyMap[code], event);
 
                 if (keys[code])
@@ -525,7 +524,7 @@ module.exports = KeyboardManager;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

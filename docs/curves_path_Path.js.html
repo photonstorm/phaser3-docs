@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -105,9 +105,20 @@ var EllipseCurve = require('../EllipseCurve');
 var GameObjectFactory = require('../../gameobjects/GameObjectFactory');
 var LineCurve = require('../LineCurve');
 var MovePathTo = require('./MoveTo');
+var QuadraticBezierCurve = require('../QuadraticBezierCurve');
 var Rectangle = require('../../geom/rectangle/Rectangle');
 var SplineCurve = require('../SplineCurve');
 var Vector2 = require('../../math/Vector2');
+
+/**
+ * @typedef {object} JSONPath
+ *
+ * @property {string} type - The of the curve.
+ * @property {number} x - [description]
+ * @property {number} y - [description]
+ * @property {boolean} autoClose - The path is auto closed.
+ * @property {JSONCurve[]} curves - The list of the curves
+ */
 
 /**
  * @classdesc
@@ -144,7 +155,7 @@ var Path = new Class({
          * [description]
          *
          * @name Phaser.Curves.Path#curves
-         * @type {array}
+         * @type {Phaser.Curves.Curve[]}
          * @default []
          * @since 3.0.0
          */
@@ -154,7 +165,7 @@ var Path = new Class({
          * [description]
          *
          * @name Phaser.Curves.Path#cacheLengths
-         * @type {array}
+         * @type {number[]}
          * @default []
          * @since 3.0.0
          */
@@ -173,7 +184,7 @@ var Path = new Class({
         /**
          * [description]
          *
-         * @name {Phaser.MathPhaser.Curves.Path#startPoint
+         * @name {Phaser.Curves.Path#startPoint
          * @type {Phaser.Math.Vector2}
          * @since 3.0.0
          */
@@ -182,7 +193,7 @@ var Path = new Class({
         /**
          * [description]
          *
-         * @name {Phaser.MathPhaser.Curves.Path#_tmpVec2A
+         * @name {Phaser.Curves.Path#_tmpVec2A
          * @type {Phaser.Math.Vector2}
          * @private
          * @since 3.0.0
@@ -192,7 +203,7 @@ var Path = new Class({
         /**
          * [description]
          *
-         * @name {Phaser.MathPhaser.Curves.Path#_tmpVec2B
+         * @name {Phaser.Curves.Path#_tmpVec2B
          * @type {Phaser.Math.Vector2}
          * @private
          * @since 3.0.0
@@ -233,8 +244,8 @@ var Path = new Class({
      * @since 3.0.0
      *
      * @param {number} radius - [description]
-     * @param {boolean} [clockwise] - [description]
-     * @param {number} [rotation] - [description]
+     * @param {boolean} [clockwise=false] - [description]
+     * @param {number} [rotation=0] - [description]
      *
      * @return {Phaser.Curves.Path} [description]
      */
@@ -278,10 +289,10 @@ var Path = new Class({
      *
      * @param {number} x - [description]
      * @param {number} y - [description]
-     * @param {Phaser.Math.Vector2} control1X - {Phaser.Math[description]
-     * @param {Phaser.Math.Vector2} control1Y - {Phaser.Math[description]
-     * @param {Phaser.Math.Vector2} control2X - {Phaser.Math[description]
-     * @param {Phaser.Math.Vector2} control2Y - {Phaser.Math[description]
+     * @param {Phaser.Math.Vector2} control1X - [description]
+     * @param {Phaser.Math.Vector2} control1Y - [description]
+     * @param {Phaser.Math.Vector2} control2X - [description]
+     * @param {Phaser.Math.Vector2} control2Y - [description]
      *
      * @return {Phaser.Curves.Path} [description]
      */
@@ -309,17 +320,40 @@ var Path = new Class({
         return this.add(new CubicBezierCurve(p0, p1, p2, p3));
     },
 
+    //  Creates a quadratic bezier curve starting at the previous end point and ending at p2, using p1 as a control point
+
     /**
      * [description]
      *
-     * @method Phaser.Curves.Path#destroy
-     * @since 3.0.0
+     * @method Phaser.Curves.Path#quadraticBezierTo
+     * @since 3.2.0
+     *
+     * @param {(number|Phaser.Math.Vector2[])} x - [description]
+     * @param {number} [y] - [description]
+     * @param {number} [controlX] - [description]
+     * @param {number} [controlY] - [description]
+     *
+     * @return {Phaser.Curves.Path} [description]
      */
-    destroy: function ()
+    quadraticBezierTo: function (x, y, controlX, controlY)
     {
-        this.curves.length = 0;
-        this.cacheLengths.length = 0;
-        this.startPoint = undefined;
+        var p0 = this.getEndPoint();
+        var p1;
+        var p2;
+
+        //  Assume they're all vec2s
+        if (x instanceof Vector2)
+        {
+            p1 = x;
+            p2 = y;
+        }
+        else
+        {
+            p1 = new Vector2(controlX, controlY);
+            p2 = new Vector2(x, y);
+        }
+
+        return this.add(new QuadraticBezierCurve(p0, p1, p2));
     },
 
     /**
@@ -424,6 +458,10 @@ var Path = new Class({
                 case 'CubicBezierCurve':
                     this.add(CubicBezierCurve.fromJSON(curve));
                     break;
+
+                case 'QuadraticBezierCurve':
+                    this.add(QuadraticBezierCurve.fromJSON(curve));
+                    break;
             }
         }
 
@@ -518,9 +556,9 @@ var Path = new Class({
      * @method Phaser.Curves.Path#getEndPoint
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2} [out] - {Phaser.Math[description]
+     * @param {Phaser.Math.Vector2} [out] - [description]
      *
-     * @return {Phaser.Math.Vector2} {Phaser.Math[description]
+     * @return {Phaser.Math.Vector2} [description]
      */
     getEndPoint: function (out)
     {
@@ -569,9 +607,9 @@ var Path = new Class({
      * @since 3.0.0
      *
      * @param {number} t - [description]
-     * @param {Phaser.Math.Vector2} [out] - {Phaser.Math[description]
+     * @param {Phaser.Math.Vector2} [out] - [description]
      *
-     * @return {Phaser.Math.Vector2|null} [description]
+     * @return {?Phaser.Math.Vector2} [description]
      */
     getPoint: function (t, out)
     {
@@ -661,9 +699,9 @@ var Path = new Class({
      * @method Phaser.Curves.Path#getRandomPoint
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2} [out] - {Phaser.Math[description]
+     * @param {Phaser.Math.Vector2} [out] - [description]
      *
-     * @return {Phaser.Math.Vector2} {Phaser.Math[description]
+     * @return {Phaser.Math.Vector2} [description]
      */
     getRandomPoint: function (out)
     {
@@ -707,9 +745,9 @@ var Path = new Class({
      * @method Phaser.Curves.Path#getStartPoint
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2} [out] - {Phaser.Math[description]
+     * @param {Phaser.Math.Vector2} [out] - [description]
      *
-     * @return {Phaser.Math.Vector2} {Phaser.Math[description]
+     * @return {Phaser.Math.Vector2} [description]
      */
     getStartPoint: function (out)
     {
@@ -726,7 +764,7 @@ var Path = new Class({
      * @method Phaser.Curves.Path#lineTo
      * @since 3.0.0
      *
-     * @param {number|Phaser.Math.Vector2} x - {Phaser.Math[description]
+     * @param {(number|Phaser.Math.Vector2)} x - [description]
      * @param {number} [y] - [description]
      *
      * @return {Phaser.Curves.Path} [description]
@@ -755,7 +793,7 @@ var Path = new Class({
      * @method Phaser.Curves.Path#splineTo
      * @since 3.0.0
      *
-     * @param {[type]} points - [description]
+     * @param {Phaser.Math.Vector2[]} points - [description]
      *
      * @return {Phaser.Curves.Path} [description]
      */
@@ -788,7 +826,7 @@ var Path = new Class({
      * @method Phaser.Curves.Path#toJSON
      * @since 3.0.0
      *
-     * @return {object} [description]
+     * @return {JSONPath} [description]
      */
     toJSON: function ()
     {
@@ -821,6 +859,19 @@ var Path = new Class({
         this.cacheLengths = [];
 
         this.getCurveLengths();
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.Curves.Path#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.curves.length = 0;
+        this.cacheLengths.length = 0;
+        this.startPoint = undefined;
     }
 
 });
@@ -833,7 +884,7 @@ var Path = new Class({
  *
  * @param {number} x - The horizontal position of this Path.
  * @param {number} y - The vertical position of this Path.
- * 
+ *
  * @return {Phaser.Curves.Path} The Path Object that was created.
  */
 GameObjectFactory.register('path', function (x, y)
@@ -842,9 +893,9 @@ GameObjectFactory.register('path', function (x, y)
 });
 
 //  When registering a factory function 'this' refers to the GameObjectFactory context.
-//  
+//
 //  There are several properties available to use:
-//  
+//
 //  this.scene - a reference to the Scene that owns the GameObjectFactory
 //  this.displayList - a reference to the Display List the Scene owns
 //  this.updateList - a reference to the Update List the Scene owns
@@ -858,7 +909,7 @@ module.exports = Path;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

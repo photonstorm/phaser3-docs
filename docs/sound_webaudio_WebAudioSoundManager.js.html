@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -93,12 +93,13 @@
 			<article></article>
 			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
  * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @author       Pavle Goloskokovic &lt;pgoloskokovic@gmail.com> (http://prunegames.com)
  * @copyright    2018 Photon Storm Ltd.
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Class = require('../../utils/Class');
 var BaseSoundManager = require('../BaseSoundManager');
+var Class = require('../../utils/Class');
 var WebAudioSound = require('./WebAudioSound');
 
 /**
@@ -109,9 +110,8 @@ var WebAudioSound = require('./WebAudioSound');
  * @extends Phaser.Sound.BaseSoundManager
  * @memberOf Phaser.Sound
  * @constructor
- * @author Pavle Goloskokovic &lt;pgoloskokovic@gmail.com> (http://prunegames.com)
  * @since 3.0.0
- * 
+ *
  * @param {Phaser.Game} game - Reference to the current game instance.
  */
 var WebAudioSoundManager = new Class({
@@ -127,6 +127,7 @@ var WebAudioSoundManager = new Class({
          *
          * @name Phaser.Sound.WebAudioSoundManager#context
          * @type {AudioContext}
+         * @private
          * @since 3.0.0
          */
         this.context = this.createAudioContext(game);
@@ -136,6 +137,7 @@ var WebAudioSoundManager = new Class({
          *
          * @name Phaser.Sound.WebAudioSoundManager#masterMuteNode
          * @type {GainNode}
+         * @private
          * @since 3.0.0
          */
         this.masterMuteNode = this.context.createGain();
@@ -145,6 +147,7 @@ var WebAudioSoundManager = new Class({
          *
          * @name Phaser.Sound.WebAudioSoundManager#masterVolumeNode
          * @type {GainNode}
+         * @private
          * @since 3.0.0
          */
         this.masterVolumeNode = this.context.createGain();
@@ -158,17 +161,11 @@ var WebAudioSoundManager = new Class({
          *
          * @name Phaser.Sound.WebAudioSoundManager#destination
          * @type {AudioNode}
+         * @private
          * @since 3.0.0
          */
         this.destination = this.masterMuteNode;
 
-        /**
-         * Is the Sound Manager touch locked?
-         *
-         * @name Phaser.Sound.WebAudioSoundManager#locked
-         * @type {boolean}
-         * @since 3.0.0
-         */
         this.locked = this.context.state === 'suspended' &amp;&amp; 'ontouchstart' in window;
 
         BaseSoundManager.call(this, game);
@@ -184,9 +181,9 @@ var WebAudioSoundManager = new Class({
      * @method Phaser.Sound.WebAudioSoundManager#createAudioContext
      * @private
      * @since 3.0.0
-     * 
+     *
      * @param {Phaser.Game} game - Reference to the current game instance.
-     * 
+     *
      * @return {AudioContext} The AudioContext instance to be used for playback.
      */
     createAudioContext: function (game)
@@ -196,6 +193,7 @@ var WebAudioSoundManager = new Class({
         if (audioConfig &amp;&amp; audioConfig.context)
         {
             audioConfig.context.resume();
+
             return audioConfig.context;
         }
 
@@ -207,10 +205,10 @@ var WebAudioSoundManager = new Class({
      *
      * @method Phaser.Sound.WebAudioSoundManager#add
      * @since 3.0.0
-     * 
+     *
      * @param {string} key - Asset key for the sound.
-     * @param {ISoundConfig} [config] - An optional config object containing default sound settings.
-     * 
+     * @param {SoundConfig} [config] - An optional config object containing default sound settings.
+     *
      * @return {Phaser.Sound.WebAudioSound} The new sound instance.
      */
     add: function (key, config)
@@ -228,7 +226,6 @@ var WebAudioSoundManager = new Class({
      * Read more about how this issue is handled here in [this article](https://medium.com/@pgoloskokovic/unlocking-web-audio-the-smarter-way-8858218c0e09).
      *
      * @method Phaser.Sound.WebAudioSoundManager#unlock
-     * @private
      * @since 3.0.0
      */
     unlock: function ()
@@ -284,67 +281,116 @@ var WebAudioSoundManager = new Class({
      */
     destroy: function ()
     {
-        BaseSoundManager.prototype.destroy.call(this);
         this.destination = null;
         this.masterVolumeNode.disconnect();
         this.masterVolumeNode = null;
         this.masterMuteNode.disconnect();
         this.masterMuteNode = null;
-        this.context.suspend();
+
+        if (this.game.config.audio &amp;&amp; this.game.config.audio.context)
+        {
+            this.context.suspend();
+        }
+        else
+        {
+            this.context.close();
+        }
+
         this.context = null;
-    }
-});
 
-/**
- * Global mute setting.
- *
- * @name Phaser.Sound.WebAudioSoundManager#mute
- * @type {boolean}
- */
-Object.defineProperty(WebAudioSoundManager.prototype, 'mute', {
-
-    get: function ()
-    {
-        return this.masterMuteNode.gain.value === 0;
+        BaseSoundManager.prototype.destroy.call(this);
     },
 
-    set: function (value)
+    /**
+     * @event Phaser.Sound.WebAudioSoundManager#MuteEvent
+     * @param {Phaser.Sound.WebAudioSoundManager} soundManager - Reference to the sound manager that emitted event.
+     * @param {boolean} value - An updated value of Phaser.Sound.WebAudioSoundManager#mute property.
+     */
+
+    /**
+     * Sets the muted state of all this Sound Manager.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#setMute
+     * @fires Phaser.Sound.WebAudioSoundManager#MuteEvent
+     * @since 3.3.0
+     *
+     * @param {boolean} value - `true` to mute all sounds, `false` to unmute them.
+     *
+     * @return {Phaser.Sound.WebAudioSoundManager} This Sound Manager.
+     */
+    setMute: function (value)
     {
-        this.masterMuteNode.gain.setValueAtTime(value ? 0 : 1, 0);
+        this.mute = value;
 
-        /**
-         * @event Phaser.Sound.WebAudioSoundManager#mute
-         * @param {Phaser.Sound.WebAudioSoundManager} soundManager - Reference to the sound manager that emitted event.
-         * @param {boolean} value - An updated value of Phaser.Sound.WebAudioSoundManager#mute property.
-         */
-        this.emit('mute', this, value);
-    }
-
-});
-
-/**
- * Global volume setting.
- *
- * @name Phaser.Sound.WebAudioSoundManager#volume
- * @type {number}
- */
-Object.defineProperty(WebAudioSoundManager.prototype, 'volume', {
-
-    get: function ()
-    {
-        return this.masterVolumeNode.gain.value;
+        return this;
     },
 
-    set: function (value)
-    {
-        this.masterVolumeNode.gain.setValueAtTime(value, 0);
+    /**
+     * @name Phaser.Sound.WebAudioSoundManager#mute
+     * @type {boolean}
+     * @fires Phaser.Sound.WebAudioSoundManager#MuteEvent
+     * @since 3.0.0
+     */
+    mute: {
 
-        /**
-         * @event Phaser.Sound.WebAudioSoundManager#volume
-         * @param {Phaser.Sound.WebAudioSoundManager} soundManager - Reference to the sound manager that emitted event.
-         * @param {number} value - An updated value of Phaser.Sound.WebAudioSoundManager#volume property.
-         */
-        this.emit('volume', this, value);
+        get: function ()
+        {
+            return (this.masterMuteNode.gain.value === 0);
+        },
+
+        set: function (value)
+        {
+            this.masterMuteNode.gain.setValueAtTime(value ? 0 : 1, 0);
+
+            this.emit('mute', this, value);
+        }
+
+    },
+
+    /**
+     * @event Phaser.Sound.WebAudioSoundManager#VolumeEvent
+     * @param {Phaser.Sound.WebAudioSoundManager} soundManager - Reference to the sound manager that emitted event.
+     * @param {number} value - An updated value of Phaser.Sound.WebAudioSoundManager#volume property.
+     */
+
+    /**
+     * Sets the volume of this Sound Manager.
+     *
+     * @method Phaser.Sound.WebAudioSoundManager#setVolume
+     * @fires Phaser.Sound.WebAudioSoundManager#VolumeEvent
+     * @since 3.3.0
+     *
+     * @param {number} value - The global volume of this Sound Manager.
+     *
+     * @return {Phaser.Sound.WebAudioSoundManager} This Sound Manager.
+     */
+    setVolume: function (value)
+    {
+        this.volume = value;
+
+        return this;
+    },
+
+    /**
+     * @name Phaser.Sound.WebAudioSoundManager#volume
+     * @type {number}
+     * @fires Phaser.Sound.WebAudioSoundManager#VolumeEvent
+     * @since 3.0.0
+     */
+    volume: {
+
+        get: function ()
+        {
+            return this.masterVolumeNode.gain.value;
+        },
+
+        set: function (value)
+        {
+            this.masterVolumeNode.gain.setValueAtTime(value, 0);
+
+            this.emit('volume', this, value);
+        }
+
     }
 
 });
@@ -358,7 +404,7 @@ module.exports = WebAudioSoundManager;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

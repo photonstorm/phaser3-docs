@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -104,6 +104,17 @@ var MeasureText = require('./MeasureText');
 
 //  Key: [ Object Key, Default Value ]
 
+/**
+ * A custom function that will be responsible for wrapping the text.
+ * @callback TextStyleWordWrapCallback
+ *
+ * @param {string} text - The string to wrap.
+ * @param {Phaser.GameObjects.Text} textObject - The Text instance.
+ *
+ * @return {(string|string[])} Should return the wrapped lines either as an array of lines or as a string with
+ * newline characters in place to indicate where breaks should happen.
+ */
+
 var propertyMap = {
     fontFamily: [ 'fontFamily', 'Courier' ],
     fontSize: [ 'fontSize', '16px' ],
@@ -123,7 +134,9 @@ var propertyMap = {
     fixedWidth: [ 'fixedWidth', 0 ],
     fixedHeight: [ 'fixedHeight', 0 ],
     rtl: [ 'rtl', false ],
-    testString: [ 'testString', '|MÉqgy' ],
+    testString: [ 'testString', '|MÃ‰qgy' ],
+    baselineX: [ 'baselineX', 1.2 ],
+    baselineY: [ 'baselineY', 1.4 ],
     wordWrapWidth: [ 'wordWrap.width', null ],
     wordWrapCallback: [ 'wordWrap.callback', null ],
     wordWrapCallbackScope: [ 'wordWrap.callbackScope', null ],
@@ -135,7 +148,7 @@ var propertyMap = {
  * [description]
  *
  * @class TextStyle
- * @memberOf Phaser.GameObjects.Components
+ * @memberOf Phaser.GameObjects.Text
  * @constructor
  * @since 3.0.0
  *
@@ -346,6 +359,26 @@ var TextStyle = new Class({
         this.testString;
 
         /**
+         * The amount of horizontal padding adding to the width of the text when calculating the font metrics.
+         *
+         * @name Phaser.GameObjects.Components.TextStyle#baselineX
+         * @type {number}
+         * @default 1.2
+         * @since 3.3.0
+         */
+        this.baselineX;
+
+        /**
+         * The amount of vertical padding adding to the width of the text when calculating the font metrics.
+         *
+         * @name Phaser.GameObjects.Components.TextStyle#baselineY
+         * @type {number}
+         * @default 1.4
+         * @since 3.3.0
+         */
+        this.baselineY;
+
+        /**
          * [description]
          *
          * @name Phaser.GameObjects.Components.TextStyle#_font
@@ -382,10 +415,10 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setStyle
      * @since 3.0.0
      *
-     * @param {[type]} style - [description]
-     * @param {[type]} updateText - [description]
+     * @param {CSSStyleRule} style - [description]
+     * @param {boolean} [updateText=true] - [description]
      *
-     * @return {Phaser.GameObjects.Components.TextStyle This TextStyle component.
+     * @return {Phaser.GameObjects.Text} The parent Text object.
      */
     setStyle: function (style, updateText)
     {
@@ -432,10 +465,12 @@ var TextStyle = new Class({
 
         if (updateText)
         {
-            this.update(true);
+            return this.update(true);
         }
-
-        return this;
+        else
+        {
+            return this.parent;
+        }
     },
 
     /**
@@ -444,8 +479,8 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#syncFont
      * @since 3.0.0
      *
-     * @param {[type]} canvas - [description]
-     * @param {[type]} context - [description]
+     * @param {HTMLCanvasElement} canvas - [description]
+     * @param {CanvasRenderingContext2D} context - [description]
      */
     syncFont: function (canvas, context)
     {
@@ -458,8 +493,8 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#syncStyle
      * @since 3.0.0
      *
-     * @param {[type]} canvas - [description]
-     * @param {[type]} context - [description]
+     * @param {HTMLCanvasElement} canvas - [description]
+     * @param {CanvasRenderingContext2D} context - [description]
      */
     syncStyle: function (canvas, context)
     {
@@ -479,8 +514,8 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#syncShadow
      * @since 3.0.0
      *
-     * @param {[type]} context - [description]
-     * @param {[type]} enabled - [description]
+     * @param {CanvasRenderingContext2D} context - [description]
+     * @param {boolean} enabled - [description]
      */
     syncShadow: function (context, enabled)
     {
@@ -528,7 +563,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setFont
      * @since 3.0.0
      *
-     * @param {string|object} font - [description]
+     * @param {(string|object)} font - [description]
      *
      * @return {Phaser.GameObjects.Text} The parent Text object.
      */
@@ -556,7 +591,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setFontFamily
      * @since 3.0.0
      *
-     * @param {[type]} family - [description]
+     * @param {string} family - [description]
      *
      * @return {Phaser.GameObjects.Text} The parent Text object.
      */
@@ -573,7 +608,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setFontStyle
      * @since 3.0.0
      *
-     * @param {[type]} style - [description]
+     * @param {string} style - [description]
      *
      * @return {Phaser.GameObjects.Text} The parent Text object.
      */
@@ -590,7 +625,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setFontSize
      * @since 3.0.0
      *
-     * @param {[type]} size - [description]
+     * @param {(number|string)} size - [description]
      *
      * @return {Phaser.GameObjects.Text} The parent Text object.
      */
@@ -612,7 +647,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setTestString
      * @since 3.0.0
      *
-     * @param {[type]} string - [description]
+     * @param {string} string - [description]
      *
      * @return {Phaser.GameObjects.Text} The parent Text object.
      */
@@ -641,12 +676,12 @@ var TextStyle = new Class({
 
         if (width)
         {
-            this.text.width = width;
+            this.parent.width = width;
         }
 
         if (height)
         {
-            this.text.height = height;
+            this.parent.height = height;
         }
 
         return this.update(false);
@@ -658,7 +693,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setBackgroundColor
      * @since 3.0.0
      *
-     * @param {string color - [description]
+     * @param {string} color - [description]
      *
      * @return {Phaser.GameObjects.Text} The parent Text object.
      */
@@ -889,7 +924,7 @@ var TextStyle = new Class({
      * @method Phaser.GameObjects.Components.TextStyle#setWordWrapCallback
      * @since 3.0.0
      *
-     * @param {function} callback - A custom function that will be responsible for wrapping the
+     * @param {TextStyleWordWrapCallback} callback - A custom function that will be responsible for wrapping the
      * text. It will receive two arguments: text (the string to wrap), textObject (this Text
      * instance). It should return the wrapped lines either as an array of lines or as a string with
      * newline characters in place to indicate where breaks should happen.
@@ -1008,7 +1043,7 @@ module.exports = TextStyle;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

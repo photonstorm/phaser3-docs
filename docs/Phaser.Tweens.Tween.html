@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -121,7 +121,7 @@
 						</tr>
 						<tr>
 								<td><code>data</code></td>
-							<td><span class="param-type">Array.&lt;<a href="Phaser.Tweens.html#.TweenData">Phaser.Tweens.TweenData</a>></span></td>
+							<td><span class="param-type">Array.&lt;<a href="Phaser.Tweens.html#.TweenDataConfig">Phaser.Tweens.TweenDataConfig</a>></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -411,7 +411,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="data" class="member public"><span class="name">data</span><span class="signature-type"> :Array.&lt;<a href="Phaser.Tweens.html#.TweenData">Phaser.Tweens.TweenData</a>></span></h4>
+			<h4 id="data" class="member public"><span class="name">data</span><span class="signature-type"> :Array.&lt;<a href="Phaser.Tweens.html#.TweenDataConfig">Phaser.Tweens.TweenDataConfig</a>></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -422,7 +422,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">Array.&lt;<a href="Phaser.Tweens.html#.TweenData">Phaser.Tweens.TweenData</a>></span></div>
+									<div class="form-control-static type-names"><span class="param-type">Array.&lt;<a href="Phaser.Tweens.html#.TweenDataConfig">Phaser.Tweens.TweenDataConfig</a>></span></div>
 								</div>
 							</div>
 			
@@ -1569,6 +1569,75 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
+			<h4 id="complete" class="function public"><span class="name">complete</span><span class="signature-params">( [&nbsp;<span class="signature-param">delay</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Flags the Tween as being complete, whatever stage of progress it is at.If an onComplete callback has been defined it will automatically invoke it, unless a `delay`argument is provided, in which case the Tween will delay for that period of time before calling the callback.If you don't need a delay, or have an onComplete callback, then call `Tween.stop` instead.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>delay</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The time to wait before invoking the complete callback. If zero it will fire immediately.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-829">line 829</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
 			<h4 id="getTimeScale" class="function public"><span class="name">getTimeScale</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public">
@@ -1628,7 +1697,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -1934,7 +2003,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-523">line 523</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-525">line 525</a></p>
 								</div>
 							</div>
 			
@@ -1986,7 +2055,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-578">line 578</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-580">line 580</a></p>
 								</div>
 							</div>
 			
@@ -2277,7 +2346,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-735">line 735</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-733">line 733</a></p>
 								</div>
 							</div>
 			
@@ -2376,7 +2445,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-806">line 806</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-809">line 809</a></p>
 								</div>
 							</div>
 			
@@ -2413,7 +2482,7 @@
 						</tr>
 						<tr>
 								<td><code>tweenData</code></td>
-							<td><span class="param-type"><a href="Phaser.Tweens.html#.TweenData">Phaser.Tweens.TweenData</a></span></td>
+							<td><span class="param-type"><a href="Phaser.Tweens.html#.TweenDataConfig">Phaser.Tweens.TweenDataConfig</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2463,7 +2532,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-950">line 950</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-996">line 996</a></p>
 								</div>
 							</div>
 			
@@ -2500,7 +2569,7 @@
 						</tr>
 						<tr>
 								<td><code>tweenData</code></td>
-							<td><span class="param-type"><a href="Phaser.Tweens.html#.TweenData">Phaser.Tweens.TweenData</a></span></td>
+							<td><span class="param-type"><a href="Phaser.Tweens.html#.TweenDataConfig">Phaser.Tweens.TweenDataConfig</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2550,7 +2619,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-1054">line 1054</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-1100">line 1100</a></p>
 								</div>
 							</div>
 			
@@ -2690,7 +2759,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-826">line 826</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-866">line 866</a></p>
 								</div>
 							</div>
 			
@@ -2770,7 +2839,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-844">line 844</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-890">line 890</a></p>
 								</div>
 							</div>
 			
@@ -2807,7 +2876,7 @@
 						</tr>
 						<tr>
 								<td><code>value</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">*</span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2894,7 +2963,7 @@
 						</tr>
 						<tr>
 								<td><code>tweenData</code></td>
-							<td><span class="param-type"><a href="Phaser.Tweens.html#.TweenData">Phaser.Tweens.TweenData</a></span></td>
+							<td><span class="param-type"><a href="Phaser.Tweens.html#.TweenDataConfig">Phaser.Tweens.TweenDataConfig</a></span></td>
 							<td class="last">
 									[description]
 							</td>
@@ -2944,168 +3013,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-1119">line 1119</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-									</dl>
-									<h3>Type Definitions</h3>
-									<dl class="symbol">
-											<hr/>
-											<dt class="symbol-title typedef public">
-			<h4 id="~ConfigDefaults" class="typedef public"><span class="name">ConfigDefaults</span></h4>
-		</dt>
-<dd class="symbol-details typedef public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-info">
-				<h5>Properties</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>targets</code></td>
-							<td><span class="param-type">object</span> | <span class="param-type">Array.&lt;object></span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>delay</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>duration</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>1000</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>ease</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>&#x27;Power0&#x27;</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>easeParams</code></td>
-							<td><span class="param-type">array</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>hold</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>repeat</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>repeatDelay</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>yoyo</code></td>
-							<td><span class="param-type">boolean</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>false</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>flipX</code></td>
-							<td><span class="param-type">boolean</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>false</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>flipY</code></td>
-							<td><span class="param-type">boolean</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>false</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="tweens_tween_Defaults.js.html">tweens/tween/Defaults.js</a>, <a href="tweens_tween_Defaults.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="tweens_tween_Tween.js.html">tweens/tween/Tween.js</a>, <a href="tweens_tween_Tween.js.html#line-1165">line 1165</a></p>
 								</div>
 							</div>
 			
@@ -3127,7 +3035,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -353,21 +353,21 @@
 						</tr>
 						<tr>
 								<td><code>collideCallback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#ArcadePhysicsCallback">ArcadePhysicsCallback</a></span></td>
 							<td class="last">
 									The callback to invoke when the two objects collide.
 							</td>
 						</tr>
 						<tr>
 								<td><code>processCallback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#ArcadePhysicsCallback">ArcadePhysicsCallback</a></span></td>
 							<td class="last">
 									The callback to invoke when the two objects collide. Must return a boolean.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callbackContext</code></td>
-							<td><span class="param-type">object</span></td>
+							<td><span class="param-type">*</span></td>
 							<td class="last">
 									The scope in which to call the callbacks.
 							</td>
@@ -535,7 +535,7 @@
 						</tr>
 						<tr>
 								<td><code>config</code></td>
-							<td><span class="param-type">object</span></td>
+							<td><span class="param-type"><a href="global.html#PhysicsGroupConfig">PhysicsGroupConfig</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
 									[description]
@@ -722,21 +722,21 @@
 						</tr>
 						<tr>
 								<td><code>collideCallback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#ArcadePhysicsCallback">ArcadePhysicsCallback</a></span></td>
 							<td class="last">
 									The callback to invoke when the two objects collide.
 							</td>
 						</tr>
 						<tr>
 								<td><code>processCallback</code></td>
-							<td><span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="global.html#ArcadePhysicsCallback">ArcadePhysicsCallback</a></span></td>
 							<td class="last">
 									The callback to invoke when the two objects collide. Must return a boolean.
 							</td>
 						</tr>
 						<tr>
 								<td><code>callbackContext</code></td>
-							<td><span class="param-type">object</span></td>
+							<td><span class="param-type">*</span></td>
 							<td class="last">
 									The scope in which to call the callbacks.
 							</td>
@@ -791,7 +791,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="sprite" class="function public"><span class="name">sprite</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">texture</span> [,&nbsp;<span class="signature-param">frame</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id="sprite" class="function public"><span class="name">sprite</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">frame</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -825,7 +825,7 @@
 							</td>
 						</tr>
 						<tr>
-								<td><code>texture</code></td>
+								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 								<td class="attributes"></td>
 							<td class="last">
@@ -917,7 +917,7 @@
 						</tr>
 						<tr>
 								<td><code>config</code></td>
-							<td><span class="param-type">object</span></td>
+							<td><span class="param-type"><a href="global.html#GroupConfig">GroupConfig</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
 									[description]
@@ -1181,7 +1181,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

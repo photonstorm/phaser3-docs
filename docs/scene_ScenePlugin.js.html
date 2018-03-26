@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -145,7 +145,7 @@ var ScenePlugin = new Class({
          * [description]
          *
          * @name Phaser.Scenes.ScenePlugin#settings
-         * @type {object}
+         * @type {SettingsObject}
          * @since 3.0.0
          */
         this.settings = scene.sys.settings;
@@ -167,16 +167,6 @@ var ScenePlugin = new Class({
          * @since 3.0.0
          */
         this.manager = scene.sys.game.scene;
-
-        /**
-         * [description]
-         *
-         * @name Phaser.Scenes.ScenePlugin#_queue
-         * @type {array}
-         * @private
-         * @since 3.0.0
-         */
-        this._queue = [];
     },
 
     /**
@@ -208,18 +198,15 @@ var ScenePlugin = new Class({
     {
         if (key === undefined) { key = this.key; }
 
-        if (key !== this.key)
+        if (this.settings.status !== CONST.RUNNING)
         {
-            if (this.settings.status !== CONST.RUNNING)
-            {
-                this.manager.queueOp('stop', this.key);
-                this.manager.queueOp('start', key);
-            }
-            else
-            {
-                this.manager.stop(this.key);
-                this.manager.start(key);
-            }
+            this.manager.queueOp('stop', this.key);
+            this.manager.queueOp('start', key, data);
+        }
+        else
+        {
+            this.manager.stop(this.key);
+            this.manager.start(key, data);
         }
 
         return this;
@@ -261,11 +248,11 @@ var ScenePlugin = new Class({
         {
             if (this.settings.status !== CONST.RUNNING)
             {
-                this.manager.queueOp('start', key);
+                this.manager.queueOp('start', key, data);
             }
             else
             {
-                this.manager.start(key);
+                this.manager.start(key, data);
             }
         }
 
@@ -480,21 +467,98 @@ var ScenePlugin = new Class({
     },
 
     /**
-     * [description]
+     * Swaps the position of two scenes in the Scenes list.
+     * This controls the order in which they are rendered and updated.
      *
      * @method Phaser.Scenes.ScenePlugin#swapPosition
-     * @since 3.0.0
+     * @since 3.2.0
      *
-     * @param {string} key - [description]
+     * @param {string} keyA - The first Scene to swap.
+     * @param {string} [keyB] - The second Scene to swap. If none is given it defaults to this Scene.
      *
      * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
      */
-    swapPosition: function (key)
+    swapPosition: function (keyA, keyB)
     {
-        if (key &amp;&amp; key !== this.key)
+        if (keyB === undefined) { keyB = this.key; }
+
+        if (keyA !== keyB)
         {
-            this.manager.swapPosition(this.key, key);
+            this.manager.swapPosition(keyA, keyB);
         }
+
+        return this;
+    },
+
+    /**
+     * Swaps the position of two scenes in the Scenes list, so that Scene B is directly above Scene A.
+     * This controls the order in which they are rendered and updated.
+     *
+     * @method Phaser.Scenes.ScenePlugin#moveAbove
+     * @since 3.2.0
+     *
+     * @param {string} keyA - The Scene that Scene B will be moved to be above.
+     * @param {string} [keyB] - The Scene to be moved. If none is given it defaults to this Scene.
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    moveAbove: function (keyA, keyB)
+    {
+        if (keyB === undefined) { keyB = this.key; }
+
+        if (keyA !== keyB)
+        {
+            this.manager.moveAbove(keyA, keyB);
+        }
+
+        return this;
+    },
+
+    /**
+     * Swaps the position of two scenes in the Scenes list, so that Scene B is directly below Scene A.
+     * This controls the order in which they are rendered and updated.
+     *
+     * @method Phaser.Scenes.ScenePlugin#moveBelow
+     * @since 3.2.0
+     *
+     * @param {string} keyA - The Scene that Scene B will be moved to be below.
+     * @param {string} [keyB] - The Scene to be moved. If none is given it defaults to this Scene.
+     *
+     * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
+     */
+    moveBelow: function (keyA, keyB)
+    {
+        if (keyB === undefined) { keyB = this.key; }
+
+        if (keyA !== keyB)
+        {
+            this.manager.moveBelow(keyA, keyB);
+        }
+
+        return this;
+    },
+
+    /**
+     * Removes a Scene from the SceneManager.
+     *
+     * The Scene is removed from the local scenes array, it's key is cleared from the keys
+     * cache and Scene.Systems.destroy is then called on it.
+     *
+     * If the SceneManager is processing the Scenes when this method is called it wil
+     * queue the operation for the next update sequence.
+     *
+     * @method Phaser.Scenes.ScenePlugin#remove
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} scene - The Scene to be removed.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    remove: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        this.manager.remove(key);
 
         return this;
     },
@@ -625,7 +689,7 @@ module.exports = ScenePlugin;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

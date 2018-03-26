@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -115,6 +115,21 @@ var GetValue = require('../../utils/object/GetValue');
 // };
 
 /**
+ * @typedef {object} SmoothedKeyControlConfig
+ *
+ * @property {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera that this Control will update.
+ * @property {Phaser.Input.Keyboard.Key} [left] - The Key to be pressed that will move the Camera left.
+ * @property {Phaser.Input.Keyboard.Key} [right] - The Key to be pressed that will move the Camera right.
+ * @property {Phaser.Input.Keyboard.Key} [up] - The Key to be pressed that will move the Camera up.
+ * @property {Phaser.Input.Keyboard.Key} [zoomIn] - The Key to be pressed that will zoom the Camera in.
+ * @property {Phaser.Input.Keyboard.Key} [zoomOut] - The Key to be pressed that will zoom the Camera out.
+ * @property {float} [zoomSpeed=0.01] - The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
+ * @property {(float|{x:float,y:float})} [acceleration=0] - The horizontal and vertical acceleration the camera will move.
+ * @property {(float|{x:float,y:float})} [drag=0] - The horizontal and vertical drag applied to the camera when it is moving.
+ * @property {(float|{x:float,y:float})} [maxSpeed=0] - The maximum horizontal and vertical speed the camera will move.
+ */
+
+/**
  * @classdesc
  * [description]
  *
@@ -123,7 +138,7 @@ var GetValue = require('../../utils/object/GetValue');
  * @constructor
  * @since 3.0.0
  *
- * @param {object} config - [description]
+ * @param {SmoothedKeyControlConfig} config - [description]
  */
 var SmoothedKeyControl = new Class({
 
@@ -145,7 +160,7 @@ var SmoothedKeyControl = new Class({
          * The Key to be pressed that will move the Camera left.
          *
          * @name Phaser.Cameras.Controls.SmoothedKeyControl#left
-         * @type {Phaser.Input.Keyboard}
+         * @type {Phaser.Input.Keyboard.Key}
          * @default null
          * @since 3.0.0
          */
@@ -155,7 +170,7 @@ var SmoothedKeyControl = new Class({
          * The Key to be pressed that will move the Camera right.
          *
          * @name Phaser.Cameras.Controls.SmoothedKeyControl#right
-         * @type {Phaser.Input.Keyboard}
+         * @type {Phaser.Input.Keyboard.Key}
          * @default null
          * @since 3.0.0
          */
@@ -165,7 +180,7 @@ var SmoothedKeyControl = new Class({
          * The Key to be pressed that will move the Camera up.
          *
          * @name Phaser.Cameras.Controls.SmoothedKeyControl#up
-         * @type {Phaser.Input.Keyboard}
+         * @type {Phaser.Input.Keyboard.Key}
          * @default null
          * @since 3.0.0
          */
@@ -175,7 +190,7 @@ var SmoothedKeyControl = new Class({
          * The Key to be pressed that will move the Camera down.
          *
          * @name Phaser.Cameras.Controls.SmoothedKeyControl#down
-         * @type {Phaser.Input.Keyboard}
+         * @type {Phaser.Input.Keyboard.Key}
          * @default null
          * @since 3.0.0
          */
@@ -185,7 +200,7 @@ var SmoothedKeyControl = new Class({
          * The Key to be pressed that will zoom the Camera in.
          *
          * @name Phaser.Cameras.Controls.SmoothedKeyControl#zoomIn
-         * @type {Phaser.Input.Keyboard}
+         * @type {Phaser.Input.Keyboard.Key}
          * @default null
          * @since 3.0.0
          */
@@ -195,7 +210,7 @@ var SmoothedKeyControl = new Class({
          * The Key to be pressed that will zoom the Camera out.
          *
          * @name Phaser.Cameras.Controls.SmoothedKeyControl#zoomOut
-         * @type {Phaser.Input.Keyboard}
+         * @type {Phaser.Input.Keyboard.Key}
          * @default null
          * @since 3.0.0
          */
@@ -219,6 +234,7 @@ var SmoothedKeyControl = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.accelX = 0;
 
         /**
          * The vertical acceleration the camera will move.
@@ -228,6 +244,8 @@ var SmoothedKeyControl = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.accelY = 0;
+
         var accel = GetValue(config, 'acceleration', null);
 
         if (typeof accel === 'number')
@@ -249,6 +267,7 @@ var SmoothedKeyControl = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.dragX = 0;
 
         /**
          * The vertical drag applied to the camera when it is moving.
@@ -258,6 +277,8 @@ var SmoothedKeyControl = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.dragY = 0;
+
         var drag = GetValue(config, 'drag', null);
 
         if (typeof drag === 'number')
@@ -279,6 +300,7 @@ var SmoothedKeyControl = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.maxSpeedX = 0;
 
         /**
          * The maximum vertical speed the camera will move.
@@ -288,6 +310,8 @@ var SmoothedKeyControl = new Class({
          * @default 0
          * @since 3.0.0
          */
+        this.maxSpeedY = 0;
+
         var maxSpeed = GetValue(config, 'maxSpeed', null);
 
         if (typeof maxSpeed === 'number')
@@ -397,7 +421,7 @@ var SmoothedKeyControl = new Class({
      * @method Phaser.Cameras.Controls.SmoothedKeyControl#update
      * @since 3.0.0
      *
-     * @param {[type]} delta - [description]
+     * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
     update: function (delta)
     {
@@ -558,7 +582,7 @@ module.exports = SmoothedKeyControl;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

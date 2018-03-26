@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -113,7 +113,7 @@ var _disableContextSmoothing = false;
  * before a Phaser.Game instance has even been created.
  * Which means all instances of Phaser Games on the same page
  * can share the one single pool
- * 
+ *
  * @namespace Phaser.Display.Canvas.CanvasPool
  * @since 3.0.0
  */
@@ -124,29 +124,29 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.create
      * @since 3.0.0
-     * 
-     * @param {any} parent - [description]
-     * @param {integer} [width=1] - [description]
-     * @param {integer} [height=1] - [description]
-     * @param {integer} [type] - [description]
-     * 
+     *
+     * @param {*} parent - The parent of the Canvas object.
+     * @param {integer} [width=1] - The width of the Canvas.
+     * @param {integer} [height=1] - The height of the Canvas.
+     * @param {integer} [canvasType=Phaser.CANVAS] - The type of the Canvas. Either `Phaser.CANVAS` or `Phaser.WEBGL`.
+     *
      * @return {HTMLCanvasElement} [description]
      */
-    var create = function (parent, width, height, type)
+    var create = function (parent, width, height, canvasType)
     {
         if (width === undefined) { width = 1; }
         if (height === undefined) { height = 1; }
-        if (type === undefined) { type = CONST.CANVAS; }
+        if (canvasType === undefined) { canvasType = CONST.CANVAS; }
 
         var canvas;
-        var container = first(type);
+        var container = first(canvasType);
 
         if (container === null)
         {
             container = {
                 parent: parent,
                 canvas: document.createElement('canvas'),
-                type: type
+                type: canvasType
             };
 
             pool.push(container);
@@ -163,11 +163,11 @@ var CanvasPool = function ()
         canvas.width = width;
         canvas.height = height;
 
-        if (_disableContextSmoothing &amp;&amp; type === CONST.CANVAS)
+        if (_disableContextSmoothing &amp;&amp; canvasType === CONST.CANVAS)
         {
             Smoothing.disable(canvas.getContext('2d'));
         }
-        
+
         return canvas;
     };
 
@@ -176,11 +176,11 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.create2D
      * @since 3.0.0
-     * 
-     * @param {any} parent - [description]
-     * @param {integer} [width=1] - [description]
-     * @param {integer} [height=1] - [description]
-     * 
+     *
+     * @param {*} parent - The parent of the Canvas object.
+     * @param {integer} [width=1] - The width of the Canvas.
+     * @param {integer} [height=1] - The height of the Canvas.
+     *
      * @return {HTMLCanvasElement} [description]
      */
     var create2D = function (parent, width, height)
@@ -193,11 +193,11 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.createWebGL
      * @since 3.0.0
-     * 
-     * @param {any} parent - [description]
-     * @param {integer} [width=1] - [description]
-     * @param {integer} [height=1] - [description]
-     * 
+     *
+     * @param {*} parent - The parent of the Canvas object.
+     * @param {integer} [width=1] - The width of the Canvas.
+     * @param {integer} [height=1] - The height of the Canvas.
+     *
      * @return {HTMLCanvasElement} [description]
      */
     var createWebGL = function (parent, width, height)
@@ -210,18 +210,18 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.first
      * @since 3.0.0
-     * 
-     * @param {integer} [type] - [description]
-     * 
+     *
+     * @param {integer} [canvasType=Phaser.CANVAS] - The type of the Canvas. Either `Phaser.CANVAS` or `Phaser.WEBGL`.
+     *
      * @return {HTMLCanvasElement} [description]
      */
-    var first = function (type)
+    var first = function (canvasType)
     {
-        if (type === undefined) { type = CONST.CANVAS; }
+        if (canvasType === undefined) { canvasType = CONST.CANVAS; }
 
         pool.forEach(function (container)
         {
-            if (!container.parent &amp;&amp; container.type === type)
+            if (!container.parent &amp;&amp; container.type === canvasType)
             {
                 return container;
             }
@@ -236,8 +236,8 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.remove
      * @since 3.0.0
-     * 
-     * @param {any} parent - [description]
+     *
+     * @param {*} parent - [description]
      */
     var remove = function (parent)
     {
@@ -261,7 +261,7 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.total
      * @since 3.0.0
-     * 
+     *
      * @return {integer} [description]
      */
     var total = function ()
@@ -284,7 +284,7 @@ var CanvasPool = function ()
      *
      * @function Phaser.Display.Canvas.CanvasPool.free
      * @since 3.0.0
-     * 
+     *
      * @return {integer} [description]
      */
     var free = function ()
@@ -338,7 +338,7 @@ module.exports = CanvasPool();
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

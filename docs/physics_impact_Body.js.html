@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -104,6 +104,31 @@ var TYPE = require('./TYPE');
 var UpdateMotion = require('./UpdateMotion');
 
 /**
+ * @callback BodyUpdateCallback
+ *
+ * @param {Phaser.Physics.Impact.Body} body - [description]
+ */
+
+/**
+ * @typedef {object} JSONImpactBody
+ * @todo Replace object types
+ *
+ * @property {string} name - [description]
+ * @property {object} size - [description]
+ * @property {object} pos - [description]
+ * @property {object} vel - [description]
+ * @property {object} accel - [description]
+ * @property {object} friction - [description]
+ * @property {object} maxVel - [description]
+ * @property {number} gravityFactor - [description]
+ * @property {number} bounciness - [description]
+ * @property {number} minBounceVelocity - [description]
+ * @property {Phaser.Physics.Impact.TYPE} type - [description]
+ * @property {Phaser.Physics.Impact.TYPE} checkAgainst - [description]
+ * @property {Phaser.Physics.Impact.COLLIDES} collides - [description]
+ */
+
+/**
  * @classdesc
  * An Impact.js compatible physics body.
  * This re-creates the properties you'd get on an Entity and the math needed to update them.
@@ -161,7 +186,7 @@ var Body = new Class({
          * The ImpactBody, ImpactSprite or ImpactImage object that owns this Body, if any.
          *
          * @name Phaser.Physics.Impact.Body#parent
-         * @type {Phaser.Physics.Impact.ImpactBody|Phaser.Physics.Impact.ImpactImage|Phaser.Physics.Impact.ImpactSprite|null}
+         * @type {?(Phaser.Physics.Impact.ImpactBody|Phaser.Physics.Impact.ImpactImage|Phaser.Physics.Impact.ImpactSprite)}
          * @since 3.0.0
          */
         this.parent;
@@ -382,11 +407,11 @@ var Body = new Class({
          * [description]
          *
          * @name Phaser.Physics.Impact.Body#updateCallback
-         * @type {function}
+         * @type {?BodyUpdateCallback}
          * @since 3.0.0
          */
         this.updateCallback;
-    
+
         /**
          * min 44 deg, max 136 deg
          *
@@ -424,7 +449,7 @@ var Body = new Class({
         this.accelGround = 0;
         this.accelAir = 0;
         this.jumpSpeed = 0;
-    
+
         this.type = TYPE.NONE;
         this.checkAgainst = TYPE.NONE;
         this.collides = COLLIDES.NEVER;
@@ -446,10 +471,10 @@ var Body = new Class({
         this.last.y = pos.y;
 
         this.vel.y += this.world.gravity * delta * this.gravityFactor;
-        
+
         this.vel.x = GetVelocity(delta, this.vel.x, this.accel.x, this.friction.x, this.maxVel.x);
         this.vel.y = GetVelocity(delta, this.vel.y, this.accel.y, this.friction.y, this.maxVel.y);
-        
+
         var mx = this.vel.x * delta;
         var my = this.vel.y * delta;
 
@@ -577,7 +602,7 @@ var Body = new Class({
      * @method Phaser.Physics.Impact.Body#toJSON
      * @since 3.0.0
      *
-     * @return {object} [description]
+     * @return {JSONImpactBody} [description]
      */
     toJSON: function ()
     {
@@ -609,7 +634,7 @@ var Body = new Class({
      *
      * @param {object} config - [description]
      */
-    fromJSON: function (config)
+    fromJSON: function ()
     {
     },
 
@@ -619,9 +644,9 @@ var Body = new Class({
      * @method Phaser.Physics.Impact.Body#check
      * @since 3.0.0
      *
-     * @param {[type]} other - [description]
+     * @param {Phaser.Physics.Impact.Body} other - [description]
      */
-    check: function (other)
+    check: function ()
     {
     },
 
@@ -632,7 +657,7 @@ var Body = new Class({
      * @since 3.0.0
      *
      * @param {Phaser.Physics.Impact.Body} other - [description]
-     * @param {[type]} axis - [description]
+     * @param {string} axis - [description]
      */
     collideWith: function (other, axis)
     {
@@ -648,11 +673,11 @@ var Body = new Class({
      * @method Phaser.Physics.Impact.Body#handleMovementTrace
      * @since 3.0.0
      *
-     * @param {[type]} res - [description]
+     * @param {number} res - [description]
      *
      * @return {boolean} [description]
      */
-    handleMovementTrace: function (res)
+    handleMovementTrace: function ()
     {
         return true;
     },
@@ -665,6 +690,8 @@ var Body = new Class({
      */
     destroy: function ()
     {
+        this.world.remove(this);
+
         this.enabled = false;
 
         this.world = null;
@@ -685,7 +712,7 @@ module.exports = Body;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

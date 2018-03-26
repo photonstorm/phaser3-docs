@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -212,8 +212,71 @@ var SceneManager = new Class({
             }
 
             //  Only need to wait for the boot event if we've scenes to actually boot
-            game.events.once('ready', this.processQueue, this);
+            game.events.once('ready', this.bootQueue, this);
         }
+    },
+
+    /**
+     * Internal first-time Scene boot handler.
+     *
+     * @method Phaser.Scenes.SceneManager#bootQueue
+     * @private
+     * @since 3.2.0
+     */
+    bootQueue: function ()
+    {
+        var i;
+        var entry;
+        var key;
+        var sceneConfig;
+
+        for (i = 0; i &lt; this._pending.length; i++)
+        {
+            entry = this._pending[i];
+
+            key = entry.key;
+            sceneConfig = entry.scene;
+
+            var newScene;
+
+            if (sceneConfig instanceof Scene)
+            {
+                newScene = this.createSceneFromInstance(key, sceneConfig);
+            }
+            else if (typeof sceneConfig === 'object')
+            {
+                newScene = this.createSceneFromObject(key, sceneConfig);
+            }
+            else if (typeof sceneConfig === 'function')
+            {
+                newScene = this.createSceneFromFunction(key, sceneConfig);
+            }
+
+            //  Replace key in case the scene changed it
+            key = newScene.sys.settings.key;
+
+            this.keys[key] = newScene;
+
+            this.scenes.push(newScene);
+
+            if (entry.autoStart || newScene.sys.settings.active)
+            {
+                this._start.push(key);
+            }
+        }
+
+        //  Clear the pending lists
+        this._pending.length = 0;
+
+        //  _start might have been populated by the above
+        for (i = 0; i &lt; this._start.length; i++)
+        {
+            entry = this._start[i];
+
+            this.start(entry);
+        }
+
+        this._start.length = 0;
     },
 
     /**
@@ -259,13 +322,13 @@ var SceneManager = new Class({
             return;
         }
 
-        for (i = 0; i &lt; queueLength; i++)
+        for (i = 0; i &lt; this._queue.length; i++)
         {
             entry = this._queue[i];
 
             this[entry.op](entry.keyA, entry.keyB);
         }
-        
+
         this._queue.length = 0;
     },
 
@@ -287,10 +350,10 @@ var SceneManager = new Class({
      * @since 3.0.0
      *
      * @param {string} key - A unique key used to reference the Scene, i.e. `MainMenu` or `Level1`.
-     * @param {Phaser.Scene|object|function} sceneConfig - [description]
+     * @param {(Phaser.Scene|SettingsConfig|function)} sceneConfig - [description]
      * @param {boolean} [autoStart=false] - If `true` the Scene will be started immediately after being added.
      *
-     * @return {Phaser.Scene|null} [description]
+     * @return {?Phaser.Scene} [description]
      */
     add: function (key, sceneConfig, autoStart)
     {
@@ -351,6 +414,58 @@ var SceneManager = new Class({
     },
 
     /**
+     * Removes a Scene from the SceneManager.
+     *
+     * The Scene is removed from the local scenes array, it's key is cleared from the keys
+     * cache and Scene.Systems.destroy is then called on it.
+     *
+     * If the SceneManager is processing the Scenes when this method is called it wil
+     * queue the operation for the next update sequence.
+     *
+     * @method Phaser.Scenes.SceneManager#remove
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} scene - The Scene to be removed.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    remove: function (key)
+    {
+        if (this._processing)
+        {
+            this._queue.push({ op: 'remove', keyA: key, keyB: null });
+        }
+        else
+        {
+            var sceneToRemove = this.getScene(key);
+
+            if (!sceneToRemove)
+            {
+                return this;
+            }
+
+            var index = this.scenes.indexOf(sceneToRemove);
+            var sceneKey = sceneToRemove.sys.settings.key;
+
+            if (index > -1)
+            {
+                delete this.keys[sceneKey];
+                this.scenes.splice(index, 1);
+
+                if (this._start.indexOf(sceneKey) > -1)
+                {
+                    index = this._start.indexOf(sceneKey);
+                    this._start.splice(index, 1);
+                }
+
+                sceneToRemove.sys.destroy();
+            }
+        }
+
+        return this;
+    },
+
+    /**
      * [description]
      *
      * @method Phaser.Scenes.SceneManager#bootScene
@@ -371,7 +486,7 @@ var SceneManager = new Class({
         if (scene.sys.load)
         {
             loader = scene.sys.load;
-                
+
             loader.reset();
         }
 
@@ -408,7 +523,7 @@ var SceneManager = new Class({
      * @private
      * @since 3.0.0
      *
-     * @param {object} loader - [description]
+     * @param {Phaser.Loader.LoaderPlugin} loader - [description]
      */
     loadComplete: function (loader)
     {
@@ -424,7 +539,7 @@ var SceneManager = new Class({
      * @private
      * @since 3.0.0
      *
-     * @param {object} loader - [description]
+     * @param {Phaser.Loader.LoaderPlugin} loader - [description]
      */
     payloadComplete: function (loader)
     {
@@ -461,10 +576,30 @@ var SceneManager = new Class({
     /**
      * [description]
      *
+     * @method Phaser.Scenes.SceneManager#resize
+     * @since 3.2.0
+     *
+     * @param {number} width - The new width of the game.
+     * @param {number} height - The new height of the game.
+     */
+    resize: function (width, height)
+    {
+        //  Loop through the scenes in forward order
+        for (var i = 0; i &lt; this.scenes.length; i++)
+        {
+            var sys = this.scenes[i].sys;
+
+            sys.resize(width, height);
+        }
+    },
+
+    /**
+     * [description]
+     *
      * @method Phaser.Scenes.SceneManager#render
      * @since 3.0.0
      *
-     * @param {any} renderer - [description]
+     * @param {*} renderer - [description]
      */
     render: function (renderer)
     {
@@ -473,7 +608,7 @@ var SceneManager = new Class({
         {
             var sys = this.scenes[i].sys;
 
-            if (sys.settings.visible)
+            if (sys.settings.visible &amp;&amp; sys.settings.status >= CONST.LOADING &amp;&amp; sys.settings.status &lt; CONST.SLEEPING)
             {
                 sys.render(renderer);
             }
@@ -590,7 +725,7 @@ var SceneManager = new Class({
      * @since 3.0.0
      *
      * @param {string} key - [description]
-     * @param {object} sceneConfig - [description]
+     * @param {(string|SettingsConfig)} sceneConfig - [description]
      *
      * @return {Phaser.Scene} [description]
      */
@@ -613,7 +748,7 @@ var SceneManager = new Class({
 
         //  Extract callbacks
 
-        var defaults = [ 'init', 'preload', 'create', 'update', 'render', 'shutdown', 'destroy' ];
+        var defaults = [ 'init', 'preload', 'create', 'update', 'render' ];
 
         for (var i = 0; i &lt; defaults.length; i++)
         {
@@ -664,7 +799,7 @@ var SceneManager = new Class({
      * @since 3.0.0
      *
      * @param {string} key - [description]
-     * @param {Phaser.Scene|object|function} sceneConfig - [description]
+     * @param {(Phaser.Scene|SettingsConfig|function)} sceneConfig - [description]
      *
      * @return {string} [description]
      */
@@ -705,7 +840,7 @@ var SceneManager = new Class({
      *
      * @param {string} key - [description]
      *
-     * @return {Phaser.Scene|null} [description]
+     * @return {?Phaser.Scene} [description]
      */
     getScene: function (key)
     {
@@ -945,7 +1080,7 @@ var SceneManager = new Class({
                     return this;
                 }
             }
-            
+
             this.bootScene(scene);
         }
 
@@ -1015,7 +1150,7 @@ var SceneManager = new Class({
      *
      * @param {integer} index - [description]
      *
-     * @return {Phaser.Scene|undefined} [description]
+     * @return {(Phaser.Scene|undefined)} [description]
      */
     getAt: function (index)
     {
@@ -1028,7 +1163,7 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#getIndex
      * @since 3.0.0
      *
-     * @param {string|Phaser.Scene} key - [description]
+     * @param {(string|Phaser.Scene)} key - [description]
      *
      * @return {integer} [description]
      */
@@ -1045,7 +1180,7 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#bringToTop
      * @since 3.0.0
      *
-     * @param {string|Phaser.Scene} scene - [description]
+     * @param {(string|Phaser.Scene)} key - [description]
      *
      * @return {Phaser.Scenes.SceneManager} [description]
      */
@@ -1077,7 +1212,7 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#sendToBack
      * @since 3.0.0
      *
-     * @param {string|Phaser.Scene} scene - [description]
+     * @param {(string|Phaser.Scene)} key - [description]
      *
      * @return {Phaser.Scenes.SceneManager} [description]
      */
@@ -1109,7 +1244,7 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#moveDown
      * @since 3.0.0
      *
-     * @param {string|Phaser.Scene} scene - [description]
+     * @param {(string|Phaser.Scene)} key - [description]
      *
      * @return {Phaser.Scenes.SceneManager} [description]
      */
@@ -1143,7 +1278,7 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#moveUp
      * @since 3.0.0
      *
-     * @param {string|Phaser.Scene} scene - [description]
+     * @param {(string|Phaser.Scene)} key - [description]
      *
      * @return {Phaser.Scenes.SceneManager} [description]
      */
@@ -1171,6 +1306,92 @@ var SceneManager = new Class({
         return this;
     },
 
+    /**
+     * Moves a Scene so it is immediately above another Scene in the Scenes list.
+     * This means it will render over the top of the other Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#moveAbove
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} keyA - The Scene that Scene B will be moved above.
+     * @param {(string|Phaser.Scene)} keyB - The Scene to be moved.
+     *
+     * @return {Phaser.Scenes.SceneManager} [description]
+     */
+    moveAbove: function (keyA, keyB)
+    {
+        if (keyA === keyB)
+        {
+            return this;
+        }
+
+        if (this._processing)
+        {
+            this._queue.push({ op: 'moveAbove', keyA: keyA, keyB: keyB });
+        }
+        else
+        {
+            var indexA = this.getIndex(keyA);
+            var indexB = this.getIndex(keyB);
+
+            if (indexA > indexB &amp;&amp; indexA !== -1 &amp;&amp; indexB !== -1)
+            {
+                var tempScene = this.getAt(indexB);
+
+                //  Remove
+                this.scenes.splice(indexB, 1);
+
+                //  Add in new location
+                this.scenes.splice(indexA, 0, tempScene);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Moves a Scene so it is immediately below another Scene in the Scenes list.
+     * This means it will render behind the other Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#moveBelow
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} keyA - The Scene that Scene B will be moved above.
+     * @param {(string|Phaser.Scene)} keyB - The Scene to be moved.
+     *
+     * @return {Phaser.Scenes.SceneManager} [description]
+     */
+    moveBelow: function (keyA, keyB)
+    {
+        if (keyA === keyB)
+        {
+            return this;
+        }
+
+        if (this._processing)
+        {
+            this._queue.push({ op: 'moveBelow', keyA: keyA, keyB: keyB });
+        }
+        else
+        {
+            var indexA = this.getIndex(keyA);
+            var indexB = this.getIndex(keyB);
+
+            if (indexA &lt; indexB &amp;&amp; indexA !== -1 &amp;&amp; indexB !== -1)
+            {
+                var tempScene = this.getAt(indexB);
+
+                //  Remove
+                this.scenes.splice(indexB, 1);
+
+                //  Add in new location
+                this.scenes.splice(indexA, 0, tempScene);
+            }
+        }
+
+        return this;
+    },
+
     queueOp: function (op, keyA, keyB)
     {
         this._queue.push({ op: op, keyA: keyA, keyB: keyB });
@@ -1184,8 +1405,8 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#swapPosition
      * @since 3.0.0
      *
-     * @param {string|Phaser.Scene} keyA - [description]
-     * @param {string|Phaser.Scene} keyB - [description]
+     * @param {(string|Phaser.Scene)} keyA - [description]
+     * @param {(string|Phaser.Scene)} keyB - [description]
      *
      * @return {Phaser.Scenes.SceneManager} [description]
      */
@@ -1215,6 +1436,24 @@ var SceneManager = new Class({
         }
 
         return this;
+    },
+
+    dump: function ()
+    {
+        var out = [];
+        var map = [ 'pending', 'init', 'start', 'loading', 'creating', 'running', 'paused', 'sleeping', 'shutdown', 'destroyed' ];
+
+        for (var i = 0; i &lt; this.scenes.length; i++)
+        {
+            var sys = this.scenes[i].sys;
+
+            var key = (sys.settings.visible &amp;&amp; (sys.settings.status === CONST.RUNNING || sys.settings.status === CONST.PAUSED)) ? '[*] ' : '[-] ';
+            key += sys.settings.key + ' (' + map[sys.settings.status] + ')';
+
+            out.push(key);
+        }
+
+        console.log(out.join('\n'));
     },
 
     /**
@@ -1252,7 +1491,7 @@ module.exports = SceneManager;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -100,8 +100,6 @@
 var Class = require('../../../utils/Class');
 var ShaderSourceFS = require('../shaders/ForwardDiffuse.frag');
 var TextureTintPipeline = require('./TextureTintPipeline');
-var Utils = require('../Utils');
-var WebGLPipeline = require('../WebGLPipeline');
 
 var LIGHT_COUNT = 10;
 
@@ -115,9 +113,7 @@ var LIGHT_COUNT = 10;
  * @constructor
  * @since 3.0.0
  *
- * @param {Phaser.Game} game - [description]
- * @param {WebGLRenderingContext} gl - [description]
- * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - [description]
+ * @param {object} config - [description]
  */
 var ForwardDiffuseLightPipeline = new Class({
 
@@ -125,9 +121,11 @@ var ForwardDiffuseLightPipeline = new Class({
 
     initialize:
 
-    function ForwardDiffuseLightPipeline (game, gl, renderer)
+    function ForwardDiffuseLightPipeline (config)
     {
-        TextureTintPipeline.call(this, game, gl, renderer, ShaderSourceFS.replace('%LIGHT_COUNT%', LIGHT_COUNT.toString()));
+        config.fragShader = ShaderSourceFS.replace('%LIGHT_COUNT%', LIGHT_COUNT.toString());
+
+        TextureTintPipeline.call(this, config);
     },
 
     /**
@@ -166,7 +164,12 @@ var ForwardDiffuseLightPipeline = new Class({
      */
     onRender: function (scene, camera)
     {
-        var lightManager = scene.lights;
+        var lightManager = scene.sys.lights;
+
+        if (!lightManager)
+        {
+            return this;
+        }
 
         lightManager.culledLights.length = 0;
 
@@ -177,23 +180,24 @@ var ForwardDiffuseLightPipeline = new Class({
 
         var renderer = this.renderer;
         var program = this.program;
-        var lights = scene.lights.cull(camera);
+        var lights = lightManager.cull(camera);
         var lightCount = Math.min(lights.length, LIGHT_COUNT);
         var cameraMatrix = camera.matrix;
         var point = {x: 0, y: 0};
         var height = renderer.height;
+        var index;
 
-        for (var index = 0; index &lt; LIGHT_COUNT; ++index)
+        for (index = 0; index &lt; LIGHT_COUNT; ++index)
         {
             renderer.setFloat1(program, 'uLights[' + index + '].radius', 0); // reset lights
         }
 
-        if (lightCount &lt;= 0) return this;
+        if (lightCount &lt;= 0) { return this; }
 
         renderer.setFloat4(program, 'uCamera', camera.x, camera.y, camera.rotation, camera.zoom);
         renderer.setFloat3(program, 'uAmbientLightColor', lightManager.ambientColor.r, lightManager.ambientColor.g, lightManager.ambientColor.b);
 
-        for (var index = 0; index &lt; lightCount; ++index)
+        for (index = 0; index &lt; lightCount; ++index)
         {
             var light = lights[index];
             var lightName = 'uLights[' + index + '].';
@@ -223,6 +227,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.drawStaticTilemapLayer.call(this, tilemap, camera);
         }
         else
@@ -248,6 +254,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.drawEmitterManager.call(this, emitterManager, camera);
         }
         else
@@ -273,6 +281,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.drawBlitter.call(this, blitter, camera);
         }
         else
@@ -298,7 +308,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
-            this.renderer.setTexture2D(normalTexture.glTexture, 1);
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchSprite.call(this, sprite, camera);
         }
         else
@@ -324,7 +335,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
-            this.renderer.setTexture2D(normalTexture.glTexture, 1);
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchMesh.call(this, mesh, camera);
         }
         else
@@ -351,6 +363,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchBitmapText.call(this, bitmapText, camera);
         }
         else
@@ -376,6 +390,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchDynamicBitmapText.call(this, bitmapText, camera);
         }
         else
@@ -401,6 +417,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchText.call(this, text, camera);
         }
         else
@@ -426,6 +444,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchDynamicTilemapLayer.call(this, tilemapLayer, camera);
         }
         else
@@ -451,6 +471,8 @@ var ForwardDiffuseLightPipeline = new Class({
 
         if (normalTexture)
         {
+            this.renderer.setPipeline(this);
+            this.setTexture2D(normalTexture.glTexture, 1);
             TextureTintPipeline.prototype.batchTileSprite.call(this, tileSprite, camera);
         }
         else
@@ -473,7 +495,7 @@ module.exports = ForwardDiffuseLightPipeline;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -40,7 +40,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -291,12 +291,12 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets the length of this curve.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The length of this curve. For a MoveTo the value is always 0.</div>
 								</div>
 							</div>
 					</form>
@@ -339,11 +339,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getPoint" class="function public"><span class="name">getPoint</span><span class="signature-params">( <span class="signature-param">t</span>, <span class="signature-param">out</span>&nbsp;)</span></h4>
+			<h4 id="getPoint" class="function public"><span class="name">getPoint</span><span class="signature-params">( <span class="signature-param">t</span> [,&nbsp;<span class="signature-param">out</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Get point at relative position in curve according to length.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -351,22 +351,25 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>t</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The position along the curve to return. Where 0 is the start and 1 is the end.
 							</td>
 						</tr>
 						<tr>
 								<td><code>out</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									A Vector2 object to store the result in. If not given will be created.
 							</td>
 						</tr>
 					</tbody>
@@ -374,9 +377,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The coordinates of the point on the curve. If an `out` object was given this will be returned.</div>
 								</div>
 							</div>
 					</form>
@@ -419,7 +422,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getPointAt" class="function public"><span class="name">getPointAt</span><span class="signature-params">( <span class="signature-param">u</span>, <span class="signature-param">out</span>&nbsp;)</span></h4>
+			<h4 id="getPointAt" class="function public"><span class="name">getPointAt</span><span class="signature-params">( <span class="signature-param">u</span> [,&nbsp;<span class="signature-param">out</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -431,20 +434,23 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>u</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes"></td>
 							<td class="last">
 									[description]
 							</td>
 						</tr>
 						<tr>
 								<td><code>out</code></td>
-							<td><span class="param-type">any</span></td>
+							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
 									[description]
 							</td>
@@ -454,7 +460,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -503,12 +509,12 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets the resolution of this curve.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The resolution of this curve. For a MoveTo the value is always 1.</div>
 								</div>
 							</div>
 					</form>
@@ -558,7 +564,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">any</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="global.html#JSONCurve">JSONCurve</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">[description]</div>
 								</div>
@@ -613,7 +619,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

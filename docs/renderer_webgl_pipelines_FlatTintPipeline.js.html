@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -101,8 +101,8 @@ var Class = require('../../../utils/Class');
 var Commands = require('../../../gameobjects/graphics/Commands');
 var Earcut = require('../../../geom/polygon/Earcut');
 var ModelViewProjection = require('./components/ModelViewProjection');
-var ShaderSourceFS = require('../shaders/FlatTint.frag'); 
-var ShaderSourceVS = require('../shaders/FlatTint.vert'); 
+var ShaderSourceFS = require('../shaders/FlatTint.frag');
+var ShaderSourceVS = require('../shaders/FlatTint.vert');
 var Utils = require('../Utils');
 var WebGLPipeline = require('../WebGLPipeline');
 
@@ -122,7 +122,7 @@ var Path = function (x, y, width, rgb, alpha)
     this.points[0] = new Point(x, y, width, rgb, alpha);
 };
 
-var currentMatrix = new Float32Array([1, 0, 0, 1, 0, 0]);
+var currentMatrix = new Float32Array([ 1, 0, 0, 1, 0, 0 ]);
 var matrixStack = new Float32Array(6 * 1000);
 var matrixStackLength = 0;
 var pathArray = [];
@@ -137,9 +137,7 @@ var pathArray = [];
  * @constructor
  * @since 3.0.0
  *
- * @param {Phaser.Game} game - [description]
- * @param {WebGLRenderingContext} gl - [description]
- * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - [description]
+ * @param {object} config - [description]
  */
 var FlatTintPipeline = new Class({
 
@@ -151,33 +149,33 @@ var FlatTintPipeline = new Class({
 
     initialize:
 
-    function FlatTintPipeline (game, gl, renderer)
+    function FlatTintPipeline (config)
     {
         WebGLPipeline.call(this, {
-            game: game,
-            gl: gl,
-            renderer: renderer,
-            topology: gl.TRIANGLES,
-            vertShader: ShaderSourceVS,
-            fragShader: ShaderSourceFS,
-            vertexCapacity: 12000,
+            game: config.game,
+            renderer: config.renderer,
+            gl: config.renderer.gl,
+            topology: (config.topology ? config.topology : config.renderer.gl.TRIANGLES),
+            vertShader: (config.vertShader ? config.vertShader : ShaderSourceVS),
+            fragShader: (config.fragShader ? config.fragShader : ShaderSourceFS),
+            vertexCapacity: (config.vertexCapcity ? config.vertexCapacity : 12000),
 
-            vertexSize: 
-                Float32Array.BYTES_PER_ELEMENT * 2 + 
-                Uint8Array.BYTES_PER_ELEMENT * 4,
+            vertexSize: (config.vertexSize ? config.vertexSize :
+                Float32Array.BYTES_PER_ELEMENT * 2 +
+                Uint8Array.BYTES_PER_ELEMENT * 4),
 
             attributes: [
                 {
                     name: 'inPosition',
                     size: 2,
-                    type: gl.FLOAT,
+                    type: config.renderer.gl.FLOAT,
                     normalized: false,
                     offset: 0
                 },
                 {
                     name: 'inTint',
                     size: 4,
-                    type: gl.UNSIGNED_BYTE,
+                    type: config.renderer.gl.UNSIGNED_BYTE,
                     normalized: true,
                     offset: Float32Array.BYTES_PER_ELEMENT * 2
                 }
@@ -280,7 +278,7 @@ var FlatTintPipeline = new Class({
      * @param {float} y - [description]
      * @param {float} width - [description]
      * @param {float} height - [description]
-     * @param {int} fillColor - [description]
+     * @param {integer} fillColor - [description]
      * @param {float} fillAlpha - [description]
      * @param {float} a1 - [description]
      * @param {float} b1 - [description]
@@ -289,10 +287,9 @@ var FlatTintPipeline = new Class({
      * @param {float} e1 - [description]
      * @param {float} f1 - [description]
      * @param {Float32Array} currentMatrix - [description]
-     * @param {boolean} roundPixels - [description]
      */
-    batchFillRect: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, x, y, width, height, fillColor, fillAlpha, a1, b1, c1, d1, e1, f1, currentMatrix, roundPixels)
-    {        
+    batchFillRect: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, x, y, width, height, fillColor, fillAlpha, a1, b1, c1, d1, e1, f1, currentMatrix)
+    {
         this.renderer.setPipeline(this);
 
         if (this.vertexCount + 6 > this.vertexCapacity)
@@ -300,8 +297,6 @@ var FlatTintPipeline = new Class({
             this.flush();
         }
         
-        var renderer = this.renderer;        
-        var resolution = renderer.config.resolution;
         var vertexViewF32 = this.vertexViewF32;
         var vertexViewU32 = this.vertexViewU32;
         var vertexOffset = this.vertexCount * this.vertexComponentCount;
@@ -328,18 +323,6 @@ var FlatTintPipeline = new Class({
         var tx3 = xw * a + y * c + e;
         var ty3 = xw * b + y * d + f;
         var tint = Utils.getTintAppendFloatAlphaAndSwap(fillColor, fillAlpha);
-
-        if (roundPixels)
-        {
-            tx0 = ((tx0 * resolution)|0) / resolution;
-            ty0 = ((ty0 * resolution)|0) / resolution;
-            tx1 = ((tx1 * resolution)|0) / resolution;
-            ty1 = ((ty1 * resolution)|0) / resolution;
-            tx2 = ((tx2 * resolution)|0) / resolution;
-            ty2 = ((ty2 * resolution)|0) / resolution;
-            tx3 = ((tx3 * resolution)|0) / resolution;
-            ty3 = ((ty3 * resolution)|0) / resolution;
-        }
 
         vertexViewF32[vertexOffset + 0] = tx0;
         vertexViewF32[vertexOffset + 1] = ty0;
@@ -380,7 +363,7 @@ var FlatTintPipeline = new Class({
      * @param {float} y1 - [description]
      * @param {float} x2 - [description]
      * @param {float} y2 - [description]
-     * @param {int} fillColor - [description]
+     * @param {integer} fillColor - [description]
      * @param {float} fillAlpha - [description]
      * @param {float} a1 - [description]
      * @param {float} b1 - [description]
@@ -389,9 +372,8 @@ var FlatTintPipeline = new Class({
      * @param {float} e1 - [description]
      * @param {float} f1 - [description]
      * @param {Float32Array} currentMatrix - [description]
-     * @param {boolean} roundPixels - [description]
      */
-    batchFillTriangle: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, x0, y0, x1, y1, x2, y2, fillColor, fillAlpha, a1, b1, c1, d1, e1, f1, currentMatrix, roundPixels)
+    batchFillTriangle: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, x0, y0, x1, y1, x2, y2, fillColor, fillAlpha, a1, b1, c1, d1, e1, f1, currentMatrix)
     {
         this.renderer.setPipeline(this);
 
@@ -400,8 +382,6 @@ var FlatTintPipeline = new Class({
             this.flush();
         }
 
-        var renderer = this.renderer;        
-        var resolution = renderer.config.resolution;
         var vertexViewF32 = this.vertexViewF32;
         var vertexViewU32 = this.vertexViewU32;
         var vertexOffset = this.vertexCount * this.vertexComponentCount;
@@ -424,16 +404,6 @@ var FlatTintPipeline = new Class({
         var tx2 = x2 * a + y2 * c + e;
         var ty2 = x2 * b + y2 * d + f;
         var tint = Utils.getTintAppendFloatAlphaAndSwap(fillColor, fillAlpha);
-
-        if (roundPixels)
-        {
-            tx0 = ((tx0 * resolution)|0) / resolution;
-            ty0 = ((ty0 * resolution)|0) / resolution;
-            tx1 = ((tx1 * resolution)|0) / resolution;
-            ty1 = ((ty1 * resolution)|0) / resolution;
-            tx2 = ((tx2 * resolution)|0) / resolution;
-            ty2 = ((ty2 * resolution)|0) / resolution;
-        }
 
         vertexViewF32[vertexOffset + 0] = tx0;
         vertexViewF32[vertexOffset + 1] = ty0;
@@ -466,7 +436,7 @@ var FlatTintPipeline = new Class({
      * @param {float} x2 - [description]
      * @param {float} y2 - [description]
      * @param {float} lineWidth - [description]
-     * @param {int} lineColor - [description]
+     * @param {integer} lineColor - [description]
      * @param {float} lineAlpha - [description]
      * @param {float} a - [description]
      * @param {float} b - [description]
@@ -475,9 +445,8 @@ var FlatTintPipeline = new Class({
      * @param {float} e - [description]
      * @param {float} f - [description]
      * @param {Float32Array} currentMatrix - [description]
-     * @param {boolean} roundPixels - [description]
      */
-    batchStrokeTriangle: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, x0, y0, x1, y1, x2, y2, lineWidth, lineColor, lineAlpha, a, b, c, d, e, f, currentMatrix, roundPixels)
+    batchStrokeTriangle: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, x0, y0, x1, y1, x2, y2, lineWidth, lineColor, lineAlpha, a, b, c, d, e, f, currentMatrix)
     {
         var tempTriangle = this.tempTriangle;
 
@@ -507,8 +476,7 @@ var FlatTintPipeline = new Class({
             tempTriangle, lineWidth, lineColor, lineAlpha,
             a, b, c, d, e, f,
             false,
-            currentMatrix,
-            roundPixels
+            currentMatrix
         );
     },
 
@@ -524,7 +492,7 @@ var FlatTintPipeline = new Class({
      * @param {float} srcScaleY - [description]
      * @param {float} srcRotation - [description]
      * @param {float} path - [description]
-     * @param {int} fillColor - [description]
+     * @param {integer} fillColor - [description]
      * @param {float} fillAlpha - [description]
      * @param {float} a1 - [description]
      * @param {float} b1 - [description]
@@ -533,14 +501,11 @@ var FlatTintPipeline = new Class({
      * @param {float} e1 - [description]
      * @param {float} f1 - [description]
      * @param {Float32Array} currentMatrix - [description]
-     * @param {boolean} roundPixels - [description]
      */
-    batchFillPath: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, path, fillColor, fillAlpha, a1, b1, c1, d1, e1, f1, currentMatrix, roundPixels)
+    batchFillPath: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, path, fillColor, fillAlpha, a1, b1, c1, d1, e1, f1, currentMatrix)
     {
         this.renderer.setPipeline(this);
 
-        var renderer = this.renderer;        
-        var resolution = renderer.config.resolution;
         var length = path.length;
         var polygonCache = this.polygonCache;
         var polygonIndexArray;
@@ -601,16 +566,6 @@ var FlatTintPipeline = new Class({
             tx2 = x2 * a + y2 * c + e;
             ty2 = x2 * b + y2 * d + f;
 
-            if (roundPixels)
-            {
-                tx0 = ((tx0 * resolution)|0) / resolution;
-                ty0 = ((ty0 * resolution)|0) / resolution;
-                tx1 = ((tx1 * resolution)|0) / resolution;
-                ty1 = ((ty1 * resolution)|0) / resolution;
-                tx2 = ((tx2 * resolution)|0) / resolution;
-                ty2 = ((ty2 * resolution)|0) / resolution;
-            }
-
             vertexViewF32[vertexOffset + 0] = tx0;
             vertexViewF32[vertexOffset + 1] = ty0;
             vertexViewU32[vertexOffset + 2] = tint;
@@ -640,7 +595,7 @@ var FlatTintPipeline = new Class({
      * @param {float} srcRotation - [description]
      * @param {array} path - [description]
      * @param {float} lineWidth - [description]
-     * @param {int} lineColor - [description]
+     * @param {integer} lineColor - [description]
      * @param {float} lineAlpha - [description]
      * @param {float} a - [description]
      * @param {float} b - [description]
@@ -650,9 +605,8 @@ var FlatTintPipeline = new Class({
      * @param {float} f - [description]
      * @param {boolean} isLastPath - [description]
      * @param {Float32Array} currentMatrix - [description]
-     * @param {boolean} roundPixels - [description]
      */
-    batchStrokePath: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, path, lineWidth, lineColor, lineAlpha, a, b, c, d, e, f, isLastPath, currentMatrix, roundPixels)
+    batchStrokePath: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, path, lineWidth, lineColor, lineAlpha, a, b, c, d, e, f, isLastPath, currentMatrix)
     {
         this.renderer.setPipeline(this);
 
@@ -678,8 +632,7 @@ var FlatTintPipeline = new Class({
                 point0.width / 2, point1.width / 2,
                 point0.rgb, point1.rgb, lineAlpha,
                 a, b, c, d, e, f,
-                currentMatrix,
-                roundPixels
+                currentMatrix
             );
 
             polylines.push(line);
@@ -739,8 +692,8 @@ var FlatTintPipeline = new Class({
      * @param {float} by - [description]
      * @param {float} aLineWidth - [description]
      * @param {float} bLineWidth - [description]
-     * @param {int} aLineColor - [description]
-     * @param {int} bLineColor - [description]
+     * @param {integer} aLineColor - [description]
+     * @param {integer} bLineColor - [description]
      * @param {float} lineAlpha - [description]
      * @param {float} a1 - [description]
      * @param {float} b1 - [description]
@@ -749,9 +702,8 @@ var FlatTintPipeline = new Class({
      * @param {float} e1 - [description]
      * @param {float} f1 - [description]
      * @param {Float32Array} currentMatrix - [description]
-     * @param {boolean} roundPixels - [description]
      */
-    batchLine: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, ax, ay, bx, by, aLineWidth, bLineWidth, aLineColor, bLineColor, lineAlpha, a1, b1, c1, d1, e1, f1, currentMatrix, roundPixels) 
+    batchLine: function (srcX, srcY, srcScaleX, srcScaleY, srcRotation, ax, ay, bx, by, aLineWidth, bLineWidth, aLineColor, bLineColor, lineAlpha, a1, b1, c1, d1, e1, f1, currentMatrix)
     {
         this.renderer.setPipeline(this);
 
@@ -760,8 +712,6 @@ var FlatTintPipeline = new Class({
             this.flush();
         }
         
-        var renderer = this.renderer;        
-        var resolution = renderer.config.resolution;
         var a0 = currentMatrix[0];
         var b0 = currentMatrix[1];
         var c0 = currentMatrix[2];
@@ -804,18 +754,6 @@ var FlatTintPipeline = new Class({
         var bTint = getTint(bLineColor, lineAlpha);
         var vertexOffset = this.vertexCount * this.vertexComponentCount;
 
-        if (roundPixels)
-        {
-            x0 = ((x0 * resolution)|0) / resolution;
-            y0 = ((y0 * resolution)|0) / resolution;
-            x1 = ((x1 * resolution)|0) / resolution;
-            y1 = ((y1 * resolution)|0) / resolution;
-            x2 = ((x2 * resolution)|0) / resolution;
-            y2 = ((y2 * resolution)|0) / resolution;
-            x3 = ((x3 * resolution)|0) / resolution;
-            y3 = ((y3 * resolution)|0) / resolution;
-        }
-
         vertexViewF32[vertexOffset + 0] = x0;
         vertexViewF32[vertexOffset + 1] = y0;
         vertexViewU32[vertexOffset + 2] = bTint;
@@ -824,7 +762,7 @@ var FlatTintPipeline = new Class({
         vertexViewU32[vertexOffset + 5] = aTint;
         vertexViewF32[vertexOffset + 6] = x2;
         vertexViewF32[vertexOffset + 7] = y2;
-        vertexViewU32[vertexOffset + 8] = bTint
+        vertexViewU32[vertexOffset + 8] = bTint;
         vertexViewF32[vertexOffset + 9] = x1;
         vertexViewF32[vertexOffset + 10] = y1;
         vertexViewU32[vertexOffset + 11] = aTint;
@@ -856,7 +794,7 @@ var FlatTintPipeline = new Class({
      */
     batchGraphics: function (graphics, camera)
     {
-        if (graphics.commandBuffer.length &lt;= 0) return;
+        if (graphics.commandBuffer.length &lt;= 0) { return; }
         
         this.renderer.setPipeline(this);
 
@@ -868,6 +806,7 @@ var FlatTintPipeline = new Class({
         var srcScaleY = graphics.scaleY;
         var srcRotation = -graphics.rotation;
         var commands = graphics.commandBuffer;
+        var alpha = graphics.alpha;
         var lineAlpha = 1.0;
         var fillAlpha = 1.0;
         var lineColor = 0;
@@ -889,6 +828,7 @@ var FlatTintPipeline = new Class({
         var path = null;
         var sin = Math.sin;
         var cos = Math.cos;
+        var PI2 = Math.PI * 2;
         var sr = sin(srcRotation);
         var cr = cos(srcRotation);
         var sra = cr * srcScaleX;
@@ -909,7 +849,9 @@ var FlatTintPipeline = new Class({
         var mvd = src * cmb + srd * cmd;
         var mve = sre * cma + srf * cmc + cme;
         var mvf = sre * cmb + srf * cmd + cmf;
-        var roundPixels = camera.roundPixels;
+
+        var pathArrayIndex;
+        var pathArrayLength;
 
         pathArray.length = 0;
 
@@ -928,31 +870,52 @@ var FlatTintPipeline = new Class({
                     endAngle = commands[cmdIndex + 5];
                     anticlockwise = commands[cmdIndex + 6];
 
+                    if (lastPath === null)
+                    {
+                        lastPath = new Path(x + cos(startAngle) * radius, y + sin(startAngle) * radius, lineWidth, lineColor, lineAlpha * alpha);
+                        pathArray.push(lastPath);
+                        iteration += iterStep;
+                    }
+
+                    endAngle -= startAngle;
+
                     if (anticlockwise)
                     {
-                        ta = endAngle;
-                        endAngle = startAngle;
-                        startAngle = -ta;
+                        if (endAngle &lt; -PI2)
+                        {
+                            endAngle = -PI2;
+                        }
+                        else if (endAngle > 0)
+                        {
+                            endAngle = -PI2 + endAngle % PI2;
+                        }
                     }
-                    
+                    else if (endAngle > PI2)
+                    {
+                        endAngle = PI2;
+                    }
+                    else if (endAngle &lt; 0)
+                    {
+                        endAngle = PI2 + endAngle % PI2;
+                    }
+
                     while (iteration &lt; 1)
                     {
-                        ta = (endAngle - startAngle) * iteration + startAngle;
+                        ta = endAngle * iteration + startAngle;
                         tx = x + cos(ta) * radius;
                         ty = y + sin(ta) * radius;
 
-                        if (iteration === 0)
-                        {
-                            lastPath = new Path(tx, ty, lineWidth, lineColor, lineAlpha);
-                            pathArray.push(lastPath);
-                        }
-                        else
-                        {
-                            lastPath.points.push(new Point(tx, ty, lineWidth, lineColor, lineAlpha));
-                        }
+                        lastPath.points.push(new Point(tx, ty, lineWidth, lineColor, lineAlpha * alpha));
 
                         iteration += iterStep;
                     }
+
+                    ta = endAngle + startAngle;
+                    tx = x + cos(ta) * radius;
+                    ty = y + sin(ta) * radius;
+
+                    lastPath.points.push(new Point(tx, ty, lineWidth, lineColor, lineAlpha * alpha));
+
                     cmdIndex += 6;
                     break;
 
@@ -971,77 +934,80 @@ var FlatTintPipeline = new Class({
 
                 case Commands.BEGIN_PATH:
                     pathArray.length = 0;
+                    lastPath = null;
                     break;
 
                 case Commands.CLOSE_PATH:
-                    if (lastPath !== null &amp;&amp; lastPath.points.length > 0)
+                    if (lastPath &amp;&amp; lastPath.points.length)
                     {
-                        var firstPoint = lastPath.points[0];
-                        var lastPoint = lastPath.points[lastPath.points.length - 1];
-                        lastPath.points.push(firstPoint);
-                        lastPath = new Path(lastPoint.x, lastPoint.y, lastPoint.width, lastPoint.rgb, lastPoint.alpha);
-                        pathArray.push(lastPath);
+                        lastPath.points.push(lastPath.points[0]);
                     }
                     break;
 
                 case Commands.FILL_PATH:
-                    for (var pathArrayIndex = 0, pathArrayLength = pathArray.length;
+                    for (pathArrayIndex = 0, pathArrayLength = pathArray.length;
                         pathArrayIndex &lt; pathArrayLength;
                         ++pathArrayIndex)
                     {
                         this.batchFillPath(
+
                             /* Graphics Game Object Properties */
                             srcX, srcY, srcScaleX, srcScaleY, srcRotation,
+
                             /* Rectangle properties */ 
                             pathArray[pathArrayIndex].points,
                             fillColor,
-                            fillAlpha,
+                            fillAlpha * alpha,
+
                             /* Transform */
                             mva, mvb, mvc, mvd, mve, mvf,
-                            currentMatrix,
-                            roundPixels
+                            currentMatrix
                         );
                     }
                     break;
 
                 case Commands.STROKE_PATH:
-                    for (var pathArrayIndex = 0, pathArrayLength = pathArray.length;
+                    for (pathArrayIndex = 0, pathArrayLength = pathArray.length;
                         pathArrayIndex &lt; pathArrayLength;
                         ++pathArrayIndex)
                     {
                         path = pathArray[pathArrayIndex];
                         this.batchStrokePath(
+
                             /* Graphics Game Object Properties */
                             srcX, srcY, srcScaleX, srcScaleY, srcRotation,
+
                             /* Rectangle properties */ 
                             path.points,
                             lineWidth,
                             lineColor,
-                            lineAlpha,
+                            lineAlpha * alpha,
+
                             /* Transform */
                             mva, mvb, mvc, mvd, mve, mvf,
                             path === this._lastPath,
-                            currentMatrix,
-                            roundPixels
+                            currentMatrix
                         );
                     }
                     break;
                     
                 case Commands.FILL_RECT:
                     this.batchFillRect(
+
                         /* Graphics Game Object Properties */
                         srcX, srcY, srcScaleX, srcScaleY, srcRotation,
+
                         /* Rectangle properties */ 
                         commands[cmdIndex + 1],
                         commands[cmdIndex + 2],
                         commands[cmdIndex + 3],
                         commands[cmdIndex + 4],
                         fillColor,
-                        fillAlpha,
+                        fillAlpha * alpha,
+
                         /* Transform */
                         mva, mvb, mvc, mvd, mve, mvf,
-                        currentMatrix,
-                        roundPixels
+                        currentMatrix
                     );
                  
                     cmdIndex += 4;
@@ -1049,8 +1015,10 @@ var FlatTintPipeline = new Class({
 
                 case Commands.FILL_TRIANGLE:
                     this.batchFillTriangle(
+
                         /* Graphics Game Object Properties */
                         srcX, srcY, srcScaleX, srcScaleY, srcRotation,
+
                         /* Triangle properties */ 
                         commands[cmdIndex + 1],
                         commands[cmdIndex + 2],
@@ -1059,11 +1027,11 @@ var FlatTintPipeline = new Class({
                         commands[cmdIndex + 5],
                         commands[cmdIndex + 6],
                         fillColor,
-                        fillAlpha,
+                        fillAlpha * alpha,
+
                         /* Transform */
                         mva, mvb, mvc, mvd, mve, mvf,
-                        currentMatrix,
-                        roundPixels
+                        currentMatrix
                     );
                     
                     cmdIndex += 6;
@@ -1071,8 +1039,10 @@ var FlatTintPipeline = new Class({
 
                 case Commands.STROKE_TRIANGLE:
                     this.batchStrokeTriangle(
+
                         /* Graphics Game Object Properties */
                         srcX, srcY, srcScaleX, srcScaleY, srcRotation,
+
                         /* Triangle properties */ 
                         commands[cmdIndex + 1],
                         commands[cmdIndex + 2],
@@ -1082,11 +1052,11 @@ var FlatTintPipeline = new Class({
                         commands[cmdIndex + 6],
                         lineWidth,
                         lineColor,
-                        lineAlpha,
+                        lineAlpha * alpha,
+
                         /* Transform */
                         mva, mvb, mvc, mvd, mve, mvf,
-                        currentMatrix,
-                        roundPixels
+                        currentMatrix
                     );
                     
                     cmdIndex += 6;
@@ -1095,18 +1065,18 @@ var FlatTintPipeline = new Class({
                 case Commands.LINE_TO:
                     if (lastPath !== null)
                     {
-                        lastPath.points.push(new Point(commands[cmdIndex + 1], commands[cmdIndex + 2], lineWidth, lineColor, lineAlpha));
+                        lastPath.points.push(new Point(commands[cmdIndex + 1], commands[cmdIndex + 2], lineWidth, lineColor, lineAlpha * alpha));
                     }
                     else
                     {
-                        lastPath = new Path(commands[cmdIndex + 1], commands[cmdIndex + 2], lineWidth, lineColor, lineAlpha);
+                        lastPath = new Path(commands[cmdIndex + 1], commands[cmdIndex + 2], lineWidth, lineColor, lineAlpha * alpha);
                         pathArray.push(lastPath);
                     }
                     cmdIndex += 2;
                     break;
 
                 case Commands.MOVE_TO:
-                    lastPath = new Path(commands[cmdIndex + 1], commands[cmdIndex + 2], lineWidth, lineColor, lineAlpha);
+                    lastPath = new Path(commands[cmdIndex + 1], commands[cmdIndex + 2], lineWidth, lineColor, lineAlpha * alpha);
                     pathArray.push(lastPath);
                     cmdIndex += 2;
                     break;
@@ -1119,7 +1089,7 @@ var FlatTintPipeline = new Class({
                             commands[cmdIndex + 2],
                             commands[cmdIndex + 3],
                             commands[cmdIndex + 4],
-                            commands[cmdIndex + 5]
+                            commands[cmdIndex + 5] * alpha
                         ));
                     }
                     else
@@ -1129,7 +1099,7 @@ var FlatTintPipeline = new Class({
                             commands[cmdIndex + 2],
                             commands[cmdIndex + 3],
                             commands[cmdIndex + 4],
-                            commands[cmdIndex + 5]
+                            commands[cmdIndex + 5] * alpha
                         );
                         pathArray.push(lastPath);
                     }
@@ -1142,7 +1112,7 @@ var FlatTintPipeline = new Class({
                         commands[cmdIndex + 2],
                         commands[cmdIndex + 3],
                         commands[cmdIndex + 4],
-                        commands[cmdIndex + 5]
+                        commands[cmdIndex + 5] * alpha
                     );
                     pathArray.push(lastPath);
                     cmdIndex += 5;
@@ -1202,6 +1172,7 @@ var FlatTintPipeline = new Class({
                     break;
 
                 default:
+                    // eslint-disable-next-line no-console
                     console.error('Phaser: Invalid Graphics Command ID ' + cmd);
                     break;
             }
@@ -1219,7 +1190,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.Tilemaps.StaticTilemapLayer} tilemap - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    drawStaticTilemapLayer: function (tilemap, camera)
+    drawStaticTilemapLayer: function ()
     {
     },
 
@@ -1232,7 +1203,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.Particles.ParticleEmittermanager} emitterManager - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    drawEmitterManager: function (emitterManager, camera)
+    drawEmitterManager: function ()
     {
     },
 
@@ -1245,7 +1216,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.Blitter} blitter - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    drawBlitter: function (blitter, camera)
+    drawBlitter: function ()
     {
     },
 
@@ -1258,7 +1229,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.Sprite} sprite - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchSprite: function (sprite, camera)
+    batchSprite: function ()
     {
     },
 
@@ -1271,7 +1242,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.Mesh} mesh - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchMesh: function (mesh, camera)
+    batchMesh: function ()
     {
     },
 
@@ -1284,7 +1255,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.BitmapText} bitmapText - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchBitmapText: function (bitmapText, camera)
+    batchBitmapText: function ()
     {
     },
 
@@ -1297,7 +1268,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.DynamicBitmapText} bitmapText - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchDynamicBitmapText: function (bitmapText, camera)
+    batchDynamicBitmapText: function ()
     {
     },
 
@@ -1310,7 +1281,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.Text} text - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchText: function (text, camera)
+    batchText: function ()
     {
     },
 
@@ -1323,7 +1294,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.Tilemaps.DynamicTilemapLayer} tilemapLayer - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchDynamicTilemapLayer: function (tilemapLayer, camera)
+    batchDynamicTilemapLayer: function ()
     {
     },
 
@@ -1336,7 +1307,7 @@ var FlatTintPipeline = new Class({
      * @param {Phaser.GameObjects.TileSprite} tileSprite - [description]
      * @param {Phaser.Cameras.Scene2D.Camera} camera - [description]
      */
-    batchTileSprite: function (tileSprite, camera)
+    batchTileSprite: function ()
     {
     }
 
@@ -1351,7 +1322,7 @@ module.exports = FlatTintPipeline;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

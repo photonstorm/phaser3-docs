@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -112,6 +112,12 @@ var ValueToColor = require('../display/color/ValueToColor');
  */
 
 /**
+ * @callback BootCallback
+ *
+ * @param {Phaser.Game} game - [description]
+ */
+
+/**
  * @typedef {object} FPSConfig
  *
  * @property {integer} [min=10] - [description]
@@ -128,7 +134,7 @@ var ValueToColor = require('../display/color/ValueToColor');
  * @property {string} [path] - [description]
  * @property {boolean} [enableParallel=true] - [description]
  * @property {integer} [maxParallelDownloads=4] - [description]
- * @property {string|undefined} [crossOrigin=undefined] - [description]
+ * @property {(string|undefined)} [crossOrigin=undefined] - [description]
  * @property {string} [responseType] - [description]
  * @property {boolean} [async=true] - [description]
  * @property {string} [user] - [description]
@@ -139,8 +145,8 @@ var ValueToColor = require('../display/color/ValueToColor');
 /**
  * @typedef {object} GameConfig
  *
- * @property {integer|string} [width=1024] - [description]
- * @property {integer|string} [height=768] - [description]
+ * @property {(integer|string)} [width=1024] - [description]
+ * @property {(integer|string)} [height=768] - [description]
  * @property {number} [zoom=1] - [description]
  * @property {number} [resolution=1] - [description]
  * @property {number} [type=CONST.AUTO] - [description]
@@ -148,7 +154,7 @@ var ValueToColor = require('../display/color/ValueToColor');
  * @property {HTMLCanvasElement} [?canvas=null] - [description]
  * @property {string} [?canvasStyle=null] - [description]
  * @property {object} [?scene=null] - [description]
- * @property {array} [seed] - [description]
+ * @property {string[]} [seed] - [description]
  * @property {string} [title=''] - [description]
  * @property {string} [url='http://phaser.io'] - [description]
  * @property {string} [version=''] - [description]
@@ -165,15 +171,22 @@ var ValueToColor = require('../display/color/ValueToColor');
  * @property {boolean} [banner=false] - [description]
  * @property {boolean} [banner.hidePhaser=false] - [description]
  * @property {string} [banner.text='#ffffff'] - [description]
- * @property {array} [banner.background] - [description]
+ * @property {string[]} [banner.background] - [description]
  * @property {FPSConfig} [?fps] - [description]
+ * @property {boolean} [antialias=true] - [description]
  * @property {boolean} [pixelArt=false] - [description]
+ * @property {boolean} [autoResize=false] - [description]
+ * @property {boolean} [roundPixels=false] - [description]
  * @property {boolean} [transparent=false] - [description]
  * @property {boolean} [clearBeforeRender=true] - [description]
- * @property {string|number} [backgroundColor=0x000000] - [description]
+ * @property {boolean} [premultipliedAlpha=true] - [description]
+ * @property {boolean} [preserveDrawingBuffer=false] - [description]
+ * @property {boolean} [failIfMajorPerformanceCaveat=false] - [description]
+ * @property {boolean} [powerPreference='default'] - "high-performance", "low-power" or "default"
+ * @property {(string|number)} [backgroundColor=0x000000] - [description]
  * @property {object} [?callbacks] - [description]
- * @property {function} [callbacks.preBoot=NOOP] - [description]
- * @property {function} [callbacks.postBoot=NOOP] - [description]
+ * @property {BootCallback} [callbacks.preBoot=NOOP] - [description]
+ * @property {BootCallback} [callbacks.postBoot=NOOP] - [description]
  * @property {LoaderConfig} [?loader] - [description]
  * @property {object} [?images] - [description]
  * @property {string} [images.default] - [description]
@@ -189,7 +202,7 @@ var ValueToColor = require('../display/color/ValueToColor');
  * @constructor
  * @since 3.0.0
  *
- * @param {object} [GameConfig] - The configuration object for your Phaser Game instance.
+ * @param {GameConfig} [GameConfig] - The configuration object for your Phaser Game instance.
  *
  */
 var Config = new Class({
@@ -272,10 +285,30 @@ var Config = new Class({
 
         this.fps = GetValue(config, 'fps', null);
 
-        this.pixelArt = GetValue(config, 'pixelArt', false);
-        this.transparent = GetValue(config, 'transparent', false);
-        this.clearBeforeRender = GetValue(config, 'clearBeforeRender', true);
-        this.backgroundColor = ValueToColor(GetValue(config, 'backgroundColor', 0));
+        //  Renderer Settings
+        //  These can either be in a `render` object within the Config, or specified on their own
+
+        var renderConfig = GetValue(config, 'render', config);
+
+        this.antialias = GetValue(renderConfig, 'antialias', true);
+        this.pixelArt = GetValue(renderConfig, 'pixelArt', false);
+        this.autoResize = GetValue(renderConfig, 'autoResize', false);
+        this.roundPixels = GetValue(renderConfig, 'roundPixels', false);
+        this.transparent = GetValue(renderConfig, 'transparent', false);
+        this.clearBeforeRender = GetValue(renderConfig, 'clearBeforeRender', true);
+        this.premultipliedAlpha = GetValue(renderConfig, 'premultipliedAlpha', true);
+        this.preserveDrawingBuffer = GetValue(renderConfig, 'preserveDrawingBuffer', false);
+        this.failIfMajorPerformanceCaveat = GetValue(renderConfig, 'failIfMajorPerformanceCaveat', false);
+        this.powerPreference = GetValue(renderConfig, 'powerPreference', 'default');
+
+        var bgc = GetValue(config, 'backgroundColor', 0);
+
+        this.backgroundColor = ValueToColor(bgc);
+
+        if (bgc === 0 &amp;&amp; this.transparent)
+        {
+            this.backgroundColor.alpha = 0;
+        }
 
         //  Callbacks
         this.preBoot = GetValue(config, 'callbacks.preBoot', NOOP);
@@ -288,6 +321,7 @@ var Config = new Class({
         //      gravity: 0,
         //      cellSize: 64
         //  }
+
         this.physics = GetValue(config, 'physics', {});
         this.defaultPhysicsSystem = GetValue(this.physics, 'default', false);
 
@@ -324,7 +358,7 @@ module.exports = Config;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

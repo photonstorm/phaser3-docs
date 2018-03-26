@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -104,9 +104,56 @@ var GetFastValue = require('../../utils/object/GetFastValue');
 var Group = require('../../gameobjects/group/Group');
 
 /**
+ * @typedef {object} PhysicsGroupConfig
+ * @extends GroupConfig
+ *
+ * @property {[type]} [collideWorldBounds=false] - [description]
+ * @property {number} [accelerationX=0] - [description]
+ * @property {number} [accelerationY=0] - [description]
+ * @property {number} [bounceX=0] - [description]
+ * @property {number} [bounceY=0] - [description]
+ * @property {number} [dragX=0] - [description]
+ * @property {number} [dragY=0] - [description]
+ * @property {number} [gravityX=0] - [description]
+ * @property {number} [gravityY=0] - [description]
+ * @property {number} [frictionX=0] - [description]
+ * @property {number} [frictionY=0] - [description]
+ * @property {number} [velocityX=0] - [description]
+ * @property {number} [velocityY=0] - [description]
+ * @property {number} [angularVelocity=0] - [description]
+ * @property {number} [angularAcceleration=0] - [description]
+ * @property {number} [angularDrag=0] - [description]
+ * @property {number} [mass=0] - [description]
+ * @property {boolean} [immovable=false] - [description]
+ */
+
+/**
+ * @typedef {object} PhysicsGroupDefaults
+ *
+ * @property {[type]} setCollideWorldBounds - [description]
+ * @property {number} setAccelerationX - [description]
+ * @property {number} setAccelerationY - [description]
+ * @property {number} setBounceX - [description]
+ * @property {number} setBounceY - [description]
+ * @property {number} setDragX - [description]
+ * @property {number} setDragY - [description]
+ * @property {number} setGravityX - [description]
+ * @property {number} setGravityY - [description]
+ * @property {number} setFrictionX - [description]
+ * @property {number} setFrictionY - [description]
+ * @property {number} setVelocityX - [description]
+ * @property {number} setVelocityY - [description]
+ * @property {number} setAngularVelocity - [description]
+ * @property {number} setAngularAcceleration - [description]
+ * @property {number} setAngularDrag - [description]
+ * @property {number} setMass - [description]
+ * @property {boolean} setImmovable - [description]
+ */
+
+/**
  * @classdesc
  * An Arcade Physics Group object.
- * 
+ *
  * All Game Objects created by this Group will automatically be dynamic Arcade Physics objects.
  *
  * @class Group
@@ -118,7 +165,7 @@ var Group = require('../../gameobjects/group/Group');
  * @param {Phaser.Physics.Arcade.World} world - [description]
  * @param {Phaser.Scene} scene - [description]
  * @param {array} children - [description]
- * @param {object} config - [description]
+ * @param {PhysicsGroupConfig} [config] - [description]
  */
 var PhysicsGroup = new Class({
 
@@ -165,7 +212,7 @@ var PhysicsGroup = new Class({
          * [description]
          *
          * @name Phaser.Physics.Arcade.Group#defaults
-         * @type {object}
+         * @type {PhysicsGroupDefaults}
          * @since 3.0.0
          */
         this.defaults = {
@@ -318,7 +365,7 @@ module.exports = PhysicsGroup;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

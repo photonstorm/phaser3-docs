@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -104,7 +104,7 @@ var Vector2 = require('../../math/Vector2');
 /**
  * Provides methods used for obtaining the bounds of a Game Object.
  * Should be applied as a mixin and not used directly.
- * 
+ *
  * @name Phaser.GameObjects.Components.GetBounds
  * @since 3.0.0
  */
@@ -113,13 +113,13 @@ var GetBounds = {
 
     /**
      * Gets the center coordinate of this Game Object, regardless of origin.
-     * 
+     *
      * @method Phaser.GameObjects.Components.GetBounds#getCenter
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2|object} [output] - An object to store the values in. If not provided a new Vector2 will be created.
-     * 
-     * @return {Phaser.Math.Vector2|object} The values stored in the output object.
+     * @param {(Phaser.Math.Vector2|object)} [output] - An object to store the values in. If not provided a new Vector2 will be created.
+     *
+     * @return {(Phaser.Math.Vector2|object)} The values stored in the output object.
      */
     getCenter: function (output)
     {
@@ -133,13 +133,13 @@ var GetBounds = {
 
     /**
      * Gets the top-left corner coordinate of this Game Object, regardless of origin.
-     * 
+     *
      * @method Phaser.GameObjects.Components.GetBounds#getTopLeft
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2|object} [output] - An object to store the values in. If not provided a new Vector2 will be created.
-     * 
-     * @return {Phaser.Math.Vector2|object} The values stored in the output object.
+     * @param {(Phaser.Math.Vector2|object)} [output] - An object to store the values in. If not provided a new Vector2 will be created.
+     *
+     * @return {(Phaser.Math.Vector2|object)} The values stored in the output object.
      */
     getTopLeft: function (output)
     {
@@ -158,13 +158,13 @@ var GetBounds = {
 
     /**
      * Gets the top-right corner coordinate of this Game Object, regardless of origin.
-     * 
+     *
      * @method Phaser.GameObjects.Components.GetBounds#getTopRight
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2|object} [output] - An object to store the values in. If not provided a new Vector2 will be created.
-     * 
-     * @return {Phaser.Math.Vector2|object} The values stored in the output object.
+     * @param {(Phaser.Math.Vector2|object)} [output] - An object to store the values in. If not provided a new Vector2 will be created.
+     *
+     * @return {(Phaser.Math.Vector2|object)} The values stored in the output object.
      */
     getTopRight: function (output)
     {
@@ -183,13 +183,13 @@ var GetBounds = {
 
     /**
      * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
-     * 
+     *
      * @method Phaser.GameObjects.Components.GetBounds#getBottomLeft
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2|object} [output] - An object to store the values in. If not provided a new Vector2 will be created.
-     * 
-     * @return {Phaser.Math.Vector2|object} The values stored in the output object.
+     * @param {(Phaser.Math.Vector2|object)} [output] - An object to store the values in. If not provided a new Vector2 will be created.
+     *
+     * @return {(Phaser.Math.Vector2|object)} The values stored in the output object.
      */
     getBottomLeft: function (output)
     {
@@ -208,13 +208,13 @@ var GetBounds = {
 
     /**
      * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
-     * 
+     *
      * @method Phaser.GameObjects.Components.GetBounds#getBottomRight
      * @since 3.0.0
      *
-     * @param {Phaser.Math.Vector2|object} [output] - An object to store the values in. If not provided a new Vector2 will be created.
-     * 
-     * @return {Phaser.Math.Vector2|object} The values stored in the output object.
+     * @param {(Phaser.Math.Vector2|object)} [output] - An object to store the values in. If not provided a new Vector2 will be created.
+     *
+     * @return {(Phaser.Math.Vector2|object)} The values stored in the output object.
      */
     getBottomRight: function (output)
     {
@@ -234,13 +234,13 @@ var GetBounds = {
     /**
      * Gets the bounds of this Game Object, regardless of origin.
      * The values are stored and returned in a Rectangle, or Rectangle-like, object.
-     * 
+     *
      * @method Phaser.GameObjects.Components.GetBounds#getBounds
      * @since 3.0.0
      *
-     * @param {Phaser.Geom.Rectangle|object} [output] - An object to store the values in. If not provided a new Rectangle will be created.
-     * 
-     * @return {Phaser.Geom.Rectangle|object} The values stored in the output object.
+     * @param {(Phaser.Geom.Rectangle|object)} [output] - An object to store the values in. If not provided a new Rectangle will be created.
+     *
+     * @return {(Phaser.Geom.Rectangle|object)} The values stored in the output object.
      */
     getBounds: function (output)
     {
@@ -287,7 +287,7 @@ module.exports = GetBounds;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

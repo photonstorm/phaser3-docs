@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -106,7 +106,7 @@ var Mesh = require('../mesh/Mesh');
  *
  * A Quad is a Mesh Game Object pre-configured with two triangles arranged into a rectangle, with a single
  * texture spread across them.
- * 
+ *
  * You can manipulate the corner points of the quad via the getters and setters such as `topLeftX`, and also
  * change their alpha and color values. The quad itself can be moved by adjusting the `x` and `y` properties.
  *
@@ -121,7 +121,7 @@ var Mesh = require('../mesh/Mesh');
  * @param {number} x - The horizontal position of this Game Object in the world.
  * @param {number} y - The vertical position of this Game Object in the world.
  * @param {string} texture - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
- * @param {string|integer} [frame] - An optional frame from the Texture this Game Object is rendering with.
+ * @param {(string|integer)} [frame] - An optional frame from the Texture this Game Object is rendering with.
  */
 var Quad = new Class({
 
@@ -139,37 +139,37 @@ var Quad = new Class({
         //  |    \
         //  1----2
 
-        var vertices = [ 
-            0, 0, // tl 
+        var vertices = [
+            0, 0, // tl
             0, 0, // bl
             0, 0, // br
             0, 0, // tl
             0, 0, // br
-            0, 0  // tr
+            0, 0 // tr
         ];
-        var uv = [ 
+        var uv = [
             0, 0, // tl
             0, 1, // bl
             1, 1, // br
             0, 0, // tl
             1, 1, // br
-            1, 0  // tr
+            1, 0 // tr
         ];
-        var colors = [ 
+        var colors = [
             0xffffff, // tl
             0xffffff, // bl
             0xffffff, // br
             0xffffff, // tl
             0xffffff, // br
-            0xffffff  // tr
+            0xffffff // tr
         ];
-        var alphas = [ 
+        var alphas = [
             1, // tl
             1, // bl
             1, // br
             1, // tl
             1, // br
-            1  // tr
+            1 // tr
         ];
 
         Mesh.call(this, scene, x, y, vertices, uv, colors, alphas, texture, frame);
@@ -179,7 +179,7 @@ var Quad = new Class({
 
     /**
      * The top-left x vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topLeftX
      * @type {number}
      * @since 3.0.0
@@ -201,7 +201,7 @@ var Quad = new Class({
 
     /**
      * The top-left y vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topLeftY
      * @type {number}
      * @since 3.0.0
@@ -223,7 +223,7 @@ var Quad = new Class({
 
     /**
      * The top-right x vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topRightX
      * @type {number}
      * @since 3.0.0
@@ -244,7 +244,7 @@ var Quad = new Class({
 
     /**
      * The top-right y vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topRightY
      * @type {number}
      * @since 3.0.0
@@ -265,7 +265,7 @@ var Quad = new Class({
 
     /**
      * The bottom-left x vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomLeftX
      * @type {number}
      * @since 3.0.0
@@ -286,7 +286,7 @@ var Quad = new Class({
 
     /**
      * The bottom-left y vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomLeftY
      * @type {number}
      * @since 3.0.0
@@ -307,7 +307,7 @@ var Quad = new Class({
 
     /**
      * The bottom-right x vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomRightX
      * @type {number}
      * @since 3.0.0
@@ -329,7 +329,7 @@ var Quad = new Class({
 
     /**
      * The bottom-right y vertex of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomRightY
      * @type {number}
      * @since 3.0.0
@@ -351,7 +351,7 @@ var Quad = new Class({
 
     /**
      * The top-left alpha value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topLeftAlpha
      * @type {float}
      * @since 3.0.0
@@ -373,7 +373,7 @@ var Quad = new Class({
 
     /**
      * The top-right alpha value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topRightAlpha
      * @type {float}
      * @since 3.0.0
@@ -394,7 +394,7 @@ var Quad = new Class({
 
     /**
      * The bottom-left alpha value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomLeftAlpha
      * @type {float}
      * @since 3.0.0
@@ -415,7 +415,7 @@ var Quad = new Class({
 
     /**
      * The bottom-right alpha value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomRightAlpha
      * @type {float}
      * @since 3.0.0
@@ -437,7 +437,7 @@ var Quad = new Class({
 
     /**
      * The top-left color value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topLeftColor
      * @type {number}
      * @since 3.0.0
@@ -459,7 +459,7 @@ var Quad = new Class({
 
     /**
      * The top-right color value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#topRightColor
      * @type {number}
      * @since 3.0.0
@@ -480,7 +480,7 @@ var Quad = new Class({
 
     /**
      * The bottom-left color value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomLeftColor
      * @type {number}
      * @since 3.0.0
@@ -501,7 +501,7 @@ var Quad = new Class({
 
     /**
      * The bottom-right color value of this Quad.
-     * 
+     *
      * @name Phaser.GameObjects.Quad#bottomRightColor
      * @type {number}
      * @since 3.0.0
@@ -692,7 +692,7 @@ module.exports = Quad;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

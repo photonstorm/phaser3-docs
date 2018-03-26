@@ -41,7 +41,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -102,7 +102,7 @@ var _FLAG = 8; // 1000
 
 /**
  * Provides methods used for getting and setting the texture of a Game Object.
- * 
+ *
  * @name Phaser.GameObjects.Components.Texture
  * @since 3.0.0
  */
@@ -111,7 +111,7 @@ var Texture = {
 
     /**
      * The Texture this Game Object is using to render with.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Texture#texture
      * @type {Phaser.Textures.Texture}
      * @since 3.0.0
@@ -120,7 +120,7 @@ var Texture = {
 
     /**
      * The Texture Frame this Game Object is using to render with.
-     * 
+     *
      * @name Phaser.GameObjects.Components.Texture#frame
      * @type {Phaser.Textures.Frame}
      * @since 3.0.0
@@ -131,13 +131,13 @@ var Texture = {
      * Sets the texture and frame this Game Object will use to render with.
      *
      * Textures are referenced by their string-based keys, as stored in the Texture Manager.
-     * 
+     *
      * @method Phaser.GameObjects.Components.Texture#setTexture
      * @since 3.0.0
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
-     * @param {string|integer} [frame] - The name or index of the frame within the Texture.
-     * 
+     * @param {(string|integer)} [frame] - The name or index of the frame within the Texture.
+     *
      * @return {Phaser.GameObjects.GameObject} This Game Object instance.
      */
     setTexture: function (key, frame)
@@ -153,16 +153,24 @@ var Texture = {
      * The Frame has to belong to the current Texture being used.
      *
      * It can be either a string or an index.
-     * 
+     *
+     * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+     * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+     *
      * @method Phaser.GameObjects.Components.Texture#setFrame
      * @since 3.0.0
      *
-     * @param {string|integer} frame - The name or index of the frame within the Texture.
-     * 
+     * @param {(string|integer)} frame - The name or index of the frame within the Texture.
+     * @param {boolean} [updateSize=true] - Should this call adjust the size of the Game Object?
+     * @param {boolean} [updateOrigin=true] - Should this call adjust the origin of the Game Object?
+     *
      * @return {Phaser.GameObjects.GameObject} This Game Object instance.
      */
-    setFrame: function (frame)
+    setFrame: function (frame, updateSize, updateOrigin)
     {
+        if (updateSize === undefined) { updateSize = true; }
+        if (updateOrigin === undefined) { updateOrigin = true; }
+
         this.frame = this.texture.get(frame);
 
         if (!this.frame.cutWidth || !this.frame.cutHeight)
@@ -174,9 +182,21 @@ var Texture = {
             this.renderFlags |= _FLAG;
         }
 
-        if (this.frame.customPivot)
+        if (this._sizeComponent &amp;&amp; updateSize)
         {
-            this.setOrigin(this.frame.pivotX, this.frame.pivotY);
+            this.setSizeToFrame();
+        }
+
+        if (this._originComponent &amp;&amp; updateOrigin)
+        {
+            if (this.frame.customPivot)
+            {
+                this.setOrigin(this.frame.pivotX, this.frame.pivotY);
+            }
+            else
+            {
+                this.updateDisplayOrigin();
+            }
         }
 
         return this;
@@ -193,7 +213,7 @@ module.exports = Texture;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 13th Feb 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
