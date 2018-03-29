@@ -10,7 +10,8 @@
     "sql": "node src/jsdoc-to-sqlite.js",
     "types": "node src/types.js",
     "build-tsgen": "cd tsgen && tsc",
-    "tsgen": "cd tsgen && jsdoc -c jsdoc-tsd.conf.json"
+    "tsgen": "cd tsgen && jsdoc -c jsdoc-tsd.conf.json",
+    "test-ts": "cd tsgen/test && tsc > output.txt"
   },
   "repository": {
     "type": "git",
