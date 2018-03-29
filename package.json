@@ -8,7 +8,9 @@
     "gen": "jsdoc -c jsdoc.conf.json -R ../phaser/README.md",
     "json": "jsdoc -c jsdoc.data.json",
     "sql": "node src/jsdoc-to-sqlite.js",
-    "types": "node src/types.js"
+    "types": "node src/types.js",
+    "build-tsgen": "cd tsgen && tsc",
+    "tsgen": "cd tsgen && jsdoc -c jsdoc-tsd.conf.json"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "better-sqlite3": "^4.0.3",
     "directory-tree": "^2.0.0",
     "doctrine": "^2.0.0",
+    "dts-dom": "^2.1.0",
     "extract-comments": "^0.10.1",
     "foodoc": "0.0.8",
     "fs-extra": "^4.0.2",
@@ -37,6 +40,7 @@
     "jsdoc-to-markdown": "^4.0.1",
     "json-beautify": "^1.0.1",
     "node-gyp": "^3.6.2",
+    "path": "^0.12.7",
     "sql.js": "^0.4.0"
   },
   "dependencies": {
