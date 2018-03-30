@@ -1813,7 +1813,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function Angle(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function Angle<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of objects and passes each of them to the given callback.
@@ -1821,7 +1821,7 @@ declare namespace Phaser {
          * @param callback The callback to be invoked. It will be passed just one argument: the item from the array.
          * @param context The scope in which the callback will be invoked.
          */
-        function Call(items: any[] | Phaser.GameObjects.GameObject[], callback: CallCallback, context: any): any[] | Phaser.GameObjects.GameObject[];
+        function Call<G extends Phaser.GameObjects.GameObject[]>(items: G, callback: CallCallback, context: any): G;
 
         /**
          * Takes an array of objects and returns the first element in the array that has properties which match
@@ -1837,7 +1837,7 @@ declare namespace Phaser {
          * @param compare The comparison object. Each property in this object will be checked against the items of the array.
          * @param index An optional offset to start searching from within the items array. Default 0.
          */
-        function GetFirst(items: any[] | Phaser.GameObjects.GameObject[], compare: object, index?: integer): object | Phaser.GameObjects.GameObject;
+        function GetFirst<G extends Phaser.GameObjects.GameObject[]>(items: G, compare: object, index?: integer): object | Phaser.GameObjects.GameObject;
 
         /**
          * Takes an array of objects and returns the last element in the array that has properties which match
@@ -1853,7 +1853,7 @@ declare namespace Phaser {
          * @param compare The comparison object. Each property in this object will be checked against the items of the array.
          * @param index An optional offset to start searching from within the items array. Default 0.
          */
-        function GetLast(items: any[] | Phaser.GameObjects.GameObject[], compare: object, index?: integer): object | Phaser.GameObjects.GameObject;
+        function GetLast<G extends Phaser.GameObjects.GameObject[]>(items: G, compare: object, index?: integer): object | Phaser.GameObjects.GameObject;
 
         /**
          * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
@@ -1862,7 +1862,7 @@ declare namespace Phaser {
          * @param items The array of items to be updated by this action.
          * @param options The GridAlign Configuration object.
          */
-        function GridAlign(items: any[] | Phaser.GameObjects.GameObject[], options: GridAlignConfig): any[] | Phaser.GameObjects.GameObject[];
+        function GridAlign<G extends Phaser.GameObjects.GameObject[]>(items: G, options: GridAlignConfig): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `alpha` property,
@@ -1882,7 +1882,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function IncAlpha(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function IncAlpha<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `x` property,
@@ -1902,7 +1902,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function IncX(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function IncX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
@@ -1924,7 +1924,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function IncXY(items: any[] | Phaser.GameObjects.GameObject[], x: number, y?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function IncXY<G extends Phaser.GameObjects.GameObject[]>(items: G, x: number, y?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `y` property,
@@ -1944,7 +1944,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function IncY(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function IncY<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * [description]
@@ -1953,7 +1953,7 @@ declare namespace Phaser {
          * @param startAngle [description] Default 0.
          * @param endAngle [description] Default 6.28.
          */
-        function PlaceOnCircle(items: any[] | Phaser.GameObjects.GameObject[], circle: Phaser.Geom.Circle, startAngle?: number, endAngle?: number): any[] | Phaser.GameObjects.GameObject[];
+        function PlaceOnCircle<G extends Phaser.GameObjects.GameObject[]>(items: G, circle: Phaser.Geom.Circle, startAngle?: number, endAngle?: number): G;
 
         /**
          * [description]
@@ -1962,14 +1962,14 @@ declare namespace Phaser {
          * @param startAngle [description] Default 0.
          * @param endAngle [description] Default 6.28.
          */
-        function PlaceOnEllipse(items: any[] | Phaser.GameObjects.GameObject[], ellipse: Phaser.Geom.Ellipse, startAngle?: number, endAngle?: number): any[] | Phaser.GameObjects.GameObject[];
+        function PlaceOnEllipse<G extends Phaser.GameObjects.GameObject[]>(items: G, ellipse: Phaser.Geom.Ellipse, startAngle?: number, endAngle?: number): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param line [description]
          */
-        function PlaceOnLine(items: any[] | Phaser.GameObjects.GameObject[], line: Phaser.Geom.Line): any[] | Phaser.GameObjects.GameObject[];
+        function PlaceOnLine<G extends Phaser.GameObjects.GameObject[]>(items: G, line: Phaser.Geom.Line): G;
 
         /**
          * [description]
@@ -1977,7 +1977,7 @@ declare namespace Phaser {
          * @param rect [description]
          * @param shift [description] Default 1.
          */
-        function PlaceOnRectangle(items: any[] | Phaser.GameObjects.GameObject[], rect: Phaser.Geom.Rectangle, shift?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function PlaceOnRectangle<G extends Phaser.GameObjects.GameObject[]>(items: G, rect: Phaser.Geom.Rectangle, shift?: integer): G;
 
         /**
          * [description]
@@ -1985,7 +1985,7 @@ declare namespace Phaser {
          * @param triangle [description]
          * @param stepRate [description] Default 1.
          */
-        function PlaceOnTriangle(items: any[] | Phaser.GameObjects.GameObject[], triangle: Phaser.Geom.Triangle, stepRate?: number): any[] | Phaser.GameObjects.GameObject[];
+        function PlaceOnTriangle<G extends Phaser.GameObjects.GameObject[]>(items: G, triangle: Phaser.Geom.Triangle, stepRate?: number): G;
 
         /**
          * [description]
@@ -1993,7 +1993,7 @@ declare namespace Phaser {
          * @param key [description]
          * @param startFrame [description]
          */
-        function PlayAnimation(items: any[] | Phaser.GameObjects.GameObject[], key: string, startFrame?: string | integer): any[] | Phaser.GameObjects.GameObject[];
+        function PlayAnimation<G extends Phaser.GameObjects.GameObject[]>(items: G, key: string, startFrame?: string | integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public property as defined in `key`,
@@ -2014,7 +2014,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function PropertyValueInc(items: any[] | Phaser.GameObjects.GameObject[], key: string, value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function PropertyValueInc<G extends Phaser.GameObjects.GameObject[]>(items: G, key: string, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public property as defined in `key`,
@@ -2035,42 +2035,42 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function PropertyValueSet(items: any[] | Phaser.GameObjects.GameObject[], key: string, value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function PropertyValueSet<G extends Phaser.GameObjects.GameObject[]>(items: G, key: string, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param circle [description]
          */
-        function RandomCircle(items: any[] | Phaser.GameObjects.GameObject[], circle: Phaser.Geom.Circle): any[] | Phaser.GameObjects.GameObject[];
+        function RandomCircle<G extends Phaser.GameObjects.GameObject[]>(items: G, circle: Phaser.Geom.Circle): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param ellipse [description]
          */
-        function RandomEllipse(items: any[] | Phaser.GameObjects.GameObject[], ellipse: Phaser.Geom.Ellipse): any[] | Phaser.GameObjects.GameObject[];
+        function RandomEllipse<G extends Phaser.GameObjects.GameObject[]>(items: G, ellipse: Phaser.Geom.Ellipse): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param line [description]
          */
-        function RandomLine(items: any[] | Phaser.GameObjects.GameObject[], line: Phaser.Geom.Line): any[] | Phaser.GameObjects.GameObject[];
+        function RandomLine<G extends Phaser.GameObjects.GameObject[]>(items: G, line: Phaser.Geom.Line): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param rect [description]
          */
-        function RandomRectangle(items: any[] | Phaser.GameObjects.GameObject[], rect: Phaser.Geom.Rectangle): any[] | Phaser.GameObjects.GameObject[];
+        function RandomRectangle<G extends Phaser.GameObjects.GameObject[]>(items: G, rect: Phaser.Geom.Rectangle): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param triangle [description]
          */
-        function RandomTriangle(items: any[] | Phaser.GameObjects.GameObject[], triangle: Phaser.Geom.Triangle): any[] | Phaser.GameObjects.GameObject[];
+        function RandomTriangle<G extends Phaser.GameObjects.GameObject[]>(items: G, triangle: Phaser.Geom.Triangle): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `rotation` property,
@@ -2090,7 +2090,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function Rotate(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function Rotate<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * [description]
@@ -2098,7 +2098,7 @@ declare namespace Phaser {
          * @param point Any object with public `x` and `y` properties.
          * @param angle The angle to rotate by, in radians.
          */
-        function RotateAround(items: any[] | Phaser.GameObjects.GameObject[], point: object, angle: number): any[] | Phaser.GameObjects.GameObject[];
+        function RotateAround<G extends Phaser.GameObjects.GameObject[]>(items: G, point: object, angle: number): G;
 
         /**
          * [description]
@@ -2107,7 +2107,7 @@ declare namespace Phaser {
          * @param angle The angle to rotate by, in radians.
          * @param distance The distance from the point of rotation in pixels.
          */
-        function RotateAroundDistance(items: any[] | Phaser.GameObjects.GameObject[], point: object, angle: number, distance: number): any[] | Phaser.GameObjects.GameObject[];
+        function RotateAroundDistance<G extends Phaser.GameObjects.GameObject[]>(items: G, point: object, angle: number, distance: number): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `scaleX` property,
@@ -2127,7 +2127,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function ScaleX(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function ScaleX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have public `scaleX` and `scaleY` properties,
@@ -2149,7 +2149,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function ScaleXY(items: any[] | Phaser.GameObjects.GameObject[], scaleX: number, scaleY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function ScaleXY<G extends Phaser.GameObjects.GameObject[]>(items: G, scaleX: number, scaleY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `scaleY` property,
@@ -2169,7 +2169,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function ScaleY(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function ScaleY<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `alpha`
@@ -2189,7 +2189,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetAlpha(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetAlpha<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `blendMode`
@@ -2208,7 +2208,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetBlendMode(items: any[] | Phaser.GameObjects.GameObject[], value: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetBlendMode<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `depth`
@@ -2228,7 +2228,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetDepth(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetDepth<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * [description]
@@ -2236,7 +2236,7 @@ declare namespace Phaser {
          * @param hitArea [description]
          * @param hitAreaCallback [description]
          */
-        function SetHitArea(items: any[] | Phaser.GameObjects.GameObject[], hitArea: any, hitAreaCallback: HitAreaCallback): any[] | Phaser.GameObjects.GameObject[];
+        function SetHitArea<G extends Phaser.GameObjects.GameObject[]>(items: G, hitArea: any, hitAreaCallback: HitAreaCallback): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public properties `originX` and `originY`
@@ -2258,7 +2258,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetOrigin(items: any[] | Phaser.GameObjects.GameObject[], originX: number, originY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetOrigin<G extends Phaser.GameObjects.GameObject[]>(items: G, originX: number, originY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `rotation`
@@ -2278,7 +2278,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetRotation(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetRotation<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public properties `scaleX` and `scaleY`
@@ -2300,7 +2300,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetScale(items: any[] | Phaser.GameObjects.GameObject[], scaleX: number, scaleY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetScale<G extends Phaser.GameObjects.GameObject[]>(items: G, scaleX: number, scaleY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `scaleX`
@@ -2320,7 +2320,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetScaleX(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetScaleX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `scaleY`
@@ -2340,7 +2340,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetScaleY(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetScaleY<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * [description]
@@ -2350,7 +2350,7 @@ declare namespace Phaser {
          * @param bottomLeft [description]
          * @param bottomRight [description]
          */
-        function SetTint(items: any[] | Phaser.GameObjects.GameObject[], topLeft: number, topRight?: number, bottomLeft?: number, bottomRight?: number): any[] | Phaser.GameObjects.GameObject[];
+        function SetTint<G extends Phaser.GameObjects.GameObject[]>(items: G, topLeft: number, topRight?: number, bottomLeft?: number, bottomRight?: number): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `visible`
@@ -2365,7 +2365,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetVisible(items: any[] | Phaser.GameObjects.GameObject[], value: boolean, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetVisible<G extends Phaser.GameObjects.GameObject[]>(items: G, value: boolean, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `x`
@@ -2385,7 +2385,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetX(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public properties `x` and `y`
@@ -2407,7 +2407,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetXY(items: any[] | Phaser.GameObjects.GameObject[], x: number, y?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetXY<G extends Phaser.GameObjects.GameObject[]>(items: G, x: number, y?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `y`
@@ -2427,7 +2427,7 @@ declare namespace Phaser {
          * @param index An optional offset to start searching from within the items array. Default 0.
          * @param direction The direction to iterate through the array. 1 is from beginning to end, -1 from end to beginning. Default 1.
          */
-        function SetY(items: any[] | Phaser.GameObjects.GameObject[], value: number, step?: number, index?: integer, direction?: integer): any[] | Phaser.GameObjects.GameObject[];
+        function SetY<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
          * Iterate through items changing the position of each element to
@@ -2443,23 +2443,13 @@ declare namespace Phaser {
          * @param direction [description] Default 0.
          * @param output [description]
          */
-        function ShiftPosition(items: any[] | Phaser.GameObjects.GameObject[], x: number, y: number, direction?: integer, output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2;
+        function ShiftPosition<G extends Phaser.GameObjects.GameObject[], O extends Phaser.Math.Vector2>(items: G, x: number, y: number, direction?: integer, output?: O): O;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          */
-        function Shuffle(items: any[] | Phaser.GameObjects.GameObject[]): any[] | Phaser.GameObjects.GameObject[];
-
-        /**
-         * [description]
-         * @param items An array of Game Objects. The contents of this array are updated by this Action.
-         * @param property [description]
-         * @param min [description]
-         * @param max [description]
-         * @param inc [description]
-         */
-        function SmootherStep(items: any[] | Phaser.GameObjects.GameObject[], property: string, min: number, max: number, inc: number): any[] | Phaser.GameObjects.GameObject[];
+        function Shuffle<G extends Phaser.GameObjects.GameObject[]>(items: G): G;
 
         /**
          * [description]
@@ -2469,7 +2459,17 @@ declare namespace Phaser {
          * @param max [description]
          * @param inc [description]
          */
-        function SmoothStep(items: any[] | Phaser.GameObjects.GameObject[], property: string, min: number, max: number, inc: number): any[] | Phaser.GameObjects.GameObject[];
+        function SmootherStep<G extends Phaser.GameObjects.GameObject[]>(items: G, property: string, min: number, max: number, inc: number): G;
+
+        /**
+         * [description]
+         * @param items An array of Game Objects. The contents of this array are updated by this Action.
+         * @param property [description]
+         * @param min [description]
+         * @param max [description]
+         * @param inc [description]
+         */
+        function SmoothStep<G extends Phaser.GameObjects.GameObject[]>(items: G, property: string, min: number, max: number, inc: number): G;
 
         /**
          * [description]
@@ -2479,13 +2479,13 @@ declare namespace Phaser {
          * @param max [description]
          * @param inc [description] Default false.
          */
-        function Spread(items: any[] | Phaser.GameObjects.GameObject[], property: string, min: number, max: number, inc?: number): any[] | Phaser.GameObjects.GameObject[];
+        function Spread<G extends Phaser.GameObjects.GameObject[]>(items: G, property: string, min: number, max: number, inc?: number): G;
 
         /**
          * [description]
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          */
-        function ToggleVisible(items: any[] | Phaser.GameObjects.GameObject[]): any[] | Phaser.GameObjects.GameObject[];
+        function ToggleVisible<G extends Phaser.GameObjects.GameObject[]>(items: G): G;
 
         /**
          * Wrap each item's coordinates within a rectangle's area.
@@ -2493,7 +2493,7 @@ declare namespace Phaser {
          * @param rect The rectangle.
          * @param padding An amount added to each side of the rectangle during the operation. Default 0.
          */
-        function WrapInRectangle(items: any[] | Phaser.GameObjects.GameObject[], rect: Phaser.Geom.Rectangle, padding?: number): any[] | Phaser.GameObjects.GameObject[];
+        function WrapInRectangle<G extends Phaser.GameObjects.GameObject[]>(items: G, rect: Phaser.Geom.Rectangle, padding?: number): G;
 
     }
 
@@ -3835,13 +3835,13 @@ declare namespace Phaser {
                  * [description]
                  * @param renderableObjects [description]
                  */
-                cull(renderableObjects: Phaser.GameObjects.GameObject[]): Phaser.GameObjects.GameObject[];
+                cull<G extends Phaser.GameObjects.GameObject[]>(renderableObjects: G): G;
 
                 /**
                  * [description]
                  * @param interactiveObjects [description]
                  */
-                cullHitTest(interactiveObjects: Phaser.GameObjects.GameObject[]): Phaser.GameObjects.GameObject[];
+                cullHitTest<G extends Phaser.GameObjects.GameObject[]>(interactiveObjects: G): G;
 
                 /**
                  * [description]
@@ -3908,7 +3908,7 @@ declare namespace Phaser {
                  * @param y [description]
                  * @param output [description]
                  */
-                getWorldPoint(x: number, y: number, output?: object | Phaser.Math.Vector2): Phaser.Math.Vector2;
+                getWorldPoint<O extends Phaser.Math.Vector2>(x: number, y: number, output?: O): O;
 
                 /**
                  * [description]
@@ -5002,7 +5002,7 @@ declare namespace Phaser {
              * @param t The position along the curve to return. Where 0 is the start and 1 is the end.
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
@@ -5076,7 +5076,7 @@ declare namespace Phaser {
              * @param graphics The Graphics instance onto which this curve will be drawn.
              * @param pointsTotal The resolution of the curve. The higher the value the smoother it will render, at the cost of rendering performance. Default 32.
              */
-            draw(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): Phaser.GameObjects.Graphics;
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): G;
 
             /**
              * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
@@ -5121,7 +5121,7 @@ declare namespace Phaser {
              * @param u [description]
              * @param out [description]
              */
-            getPointAt(u: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPointAt<O extends Phaser.Math.Vector2>(u: number, out?: O): O;
 
             /**
              * [description]
@@ -5133,7 +5133,7 @@ declare namespace Phaser {
              * [description]
              * @param out [description]
              */
-            getRandomPoint(out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getRandomPoint<O extends Phaser.Math.Vector2>(out?: O): O;
 
             /**
              * [description]
@@ -5145,21 +5145,21 @@ declare namespace Phaser {
              * [description]
              * @param out [description]
              */
-            getStartPoint(out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
 
             /**
              * [description]
              * @param t [description]
              * @param out [description]
              */
-            getTangent(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getTangent<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
              * @param u [description]
              * @param out [description]
              */
-            getTangentAt(u: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getTangentAt<O extends Phaser.Math.Vector2>(u: number, out?: O): O;
 
             /**
              * [description]
@@ -5216,7 +5216,7 @@ declare namespace Phaser {
              * @param t The position along the curve to return. Where 0 is the start and 1 is the end.
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * Sets the horizontal radius of this curve.
@@ -5345,7 +5345,7 @@ declare namespace Phaser {
              * @param t The position along the curve to return. Where 0 is the start and 1 is the end.
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
@@ -5386,14 +5386,14 @@ declare namespace Phaser {
              * @param t The position along the curve to return. Where 0 is the start and 1 is the end.
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
              * @param u [description]
              * @param out [description]
              */
-            getPointAt(u: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPointAt<O extends Phaser.Math.Vector2>(u: number, out?: O): O;
 
             /**
              * Gets the resolution of this curve.
@@ -5492,7 +5492,7 @@ declare namespace Phaser {
              * @param graphics [description]
              * @param pointsTotal [description] Default 32.
              */
-            draw(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): Phaser.GameObjects.Graphics;
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): G;
 
             /**
              * Creates an ellipse curve positioned at the previous end point, using the given parameters.
@@ -5516,7 +5516,7 @@ declare namespace Phaser {
              * @param out [description]
              * @param accuracy [description] Default 16.
              */
-            getBounds(out?: Phaser.Geom.Rectangle, accuracy?: integer): Phaser.Geom.Rectangle;
+            getBounds<O extends Phaser.Math.Vector2>(out?: O, accuracy?: integer): O;
 
             /**
              * [description]
@@ -5527,7 +5527,7 @@ declare namespace Phaser {
              * [description]
              * @param out [description]
              */
-            getEndPoint(out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getEndPoint<O extends Phaser.Math.Vector2>(out?: O): O;
 
             /**
              * [description]
@@ -5539,7 +5539,7 @@ declare namespace Phaser {
              * @param t [description]
              * @param out [description]
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
@@ -5551,7 +5551,7 @@ declare namespace Phaser {
              * [description]
              * @param out [description]
              */
-            getRandomPoint(out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getRandomPoint<O extends Phaser.Math.Vector2>(out?: O): O;
 
             /**
              * [description]
@@ -5563,7 +5563,7 @@ declare namespace Phaser {
              * [description]
              * @param out [description]
              */
-            getStartPoint(out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
 
             /**
              * [description]
@@ -5640,7 +5640,7 @@ declare namespace Phaser {
              * @param t The position along the curve to return. Where 0 is the start and 1 is the end.
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
@@ -5694,7 +5694,7 @@ declare namespace Phaser {
              * @param t The position along the curve to return. Where 0 is the start and 1 is the end.
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
-            getPoint(t: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
 
             /**
              * [description]
@@ -6319,7 +6319,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function BottomCenter(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function BottomCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the bottom left of the other.
@@ -6328,7 +6328,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function BottomLeft(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function BottomLeft<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the bottom right of the other.
@@ -6337,7 +6337,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function BottomRight(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function BottomRight<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the center of the other.
@@ -6346,7 +6346,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function Center(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function Center<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the left center of the other.
@@ -6355,7 +6355,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function LeftCenter(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function LeftCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned relative to the other.
@@ -6367,7 +6367,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function QuickSet(child: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, position: integer, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function QuickSet<G extends Phaser.GameObjects.GameObject>(child: G, alignIn: Phaser.GameObjects.GameObject, position: integer, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the right center of the other.
@@ -6376,7 +6376,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function RightCenter(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function RightCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the top center of the other.
@@ -6385,7 +6385,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function TopCenter(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function TopCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the top left of the other.
@@ -6394,7 +6394,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function TopLeft(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function TopLeft<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the top right of the other.
@@ -6403,7 +6403,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function TopRight(gameObject: Phaser.GameObjects.GameObject, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function TopRight<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignIn: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
             }
 
@@ -6415,7 +6415,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function BottomCenter(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function BottomCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the bottom left position of the other.
@@ -6424,7 +6424,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function BottomLeft(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function BottomLeft<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the bottom right position of the other.
@@ -6433,7 +6433,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function BottomRight(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function BottomRight<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the left bottom position of the other.
@@ -6442,7 +6442,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function LeftBottom(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function LeftBottom<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the left center position of the other.
@@ -6451,7 +6451,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function LeftCenter(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function LeftCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the left top position of the other.
@@ -6460,7 +6460,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function LeftTop(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function LeftTop<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the right bottom position of the other.
@@ -6469,7 +6469,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function RightBottom(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function RightBottom<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the right center position of the other.
@@ -6478,7 +6478,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function RightCenter(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function RightCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the right top position of the other.
@@ -6487,7 +6487,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function RightTop(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function RightTop<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the top center position of the other.
@@ -6496,7 +6496,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function TopCenter(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function TopCenter<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the top left position of the other.
@@ -6505,7 +6505,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function TopLeft(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function TopLeft<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned next to the top right position of the other.
@@ -6514,7 +6514,7 @@ declare namespace Phaser {
                  * @param offsetX Optional horizontal offset from the position. Default 0.
                  * @param offsetY Optional vertical offset from the position. Default 0.
                  */
-                function TopRight(gameObject: Phaser.GameObjects.GameObject, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): Phaser.GameObjects.GameObject;
+                function TopRight<G extends Phaser.GameObjects.GameObject>(gameObject: G, alignTo: Phaser.GameObjects.GameObject, offsetX?: number, offsetY?: number): G;
 
             }
 
@@ -6527,7 +6527,7 @@ declare namespace Phaser {
              * @param x The horizontal coordinate to position the Game Object on.
              * @param y The vertical coordinate to position the Game Object on.
              */
-            function CenterOn(gameObject: Phaser.GameObjects.GameObject, x: number, y: number): Phaser.GameObjects.GameObject;
+            function CenterOn<G extends Phaser.GameObjects.GameObject>(gameObject: G, x: number, y: number): G;
 
             /**
              * Returns the bottom coordinate from the bounds of the Game Object.
@@ -6590,42 +6590,42 @@ declare namespace Phaser {
              * @param gameObject The Game Object that will be re-positioned.
              * @param value The coordinate to position the Game Object bounds on.
              */
-            function SetBottom(gameObject: Phaser.GameObjects.GameObject, value: number): Phaser.GameObjects.GameObject;
+            function SetBottom<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
             /**
              * Positions the Game Object so that the center top of its bounds aligns with the given coordinate.
              * @param gameObject The Game Object that will be re-positioned.
              * @param x The coordinate to position the Game Object bounds on.
              */
-            function SetCenterX(gameObject: Phaser.GameObjects.GameObject, x: number): Phaser.GameObjects.GameObject;
+            function SetCenterX<G extends Phaser.GameObjects.GameObject>(gameObject: G, x: number): G;
 
             /**
              * Positions the Game Object so that the center top of its bounds aligns with the given coordinate.
              * @param gameObject The Game Object that will be re-positioned.
              * @param y The coordinate to position the Game Object bounds on.
              */
-            function SetCenterY(gameObject: Phaser.GameObjects.GameObject, y: number): Phaser.GameObjects.GameObject;
+            function SetCenterY<G extends Phaser.GameObjects.GameObject>(gameObject: G, y: number): G;
 
             /**
              * Positions the Game Object so that the left of its bounds aligns with the given coordinate.
              * @param gameObject The Game Object that will be re-positioned.
              * @param value The coordinate to position the Game Object bounds on.
              */
-            function SetLeft(gameObject: Phaser.GameObjects.GameObject, value: number): Phaser.GameObjects.GameObject;
+            function SetLeft<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
             /**
              * Positions the Game Object so that the left of its bounds aligns with the given coordinate.
              * @param gameObject The Game Object that will be re-positioned.
              * @param value The coordinate to position the Game Object bounds on.
              */
-            function SetRight(gameObject: Phaser.GameObjects.GameObject, value: number): Phaser.GameObjects.GameObject;
+            function SetRight<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
             /**
              * Positions the Game Object so that the top of its bounds aligns with the given coordinate.
              * @param gameObject The Game Object that will be re-positioned.
              * @param value The coordinate to position the Game Object bounds on.
              */
-            function SetTop(gameObject: Phaser.GameObjects.GameObject, value: number): Phaser.GameObjects.GameObject;
+            function SetTop<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
         }
 
@@ -9997,34 +9997,34 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
                  * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
             }
 
             /**
@@ -13143,31 +13143,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -13175,7 +13175,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -14145,31 +14145,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -14177,7 +14177,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -16428,31 +16428,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -16460,7 +16460,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -17324,31 +17324,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -17356,7 +17356,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -18091,31 +18091,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -18123,7 +18123,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * [description]
@@ -18860,31 +18860,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -18892,7 +18892,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -20026,31 +20026,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -20058,7 +20058,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -20750,31 +20750,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -20782,7 +20782,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -21480,31 +21480,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -21512,7 +21512,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -22045,7 +22045,7 @@ declare namespace Phaser {
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the circle.
              * @param out An object to store the return values in. If not given a Point object will be created.
              */
-            getPoint(position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getPoint<O extends Phaser.Geom.Point>(position: number, out?: O): O;
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Circle,
@@ -22055,13 +22055,13 @@ declare namespace Phaser {
              * @param stepRate Sets the quantity by getting the circumference of the circle and dividing it by the stepRate.
              * @param output An array to insert the points in to. If not provided a new array will be created.
              */
-            getPoints(quantity: integer, stepRate?: number, output?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            getPoints<O extends Phaser.Geom.Point[]>(quantity: integer, stepRate?: number, output?: O): O;
 
             /**
              * Returns a uniformly distributed random point from anywhere within the Circle.
              * @param point A Point or point-like object to set the random `x` and `y` values in.
              */
-            getRandomPoint(point?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getRandomPoint<O extends Phaser.Geom.Point>(point?: O): O;
 
             /**
              * Sets the x, y and radius of this circle.
@@ -22132,7 +22132,7 @@ declare namespace Phaser {
              * @param angle The angle from the center of the Circle to the circumference to return the point from. Given in radians.
              * @param out A Point, or point-like object, to store the results in. If not given a Point will be created.
              */
-            static CircumferencePoint(circle: Phaser.Geom.Circle, angle: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static CircumferencePoint<O extends Phaser.Geom.Point>(circle: Phaser.Geom.Circle, angle: number, out?: O): O;
 
             /**
              * Creates a new Circle instance based on the values contained in the given source.
@@ -22169,7 +22169,7 @@ declare namespace Phaser {
              * @param source The source Circle to copy the values from.
              * @param dest The destination Circle to copy the values to.
              */
-            static CopyFrom(source: Phaser.Geom.Circle, dest: Phaser.Geom.Circle): Phaser.Geom.Circle;
+            static CopyFrom<O extends Phaser.Geom.Circle>(source: Phaser.Geom.Circle, dest: O): O;
 
             /**
              * Compares the `x`, `y` and `radius` properties of the two given Circles.
@@ -22185,7 +22185,7 @@ declare namespace Phaser {
              * @param circle The Circle to get the bounds from.
              * @param out A Rectangle, or rectangle-like object, to store the circle bounds in. If not given a new Rectangle will be created.
              */
-            static GetBounds(circle: Phaser.Geom.Circle, out?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            static GetBounds<O extends Phaser.Geom.Rectangle>(circle: Phaser.Geom.Circle, out?: O): O;
 
             /**
              * Returns a Point object containing the coordinates of a point on the circumference of the Circle
@@ -22197,7 +22197,7 @@ declare namespace Phaser {
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the circle.
              * @param out An object to store the return values in. If not given a Point object will be created.
              */
-            static GetPoint(circle: Phaser.Geom.Circle, position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetPoint<O extends Phaser.Geom.Point>(circle: Phaser.Geom.Circle, position: number, out?: O): O;
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Circle,
@@ -22216,21 +22216,21 @@ declare namespace Phaser {
              * @param x The amount to horizontally offset the Circle by.
              * @param y The amount to vertically offset the Circle by.
              */
-            static Offset(circle: Phaser.Geom.Circle, x: number, y: number): Phaser.Geom.Circle;
+            static Offset<O extends Phaser.Geom.Circle>(circle: O, x: number, y: number): O;
 
             /**
              * Offsets the Circle by the values given in the `x` and `y` properties of the Point object.
              * @param circle The Circle to be offset (translated.)
              * @param point The Point object containing the values to offset the Circle by.
              */
-            static OffsetPoint(circle: Phaser.Geom.Circle, point: Phaser.Geom.Point | object): Phaser.Geom.Circle;
+            static OffsetPoint<O extends Phaser.Geom.Circle>(circle: O, point: Phaser.Geom.Point | object): O;
 
             /**
              * Returns a uniformly distributed random point from anywhere within the given Circle.
              * @param circle The Circle to get a random point from.
              * @param out A Point or point-like object to set the random `x` and `y` values in.
              */
-            static Random(circle: Phaser.Geom.Circle, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static Random<O extends Phaser.Geom.Point>(circle: Phaser.Geom.Circle, out?: O): O;
 
         }
 
@@ -22281,7 +22281,7 @@ declare namespace Phaser {
              * @param angle The angle from the center of the Ellipse to the circumference to return the point from. Given in radians.
              * @param out A Point, or point-like object, to store the results in. If not given a Point will be created.
              */
-            static CircumferencePoint(ellipse: Phaser.Geom.Ellipse, angle: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static CircumferencePoint<O extends Phaser.Geom.Point>(ellipse: Phaser.Geom.Ellipse, angle: number, out?: O): O;
 
             /**
              * Creates a new Ellipse instance based on the values contained in the given source.
@@ -22318,7 +22318,7 @@ declare namespace Phaser {
              * @param source The source Ellipse to copy the values from.
              * @param dest The destination Ellipse to copy the values to.
              */
-            static CopyFrom(source: Phaser.Geom.Ellipse, dest: Phaser.Geom.Ellipse): Phaser.Geom.Ellipse;
+            static CopyFrom<O extends Phaser.Geom.Ellipse>(source: Phaser.Geom.Ellipse, dest: O): O;
 
             /**
              * The x position of the center of the ellipse.
@@ -22356,7 +22356,7 @@ declare namespace Phaser {
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the ellipse.
              * @param out An object to store the return values in. If not given a Point object will be created.
              */
-            getPoint(position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getPoint<O extends Phaser.Geom.Point>(position: number, out?: O): O;
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
@@ -22372,7 +22372,7 @@ declare namespace Phaser {
              * Returns a uniformly distributed random point from anywhere within the given Ellipse.
              * @param point A Point or point-like object to set the random `x` and `y` values in.
              */
-            getRandomPoint(point?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getRandomPoint<O extends Phaser.Geom.Point>(point?: O): O;
 
             /**
              * Sets the x, y, width and height of this ellipse.
@@ -22455,7 +22455,7 @@ declare namespace Phaser {
              * @param ellipse The Ellipse to get the bounds from.
              * @param out A Rectangle, or rectangle-like object, to store the ellipse bounds in. If not given a new Rectangle will be created.
              */
-            static GetBounds(ellipse: Phaser.Geom.Ellipse, out?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            static GetBounds<O extends Phaser.Geom.Rectangle>(ellipse: Phaser.Geom.Ellipse, out?: O): O;
 
             /**
              * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse
@@ -22467,7 +22467,7 @@ declare namespace Phaser {
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the ellipse.
              * @param out An object to store the return values in. If not given a Point object will be created.
              */
-            static GetPoint(ellipse: Phaser.Geom.Ellipse, position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetPoint<O extends Phaser.Geom.Point>(ellipse: Phaser.Geom.Ellipse, position: number, out?: O): O;
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
@@ -22478,7 +22478,7 @@ declare namespace Phaser {
              * @param stepRate Sets the quantity by getting the circumference of the ellipse and dividing it by the stepRate.
              * @param out An array to insert the points in to. If not provided a new array will be created.
              */
-            static GetPoints(ellipse: Phaser.Geom.Ellipse, quantity: integer, stepRate?: number, out?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            static GetPoints<O extends Phaser.Geom.Point[]>(ellipse: Phaser.Geom.Ellipse, quantity: integer, stepRate?: number, out?: O): O;
 
             /**
              * Offsets the Ellipse by the values given.
@@ -22486,21 +22486,21 @@ declare namespace Phaser {
              * @param x The amount to horizontally offset the Ellipse by.
              * @param y The amount to vertically offset the Ellipse by.
              */
-            static Offset(ellipse: Phaser.Geom.Ellipse, x: number, y: number): Phaser.Geom.Ellipse;
+            static Offset<O extends Phaser.Geom.Ellipse>(ellipse: O, x: number, y: number): O;
 
             /**
              * Offsets the Ellipse by the values given in the `x` and `y` properties of the Point object.
              * @param ellipse The Ellipse to be offset (translated.)
              * @param point The Point object containing the values to offset the Ellipse by.
              */
-            static OffsetPoint(ellipse: Phaser.Geom.Ellipse, point: Phaser.Geom.Point | object): Phaser.Geom.Ellipse;
+            static OffsetPoint<O extends Phaser.Geom.Ellipse>(ellipse: O, point: Phaser.Geom.Point | object): O;
 
             /**
              * Returns a uniformly distributed random point from anywhere within the given Ellipse.
              * @param ellipse The Ellipse to get a random point from.
              * @param out A Point or point-like object to set the random `x` and `y` values in.
              */
-            static Random(ellipse: Phaser.Geom.Ellipse, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static Random<O extends Phaser.Geom.Point>(ellipse: Phaser.Geom.Ellipse, out?: O): O;
 
         }
 
@@ -22525,7 +22525,7 @@ declare namespace Phaser {
              * @param rectB [description]
              * @param output [description]
              */
-            function GetRectangleIntersection(rectA: Phaser.Geom.Rectangle, rectB: Phaser.Geom.Rectangle, output?: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            function GetRectangleIntersection<O extends Phaser.Geom.Rectangle>(rectA: Phaser.Geom.Rectangle, rectB: Phaser.Geom.Rectangle, output?: O): O;
 
             /**
              * [description]
@@ -22676,7 +22676,7 @@ declare namespace Phaser {
              * @param source [description]
              * @param dest [description]
              */
-            static CopyFrom(source: Phaser.Geom.Line, dest: Phaser.Geom.Line): Phaser.Geom.Line;
+            static CopyFrom<O extends Phaser.Geom.Line>(source: Phaser.Geom.Line, dest: O): O;
 
             /**
              * [description]
@@ -22690,14 +22690,14 @@ declare namespace Phaser {
              * @param line [description]
              * @param out [description]
              */
-            static GetMidPoint(line: Phaser.Geom.Line, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetMidPoint<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
             /**
              * [description]
              * @param line [description]
              * @param out [description]
              */
-            static GetNormal(line: Phaser.Geom.Line, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetNormal<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
             /**
              * [description]
@@ -22705,7 +22705,7 @@ declare namespace Phaser {
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the circle.
              * @param out [description]
              */
-            static GetPoint(line: Phaser.Geom.Line, position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetPoint<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, position: number, out?: O): O;
 
             /**
              * [description]
@@ -22714,7 +22714,7 @@ declare namespace Phaser {
              * @param stepRate [description]
              * @param out [description]
              */
-            static GetPoints(line: Phaser.Geom.Line, quantity: integer, stepRate?: integer, out?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            static GetPoints<O extends Phaser.Geom.Point[]>(line: Phaser.Geom.Line, quantity: integer, stepRate?: integer, out?: O): O;
 
             /**
              * [description]
@@ -22753,7 +22753,7 @@ declare namespace Phaser {
              * @param position [description]
              * @param output [description]
              */
-            getPoint(position: number, output?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getPoint<O extends Phaser.Geom.Point>(position: number, output?: O): O;
 
             /**
              * [description]
@@ -22761,13 +22761,13 @@ declare namespace Phaser {
              * @param stepRate [description]
              * @param output [description]
              */
-            getPoints(quantity: integer, stepRate?: integer, output?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            getPoints<O extends Phaser.Geom.Point>(quantity: integer, stepRate?: integer, output?: O): O;
 
             /**
              * [description]
              * @param point [description]
              */
-            getRandomPoint(point?: Phaser.Geom.Point | object): Phaser.Geom.Point;
+            getRandomPoint<O extends Phaser.Geom.Point>(point?: O): O;
 
             /**
              * [description]
@@ -22782,13 +22782,13 @@ declare namespace Phaser {
              * Returns a Vector2 object that corresponds to the start of this Line.
              * @param vec2 A Vector2 object to set the results in. If `undefined` a new Vector2 will be created.
              */
-            getPointA(vec2?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPointA<O extends Phaser.Math.Vector2>(vec2?: O): O;
 
             /**
              * Returns a Vector2 object that corresponds to the start of this Line.
              * @param vec2 A Vector2 object to set the results in. If `undefined` a new Vector2 will be created.
              */
-            getPointB(vec2?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            getPointB<O extends Phaser.Math.Vector2>(vec2?: O): O;
 
             /**
              * The left position of the Line.
@@ -22834,7 +22834,7 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static Offset(line: Phaser.Geom.Line, x: number, y: number): Phaser.Geom.Line;
+            static Offset<O extends Phaser.Geom.Line>(line: O, x: number, y: number): O;
 
             /**
              * [description]
@@ -22847,7 +22847,7 @@ declare namespace Phaser {
              * @param line [description]
              * @param out [description]
              */
-            static Random(line: Phaser.Geom.Line, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static Random<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
             /**
              * [description]
@@ -22861,7 +22861,7 @@ declare namespace Phaser {
              * @param line [description]
              * @param angle [description]
              */
-            static Rotate(line: Phaser.Geom.Line, angle: number): Phaser.Geom.Line;
+            static Rotate<O extends Phaser.Geom.Line>(line: O, angle: number): O;
 
             /**
              * [description]
@@ -22869,7 +22869,7 @@ declare namespace Phaser {
              * @param point [description]
              * @param angle [description]
              */
-            static RotateAroundPoint(line: Phaser.Geom.Line, point: Phaser.Geom.Point | object, angle: number): Phaser.Geom.Line;
+            static RotateAroundPoint<O extends Phaser.Geom.Line>(line: O, point: Phaser.Geom.Point | object, angle: number): O;
 
             /**
              * [description]
@@ -22878,7 +22878,7 @@ declare namespace Phaser {
              * @param y [description]
              * @param angle [description]
              */
-            static RotateAroundXY(line: Phaser.Geom.Line, x: number, y: number, angle: number): Phaser.Geom.Line;
+            static RotateAroundXY<O extends Phaser.Geom.Line>(line: O, x: number, y: number, angle: number): O;
 
             /**
              * [description]
@@ -22888,7 +22888,7 @@ declare namespace Phaser {
              * @param angle [description]
              * @param length [description]
              */
-            static SetToAngle(line: Phaser.Geom.Line, x: number, y: number, angle: number, length: number): Phaser.Geom.Line;
+            static SetToAngle<O extends Phaser.Geom.Line>(line: O, x: number, y: number, angle: number, length: number): O;
 
             /**
              * [description]
@@ -22919,7 +22919,7 @@ declare namespace Phaser {
              * [description]
              * @param point [description]
              */
-            static Ceil(point: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Ceil<O extends Phaser.Geom.Point>(point: O): O;
 
             /**
              * [description]
@@ -22932,7 +22932,7 @@ declare namespace Phaser {
              * @param source [description]
              * @param dest [description]
              */
-            static CopyFrom(source: Phaser.Geom.Point, dest: Phaser.Geom.Point): Phaser.Geom.Point;
+            static CopyFrom<O extends Phaser.Geom.Point>(source: Phaser.Geom.Point, dest: O): O;
 
             /**
              * [description]
@@ -22945,14 +22945,14 @@ declare namespace Phaser {
              * [description]
              * @param point [description]
              */
-            static Floor(point: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Floor<O extends Phaser.Geom.Point>(point: O): O;
 
             /**
              * [description]
              * @param points [description]
              * @param out [description]
              */
-            static GetCentroid(points: Phaser.Geom.Point[], out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static GetCentroid<O extends Phaser.Geom.Point>(points: Phaser.Geom.Point[], out?: O): O;
 
             /**
              * [description]
@@ -22971,7 +22971,7 @@ declare namespace Phaser {
              * @param points [description]
              * @param out [description]
              */
-            static GetRectangleFromPoints(points: Phaser.Geom.Point[], out?: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static GetRectangleFromPoints<O extends Phaser.Geom.Rectangle>(points: Phaser.Geom.Point[], out?: O): O;
 
             /**
              * [description]
@@ -22980,20 +22980,20 @@ declare namespace Phaser {
              * @param t [description] Default 0.
              * @param out [description]
              */
-            static Interpolate(pointA: Phaser.Geom.Point, pointB: Phaser.Geom.Point, t?: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static Interpolate<O extends Phaser.Geom.Point>(pointA: Phaser.Geom.Point, pointB: Phaser.Geom.Point, t?: number, out?: O): O;
 
             /**
              * [description]
              * @param point [description]
              */
-            static Invert(point: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Invert<O extends Phaser.Geom.Point>(point: O): O;
 
             /**
              * [description]
              * @param point [description]
              * @param out [description]
              */
-            static Negative(point: Phaser.Geom.Point, out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Negative<O extends Phaser.Geom.Point>(point: Phaser.Geom.Point, out?: O): O;
 
             /**
              * The x coordinate of this Point.
@@ -23018,7 +23018,7 @@ declare namespace Phaser {
              * @param pointB [description]
              * @param out [description]
              */
-            static Project(pointA: Phaser.Geom.Point, pointB: Phaser.Geom.Point, out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Project<O extends Phaser.Geom.Point>(pointA: Phaser.Geom.Point, pointB: Phaser.Geom.Point, out?: O): O;
 
             /**
              * [description]
@@ -23026,14 +23026,14 @@ declare namespace Phaser {
              * @param pointB [description]
              * @param out [description]
              */
-            static ProjectUnit(pointA: Phaser.Geom.Point, pointB: Phaser.Geom.Point, out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static ProjectUnit<O extends Phaser.Geom.Point>(pointA: Phaser.Geom.Point, pointB: Phaser.Geom.Point, out?: O): O;
 
             /**
              * [description]
              * @param point [description]
              * @param magnitude [description]
              */
-            static SetMagnitude(point: Phaser.Geom.Point, magnitude: number): Phaser.Geom.Point;
+            static SetMagnitude<O extends Phaser.Geom.Point>(point: O, magnitude: number): O;
 
         }
 
@@ -23073,14 +23073,14 @@ declare namespace Phaser {
              * @param polygon [description]
              * @param out [description]
              */
-            static GetAABB(polygon: Phaser.Geom.Polygon, out?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            static GetAABB<O extends Phaser.Geom.Rectangle>(polygon: Phaser.Geom.Polygon, out?: O): O;
 
             /**
              * [description]
              * @param polygon [description]
              * @param output [description]
              */
-            static GetNumberArray(polygon: Phaser.Geom.Polygon, output?: any[] | number[]): any[] | number[];
+            static GetNumberArray<O extends number[]>(polygon: Phaser.Geom.Polygon, output?: O): O;
 
             /**
              * The area of this Polygon.
@@ -23132,7 +23132,7 @@ declare namespace Phaser {
              * [description]
              * @param polygon [description]
              */
-            static Reverse(polygon: Phaser.Geom.Polygon): Phaser.Geom.Polygon;
+            static Reverse<O extends Phaser.Geom.Polygon>(polygon: O): O;
 
         }
 
@@ -23159,13 +23159,13 @@ declare namespace Phaser {
              * [description]
              * @param rect [description]
              */
-            static Ceil(rect: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static Ceil<O extends Phaser.Geom.Rectangle>(rect: O): O;
 
             /**
              * [description]
              * @param rect [description]
              */
-            static CeilAll(rect: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static CeilAll<O extends Phaser.Geom.Rectangle>(rect: O): O;
 
             /**
              * [description]
@@ -23173,7 +23173,7 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static CenterOn(rect: Phaser.Geom.Rectangle, x: number, y: number): Phaser.Geom.Rectangle;
+            static CenterOn<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
             /**
              * [description]
@@ -23208,7 +23208,7 @@ declare namespace Phaser {
              * @param source [description]
              * @param dest [description]
              */
-            static CopyFrom(source: Phaser.Geom.Rectangle, dest: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static CopyFrom<O extends Phaser.Geom.Rectangle>(source: Phaser.Geom.Rectangle, dest: O): O;
 
             /**
              * [description]
@@ -23229,33 +23229,33 @@ declare namespace Phaser {
              * @param target [description]
              * @param source [description]
              */
-            static FitInside(target: Phaser.Geom.Rectangle, source: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static FitInside<O extends Phaser.Geom.Rectangle>(target: O, source: Phaser.Geom.Rectangle): O;
 
             /**
              * [description]
              * @param target [description]
              * @param source [description]
              */
-            static FitOutside(target: Phaser.Geom.Rectangle, source: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static FitOutside<O extends Phaser.Geom.Rectangle>(target: O, source: Phaser.Geom.Rectangle): O;
 
             /**
              * [description]
              * @param rect [description]
              */
-            static Floor(rect: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static Floor<O extends Phaser.Geom.Rectangle>(rect: O): O;
 
             /**
              * [description]
              * @param rect [description]
              */
-            static FloorAll(rect: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static FloorAll<O extends Phaser.Geom.Rectangle>(rect: O): O;
 
             /**
              * [description]
              * @param points [description]
              * @param out [description]
              */
-            static FromPoints(points: any[], out?: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static FromPoints<O extends Phaser.Geom.Rectangle>(points: any[], out?: O): O;
 
             /**
              * [description]
@@ -23268,7 +23268,7 @@ declare namespace Phaser {
              * @param rect [description]
              * @param out [description]
              */
-            static GetCenter(rect: Phaser.Geom.Rectangle, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetCenter<O extends Phaser.Geom.Point>(rect: Phaser.Geom.Rectangle, out?: O): O;
 
             /**
              * Position is a value between 0 and 1 where 0 = the top-left of the rectangle and 0.5 = the bottom right.
@@ -23276,7 +23276,7 @@ declare namespace Phaser {
              * @param position [description]
              * @param out [description]
              */
-            static GetPoint(rectangle: Phaser.Geom.Rectangle, position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point;
+            static GetPoint<O extends Phaser.Geom.Point>(rectangle: Phaser.Geom.Rectangle, position: number, out?: O): O;
 
             /**
              * [description]
@@ -23285,14 +23285,14 @@ declare namespace Phaser {
              * @param quantity [description]
              * @param out [description]
              */
-            static GetPoints(rectangle: Phaser.Geom.Rectangle, step: number, quantity: integer, out?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            static GetPoints<O extends Phaser.Geom.Point[]>(rectangle: Phaser.Geom.Rectangle, step: number, quantity: integer, out?: O): O;
 
             /**
              * [description]
              * @param rect [description]
              * @param out [description]
              */
-            static GetSize(rect: Phaser.Geom.Rectangle, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetSize<O extends Phaser.Geom.Point>(rect: Phaser.Geom.Rectangle, out?: O): O;
 
             /**
              * [description]
@@ -23300,7 +23300,7 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static Inflate(rect: Phaser.Geom.Rectangle, x: number, y: number): Phaser.Geom.Rectangle;
+            static Inflate<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
             /**
              * [description]
@@ -23309,21 +23309,21 @@ declare namespace Phaser {
              * @param quantity [description]
              * @param out [description]
              */
-            static MarchingAnts(rect: Phaser.Geom.Rectangle, step: number, quantity: integer, out?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            static MarchingAnts<O extends Phaser.Geom.Point[]>(rect: Phaser.Geom.Rectangle, step: number, quantity: integer, out?: O): O;
 
             /**
              * [description]
              * @param target [description]
              * @param points [description]
              */
-            static MergePoints(target: Phaser.Geom.Rectangle, points: Phaser.Geom.Point[]): Phaser.Geom.Rectangle;
+            static MergePoints<O extends Phaser.Geom.Rectangle>(target: O, points: Phaser.Geom.Point[]): O;
 
             /**
              * [description]
              * @param target [description]
              * @param source [description]
              */
-            static MergeRect(target: Phaser.Geom.Rectangle, source: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static MergeRect<O extends Phaser.Geom.Rectangle>(target: O, source: Phaser.Geom.Rectangle): O;
 
             /**
              * [description]
@@ -23331,7 +23331,7 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static MergeXY(target: Phaser.Geom.Rectangle, x: number, y: number): Phaser.Geom.Rectangle;
+            static MergeXY<O extends Phaser.Geom.Rectangle>(target: O, x: number, y: number): O;
 
             /**
              * [description]
@@ -23339,14 +23339,14 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static Offset(rect: Phaser.Geom.Rectangle, x: number, y: number): Phaser.Geom.Rectangle;
+            static Offset<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
             /**
              * [description]
              * @param rect [description]
              * @param point [description]
              */
-            static OffsetPoint(rect: Phaser.Geom.Rectangle, point: Phaser.Geom.Point): Phaser.Geom.Rectangle;
+            static OffsetPoint<O extends Phaser.Geom.Rectangle>(rect: O, point: Phaser.Geom.Point): O;
 
             /**
              * [description]
@@ -23367,14 +23367,14 @@ declare namespace Phaser {
              * @param angle [description]
              * @param out [description]
              */
-            static PerimeterPoint(rectangle: Phaser.Geom.Rectangle, angle: integer, out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static PerimeterPoint<O extends Phaser.Geom.Point>(rectangle: Phaser.Geom.Rectangle, angle: integer, out?: O): O;
 
             /**
              * [description]
              * @param rect [description]
              * @param out [description]
              */
-            static Random(rect: Phaser.Geom.Rectangle, out: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Random<O extends Phaser.Geom.Point>(rect: Phaser.Geom.Rectangle, out: O): O;
 
             /**
              * [description]
@@ -23408,7 +23408,7 @@ declare namespace Phaser {
              * @param position [description]
              * @param output [description]
              */
-            getPoint(position: number, output?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getPoint<O extends Phaser.Geom.Point>(position: number, output?: O): O;
 
             /**
              * [description]
@@ -23416,13 +23416,13 @@ declare namespace Phaser {
              * @param stepRate [description]
              * @param output [description]
              */
-            getPoints(quantity: integer, stepRate?: number, output?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            getPoints<O extends Phaser.Geom.Point[]>(quantity: integer, stepRate?: number, output?: O): O;
 
             /**
              * [description]
              * @param point [description]
              */
-            getRandomPoint(point?: Phaser.Geom.Point): Phaser.Geom.Point;
+            getRandomPoint<O extends Phaser.Geom.Point>(point?: O): O;
 
             /**
              * [description]
@@ -23461,25 +23461,25 @@ declare namespace Phaser {
              * Returns a Line object that corresponds to the top of this Rectangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineA(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineA<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * Returns a Line object that corresponds to the right of this Rectangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineB(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineB<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * Returns a Line object that corresponds to the bottom of this Rectangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineC(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineC<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * Returns a Line object that corresponds to the left of this Rectangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineD(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineD<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * [description]
@@ -23517,7 +23517,7 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static Scale(rect: Phaser.Geom.Rectangle, x: number, y: number): Phaser.Geom.Rectangle;
+            static Scale<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
             /**
              * [description]
@@ -23525,7 +23525,7 @@ declare namespace Phaser {
              * @param rectB [description]
              * @param out [description]
              */
-            static Union(rectA: Phaser.Geom.Rectangle, rectB: Phaser.Geom.Rectangle, out?: Phaser.Geom.Rectangle): Phaser.Geom.Rectangle;
+            static Union<O extends Phaser.Geom.Rectangle>(rectA: Phaser.Geom.Rectangle, rectB: Phaser.Geom.Rectangle, out?: O): O;
 
         }
 
@@ -23574,7 +23574,7 @@ declare namespace Phaser {
              * @param scaleY [description] Default 1.
              * @param out [description]
              */
-            static BuildFromPolygon(data: any[], holes?: any[], scaleX?: number, scaleY?: number, out?: any[] | Phaser.Geom.Triangle[]): any[] | Phaser.Geom.Triangle[];
+            static BuildFromPolygon<O extends Phaser.Geom.Triangle[]>(data: any[], holes?: any[], scaleX?: number, scaleY?: number, out?: O): O;
 
             /**
              * [description]
@@ -23592,14 +23592,14 @@ declare namespace Phaser {
              * @param y [description]
              * @param centerFunc [description]
              */
-            static CenterOn(triangle: Phaser.Geom.Triangle, x: number, y: number, centerFunc?: CenterFunction): Phaser.Geom.Triangle;
+            static CenterOn<O extends Phaser.Geom.Triangle>(triangle: O, x: number, y: number, centerFunc?: CenterFunction): O;
 
             /**
              * [description]
              * @param triangle [description]
              * @param out [description]
              */
-            static Centroid(triangle: Phaser.Geom.Triangle, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static Centroid<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
             /**
              * Computes the circumcentre of a triangle. The circumcentre is the centre of
@@ -23614,14 +23614,14 @@ declare namespace Phaser {
              * @param triangle [description]
              * @param out [description]
              */
-            static CircumCenter(triangle: Phaser.Geom.Triangle, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
+            static CircumCenter<O extends Phaser.Math.Vector2>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
             /**
              * [description]
              * @param triangle [description]
              * @param out [description]
              */
-            static CircumCircle(triangle: Phaser.Geom.Triangle, out?: Phaser.Geom.Circle): Phaser.Geom.Circle;
+            static CircumCircle<O extends Phaser.Geom.Circle>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
             /**
              * [description]
@@ -23658,7 +23658,7 @@ declare namespace Phaser {
              * @param source [description]
              * @param dest [description]
              */
-            static CopyFrom(source: Phaser.Geom.Triangle, dest: Phaser.Geom.Triangle): Phaser.Geom.Triangle;
+            static CopyFrom<O extends Phaser.Geom.Triangle>(source: Phaser.Geom.Triangle, dest: O): O;
 
             /**
              * [description]
@@ -23680,7 +23680,7 @@ declare namespace Phaser {
              * @param position [description]
              * @param out [description]
              */
-            static GetPoint(triangle: Phaser.Geom.Triangle, position: number, out?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            static GetPoint<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, position: number, out?: O): O;
 
             /**
              * [description]
@@ -23689,14 +23689,14 @@ declare namespace Phaser {
              * @param stepRate [description]
              * @param out [description]
              */
-            static GetPoints(triangle: Phaser.Geom.Triangle, quantity: integer, stepRate: number, out?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            static GetPoints<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, quantity: integer, stepRate: number, out?: O): O;
 
             /**
              * [description]
              * @param triangle [description]
              * @param out [description]
              */
-            static InCenter(triangle: Phaser.Geom.Triangle, out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static InCenter<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
             /**
              * [description]
@@ -23704,7 +23704,7 @@ declare namespace Phaser {
              * @param x [description]
              * @param y [description]
              */
-            static Offset(triangle: Phaser.Geom.Triangle, x: number, y: number): Phaser.Geom.Triangle;
+            static Offset<O extends Phaser.Geom.Triangle>(triangle: O, x: number, y: number): O;
 
             /**
              * [description]
@@ -23717,14 +23717,14 @@ declare namespace Phaser {
              * @param triangle [description]
              * @param out [description]
              */
-            static Random(triangle: Phaser.Geom.Triangle, out?: Phaser.Geom.Point): Phaser.Geom.Point;
+            static Random<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
             /**
              * [description]
              * @param triangle [description]
              * @param angle [description]
              */
-            static Rotate(triangle: Phaser.Geom.Triangle, angle: number): Phaser.Geom.Triangle;
+            static Rotate<O extends Phaser.Geom.Triangle>(triangle: O, angle: number): O;
 
             /**
              * [description]
@@ -23732,7 +23732,7 @@ declare namespace Phaser {
              * @param point [description]
              * @param angle [description]
              */
-            static RotateAroundPoint(triangle: Phaser.Geom.Triangle, point: Phaser.Geom.Point, angle: number): Phaser.Geom.Triangle;
+            static RotateAroundPoint<O extends Phaser.Geom.Triangle>(triangle: O, point: Phaser.Geom.Point, angle: number): O;
 
             /**
              * [description]
@@ -23741,7 +23741,7 @@ declare namespace Phaser {
              * @param y [description]
              * @param angle [description]
              */
-            static RotateAroundXY(triangle: Phaser.Geom.Triangle, x: number, y: number, angle: number): Phaser.Geom.Triangle;
+            static RotateAroundXY<O extends Phaser.Geom.Triangle>(triangle: O, x: number, y: number, angle: number): O;
 
             /**
              * [description]
@@ -23785,7 +23785,7 @@ declare namespace Phaser {
              * @param position [description]
              * @param output [description]
              */
-            getPoint(position: number, output?: Phaser.Geom.Point | object): Phaser.Geom.Point | object;
+            getPoint<O extends Phaser.Geom.Point>(position: number, output?: O): O;
 
             /**
              * [description]
@@ -23793,13 +23793,13 @@ declare namespace Phaser {
              * @param stepRate [description]
              * @param output [description]
              */
-            getPoints(quantity: integer, stepRate?: number, output?: any[] | Phaser.Geom.Point[]): any[] | Phaser.Geom.Point[];
+            getPoints<O extends Phaser.Geom.Point[]>(quantity: integer, stepRate?: number, output?: O): O;
 
             /**
              * [description]
              * @param point [description]
              */
-            getRandomPoint(point?: Phaser.Geom.Point): Phaser.Geom.Point;
+            getRandomPoint<O extends Phaser.Geom.Point>(point?: O): O;
 
             /**
              * [description]
@@ -23816,19 +23816,19 @@ declare namespace Phaser {
              * Returns a Line object that corresponds to Line A of this Triangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineA(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineA<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * Returns a Line object that corresponds to Line B of this Triangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineB(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineB<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * Returns a Line object that corresponds to Line C of this Triangle.
              * @param line A Line object to set the results in. If `undefined` a new Line will be created.
              */
-            getLineC(line?: Phaser.Geom.Line): Phaser.Geom.Line;
+            getLineC<O extends Phaser.Geom.Line>(line?: O): O;
 
             /**
              * [description]
@@ -29128,31 +29128,31 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -29160,7 +29160,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -30363,31 +30363,31 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -30395,7 +30395,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -33378,6 +33378,44 @@ declare namespace Phaser {
             }
 
             /**
+             * Collision Types - Determine if and how entities collide with each other.
+             * 
+             * 
+             * 
+             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
+             * 
+             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
+             * 
+             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
+             * 
+             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
+             * 
+             * FIXED collisions is undefined.
+             */
+            const enum COLLIDES {
+                /**
+                 * Never collides.
+                 */
+                NEVER,
+                /**
+                 * Lite collision.
+                 */
+                LITE,
+                /**
+                 * Passive collision.
+                 */
+                PASSIVE,
+                /**
+                 * Active collision.
+                 */
+                ACTIVE,
+                /**
+                 * Fixed collision.
+                 */
+                FIXED,
+            }
+
+            /**
              * [description]
              */
             class CollisionMap {
@@ -34404,31 +34442,31 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -34436,7 +34474,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -35525,31 +35563,31 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -35557,7 +35595,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -36279,6 +36317,40 @@ declare namespace Phaser {
              * @param bodyB [description]
              */
             function Solver(world: Phaser.Physics.Impact.World, bodyA: Phaser.Physics.Impact.Body, bodyB: Phaser.Physics.Impact.Body): void;
+
+            /**
+             * Collision Types - Determine if and how entities collide with each other.
+             * 
+             * 
+             * 
+             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
+             * 
+             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
+             * 
+             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
+             * 
+             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
+             * 
+             * FIXED collisions is undefined.
+             */
+            const enum TYPE {
+                /**
+                 * Collides with nothing.
+                 */
+                NONE,
+                /**
+                 * Type A. Collides with Type B.
+                 */
+                A,
+                /**
+                 * Type B. Collides with Type A.
+                 */
+                B,
+                /**
+                 * Collides with both types A and B.
+                 */
+                BOTH,
+            }
 
             /**
              * Set up the trace-result
@@ -37465,31 +37537,31 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -37497,7 +37569,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -38608,31 +38680,31 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -38640,7 +38712,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -40018,49 +40090,87 @@ declare namespace Phaser {
 
         }
 
-        class Impact {
-            /**
-             * Collision Types - Determine if and how entities collide with each other.
-             * 
-             * 
-             * 
-             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
-             * 
-             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
-             * 
-             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
-             * 
-             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
-             * 
-             * FIXED collisions is undefined.
-             */
-            static COLLIDES: object;
-
-            /**
-             * Collision Types - Determine if and how entities collide with each other.
-             * 
-             * 
-             * 
-             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
-             * 
-             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
-             * 
-             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
-             * 
-             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
-             * 
-             * FIXED collisions is undefined.
-             */
-            static TYPE: object;
-
-        }
-
     }
 
     namespace Plugins {
     }
 
-    namespace BlendModes {
+    /**
+     * Phaser Blend Modes.
+     */
+    const enum BlendModes {
+        /**
+         * Skips the Blend Mode check in the renderer.
+         */
+        SKIP_CHECK,
+        /**
+         * Normal blend mode.
+         */
+        NORMAL,
+        /**
+         * Add blend mode.
+         */
+        ADD,
+        /**
+         * Multiply blend mode.
+         */
+        MULTIPLY,
+        /**
+         * Screen blend mode.
+         */
+        SCREEN,
+        /**
+         * Overlay blend mode.
+         */
+        OVERLAY,
+        /**
+         * Darken blend mode.
+         */
+        DARKEN,
+        /**
+         * Lighten blend mode.
+         */
+        LIGHTEN,
+        /**
+         * Color Dodge blend mode.
+         */
+        COLOR_DODGE,
+        /**
+         * Color Burn blend mode.
+         */
+        COLOR_BURN,
+        /**
+         * Hard Light blend mode.
+         */
+        HARD_LIGHT,
+        /**
+         * Soft Light blend mode.
+         */
+        SOFT_LIGHT,
+        /**
+         * Difference blend mode.
+         */
+        DIFFERENCE,
+        /**
+         * Exclusion blend mode.
+         */
+        EXCLUSION,
+        /**
+         * Hue blend mode.
+         */
+        HUE,
+        /**
+         * Saturation blend mode.
+         */
+        SATURATION,
+        /**
+         * Color blend mode.
+         */
+        COLOR,
+        /**
+         * Luminosity blend mode.
+         */
+        LUMINOSITY,
     }
 
     namespace Renderer {
@@ -41699,7 +41809,22 @@ declare namespace Phaser {
 
     }
 
-    namespace ScaleModes {
+    /**
+     * Phaser Scale Modes.
+     */
+    const enum ScaleModes {
+        /**
+         * Default Scale Mode (Linear).
+         */
+        DEFAULT,
+        /**
+         * Linear Scale Mode.
+         */
+        LINEAR,
+        /**
+         * Nearest Scale Mode.
+         */
+        NEAREST,
     }
 
     namespace Scenes {
@@ -43448,25 +43573,25 @@ declare namespace Phaser {
              * Brings the given child to the top of this List.
              * @param child [description]
              */
-            bringToTop(child: any): any;
+            bringToTop<O extends T>(child: O): O;
 
             /**
              * Sends the given child to the bottom of this List.
              * @param child [description]
              */
-            sendToBack(child: any): any;
+            sendToBack<O extends T>(child: O): O;
 
             /**
              * Moves the given child up one place in this group unless it's already at the top.
              * @param child [description]
              */
-            moveUp(child: any): any;
+            moveUp<O extends T>(child: O): O;
 
             /**
              * Moves the given child down one place in this group unless it's already at the bottom.
              * @param child [description]
              */
-            moveDown(child: any): any;
+            moveDown<O extends T>(child: O): O;
 
             /**
              * Reverses the order of all children in this List.
@@ -43483,7 +43608,7 @@ declare namespace Phaser {
              * @param oldChild The child in this List that will be replaced.
              * @param newChild The child to be inserted into this List.
              */
-            replace(oldChild: any, newChild: any): any;
+            replace<O extends T>(oldChild: O, newChild: O): O;
 
             /**
              * [description]
@@ -43817,6 +43942,20 @@ declare namespace Phaser {
     }
 
     namespace Textures {
+        /**
+         * Filter Types.
+         */
+        const enum FilterMode {
+            /**
+             * Linear filter type.
+             */
+            LINEAR,
+            /**
+             * Nearest neighbor filter type.
+             */
+            NEAREST,
+        }
+
         /**
          * A Frame is a section of a Texture.
          */
@@ -44318,7 +44457,7 @@ declare namespace Phaser {
              * The mode applies to the entire Texture, not just a specific Frame of it.
              * @param filterMode The Filter Mode.
              */
-            setFilter(filterMode: Phaser.Textures.LINEAR | Phaser.Textures.NEAREST): void;
+            setFilter(filterMode: Phaser.Textures.FilterMode.LINEAR | Phaser.Textures.FilterMode.NEAREST): void;
 
             /**
              * Destroys this Texture and releases references to its sources and frames.
@@ -44719,7 +44858,7 @@ declare namespace Phaser {
              * For pixel-art you should use Nearest.
              * @param filterMode The Filter Mode.
              */
-            setFilter(filterMode: Phaser.Textures.LINEAR | Phaser.Textures.NEAREST): void;
+            setFilter(filterMode: Phaser.Textures.FilterMode): void;
 
             /**
              * Destroys this Texture Source and nulls the source image reference.
@@ -46464,31 +46603,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -46496,7 +46635,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -48251,31 +48390,31 @@ declare namespace Phaser {
              * Gets the center coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getCenter(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getTopRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomLeft(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
-            getBottomRight(output?: Phaser.Math.Vector2 | object): Phaser.Math.Vector2 | object;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -48283,7 +48422,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds(output?: Phaser.Geom.Rectangle | object): Phaser.Geom.Rectangle | object;
+            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -52327,117 +52466,6 @@ declare namespace Phaser {
 
     }
 
-    class BlendModes {
-        /**
-         * Skips the Blend Mode check in the renderer.
-         */
-        static SKIP_CHECK: integer;
-
-        /**
-         * Normal blend mode.
-         */
-        static NORMAL: integer;
-
-        /**
-         * Add blend mode.
-         */
-        static ADD: integer;
-
-        /**
-         * Multiply blend mode.
-         */
-        static MULTIPLY: integer;
-
-        /**
-         * Screen blend mode.
-         */
-        static SCREEN: integer;
-
-        /**
-         * Overlay blend mode.
-         */
-        static OVERLAY: integer;
-
-        /**
-         * Darken blend mode.
-         */
-        static DARKEN: integer;
-
-        /**
-         * Lighten blend mode.
-         */
-        static LIGHTEN: integer;
-
-        /**
-         * Color Dodge blend mode.
-         */
-        static COLOR_DODGE: integer;
-
-        /**
-         * Color Burn blend mode.
-         */
-        static COLOR_BURN: integer;
-
-        /**
-         * Hard Light blend mode.
-         */
-        static HARD_LIGHT: integer;
-
-        /**
-         * Soft Light blend mode.
-         */
-        static SOFT_LIGHT: integer;
-
-        /**
-         * Difference blend mode.
-         */
-        static DIFFERENCE: integer;
-
-        /**
-         * Exclusion blend mode.
-         */
-        static EXCLUSION: integer;
-
-        /**
-         * Hue blend mode.
-         */
-        static HUE: integer;
-
-        /**
-         * Saturation blend mode.
-         */
-        static SATURATION: integer;
-
-        /**
-         * Color blend mode.
-         */
-        static COLOR: integer;
-
-        /**
-         * Luminosity blend mode.
-         */
-        static LUMINOSITY: integer;
-
-    }
-
-    class ScaleModes {
-        /**
-         * Default Scale Mode (Linear).
-         */
-        static DEFAULT: integer;
-
-        /**
-         * Linear Scale Mode.
-         */
-        static LINEAR: integer;
-
-        /**
-         * Nearest Scale Mode.
-         */
-        static NEAREST: integer;
-
-    }
-
     class Scenes {
         /**
          * Scene state.
@@ -52495,12 +52523,12 @@ declare namespace Phaser {
         /**
          * Linear filter type.
          */
-        static LINEAR: integer;
+        static readonly LINEAR: any;
 
         /**
-         * Nearest neighbor filter type.
+         * Nearest Neighbor filter type.
          */
-        static NEAREST: integer;
+        static readonly NEAREST: any;
 
     }
 

@@ -525,20 +525,17 @@ export class Parser {
     private createClass(doclet:any):dom.ClassDeclaration {
         let obj = dom.create.class(doclet.name);
 
+        let params = null;
         if (doclet.params) {
             let ctor = dom.create.constructor(null);
             this.setParams(doclet, ctor);
+            params = ctor.parameters;
 
             obj.members.push(ctor);
             (<any>ctor)._parent = obj;
         }
 
-        if(doclet.tags)
-        for(let tag of doclet.tags) {
-            if(tag.originalTitle === 'generic') {
-                obj.typeParameters.push(dom.create.typeParameter(this.processTypeName(tag.value)));
-            }
-        }
+        this.processGeneric(doclet, obj, params);
 
         if(doclet.classdesc)
             doclet.description = doclet.classdesc.split(/(\r\n?)/g).join('\n'); // make sure docs will be added
@@ -581,6 +578,8 @@ export class Parser {
 
         let obj = dom.create.function(doclet.name, null, returnType);
         this.setParams(doclet, obj);
+
+        this.processGeneric(doclet, obj, obj.parameters);
 
         this.processFlags(doclet, obj);
 
@@ -751,6 +750,28 @@ export class Parser {
         }
         if(doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
         if(doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
+    }
+
+    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration, params:dom.Parameter[]) {
+        if(doclet.tags)
+        for(let tag of doclet.tags) {
+            if(tag.originalTitle === 'generic') {
+                let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
+                obj.typeParameters.push(typeParam);
+                let overrides = matches[3] != null ? matches[3].split(',') : [];
+                if(params != null) {
+                    for(let param of params)  {
+                        if(overrides.indexOf(param.name) != -1) {
+                            param.type = dom.create.namedTypeReference(matches[2]);
+                        }
+                    }
+                }
+                if(overrides.indexOf('$return') != -1) {
+                    (<dom.FunctionDeclaration>obj).returnType = dom.create.namedTypeReference(matches[2]);
+                }
+            }
+        }
     }
 
     private getQualifiedName(local:any, target:any):string {
