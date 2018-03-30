@@ -1,5 +1,7 @@
 import * as dom from "dts-dom"
 
+const regexEndLine = /^.*((\r\n|\n|\r)|$)/gm
+
 export class Parser {
 
     topLevel: dom.TopLevelDeclaration[];
@@ -157,7 +159,7 @@ export class Parser {
                 this.objects[doclet.longname] = obj;
                 if(doclet.description) {
                     let otherDocs = obj.jsDocComment || "";
-                    obj.jsDocComment = doclet.description.split(/(\r\n?)/g).join('\n') + otherDocs;
+                    obj.jsDocComment = doclet.description.match(regexEndLine).join('\n') + otherDocs;
                 }
             }
         }
@@ -538,7 +540,7 @@ export class Parser {
         this.processGeneric(doclet, obj, params);
 
         if(doclet.classdesc)
-            doclet.description = doclet.classdesc.split(/(\r\n?)/g).join('\n'); // make sure docs will be added
+            doclet.description = doclet.classdesc.match(regexEndLine).join('\n'); // make sure docs will be added
 
         return obj;
     }
@@ -599,7 +601,7 @@ export class Parser {
                 let prop = this.createMember(propDoc);
                 properties.push(prop);
                 if(propDoc.description)
-                    prop.jsDocComment = propDoc.description.split(/(\r\n?)/g).join('\n');
+                    prop.jsDocComment = propDoc.description.match(regexEndLine).join('\n');
             }
 
             type = dom.create.objectType(properties);
@@ -637,7 +639,7 @@ export class Parser {
 
                     let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
                     if(paramDoc.description)
-                        obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.split(/(\r\n?)/g).join('\n')}` + defaultVal;
+                        obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.match(regexEndLine).join('\n')}` + defaultVal;
                     else if(defaultVal.length)
                         obj.jsDocComment += `\n@param ${paramDoc.name} ` + defaultVal;
                     continue;
@@ -666,7 +668,7 @@ export class Parser {
                 let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
 
                 if(paramDoc.description)
-                    obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.split(/(\r\n?)/g).join('\n')}` + defaultVal;
+                    obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.match(regexEndLine).join('\n')}` + defaultVal;
                 else if(defaultVal.length)
                     obj.jsDocComment += `\n@param ${paramDoc.name} ` + defaultVal;
             }
