@@ -3,13 +3,11 @@ declare type CallCallback = (item: Phaser.GameObjects.GameObject)=>void;
 declare type GridAlignConfig = {
     /**
      * The width of the grid in items (not pixels). -1 means lay all items out horizontally, regardless of quantity.
-     * 
      *                                  If both this value and height are set to -1 then this value overrides it and the `height` value is ignored.
      */
     width: integer;
     /**
      * The height of the grid in items (not pixels). -1 means lay all items out vertically, regardless of quantity.
-     * 
      *                                   If both this value and `width` are set to -1 then `width` overrides it and this value is ignored.
      */
     height: integer;
@@ -483,11 +481,8 @@ declare type GameStepCallback = ()=>void;
 declare namespace PluginManager {
     /**
      * Static method called directly by the Plugins
-     * 
      * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
-     * 
      * Plugin is the object to instantiate to create the plugin
-     * 
      * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
      * @param key [description]
      * @param plugin [description]
@@ -1797,14 +1792,9 @@ declare namespace Phaser {
     namespace Actions {
         /**
          * Takes an array of Game Objects, or any objects that have a public `angle` property,
-         * 
          * and then adds the given value to each of their `angle` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `Angle(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -1825,12 +1815,8 @@ declare namespace Phaser {
 
         /**
          * Takes an array of objects and returns the first element in the array that has properties which match
-         * 
          * all of those specified in the `compare` object. For example, if the compare object was: `{ scaleX: 0.5, alpha: 1 }`
-         * 
          * then it would return the first item which had the property `scaleX` set to 0.5 and `alpha` set to 1.
-         * 
-         * 
          * 
          * To use this with a Group: `GetFirst(group.getChildren(), compare, index)`
          * @param items The array of items to be searched by this action.
@@ -1841,12 +1827,8 @@ declare namespace Phaser {
 
         /**
          * Takes an array of objects and returns the last element in the array that has properties which match
-         * 
          * all of those specified in the `compare` object. For example, if the compare object was: `{ scaleX: 0.5, alpha: 1 }`
-         * 
          * then it would return the last item which had the property `scaleX` set to 0.5 and `alpha` set to 1.
-         * 
-         * 
          * 
          * To use this with a Group: `GetLast(group.getChildren(), compare, index)`
          * @param items The array of items to be searched by this action.
@@ -1857,7 +1839,6 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
-         * 
          * and then aligns them based on the grid configuration given to this action.
          * @param items The array of items to be updated by this action.
          * @param options The GridAlign Configuration object.
@@ -1866,14 +1847,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `alpha` property,
-         * 
          * and then adds the given value to each of their `alpha` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `IncAlpha(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -1886,14 +1862,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `x` property,
-         * 
          * and then adds the given value to each of their `x` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `IncX(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -1906,14 +1877,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
-         * 
          * and then adds the given value to each of them.
          * 
-         * 
-         * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `IncXY(group.getChildren(), x, y, stepX, stepY)`
          * @param items The array of items to be updated by this action.
@@ -1928,14 +1894,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `y` property,
-         * 
          * and then adds the given value to each of their `y` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `IncY(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -1997,14 +1958,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public property as defined in `key`,
-         * 
          * and then adds the given value to it.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `PropertyValueInc(group.getChildren(), key, value, step)`
          * @param items The array of items to be updated by this action.
@@ -2018,14 +1974,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public property as defined in `key`,
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `PropertyValueSet(group.getChildren(), key, value, step)`
          * @param items The array of items to be updated by this action.
@@ -2074,14 +2025,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `rotation` property,
-         * 
          * and then adds the given value to each of their `rotation` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `Rotate(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2111,14 +2057,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `scaleX` property,
-         * 
          * and then adds the given value to each of their `scaleX` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `ScaleX(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2131,14 +2072,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have public `scaleX` and `scaleY` properties,
-         * 
          * and then adds the given value to each of them.
          * 
-         * 
-         * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `ScaleXY(group.getChildren(), scaleX, scaleY, stepX, stepY)`
          * @param items The array of items to be updated by this action.
@@ -2153,14 +2089,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have a public `scaleY` property,
-         * 
          * and then adds the given value to each of their `scaleY` properties.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `ScaleY(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2173,14 +2104,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `alpha`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetAlpha(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2193,14 +2119,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `blendMode`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetBlendMode(group.getChildren(), value)`
          * @param items The array of items to be updated by this action.
@@ -2212,14 +2133,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `depth`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetDepth(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2240,14 +2156,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public properties `originX` and `originY`
-         * 
          * and then sets them to the given values.
          * 
-         * 
-         * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetOrigin(group.getChildren(), originX, originY, stepX, stepY)`
          * @param items The array of items to be updated by this action.
@@ -2262,14 +2173,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `rotation`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetRotation(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2282,14 +2188,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public properties `scaleX` and `scaleY`
-         * 
          * and then sets them to the given values.
          * 
-         * 
-         * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetScale(group.getChildren(), scaleX, scaleY, stepX, stepY)`
          * @param items The array of items to be updated by this action.
@@ -2304,14 +2205,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `scaleX`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetScaleX(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2324,14 +2220,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `scaleY`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetScaleY(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2354,10 +2245,7 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `visible`
-         * 
          * and then sets it to the given value.
-         * 
-         * 
          * 
          * To use this with a Group: `SetVisible(group.getChildren(), value)`
          * @param items The array of items to be updated by this action.
@@ -2369,14 +2257,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `x`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetX(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2389,14 +2272,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public properties `x` and `y`
-         * 
          * and then sets them to the given values.
          * 
-         * 
-         * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetXY(group.getChildren(), x, y, stepX, stepY)`
          * @param items The array of items to be updated by this action.
@@ -2411,14 +2289,9 @@ declare namespace Phaser {
 
         /**
          * Takes an array of Game Objects, or any objects that have the public property `y`
-         * 
          * and then sets it to the given value.
          * 
-         * 
-         * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
-         * 
-         * 
          * 
          * To use this with a Group: `SetY(group.getChildren(), value, step)`
          * @param items The array of items to be updated by this action.
@@ -2431,11 +2304,8 @@ declare namespace Phaser {
 
         /**
          * Iterate through items changing the position of each element to
-         * 
          * be that of the element that came before it in the array (or after it if direction = 1)
-         * 
          * The first items position is set to x/y.
-         * 
          * The final x/y coords are returned
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param x [description]
@@ -2503,25 +2373,13 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * This consists of a key, some default values (like the frame rate) and a bunch of Frame objects.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * The Animation Manager creates these. Game Objects don't own an instance of these directly.
          * 
-         * 
-         * 
          * Game Objects have the Animation Component, which are like playheads to global Animations (these objects)
-         * 
-         * 
          * 
          * So multiple Game Objects can have playheads all pointing to this one Animation instance.
          */
@@ -2561,7 +2419,6 @@ declare namespace Phaser {
 
             /**
              * How long the animation should play for.
-             * 
              * If frameRate is set it overrides this value otherwise frameRate is derived from duration.
              */
             duration: integer;
@@ -2633,7 +2490,6 @@ declare namespace Phaser {
 
             /**
              * Called for EVERY frame of the animation.
-             * 
              * See AnimationFrame.onUpdate for a frame specific callback.
              */
             onUpdate: false | Function;
@@ -2893,23 +2749,11 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Animations are managed by the global Animation Manager. This is a singleton class that is
-         * 
-         * 
          * 
          * responsible for creating and delivering animations and their corresponding data to all Game Objects.
          * 
-         * 
-         * 
          * Unlike plugins it is owned by the Game instance, not the Scene.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -3066,27 +2910,15 @@ declare namespace Phaser {
     /**
      * The Phaser.Game instance is the main controller for the entire Phaser game. It is responsible
      * 
-     * 
-     * 
      * for handling the boot process, parsing the configuration values, creating the renderer,
      * 
-     * 
-     * 
      * and setting-up all of the global Phaser systems, such as sound and input.
-     * 
-     * 
      * 
      * Once that is complete it will start the Scene Manager and then begin the main game loop.
      * 
      * 
      * 
-     * 
-     * 
-     * 
-     * 
      * You should generally avoid accessing any of the systems created by Game, and instead use those
-     * 
-     * 
      * 
      * made available to you via the Phaser.Scene Systems class instead.
      */
@@ -3099,8 +2931,6 @@ declare namespace Phaser {
 
         /**
          * The parsed Game Configuration object.
-         * 
-         * 
          * 
          * The values stored within this object are read-only and should not be changed at run-time.
          */
@@ -3139,8 +2969,6 @@ declare namespace Phaser {
         /**
          * An instance of the Animation Manager.
          * 
-         * 
-         * 
          * The Animation Manager is a global system responsible for managing all animations used within your game.
          */
         anims: Phaser.Animations.AnimationManager;
@@ -3148,16 +2976,12 @@ declare namespace Phaser {
         /**
          * An instance of the Texture Manager.
          * 
-         * 
-         * 
          * The Texture Manager is a global system responsible for managing all textures being used by your game.
          */
         textures: Phaser.Textures.TextureManager;
 
         /**
          * An instance of the Cache Manager.
-         * 
-         * 
          * 
          * The Cache Manager is a global system responsible for caching, accessing and releasing external game assets.
          */
@@ -3171,16 +2995,12 @@ declare namespace Phaser {
         /**
          * An instance of the Input Manager.
          * 
-         * 
-         * 
          * The Input Manager is a global system responsible for the capture of browser-level input events.
          */
         input: Phaser.Input.InputManager;
 
         /**
          * An instance of the Scene Manager.
-         * 
-         * 
          * 
          * The Scene Manager is a global system responsible for creating, modifying and updating the Scenes in your game.
          */
@@ -3189,18 +3009,13 @@ declare namespace Phaser {
         /**
          * A reference to the Device inspector.
          * 
-         * 
-         * 
          * Contains information about the device running this game, such as OS, browser vendor and feature support.
-         * 
          * Used by various systems to determine capabilities and code paths.
          */
         device: Phaser.DeviceConf;
 
         /**
          * An instance of the base Sound Manager.
-         * 
-         * 
          * 
          * The Sound Manager is a global system responsible for the playback and updating of all audio in your game.
          */
@@ -3209,10 +3024,7 @@ declare namespace Phaser {
         /**
          * An instance of the Time Step.
          * 
-         * 
-         * 
          * The Time Step is a global system responsible for setting-up and responding to the browser frame events, processing
-         * 
          * them and calculating delta values. It then automatically calls the game step.
          */
         loop: Phaser.Boot.TimeStep;
@@ -3220,42 +3032,30 @@ declare namespace Phaser {
         /**
          * An instance of the Plugin Manager.
          * 
-         * 
-         * 
          * The Plugin Manager is a global system that allows plugins to register themselves with it, and can then install
-         * 
          * those plugins into Scenes as required.
          */
         plugins: Phaser.Boot.PluginManager;
 
         /**
          * This method is called automatically when the DOM is ready. It is responsible for creating the renderer,
-         * 
          * displaying the Debug Header, adding the game canvas to the DOM and emitting the 'boot' event.
-         * 
          * It listens for a 'ready' event from the base systems and once received it will call `Game.start`.
          */
         protected boot(): void;
 
         /**
          * Called automatically by Game.boot once all of the global systems have finished setting themselves up.
-         * 
          * By this point the Game is now ready to start the main loop running.
-         * 
          * It will also enable the Visibility Handler.
          */
         protected start(): void;
 
         /**
          * The main Game Step. Called automatically by the Time Step, once per browser frame (typically as a result of
-         * 
          * Request Animation Frame, or Set Timeout on very old browsers.)
          * 
-         * 
-         * 
          * The step will update the global managers first, then proceed to update each Scene in turn, via the Scene Manager.
-         * 
-         * 
          * 
          * It will then render each Scene in turn, via the Renderer. This process emits `prerender` and `postrender` events.
          * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
@@ -3266,17 +3066,10 @@ declare namespace Phaser {
         /**
          * A special version of the Game Step for the HEADLESS renderer only.
          * 
-         * 
-         * 
          * The main Game Step. Called automatically by the Time Step, once per browser frame (typically as a result of
-         * 
          * Request Animation Frame, or Set Timeout on very old browsers.)
          * 
-         * 
-         * 
          * The step will update the global managers first, then proceed to update each Scene in turn, via the Scene Manager.
-         * 
-         * 
          * 
          * This process emits `prerender` and `postrender` events, even though nothing actually displays.
          * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
@@ -3286,35 +3079,30 @@ declare namespace Phaser {
 
         /**
          * Called automatically by the Visibility Handler.
-         * 
          * This will pause the main loop and then emit a pause event.
          */
         protected onHidden(): void;
 
         /**
          * Called automatically by the Visibility Handler.
-         * 
          * This will resume the main loop and then emit a resume event.
          */
         protected onVisible(): void;
 
         /**
          * Called automatically by the Visibility Handler.
-         * 
          * This will set the main loop into a 'blurred' state, which pauses it.
          */
         protected onBlur(): void;
 
         /**
          * Called automatically by the Visibility Handler.
-         * 
          * This will set the main loop into a 'focused' state, which resumes it.
          */
         protected onFocus(): void;
 
         /**
          * Updates the Game Config with the new width and height values given.
-         * 
          * Then resizes the Renderer and Input Manager scale.
          * @param width The new width of the game.
          * @param height The new height of the game.
@@ -3344,8 +3132,6 @@ declare namespace Phaser {
         /**
          * Called automatically by Phaser.Game and responsible for creating the renderer it will use.
          * 
-         * 
-         * 
          * Relies upon two webpack global flags to be defined: `WEBGL_RENDERER` and `CANVAS_RENDERER` during build time, but not at run-time.
          * @param game The Phaser.Game instance on which the renderer will be set.
          */
@@ -3353,8 +3139,6 @@ declare namespace Phaser {
 
         /**
          * Called automatically by Phaser.Game and responsible for creating the console.log debug header.
-         * 
-         * 
          * 
          * You can customize or disable the header via the Game Config object.
          * @param game The Phaser.Game instance which will output this debug header.
@@ -3364,11 +3148,7 @@ declare namespace Phaser {
         /**
          * The PluginManager is global and belongs to the Game instance, not a Scene.
          * 
-         * 
-         * 
          * It handles the installation and removal of all global and Scene based plugins.
-         * 
-         * 
          * 
          * Plugins automatically register themselves with the PluginManager in their respective classes.
          */
@@ -3453,7 +3233,6 @@ declare namespace Phaser {
 
             /**
              * Starts the Time Step running, if it is not already doing so.
-             * 
              * Called automatically by the Game Boot process.
              * @param callback The callback to be invoked each time the Time Step steps.
              */
@@ -3461,9 +3240,7 @@ declare namespace Phaser {
 
             /**
              * The main step method. This is called each time the browser updates, either by Request Animation Frame,
-             * 
              * or by Set Timeout. It is responsible for calculating the delta values, frame totals, cool down history and more.
-             * 
              * You generally should never call this method directly.
              * @param time The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
              */
@@ -3481,7 +3258,6 @@ declare namespace Phaser {
 
             /**
              * Wakes-up the TimeStep, restarting Request Animation Frame (or SetTimeout) and toggling the `running` flag to true.
-             * 
              * The `seamless` argument controls if the wake-up should adjust the start time or not.
              * @param seamless Adjust the startTime based on the lastTime values. Default false.
              */
@@ -3494,7 +3270,6 @@ declare namespace Phaser {
 
             /**
              * Destroys the TimeStep. This will stop Request Animation Frame, stop the step, clear the callbacks and null
-             * 
              * any objects.
              */
             destroy(): void;
@@ -3503,9 +3278,7 @@ declare namespace Phaser {
 
         /**
          * The Visibility Handler is responsible for listening out for document level visibility change events.
-         * 
          * This includes `visibilitychange` if the browser supports it, and blur and focus events. It then uses
-         * 
          * the provided Event Emitter and fires the related events.
          * @param eventEmitter The EventEmitter that will emit the visibility events.
          */
@@ -3519,15 +3292,7 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Data can be added, retrieved and removed based on the given keys.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -3536,8 +3301,6 @@ declare namespace Phaser {
         class BaseCache {
             /**
              * The Map in which the cache objects are stored.
-             * 
-             * 
              * 
              * You can query the Map directly or use the BaseCache methods.
              */
@@ -3550,7 +3313,6 @@ declare namespace Phaser {
 
             /**
              * Adds an item to this cache. The item is referenced by a unique string, which you are responsible
-             * 
              * for setting and keeping track of. The item can only be retrieved by using this string.
              * @param key The unique key by which the data added to the cache will be referenced.
              * @param data The data to be stored in the cache.
@@ -3572,12 +3334,8 @@ declare namespace Phaser {
             /**
              * Removes and item from this cache based on the given key.
              * 
-             * 
-             * 
              * If an entry matching the key is found it is removed from the cache and a `remove` event emitted.
-             * 
              * No additional checks are done on the item removed. If other systems or parts of your game code
-             * 
              * are relying on this item, it is up to you to sever those relationships prior to removing the item.
              * @param key The unique key of the item to remove from the cache.
              */
@@ -3753,7 +3511,6 @@ declare namespace Phaser {
 
                 /**
                  * Is this Camera using a bounds to restrict scrolling movement?
-                 * 
                  * Set this property along with the bounds via `Camera.setBounds`.
                  */
                 useBounds: boolean;
@@ -3765,21 +3522,18 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal scroll position of this camera.
-                 * 
                  * Optionally restricted via the Camera bounds.
                  */
                 scrollX: number;
 
                 /**
                  * The vertical scroll position of this camera.
-                 * 
                  * Optionally restricted via the Camera bounds.
                  */
                 scrollY: number;
 
                 /**
                  * The Camera zoom value. Change this value to zoom in, or out of, a Scene.
-                 * 
                  * Set to 1 to return to the default zoom level.
                  */
                 zoom: number;
@@ -3811,7 +3565,6 @@ declare namespace Phaser {
 
                 /**
                  * Should the camera cull Game Objects before rendering?
-                 * 
                  * In some special cases it may be beneficial to disable this.
                  */
                 disableCull: boolean;
@@ -3861,7 +3614,6 @@ declare namespace Phaser {
 
                 /**
                  * Fades the Camera out to the given color over the duration specified.
-                 * 
                  * This is an alias for Camera.fade that forces the fade to start, regardless of existing fades.
                  * @param duration The duration of the effect in milliseconds.
                  * @param callback An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
@@ -4028,7 +3780,6 @@ declare namespace Phaser {
 
                 /**
                  * Resets any active FX, such as a fade, flash or shake. Useful to call after a fade in order to
-                 * 
                  * remove the fade.
                  */
                 resetFX(): Phaser.Cameras.Scene2D.Camera;
@@ -4094,7 +3845,6 @@ declare namespace Phaser {
 
                 /**
                  * Called when the Camera Manager boots.
-                 * 
                  * Starts the event listeners running.
                  */
                 boot(): void;
@@ -4511,11 +4261,8 @@ declare namespace Phaser {
 
                 /**
                  * Translates this camera by a specified Vector3 object
-                 * 
                  * or x, y, z parameters. Any undefined x y z values will
-                 * 
                  * default to zero, leaving that component unaffected.
-                 * 
                  * If you wish to set the camera position directly call setPosition instead.
                  * @param x [description]
                  * @param y [description]
@@ -4584,23 +4331,14 @@ declare namespace Phaser {
 
                 /**
                  * This is a utility function for canvas 3D rendering,
-                 * 
                  * which determines the "point size" of a camera-facing
-                 * 
                  * sprite billboard given its 3D world position
-                 * 
                  * (origin at center of sprite) and its world width
-                 * 
                  * and height in x/y.
                  * 
-                 * 
-                 * 
                  * We place into the output Vector2 the scaled width
-                 * 
                  * and height. If no `out` is specified, a new Vector2
-                 * 
                  * will be created for convenience (this should be avoided
-                 * 
                  * in tight loops).
                  * @param vec The position of the 3D Sprite.
                  * @param size The x and y dimensions.
@@ -5022,10 +4760,6 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Based on the three.js Curve classes created by [zz85](http://www.lab4games.net/zz85/blog)
          */
         class Curve {
@@ -5068,10 +4802,7 @@ declare namespace Phaser {
             /**
              * Draws this curve on the given Graphics object.
              * 
-             * 
-             * 
              * The curve is drawn using `Graphics.strokePoints` so will be drawn at whatever the present Graphics stroke color is.
-             * 
              * The Graphics object is not cleared before the draw, so the curve will appear on-top of anything else already rendered to it.
              * @param graphics The Graphics instance onto which this curve will be drawn.
              * @param pointsTotal The resolution of the curve. The higher the value the smoother it will render, at the cost of rendering performance. Default 32.
@@ -5081,10 +4812,7 @@ declare namespace Phaser {
             /**
              * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
              * 
-             * 
-             * 
              * You can control the accuracy of the bounds. The value given is used to work out how many points
-             * 
              * to plot across the curve. Higher values are more accurate at the cost of calculation speed.
              * @param out The Rectangle to store the bounds in. If falsey a new object will be created.
              * @param accuracy The accuracy of the bounds calculations. Default 16.
@@ -5093,7 +4821,6 @@ declare namespace Phaser {
 
             /**
              * Returns an array of points, spaced out X distance pixels apart.
-             * 
              * The smaller the distance, the larger the array will be.
              * @param distance The distance, in pixels, between each point along the curve.
              */
@@ -5715,11 +5442,7 @@ declare namespace Phaser {
         /**
          * The Data Component features a means to store pieces of data specific to a Game Object, System or Plugin.
          * 
-         * 
-         * 
          * You can then search, query it, and retrieve the data. The parent must either extend EventEmitter,
-         * 
-         * 
          * 
          * or have a property called `events` that is an instance of it.
          */
@@ -5839,11 +5562,7 @@ declare namespace Phaser {
         /**
          * The Data Component features a means to store pieces of data specific to a Game Object, System or Plugin.
          * 
-         * 
-         * 
          * You can then search, query it, and retrieve the data. The parent must either extend EventEmitter,
-         * 
-         * 
          * 
          * or have a property called `events` that is an instance of it.
          */
@@ -5886,11 +5605,8 @@ declare namespace Phaser {
     namespace Device {
         /**
          * Determines the audio playback capabilities of the device running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.audio` from within any Scene.
          */
         type Audio = {
@@ -5934,11 +5650,8 @@ declare namespace Phaser {
 
         /**
          * Determines the browser type and version running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.browser` from within any Scene.
          */
         type Browser = {
@@ -6002,11 +5715,8 @@ declare namespace Phaser {
 
         /**
          * Determines the canvas features of the browser running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.canvasFeatures` from within any Scene.
          */
         type CanvasFeatures = {
@@ -6022,11 +5732,8 @@ declare namespace Phaser {
 
         /**
          * Determines the features of the browser running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.features` from within any Scene.
          */
         type Features = {
@@ -6082,11 +5789,8 @@ declare namespace Phaser {
 
         /**
          * Determines the full screen support of the browser running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.fullscreen` from within any Scene.
          */
         type Fullscreen = {
@@ -6110,11 +5814,8 @@ declare namespace Phaser {
 
         /**
          * Determines the input support of the browser running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.input` from within any Scene.
          */
         type Input = {
@@ -6138,11 +5839,8 @@ declare namespace Phaser {
 
         /**
          * Determines the operating system of the device running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.os` from within any Scene.
          */
         type OS = {
@@ -6238,11 +5936,8 @@ declare namespace Phaser {
 
         /**
          * Determines the video support of the browser running this Phaser Game instance.
-         * 
          * These values are read-only and populated during the boot sequence of the game.
-         * 
          * They are then referenced by internal game systems and are available for you to access
-         * 
          * via `this.sys.game.device.video` from within any Scene.
          */
         type Video = {
@@ -6359,7 +6054,6 @@ declare namespace Phaser {
 
                 /**
                  * Takes given Game Object and aligns it so that it is positioned relative to the other.
-                 * 
                  * The alignment used is based on the `position` argument, which is an `ALIGN_CONST` value, such as `LEFT_CENTER` or `TOP_RIGHT`.
                  * @param child The Game Object that will be positioned.
                  * @param alignIn The Game Object to base the alignment position on.
@@ -6648,14 +6342,9 @@ declare namespace Phaser {
             /**
              * The CanvasPool is a global static object, that allows Phaser to recycle and pool Canvas DOM elements.
              * 
-             * 
-             * 
              * This singleton is instantiated as soon as Phaser loads,
-             * 
              * before a Phaser.Game instance has even been created.
-             * 
              * Which means all instances of Phaser Games on the same page
-             * 
              * can share the one single pool
              */
             namespace CanvasPool {
@@ -6692,7 +6381,6 @@ declare namespace Phaser {
 
                 /**
                  * Looks up a canvas based on its parent, and if found puts it back in the pool, freeing it up for re-use.
-                 * 
                  * The canvas has its width and height set to 1, and its parent attribute nulled.
                  * @param parent [description]
                  */
@@ -6729,13 +6417,9 @@ declare namespace Phaser {
 
                 /**
                  * Sets the Image Smoothing property on the given context. Set to false to disable image smoothing.
-                 * 
                  * By default browsers have image smoothing enabled, which isn't always what you visually want, especially
-                 * 
                  * when using pixel art in a game. Note that this sets the property on the context itself, so that any image
-                 * 
                  * drawn to the context will be affected. This sets the property across all current browsers but support is
-                 * 
                  * patchy on earlier browsers, especially on mobile.
                  * @param context [description]
                  */
@@ -6743,13 +6427,9 @@ declare namespace Phaser {
 
                 /**
                  * Sets the Image Smoothing property on the given context. Set to false to disable image smoothing.
-                 * 
                  * By default browsers have image smoothing enabled, which isn't always what you visually want, especially
-                 * 
                  * when using pixel art in a game. Note that this sets the property on the context itself, so that any image
-                 * 
                  * drawn to the context will be affected. This sets the property across all current browsers but support is
-                 * 
                  * patchy on earlier browsers, especially on mobile.
                  * @param context [description]
                  */
@@ -6757,7 +6437,6 @@ declare namespace Phaser {
 
                 /**
                  * Returns `true` if the given context has image smoothing enabled, otherwise returns `false`.
-                 * 
                  * Returns null if no smoothing prefix is available.
                  * @param context [description]
                  */
@@ -6925,11 +6604,7 @@ declare namespace Phaser {
             /**
              * Converts a hex string into a Phaser Color object.
              * 
-             * 
-             * 
              * The hex string can supplied as `'#0033ff'` or the short-hand format of `'#03f'`; it can begin with an optional "#" or "0x", or be unprefixed.
-             * 
-             * 
              * 
              * An alpha channel is _not_ supported.
              * @param hex The hex color value to convert, such as `#0033ff` or the short-hand format: `#03f`.
@@ -6953,11 +6628,8 @@ declare namespace Phaser {
 
             /**
              * Converts an HSV (hue, saturation and value) color value to RGB.
-             * 
              * Conversion formula from http://en.wikipedia.org/wiki/HSL_color_space.
-             * 
              * Assumes HSV values are contained in the set [0, 1].
-             * 
              * Based on code by Michael Jackson (https://github.com/mjijackson)
              * @param h The hue, in the range 0 - 1.
              * @param s The saturation, in the range 0 - 1.
@@ -6967,7 +6639,6 @@ declare namespace Phaser {
 
             /**
              * Converts a hue to an RGB color.
-             * 
              * Based on code by Michael Jackson (https://github.com/mjijackson)
              */
             static HueToComponent(p: number, q: number, t: number): number;
@@ -6980,8 +6651,6 @@ declare namespace Phaser {
 
             /**
              * Return the component parts of a color as an Object with the properties alpha, red, green, blue.
-             * 
-             * 
              * 
              * Alpha will only be set if it exists in the given color (0xAARRGGBB)
              * @param input The color value to convert into a Color object.
@@ -6997,7 +6666,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Color object where the r, g, and b values have been set to random values
-             * 
              * based on the given min max values.
              * @param min The minimum value to set the random range from (between 0 and 255) Default 0.
              * @param max The maximum value to set the random range from (between 0 and 255) Default 255.
@@ -7007,8 +6675,6 @@ declare namespace Phaser {
             /**
              * Converts a CSS 'web' string into a Phaser Color object.
              * 
-             * 
-             * 
              * The web string can be in the format `'rgb(r,g,b)'` or `'rgba(r,g,b,a)'` where r/g/b are in the range [0..255] and a is in the range [0..1].
              * @param rgb The CSS format color string, using the `rgb` or `rgba` format.
              */
@@ -7016,11 +6682,8 @@ declare namespace Phaser {
 
             /**
              * Converts an RGB color value to HSV (hue, saturation and value).
-             * 
              * Conversion forumla from http://en.wikipedia.org/wiki/HSL_color_space.
-             * 
              * Assumes RGB values are contained in the set [0, 255] and returns h, s and v in the set [0, 1].
-             * 
              * Based on code by Michael Jackson (https://github.com/mjijackson)
              * @param r The red color value. A number between 0 and 255.
              * @param g The green color value. A number between 0 and 255.
@@ -7040,7 +6703,6 @@ declare namespace Phaser {
 
             /**
              * Converts the given source color value into an instance of a Color class.
-             * 
              * The value can be either a string, prefixed with `rgb` or a hex string, a number or an Object.
              * @param input The source color value to convert.
              */
@@ -7258,7 +6920,6 @@ declare namespace Phaser {
     namespace DOM {
         /**
          * Adds the given element to the DOM. If a parent is provided the element is added as a child of the parent, providing it was able to access it.
-         * 
          * If no parent was given or falls back to using `document.body`.
          * @param element The element to be added to the DOM. Usually a Canvas object.
          * @param parent The parent in which to add the element. Can be a string which is passed to `getElementById` or an actual DOM object.
@@ -7268,9 +6929,7 @@ declare namespace Phaser {
 
         /**
          * Inspects the readyState of the document. If the document is already complete then it invokes the given callback.
-         * 
          * If not complete it sets up several event listeners such as `deviceready`, and once those fire, it invokes the callback.
-         * 
          * Called automatically by the Phaser.Game instance. Should not usually be accessed directly.
          * @param callback The callback to be invoked when the device is ready and the DOM content is loaded.
          */
@@ -7278,9 +6937,7 @@ declare namespace Phaser {
 
         /**
          * Takes the given data string and parses it as XML.
-         * 
          * First tries to use the window.DOMParser and reverts to the Microsoft.XMLDOM if that fails.
-         * 
          * The parsed XML object is returned, or `null` if there was an error while parsing the data.
          * @param data The XML source stored in a string.
          */
@@ -7294,8 +6951,6 @@ declare namespace Phaser {
 
         /**
          * Abstracts away the use of RAF or setTimeOut for the core game update loop.
-         * 
-         * 
          * 
          * This is invoked automatically by the Phaser.Game instance.
          */
@@ -7332,14 +6987,12 @@ declare namespace Phaser {
 
             /**
              * The RAF step function.
-             * 
              * Updates the local tick value, invokes the callback and schedules another call to requestAnimationFrame.
              */
             step: FrameRequestCallback;
 
             /**
              * The SetTimeout step function.
-             * 
              * Updates the local tick value, invokes the callback and schedules another call to setTimeout.
              */
             stepTimeout: Function;
@@ -7571,20 +7224,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -7596,36 +7244,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -7633,38 +7275,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -7672,38 +7297,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -7712,19 +7320,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -7733,19 +7333,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -7754,48 +7346,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -7810,7 +7390,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -7819,7 +7398,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -7836,7 +7414,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -7861,22 +7438,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -7884,22 +7452,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -7907,22 +7466,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -7942,8 +7492,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -7953,18 +7501,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -7974,7 +7515,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -7990,28 +7530,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -8033,7 +7569,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -8056,11 +7591,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -8068,8 +7599,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -8130,16 +7659,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -8213,20 +7738,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -8238,36 +7758,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -8275,38 +7789,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -8314,38 +7811,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -8354,19 +7834,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -8375,19 +7847,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -8396,48 +7860,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -8452,7 +7904,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -8461,7 +7912,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -8478,7 +7928,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -8502,14 +7951,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -8518,22 +7965,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -8541,22 +7979,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -8564,22 +7993,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -8599,8 +8019,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -8610,18 +8028,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -8631,7 +8042,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -8647,28 +8057,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -8690,7 +8096,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -8713,11 +8118,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -8725,8 +8126,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -8787,16 +8186,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -8810,49 +8205,25 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * The Blitter Game Object is a special kind of container that creates, updates and manages Bob objects.
-         * 
-         * 
          * 
          * Bobs are designed for rendering speed rather than flexibility. They consist of a texture, or frame from a texture,
          * 
-         * 
-         * 
          * a position and an alpha value. You cannot scale or rotate them. They use a batched drawing method for speed
-         * 
-         * 
          * 
          * during rendering.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * A Blitter Game Object has one texture bound to it. Bobs created by the Blitter can use any Frame from this
          * 
-         * 
-         * 
          * Texture to render with, but they cannot use any other Texture. It is this single texture-bind that allows
-         * 
-         * 
          * 
          * them their speed.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * If you have a need to blast a large volume of frames around the screen then Blitter objects are well worth
-         * 
-         * 
          * 
          * investigating. They are especially useful for using as a base for your own special effects systems.
          */
@@ -8922,20 +8293,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -8947,36 +8313,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -8984,38 +8344,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -9023,38 +8366,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -9063,19 +8389,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -9084,19 +8402,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -9115,7 +8425,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -9139,14 +8448,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -9155,22 +8462,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -9178,22 +8476,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -9201,22 +8490,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -9235,14 +8515,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -9262,7 +8540,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -9282,8 +8559,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -9293,18 +8568,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -9324,7 +8592,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -9347,11 +8614,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -9359,8 +8622,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -9421,16 +8682,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -9457,25 +8714,19 @@ declare namespace Phaser {
         namespace Components {
             /**
              * Provides methods used for setting the alpha properties of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface Alpha {
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -9486,32 +8737,26 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -9519,10 +8764,6 @@ declare namespace Phaser {
 
             /**
              * A Game Object Animation Controller.
-             * 
-             * 
-             * 
-             * 
              * 
              * 
              * 
@@ -9562,16 +8803,13 @@ declare namespace Phaser {
 
                 /**
                  * The frame rate of playback in frames per second.
-                 * 
                  * The default is 24 if the `duration` property is `null`.
                  */
                 frameRate: number;
 
                 /**
                  * How long the animation should play for.
-                 * 
                  * If the `frameRate` property has been set then it overrides this value,
-                 * 
                  * otherwise frameRate is derived from `duration`.
                  */
                 duration: number;
@@ -9659,9 +8897,7 @@ declare namespace Phaser {
 
                 /**
                  * Value between 0 and 1. How far this animation is through, ignoring repeats and yoyos.
-                 * 
                  * If the animation has a non-zero repeat defined, progress and totalProgress will be different
-                 * 
                  * because progress doesn't include any repeats or repeatDelays whereas totalProgress does.
                  * @param value [description]
                  */
@@ -9675,11 +8911,8 @@ declare namespace Phaser {
 
                 /**
                  * Gets or sets the number of times that the animation should repeat
-                 * 
                  * after its first iteration. For example, if repeat is 1, the animation will
-                 * 
                  * play a total of twice (the initial play plus 1 repeat).
-                 * 
                  * To repeat indefinitely, use -1. repeat should always be an integer.
                  * @param value [description]
                  */
@@ -9687,11 +8920,8 @@ declare namespace Phaser {
 
                 /**
                  * Gets or sets the amount of time in seconds between repeats.
-                 * 
                  * For example, if repeat is 2 and repeatDelay is 1, the animation will play initially,
-                 * 
                  * then wait for 1 second before it repeats, then play again, then wait 1 second again
-                 * 
                  * before doing its final repeat.
                  * @param value [description]
                  */
@@ -9717,7 +8947,6 @@ declare namespace Phaser {
 
                 /**
                  * Scale the time (make it go faster / slower)
-                 * 
                  * Factor that's used to scale time where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
                  * @param value [description]
                  */
@@ -9761,83 +8990,48 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for setting the blend mode of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface BlendMode {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -9846,7 +9040,6 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for calculating and setting the size of a non-Frame based Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface ComputedSize {
@@ -9860,13 +9053,11 @@ declare namespace Phaser {
                 height: number;
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -9878,7 +9069,6 @@ declare namespace Phaser {
                 setSize(width: number, height: number): Phaser.GameObjects.GameObject;
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -9888,26 +9078,17 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for setting the depth of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface Depth {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -9915,19 +9096,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -9937,23 +9110,18 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for visually flipping a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface Flip {
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -9989,7 +9157,6 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for obtaining the bounds of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface GetBounds {
@@ -9997,39 +9164,37 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
+                getCenter(output?: O): O;
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft(output?: O): O;
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight(output?: O): O;
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft(output?: O): O;
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight(output?: O): O;
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds(output?: O): O;
             }
 
             /**
              * Provides methods used for getting and setting the transform values of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface MatrixStack {
@@ -10090,54 +9255,39 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for getting and setting the origin of a Game Object.
-             * 
              * Values are normalized, given in the range 0 to 1.
-             * 
              * Display values contain the calculated pixel values.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface Origin {
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -10150,7 +9300,6 @@ declare namespace Phaser {
                 setOriginFromFrame(): Phaser.GameObjects.GameObject;
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -10158,7 +9307,6 @@ declare namespace Phaser {
                 setDisplayOrigin(x?: number, y?: number): Phaser.GameObjects.GameObject;
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -10178,7 +9326,6 @@ declare namespace Phaser {
                 pipeline: Phaser.Renderer.WebGL.WebGLPipeline;
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -10204,13 +9351,11 @@ declare namespace Phaser {
             interface ScaleMode {
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -10224,66 +9369,39 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -10305,13 +9423,11 @@ declare namespace Phaser {
                 height: number;
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -10328,7 +9444,6 @@ declare namespace Phaser {
                 setSize(width: number, height: number): Phaser.GameObjects.GameObject;
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -10351,8 +9466,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -10361,18 +9474,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -10383,13 +9489,11 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for setting the tint of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface Tint {
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -10403,25 +9507,21 @@ declare namespace Phaser {
                 setTint(topLeft?: integer, topRight?: integer, bottomLeft?: integer, bottomRight?: integer): Phaser.GameObjects.GameObject;
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -10451,7 +9551,6 @@ declare namespace Phaser {
                 y: number;
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -10470,19 +9569,13 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
                 angle: integer;
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -10643,22 +9736,17 @@ declare namespace Phaser {
 
             /**
              * Provides methods used for setting the visibility of a Game Object.
-             * 
              * Should be applied as a mixin and not used directly.
              */
             interface Visible {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -10809,9 +9897,7 @@ declare namespace Phaser {
                  * Set the width (in pixels) to use for wrapping lines. Pass in null to remove wrapping by width.
                  * @param width The maximum width of a line in pixels. Set to null to remove wrapping.
                  * @param useAdvancedWrap Whether or not to use the advanced wrapping
-                 * 
                  * algorithm. If true, spaces are collapsed and whitespace is trimmed from lines. If false,
-                 * 
                  * spaces and whitespace are left as is. Default false.
                  */
                 function setWordWrapWidth(width: number, useAdvancedWrap?: boolean): Phaser.GameObjects.Text;
@@ -10819,11 +9905,8 @@ declare namespace Phaser {
                 /**
                  * Set a custom callback for wrapping lines. Pass in null to remove wrapping by callback.
                  * @param callback A custom function that will be responsible for wrapping the
-                 * 
                  * text. It will receive two arguments: text (the string to wrap), textObject (this Text
-                 * 
                  * instance). It should return the wrapped lines either as an array of lines or as a string with
-                 * 
                  * newline characters in place to indicate where breaks should happen.
                  * @param scope The scope that will be applied when the callback is invoked. Default null.
                  */
@@ -11022,7 +10105,6 @@ declare namespace Phaser {
 
             /**
              * Given an array of Game Objects, sort the array and return it,
-             * 
              * so that the objects are in index order with the lowest at the bottom.
              * @param gameObjects [description]
              */
@@ -11039,11 +10121,7 @@ declare namespace Phaser {
         /**
          * The base class that all Game Objects extend.
          * 
-         * 
-         * 
          * You don't create GameObjects directly and they cannot be added to the display list.
-         * 
-         * 
          * 
          * Instead, use them as the base for your own custom classes.
          */
@@ -11057,69 +10135,57 @@ declare namespace Phaser {
 
             /**
              * The Scene to which this Game Object belongs.
-             * 
              * Game Objects can only belong to one Scene.
              */
             protected scene: Phaser.Scene;
 
             /**
              * A textual representation of this Game Object, i.e. `sprite`.
-             * 
              * Used internally by Phaser but is available for your own custom classes to populate.
              */
             type: string;
 
             /**
              * The name of this Game Object.
-             * 
              * Empty by default and never populated by Phaser, this is left for developers to use.
              */
             name: string;
 
             /**
              * The active state of this Game Object.
-             * 
              * A Game Object with an active state of `true` is processed by the Scenes UpdateList, if added to it.
-             * 
              * An active object is one which is having its logic and internal systems updated.
              */
             active: boolean;
 
             /**
              * The Tab Index of the Game Object.
-             * 
              * Reserved for future use by plugins and the Input Manager.
              */
             tabIndex: integer;
 
             /**
              * A Data Manager.
-             * 
              * It allows you to store, query and get key/value paired information specific to this Game Object.
-             * 
              * `null` by default. Automatically created if you use `getData` or `setData` or `setDataEnabled`.
              */
             data: Phaser.Data.DataManager;
 
             /**
              * The flags that are compared against `RENDER_MASK` to determine if this Game Object will render or not.
-             * 
              * The bits are 0001 | 0010 | 0100 | 1000 set by the components Visible, Alpha, Transform and Texture respectively.
-             * 
              * If those components are not used by your custom class then you can use this bitmask as you wish.
              */
             renderFlags: integer;
 
             /**
              * A bitmask that controls if this Game Object is drawn by a Camera or not.
-             * 
              * Not usually set directly. Instead call `Camera.ignore`.
              */
             cameraFilter: number;
 
             /**
              * If this Game Object is enabled for input then this property will contain an InteractiveObject instance.
-             * 
              * Not usually set directly. Instead call `GameObject.setInteractive()`.
              */
             input: Phaser.Input.InteractiveObject;
@@ -11131,7 +10197,6 @@ declare namespace Phaser {
 
             /**
              * Sets the `active` property of this Game Object and returns this Game Object for further chaining.
-             * 
              * A Game Object with its `active` property set to `true` will be updated by the Scenes UpdateList.
              * @param value True if this Game Object should be set as active, false if not.
              */
@@ -11139,7 +10204,6 @@ declare namespace Phaser {
 
             /**
              * Sets the `name` property of this Game Object and returns this Game Object for further chaining.
-             * 
              * The `name` property is not populated by Phaser and is presented for your own use.
              * @param value The name to be given to this Game Object.
              */
@@ -11152,7 +10216,6 @@ declare namespace Phaser {
 
             /**
              * This is a quick chainable alias to the `DataProxy.set` method.
-             * 
              * It allows you to set a key and value in this Game Objects data store.
              * @param key The key of the property to be stored.
              * @param value The value to store with the key. Can be a string, number, array or object.
@@ -11190,25 +10253,15 @@ declare namespace Phaser {
 
             /**
              * Destroys this Game Object removing it from the Display List and Update List and
-             * 
              * severing all ties to parent resources.
-             * 
-             * 
              * 
              * Also removes itself from the Input Manager and Physics Manager if previously enabled.
              * 
-             * 
-             * 
              * Use this to remove a Game Object from your game if you don't ever plan to use it again.
-             * 
              * As long as no reference to it exists within your own code it should become free for
-             * 
              * garbage collection by the browser.
              * 
-             * 
-             * 
              * If you just want to temporarily disable an object then look at using the
-             * 
              * Game Object Pool instead of destroying it, as destroyed objects cannot be resurrected.
              */
             destroy(): void;
@@ -11223,23 +10276,13 @@ declare namespace Phaser {
         /**
          * The Game Object Creator is a Scene plugin that allows you to quickly create many common
          * 
-         * 
-         * 
          * types of Game Objects and return them. Unlike the Game Object Factory, they are not automatically
-         * 
-         * 
          * 
          * added to the Scene.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Game Objects directly register themselves with the Creator and inject their own creation
-         * 
-         * 
          * 
          * methods into the class.
          */
@@ -11253,8 +10296,6 @@ declare namespace Phaser {
             /**
              * Creates a new Dynamic Bitmap Text Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Dynamic Bitmap Text Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11263,8 +10304,6 @@ declare namespace Phaser {
             /**
              * Creates a new Bitmap Text Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Bitmap Text Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11272,8 +10311,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Blitter Game Object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Blitter Game Object has been built into Phaser.
              * @param config [description]
@@ -11313,8 +10350,6 @@ declare namespace Phaser {
             /**
              * Creates a new Graphics Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Graphics Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11322,8 +10357,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Group Game Object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Group Game Object has been built into Phaser.
              * @param config [description]
@@ -11333,8 +10366,6 @@ declare namespace Phaser {
             /**
              * Creates a new Image Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Image Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11342,8 +10373,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Mesh Game Object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Mesh Game Object and WebGL support have been built into Phaser.
              * @param config [description]
@@ -11353,8 +10382,6 @@ declare namespace Phaser {
             /**
              * Creates a new Particle Emitter Manager Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Particles Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11362,8 +10389,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Quad Game Object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Quad Game Object and WebGL support have been built into Phaser.
              * @param config [description]
@@ -11373,8 +10398,6 @@ declare namespace Phaser {
             /**
              * Creates a new Render Texture Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Render Texture Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11382,8 +10405,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Sprite Game Object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Sprite Game Object has been built into Phaser.
              * @param config [description]
@@ -11393,8 +10414,6 @@ declare namespace Phaser {
             /**
              * Creates a new Sprite3D Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Sprite3D Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11402,8 +10421,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Text Game Object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Text Game Object has been built into Phaser.
              * @param config [description]
@@ -11413,8 +10430,6 @@ declare namespace Phaser {
             /**
              * Creates a new TileSprite Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the TileSprite Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11423,8 +10438,6 @@ declare namespace Phaser {
             /**
              * Creates a new Zone Game Object and returns it.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Zone Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11432,41 +10445,29 @@ declare namespace Phaser {
 
             /**
              * Creates a Tilemap from the given key or data, or creates a blank Tilemap if no key/data provided.
-             * 
              * When loading from CSV or a 2D array, you should specify the tileWidth & tileHeight. When parsing
-             * 
              * from a map from Tiled, the tileWidth, tileHeight, width & height will be pulled from the map
-             * 
              * data. For an empty map, you should specify tileWidth, tileHeight, width & height.
              * @param config The config options for the Tilemap.
              * @param config.key The key in the Phaser cache that corresponds to the loaded tilemap
-             * 
              * data.
              * @param config.data Instead of loading from the cache, you can also load
-             * 
              * directly from a 2D array of tile indexes.
              * @param config.tileWidth The width of a tile in pixels. Default 32.
              * @param config.tileHeight The height of a tile in pixels. Default 32.
              * @param config.width The width of the map in tiles. Default 10.
              * @param config.height The height of the map in tiles. Default 10.
              * @param config.insertNull Controls how empty tiles, tiles with an index of -1,
-             * 
              * in the map data are handled. If `true`, empty locations will get a value of `null`. If `false`,
-             * 
              * empty location will get a Tile object with an index of -1. If you've a large sparsely populated
-             * 
              * map and the tile data doesn't need to change then setting this value to `true` will help with
-             * 
              * memory consumption. However if your map is small or you need to update the tiles dynamically,
-             * 
              * then leave the default value set. Default false.
              */
             tilemap(config?: object): Phaser.Tilemaps.Tilemap;
 
             /**
              * Creates a new Tween object and returns it.
-             * 
-             * 
              * 
              * Note: This method will only be available if Tweens have been built into Phaser.
              * @param config The Tween configuration.
@@ -11478,19 +10479,11 @@ declare namespace Phaser {
         /**
          * The Game Object Factory is a Scene plugin that allows you to quickly create many common
          * 
-         * 
-         * 
          * types of Game Objects and have them automatically registered with the Scene.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Game Objects directly register themselves with the Factory and inject their own creation
-         * 
-         * 
          * 
          * methods into the class.
          */
@@ -11511,8 +10504,6 @@ declare namespace Phaser {
             /**
              * Creates a new Dynamic Bitmap Text Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Dynamic Bitmap Text Game Object has been built into Phaser.
              * @param x The x position of the Game Object.
              * @param y The y position of the Game Object.
@@ -11525,8 +10516,6 @@ declare namespace Phaser {
             /**
              * Creates a new Bitmap Text Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Bitmap Text Game Object has been built into Phaser.
              * @param x The x position of the Game Object.
              * @param y The y position of the Game Object.
@@ -11538,8 +10527,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Blitter Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Blitter Game Object has been built into Phaser.
              * @param x The x position of the Game Object.
@@ -11572,10 +10559,7 @@ declare namespace Phaser {
             /**
              * Adds an existing Game Object to this Scene.
              * 
-             * 
-             * 
              * If the Game Object renders, it will be added to the Display List.
-             * 
              * If it has a `preUpdate` method, it will be added to the Update List.
              * @param child The child to be added to this Scene.
              */
@@ -11594,8 +10578,6 @@ declare namespace Phaser {
             /**
              * Creates a new Graphics Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Graphics Game Object has been built into Phaser.
              * @param config [description]
              */
@@ -11603,8 +10585,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Group Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Group Game Object has been built into Phaser.
              * @param children [description]
@@ -11614,8 +10594,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Image Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Image Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
@@ -11627,8 +10605,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Mesh Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Mesh Game Object and WebGL support have been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
@@ -11645,8 +10621,6 @@ declare namespace Phaser {
             /**
              * Creates a new Particle Emitter Manager Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Particles Game Object has been built into Phaser.
              * @param texture The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
              * @param frame [description]
@@ -11656,8 +10630,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new PathFollower Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the PathFollower Game Object has been built into Phaser.
              * @param path The Path this PathFollower is connected to.
@@ -11671,8 +10643,6 @@ declare namespace Phaser {
             /**
              * Creates a new Quad Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Quad Game Object and WebGL support have been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
              * @param y The vertical position of this Game Object in the world.
@@ -11683,8 +10653,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Render Texture Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Render Texture Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
@@ -11697,8 +10665,6 @@ declare namespace Phaser {
             /**
              * Creates a new Sprite Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Sprite Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
              * @param y The vertical position of this Game Object in the world.
@@ -11709,8 +10675,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Sprite3D Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the Sprite3D Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object.
@@ -11724,8 +10688,6 @@ declare namespace Phaser {
             /**
              * Creates a new Text Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Text Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
              * @param y The vertical position of this Game Object in the world.
@@ -11736,8 +10698,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new TileSprite Game Object and adds it to the Scene.
-             * 
-             * 
              * 
              * Note: This method will only be available if the TileSprite Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
@@ -11752,8 +10712,6 @@ declare namespace Phaser {
             /**
              * Creates a new Zone Game Object and adds it to the Scene.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Zone Game Object has been built into Phaser.
              * @param x The horizontal position of this Game Object in the world.
              * @param y The vertical position of this Game Object in the world.
@@ -11764,46 +10722,31 @@ declare namespace Phaser {
 
             /**
              * Creates a Tilemap from the given key or data, or creates a blank Tilemap if no key/data provided.
-             * 
              * When loading from CSV or a 2D array, you should specify the tileWidth & tileHeight. When parsing
-             * 
              * from a map from Tiled, the tileWidth, tileHeight, width & height will be pulled from the map
-             * 
              * data. For an empty map, you should specify tileWidth, tileHeight, width & height.
              * @param key The key in the Phaser cache that corresponds to the loaded tilemap data.
              * @param tileWidth The width of a tile in pixels. Pass in `null` to leave as the
-             * 
              * default. Default 32.
              * @param tileHeight The height of a tile in pixels. Pass in `null` to leave as the
-             * 
              * default. Default 32.
              * @param width The width of the map in tiles. Pass in `null` to leave as the
-             * 
              * default. Default 10.
              * @param height The height of the map in tiles. Pass in `null` to leave as the
-             * 
              * default. Default 10.
              * @param data Instead of loading from the cache, you can also load directly from
-             * 
              * a 2D array of tile indexes. Pass in `null` for no data.
              * @param insertNull Controls how empty tiles, tiles with an index of -1, in the
-             * 
              * map data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-             * 
              * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-             * 
              * the tile data doesn't need to change then setting this value to `true` will help with memory
-             * 
              * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-             * 
              * the default value set. Default false.
              */
             tilemap(key?: string, tileWidth?: integer, tileHeight?: integer, width?: integer, height?: integer, data?: integer[][], insertNull?: boolean): Phaser.Tilemaps.Tilemap;
 
             /**
              * Creates a new Tween object.
-             * 
-             * 
              * 
              * Note: This method will only be available Tweens have been built into Phaser.
              * @param config The Tween configuration.
@@ -12157,13 +11100,9 @@ declare namespace Phaser {
 
             /**
              * If key is a string it'll generate a new texture using it and add it into the
-             * 
              * Texture Manager (assuming no key conflict happens).
              * 
-             * 
-             * 
              * If key is a Canvas it will draw the texture to that canvas context. Note that it will NOT
-             * 
              * automatically upload it to the GPU in WebGL mode.
              * @param key [description]
              * @param width [description]
@@ -12178,20 +11117,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -12203,36 +11137,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -12240,38 +11168,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -12279,38 +11190,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -12319,19 +11213,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -12340,19 +11226,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -12371,7 +11249,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -12405,7 +11282,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -12428,11 +11304,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -12440,8 +11312,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -12502,16 +11372,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -12521,22 +11387,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -12544,22 +11401,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -12567,22 +11415,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -12596,13 +11435,7 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          *  children can be either an array of children, or a config object
-         * 
-         * 
          * 
          *  config can be either a config object, or undefined if passed as the children argument instead
          */
@@ -12763,10 +11596,7 @@ declare namespace Phaser {
             /**
              * Scans the Group for the first child that has an `active` state set to `false` and returns it.
              * 
-             * 
-             * 
              * If no child is found then it will create a new one using the arguments given to this method.
-             * 
              * Unless a new child is being created the arguments are ignored.
              * @param x The horizontal position of this Game Object in the world. Default 0.
              * @param y The vertical position of this Game Object in the world. Default 0.
@@ -12779,10 +11609,7 @@ declare namespace Phaser {
             /**
              * Scans the Group for the first child that has an `active` state set to `true` and returns it.
              * 
-             * 
-             * 
              * If no child is found, and `createIfNull` is `true`, then it will create a new one using the arguments given to this method.
-             * 
              * Unless a new child is being created the arguments are ignored.
              * @param createIfNull [description]
              * @param x The horizontal position of this Game Object in the world. Default 0.
@@ -12796,10 +11623,7 @@ declare namespace Phaser {
             /**
              * Scans the Group for the first child that has an `active` state set to `false` and returns it.
              * 
-             * 
-             * 
              * If no child is found, and `createIfNull` is `true`, then it will create a new one using the arguments given to this method.
-             * 
              * Unless a new child is being created the arguments are ignored.
              * @param createIfNull [description]
              * @param x The horizontal position of this Game Object in the world. Default 0.
@@ -12875,21 +11699,11 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * An Image is a light-weight Game Object useful for the display of static images in your game,
-         * 
-         * 
          * 
          * such as logos, backgrounds, scenery or other non-animated elements. Images can have input
          * 
-         * 
-         * 
          * events and physics bodies, or be tweened, tinted or scrolled. The main difference between an
-         * 
-         * 
          * 
          * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
          */
@@ -12906,20 +11720,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -12931,36 +11740,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -12968,38 +11771,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -13007,38 +11793,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -13047,19 +11816,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -13068,19 +11829,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -13089,18 +11842,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -13171,7 +11920,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -13179,48 +11927,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -13235,7 +11971,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -13244,7 +11979,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -13261,7 +11995,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -13285,14 +12018,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -13301,22 +12032,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -13324,22 +12046,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -13347,22 +12060,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -13381,14 +12085,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -13408,7 +12110,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -13428,8 +12129,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -13439,18 +12138,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -13460,7 +12152,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -13476,28 +12167,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -13519,7 +12206,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -13542,11 +12228,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -13554,8 +12236,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -13616,16 +12296,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -13908,20 +12584,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -13933,36 +12604,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -13970,38 +12635,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -14009,38 +12657,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -14049,19 +12680,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -14070,19 +12693,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -14091,18 +12706,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -14173,7 +12784,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -14181,48 +12791,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -14237,7 +12835,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -14246,7 +12843,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -14263,7 +12859,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -14287,14 +12882,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -14312,14 +12905,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -14339,7 +12930,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -14359,8 +12949,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -14370,18 +12958,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -14401,7 +12982,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -14424,11 +13004,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -14436,8 +13012,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -14498,16 +13072,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -14517,22 +13087,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -14540,22 +13101,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -14563,22 +13115,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -14825,8 +13368,6 @@ declare namespace Phaser {
                 /**
                  * The Emitter to which this Particle belongs.
                  * 
-                 * 
-                 * 
                  * A Particle can only belong to a single Emitter and is created, updated and destroyed via it.
                  */
                 emitter: Phaser.GameObjects.Particles.ParticleEmitter;
@@ -14980,8 +13521,6 @@ declare namespace Phaser {
                 /**
                  * Checks if this Particle is still within the bounds defined by the given Emitter.
                  * 
-                 * 
-                 * 
                  * If not, and depending on the Emitter collision flags, the Particle may either stop or rebound.
                  * @param emitter The Emitter to check the bounds against.
                  */
@@ -14989,8 +13528,6 @@ declare namespace Phaser {
 
                 /**
                  * The main update method for this Particle.
-                 * 
-                 * 
                  * 
                  * Updates its life values, computes the velocity and repositions the Particle.
                  * @param delta The delta time in ms.
@@ -15045,8 +13582,6 @@ declare namespace Phaser {
                 /**
                  * The name of this Game Object.
                  * 
-                 * 
-                 * 
                  * Empty by default and never populated by Phaser, this is left for developers to use.
                  */
                 name: string;
@@ -15068,9 +13603,7 @@ declare namespace Phaser {
 
                 /**
                  * A radial emitter will emit particles in all directions between angle min and max,
-                 * 
                  * using speed as the value. If set to false then this acts as a point Emitter.
-                 * 
                  * A point emitter will emit particles only in the direction derived from the speedX and speedY values.
                  */
                 radial: boolean;
@@ -15197,7 +13730,6 @@ declare namespace Phaser {
 
                 /**
                  * Set to hard limit the amount of particle objects this emitter is allowed to create.
-                 * 
                  * 0 means unlimited.
                  */
                 maxParticles: number;
@@ -15214,23 +13746,19 @@ declare namespace Phaser {
 
                 /**
                  * How often a particle is emitted in ms (if emitter is a constant / flow emitter)
-                 * 
                  * If emitter is an explosion emitter this value will be -1.
-                 * 
                  * Anything > -1 sets this to be a flow emitter.
                  */
                 frequency: number;
 
                 /**
                  * Controls if the emitter is currently emitting particles.
-                 * 
                  * Already alive particles will continue to update until they expire.
                  */
                 on: boolean;
 
                 /**
                  * Newly emitted particles are added to the top of the particle list, i.e. rendered above those already alive.
-                 * 
                  * Set to false to send them to the back.
                  */
                 particleBringToTop: boolean;
@@ -15475,7 +14003,6 @@ declare namespace Phaser {
 
                 /**
                  * The zone must have a function called `getPoint` that takes a particle object and sets
-                 * 
                  * its x and y properties accordingly then returns that object.
                  * @param zoneConfig [description]
                  */
@@ -15621,38 +14148,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -15661,22 +14171,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -15684,22 +14185,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -15707,22 +14199,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -15731,8 +14214,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -15894,21 +14375,11 @@ declare namespace Phaser {
                  * 
                  * 
                  * 
-                 * 
-                 * 
-                 * 
-                 * 
                  * A Death Zone is a special type of zone that will kill a Particle as soon as it either enters, or leaves, the zone.
                  * 
                  * 
                  * 
-                 * 
-                 * 
-                 * 
-                 * 
                  * The zone consists of a `source` which could be a Geometric shape, such as a Rectangle or Ellipse, or your own
-                 * 
-                 * 
                  * 
                  * object as long as it includes a `contains` method for which the Particles can be tested against.
                  */
@@ -15922,14 +14393,12 @@ declare namespace Phaser {
 
                     /**
                      * An object instance that has a `contains` method that returns a boolean when given `x` and `y` arguments.
-                     * 
                      * This could be a Geometry shape, such as `Phaser.Geom.Circle`, or your own custom object.
                      */
                     source: object;
 
                     /**
                      * Set to `true` if the Particle should be killed if it enters this zone.
-                     * 
                      * Set to `false` to kill the Particle if it leaves this zone.
                      */
                     killOnEnter: boolean;
@@ -16042,37 +14511,19 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * A PathFollower is a Sprite Game Object with some extra helpers to allow it to follow a Path automatically.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * Anything you can do with a standard Sprite can be done with this PathFollower, such as animate it, tint it,
          * 
-         * 
-         * 
          * scale it and so on.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * PathFollowers are bound to a single Path at any one time and can traverse the length of the Path, from start
          * 
-         * 
-         * 
          * to finish, forwards or backwards, or from any given point on the Path to its end. They can optionally rotate
-         * 
-         * 
          * 
          * to face the direction of the path, be offset from the path coordinates or rotate independently of the Path.
          */
@@ -16105,16 +14556,13 @@ declare namespace Phaser {
 
             /**
              * If the PathFollower is rotating to match the Path (@see Phaser.GameObjects.PathFollower#rotateToPath)
-             * 
              * this value is added to the rotation value. This allows you to rotate objects to a path but control
-             * 
              * the angle of the rotation as well.
              */
             pathRotationOffset: number;
 
             /**
              * An additional vector to add to the PathFollowers position, allowing you to offset it from the
-             * 
              * Path coordinates.
              */
             pathOffset: Phaser.Math.Vector2;
@@ -16151,7 +14599,6 @@ declare namespace Phaser {
 
             /**
              * Is this PathFollower actively following a Path or not?
-             * 
              * To be considered as `isFollowing` it must be currently moving on a Path, and not paused.
              */
             isFollowing(): boolean;
@@ -16165,21 +14612,18 @@ declare namespace Phaser {
 
             /**
              * Pauses this PathFollower. It will still continue to render, but it will remain motionless at the
-             * 
              * point on the Path at which you paused it.
              */
             pauseFollow(): Phaser.GameObjects.PathFollower;
 
             /**
              * Resumes a previously paused PathFollower.
-             * 
              * If the PathFollower was not paused this has no effect.
              */
             resumeFollow(): Phaser.GameObjects.PathFollower;
 
             /**
              * Stops this PathFollower from following the path any longer.
-             * 
              * This will invoke any 'stop' conditions that may exist on the Path, or for the follower.
              */
             stopFollow(): Phaser.GameObjects.PathFollower;
@@ -16191,20 +14635,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -16216,36 +14655,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -16253,38 +14686,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -16292,38 +14708,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -16332,19 +14731,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -16353,19 +14744,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -16374,18 +14757,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -16456,7 +14835,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -16464,48 +14842,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -16520,7 +14886,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -16529,7 +14894,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -16546,7 +14910,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -16570,14 +14933,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -16586,22 +14947,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -16609,22 +14961,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -16632,22 +14975,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -16666,14 +15000,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -16693,7 +15025,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -16713,8 +15044,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -16724,18 +15053,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -16745,7 +15067,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -16761,28 +15082,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -16804,7 +15121,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -16827,11 +15143,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -16839,8 +15151,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -16901,16 +15211,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -16924,25 +15230,13 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * A Quad is a Mesh Game Object pre-configured with two triangles arranged into a rectangle, with a single
-         * 
-         * 
          * 
          * texture spread across them.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * You can manipulate the corner points of the quad via the getters and setters such as `topLeftX`, and also
-         * 
-         * 
          * 
          * change their alpha and color values. The quad itself can be moved by adjusting the `x` and `y` properties.
          */
@@ -17087,20 +15381,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -17112,36 +15401,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -17149,38 +15432,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -17188,38 +15454,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -17228,19 +15477,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -17249,19 +15490,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -17270,18 +15503,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -17352,7 +15581,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -17360,48 +15588,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -17416,7 +15632,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -17425,7 +15640,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -17442,7 +15656,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -17466,14 +15679,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -17491,14 +15702,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -17518,7 +15727,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -17538,8 +15746,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -17549,18 +15755,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -17580,7 +15779,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -17603,11 +15801,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -17615,8 +15809,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -17677,16 +15869,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -17696,22 +15884,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -17719,22 +15898,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -17742,22 +15912,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -17814,20 +15975,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -17839,36 +15995,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -17876,38 +16026,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -17915,38 +16048,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -17964,14 +16080,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -17985,7 +16099,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -17995,19 +16108,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -18016,19 +16121,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -18037,18 +16134,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -18119,7 +16212,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -18189,48 +16281,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -18245,7 +16325,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -18254,7 +16333,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -18271,7 +16349,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -18295,14 +16372,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -18311,22 +16386,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -18334,22 +16400,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -18357,22 +16414,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -18381,7 +16429,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -18397,28 +16444,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -18440,7 +16483,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -18463,11 +16505,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -18475,8 +16513,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -18537,16 +16573,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -18560,33 +16592,17 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * A Sprite Game Object is used for the display of both static and animated images in your game.
          * 
-         * 
-         * 
          * Sprites can have input events and physics bodies. They can also be tweened, tinted, scrolled
-         * 
-         * 
          * 
          * and animated.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * The main difference between a Sprite and an Image Game Object is that you cannot animate Images.
          * 
-         * 
-         * 
          * As such, Sprites take a fraction longer to process and have a larger API footprint due to the Animation
-         * 
-         * 
          * 
          * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
          */
@@ -18623,20 +16639,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -18648,36 +16659,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -18685,38 +16690,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -18724,38 +16712,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -18764,19 +16735,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -18785,19 +16748,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -18806,18 +16761,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -18888,7 +16839,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -18896,48 +16846,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -18952,7 +16890,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -18961,7 +16898,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -18978,7 +16914,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -19002,14 +16937,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -19018,22 +16951,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -19041,22 +16965,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -19064,22 +16979,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -19098,14 +17004,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -19125,7 +17029,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -19145,8 +17048,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -19156,18 +17057,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -19177,7 +17071,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -19193,28 +17086,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -19236,7 +17125,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -19259,11 +17147,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -19271,8 +17155,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -19333,16 +17215,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -19356,13 +17234,7 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * The Sprite 3D object is an encapsulation of a standard Sprite object, with additional methods to allow
-         * 
-         * 
          * 
          * it to be rendered by a 3D Camera. The Sprite can be positioned anywhere within 3D space.
          */
@@ -19422,8 +17294,6 @@ declare namespace Phaser {
 
             /**
              * The visible state of the Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
@@ -19496,9 +17366,7 @@ declare namespace Phaser {
 
             /**
              * The Regular Expression that is used to split the text up into lines, in
-             * 
              * multi-line text. By default this is `/(?:\r\n|\r|\n)/`.
-             * 
              * You can change this RegExp to be anything else that you may need.
              */
             splitRegExp: object;
@@ -19515,7 +17383,6 @@ declare namespace Phaser {
 
             /**
              * Specify a padding value which is added to the line width and height when calculating the Text size.
-             * 
              * Allows you to add extra spacing if the browser is unable to accurately determine the true font dimensions.
              */
             padding: Object;
@@ -19547,7 +17414,6 @@ declare namespace Phaser {
 
             /**
              * Greedy wrapping algorithm that will wrap words as the line grows longer than its horizontal
-             * 
              * bounds.
              * @param text The text to perform word wrap detection against.
              */
@@ -19555,11 +17421,8 @@ declare namespace Phaser {
 
             /**
              * Advanced wrapping algorithm that will wrap words as the line grows longer than its horizontal
-             * 
              * bounds. Consecutive spaces will be collapsed and replaced with a single space. Lines will be
-             * 
              * trimmed of white space before processing. Throws an error if wordWrapWidth is less than a
-             * 
              * single character.
              * @param text The text to perform word wrap detection against.
              * @param context [description]
@@ -19569,7 +17432,6 @@ declare namespace Phaser {
 
             /**
              * Greedy wrapping algorithm that will wrap words as the line grows longer than its horizontal
-             * 
              * bounds. Spaces are not collapsed and whitespace is not trimmed.
              * @param text The text to perform word wrap detection against.
              * @param context [description]
@@ -19579,7 +17441,6 @@ declare namespace Phaser {
 
             /**
              * Runs the given text through this Text objects word wrapping and returns the results as an
-             * 
              * array, where each element of the array corresponds to a wrapped line of text.
              * @param text The text for which the wrapping will be calculated. If unspecified, the Text objects current text will be used.
              */
@@ -19699,9 +17560,7 @@ declare namespace Phaser {
              * Set the width (in pixels) to use for wrapping lines. Pass in null to remove wrapping by width.
              * @param width The maximum width of a line in pixels. Set to null to remove wrapping.
              * @param useAdvancedWrap Whether or not to use the advanced wrapping
-             * 
              * algorithm. If true, spaces are collapsed and whitespace is trimmed from lines. If false,
-             * 
              * spaces and whitespace are left as is. Default false.
              */
             setWordWrapWidth(width: number, useAdvancedWrap?: boolean): Phaser.GameObjects.Text;
@@ -19709,11 +17568,8 @@ declare namespace Phaser {
             /**
              * Set a custom callback for wrapping lines. Pass in null to remove wrapping by callback.
              * @param callback A custom function that will be responsible for wrapping the
-             * 
              * text. It will receive two arguments: text (the string to wrap), textObject (this Text
-             * 
              * instance). It should return the wrapped lines either as an array of lines or as a string with
-             * 
              * newline characters in place to indicate where breaks should happen.
              * @param scope The scope that will be applied when the callback is invoked. Default null.
              */
@@ -19727,7 +17583,6 @@ declare namespace Phaser {
 
             /**
              * 'left' can be an object.
-             * 
              * If only 'left' and 'top' are given they are treated as 'x' and 'y'
              * @param left [description]
              * @param top [description]
@@ -19759,20 +17614,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -19784,36 +17634,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -19821,38 +17665,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -19860,38 +17687,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -19899,14 +17709,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -19920,7 +17728,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -19930,19 +17737,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -19951,19 +17750,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -19972,18 +17763,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -20054,7 +17841,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -20062,48 +17848,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -20118,7 +17892,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -20127,7 +17900,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -20144,7 +17916,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -20168,14 +17939,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -20184,22 +17953,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -20207,22 +17967,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -20230,22 +17981,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -20254,7 +17996,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -20270,28 +18011,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -20313,7 +18050,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -20336,11 +18072,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -20348,8 +18080,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -20410,16 +18140,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -20513,20 +18239,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -20538,36 +18259,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -20575,38 +18290,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -20614,38 +18312,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -20654,19 +18335,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -20675,19 +18348,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -20696,18 +18361,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -20778,7 +18439,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -20786,48 +18446,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -20842,7 +18490,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -20851,7 +18498,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -20868,7 +18514,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -20892,14 +18537,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -20908,22 +18551,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -20931,22 +18565,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -20954,22 +18579,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -20988,14 +18604,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -21015,7 +18629,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -21035,8 +18648,6 @@ declare namespace Phaser {
             /**
              * Sets the texture and frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * Textures are referenced by their string-based keys, as stored in the Texture Manager.
              * @param key The key of the texture to be used, as stored in the Texture Manager.
              * @param frame The name or index of the frame within the Texture.
@@ -21046,18 +18657,11 @@ declare namespace Phaser {
             /**
              * Sets the frame this Game Object will use to render with.
              * 
-             * 
-             * 
              * The Frame has to belong to the current Texture being used.
-             * 
-             * 
              * 
              * It can be either a string or an index.
              * 
-             * 
-             * 
              * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-             * 
              * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
              * @param frame The name or index of the frame within the Texture.
              * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -21067,7 +18671,6 @@ declare namespace Phaser {
 
             /**
              * Clears all tint values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 0xffffff (no tint)
              */
             clearTint(): Phaser.GameObjects.GameObject;
@@ -21083,28 +18686,24 @@ declare namespace Phaser {
 
             /**
              * The tint value being applied to the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopLeft: integer;
 
             /**
              * The tint value being applied to the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintTopRight: integer;
 
             /**
              * The tint value being applied to the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomLeft: integer;
 
             /**
              * The tint value being applied to the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             tintBottomRight: integer;
@@ -21126,7 +18725,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -21149,11 +18747,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -21161,8 +18755,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -21223,16 +18815,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -21314,37 +18902,19 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * A Zone is a non-rendering rectangular Game Object that has a position and size.
          * 
-         * 
-         * 
          * It has no texture and never displays, but does live on the display list and
-         * 
-         * 
          * 
          * can be moved, scaled and rotated like any other Game Object.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Its primary use is for creating Drop Zones and Input Hit Areas and it has a couple of helper methods
-         * 
-         * 
          * 
          * specifically for this. It is also useful for object overlap checks, or as a base for your own
          * 
-         * 
-         * 
          * non-displaying Game Objects.
-         * 
-         * 
          * 
          * The default origin is 0.5, the center of the Zone, the same as with Game Objects.
          */
@@ -21371,23 +18941,19 @@ declare namespace Phaser {
 
             /**
              * The Blend Mode of the Game Object.
-             * 
              * Although a Zone never renders, it still has a blend mode to allow it to fit seamlessly into
-             * 
              * display lists without causing a batch flush.
              */
             blendMode: integer;
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -21402,7 +18968,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -21411,7 +18976,6 @@ declare namespace Phaser {
 
             /**
              * Sets this Zone to be a Circular Drop Zone.
-             * 
              * The circle is centered on this Zones `x` and `y` coordinates.
              * @param radius The radius of the Circle that will form the Drop Zone.
              */
@@ -21419,7 +18983,6 @@ declare namespace Phaser {
 
             /**
              * Sets this Zone to be a Rectangle Drop Zone.
-             * 
              * The rectangle is centered on this Zones `x` and `y` coordinates.
              * @param width The width of the rectangle drop zone.
              * @param height The height of the rectangle drop zone.
@@ -21436,19 +18999,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -21457,19 +19012,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -21508,7 +19055,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -21516,48 +19062,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -21572,7 +19106,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -21581,21 +19114,18 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -21613,7 +19143,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -21636,11 +19165,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -21648,8 +19173,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -21710,22 +19233,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -21733,22 +19247,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -21756,22 +19261,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -21781,16 +19277,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -21805,49 +19297,25 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * A Bob belongs to a Blitter Game Object. The Blitter is responsible for managing and rendering this object.
-             * 
-             * 
-             * 
-             * 
              * 
              * 
              * 
              * A Bob has a position, alpha value and a frame from a texture that it uses to render with. You can also toggle
              * 
-             * 
-             * 
              * the flipped and visible state of the Bob. The Frame the Bob uses to render can be changed dynamically, but it
-             * 
-             * 
              * 
              * must be a Frame within the Texture used by the parent Blitter.
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * Bob positions are relative to the Blitter parent. So if you move the Blitter parent, all Bob children will
-             * 
-             * 
              * 
              * have their positions impacted by this change as well.
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * You can manipulate Bob objects directly from your game code, but the creation and destruction of them should be
-             * 
-             * 
              * 
              * handled via the Blitter parent.
              */
@@ -21990,17 +19458,9 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * This is a geometry object, containing numerical values and related methods to inspect and modify them.
          * 
-         * 
-         * 
          * It is not a Game Object, in that you cannot add it to the display list, and it has no texture.
-         * 
-         * 
          * 
          * To render a Circle you should look at the capabilities of the Graphics class.
          */
@@ -22038,9 +19498,7 @@ declare namespace Phaser {
 
             /**
              * Returns a Point object containing the coordinates of a point on the circumference of the Circle
-             * 
              * based on the given angle normalized to the range 0 to 1. I.e. a value of 0.5 will give the point
-             * 
              * at 180 degrees around the circle.
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the circle.
              * @param out An object to store the return values in. If not given a Point object will be created.
@@ -22049,7 +19507,6 @@ declare namespace Phaser {
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Circle,
-             * 
              * based on the given quantity or stepRate values.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
              * @param stepRate Sets the quantity by getting the circumference of the circle and dividing it by the stepRate.
@@ -22073,7 +19530,6 @@ declare namespace Phaser {
 
             /**
              * Sets this Circle to be empty with a radius of zero.
-             * 
              * Does not change its position.
              */
             setEmpty(): Phaser.Geom.Circle;
@@ -22164,7 +19620,6 @@ declare namespace Phaser {
 
             /**
              * Copies the `x`, `y` and `radius` properties from the `source` Circle
-             * 
              * into the given `dest` Circle, then returns the `dest` Circle.
              * @param source The source Circle to copy the values from.
              * @param dest The destination Circle to copy the values to.
@@ -22173,7 +19628,6 @@ declare namespace Phaser {
 
             /**
              * Compares the `x`, `y` and `radius` properties of the two given Circles.
-             * 
              * Returns `true` if they all match, otherwise returns `false`.
              * @param circle The first Circle to compare.
              * @param toCompare The second Circle to compare.
@@ -22189,9 +19643,7 @@ declare namespace Phaser {
 
             /**
              * Returns a Point object containing the coordinates of a point on the circumference of the Circle
-             * 
              * based on the given angle normalized to the range 0 to 1. I.e. a value of 0.5 will give the point
-             * 
              * at 180 degrees around the circle.
              * @param circle The Circle to get the circumference point on.
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the circle.
@@ -22201,7 +19653,6 @@ declare namespace Phaser {
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Circle,
-             * 
              * based on the given quantity or stepRate values.
              * @param circle The Circle to get the points from.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
@@ -22239,17 +19690,9 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * This is a geometry object, containing numerical values and related methods to inspect and modify them.
          * 
-         * 
-         * 
          * It is not a Game Object, in that you cannot add it to the display list, and it has no texture.
-         * 
-         * 
          * 
          * To render an Ellipse you should look at the capabilities of the Graphics class.
          */
@@ -22313,7 +19756,6 @@ declare namespace Phaser {
 
             /**
              * Copies the `x`, `y`, `width` and `height` properties from the `source` Ellipse
-             * 
              * into the given `dest` Ellipse, then returns the `dest` Ellipse.
              * @param source The source Ellipse to copy the values from.
              * @param dest The destination Ellipse to copy the values to.
@@ -22349,9 +19791,7 @@ declare namespace Phaser {
 
             /**
              * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse
-             * 
              * based on the given angle normalized to the range 0 to 1. I.e. a value of 0.5 will give the point
-             * 
              * at 180 degrees around the circle.
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the ellipse.
              * @param out An object to store the return values in. If not given a Point object will be created.
@@ -22360,7 +19800,6 @@ declare namespace Phaser {
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
-             * 
              * based on the given quantity or stepRate values.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
              * @param stepRate Sets the quantity by getting the circumference of the ellipse and dividing it by the stepRate.
@@ -22385,7 +19824,6 @@ declare namespace Phaser {
 
             /**
              * Sets this Ellipse to be empty with a width and height of zero.
-             * 
              * Does not change its position.
              */
             setEmpty(): Phaser.Geom.Ellipse;
@@ -22399,7 +19837,6 @@ declare namespace Phaser {
 
             /**
              * Sets the size of this Ellipse.
-             * 
              * Does not change its position.
              * @param width The width of the ellipse.
              * @param height The height of the ellipse. Default width.
@@ -22443,7 +19880,6 @@ declare namespace Phaser {
 
             /**
              * Compares the `x`, `y`, `width` and `height` properties of the two given Ellipses.
-             * 
              * Returns `true` if they all match, otherwise returns `false`.
              * @param ellipse The first Ellipse to compare.
              * @param toCompare The second Ellipse to compare.
@@ -22459,9 +19895,7 @@ declare namespace Phaser {
 
             /**
              * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse
-             * 
              * based on the given angle normalized to the range 0 to 1. I.e. a value of 0.5 will give the point
-             * 
              * at 180 degrees around the circle.
              * @param ellipse The Ellipse to get the circumference point on.
              * @param position A value between 0 and 1, where 0 equals 0 degrees, 0.5 equals 180 degrees and 1 equals 360 around the ellipse.
@@ -22471,7 +19905,6 @@ declare namespace Phaser {
 
             /**
              * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
-             * 
              * based on the given quantity or stepRate values.
              * @param ellipse The Ellipse to get the points from.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
@@ -22545,20 +19978,12 @@ declare namespace Phaser {
 
             /**
              * Checks for intersection between the Line and a Rectangle shape, or a rectangle-like
-             * 
              * object, with public `x`, `y`, `right` and `bottom` properties, such as a Sprite or Body.
-             * 
-             * 
              * 
              * An intersection is considered valid if:
              * 
-             * 
-             * 
              * The line starts within, or ends within, the Rectangle.
-             * 
              * The line segment intersects one of the 4 rectangle edges.
-             * 
-             * 
              * 
              * The for the purposes of this function rectangles are considered 'solid'.
              * @param line [description]
@@ -22649,7 +20074,6 @@ declare namespace Phaser {
 
             /**
              * Using Bresenham's line algorithm this will return an array of all coordinates on this line.
-             * 
              * The start and end points are rounded before this runs as the algorithm works on integers.
              * @param line [description]
              * @param stepRate [description] Default 1.
@@ -23532,11 +20956,7 @@ declare namespace Phaser {
         /**
          * A triangle is a plane created by connecting three points.
          * 
-         * 
-         * 
          * The first two arguments specify the first point, the middle two arguments
-         * 
-         * 
          * 
          * specify the second point, and the last two arguments specify the third point.
          */
@@ -23603,13 +21023,9 @@ declare namespace Phaser {
 
             /**
              * Computes the circumcentre of a triangle. The circumcentre is the centre of
-             * 
              * the circumcircle, the smallest circle which encloses the triangle. It is also
-             * 
              * the common intersection point of the perpendicular bisectors of the sides of
-             * 
              * the triangle, and is the only point which has equal distance to all three
-             * 
              * vertices of the triangle.
              * @param triangle [description]
              * @param out [description]
@@ -24198,14 +21614,12 @@ declare namespace Phaser {
             class Configs {
                 /**
                  * Tatar SNES USB Controller Gamepad Configuration.
-                 * 
                  * USB Gamepad  (STANDARD GAMEPAD Vendor: 0079 Product: 0011)
                  */
                 static SNES_USB: object;
 
                 /**
                  * PlayStation DualShock 4 Gamepad Configuration.
-                 * 
                  * Sony PlayStation DualShock 4 (v2) wireless controller
                  */
                 static DUALSHOCK_4: object;
@@ -24292,11 +21706,8 @@ declare namespace Phaser {
 
             /**
              * If the top-most Scene in the Scene List receives an input it will stop input from
-             * 
              * propagating any lower down the scene list, i.e. if you have a UI Scene at the top
-             * 
              * and click something on it, that click will not then be passed down to any other
-             * 
              * Scene below. Disable this to have input events passed through all Scenes, all the time.
              */
             globalTopOnly: boolean;
@@ -24313,7 +21724,6 @@ declare namespace Phaser {
 
             /**
              * The Boot handler is called by Phaser.Game when it first starts up.
-             * 
              * The renderer is available by now.
              */
             boot(): void;
@@ -24336,11 +21746,8 @@ declare namespace Phaser {
 
             /**
              * Will always return an array.
-             * 
              * Array contains matching Interactive Objects.
-             * 
              * Array will be empty if no objects were matched.
-             * 
              * x/y = pointer x/y (un-translated)
              * @param x [description]
              * @param y [description]
@@ -24352,7 +21759,6 @@ declare namespace Phaser {
 
             /**
              * x/y MUST be translated before being passed to this function,
-             * 
              * unless the gameObject is guaranteed to not be rotated or scaled in any way.
              * @param gameObject [description]
              * @param x [description]
@@ -24362,7 +21768,6 @@ declare namespace Phaser {
 
             /**
              * x/y MUST be translated before being passed to this function,
-             * 
              * unless the gameObject is guaranteed to not be rotated or scaled in any way.
              * @param object [description]
              * @param x [description]
@@ -24461,20 +21866,15 @@ declare namespace Phaser {
 
             /**
              * Only fire callbacks and events on the top-most Game Object in the display list (emulating DOM behavior)
-             * 
              * and ignore any GOs below it, or call them all?
              */
             topOnly: boolean;
 
             /**
              * How often should the pointer input be checked?
-             * 
              * Time given in ms
-             * 
              * Pointer will *always* be checked if it has been moved by the user.
-             * 
              * This controls how often it will be polled if it hasn't been moved.
-             * 
              * Set to 0 to poll constantly. Set to -1 to only poll on user movement.
              */
             pollRate: integer;
@@ -24666,7 +22066,6 @@ declare namespace Phaser {
 
             /**
              * Given an array of Game Objects, sort the array and return it,
-             * 
              * so that the objects are in index order with the lowest at the bottom.
              * @param gameObjects [description]
              */
@@ -24688,7 +22087,6 @@ declare namespace Phaser {
 
             /**
              * Given an array of Interactive Objects, sort the array and return it,
-             * 
              * so that the objects are in index order with the lowest at the bottom.
              * @param interactiveObjects [description]
              */
@@ -24723,14 +22121,12 @@ declare namespace Phaser {
 
             /**
              * The x coordinates of the ActivePointer based on the first camera in the camera list.
-             * 
              * This is only safe to use if your game has just 1 non-transformed camera and doesn't use multi-touch.
              */
             x: number;
 
             /**
              * The y coordinates of the ActivePointer based on the first camera in the camera list.
-             * 
              * This is only safe to use if your game has just 1 non-transformed camera and doesn't use multi-touch.
              */
             y: number;
@@ -24743,25 +22139,13 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * `keys` argument can be:
-             * 
-             * 
-             * 
-             * 
              * 
              * 
              * 
              * A string (ATARI)
              * 
-             * 
-             * 
              * An array of either integers (key codes) or strings, or a mixture of both
-             * 
-             * 
              * 
              * An array of objects (such as Key objects) with a public 'keyCode' property
              */
@@ -24776,7 +22160,6 @@ declare namespace Phaser {
 
                 /**
                  * Used internally by the KeyCombo class.
-                 * 
                  * Return `true` if it reached the end of the combo, `false` if not.
                  * @param event [description]
                  * @param combo [description]
@@ -24883,29 +22266,15 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * _Note_: many keyboards are unable to process certain combinations of keys due to hardware limitations known as ghosting.
-             * 
-             * 
              * 
              * See http://www.html5gamedevs.com/topic/4876-impossible-to-use-more-than-2-keyboard-input-buttons-at-the-same-time/ for more details.
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * Also please be aware that certain browser extensions can disable or override Phaser keyboard handling.
              * 
-             * 
-             * 
              * For example the Chrome extension vimium is known to disable Phaser from using the D key. And there are others.
-             * 
-             * 
              * 
              * So please check your extensions before opening Phaser issues.
              */
@@ -24979,15 +22348,9 @@ declare namespace Phaser {
                 /**
                  * A practical way to create an object containing user selected hotkeys.
                  * 
-                 * 
-                 * 
                  * For example,
                  * 
-                 * 
-                 * 
                  *     addKeys( { 'up': Phaser.KeyCode.W, 'down': Phaser.KeyCode.S, 'left': Phaser.KeyCode.A, 'right': Phaser.KeyCode.D } );
-                 * 
-                 * 
                  * 
                  * would return an object containing properties (`up`, `down`, `left` and `right`) referring to {@link Phaser.Key} object.
                  * @param keys [description]
@@ -24996,7 +22359,6 @@ declare namespace Phaser {
 
                 /**
                  * If you need more fine-grained control over a Key you can create a new Phaser.Key object via this method.
-                 * 
                  * The Key object can then be polled, have events attached to it, etc.
                  * @param keyCode [description]
                  */
@@ -25046,7 +22408,6 @@ declare namespace Phaser {
 
             /**
              * Returns `true` if the Key was pressed down within the `duration` value given, or `false` if it either isn't down,
-             * 
              * or was pressed down longer ago than then given duration.
              * @param key [description]
              * @param duration [description] Default 50.
@@ -25055,11 +22416,8 @@ declare namespace Phaser {
 
             /**
              * The justDown value allows you to test if this Key has just been pressed down or not.
-             * 
              * When you check this value it will return `true` if the Key is down, otherwise `false`.
-             * 
              * You can only call justDown once per key press. It will only return `true` once, until the Key is released and pressed down again.
-             * 
              * This allows you to use it in situations where you want to check if this key is down without using a Signal, such as in a core game loop.
              * @param key [description]
              */
@@ -25067,11 +22425,8 @@ declare namespace Phaser {
 
             /**
              * The justUp value allows you to test if this Key has just been released or not.
-             * 
              * When you check this value it will return `true` if the Key is up, otherwise `false`.
-             * 
              * You can only call justUp once per key release. It will only return `true` once, until the Key is pressed down and released again.
-             * 
              * This allows you to use it in situations where you want to check if this key is up without using a Signal, such as in a core game loop.
              * @param key [description]
              */
@@ -25079,8 +22434,6 @@ declare namespace Phaser {
 
             /**
              * A generic Key object which can be passed to the Process functions (and so on)
-             * 
-             * 
              * 
              * keycode must be an integer
              */
@@ -25148,9 +22501,7 @@ declare namespace Phaser {
 
                 /**
                  * The number of milliseconds this key has been held down for.
-                 * 
                  * If the key is down this value holds the duration of that key press and is constantly updated.
-                 * 
                  * If the key is up it holds the duration of the previous down session.
                  */
                 duration: number;
@@ -25187,7 +22538,6 @@ declare namespace Phaser {
 
                 /**
                  * Resets a Key object back to its default settings.
-                 * 
                  *  Optionally resets the keyCode as well.
                  * @param key [description]
                  * @param clearKeyCode [description] Default false.
@@ -25198,7 +22548,6 @@ declare namespace Phaser {
 
             /**
              * Returns `true` if the Key was released within the `duration` value given, or `false` if it either isn't up,
-             * 
              * or was released longer ago than then given duration.
              * @param key [description]
              * @param duration [description] Default 50.
@@ -25424,22 +22773,13 @@ declare namespace Phaser {
                 /**
                  * If the browser supports it, you can request that the pointer be locked to the browser window.
                  * 
-                 * 
-                 * 
                  * This is classically known as 'FPS controls', where the pointer can't leave the browser until
-                 * 
                  * the user presses an exit key.
                  * 
-                 * 
-                 * 
                  * If the browser successfully enters a locked state, a `POINTER_LOCK_CHANGE_EVENT` will be dispatched,
-                 * 
                  * from the games Input Manager, with an `isPointerLocked` property.
                  * 
-                 * 
-                 * 
                  * It is important to note that pointer lock can only be enabled after an 'engagement gesture',
-                 * 
                  * see: https://w3c.github.io/pointerlock/#dfn-engagement-gesture.
                  */
                 requestPointerLock(): void;
@@ -25452,9 +22792,7 @@ declare namespace Phaser {
 
                 /**
                  * If the browser supports pointer lock, this will request that the pointer lock is released. If
-                 * 
                  * the browser successfully enters a locked state, a 'POINTER_LOCK_CHANGE_EVENT' will be
-                 * 
                  * dispatched - from the game's input manager - with an `isPointerLocked` property.
                  */
                 releasePointerLock(): void;
@@ -25837,28 +23175,24 @@ declare namespace Phaser {
 
             /**
              * The total size of this file.
-             * 
              * Set by onProgress and only if loading via XHR.
              */
             bytesTotal: number;
 
             /**
              * Updated as the file loads.
-             * 
              * Only set if loading via XHR.
              */
             bytesLoaded: number;
 
             /**
              * A percentage value between 0 and 1 indicating how much of this file has loaded.
-             * 
              * Only set if loading via XHR.
              */
             percentComplete: number;
 
             /**
              * For CORs based loading.
-             * 
              * If this is undefined then the File will check BaseLoader.crossOrigin and use that (if set)
              */
             crossOrigin: string | undefined;
@@ -25875,14 +23209,12 @@ declare namespace Phaser {
 
             /**
              * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
-             * 
              * to the linked file. Set and used internally by the Loader.
              */
             linkFile: Phaser.Loader.File;
 
             /**
              * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
-             * 
              * to the type of linked association. Set and used internally by the Loader.
              */
             linkType: string;
@@ -25894,7 +23226,6 @@ declare namespace Phaser {
 
             /**
              * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
-             * 
              * to the linked file. Set and used internally by the Loader.
              * @param fileB The linked file.
              * @param linkType The type of association.
@@ -25908,7 +23239,6 @@ declare namespace Phaser {
 
             /**
              * Called by the Loader, starts the actual file downloading.
-             * 
              * During the load the methods onLoad, onProgress, etc are called based on the XHR events.
              * @param loader The Loader that will load this File.
              */
@@ -25934,7 +23264,6 @@ declare namespace Phaser {
 
             /**
              * Usually overridden by the FileTypes and is called by Loader.finishedLoading.
-             * 
              * The callback is Loader.processUpdate
              * @param callback The callback to invoke to process this File.
              */
@@ -25942,14 +23271,12 @@ declare namespace Phaser {
 
             /**
              * Called with the File has completed loading.
-             * 
              * Checks on the state of its linkfile, if set.
              */
             onComplete(): void;
 
             /**
              * Static method for creating object URL using URL API and setting it as image 'src' attribute.
-             * 
              * If URL API is not supported (usually on old browsers) it falls back to creating Base64 encoded url using FileReader.
              * @param image Image object which 'src' attribute should be set to object URL.
              * @param blob A Blob object to create an object URL for.
@@ -25959,7 +23286,6 @@ declare namespace Phaser {
 
             /**
              * Static method for releasing an existing object URL which was previously created
-             * 
              * by calling {@link File#createObjectURL} method.
              * @param image Image object which 'src' attribute should be revoked.
              */
@@ -26259,18 +23585,12 @@ declare namespace Phaser {
             /**
              * Adds an Animation JSON file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Animation JSON File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key A unique string to be used as the key to reference this file from the Cache. Must be unique within this file type.
              * @param url URL of the file. If `undefined` or `null` the url will be set to `<key>.json`,
-             * 
              * i.e. if `key` was "alien" then the URL will be "alien.json".
              * @param xhrSettings File specific XHR settings to be used during the load. These settings are merged with the global Loader XHR settings.
              */
@@ -26279,14 +23599,9 @@ declare namespace Phaser {
             /**
              * Adds a Texture Atlas file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Atlas JSON File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key The key of the file within the loader.
              * @param textureURL The url to load the texture file from.
@@ -26299,14 +23614,9 @@ declare namespace Phaser {
             /**
              * Adds an Audio file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Audio File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param urls [description]
@@ -26318,14 +23628,9 @@ declare namespace Phaser {
             /**
              * Adds an Audio Sprite file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Audio Sprite File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param urls [description]
@@ -26339,14 +23644,9 @@ declare namespace Phaser {
             /**
              * Adds Binary file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Binary File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26357,14 +23657,9 @@ declare namespace Phaser {
             /**
              * Adds a Bitmap Font file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Bitmap Font File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param textureURL [description]
@@ -26377,14 +23672,9 @@ declare namespace Phaser {
             /**
              * Adds a GLSL file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the GLSL File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26395,14 +23685,9 @@ declare namespace Phaser {
             /**
              * Adds an HTML file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the HTML File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26415,14 +23700,9 @@ declare namespace Phaser {
             /**
              * Adds an Image file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Image File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26433,14 +23713,9 @@ declare namespace Phaser {
             /**
              * Adds a JSON file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the JSON File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26451,14 +23726,9 @@ declare namespace Phaser {
             /**
              * Adds a Multi File Texture Atlas to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Multi Atlas File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param textureURLs [description]
@@ -26471,14 +23741,9 @@ declare namespace Phaser {
             /**
              * Adds a Plugin file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Plugin File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26489,14 +23754,9 @@ declare namespace Phaser {
             /**
              * Adds a JavaScript file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Script File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26507,14 +23767,9 @@ declare namespace Phaser {
             /**
              * Adds a Sprite Sheet file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Sprite Sheet File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26526,14 +23781,9 @@ declare namespace Phaser {
             /**
              * Adds an SVG file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the SVG File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26544,14 +23794,9 @@ declare namespace Phaser {
             /**
              * Adds a Text file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Text File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26562,14 +23807,9 @@ declare namespace Phaser {
             /**
              * Adds a Tilemap CSV file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Tilemap CSV File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26580,14 +23820,9 @@ declare namespace Phaser {
             /**
              * Adds a Tilemap (Tiled JSON Format) file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Tilemap File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26598,14 +23833,9 @@ declare namespace Phaser {
             /**
              * Adds a Tilemap (Weltmeister Format) file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Tilemap File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26616,14 +23846,9 @@ declare namespace Phaser {
             /**
              * Adds a Unity Texture Atlas file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the Unity Atlas File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key The key of the file within the loader.
              * @param textureURL The url to load the texture file from.
@@ -26636,14 +23861,9 @@ declare namespace Phaser {
             /**
              * Adds an XML file to the current load queue.
              * 
-             * 
-             * 
              * Note: This method will only be available if the XML File type has been built into Phaser.
              * 
-             * 
-             * 
              * The file is **not** loaded immediately after calling this method.
-             * 
              * Instead, the file is added to a queue within the Loader, which is processed automatically when the Loader starts.
              * @param key [description]
              * @param url [description]
@@ -26872,10 +24092,7 @@ declare namespace Phaser {
         /**
          * Takes two XHRSettings Objects and creates a new XHRSettings object from them.
          * 
-         * 
-         * 
          * The new object is seeded by the values given in the global settings, but any setting in
-         * 
          * the local object overrides the global ones.
          * @param global The global XHRSettings object.
          * @param local The local XHRSettings object.
@@ -26884,9 +24101,7 @@ declare namespace Phaser {
 
         /**
          * Creates a new XMLHttpRequest (xhr) object based on the given File and XHRSettings
-         * 
          * and starts the download of it. It uses the Files own XHRSettings and merges them
-         * 
          * with the global XHRSettings object to set the xhr values before download.
          * @param file The File to download.
          * @param globalXHRSettings The global XHRSettings object.
@@ -26961,19 +24176,12 @@ declare namespace Phaser {
 
             /**
              * Gets the shortest angle between `angle1` and `angle2`.
-             * 
              * Both angles must be in the range -180 to 180, which is the same clamped
-             * 
              * range that `sprite.angle` uses, so you can pass in two sprite angles to
-             * 
              * this method and get the shortest angle back between the two of them.
              * 
-             * 
-             * 
              * The angle returned will be in the same range. If the returned angle is
-             * 
              * greater than 0 then it's a counter-clockwise rotation, if < 0 then it's
-             * 
              * a clockwise rotation.
              * @param angle1 The first angle in the range -180 to 180.
              * @param angle2 The second angle in the range -180 to 180.
@@ -27732,7 +24940,6 @@ declare namespace Phaser {
 
             /**
              * Generates a perspective projection matrix with the given bounds.
-             * 
              * perspective fov lh
              * @param fovy Vertical field of view in radians
              * @param aspect Aspect ratio. Typically viewport width  /height.
@@ -27807,10 +25014,7 @@ declare namespace Phaser {
 
         /**
          * Work out what percentage `value` is of the range between `min` and `max`.
-         * 
          * If `max` isn't given then it will return the percentage of `value` to `min`.
-         * 
-         * 
          * 
          * You can optionally specify an `upperMax` value, which is a mid-way point in the range that represents 100%, after which the % starts to go down to zero again.
          * @param value [description]
@@ -27829,7 +25033,6 @@ declare namespace Phaser {
 
             /**
              * Checks if the given `width` and `height` are a power of two.
-             * 
              * Useful for checking texture dimensions.
              * @param width The width.
              * @param height The height.
@@ -28049,8 +25252,6 @@ declare namespace Phaser {
             /**
              * Reset the seed of the random data generator.
              * 
-             * 
-             * 
              * _Note_: the seed array is only processed up to the first `undefined` (or `null`) value, should such be present.
              * @param seeds The array of seeds: the `toString()` of each value is used.
              */
@@ -28080,7 +25281,6 @@ declare namespace Phaser {
 
             /**
              * Returns a random integer between and including min and max.
-             * 
              * This method is an alias for RandomDataGenerator.integerInRange.
              * @param min The minimum value in the range.
              * @param max The maximum value in the range.
@@ -28135,25 +25335,15 @@ declare namespace Phaser {
 
             /**
              * Gets or Sets the state of the generator. This allows you to retain the values
-             * 
              * that the generator is using between games, i.e. in a game save file.
              * 
-             * 
-             * 
              * To seed this generator with a previously saved state you can pass it as the
-             * 
              * `seed` value in your game config, or call this method directly after Phaser has booted.
-             * 
-             * 
              * 
              * Call this method with no parameters to return the current state.
              * 
-             * 
-             * 
              * If providing a state it should match the same format that this method
-             * 
              * returns, which is a string with a header `!rnd` followed by the `c`,
-             * 
              * `s0`, `s1` and `s2` values respectively, each comma-delimited.
              * @param state Generator state to be set.
              */
@@ -28211,10 +25401,7 @@ declare namespace Phaser {
         /**
          * Rotates a vector in place by axis angle.
          * 
-         * 
-         * 
          * This is the same as transforming a point by an 
-         * 
          * axis-angle quaternion, but it has higher precision.
          * @param vec [description]
          * @param axis [description]
@@ -28290,7 +25477,6 @@ declare namespace Phaser {
 
         /**
          * Takes the `x` and `y` coordinates and transforms them into the same space as
-         * 
          * defined by the position, rotation and scale values.
          * @param x The x coordinate to be transformed.
          * @param y The y coordinate to be transformed.
@@ -28648,7 +25834,6 @@ declare namespace Phaser {
 
             /**
              * Multiplies this Vector3 by the specified matrix, applying a W divide. This is useful for projection,
-             * 
              * e.g. unprojecting a 2D point into 3D space.
              * @param mat [description]
              */
@@ -28656,19 +25841,12 @@ declare namespace Phaser {
 
             /**
              * Unproject this point from 2D space to 3D space.
-             * 
              * The point should have its x and y properties set to
-             * 
              * 2D screen space, and the z either at 0 (near plane)
-             * 
              * or 1 (far plane). The provided matrix is assumed to already
-             * 
              * be combined, i.e. projection * view * model.
              * 
-             * 
-             * 
              * After this operation, this vector's (x, y, z) components will
-             * 
              * represent the unprojected 3D coordinate.
              * @param viewport Screen x, y, width and height in pixels.
              * @param invProjectionView Combined projection and view matrix.
@@ -28860,21 +26038,11 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * An Image is a light-weight Game Object useful for the display of static images in your game,
-             * 
-             * 
              * 
              * such as logos, backgrounds, scenery or other non-animated elements. Images can have input
              * 
-             * 
-             * 
              * events and physics bodies, or be tweened, tinted or scrolled. The main difference between an
-             * 
-             * 
              * 
              * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
              */
@@ -28891,20 +26059,15 @@ declare namespace Phaser {
 
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
 
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -28916,36 +26079,30 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
 
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
 
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
 
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
 
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -28953,38 +26110,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
@@ -28992,38 +26132,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -29032,19 +26155,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -29053,19 +26168,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -29074,18 +26181,14 @@ declare namespace Phaser {
 
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
 
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -29156,7 +26259,6 @@ declare namespace Phaser {
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
@@ -29164,48 +26266,36 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
 
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
 
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
 
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
 
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -29220,7 +26310,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -29229,7 +26318,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -29246,7 +26334,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -29270,14 +26357,12 @@ declare namespace Phaser {
 
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
 
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -29286,22 +26371,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -29309,22 +26385,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -29332,22 +26399,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -29366,14 +26424,12 @@ declare namespace Phaser {
 
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
 
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -29393,7 +26449,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -29413,8 +26468,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -29424,18 +26477,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -29445,7 +26491,6 @@ declare namespace Phaser {
 
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -29461,28 +26506,24 @@ declare namespace Phaser {
 
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
 
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
 
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
 
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -29504,7 +26545,6 @@ declare namespace Phaser {
 
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -29527,11 +26567,7 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
@@ -29539,8 +26575,6 @@ declare namespace Phaser {
 
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -29601,16 +26635,12 @@ declare namespace Phaser {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -29746,11 +26776,8 @@ declare namespace Phaser {
 
                 /**
                  * Syncs the Bodies position and size with its parent Game Object.
-                 * 
                  * You don't need to call this for Dynamic Bodies, as it happens automatically.
-                 * 
                  * But for Static bodies it's a useful way of modifying the position of a Static Body
-                 * 
                  * in the Physics World, based on its Game Object.
                  */
                 refreshBody(): Phaser.GameObjects.GameObject;
@@ -29896,29 +26923,16 @@ declare namespace Phaser {
                 /**
                  * Checks for overlaps between two Game Objects. The objects can be any Game Object that have an Arcade Physics Body.
                  * 
-                 * 
-                 * 
                  * Unlike {@link #collide} the objects are NOT automatically separated or have any physics applied, they merely test for overlap results.
                  * 
-                 * 
-                 * 
                  * Both the first and second parameter can be arrays of objects, of differing types.
-                 * 
                  * If two arrays are passed, the contents of the first parameter will be tested against all contents of the 2nd parameter.
-                 * 
-                 * 
                  * 
                  * ##### Tilemaps
                  * 
-                 * 
-                 * 
                  * Any overlapping tiles, including blank/null tiles, will give a positive result. Tiles marked via {@link Phaser.Tilemap#setCollision} (and similar methods) have no special status, and callbacks added via {@link Phaser.Tilemap#setTileIndexCallback} or {@link Phaser.Tilemap#setTileLocationCallback} are not invoked. So calling this method without any callbacks isn't very useful.
                  * 
-                 * 
-                 * 
                  * If you're interested only in whether an object overlaps a certain tile or class of tiles, filter the tiles with `processCallback` and then use the result returned by this method. Blank/null tiles can be excluded by their {@link Phaser.Tile#index index} (-1).
-                 * 
-                 * 
                  * 
                  * If you want to take action on certain overlaps, examine the tiles in `collideCallback` and then handle as you like.
                  * @param object1 The first object or array of objects to check. Can be any Game Object that has an Arcade Physics Body.
@@ -29952,14 +26966,9 @@ declare namespace Phaser {
                 /**
                  * Sets the acceleration.x/y property on the game object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
                  * 
-                 * 
-                 * 
                  * You must give a maximum speed value, beyond which the game object won't go any faster.
                  * 
-                 * 
-                 * 
                  * Note: The game object does not continuously track the target. If the target changes location during transit the game object will not modify its course.
-                 * 
                  * Note: The game object doesn't stop moving once it reaches the destination coordinates.
                  * @param gameObject Any Game Object with an Arcade Physics body.
                  * @param x The x coordinate to accelerate towards.
@@ -29973,14 +26982,9 @@ declare namespace Phaser {
                 /**
                  * Sets the acceleration.x/y property on the game object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
                  * 
-                 * 
-                 * 
                  * You must give a maximum speed value, beyond which the game object won't go any faster.
                  * 
-                 * 
-                 * 
                  * Note: The game object does not continuously track the target. If the target changes location during transit the game object will not modify its course.
-                 * 
                  * Note: The game object doesn't stop moving once it reaches the destination coordinates.
                  * @param gameObject Any Game Object with an Arcade Physics body.
                  * @param destination The Game Object to move towards. Can be any object but must have visible x/y properties.
@@ -30004,15 +27008,10 @@ declare namespace Phaser {
 
                 /**
                  * Move the given display object towards the x/y coordinates at a steady velocity.
-                 * 
                  * If you specify a maxTime then it will adjust the speed (over-writing what you set) so it arrives at the destination in that number of seconds.
-                 * 
                  * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
-                 * 
                  * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
-                 * 
                  * Note: The display object doesn't stop moving once it reaches the destination coordinates.
-                 * 
                  * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
                  * @param gameObject Any Game Object with an Arcade Physics body.
                  * @param x The x coordinate to move towards.
@@ -30024,15 +27023,10 @@ declare namespace Phaser {
 
                 /**
                  * Move the given display object towards the destination object at a steady velocity.
-                 * 
                  * If you specify a maxTime then it will adjust the speed (overwriting what you set) so it arrives at the destination in that number of seconds.
-                 * 
                  * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
-                 * 
                  * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
-                 * 
                  * Note: The display object doesn't stop moving once it reaches the destination coordinates.
-                 * 
                  * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
                  * @param gameObject Any Game Object with an Arcade Physics body.
                  * @param destination Any object with public `x` and `y` properties, such as a Game Object or Geometry object.
@@ -30043,7 +27037,6 @@ declare namespace Phaser {
 
                 /**
                  * Given the angle (in degrees) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
-                 * 
                  * One way to use this is: velocityFromAngle(angle, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
                  * @param angle The angle in degrees calculated in clockwise positive direction (down = 90 degrees positive, right = 0 degrees positive, up = 90 degrees negative)
                  * @param speed The speed it will move, in pixels per second sq. Default 60.
@@ -30053,7 +27046,6 @@ declare namespace Phaser {
 
                 /**
                  * Given the rotation (in radians) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
-                 * 
                  * One way to use this is: velocityFromRotation(rotation, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
                  * @param rotation The angle in radians.
                  * @param speed The speed it will move, in pixels per second sq. Default 60.
@@ -30078,33 +27070,17 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * A Sprite Game Object is used for the display of both static and animated images in your game.
              * 
-             * 
-             * 
              * Sprites can have input events and physics bodies. They can also be tweened, tinted, scrolled
-             * 
-             * 
              * 
              * and animated.
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * The main difference between a Sprite and an Image Game Object is that you cannot animate Images.
              * 
-             * 
-             * 
              * As such, Sprites take a fraction longer to process and have a larger API footprint due to the Animation
-             * 
-             * 
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
@@ -30126,20 +27102,15 @@ declare namespace Phaser {
 
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
 
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -30151,36 +27122,30 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
 
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
 
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
 
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
 
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -30188,38 +27153,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
@@ -30227,38 +27175,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -30267,19 +27198,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -30288,19 +27211,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -30309,18 +27224,14 @@ declare namespace Phaser {
 
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
 
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -30391,7 +27302,6 @@ declare namespace Phaser {
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
@@ -30399,48 +27309,36 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
 
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
 
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
 
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
 
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -30455,7 +27353,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -30464,7 +27361,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -30481,7 +27377,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -30505,14 +27400,12 @@ declare namespace Phaser {
 
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
 
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -30521,22 +27414,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -30544,22 +27428,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -30567,22 +27442,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -30601,14 +27467,12 @@ declare namespace Phaser {
 
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
 
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -30628,7 +27492,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -30648,8 +27511,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -30659,18 +27520,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -30680,7 +27534,6 @@ declare namespace Phaser {
 
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -30696,28 +27549,24 @@ declare namespace Phaser {
 
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
 
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
 
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
 
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -30739,7 +27588,6 @@ declare namespace Phaser {
 
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -30762,11 +27610,7 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
@@ -30774,8 +27618,6 @@ declare namespace Phaser {
 
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -30836,16 +27678,12 @@ declare namespace Phaser {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -30981,11 +27819,8 @@ declare namespace Phaser {
 
                 /**
                  * Syncs the Bodies position and size with its parent Game Object.
-                 * 
                  * You don't need to call this for Dynamic Bodies, as it happens automatically.
-                 * 
                  * But for Static bodies it's a useful way of modifying the position of a Static Body
-                 * 
                  * in the Physics World, based on its Game Object.
                  */
                 refreshBody(): Phaser.GameObjects.GameObject;
@@ -31455,7 +28290,6 @@ declare namespace Phaser {
 
                 /**
                  * Resets this Body to the given coordinates. Also positions its parent Game Object to the same coordinates.
-                 * 
                  * If the body had any velocity or acceleration it is lost as a result of calling this.
                  * @param x The horizontal position to place the Game Object and Body.
                  * @param y The vertical position to place the Game Object and Body.
@@ -31942,11 +28776,8 @@ declare namespace Phaser {
                     disableBody(disableGameObject?: boolean, hideGameObject?: boolean): Phaser.GameObjects.GameObject;
                     /**
                      * Syncs the Bodies position and size with its parent Game Object.
-                     * 
                      * You don't need to call this for Dynamic Bodies, as it happens automatically.
-                     * 
                      * But for Static bodies it's a useful way of modifying the position of a Static Body
-                     * 
                      * in the Physics World, based on its Game Object.
                      */
                     refreshBody(): Phaser.GameObjects.GameObject;
@@ -32077,8 +28908,6 @@ declare namespace Phaser {
             /**
              * The Arcade Physics Factory allows you to easily create Arcade Physics enabled Game Objects.
              * 
-             * 
-             * 
              * Objects that are created by this Factory are automatically added to the physics world.
              */
             class Factory {
@@ -32168,7 +28997,6 @@ declare namespace Phaser {
 
                 /**
                  * Creates a Static Physics Group object.
-                 * 
                  * All Game Objects created by this Group will automatically be static Arcade Physics objects.
                  * @param children [description]
                  * @param config [description]
@@ -32177,7 +29005,6 @@ declare namespace Phaser {
 
                 /**
                  * Creates a Physics Group object.
-                 * 
                  * All Game Objects created by this Group will automatically be dynamic Arcade Physics objects.
                  * @param children [description]
                  * @param config [description]
@@ -32206,10 +29033,6 @@ declare namespace Phaser {
 
             /**
              * An Arcade Physics Group object.
-             * 
-             * 
-             * 
-             * 
              * 
              * 
              * 
@@ -32470,9 +29293,7 @@ declare namespace Phaser {
 
                 /**
                  * Changes the Game Object this Body is bound to.
-                 * 
                  * First it removes its reference from the old Game Object, then sets the new one.
-                 * 
                  * You can optionally update the position and dimensions of this Body to reflect that of the new Game Object.
                  * @param gameObject The new Game Object that will own this Body.
                  * @param update Reposition and resize this Body to match the new Game Object? Default true.
@@ -32481,7 +29302,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates this Static Body so that its position and dimensions are updated
-                 * 
                  * based on the current Game Object it is bound to.
                  */
                 updateFromGameObject(): Phaser.Physics.Arcade.StaticBody;
@@ -33073,8 +29893,6 @@ declare namespace Phaser {
                 /**
                  * Wrap an object's coordinates (or several objects' coordinates) within {@link Phaser.Physics.Arcade.World#bounds}.
                  * 
-                 * 
-                 * 
                  * If the object is outside any boundary edge (left, top, right, bottom), it will be moved to the same offset from the opposite edge (the interior).
                  * @param object A Game Object, a Group, an object with `x` and `y` coordinates, or an array of such objects.
                  * @param padding An amount added to each boundary edge during the operation. Default 0.
@@ -33110,32 +29928,20 @@ declare namespace Phaser {
 
         /**
          * An Impact.js compatible physics world, body and solver, for those who are used
-         * 
          * to the Impact way of defining and controlling physics bodies. Also works with
-         * 
          * the new Loader support for Weltmeister map data.
          * 
-         * 
-         * 
          * World updated to run off the Phaser main loop.
-         * 
          * Body extended to support additional setter functions.
          * 
-         * 
-         * 
          * To create the map data you'll need Weltmeister, which comes with Impact
-         * 
          * and can be purchased from http://impactjs.com
-         * 
-         * 
          * 
          * My thanks to Dominic Szablewski for his permission to support Impact in Phaser.
          */
         namespace Impact {
             /**
              * An Impact.js compatible physics body.
-             * 
-             * 
              * 
              * This re-creates the properties you'd get on an Entity and the math needed to update them.
              */
@@ -33375,44 +30181,6 @@ declare namespace Phaser {
                 destroy(): void;
 
 
-            }
-
-            /**
-             * Collision Types - Determine if and how entities collide with each other.
-             * 
-             * 
-             * 
-             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
-             * 
-             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
-             * 
-             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
-             * 
-             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
-             * 
-             * FIXED collisions is undefined.
-             */
-            const enum COLLIDES {
-                /**
-                 * Never collides.
-                 */
-                NEVER,
-                /**
-                 * Lite collision.
-                 */
-                LITE,
-                /**
-                 * Passive collision.
-                 */
-                PASSIVE,
-                /**
-                 * Active collision.
-                 */
-                ACTIVE,
-                /**
-                 * Fixed collision.
-                 */
-                FIXED,
             }
 
             /**
@@ -33773,8 +30541,6 @@ declare namespace Phaser {
 
             /**
              * The Impact Physics Factory allows you to easily create Impact Physics enabled Game Objects.
-             * 
-             * 
              * 
              * Objects that are created by this Factory are automatically added to the physics world.
              */
@@ -34139,21 +30905,11 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * An Image is a light-weight Game Object useful for the display of static images in your game,
-             * 
-             * 
              * 
              * such as logos, backgrounds, scenery or other non-animated elements. Images can have input
              * 
-             * 
-             * 
              * events and physics bodies, or be tweened, tinted or scrolled. The main difference between an
-             * 
-             * 
              * 
              * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
              */
@@ -34205,20 +30961,15 @@ declare namespace Phaser {
 
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
 
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -34230,36 +30981,30 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
 
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
 
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
 
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
 
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -34267,38 +31012,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
@@ -34306,38 +31034,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -34346,19 +31057,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -34367,19 +31070,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -34388,18 +31083,14 @@ declare namespace Phaser {
 
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
 
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -34470,7 +31161,6 @@ declare namespace Phaser {
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
@@ -34478,48 +31168,36 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
 
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
 
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
 
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
 
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -34534,7 +31212,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -34543,7 +31220,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -34560,7 +31236,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -34584,14 +31259,12 @@ declare namespace Phaser {
 
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
 
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -34600,22 +31273,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -34623,22 +31287,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -34646,22 +31301,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -34680,14 +31326,12 @@ declare namespace Phaser {
 
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
 
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -34707,7 +31351,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -34727,8 +31370,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -34738,18 +31379,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -34759,7 +31393,6 @@ declare namespace Phaser {
 
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -34775,28 +31408,24 @@ declare namespace Phaser {
 
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
 
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
 
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
 
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -34818,7 +31447,6 @@ declare namespace Phaser {
 
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -34841,11 +31469,7 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
@@ -34853,8 +31477,6 @@ declare namespace Phaser {
 
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -34915,16 +31537,12 @@ declare namespace Phaser {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -35243,33 +31861,17 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * A Sprite Game Object is used for the display of both static and animated images in your game.
              * 
-             * 
-             * 
              * Sprites can have input events and physics bodies. They can also be tweened, tinted, scrolled
-             * 
-             * 
              * 
              * and animated.
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * The main difference between a Sprite and an Image Game Object is that you cannot animate Images.
              * 
-             * 
-             * 
              * As such, Sprites take a fraction longer to process and have a larger API footprint due to the Animation
-             * 
-             * 
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
@@ -35326,20 +31928,15 @@ declare namespace Phaser {
 
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
 
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -35351,36 +31948,30 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
 
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
 
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
 
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
 
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -35388,38 +31979,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
@@ -35427,38 +32001,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -35467,19 +32024,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -35488,19 +32037,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -35509,18 +32050,14 @@ declare namespace Phaser {
 
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
 
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -35591,7 +32128,6 @@ declare namespace Phaser {
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
@@ -35599,48 +32135,36 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
 
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
 
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
 
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
 
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -35655,7 +32179,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -35664,7 +32187,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -35681,7 +32203,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -35705,14 +32226,12 @@ declare namespace Phaser {
 
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
 
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -35721,22 +32240,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -35744,22 +32254,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -35767,22 +32268,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -35801,14 +32293,12 @@ declare namespace Phaser {
 
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
 
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -35828,7 +32318,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -35848,8 +32337,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -35859,18 +32346,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -35880,7 +32360,6 @@ declare namespace Phaser {
 
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -35896,28 +32375,24 @@ declare namespace Phaser {
 
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
 
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
 
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
 
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -35939,7 +32414,6 @@ declare namespace Phaser {
 
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -35962,11 +32436,7 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
@@ -35974,8 +32444,6 @@ declare namespace Phaser {
 
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -36036,16 +32504,12 @@ declare namespace Phaser {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -36319,50 +32783,11 @@ declare namespace Phaser {
             function Solver(world: Phaser.Physics.Impact.World, bodyA: Phaser.Physics.Impact.Body, bodyB: Phaser.Physics.Impact.Body): void;
 
             /**
-             * Collision Types - Determine if and how entities collide with each other.
-             * 
-             * 
-             * 
-             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
-             * 
-             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
-             * 
-             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
-             * 
-             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
-             * 
-             * FIXED collisions is undefined.
-             */
-            const enum TYPE {
-                /**
-                 * Collides with nothing.
-                 */
-                NONE,
-                /**
-                 * Type A. Collides with Type B.
-                 */
-                A,
-                /**
-                 * Type B. Collides with Type A.
-                 */
-                B,
-                /**
-                 * Collides with both types A and B.
-                 */
-                BOTH,
-            }
-
-            /**
              * Set up the trace-result
-             * 
              * var res = {
-             * 
              *     collision: {x: false, y: false, slope: false},
-             * 
              *     pos: {x: x, y: y},
-             * 
              *     tile: {x: 0, y: 0}
-             * 
              * };
              * @param body [description]
              * @param res [description]
@@ -36447,55 +32872,39 @@ declare namespace Phaser {
 
                 /**
                  * Sets the collision map for the world either from a Weltmeister JSON level in the cache or from
-                 * 
                  * a 2D array. If loading from a Weltmeister level, the map must have a layer called "collision".
                  * @param key Either a string key that corresponds to a Weltmeister level
-                 * 
                  * in the cache, or a 2D array of collision IDs.
                  * @param tileSize The size of a tile. This is optional if loading from a Weltmeister
-                 * 
                  * level in the cache.
                  */
                 setCollisionMap(key: string | integer[][], tileSize: integer): Phaser.Physics.Impact.CollisionMap;
 
                 /**
                  * Sets the collision map for the world from a tilemap layer. Only tiles that are marked as
-                 * 
                  * colliding will be used. You can specify the mapping from tiles to slope IDs in a couple of
-                 * 
                  * ways. The easiest is to use Tiled and the slopeTileProperty option. Alternatively, you can
-                 * 
                  * manually create a slopeMap that stores the mapping between tile indices and slope IDs.
                  * @param tilemapLayer The tilemap layer to use.
                  * @param options Options for controlling the mapping from tiles to slope IDs.
                  * @param options.slopeTileProperty Slope IDs can be stored on tiles directly
-                 * 
                  * using Tiled's tileset editor. If a tile has a property with the given slopeTileProperty string
-                 * 
                  * name, the value of that property for the tile will be used for its slope mapping. E.g. a 45
-                 * 
                  * degree slope upward could be given a "slope" property with a value of 2. Default null.
                  * @param options.slopeMap A tile index to slope definition map. Default null.
                  * @param options.defaultCollidingSlope If specified, the default slope ID to
-                 * 
                  * assign to a colliding tile. If not specified, the tile's index is used. Default null.
                  * @param options.defaultNonCollidingSlope The default slope ID to assign to a
-                 * 
                  * non-colliding tile. Default 0.
                  */
                 setCollisionMapFromTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer, options?: object): Phaser.Physics.Impact.CollisionMap;
 
                 /**
                  * Sets the bounds of the Physics world to match the given world pixel dimensions.
-                 * 
                  * You can optionally set which 'walls' to create: left, right, top or bottom.
-                 * 
                  * If none of the walls are given it will default to use the walls settings it had previously.
-                 * 
                  * I.e. if you previously told it to not have the left or right walls, and you then adjust the world size
-                 * 
                  * the newly created bounds will also not have the left and right walls.
-                 * 
                  * Explicitly state them in the parameters to override this.
                  * @param x The x coordinate of the top-left corner of the bounds.
                  * @param y The y coordinate of the top-left corner of the bounds.
@@ -37065,7 +33474,6 @@ declare namespace Phaser {
 
                 /**
                  * Create a new composite containing Matter Image objects created in a grid arrangement.
-                 * 
                  * This function uses the body bounds to prevent overlaps.
                  * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
                  * @param frame An optional frame from the Texture this Game Object is rendering with. Set to `null` to skip this value.
@@ -37081,7 +33489,6 @@ declare namespace Phaser {
 
                 /**
                  * Create a new composite containing bodies created in the callback in a grid arrangement.
-                 * 
                  * This function uses the body bounds to prevent overlaps.
                  * @param x The horizontal position of this composite in the world.
                  * @param y The vertical position of this composite in the world.
@@ -37095,7 +33502,6 @@ declare namespace Phaser {
 
                 /**
                  * Create a new composite containing bodies created in the callback in a pyramid arrangement.
-                 * 
                  * This function uses the body bounds to prevent overlaps.
                  * @param x The horizontal position of this composite in the world.
                  * @param y The vertical position of this composite in the world.
@@ -37263,21 +33669,11 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * An Image is a light-weight Game Object useful for the display of static images in your game,
-             * 
-             * 
              * 
              * such as logos, backgrounds, scenery or other non-animated elements. Images can have input
              * 
-             * 
-             * 
              * events and physics bodies, or be tweened, tinted or scrolled. The main difference between an
-             * 
-             * 
              * 
              * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
              */
@@ -37300,20 +33696,15 @@ declare namespace Phaser {
 
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
 
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -37325,36 +33716,30 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
 
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
 
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
 
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
 
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -37362,38 +33747,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
@@ -37401,38 +33769,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -37441,19 +33792,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -37462,19 +33805,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -37483,18 +33818,14 @@ declare namespace Phaser {
 
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
 
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -37565,7 +33896,6 @@ declare namespace Phaser {
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
@@ -37573,48 +33903,36 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
 
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
 
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
 
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
 
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -37629,7 +33947,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -37638,7 +33955,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -37655,7 +33971,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -37679,14 +33994,12 @@ declare namespace Phaser {
 
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
 
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -37695,22 +34008,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -37718,22 +34022,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -37741,22 +34036,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -37775,14 +34061,12 @@ declare namespace Phaser {
 
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
 
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -37802,7 +34086,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -37822,8 +34105,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -37833,18 +34114,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -37854,7 +34128,6 @@ declare namespace Phaser {
 
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -37870,28 +34143,24 @@ declare namespace Phaser {
 
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
 
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
 
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
 
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -37913,7 +34182,6 @@ declare namespace Phaser {
 
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -37936,11 +34204,7 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
@@ -37948,8 +34212,6 @@ declare namespace Phaser {
 
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -38010,16 +34272,12 @@ declare namespace Phaser {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -38317,14 +34575,12 @@ declare namespace Phaser {
 
                 /**
                  * Sets the Matter Engine to run at fixed timestep of 60Hz and enables `autoUpdate`.
-                 * 
                  * If you have set a custom `getDelta` function then this will override it.
                  */
                 set60Hz(): Phaser.Physics.Matter.MatterPhysics;
 
                 /**
                  * Sets the Matter Engine to run at fixed timestep of 30Hz and enables `autoUpdate`.
-                 * 
                  * If you have set a custom `getDelta` function then this will override it.
                  */
                 set30Hz(): Phaser.Physics.Matter.MatterPhysics;
@@ -38332,40 +34588,22 @@ declare namespace Phaser {
                 /**
                  * Manually advances the physics simulation by one iteration.
                  * 
-                 * 
-                 * 
                  * You can optionally pass in the `delta` and `correction` values to be used by Engine.update.
-                 * 
                  * If undefined they use the Matter defaults of 60Hz and no correction.
-                 * 
-                 * 
                  * 
                  * Calling `step` directly bypasses any checks of `enabled` or `autoUpdate`.
                  * 
-                 * 
-                 * 
                  * It also ignores any custom `getDelta` functions, as you should be passing the delta
-                 * 
                  * value in to this call.
                  * 
-                 * 
-                 * 
                  * You can adjust the number of iterations that Engine.update performs internally.
-                 * 
                  * Use the Scene Matter Physics config object to set the following properties:
                  * 
-                 * 
-                 * 
                  * positionIterations (defaults to 6)
-                 * 
                  * velocityIterations (defaults to 4)
-                 * 
                  * constraintIterations (defaults to 2)
                  * 
-                 * 
-                 * 
                  * Adjusting these values can help performance in certain situations, depending on the physics requirements
-                 * 
                  * of your game.
                  * @param delta [description] Default 16.666.
                  * @param correction [description] Default 1.
@@ -38389,33 +34627,17 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * A Sprite Game Object is used for the display of both static and animated images in your game.
              * 
-             * 
-             * 
              * Sprites can have input events and physics bodies. They can also be tweened, tinted, scrolled
-             * 
-             * 
              * 
              * and animated.
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * The main difference between a Sprite and an Image Game Object is that you cannot animate Images.
              * 
-             * 
-             * 
              * As such, Sprites take a fraction longer to process and have a larger API footprint due to the Animation
-             * 
-             * 
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
@@ -38443,20 +34665,15 @@ declare namespace Phaser {
 
                 /**
                  * Clears all alpha values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 1 (fully opaque)
                  */
                 clearAlpha(): Phaser.GameObjects.GameObject;
 
                 /**
                  * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-                 * 
                  * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
                  * 
-                 * 
-                 * 
                  * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-                 * 
                  * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
                  * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
                  * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -38468,36 +34685,30 @@ declare namespace Phaser {
                 /**
                  * The alpha value of the Game Object.
                  * 
-                 * 
-                 * 
                  * This is a global value, impacting the entire Game Object, not just a region of it.
                  */
                 alpha: number;
 
                 /**
                  * The alpha value starting from the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopLeft: number;
 
                 /**
                  * The alpha value starting from the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaTopRight: number;
 
                 /**
                  * The alpha value starting from the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomLeft: number;
 
                 /**
                  * The alpha value starting from the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 alphaBottomRight: number;
@@ -38505,38 +34716,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  */
                 blendMode: Phaser.BlendModes | string;
@@ -38544,38 +34738,21 @@ declare namespace Phaser {
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
-                 * 
-                 * 
                  * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-                 * 
-                 * 
                  * 
                  * Under WebGL only the following Blend Modes are available:
                  * 
-                 * 
-                 * 
                  * * ADD
-                 * 
                  * * MULTIPLY
-                 * 
                  * * SCREEN
-                 * 
-                 * 
                  * 
                  * Canvas has more available depending on browser support.
                  * 
-                 * 
-                 * 
                  * You can also create your own custom Blend Modes in WebGL.
                  * 
-                 * 
-                 * 
                  * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-                 * 
                  * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-                 * 
                  * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-                 * 
                  * are used.
                  * @param value The BlendMode value. Either a string or a CONST.
                  */
@@ -38584,19 +34761,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  */
@@ -38605,19 +34774,11 @@ declare namespace Phaser {
                 /**
                  * The depth of this Game Object within the Scene.
                  * 
-                 * 
-                 * 
                  * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-                 * 
                  * of Game Objects, without actually moving their position in the display list.
                  * 
-                 * 
-                 * 
                  * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-                 * 
                  * value will always render in front of one with a lower value.
-                 * 
-                 * 
                  * 
                  * Setting the depth will queue a depth sort event within the Scene.
                  * @param value The depth of this Game Object.
@@ -38626,18 +34787,14 @@ declare namespace Phaser {
 
                 /**
                  * The horizontally flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipX: boolean;
 
                 /**
                  * The vertically flipped state of the Game Object.
-                 * 
                  * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-                 * 
                  * Flipping always takes place from the middle of the texture and does not impact the scale value.
                  */
                 flipY: boolean;
@@ -38708,7 +34865,6 @@ declare namespace Phaser {
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
-                 * 
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
@@ -38716,48 +34872,36 @@ declare namespace Phaser {
 
                 /**
                  * The horizontal origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the left of the Game Object.
                  */
                 originX: number;
 
                 /**
                  * The vertical origin of this Game Object.
-                 * 
                  * The origin maps the relationship between the size and position of the Game Object.
-                 * 
                  * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-                 * 
                  * Setting the value to 0 means the position now relates to the top of the Game Object.
                  */
                 originY: number;
 
                 /**
                  * The horizontal display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginX: number;
 
                 /**
                  * The vertical display origin of this Game Object.
-                 * 
                  * The origin is a normalized value between 0 and 1.
-                 * 
                  * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
                  */
                 displayOriginY: number;
 
                 /**
                  * Sets the origin of this Game Object.
-                 * 
-                 * 
                  * 
                  * The values are given in the range 0 to 1.
                  * @param x The horizontal origin value. Default 0.5.
@@ -38772,7 +34916,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display origin of this Game Object.
-                 * 
                  * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
                  * @param x The horizontal display origin value. Default 0.
                  * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -38781,7 +34924,6 @@ declare namespace Phaser {
 
                 /**
                  * Updates the Display Origin cached values internally stored on this Game Object.
-                 * 
                  * You don't usually call this directly, but it is exposed for edge-cases where you may.
                  */
                 updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -38798,7 +34940,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the initial WebGL Pipeline of this Game Object.
-                 * 
                  * This should only be called during the instantiation of the Game Object.
                  * @param pipelineName The name of the pipeline to set on this Game Object.
                  */
@@ -38822,14 +34963,12 @@ declare namespace Phaser {
 
                 /**
                  * The Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  */
                 scaleMode: Phaser.ScaleModes;
 
                 /**
                  * Sets the Scale Mode being used by this Game Object.
-                 * 
                  * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
                  * @param value The Scale Mode to be used by this Game Object.
                  */
@@ -38838,22 +34977,13 @@ declare namespace Phaser {
                 /**
                  * The horizontal scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorX: number;
@@ -38861,22 +34991,13 @@ declare namespace Phaser {
                 /**
                  * The vertical scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  */
                 scrollFactorY: number;
@@ -38884,22 +35005,13 @@ declare namespace Phaser {
                 /**
                  * Sets the scroll factor of this Game Object.
                  * 
-                 * 
-                 * 
                  * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
                  * 
-                 * 
-                 * 
                  * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-                 * 
                  * It does not change the Game Objects actual position values.
                  * 
-                 * 
-                 * 
                  * A value of 1 means it will move exactly in sync with a camera.
-                 * 
                  * A value of 0 means it will not move at all, even if the camera moves.
-                 * 
                  * Other values control the degree to which the camera movement is mapped to this Game Object.
                  * @param x The horizontal scroll factor of this Game Object.
                  * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -38918,14 +35030,12 @@ declare namespace Phaser {
 
                 /**
                  * The displayed width of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayWidth: number;
 
                 /**
                  * The displayed height of this Game Object.
-                 * 
                  * This value takes into account the scale factor.
                  */
                 displayHeight: number;
@@ -38945,7 +35055,6 @@ declare namespace Phaser {
 
                 /**
                  * Sets the display size of this Game Object.
-                 * 
                  * Calling this will adjust the scale.
                  * @param width The width of this Game Object.
                  * @param height The height of this Game Object.
@@ -38965,8 +35074,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -38976,18 +35083,11 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * 
-                 * 
-                 * 
                  * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
-                 * 
                  * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
                  * @param frame The name or index of the frame within the Texture.
                  * @param updateSize Should this call adjust the size of the Game Object? Default true.
@@ -38997,7 +35097,6 @@ declare namespace Phaser {
 
                 /**
                  * Clears all tint values associated with this Game Object.
-                 * 
                  * Immediately sets the alpha levels back to 0xffffff (no tint)
                  */
                 clearTint(): Phaser.GameObjects.GameObject;
@@ -39013,28 +35112,24 @@ declare namespace Phaser {
 
                 /**
                  * The tint value being applied to the top-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopLeft: integer;
 
                 /**
                  * The tint value being applied to the top-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintTopRight: integer;
 
                 /**
                  * The tint value being applied to the bottom-left of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomLeft: integer;
 
                 /**
                  * The tint value being applied to the bottom-right of the Game Object.
-                 * 
                  * This value is interpolated from the corner to the center of the Game Object.
                  */
                 tintBottomRight: integer;
@@ -39056,7 +35151,6 @@ declare namespace Phaser {
 
                 /**
                  * The z position of this Game Object.
-                 * 
                  * Note: Do not use this value to set the z-index, instead see the `depth` property.
                  */
                 z: number;
@@ -39079,11 +35173,7 @@ declare namespace Phaser {
                 /**
                  * The angle of this Game Object as expressed in degrees.
                  * 
-                 * 
-                 * 
                  * Where 0 is to the right, 90 is down, 180 is left.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in radians, see the `rotation` property instead.
                  */
@@ -39091,8 +35181,6 @@ declare namespace Phaser {
 
                 /**
                  * The angle of this Game Object in radians.
-                 * 
-                 * 
                  * 
                  * If you prefer to work in degrees, see the `angle` property instead.
                  */
@@ -39153,16 +35241,12 @@ declare namespace Phaser {
                 /**
                  * The visible state of the Game Object.
                  * 
-                 * 
-                 * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  */
                 visible: boolean;
 
                 /**
                  * Sets the visibility of this Game Object.
-                 * 
-                 * 
                  * 
                  * An invisible Game Object will skip rendering, but will still process update logic.
                  * @param value The visible state of the Game Object.
@@ -39396,25 +35480,13 @@ declare namespace Phaser {
             /**
              * A wrapper around a Tile that provides access to a corresponding Matter body. A tile can only
              * 
-             * 
-             * 
              * have one Matter body associated with it. You can either pass in an existing Matter body for
-             * 
-             * 
              * 
              * the tile or allow the constructor to create the corresponding body for you. If the Tile has a
              * 
-             * 
-             * 
              * collision group (defined in Tiled), those shapes will be used to create the body. If not, the
              * 
-             * 
-             * 
              * tile's rectangle bounding box will be used.
-             * 
-             * 
-             * 
-             * 
              * 
              * 
              * 
@@ -39422,13 +35494,7 @@ declare namespace Phaser {
              * 
              * 
              * 
-             * 
-             * 
-             * 
-             * 
              * Note: not all Tiled collision shapes are supported. See
-             * 
-             * 
              * 
              * Phaser.Physics.Matter.TileBody#setFromTileCollision for more information.
              */
@@ -39438,16 +35504,12 @@ declare namespace Phaser {
                  * @param world [description]
                  * @param tile The target tile that should have a Matter body.
                  * @param options Options to be used when creating the Matter body. See
-                 * 
                  * Phaser.Physics.Matter.Matter.Body for a list of what Matter accepts.
                  * @param options.body An existing Matter body to
-                 * 
                  * be used instead of creating a new one. Default null.
                  * @param options.isStatic Whether or not the newly created body should be
-                 * 
                  * made static. This defaults to true since typically tiles should not be moved. Default true.
                  * @param options.addToWorld Whether or not to add the newly created body (or
-                 * 
                  * existing body if options.body is used) to the Matter world. Default true.
                  */
                 constructor(world: Phaser.Physics.Matter.World, tile: Phaser.Tilemaps.Tile, options?: object);
@@ -39466,45 +35528,32 @@ declare namespace Phaser {
                  * Sets the current body to a rectangle that matches the bounds of the tile.
                  * @param options Options to be used when creating the Matter body. See MatterJS.Body for a list of what Matter accepts.
                  * @param options.isStatic Whether or not the newly created body should be
-                 * 
                  * made static. This defaults to true since typically tiles should not be moved. Default true.
                  * @param options.addToWorld Whether or not to add the newly created body (or
-                 * 
                  * existing body if options.body is used) to the Matter world. Default true.
                  */
                 setFromTileRectangle(options?: object): Phaser.Physics.Matter.TileBody;
 
                 /**
                  * Sets the current body from the collision group associated with the Tile. This is typically
-                 * 
                  * set up in Tiled's collision editor.
                  * 
-                 * 
-                 * 
                  * Note: Matter doesn't support all shapes from Tiled. Rectangles and polygons are directly
-                 * 
                  * supported. Ellipses are converted into circle bodies. Polylines are treated as if they are
-                 * 
                  * closed polygons. If a tile has multiple shapes, a multi-part body will be created. Concave
-                 * 
                  * shapes are supported if poly-decomp library is included. Decomposition is not guaranteed to
-                 * 
                  * work for complex shapes (e.g. holes), so it's often best to manually decompose a concave
-                 * 
                  * polygon into multiple convex polygons yourself.
                  * @param options Options to be used when creating the Matter body. See MatterJS.Body for a list of what Matter accepts.
                  * @param options.isStatic Whether or not the newly created body should be
-                 * 
                  * made static. This defaults to true since typically tiles should not be moved. Default true.
                  * @param options.addToWorld Whether or not to add the newly created body (or
-                 * 
                  * existing body if options.body is used) to the Matter world. Default true.
                  */
                 setFromTileCollision(options?: object): Phaser.Physics.Matter.TileBody;
 
                 /**
                  * Sets the current body to the given body. This will remove the previous body, if one already
-                 * 
                  * exists.
                  * @param body The new Matter body to use.
                  * @param addToWorld Whether or not to add the body to the Matter world. Default true.
@@ -39747,69 +35796,42 @@ declare namespace Phaser {
 
                 /**
                  * The correction argument is an optional Number that specifies the time correction factor to apply to the update.
-                 * 
                  * This can help improve the accuracy of the simulation in cases where delta is changing between updates.
-                 * 
                  * The value of correction is defined as delta / lastDelta, i.e. the percentage change of delta over the last step.
-                 * 
                  * Therefore the value is always 1 (no correction) when delta constant (or when no correction is desired, which is the default).
-                 * 
                  * See the paper on Time Corrected Verlet for more information.
                  */
                 correction: number;
 
                 /**
                  * This function is called every time the core game loop steps, which is bound to the
-                 * 
                  * Request Animation Frame frequency unless otherwise modified.
-                 * 
-                 * 
                  * 
                  * The function is passed two values: `time` and `delta`, both of which come from the game step values.
                  * 
-                 * 
-                 * 
                  * It must return a number. This number is used as the delta value passed to Matter.Engine.update.
-                 * 
-                 * 
                  * 
                  * You can override this function with your own to define your own timestep.
                  * 
-                 * 
-                 * 
                  * If you need to update the Engine multiple times in a single game step then call
-                 * 
                  * `World.update` as many times as required. Each call will trigger the `getDelta` function.
-                 * 
                  * If you wish to have full control over when the Engine updates then see the property `autoUpdate`.
                  * 
-                 * 
-                 * 
                  * You can also adjust the number of iterations that Engine.update performs.
-                 * 
                  * Use the Scene Matter Physics config object to set the following properties:
                  * 
-                 * 
-                 * 
                  * positionIterations (defaults to 6)
-                 * 
                  * velocityIterations (defaults to 4)
-                 * 
                  * constraintIterations (defaults to 2)
                  * 
-                 * 
-                 * 
                  * Adjusting these values can help performance in certain situations, depending on the physics requirements
-                 * 
                  * of your game.
                  */
                 getDelta: Function;
 
                 /**
                  * Automatically call Engine.update every time the game steps.
-                 * 
                  * If you disable this then you are responsible for calling `World.step` directly from your game.
-                 * 
                  * If you call `set60Hz` or `set30Hz` then `autoUpdate` is reset to `true`.
                  */
                 autoUpdate: boolean;
@@ -39836,15 +35858,10 @@ declare namespace Phaser {
 
                 /**
                  * Sets the bounds of the Physics world to match the given world pixel dimensions.
-                 * 
                  * You can optionally set which 'walls' to create: left, right, top or bottom.
-                 * 
                  * If none of the walls are given it will default to use the walls settings it had previously.
-                 * 
                  * I.e. if you previously told it to not have the left or right walls, and you then adjust the world size
-                 * 
                  * the newly created bounds will also not have the left and right walls.
-                 * 
                  * Explicitly state them in the parameters to override this.
                  * @param x The x coordinate of the top-left corner of the bounds. Default 0.
                  * @param y The y coordinate of the top-left corner of the bounds. Default 0.
@@ -39919,7 +35936,6 @@ declare namespace Phaser {
 
                 /**
                  * Adds MatterTileBody instances for all the colliding tiles within the given tilemap layer. Set
-                 * 
                  * the appropriate tiles in your layer to collide before calling this method!
                  * @param tilemapLayer An array of tiles.
                  * @param options Options to be passed to the MatterTileBody constructor. {@ee Phaser.Physics.Matter.TileBody}
@@ -39928,7 +35944,6 @@ declare namespace Phaser {
 
                 /**
                  * Adds MatterTileBody instances for the given tiles. This adds bodies regardless of whether the
-                 * 
                  * tiles are set to collide or not.
                  * @param tiles An array of tiles.
                  * @param options Options to be passed to the MatterTileBody constructor. {@see Phaser.Physics.Matter.TileBody}
@@ -39966,40 +35981,22 @@ declare namespace Phaser {
                 /**
                  * Manually advances the physics simulation by one iteration.
                  * 
-                 * 
-                 * 
                  * You can optionally pass in the `delta` and `correction` values to be used by Engine.update.
-                 * 
                  * If undefined they use the Matter defaults of 60Hz and no correction.
-                 * 
-                 * 
                  * 
                  * Calling `step` directly bypasses any checks of `enabled` or `autoUpdate`.
                  * 
-                 * 
-                 * 
                  * It also ignores any custom `getDelta` functions, as you should be passing the delta
-                 * 
                  * value in to this call.
                  * 
-                 * 
-                 * 
                  * You can adjust the number of iterations that Engine.update performs internally.
-                 * 
                  * Use the Scene Matter Physics config object to set the following properties:
                  * 
-                 * 
-                 * 
                  * positionIterations (defaults to 6)
-                 * 
                  * velocityIterations (defaults to 4)
-                 * 
                  * constraintIterations (defaults to 2)
                  * 
-                 * 
-                 * 
                  * Adjusting these values can help performance in certain situations, depending on the physics requirements
-                 * 
                  * of your game.
                  * @param delta [description] Default 16.666.
                  * @param correction [description] Default 1.
@@ -40090,87 +36087,37 @@ declare namespace Phaser {
 
         }
 
+        class Impact {
+            /**
+             * Collision Types - Determine if and how entities collide with each other.
+             * 
+             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
+             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
+             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
+             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
+             * FIXED collisions is undefined.
+             */
+            static COLLIDES: object;
+
+            /**
+             * Collision Types - Determine if and how entities collide with each other.
+             * 
+             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
+             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
+             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
+             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
+             * FIXED collisions is undefined.
+             */
+            static TYPE: object;
+
+        }
+
     }
 
     namespace Plugins {
     }
 
-    /**
-     * Phaser Blend Modes.
-     */
-    const enum BlendModes {
-        /**
-         * Skips the Blend Mode check in the renderer.
-         */
-        SKIP_CHECK,
-        /**
-         * Normal blend mode.
-         */
-        NORMAL,
-        /**
-         * Add blend mode.
-         */
-        ADD,
-        /**
-         * Multiply blend mode.
-         */
-        MULTIPLY,
-        /**
-         * Screen blend mode.
-         */
-        SCREEN,
-        /**
-         * Overlay blend mode.
-         */
-        OVERLAY,
-        /**
-         * Darken blend mode.
-         */
-        DARKEN,
-        /**
-         * Lighten blend mode.
-         */
-        LIGHTEN,
-        /**
-         * Color Dodge blend mode.
-         */
-        COLOR_DODGE,
-        /**
-         * Color Burn blend mode.
-         */
-        COLOR_BURN,
-        /**
-         * Hard Light blend mode.
-         */
-        HARD_LIGHT,
-        /**
-         * Soft Light blend mode.
-         */
-        SOFT_LIGHT,
-        /**
-         * Difference blend mode.
-         */
-        DIFFERENCE,
-        /**
-         * Exclusion blend mode.
-         */
-        EXCLUSION,
-        /**
-         * Hue blend mode.
-         */
-        HUE,
-        /**
-         * Saturation blend mode.
-         */
-        SATURATION,
-        /**
-         * Color blend mode.
-         */
-        COLOR,
-        /**
-         * Luminosity blend mode.
-         */
-        LUMINOSITY,
+    namespace BlendModes {
     }
 
     namespace Renderer {
@@ -41092,7 +37039,6 @@ declare namespace Phaser {
 
                 /**
                  * Indicates if the current pipeline is flushing the contents to the GPU.
-                 * 
                  * When the variable is set the flush function will be locked.
                  */
                 flushLocked: boolean;
@@ -41809,22 +37755,7 @@ declare namespace Phaser {
 
     }
 
-    /**
-     * Phaser Scale Modes.
-     */
-    const enum ScaleModes {
-        /**
-         * Default Scale Mode (Linear).
-         */
-        DEFAULT,
-        /**
-         * Linear Scale Mode.
-         */
-        LINEAR,
-        /**
-         * Nearest Scale Mode.
-         */
-        NEAREST,
+    namespace ScaleModes {
     }
 
     namespace Scenes {
@@ -41845,13 +37776,7 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * The Scene Manager is a Game level system, responsible for creating, processing and updating all of the
-         * 
-         * 
          * 
          * Scenes in a Game instance.
          */
@@ -41885,26 +37810,15 @@ declare namespace Phaser {
 
             /**
              * Adds a new Scene into the SceneManager.
-             * 
              * You must give each Scene a unique key by which you'll identify it.
-             * 
-             * 
              * 
              * The `sceneConfig` can be:
              * 
-             * 
-             * 
              * * A `Phaser.Scene` object, or an object that extends it.
-             * 
              * * A plain JavaScript object
-             * 
              * * A JavaScript ES6 Class that extends `Phaser.Scene`
-             * 
              * * A JavaScript ES5 prototype based Class
-             * 
              * * A JavaScript function
-             * 
-             * 
              * 
              * If a function is given then a new Scene will be created by calling it.
              * @param key A unique key used to reference the Scene, i.e. `MainMenu` or `Level1`.
@@ -41916,16 +37830,10 @@ declare namespace Phaser {
             /**
              * Removes a Scene from the SceneManager.
              * 
-             * 
-             * 
              * The Scene is removed from the local scenes array, it's key is cleared from the keys
-             * 
              * cache and Scene.Systems.destroy is then called on it.
              * 
-             * 
-             * 
              * If the SceneManager is processing the Scenes when this method is called it wil
-             * 
              * queue the operation for the next update sequence.
              * @param scene The Scene to be removed.
              */
@@ -42057,7 +37965,6 @@ declare namespace Phaser {
 
             /**
              * Moves a Scene so it is immediately above another Scene in the Scenes list.
-             * 
              * This means it will render over the top of the other Scene.
              * @param keyA The Scene that Scene B will be moved above.
              * @param keyB The Scene to be moved.
@@ -42066,7 +37973,6 @@ declare namespace Phaser {
 
             /**
              * Moves a Scene so it is immediately below another Scene in the Scenes list.
-             * 
              * This means it will render behind the other Scene.
              * @param keyA The Scene that Scene B will be moved above.
              * @param keyB The Scene to be moved.
@@ -42217,7 +38123,6 @@ declare namespace Phaser {
 
             /**
              * Swaps the position of two scenes in the Scenes list.
-             * 
              * This controls the order in which they are rendered and updated.
              * @param keyA The first Scene to swap.
              * @param keyB The second Scene to swap. If none is given it defaults to this Scene.
@@ -42226,7 +38131,6 @@ declare namespace Phaser {
 
             /**
              * Swaps the position of two scenes in the Scenes list, so that Scene B is directly above Scene A.
-             * 
              * This controls the order in which they are rendered and updated.
              * @param keyA The Scene that Scene B will be moved to be above.
              * @param keyB The Scene to be moved. If none is given it defaults to this Scene.
@@ -42235,7 +38139,6 @@ declare namespace Phaser {
 
             /**
              * Swaps the position of two scenes in the Scenes list, so that Scene B is directly below Scene A.
-             * 
              * This controls the order in which they are rendered and updated.
              * @param keyA The Scene that Scene B will be moved to be below.
              * @param keyB The Scene to be moved. If none is given it defaults to this Scene.
@@ -42245,16 +38148,10 @@ declare namespace Phaser {
             /**
              * Removes a Scene from the SceneManager.
              * 
-             * 
-             * 
              * The Scene is removed from the local scenes array, it's key is cleared from the keys
-             * 
              * cache and Scene.Systems.destroy is then called on it.
              * 
-             * 
-             * 
              * If the SceneManager is processing the Scenes when this method is called it wil
-             * 
              * queue the operation for the next update sequence.
              * @param scene The Scene to be removed.
              */
@@ -42316,17 +38213,9 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * This class is available from within a Scene under the property `sys`.
          * 
-         * 
-         * 
          * It is responsible for managing all of the plugins a Scene has running, including the display list, and
-         * 
-         * 
          * 
          * handling the update step and renderer. It also contains references to global systems belonging to Game.
          */
@@ -42464,7 +38353,6 @@ declare namespace Phaser {
 
             /**
              * Pause this Scene.
-             * 
              * A paused Scene still renders, it just doesn't run ANY of its update handlers or systems.
              */
             pause(): Phaser.Scenes.Systems;
@@ -42477,10 +38365,7 @@ declare namespace Phaser {
             /**
              * Send this Scene to sleep.
              * 
-             * 
-             * 
              * A sleeping Scene doesn't run it's update step or render anything, but it also isn't destroyed,
-             * 
              * or have any of its systems or children removed, meaning it can be re-activated at any point.
              */
             sleep(): Phaser.Scenes.Systems;
@@ -42525,7 +38410,6 @@ declare namespace Phaser {
 
             /**
              * Called automatically by the SceneManager if the Game resizes.
-             * 
              * Dispatches an event you can respond to in your game code.
              * @param width The new width of the game.
              * @param height The new height of the game.
@@ -42598,16 +38482,13 @@ declare namespace Phaser {
 
             /**
              * A property that holds the value of sound's actual playback rate,
-             * 
              * after its rate and detune values has been combined with global
-             * 
              * rate and detune values.
              */
             totalRate: number;
 
             /**
              * A value representing the duration, in seconds.
-             * 
              * It could be total sound duration or a marker duration.
              */
             duration: number;
@@ -42619,25 +38500,20 @@ declare namespace Phaser {
 
             /**
              * Boolean indicating whether the sound is muted or not.
-             * 
              * Gets or sets the muted state of this sound.
              */
             mute: boolean;
 
             /**
              * Gets or sets the volume of this sound,
-             * 
              * a value between 0 (silence) and 1 (full volume).
              */
             volume: number;
 
             /**
              * Property representing the position of playback for this sound, in seconds.
-             * 
              * Setting it to a specific value moves current playback to that position.
-             * 
              * The value given is clamped to the range 0 to current marker duration.
-             * 
              * Setting seek of a stopped sound has no effect.
              */
             seek: number;
@@ -42654,14 +38530,12 @@ declare namespace Phaser {
 
             /**
              * Currently playing marker.
-             * 
              * 'null' if whole sound is playing.
              */
             currentMarker: SoundMarker;
 
             /**
              * Adds a marker into the current sound. A marker is represented by name, start time, duration, and optionally config object.
-             * 
              * This allows you to bundle multiple sounds together into a single audio file and use markers to jump between them for playback.
              * @param marker Marker object.
              */
@@ -42681,9 +38555,7 @@ declare namespace Phaser {
 
             /**
              * Play this sound, or a marked section of it.
-             * 
              * It always plays the sound from the start. If you want to start playback from a specific time
-             * 
              * you can set 'seek' setting of the config object, provided to this call, to that value.
              * @param markerName If you want to play a marker then provide the marker name here, otherwise omit it to play the full sound. Default ''.
              * @param config Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
@@ -42737,21 +38609,11 @@ declare namespace Phaser {
         /**
          * The sound manager is responsible for playing back audio via Web Audio API or HTML Audio tag as fallback.
          * 
-         * 
-         * 
          * The audio file type and the encoding of those files are extremely important.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Not all browsers can play all audio formats.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -42781,16 +38643,13 @@ declare namespace Phaser {
 
             /**
              * Flag indicating if sounds should be paused when game looses focus,
-             * 
              * for instance when user switches to another tab/program/app.
              */
             pauseOnBlur: boolean;
 
             /**
              * Mobile devices require sounds to be triggered from an explicit user action,
-             * 
              * such as a tap, before any sound can be loaded/played on a web page.
-             * 
              * Set to true if the audio system is currently locked awaiting user interaction.
              */
             locked: boolean;
@@ -42811,7 +38670,6 @@ declare namespace Phaser {
 
             /**
              * Enables playing sound on the fly without the need to keep a reference to it.
-             * 
              * Sound will auto destroy once its playback ends.
              * @param key Asset key for the sound.
              * @param extra An optional additional object containing settings to be applied to the sound. It could be either config or marker object.
@@ -42820,7 +38678,6 @@ declare namespace Phaser {
 
             /**
              * Enables playing audio sprite sound on the fly without the need to keep a reference to it.
-             * 
              * Sound will auto destroy once its playback ends.
              * @param key Asset key for the sound.
              * @param spriteName The name of the sound sprite to play.
@@ -42830,7 +38687,6 @@ declare namespace Phaser {
 
             /**
              * Removes a sound from the sound manager.
-             * 
              * The removed sound is destroyed before removal.
              * @param sound The sound object to remove.
              */
@@ -42838,7 +38694,6 @@ declare namespace Phaser {
 
             /**
              * Removes all sounds from the sound manager that have an asset key matching the given value.
-             * 
              * The removed sounds are destroyed before removal.
              * @param key The key to match when removing sound objects.
              */
@@ -42861,10 +38716,7 @@ declare namespace Phaser {
 
             /**
              * Method used internally for unlocking audio playback on devices that
-             * 
              * require user interaction before any sound can be played on a web page.
-             * 
-             * 
              * 
              * Read more about how this issue is handled here in [this article](https://medium.com/@pgoloskokovic/unlocking-web-audio-the-smarter-way-8858218c0e09).
              */
@@ -42872,21 +38724,18 @@ declare namespace Phaser {
 
             /**
              * Method used internally for pausing sound manager if
-             * 
              * Phaser.Sound.BaseSoundManager#pauseOnBlur is set to true.
              */
             protected onBlur(): void;
 
             /**
              * Method used internally for resuming sound manager if
-             * 
              * Phaser.Sound.BaseSoundManager#pauseOnBlur is set to true.
              */
             protected onFocus(): void;
 
             /**
              * Update method called on every game step.
-             * 
              * Removes destroyed sounds and updates every active sound in the game.
              * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
              * @param delta The delta time elapsed since the last frame.
@@ -42901,10 +38750,7 @@ declare namespace Phaser {
             /**
              * Sets the global playback rate at which all the sounds will be played.
              * 
-             * 
-             * 
              * For example, a value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-             * 
              * and 2.0 doubles the audios playback speed.
              * @param value Global playback rate at which all the sounds will be played.
              */
@@ -42912,16 +38758,13 @@ declare namespace Phaser {
 
             /**
              * Global playback rate at which all the sounds will be played.
-             * 
              * Value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-             * 
              * and 2.0 doubles the audio's playback speed.
              */
             rate: number;
 
             /**
              * Sets the global detuning of all sounds in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-             * 
              * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              * @param value The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              */
@@ -42929,7 +38772,6 @@ declare namespace Phaser {
 
             /**
              * Global detuning of all sounds in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-             * 
              * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              */
             detune: number;
@@ -42957,7 +38799,6 @@ declare namespace Phaser {
 
             /**
              * Calls Phaser.Sound.BaseSound#destroy method
-             * 
              * and cleans up all HTML5 Audio related stuff.
              */
             destroy(): void;
@@ -42991,9 +38832,7 @@ declare namespace Phaser {
 
             /**
              * Rate at which this Sound will be played.
-             * 
              * Value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-             * 
              * and 2.0 doubles the audios playback speed.
              */
             rate: number;
@@ -43001,10 +38840,7 @@ declare namespace Phaser {
             /**
              * Sets the playback rate of this Sound.
              * 
-             * 
-             * 
              * For example, a value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-             * 
              * and 2.0 doubles the audios playback speed.
              * @param value The playback rate at of this Sound.
              */
@@ -43012,14 +38848,12 @@ declare namespace Phaser {
 
             /**
              * The detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-             * 
              * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              */
             detune: number;
 
             /**
              * Sets the detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-             * 
              * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              * @param value The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              */
@@ -43061,71 +38895,53 @@ declare namespace Phaser {
 
             /**
              * Flag indicating whether if there are no idle instances of HTML5 Audio tag,
-             * 
              * for any particular sound, if one of the used tags should be hijacked and used
-             * 
              * for succeeding playback or if succeeding Phaser.Sound.HTML5AudioSound#play
-             * 
              * call should be ignored.
              */
             override: boolean;
 
             /**
              * Value representing time difference, in seconds, between calling
-             * 
              * play method on an audio tag and when it actually starts playing.
-             * 
              * It is used to achieve more accurate delayed sound playback.
              * 
-             * 
-             * 
              * You might need to tweak this value to get the desired results
-             * 
              * since audio play delay varies depending on the browser/platform.
              */
             audioPlayDelay: number;
 
             /**
              * A value by which we should offset the loop end marker of the
-             * 
              * looping sound to compensate for lag, caused by changing audio
-             * 
              * tag playback position, in order to achieve gapless looping.
              * 
-             * 
-             * 
              * You might need to tweak this value to get the desired results
-             * 
              * since loop lag varies depending on the browser/platform.
              */
             loopEndOffset: number;
 
             /**
              * Method used internally for pausing sound manager if
-             * 
              * Phaser.Sound.HTML5AudioSoundManager#pauseOnBlur is set to true.
              */
             protected onBlur(): void;
 
             /**
              * Method used internally for resuming sound manager if
-             * 
              * Phaser.Sound.HTML5AudioSoundManager#pauseOnBlur is set to true.
              */
             protected onFocus(): void;
 
             /**
              * Calls Phaser.Sound.BaseSoundManager#destroy method
-             * 
              * and cleans up all HTML5 Audio related stuff.
              */
             destroy(): void;
 
             /**
              * Method used internally by Phaser.Sound.HTML5AudioSound class methods and property setters
-             * 
              * to check if sound manager is locked and then either perform action immediately or queue it
-             * 
              * to be performed once the sound manager gets unlocked.
              * @param sound Sound object on which to perform queued action.
              * @param prop Name of the method to be called or property to be assigned a value to.
@@ -43154,23 +38970,13 @@ declare namespace Phaser {
         /**
          * No audio implementation of the sound. It is used if audio has been
          * 
-         * 
-         * 
          * disabled in the game config or the device doesn't support any audio.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * It represents a graceful degradation of sound logic that provides
          * 
-         * 
-         * 
          * minimal functionality and prevents Phaser projects that use audio from
-         * 
-         * 
          * 
          * breaking on devices that don't support any audio playback technologies.
          */
@@ -43188,23 +38994,13 @@ declare namespace Phaser {
         /**
          * No audio implementation of the sound manager. It is used if audio has been
          * 
-         * 
-         * 
          * disabled in the game config or the device doesn't support any audio.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * It represents a graceful degradation of sound manager logic that provides
          * 
-         * 
-         * 
          * minimal functionality and prevents Phaser projects that use audio from
-         * 
-         * 
          * 
          * breaking on devices that don't support any audio playback technologies.
          */
@@ -43249,7 +39045,6 @@ declare namespace Phaser {
 
             /**
              * Calls Phaser.Sound.BaseSound#destroy method
-             * 
              * and cleans up all Web Audio API related stuff.
              */
             destroy(): void;
@@ -43261,9 +39056,7 @@ declare namespace Phaser {
 
             /**
              * Rate at which this Sound will be played.
-             * 
              * Value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-             * 
              * and 2.0 doubles the audios playback speed.
              */
             rate: number;
@@ -43271,10 +39064,7 @@ declare namespace Phaser {
             /**
              * Sets the playback rate of this Sound.
              * 
-             * 
-             * 
              * For example, a value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-             * 
              * and 2.0 doubles the audios playback speed.
              * @param value The playback rate at of this Sound.
              */
@@ -43282,14 +39072,12 @@ declare namespace Phaser {
 
             /**
              * The detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-             * 
              * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              */
             detune: number;
 
             /**
              * Sets the detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-             * 
              * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              * @param value The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
              */
@@ -43353,21 +39141,18 @@ declare namespace Phaser {
 
             /**
              * Method used internally for pausing sound manager if
-             * 
              * Phaser.Sound.WebAudioSoundManager#pauseOnBlur is set to true.
              */
             protected onBlur(): void;
 
             /**
              * Method used internally for resuming sound manager if
-             * 
              * Phaser.Sound.WebAudioSoundManager#pauseOnBlur is set to true.
              */
             protected onFocus(): void;
 
             /**
              * Calls Phaser.Sound.BaseSoundManager#destroy method
-             * 
              * and cleans up all Web Audio API related stuff.
              */
             destroy(): void;
@@ -43451,7 +39236,6 @@ declare namespace Phaser {
 
             /**
              * Given an array of objects, sort the array and return it,
-             * 
              * so that the objects are in index order with the lowest at the bottom.
              * @param children [description]
              */
@@ -43466,7 +39250,6 @@ declare namespace Phaser {
 
             /**
              * Gets the first item from the set based on the property strictly equaling the value given.
-             * 
              * Returns null if not found.
              * @param property The property to check against the value.
              * @param value The value to check if the property strictly equals.
@@ -43475,9 +39258,7 @@ declare namespace Phaser {
 
             /**
              * Searches the Group for the first instance of a child with the `name`
-             * 
              * property matching the given argument. Should more than one child have
-             * 
              * the same name only the first instance is returned.
              * @param name The name to search for.
              */
@@ -43502,20 +39283,12 @@ declare namespace Phaser {
             /**
              * Returns all children in this List.
              * 
-             * 
-             * 
              * You can optionally specify a matching criteria using the `property` and `value` arguments.
-             * 
-             * 
              * 
              * For example: `getAll('visible', true)` would return only children that have their visible property set.
              * 
-             * 
-             * 
              * Optionally you can specify a start and end index. For example if this List had 100 children,
-             * 
              * and you set `startIndex` to 0 and `endIndex` to 50, it would return matches from only
-             * 
              * the first 50 children in the List.
              * @param property An optional property to test against the value argument.
              * @param value If property is set then Child.property must strictly equal this value to be included in the results.
@@ -43671,23 +39444,13 @@ declare namespace Phaser {
         /**
          * The keys of a Map can be arbitrary values.
          * 
-         * 
-         * 
          * var map = new Map([
-         * 
-         * 
          * 
          *    [ 1, 'one' ],
          * 
-         * 
-         * 
          *    [ 2, 'two' ],
          * 
-         * 
-         * 
          *    [ 3, 'three' ]
-         * 
-         * 
          * 
          * ]);
          */
@@ -43772,9 +39535,7 @@ declare namespace Phaser {
 
             /**
              * Merges all new keys from the given Map into this one
-             * 
              * If it encounters a key that already exists it will be skipped
-             * 
              * unless override = true.
              * @param map [description]
              * @param override [description] Default false.
@@ -43819,19 +39580,11 @@ declare namespace Phaser {
         /**
          * RBush is a high-performance JavaScript library for 2D spatial indexing of points and rectangles.
          * 
-         * 
-         * 
          * It's based on an optimized R-tree data structure with bulk insertion support.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Spatial index is a special data structure for points and rectangles that allows you to perform queries like
-         * 
-         * 
          * 
          * "all items within this bounding box" very efficiently (e.g. hundreds of times faster than looping over all items).
          */
@@ -43979,7 +39732,6 @@ declare namespace Phaser {
 
             /**
              * The name of this Frame.
-             * 
              * The name is unique within the Texture.
              */
             name: string;
@@ -44036,14 +39788,12 @@ declare namespace Phaser {
 
             /**
              * Half the width, floored.
-             * 
              * Precalculated for the renderer.
              */
             halfWidth: integer;
 
             /**
              * Half the height, floored.
-             * 
              * Precalculated for the renderer.
              */
             halfHeight: integer;
@@ -44076,23 +39826,16 @@ declare namespace Phaser {
             /**
              * **CURRENTLY UNSUPPORTED**
              * 
-             * 
-             * 
              * Is this frame is rotated or not in the Texture?
-             * 
              * Rotation allows you to use rotated frames in texture atlas packing.
-             * 
              * It has nothing to do with Sprite rotation.
              */
             rotated: boolean;
 
             /**
              * Over-rides the Renderer setting.
-             * 
              * -1 = use Renderer Setting
-             * 
              * 0 = No rounding
-             * 
              * 1 = Round
              */
             autoRound: integer;
@@ -44135,14 +39878,12 @@ declare namespace Phaser {
 
             /**
              * The width of the Frame in its un-trimmed, un-padded state, as prepared in the art package,
-             * 
              * before being packed.
              */
             realWidth: number;
 
             /**
              * The height of the Frame in its un-trimmed, un-padded state, as prepared in the art package,
-             * 
              * before being packed.
              */
             realHeight: number;
@@ -44186,7 +39927,6 @@ declare namespace Phaser {
 
             /**
              * Parses a Texture Atlas JSON Array and adds the Frames to the Texture.
-             * 
              * JSON format expected to match that defined by Texture Packer, with the frames property containing an array of Frames.
              * @param texture The Texture to add the Frames to.
              * @param sourceIndex The index of the TextureSource.
@@ -44196,7 +39936,6 @@ declare namespace Phaser {
 
             /**
              * Parses a Texture Atlas JSON Hash and adds the Frames to the Texture.
-             * 
              * JSON format expected to match that defined by Texture Packer, with the frames property containing an object of Frames.
              * @param texture The Texture to add the Frames to.
              * @param sourceIndex The index of the TextureSource.
@@ -44214,10 +39953,7 @@ declare namespace Phaser {
             /**
              * Parses a Sprite Sheet and adds the Frames to the Texture.
              * 
-             * 
-             * 
              * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
-             * 
              * same size and cannot be trimmed or rotated.
              * @param texture The Texture to add the Frames to.
              * @param sourceIndex The index of the TextureSource.
@@ -44232,10 +39968,7 @@ declare namespace Phaser {
             /**
              * Parses a Sprite Sheet and adds the Frames to the Texture, where the Sprite Sheet is stored as a frame within an Atlas.
              * 
-             * 
-             * 
              * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
-             * 
              * same size and cannot be trimmed or rotated.
              * @param texture The Texture to add the Frames to.
              * @param frame The Frame that contains the Sprite Sheet.
@@ -44252,7 +39985,6 @@ declare namespace Phaser {
 
             /**
              * Parses a Unity YAML File and creates Frames in the Texture.
-             * 
              * For more details about Sprite Meta Data see https://docs.unity3d.com/ScriptReference/SpriteMetaData.html
              * @param texture The Texture to add the Frames to.
              * @param sourceIndex The index of the TextureSource.
@@ -44265,33 +39997,17 @@ declare namespace Phaser {
         /**
          * A Texture consists of a source, usually an Image from the Cache, or a Canvas, and a collection
          * 
-         * 
-         * 
          * of Frames. The Frames represent the different areas of the Texture. For example a texture atlas
          * 
-         * 
-         * 
          * may have many Frames, one for each element within the atlas. Where-as a single image would have
-         * 
-         * 
          * 
          * just one frame, that encompasses the whole image.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Textures are managed by the global TextureManager. This is a singleton class that is
          * 
-         * 
-         * 
          * responsible for creating and delivering Textures and their corresponding Frames to Game Objects.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -44320,14 +40036,12 @@ declare namespace Phaser {
 
             /**
              * An array of TextureSource instances.
-             * 
              * These are unique to this Texture and contain the actual Image (or Canvas) data.
              */
             source: Phaser.Textures.TextureSource[];
 
             /**
              * An array of TextureSource data instances.
-             * 
              * Used to store additional data images, such as normal maps or specular maps.
              */
             dataSource: any[];
@@ -44339,7 +40053,6 @@ declare namespace Phaser {
 
             /**
              * Any additional data that was set in the source JSON (if any),
-             * 
              * or any extra data you'd like to store relating to this texture
              */
             customData: object;
@@ -44356,8 +40069,6 @@ declare namespace Phaser {
 
             /**
              * Adds a new Frame to this Texture.
-             * 
-             * 
              * 
              * A Frame is a rectangular region of a TextureSource with a unique index or string-based key.
              * @param name The name of this Frame. The name is unique within the Texture.
@@ -44378,12 +40089,8 @@ declare namespace Phaser {
             /**
              * Gets a Frame from this Texture based on either the key or the index of the Frame.
              * 
-             * 
-             * 
              * In a Texture Atlas Frames are typically referenced by a key.
-             * 
              * In a Sprite Sheet Frames are referenced by an index.
-             * 
              * Passing no value for the name returns the base texture.
              * @param name The string-based name, or integer based index, of the Frame to get from this Texture.
              */
@@ -44391,11 +40098,8 @@ declare namespace Phaser {
 
             /**
              * Takes the given TextureSource and returns the index of it within this Texture.
-             * 
              * If it's not in this Texture, it returns -1.
-             * 
              * Unless this Texture has multiple TextureSources, such as with a multi-atlas, this
-             * 
              * method will always return zero or -1.
              * @param source The TextureSource to check.
              */
@@ -44410,10 +40114,7 @@ declare namespace Phaser {
             /**
              * Returns an array with all of the names of the Frames in this Texture.
              * 
-             * 
-             * 
              * Useful if you want to randomly assign a Frame to a Game Object, as you can
-             * 
              * pick a random element from the returned array.
              * @param includeBase Include the `__BASE` Frame in the output array? Default false.
              */
@@ -44421,8 +40122,6 @@ declare namespace Phaser {
 
             /**
              * Given a Frame name, return the source image it uses to render with.
-             * 
-             * 
              * 
              * This will return the actual DOM Image or Canvas element.
              * @param name The string-based name, or integer based index, of the Frame to get from this Texture.
@@ -44432,10 +40131,7 @@ declare namespace Phaser {
             /**
              * Adds a data source image to this Texture.
              * 
-             * 
-             * 
              * An example of a data source image would be a normal map, where all of the Frames for this Texture
-             * 
              * equally apply to the normal map.
              * @param data The source image.
              */
@@ -44444,15 +40140,9 @@ declare namespace Phaser {
             /**
              * Sets the Filter Mode for this Texture.
              * 
-             * 
-             * 
              * The mode can be either Linear, the default, or Nearest.
              * 
-             * 
-             * 
              * For pixel-art you should use Nearest.
-             * 
-             * 
              * 
              * The mode applies to the entire Texture, not just a specific Frame of it.
              * @param filterMode The Filter Mode.
@@ -44469,21 +40159,11 @@ declare namespace Phaser {
         /**
          * Textures are managed by the global TextureManager. This is a singleton class that is
          * 
-         * 
-         * 
          * responsible for creating and delivering Textures and their corresponding Frames to Game Objects.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Sprites and other Game Objects get the texture data they need from the TextureManager.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -44538,9 +40218,7 @@ declare namespace Phaser {
 
             /**
              * Creates a new Texture using the given config values.
-             * 
              * Generated textures consist of a Canvas element to which the texture data is drawn.
-             * 
              * See the Phaser.Create function for the more direct way to create textures.
              * @param key The unique string-based key of the Texture.
              * @param config [description]
@@ -44550,10 +40228,7 @@ declare namespace Phaser {
             /**
              * Creates a new Texture using a blank Canvas element of the size given.
              * 
-             * 
-             * 
              * Canvas elements are automatically pooled and calling this method will
-             * 
              * extract a free canvas from the CanvasPool, or create one if none are available.
              * @param key The unique string-based key of the Texture.
              * @param width The width of the Canvas element.
@@ -44563,7 +40238,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Texture object from an existing Canvas element and adds
-             * 
              * it to this Texture Manager.
              * @param key The unique string-based key of the Texture.
              * @param source The Canvas element to form the base of the new Texture.
@@ -44572,7 +40246,6 @@ declare namespace Phaser {
 
             /**
              * Adds a new Texture Atlas to this Texture Manager.
-             * 
              * It can accept either JSON Array or JSON Hash formats, as exported by Texture Packer and similar software.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44582,9 +40255,7 @@ declare namespace Phaser {
 
             /**
              * Adds a Texture Atlas to this Texture Manager.
-             * 
              * The frame data of the atlas must be stored in an Array within the JSON.
-             * 
              * This is known as a JSON Array in software such as Texture Packer.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44594,9 +40265,7 @@ declare namespace Phaser {
 
             /**
              * Adds a Texture Atlas to this Texture Manager.
-             * 
              * The frame data of the atlas must be stored in an Object within the JSON.
-             * 
              * This is known as a JSON Hash in software such as Texture Packer.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44606,7 +40275,6 @@ declare namespace Phaser {
 
             /**
              * Adds a Unity Texture Atlas to this Texture Manager.
-             * 
              * The data must be in the form of a Unity YAML file.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44617,10 +40285,7 @@ declare namespace Phaser {
             /**
              * Adds a Sprite Sheet to this Texture Manager.
              * 
-             * 
-             * 
              * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
-             * 
              * same size and cannot be trimmed or rotated.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44637,10 +40302,7 @@ declare namespace Phaser {
             /**
              * Adds a Sprite Sheet to this Texture Manager, where the Sprite Sheet exists as a Frame within a Texture Atlas.
              * 
-             * 
-             * 
              * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
-             * 
              * same size and cannot be trimmed or rotated.
              * @param key The unique string-based key of the Texture.
              * @param config The configuration object for this Sprite Sheet.
@@ -44657,7 +40319,6 @@ declare namespace Phaser {
 
             /**
              * Adds a Texture Atlas to this Texture Manager, where the atlas data is given
-             * 
              * in the Starling XML format.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44667,7 +40328,6 @@ declare namespace Phaser {
 
             /**
              * Adds a Texture Atlas to this Texture Manager, where the atlas data is given
-             * 
              * in the Pyxel JSON format.
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
@@ -44692,9 +40352,7 @@ declare namespace Phaser {
 
             /**
              * Returns a Texture from the Texture Manager that matches the given key.
-             * 
              * If the key is undefined it will return the `__DEFAULT` Texture.
-             * 
              * If the key is given, but not found, it will return the `__MISSING` Texture.
              * @param key The unique string-based key of the Texture.
              */
@@ -44716,16 +40374,13 @@ declare namespace Phaser {
 
             /**
              * Returns an array with all of the keys of all Textures in this Texture Manager.
-             * 
              * The output array will exclude the `__DEFAULT` and `__MISSING` keys.
              */
             getTextureKeys(): string[];
 
             /**
              * Given a Texture and an `x` and `y` coordinate this method will return a new
-             * 
              * Color object that has been populated with the color and alpha values of the pixel
-             * 
              * at that location in the Texture.
              * @param x The x coordinate of the pixel within the Texture.
              * @param y The y coordinate of the pixel within the Texture.
@@ -44736,7 +40391,6 @@ declare namespace Phaser {
 
             /**
              * Sets the given Game Objects `texture` and `frame` properties so that it uses
-             * 
              * the Texture and Frame specified in the `key` and `frame` arguments to this method.
              * @param gameObject [description]
              * @param key The unique string-based key of the Texture.
@@ -44762,13 +40416,7 @@ declare namespace Phaser {
         /**
          * A Texture Source is the encapsulation of the actual source data for a Texture.
          * 
-         * 
-         * 
          * This is typically an Image Element, loaded from the file system or network, or a Canvas Element.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -44806,21 +40454,18 @@ declare namespace Phaser {
 
             /**
              * The width of the source image. If not specified in the constructor it will check
-             * 
              * the `naturalWidth` and then `width` properties of the source image.
              */
             width: integer;
 
             /**
              * The height of the source image. If not specified in the constructor it will check
-             * 
              * the `naturalHeight` and then `height` properties of the source image.
              */
             height: integer;
 
             /**
              * The Scale Mode the image will use when rendering.
-             * 
              * Either Linear or Nearest.
              */
             scaleMode: number;
@@ -44849,16 +40494,12 @@ declare namespace Phaser {
             /**
              * Sets the Filter Mode for this Texture.
              * 
-             * 
-             * 
              * The mode can be either Linear, the default, or Nearest.
-             * 
-             * 
              * 
              * For pixel-art you should use Nearest.
              * @param filterMode The Filter Mode.
              */
-            setFilter(filterMode: Phaser.Textures.FilterMode): void;
+            setFilter(filterMode: Phaser.Textures.FilterMode.LINEAR | Phaser.Textures.FilterMode.NEAREST): void;
 
             /**
              * Destroys this Texture Source and nulls the source image reference.
@@ -44873,9 +40514,7 @@ declare namespace Phaser {
         namespace Components {
             /**
              * Calculates interesting faces at the given tile coordinates of the specified layer. Interesting
-             * 
              * faces are used internally for optimizing collisions against tiles. This method is mostly used
-             * 
              * internally to optimize recalculating faces when only one tile has been changed.
              * @param tileX The x coordinate.
              * @param tileY The y coordinate.
@@ -44885,9 +40524,7 @@ declare namespace Phaser {
 
             /**
              * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
-             * 
              * layer. Interesting faces are used internally for optimizing collisions against tiles. This method
-             * 
              * is mostly used internally.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -44899,9 +40536,7 @@ declare namespace Phaser {
 
             /**
              * Copies the tiles in the source rectangular area to a new destination (all specified in tile
-             * 
              * coordinates) within the layer. This copies all tile properties & recalculates collision
-             * 
              * information in the destination region.
              * @param srcTileX [description]
              * @param srcTileY [description]
@@ -44916,20 +40551,14 @@ declare namespace Phaser {
 
             /**
              * Creates a Sprite for every object matching the given tile indexes in the layer. You can
-             * 
              * optionally specify if each tile will be replaced with a new tile after the Sprite has been
-             * 
              * created. This is useful if you want to lay down special tiles in a level that are converted to
-             * 
              * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
              * @param indexes The tile index, or array of indexes, to create Sprites from.
              * @param replacements The tile index, or array of indexes, to change a converted
-             * 
              * tile to. Set to `null` to leave the tiles unchanged. If an array is given, it is assumed to be a
-             * 
              * one-to-one mapping with the indexes array.
              * @param spriteConfig The config object to pass into the Sprite creator (i.e.
-             * 
              * scene.make.sprite).
              * @param scene The Scene to create the Sprites within. Default scene the map is within.
              * @param camera The Camera to use when determining the world XY Default main camera.
@@ -44939,7 +40568,6 @@ declare namespace Phaser {
 
             /**
              * Returns the tiles in the given layer that are within the camera's viewport. This is used
-             * 
              * internally.
              * @param layer The Tilemap Layer to act upon.
              * @param camera The Camera to run the cull check against.
@@ -44949,9 +40577,7 @@ declare namespace Phaser {
 
             /**
              * Sets the tiles in the given rectangular area (in tile coordinates) of the layer with the
-             * 
              * specified index. Tiles will be set to collide if the given index is a colliding index.
-             * 
              * Collision information in the region will be recalculated.
              * @param index [description]
              * @param tileX [description] Default 0.
@@ -44965,14 +40591,10 @@ declare namespace Phaser {
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * filter callback function. Any tiles that pass the filter test (i.e. where the callback returns
-             * 
              * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter. The callback should return true for tiles that pass the
-             * 
              * filter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -44981,13 +40603,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -44995,18 +40614,13 @@ declare namespace Phaser {
 
             /**
              * Searches the entire map layer for the first tile matching the given index, then returns that Tile
-             * 
              * object. If no match is found, it returns null. The search starts from the top-left tile and
-             * 
              * continues horizontally until it hits the end of the row, then it drops down to the next column.
-             * 
              * If the reverse boolean is true, it scans starting from the bottom-right corner traveling up to
-             * 
              * the top-left.
              * @param index The tile index value to search for.
              * @param skip The number of times to skip a matching tile before returning. Default 0.
              * @param reverse If true it will scan the layer in reverse, starting at the
-             * 
              * bottom-right. Otherwise it scans from the top-left. Default false.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45014,12 +40628,9 @@ declare namespace Phaser {
 
             /**
              * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
-             * 
              * satisfies the provided testing function. I.e. finds the first tile for which `callback` returns
-             * 
              * true. Similar to Array.prototype.find in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -45028,13 +40639,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45042,10 +40650,8 @@ declare namespace Phaser {
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * callback. Similar to Array.prototype.forEach in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -45054,13 +40660,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45071,7 +40674,6 @@ declare namespace Phaser {
              * @param tileX X position to get the tile from (given in tile units, not pixels).
              * @param tileY Y position to get the tile from (given in tile units, not pixels).
              * @param nonNull If true getTile won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45082,7 +40684,6 @@ declare namespace Phaser {
              * @param worldX X position to get the tile from (given in pixels)
              * @param worldY Y position to get the tile from (given in pixels)
              * @param nonNull If true, function won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              * @param camera [description] Default main camera.
              * @param layer The Tilemap Layer to act upon.
@@ -45097,13 +40698,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45111,18 +40709,14 @@ declare namespace Phaser {
 
             /**
              * Gets the tiles that overlap with the given shape in the given layer. The shape must be a Circle,
-             * 
              * Line, Rectangle or Triangle. The shape should be in world coordinates.
              * @param shape A shape in world (pixel) coordinates
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              * @param layer The Tilemap Layer to act upon.
@@ -45137,13 +40731,10 @@ declare namespace Phaser {
              * @param height [description]
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              * @param layer The Tilemap Layer to act upon.
@@ -45152,7 +40743,6 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in tile coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
              * @param tileX [description]
              * @param tileY [description]
@@ -45162,7 +40752,6 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
              * @param worldX [description]
              * @param worldY [description]
@@ -45181,11 +40770,8 @@ declare namespace Phaser {
 
             /**
              * Puts a tile at the given tile coordinates in the specified layer. You can pass in either an index
-             * 
              * or a Tile object. If you pass in a Tile, all attributes will be copied over to the specified
-             * 
              * location. If you pass in an index, only the index at the specified location will be changed.
-             * 
              * Collision information will be recalculated at the specified location.
              * @param tile The index of this tile to set or a Tile object.
              * @param tileX [description]
@@ -45197,11 +40783,8 @@ declare namespace Phaser {
 
             /**
              * Puts a tile at the given world coordinates (pixels) in the specified layer. You can pass in either
-             * 
              * an index or a Tile object. If you pass in a Tile, all attributes will be copied over to the
-             * 
              * specified location. If you pass in an index, only the index at the specified location will be
-             * 
              * changed. Collision information will be recalculated at the specified location.
              * @param tile The index of this tile to set or a Tile object.
              * @param worldX [description]
@@ -45214,16 +40797,11 @@ declare namespace Phaser {
 
             /**
              * Puts an array of tiles or a 2D array of tiles at the given tile coordinates in the specified
-             * 
              * layer. The array can be composed of either tile indexes or Tile objects. If you pass in a Tile,
-             * 
              * all attributes will be copied over to the specified location. If you pass in an index, only the
-             * 
              * index at the specified location will be changed. Collision information will be recalculated
-             * 
              * within the region tiles were changed.
              * @param tile A row (array) or grid (2D array) of Tiles
-             * 
              * or tile indexes to place.
              * @param tileX [description]
              * @param tileY [description]
@@ -45234,13 +40812,9 @@ declare namespace Phaser {
 
             /**
              * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * 
              * specified layer. Each tile will receive a new index. If an array of indexes is passed in, then
-             * 
              * those will be used for randomly assigning new tile indexes. If an array is not provided, the
-             * 
              * indexes found within the region (excluding -1) will be used for randomly assigning new tile
-             * 
              * indexes. This method only modifies tile indexes and does not change collision information.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -45253,13 +40827,11 @@ declare namespace Phaser {
 
             /**
              * Removes the tile at the given tile coordinates in the specified layer and updates the layer's
-             * 
              * collision information.
              * @param tile The index of this tile to set or a Tile object.
              * @param tileX [description]
              * @param tileY [description]
              * @param replaceWithNull If true, this will replace the tile at the specified
-             * 
              * location with null instead of a Tile with an index of -1. Default true.
              * @param recalculateFaces [description] Default true.
              * @param layer The Tilemap Layer to act upon.
@@ -45268,13 +40840,11 @@ declare namespace Phaser {
 
             /**
              * Removes the tile at the given world coordinates in the specified layer and updates the layer's
-             * 
              * collision information.
              * @param tile The index of this tile to set or a Tile object.
              * @param worldX [description]
              * @param worldY [description]
              * @param replaceWithNull If true, this will replace the tile at the specified
-             * 
              * location with null instead of a Tile with an index of -1. Default true.
              * @param recalculateFaces [description] Default true.
              * @param camera [description] Default main camera.
@@ -45284,22 +40854,16 @@ declare namespace Phaser {
 
             /**
              * Draws a debug representation of the layer to the given Graphics. This is helpful when you want to
-             * 
              * get a quick idea of which of your tiles are colliding and which have interesting faces. The tiles
-             * 
              * are drawn starting at (0, 0) in the Graphics, allowing you to place the debug representation
-             * 
              * wherever you want on the screen.
              * @param graphics The target Graphics object to draw upon.
              * @param styleConfig An object specifying the colors to use for the debug drawing.
              * @param styleConfig.tileColor Color to use for drawing a filled rectangle at
-             * 
              * non-colliding tile locations. If set to null, non-colliding tiles will not be drawn. Default blue.
              * @param styleConfig.collidingTileColor Color to use for drawing a filled
-             * 
              * rectangle at colliding tile locations. If set to null, colliding tiles will not be drawn. Default orange.
              * @param styleConfig.faceColor Color to use for drawing a line at interesting
-             * 
              * tile faces. If set to null, interesting tile faces will not be drawn. Default grey.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45307,9 +40871,7 @@ declare namespace Phaser {
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * 
              * `findIndex` and updates their index to match `newIndex`. This only modifies the index and does
-             * 
              * not change collision information.
              * @param findIndex [description]
              * @param newIndex [description]
@@ -45323,16 +40885,12 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the given tile or tiles within a layer by index. You can pass in either a
-             * 
              * single numeric index or an array of indexes: [2, 3, 15, 20]. The `collides` parameter controls if
-             * 
              * collision will be enabled (true) or disabled (false).
              * @param indexes Either a single tile index, or an array of tile indexes.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45340,19 +40898,14 @@ declare namespace Phaser {
 
             /**
              * Sets collision on a range of tiles in a layer whose index is between the specified `start` and
-             * 
              * `stop` (inclusive). Calling this with a start value of 10 and a stop value of 14 would set
-             * 
              * collision for tiles 10, 11, 12, 13 and 14. The `collides` parameter controls if collision will be
-             * 
              * enabled (true) or disabled (false).
              * @param start The first index of the tile to be set for collision.
              * @param stop The last index of the tile to be set for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45360,16 +40913,12 @@ declare namespace Phaser {
 
             /**
              * Sets collision on all tiles in the given layer, except for tiles that have an index specified in
-             * 
              * the given array. The `collides` parameter controls if collision will be enabled (true) or
-             * 
              * disabled (false).
              * @param indexes An array of the tile indexes to not be counted for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45377,26 +40926,17 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking tile properties. If a tile has a property
-             * 
              * that matches the given properties object, its collision flag will be set. The `collides`
-             * 
              * parameter controls if collision will be enabled (true) or disabled (false). Passing in
-             * 
              * `{ collides: true }` would update the collision flag on any tiles with a "collides" property that
-             * 
              * has a value of true. Any tile that doesn't have "collides" set to true will be ignored. You can
-             * 
              * also use an array of values, e.g. `{ types: ["stone", "lava", "sand" ] }`. If a tile has a
-             * 
              * "types" property that matches any of those values, its collision flag will be updated.
              * @param properties An object with tile properties and corresponding values that should
-             * 
              * be checked.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45404,17 +40944,12 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking each tile's collision group data
-             * 
              * (typically defined in Tiled within the tileset collision editor). If any objects are found within
-             * 
              * a tile's collision group, the tile's colliding information will be set. The `collides` parameter
-             * 
              * controls if collision will be enabled (true) or disabled (false).
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45422,7 +40957,6 @@ declare namespace Phaser {
 
             /**
              * Internally used method to keep track of the tile indexes that collide within a layer. This
-             * 
              * updates LayerData.collideIndexes to either contain or not contain the given `tileIndex`.
              * @param tileIndex [description]
              * @param collides [description] Default true.
@@ -45432,7 +40966,6 @@ declare namespace Phaser {
 
             /**
              * Internally used method to set the colliding state of a tile. This does not recalculate
-             * 
              * interesting faces.
              * @param tile [description]
              * @param collides [description] Default true.
@@ -45441,14 +40974,10 @@ declare namespace Phaser {
 
             /**
              * Sets a global collision callback for the given tile index within the layer. This will affect all
-             * 
              * tiles on this layer that have the same index. If a callback is already set for the tile index it
-             * 
              * will be replaced. Set the callback to null to remove it. If you want to set a callback for a tile
-             * 
              * at a specific location on the map then see setTileLocationCallback.
              * @param indexes Either a single tile index, or an array of tile indexes to have a
-             * 
              * collision callback set for.
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
@@ -45458,9 +40987,7 @@ declare namespace Phaser {
 
             /**
              * Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
-             * 
              * If a callback is already set for the tile index it will be replaced. Set the callback to null to
-             * 
              * remove it.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -45474,11 +41001,8 @@ declare namespace Phaser {
 
             /**
              * Shuffles the tiles in a rectangular region (specified in tile coordinates) within the given
-             * 
              * layer. It will only randomize the tiles in that area, so if they're all the same nothing will
-             * 
              * appear to have changed! This method only modifies tile indexes and does not change collision
-             * 
              * information.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -45490,9 +41014,7 @@ declare namespace Phaser {
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * 
              * `indexA` and swaps then with `indexB`. This only modifies the index and does not change collision
-             * 
              * information.
              * @param tileA First tile index.
              * @param tileB Second tile index.
@@ -45506,7 +41028,6 @@ declare namespace Phaser {
 
             /**
              * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
-             * 
              * layer's position, scale and scroll.
              * @param tileX [description]
              * @param camera [description] Default main camera.
@@ -45516,9 +41037,7 @@ declare namespace Phaser {
 
             /**
              * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
-             * 
              * layer's position, scale and scroll. This will return a new Vector2 object or update the given
-             * 
              * `point` object.
              * @param tileX [description]
              * @param tileY [description]
@@ -45530,7 +41049,6 @@ declare namespace Phaser {
 
             /**
              * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
-             * 
              * layer's position, scale and scroll.
              * @param tileY [description]
              * @param camera [description] Default main camera.
@@ -45540,38 +41058,24 @@ declare namespace Phaser {
 
             /**
              * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * 
              * specified layer. Each tile will recieve a new index. New indexes are drawn from the given
-             * 
              * weightedIndexes array. An example weighted array:
              * 
-             * 
-             * 
              * [
-             * 
              *  { index: 6, weight: 4 },    // Probability of index 6 is 4 / 8
-             * 
              *  { index: 7, weight: 2 },    // Probability of index 7 would be 2 / 8
-             * 
              *  { index: 8, weight: 1.5 },  // Probability of index 8 would be 1.5 / 8
-             * 
              *  { index: 26, weight: 0.5 }  // Probability of index 27 would be 0.5 / 8
-             * 
              * ]
              * 
-             * 
-             * 
              * The probability of any index being choose is (the index's weight) / (sum of all weights). This
-             * 
              * method only modifies tile indexes and does not change collision information.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
              * @param width [description] Default max width based on tileX.
              * @param height [description] Default max height based on tileY.
              * @param weightedIndexes An array of objects to randomly draw from during
-             * 
              * randomization. They should be in the form: { index: 0, weight: 4 } or
-             * 
              * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
              * @param layer The Tilemap Layer to act upon.
              */
@@ -45579,11 +41083,9 @@ declare namespace Phaser {
 
             /**
              * Converts from world X coordinates (pixels) to tile X coordinates (tile units), factoring in the
-             * 
              * layer's position, scale and scroll.
              * @param worldX [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              * @param layer The Tilemap Layer to act upon.
@@ -45592,14 +41094,11 @@ declare namespace Phaser {
 
             /**
              * Converts from world XY coordinates (pixels) to tile XY coordinates (tile units), factoring in the
-             * 
              * layer's position, scale and scroll. This will return a new Vector2 object or update the given
-             * 
              * `point` object.
              * @param worldX [description]
              * @param worldY [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param point [description]
              * @param camera [description] Default main camera.
@@ -45609,11 +41108,9 @@ declare namespace Phaser {
 
             /**
              * Converts from world Y coordinates (pixels) to tile Y coordinates (tile units), factoring in the
-             * 
              * layer's position, scale and scroll.
              * @param worldY [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              * @param layer The Tilemap Layer to act upon.
@@ -45625,27 +41122,15 @@ declare namespace Phaser {
         /**
          * A DynamicTilemapLayer is a game object that renders LayerData from a Tilemap. A
          * 
-         * 
-         * 
          * DynamicTilemapLayer can only render tiles from a single tileset.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * A DynamicTilemapLayer trades some speed for being able to apply powerful effects. Unlike a
          * 
-         * 
-         * 
          * StaticTilemapLayer, you can apply per-tile effects like tint or alpha, and you can change the
          * 
-         * 
-         * 
          * tiles in a DynamicTilemapLayer. Use this over a StaticTilemapLayer when you need those
-         * 
-         * 
          * 
          * features.
          */
@@ -45678,7 +41163,6 @@ declare namespace Phaser {
 
             /**
              * The LayerData associated with this layer. LayerData can only be associated with one
-             * 
              * tilemap layer.
              */
             layer: Phaser.Tilemaps.LayerData;
@@ -45690,16 +41174,13 @@ declare namespace Phaser {
 
             /**
              * Used internally with the canvas render. This holds the tiles that are visible within the
-             * 
              * camera.
              */
             culledTiles: any[];
 
             /**
              * Calculates interesting faces at the given tile coordinates of the specified layer. Interesting
-             * 
              * faces are used internally for optimizing collisions against tiles. This method is mostly used
-             * 
              * internally to optimize recalculating faces when only one tile has been changed.
              * @param tileX The x coordinate.
              * @param tileY The y coordinate.
@@ -45708,9 +41189,7 @@ declare namespace Phaser {
 
             /**
              * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
-             * 
              * layer. Interesting faces are used internally for optimizing collisions against tiles. This method
-             * 
              * is mostly used internally.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -45721,20 +41200,14 @@ declare namespace Phaser {
 
             /**
              * Creates a Sprite for every object matching the given tile indexes in the layer. You can
-             * 
              * optionally specify if each tile will be replaced with a new tile after the Sprite has been
-             * 
              * created. This is useful if you want to lay down special tiles in a level that are converted to
-             * 
              * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
              * @param indexes The tile index, or array of indexes, to create Sprites from.
              * @param replacements The tile index, or array of indexes, to change a converted
-             * 
              * tile to. Set to `null` to leave the tiles unchanged. If an array is given, it is assumed to be a
-             * 
              * one-to-one mapping with the indexes array.
              * @param spriteConfig The config object to pass into the Sprite creator (i.e.
-             * 
              * scene.make.sprite).
              * @param scene The Scene to create the Sprites within. Default scene the map is within.
              * @param camera The Camera to use when determining the world XY Default main camera.
@@ -45743,7 +41216,6 @@ declare namespace Phaser {
 
             /**
              * Returns the tiles in the given layer that are within the cameras viewport.
-             * 
              * This is used internally.
              * @param camera The Camera to run the cull check against.
              */
@@ -45751,9 +41223,7 @@ declare namespace Phaser {
 
             /**
              * Copies the tiles in the source rectangular area to a new destination (all specified in tile
-             * 
              * coordinates) within the layer. This copies all tile properties & recalculates collision
-             * 
              * information in the destination region.
              * @param srcTileX [description]
              * @param srcTileY [description]
@@ -45772,9 +41242,7 @@ declare namespace Phaser {
 
             /**
              * Sets the tiles in the given rectangular area (in tile coordinates) of the layer with the
-             * 
              * specified index. Tiles will be set to collide if the given index is a colliding index.
-             * 
              * Collision information in the region will be recalculated.
              * @param index [description]
              * @param tileX [description] Default 0.
@@ -45787,14 +41255,10 @@ declare namespace Phaser {
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * filter callback function. Any tiles that pass the filter test (i.e. where the callback returns
-             * 
              * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter. The callback should return true for tiles that pass the
-             * 
              * filter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -45803,43 +41267,32 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             filterTiles(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.Tile[];
 
             /**
              * Searches the entire map layer for the first tile matching the given index, then returns that Tile
-             * 
              * object. If no match is found, it returns null. The search starts from the top-left tile and
-             * 
              * continues horizontally until it hits the end of the row, then it drops down to the next column.
-             * 
              * If the reverse boolean is true, it scans starting from the bottom-right corner traveling up to
-             * 
              * the top-left.
              * @param index The tile index value to search for.
              * @param skip The number of times to skip a matching tile before returning. Default 0.
              * @param reverse If true it will scan the layer in reverse, starting at the
-             * 
              * bottom-right. Otherwise it scans from the top-left. Default false.
              */
             findByIndex(index: integer, skip?: integer, reverse?: boolean): Phaser.Tilemaps.Tile;
 
             /**
              * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
-             * 
              * satisfies the provided testing function. I.e. finds the first tile for which `callback` returns
-             * 
              * true. Similar to Array.prototype.find in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -45848,23 +41301,18 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             findTile(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.Tile;
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * callback. Similar to Array.prototype.forEach in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -45873,13 +41321,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             forEachTile(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.DynamicTilemapLayer;
@@ -45889,7 +41334,6 @@ declare namespace Phaser {
              * @param tileX X position to get the tile from (given in tile units, not pixels).
              * @param tileY Y position to get the tile from (given in tile units, not pixels).
              * @param nonNull If true getTile won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              */
             getTileAt(tileX: integer, tileY: integer, nonNull?: boolean): Phaser.Tilemaps.Tile;
@@ -45899,7 +41343,6 @@ declare namespace Phaser {
              * @param worldX X position to get the tile from (given in pixels)
              * @param worldY Y position to get the tile from (given in pixels)
              * @param nonNull If true, function won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              * @param camera [description] Default main camera.
              */
@@ -45913,31 +41356,24 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             getTilesWithin(tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.Tile[];
 
             /**
              * Gets the tiles that overlap with the given shape in the given layer. The shape must be a Circle,
-             * 
              * Line, Rectangle or Triangle. The shape should be in world coordinates.
              * @param shape A shape in world (pixel) coordinates
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              */
@@ -45951,13 +41387,10 @@ declare namespace Phaser {
              * @param height [description]
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              */
@@ -45965,7 +41398,6 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in tile coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
              * @param tileX [description]
              * @param tileY [description]
@@ -45974,7 +41406,6 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
              * @param worldX [description]
              * @param worldY [description]
@@ -45984,11 +41415,8 @@ declare namespace Phaser {
 
             /**
              * Puts a tile at the given tile coordinates in the specified layer. You can pass in either an index
-             * 
              * or a Tile object. If you pass in a Tile, all attributes will be copied over to the specified
-             * 
              * location. If you pass in an index, only the index at the specified location will be changed.
-             * 
              * Collision information will be recalculated at the specified location.
              * @param tile The index of this tile to set or a Tile object.
              * @param tileX [description]
@@ -45999,11 +41427,8 @@ declare namespace Phaser {
 
             /**
              * Puts a tile at the given world coordinates (pixels) in the specified layer. You can pass in either
-             * 
              * an index or a Tile object. If you pass in a Tile, all attributes will be copied over to the
-             * 
              * specified location. If you pass in an index, only the index at the specified location will be
-             * 
              * changed. Collision information will be recalculated at the specified location.
              * @param tile The index of this tile to set or a Tile object.
              * @param worldX [description]
@@ -46015,16 +41440,11 @@ declare namespace Phaser {
 
             /**
              * Puts an array of tiles or a 2D array of tiles at the given tile coordinates in the specified
-             * 
              * layer. The array can be composed of either tile indexes or Tile objects. If you pass in a Tile,
-             * 
              * all attributes will be copied over to the specified location. If you pass in an index, only the
-             * 
              * index at the specified location will be changed. Collision information will be recalculated
-             * 
              * within the region tiles were changed.
              * @param tile A row (array) or grid (2D array) of Tiles
-             * 
              * or tile indexes to place.
              * @param tileX [description]
              * @param tileY [description]
@@ -46034,13 +41454,9 @@ declare namespace Phaser {
 
             /**
              * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * 
              * specified layer. Each tile will receive a new index. If an array of indexes is passed in, then
-             * 
              * those will be used for randomly assigning new tile indexes. If an array is not provided, the
-             * 
              * indexes found within the region (excluding -1) will be used for randomly assigning new tile
-             * 
              * indexes. This method only modifies tile indexes and does not change collision information.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -46052,13 +41468,11 @@ declare namespace Phaser {
 
             /**
              * Removes the tile at the given tile coordinates in the specified layer and updates the layer's
-             * 
              * collision information.
              * @param tile The index of this tile to set or a Tile object.
              * @param tileX [description]
              * @param tileY [description]
              * @param replaceWithNull If true, this will replace the tile at the specified
-             * 
              * location with null instead of a Tile with an index of -1. Default true.
              * @param recalculateFaces [description] Default true.
              */
@@ -46066,13 +41480,11 @@ declare namespace Phaser {
 
             /**
              * Removes the tile at the given world coordinates in the specified layer and updates the layer's
-             * 
              * collision information.
              * @param tile The index of this tile to set or a Tile object.
              * @param worldX [description]
              * @param worldY [description]
              * @param replaceWithNull If true, this will replace the tile at the specified
-             * 
              * location with null instead of a Tile with an index of -1. Default true.
              * @param recalculateFaces [description] Default true.
              * @param camera [description] Default main camera.
@@ -46081,31 +41493,23 @@ declare namespace Phaser {
 
             /**
              * Draws a debug representation of the layer to the given Graphics. This is helpful when you want to
-             * 
              * get a quick idea of which of your tiles are colliding and which have interesting faces. The tiles
-             * 
              * are drawn starting at (0, 0) in the Graphics, allowing you to place the debug representation
-             * 
              * wherever you want on the screen.
              * @param graphics The target Graphics object to draw upon.
              * @param styleConfig An object specifying the colors to use for the debug drawing.
              * @param styleConfig.tileColor Color to use for drawing a filled rectangle at
-             * 
              * non-colliding tile locations. If set to null, non-colliding tiles will not be drawn. Default blue.
              * @param styleConfig.collidingTileColor Color to use for drawing a filled
-             * 
              * rectangle at colliding tile locations. If set to null, colliding tiles will not be drawn. Default orange.
              * @param styleConfig.faceColor Color to use for drawing a line at interesting
-             * 
              * tile faces. If set to null, interesting tile faces will not be drawn. Default grey.
              */
             renderDebug(graphics: Phaser.GameObjects.Graphics, styleConfig: object): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * 
              * `findIndex` and updates their index to match `newIndex`. This only modifies the index and does
-             * 
              * not change collision information.
              * @param findIndex [description]
              * @param newIndex [description]
@@ -46118,108 +41522,77 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the given tile or tiles within a layer by index. You can pass in either a
-             * 
              * single numeric index or an array of indexes: [2, 3, 15, 20]. The `collides` parameter controls if
-             * 
              * collision will be enabled (true) or disabled (false).
              * @param indexes Either a single tile index, or an array of tile indexes.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollision(indexes: integer | any[], collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Sets collision on a range of tiles in a layer whose index is between the specified `start` and
-             * 
              * `stop` (inclusive). Calling this with a start value of 10 and a stop value of 14 would set
-             * 
              * collision for tiles 10, 11, 12, 13 and 14. The `collides` parameter controls if collision will be
-             * 
              * enabled (true) or disabled (false).
              * @param start The first index of the tile to be set for collision.
              * @param stop The last index of the tile to be set for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionBetween(start: integer, stop: integer, collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Sets collision on the tiles within a layer by checking tile properties. If a tile has a property
-             * 
              * that matches the given properties object, its collision flag will be set. The `collides`
-             * 
              * parameter controls if collision will be enabled (true) or disabled (false). Passing in
-             * 
              * `{ collides: true }` would update the collision flag on any tiles with a "collides" property that
-             * 
              * has a value of true. Any tile that doesn't have "collides" set to true will be ignored. You can
-             * 
              * also use an array of values, e.g. `{ types: ["stone", "lava", "sand" ] }`. If a tile has a
-             * 
              * "types" property that matches any of those values, its collision flag will be updated.
              * @param properties An object with tile properties and corresponding values that should
-             * 
              * be checked.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionByProperty(properties: object, collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Sets collision on all tiles in the given layer, except for tiles that have an index specified in
-             * 
              * the given array. The `collides` parameter controls if collision will be enabled (true) or
-             * 
              * disabled (false).
              * @param indexes An array of the tile indexes to not be counted for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionByExclusion(indexes: integer[], collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Sets collision on the tiles within a layer by checking each tiles collision group data
-             * 
              * (typically defined in Tiled within the tileset collision editor). If any objects are found within
-             * 
              * a tiles collision group, the tile's colliding information will be set. The `collides` parameter
-             * 
              * controls if collision will be enabled (true) or disabled (false).
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionFromCollisionGroup(collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Sets a global collision callback for the given tile index within the layer. This will affect all
-             * 
              * tiles on this layer that have the same index. If a callback is already set for the tile index it
-             * 
              * will be replaced. Set the callback to null to remove it. If you want to set a callback for a tile
-             * 
              * at a specific location on the map then see setTileLocationCallback.
              * @param indexes Either a single tile index, or an array of tile indexes to have a
-             * 
              * collision callback set for.
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
@@ -46228,9 +41601,7 @@ declare namespace Phaser {
 
             /**
              * Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
-             * 
              * If a callback is already set for the tile index it will be replaced. Set the callback to null to
-             * 
              * remove it.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -46243,11 +41614,8 @@ declare namespace Phaser {
 
             /**
              * Shuffles the tiles in a rectangular region (specified in tile coordinates) within the given
-             * 
              * layer. It will only randomize the tiles in that area, so if they're all the same nothing will
-             * 
              * appear to have changed! This method only modifies tile indexes and does not change collision
-             * 
              * information.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -46258,9 +41626,7 @@ declare namespace Phaser {
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * 
              * `indexA` and swaps then with `indexB`. This only modifies the index and does not change collision
-             * 
              * information.
              * @param tileA First tile index.
              * @param tileB Second tile index.
@@ -46273,7 +41639,6 @@ declare namespace Phaser {
 
             /**
              * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param tileX [description]
              * @param camera [description] Default main camera.
@@ -46282,7 +41647,6 @@ declare namespace Phaser {
 
             /**
              * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param tileY [description]
              * @param camera [description] Default main camera.
@@ -46291,9 +41655,7 @@ declare namespace Phaser {
 
             /**
              * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll. This will return a new Vector2 object or update the given
-             * 
              * `point` object.
              * @param tileX [description]
              * @param tileY [description]
@@ -46304,49 +41666,33 @@ declare namespace Phaser {
 
             /**
              * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * 
              * specified layer. Each tile will recieve a new index. New indexes are drawn from the given
-             * 
              * weightedIndexes array. An example weighted array:
              * 
-             * 
-             * 
              * [
-             * 
              *  { index: 6, weight: 4 },    // Probability of index 6 is 4 / 8
-             * 
              *  { index: 7, weight: 2 },    // Probability of index 7 would be 2 / 8
-             * 
              *  { index: 8, weight: 1.5 },  // Probability of index 8 would be 1.5 / 8
-             * 
              *  { index: 26, weight: 0.5 }  // Probability of index 27 would be 0.5 / 8
-             * 
              * ]
              * 
-             * 
-             * 
              * The probability of any index being choose is (the index's weight) / (sum of all weights). This
-             * 
              * method only modifies tile indexes and does not change collision information.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
              * @param width [description] Default max width based on tileX.
              * @param height [description] Default max height based on tileY.
              * @param weightedIndexes An array of objects to randomly draw from during
-             * 
              * randomization. They should be in the form: { index: 0, weight: 4 } or
-             * 
              * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
              */
             weightedRandomize(tileX?: integer, tileY?: integer, width?: integer, height?: integer, weightedIndexes?: object[]): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Converts from world X coordinates (pixels) to tile X coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param worldX [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              */
@@ -46354,11 +41700,9 @@ declare namespace Phaser {
 
             /**
              * Converts from world Y coordinates (pixels) to tile Y coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param worldY [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              */
@@ -46366,20 +41710,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -46391,36 +41730,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -46428,38 +41761,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -46467,38 +41783,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -46507,19 +41806,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -46528,19 +41819,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -46549,18 +41832,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -46631,7 +41910,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -46639,48 +41917,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -46695,7 +41961,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -46704,7 +41969,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -46721,7 +41985,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -46745,14 +42008,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -46770,14 +42031,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -46797,7 +42056,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -46816,7 +42074,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -46839,11 +42096,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -46851,8 +42104,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -46913,16 +42164,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -46932,22 +42179,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -46955,22 +42193,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -46978,22 +42207,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -47007,10 +42227,6 @@ declare namespace Phaser {
 
         /**
          * An Image Collection is a special Tile Set containing multiple images, with no slicing into each image.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -47036,7 +42252,6 @@ declare namespace Phaser {
 
             /**
              * The Tiled firstgid value.
-             * 
              * This is the starting index of the first image index this Image Collection contains.
              */
             firstgid: integer;
@@ -47053,14 +42268,12 @@ declare namespace Phaser {
 
             /**
              * The margin around the images in the collection (in pixels).
-             * 
              * Use `setSpacing` to change.
              */
             imageMarge: integer;
 
             /**
              * The spacing between each image in the collection (in pixels).
-             * 
              * Use `setSpacing` to change.
              */
             imageSpacing: integer;
@@ -47098,11 +42311,7 @@ declare namespace Phaser {
         /**
          * A class for representing data about about a layer in a map. Maps are parsed from CSV, Tiled,
          * 
-         * 
-         * 
          * etc. into this format. Tilemap, StaticTilemapLayer and DynamicTilemapLayer have a reference
-         * 
-         * 
          * 
          * to this data and use it to look up and perform operations on tiles.
          */
@@ -47218,11 +42427,7 @@ declare namespace Phaser {
         /**
          * A class for representing data about a map. Maps are parsed from CSV, Tiled, etc. into this
          * 
-         * 
-         * 
          * format. A Tilemap object get a copy of this data and then unpacks the needed properties into
-         * 
-         * 
          * 
          * itself.
          */
@@ -47328,23 +42533,13 @@ declare namespace Phaser {
         /**
          * A class for representing a Tiled object layer in a map. This mirrors the structure of a Tiled
          * 
-         * 
-         * 
          * object layer, except:
-         * 
-         * 
          * 
          *  - "x" & "y" properties are ignored since these cannot be changed in Tiled.
          * 
-         * 
-         * 
          *  - "offsetx" & "offsety" are applied to the individual object coordinates directly, so they
          * 
-         * 
-         * 
          *    are ignored as well.
-         * 
-         * 
          * 
          *  - "draworder" is ignored.
          */
@@ -47412,15 +42607,10 @@ declare namespace Phaser {
                  * @param name The name of the tilemap, used to set the name on the MapData.
                  * @param json The Weltmeister JSON object.
                  * @param insertNull Controls how empty tiles, tiles with an index of -1, in the map
-                 * 
                  * data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-                 * 
                  * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-                 * 
                  * the tile data doesn't need to change then setting this value to `true` will help with memory
-                 * 
                  * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-                 * 
                  * the default value set.
                  */
                 function ParseWeltmeister(name: string, json: object, insertNull: boolean): object;
@@ -47429,31 +42619,21 @@ declare namespace Phaser {
 
             /**
              * Parses raw data of a given Tilemap format into a new MapData object. If no recognized data format
-             * 
              * is found, returns `null`. When loading from CSV or a 2D array, you should specify the tileWidth &
-             * 
              * tileHeight. When parsing from a map from Tiled, the tileWidth & tileHeight will be pulled from
-             * 
              * the map data.
              * @param name The name of the tilemap, used to set the name on the MapData.
              * @param mapFormat See ../Formats.js.
              * @param data 2D array, CSV string or Tiled JSON object.
              * @param tileWidth The width of a tile in pixels. Required for 2D array and CSV, but
-             * 
              * ignored for Tiled JSON.
              * @param tileHeight The height of a tile in pixels. Required for 2D array and CSV, but
-             * 
              * ignored for Tiled JSON.
              * @param insertNull Controls how empty tiles, tiles with an index of -1, in the map
-             * 
              * data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-             * 
              * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-             * 
              * the tile data doesn't need to change then setting this value to `true` will help with memory
-             * 
              * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-             * 
              * the default value set.
              */
             function Parse(name: string, mapFormat: integer, data: integer[][] | string | object, tileWidth: integer, tileHeight: integer, insertNull: boolean): Phaser.Tilemaps.MapData;
@@ -47465,15 +42645,10 @@ declare namespace Phaser {
              * @param tileWidth The width of a tile in pixels.
              * @param tileHeight The height of a tile in pixels.
              * @param insertNull Controls how empty tiles, tiles with an index of -1, in the map
-             * 
              * data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-             * 
              * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-             * 
              * the tile data doesn't need to change then setting this value to `true` will help with memory
-             * 
              * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-             * 
              * the default value set.
              */
             function Parse2DArray(name: string, data: integer[][], tileWidth: integer, tileHeight: integer, insertNull: boolean): Phaser.Tilemaps.MapData;
@@ -47485,15 +42660,10 @@ declare namespace Phaser {
              * @param tileWidth The width of a tile in pixels.
              * @param tileHeight The height of a tile in pixels.
              * @param insertNull Controls how empty tiles, tiles with an index of -1, in the map
-             * 
              * data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-             * 
              * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-             * 
              * the tile data doesn't need to change then setting this value to `true` will help with memory
-             * 
              * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-             * 
              * the default value set.
              */
             function ParseCSV(name: string, data: string, tileWidth: integer, tileHeight: integer, insertNull: boolean): Phaser.Tilemaps.MapData;
@@ -47519,7 +42689,6 @@ declare namespace Phaser {
 
                 /**
                  * See Tiled documentation on tile flipping:
-                 * 
                  * http://docs.mapeditor.org/en/latest/reference/tmx-map-format/
                  * @param gid [description]
                  */
@@ -47536,15 +42705,10 @@ declare namespace Phaser {
                  * @param name The name of the tilemap, used to set the name on the MapData.
                  * @param json The Tiled JSON object.
                  * @param insertNull Controls how empty tiles, tiles with an index of -1, in the map
-                 * 
                  * data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-                 * 
                  * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-                 * 
                  * the tile data doesn't need to change then setting this value to `true` will help with memory
-                 * 
                  * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-                 * 
                  * the default value set.
                  */
                 function ParseJSONTiled(name: string, json: object, insertNull: boolean): Phaser.Tilemaps.MapData;
@@ -47589,11 +42753,8 @@ declare namespace Phaser {
 
         /**
          * Create a Tilemap from the given key or data. If neither is given, make a blank Tilemap. When
-         * 
          * loading from CSV or a 2D array, you should specify the tileWidth & tileHeight. When parsing from
-         * 
          * a map from Tiled, the tileWidth, tileHeight, width & height will be pulled from the map data. For
-         * 
          * an empty map, you should specify tileWidth, tileHeight, width & height.
          * @param scene The Scene to which this Tilemap belongs.
          * @param key The key in the Phaser cache that corresponds to the loaded tilemap data.
@@ -47602,18 +42763,12 @@ declare namespace Phaser {
          * @param width The width of the map in tiles. Default 10.
          * @param height The height of the map in tiles. Default 10.
          * @param data Instead of loading from the cache, you can also load directly from
-         * 
          * a 2D array of tile indexes.
          * @param insertNull Controls how empty tiles, tiles with an index of -1, in the
-         * 
          * map data are handled. If `true`, empty locations will get a value of `null`. If `false`, empty
-         * 
          * location will get a Tile object with an index of -1. If you've a large sparsely populated map and
-         * 
          * the tile data doesn't need to change then setting this value to `true` will help with memory
-         * 
          * consumption. However if your map is small or you need to update the tiles dynamically, then leave
-         * 
          * the default value set. Default false.
          */
         function ParseToTilemap(scene: Phaser.Scene, key?: string, tileWidth?: integer, tileHeight?: integer, width?: integer, height?: integer, data?: integer[][], insertNull?: boolean): Phaser.Tilemaps.Tilemap;
@@ -47621,23 +42776,13 @@ declare namespace Phaser {
         /**
          * A StaticTilemapLayer is a game object that renders LayerData from a Tilemap. A
          * 
-         * 
-         * 
          * StaticTilemapLayer can only render tiles from a single tileset.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
          * A StaticTilemapLayer is optimized for speed over flexibility. You cannot apply per-tile
          * 
-         * 
-         * 
          * effects like tint or alpha. You cannot change the tiles in a StaticTilemapLayer. Use this
-         * 
-         * 
          * 
          * over a DynamicTilemapLayer when you don't need either of those features.
          */
@@ -47670,7 +42815,6 @@ declare namespace Phaser {
 
             /**
              * The LayerData associated with this layer. LayerData can only be associated with one
-             * 
              * tilemap layer.
              */
             layer: Phaser.Tilemaps.LayerData;
@@ -47682,7 +42826,6 @@ declare namespace Phaser {
 
             /**
              * Used internally with the canvas render. This holds the tiles that are visible within the
-             * 
              * camera.
              */
             culledTiles: any[];
@@ -47695,9 +42838,7 @@ declare namespace Phaser {
 
             /**
              * Calculates interesting faces at the given tile coordinates of the specified layer. Interesting
-             * 
              * faces are used internally for optimizing collisions against tiles. This method is mostly used
-             * 
              * internally to optimize recalculating faces when only one tile has been changed.
              * @param tileX The x coordinate.
              * @param tileY The y coordinate.
@@ -47706,9 +42847,7 @@ declare namespace Phaser {
 
             /**
              * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
-             * 
              * layer. Interesting faces are used internally for optimizing collisions against tiles. This method
-             * 
              * is mostly used internally.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -47719,20 +42858,14 @@ declare namespace Phaser {
 
             /**
              * Creates a Sprite for every object matching the given tile indexes in the layer. You can
-             * 
              * optionally specify if each tile will be replaced with a new tile after the Sprite has been
-             * 
              * created. This is useful if you want to lay down special tiles in a level that are converted to
-             * 
              * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
              * @param indexes The tile index, or array of indexes, to create Sprites from.
              * @param replacements The tile index, or array of indexes, to change a converted
-             * 
              * tile to. Set to `null` to leave the tiles unchanged. If an array is given, it is assumed to be a
-             * 
              * one-to-one mapping with the indexes array.
              * @param spriteConfig The config object to pass into the Sprite creator (i.e.
-             * 
              * scene.make.sprite).
              * @param scene The Scene to create the Sprites within. Default scene the map is within.
              * @param camera The Camera to use when determining the world XY Default main camera.
@@ -47741,7 +42874,6 @@ declare namespace Phaser {
 
             /**
              * Returns the tiles in the given layer that are within the cameras viewport.
-             * 
              * This is used internally.
              * @param camera The Camera to run the cull check against.
              */
@@ -47754,30 +42886,22 @@ declare namespace Phaser {
 
             /**
              * Searches the entire map layer for the first tile matching the given index, then returns that Tile
-             * 
              * object. If no match is found, it returns null. The search starts from the top-left tile and
-             * 
              * continues horizontally until it hits the end of the row, then it drops down to the next column.
-             * 
              * If the reverse boolean is true, it scans starting from the bottom-right corner traveling up to
-             * 
              * the top-left.
              * @param index The tile index value to search for.
              * @param skip The number of times to skip a matching tile before returning. Default 0.
              * @param reverse If true it will scan the layer in reverse, starting at the
-             * 
              * bottom-right. Otherwise it scans from the top-left. Default false.
              */
             findByIndex(index: integer, skip?: integer, reverse?: boolean): Phaser.Tilemaps.Tile;
 
             /**
              * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
-             * 
              * satisfies the provided testing function. I.e. finds the first tile for which `callback` returns
-             * 
              * true. Similar to Array.prototype.find in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -47786,27 +42910,20 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             findTile(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.Tile;
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * filter callback function. Any tiles that pass the filter test (i.e. where the callback returns
-             * 
              * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter. The callback should return true for tiles that pass the
-             * 
              * filter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -47815,23 +42932,18 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             filterTiles(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.Tile[];
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * callback. Similar to Array.prototype.forEach in vanilla JS.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -47840,13 +42952,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             forEachTile(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.StaticTilemapLayer;
@@ -47856,7 +42965,6 @@ declare namespace Phaser {
              * @param tileX X position to get the tile from (given in tile units, not pixels).
              * @param tileY Y position to get the tile from (given in tile units, not pixels).
              * @param nonNull If true getTile won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              */
             getTileAt(tileX: integer, tileY: integer, nonNull?: boolean): Phaser.Tilemaps.Tile;
@@ -47866,7 +42974,6 @@ declare namespace Phaser {
              * @param worldX X position to get the tile from (given in pixels)
              * @param worldY Y position to get the tile from (given in pixels)
              * @param nonNull If true, function won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              * @param camera [description] Default main camera.
              */
@@ -47880,13 +42987,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              */
             getTilesWithin(tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object): Phaser.Tilemaps.Tile[];
@@ -47899,13 +43003,10 @@ declare namespace Phaser {
              * @param height [description]
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              */
@@ -47913,18 +43014,14 @@ declare namespace Phaser {
 
             /**
              * Gets the tiles that overlap with the given shape in the given layer. The shape must be a Circle,
-             * 
              * Line, Rectangle or Triangle. The shape should be in world coordinates.
              * @param shape A shape in world (pixel) coordinates
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              */
@@ -47932,7 +43029,6 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in tile coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
              * @param tileX [description]
              * @param tileY [description]
@@ -47941,7 +43037,6 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
              * @param worldX [description]
              * @param worldY [description]
@@ -47951,113 +43046,81 @@ declare namespace Phaser {
 
             /**
              * Draws a debug representation of the layer to the given Graphics. This is helpful when you want to
-             * 
              * get a quick idea of which of your tiles are colliding and which have interesting faces. The tiles
-             * 
              * are drawn starting at (0, 0) in the Graphics, allowing you to place the debug representation
-             * 
              * wherever you want on the screen.
              * @param graphics The target Graphics object to draw upon.
              * @param styleConfig An object specifying the colors to use for the debug drawing.
              * @param styleConfig.tileColor Color to use for drawing a filled rectangle at
-             * 
              * non-colliding tile locations. If set to null, non-colliding tiles will not be drawn. Default blue.
              * @param styleConfig.collidingTileColor Color to use for drawing a filled
-             * 
              * rectangle at colliding tile locations. If set to null, colliding tiles will not be drawn. Default orange.
              * @param styleConfig.faceColor Color to use for drawing a line at interesting
-             * 
              * tile faces. If set to null, interesting tile faces will not be drawn. Default grey.
              */
             renderDebug(graphics: Phaser.GameObjects.Graphics, styleConfig: object): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Sets collision on the given tile or tiles within a layer by index. You can pass in either a
-             * 
              * single numeric index or an array of indexes: [2, 3, 15, 20]. The `collides` parameter controls if
-             * 
              * collision will be enabled (true) or disabled (false).
              * @param indexes Either a single tile index, or an array of tile indexes.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollision(indexes: integer | any[], collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Sets collision on a range of tiles in a layer whose index is between the specified `start` and
-             * 
              * `stop` (inclusive). Calling this with a start value of 10 and a stop value of 14 would set
-             * 
              * collision for tiles 10, 11, 12, 13 and 14. The `collides` parameter controls if collision will be
-             * 
              * enabled (true) or disabled (false).
              * @param start The first index of the tile to be set for collision.
              * @param stop The last index of the tile to be set for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionBetween(start: integer, stop: integer, collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Sets collision on the tiles within a layer by checking tile properties. If a tile has a property
-             * 
              * that matches the given properties object, its collision flag will be set. The `collides`
-             * 
              * parameter controls if collision will be enabled (true) or disabled (false). Passing in
-             * 
              * `{ collides: true }` would update the collision flag on any tiles with a "collides" property that
-             * 
              * has a value of true. Any tile that doesn't have "collides" set to true will be ignored. You can
-             * 
              * also use an array of values, e.g. `{ types: ["stone", "lava", "sand" ] }`. If a tile has a
-             * 
              * "types" property that matches any of those values, its collision flag will be updated.
              * @param properties An object with tile properties and corresponding values that should
-             * 
              * be checked.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionByProperty(properties: object, collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Sets collision on all tiles in the given layer, except for tiles that have an index specified in
-             * 
              * the given array. The `collides` parameter controls if collision will be enabled (true) or
-             * 
              * disabled (false).
              * @param indexes An array of the tile indexes to not be counted for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionByExclusion(indexes: integer[], collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Sets a global collision callback for the given tile index within the layer. This will affect all
-             * 
              * tiles on this layer that have the same index. If a callback is already set for the tile index it
-             * 
              * will be replaced. Set the callback to null to remove it. If you want to set a callback for a tile
-             * 
              * at a specific location on the map then see setTileLocationCallback.
              * @param indexes Either a single tile index, or an array of tile indexes to have a
-             * 
              * collision callback set for.
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
@@ -48066,26 +43129,19 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking each tiles collision group data
-             * 
              * (typically defined in Tiled within the tileset collision editor). If any objects are found within
-             * 
              * a tiles collision group, the tile's colliding information will be set. The `collides` parameter
-             * 
              * controls if collision will be enabled (true) or disabled (false).
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              */
             setCollisionFromCollisionGroup(collides?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
-             * 
              * If a callback is already set for the tile index it will be replaced. Set the callback to null to
-             * 
              * remove it.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -48098,7 +43154,6 @@ declare namespace Phaser {
 
             /**
              * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param tileX [description]
              * @param camera [description] Default main camera.
@@ -48107,7 +43162,6 @@ declare namespace Phaser {
 
             /**
              * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param tileY [description]
              * @param camera [description] Default main camera.
@@ -48116,9 +43170,7 @@ declare namespace Phaser {
 
             /**
              * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll. This will return a new Vector2 object or update the given
-             * 
              * `point` object.
              * @param tileX [description]
              * @param tileY [description]
@@ -48129,11 +43181,9 @@ declare namespace Phaser {
 
             /**
              * Converts from world X coordinates (pixels) to tile X coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param worldX [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              */
@@ -48141,11 +43191,9 @@ declare namespace Phaser {
 
             /**
              * Converts from world Y coordinates (pixels) to tile Y coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll.
              * @param worldY [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              */
@@ -48153,20 +43201,15 @@ declare namespace Phaser {
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -48178,36 +43221,30 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
@@ -48215,38 +43252,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              */
             blendMode: Phaser.BlendModes | string;
@@ -48254,38 +43274,21 @@ declare namespace Phaser {
             /**
              * Sets the Blend Mode being used by this Game Object.
              * 
-             * 
-             * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
-             * 
-             * 
              * 
              * Under WebGL only the following Blend Modes are available:
              * 
-             * 
-             * 
              * * ADD
-             * 
              * * MULTIPLY
-             * 
              * * SCREEN
-             * 
-             * 
              * 
              * Canvas has more available depending on browser support.
              * 
-             * 
-             * 
              * You can also create your own custom Blend Modes in WebGL.
              * 
-             * 
-             * 
              * Blend modes have different effects under Canvas and WebGL, and from browser to browser, depending
-             * 
              * on support. Blend Modes also cause a WebGL batch flush should it encounter a new blend mode. For these
-             * 
              * reasons try to be careful about the construction of your Scene and the frequency of which blend modes
-             * 
              * are used.
              * @param value The BlendMode value. Either a string or a CONST.
              */
@@ -48294,19 +43297,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              */
@@ -48315,19 +43310,11 @@ declare namespace Phaser {
             /**
              * The depth of this Game Object within the Scene.
              * 
-             * 
-             * 
              * The depth is also known as the 'z-index' in some environments, and allows you to change the rendering order
-             * 
              * of Game Objects, without actually moving their position in the display list.
              * 
-             * 
-             * 
              * The depth starts from zero (the default value) and increases from that point. A Game Object with a higher depth
-             * 
              * value will always render in front of one with a lower value.
-             * 
-             * 
              * 
              * Setting the depth will queue a depth sort event within the Scene.
              * @param value The depth of this Game Object.
@@ -48336,18 +43323,14 @@ declare namespace Phaser {
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -48418,7 +43401,6 @@ declare namespace Phaser {
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
-             * 
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
@@ -48426,48 +43408,36 @@ declare namespace Phaser {
 
             /**
              * The horizontal origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the left of the Game Object.
              */
             originX: number;
 
             /**
              * The vertical origin of this Game Object.
-             * 
              * The origin maps the relationship between the size and position of the Game Object.
-             * 
              * The default value is 0.5, meaning all Game Objects are positioned based on their center.
-             * 
              * Setting the value to 0 means the position now relates to the top of the Game Object.
              */
             originY: number;
 
             /**
              * The horizontal display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginX: number;
 
             /**
              * The vertical display origin of this Game Object.
-             * 
              * The origin is a normalized value between 0 and 1.
-             * 
              * The displayOrigin is a pixel value, based on the size of the Game Object combined with the origin.
              */
             displayOriginY: number;
 
             /**
              * Sets the origin of this Game Object.
-             * 
-             * 
              * 
              * The values are given in the range 0 to 1.
              * @param x The horizontal origin value. Default 0.5.
@@ -48482,7 +43452,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display origin of this Game Object.
-             * 
              * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
              * @param x The horizontal display origin value. Default 0.
              * @param y The vertical display origin value. If not defined it will be set to the value of `x`. Default x.
@@ -48491,7 +43460,6 @@ declare namespace Phaser {
 
             /**
              * Updates the Display Origin cached values internally stored on this Game Object.
-             * 
              * You don't usually call this directly, but it is exposed for edge-cases where you may.
              */
             updateDisplayOrigin(): Phaser.GameObjects.GameObject;
@@ -48508,7 +43476,6 @@ declare namespace Phaser {
 
             /**
              * Sets the initial WebGL Pipeline of this Game Object.
-             * 
              * This should only be called during the instantiation of the Game Object.
              * @param pipelineName The name of the pipeline to set on this Game Object.
              */
@@ -48532,14 +43499,12 @@ declare namespace Phaser {
 
             /**
              * The Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              */
             scaleMode: Phaser.ScaleModes;
 
             /**
              * Sets the Scale Mode being used by this Game Object.
-             * 
              * Can be either `ScaleModes.LINEAR` or `ScaleModes.NEAREST`.
              * @param value The Scale Mode to be used by this Game Object.
              */
@@ -48557,14 +43522,12 @@ declare namespace Phaser {
 
             /**
              * The displayed width of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayWidth: number;
 
             /**
              * The displayed height of this Game Object.
-             * 
              * This value takes into account the scale factor.
              */
             displayHeight: number;
@@ -48584,7 +43547,6 @@ declare namespace Phaser {
 
             /**
              * Sets the display size of this Game Object.
-             * 
              * Calling this will adjust the scale.
              * @param width The width of this Game Object.
              * @param height The height of this Game Object.
@@ -48603,7 +43565,6 @@ declare namespace Phaser {
 
             /**
              * The z position of this Game Object.
-             * 
              * Note: Do not use this value to set the z-index, instead see the `depth` property.
              */
             z: number;
@@ -48626,11 +43587,7 @@ declare namespace Phaser {
             /**
              * The angle of this Game Object as expressed in degrees.
              * 
-             * 
-             * 
              * Where 0 is to the right, 90 is down, 180 is left.
-             * 
-             * 
              * 
              * If you prefer to work in radians, see the `rotation` property instead.
              */
@@ -48638,8 +43595,6 @@ declare namespace Phaser {
 
             /**
              * The angle of this Game Object in radians.
-             * 
-             * 
              * 
              * If you prefer to work in degrees, see the `angle` property instead.
              */
@@ -48700,16 +43655,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -48719,22 +43670,13 @@ declare namespace Phaser {
             /**
              * The horizontal scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorX: number;
@@ -48742,22 +43684,13 @@ declare namespace Phaser {
             /**
              * The vertical scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              */
             scrollFactorY: number;
@@ -48765,22 +43698,13 @@ declare namespace Phaser {
             /**
              * Sets the scroll factor of this Game Object.
              * 
-             * 
-             * 
              * The scroll factor controls the influence of the movement of a Camera upon this Game Object.
              * 
-             * 
-             * 
              * When a camera scrolls it will change the location at which this Game Object is rendered on-screen.
-             * 
              * It does not change the Game Objects actual position values.
              * 
-             * 
-             * 
              * A value of 1 means it will move exactly in sync with a camera.
-             * 
              * A value of 0 means it will not move at all, even if the camera moves.
-             * 
              * Other values control the degree to which the camera movement is mapped to this Game Object.
              * @param x The horizontal scroll factor of this Game Object.
              * @param y The vertical scroll factor of this Game Object. If not set it will use the `x` value. Default x.
@@ -48792,11 +43716,7 @@ declare namespace Phaser {
         /**
          * A Tile is a representation of a single tile within the Tilemap. This is a lightweight data
          * 
-         * 
-         * 
          * representation, so it's position information is stored without factoring in scroll, layer
-         * 
-         * 
          * 
          * scale or layer position.
          */
@@ -48810,14 +43730,10 @@ declare namespace Phaser {
              * @param width Width of the tile in pixels.
              * @param height Height of the tile in pixels.
              * @param baseWidth The base width a tile in the map (in pixels). Tiled maps support
-             * 
              * multiple tileset sizes within one map, but they are still placed at intervals of the base
-             * 
              * tile width.
              * @param baseHeight The base height of the tile in pixels (in pixels). Tiled maps
-             * 
              * support multiple tileset sizes within one map, but they are still placed at intervals of the
-             * 
              * base tile height.
              */
             constructor(layer: Phaser.Tilemaps.LayerData, index: integer, x: integer, y: integer, width: integer, height: integer, baseWidth: integer, baseHeight: integer);
@@ -48829,7 +43745,6 @@ declare namespace Phaser {
 
             /**
              * The index of this tile within the map data corresponding to the tileset, or -1 if this
-             * 
              * represents a blank tile.
              */
             index: integer;
@@ -48856,32 +43771,26 @@ declare namespace Phaser {
 
             /**
              * The map's base width of a tile in pixels. Tiled maps support multiple tileset sizes
-             * 
              * within one map, but they are still placed at intervals of the base tile size.
              */
             baseWidth: integer;
 
             /**
              * The map's base height of a tile in pixels. Tiled maps support multiple tileset sizes
-             * 
              * within one map, but they are still placed at intervals of the base tile size.
              */
             baseHeight: integer;
 
             /**
              * The x coordinate of the top left of this tile in pixels. This is relative to the top left
-             * 
              * of the layer this tile is being rendered within. This property does NOT factor in camera
-             * 
              * scroll, layer scale or layer position.
              */
             pixelX: number;
 
             /**
              * The y coordinate of the top left of this tile in pixels. This is relative to the top left
-             * 
              * of the layer this tile is being rendered within. This property does NOT factor in camera
-             * 
              * scroll, layer scale or layer position.
              */
             pixelY: number;
@@ -48948,7 +43857,6 @@ declare namespace Phaser {
 
             /**
              * The tint to apply to this tile. Note: tint is currently a single color value instead of
-             * 
              * the 4 corner tint component on other GameObjects.
              */
             tint: number;
@@ -48960,7 +43868,6 @@ declare namespace Phaser {
 
             /**
              * Check if the given x and y world coordinates are within this Tile. This does not factor in
-             * 
              * camera scroll, layer scale or layer position.
              * @param x The x coordinate to test.
              * @param y The y coordinate to test.
@@ -48969,27 +43876,21 @@ declare namespace Phaser {
 
             /**
              * The collision group for this Tile, defined within the Tileset. This returns a reference to
-             * 
              * the collision group stored within the Tileset, so any modification of the returned object
-             * 
              * will impact all tiles that have the same index as this tile.
              */
             getCollisionGroup(): object;
 
             /**
              * The tile data for this Tile, defined within the Tileset. This typically contains Tiled
-             * 
              * collision data, tile animations and terrain information. This returns a reference to the tile
-             * 
              * data stored within the Tileset, so any modification of the returned object will impact all
-             * 
              * tiles that have the same index as this tile.
              */
             getTileData(): object;
 
             /**
              * Gets the world X position of the left side of the tile, factoring in the layers position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              */
@@ -48997,7 +43898,6 @@ declare namespace Phaser {
 
             /**
              * Gets the world X position of the right side of the tile, factoring in the layer's position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              */
@@ -49005,7 +43905,6 @@ declare namespace Phaser {
 
             /**
              * Gets the world Y position of the top side of the tile, factoring in the layer's position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              */
@@ -49013,7 +43912,6 @@ declare namespace Phaser {
 
             /**
              * Gets the world Y position of the bottom side of the tile, factoring in the layer's position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              */
@@ -49021,7 +43919,6 @@ declare namespace Phaser {
 
             /**
              * Gets the world rectangle bounding box for the tile, factoring in the layers position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              * @param output [description]
@@ -49030,7 +43927,6 @@ declare namespace Phaser {
 
             /**
              * Gets the world X position of the center of the tile, factoring in the layer's position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              */
@@ -49038,7 +43934,6 @@ declare namespace Phaser {
 
             /**
              * Gets the world Y position of the center of the tile, factoring in the layer's position,
-             * 
              * scale and scroll.
              * @param camera The Camera to use to perform the check.
              */
@@ -49051,7 +43946,6 @@ declare namespace Phaser {
 
             /**
              * Check for intersection with this tile. This does not factor in camera scroll, layer scale or
-             * 
              * layer position.
              * @param x The x axis in pixels.
              * @param y The y axis in pixels.
@@ -49085,14 +43979,12 @@ declare namespace Phaser {
              * @param up Indicating collide with any object on the top.
              * @param down Indicating collide with any object on the bottom.
              * @param recalculateFaces Whether or not to recalculate interesting faces
-             * 
              * for this tile and its neighbors. Default true.
              */
             setCollision(left: boolean, right?: boolean, up?: boolean, down?: boolean, recalculateFaces?: boolean): Phaser.Tilemaps.Tile;
 
             /**
              * Set a callback to be called when this tile is hit by an object. The callback must true for
-             * 
              * collision processing to take place.
              * @param callback Callback function.
              * @param context Callback will be called within this context.
@@ -49130,43 +44022,34 @@ declare namespace Phaser {
 
             /**
              * The tileset that contains this Tile. This will only return null if accessed from a LayerData
-             * 
              * instance before the tile is placed within a StaticTilemapLayer or DynamicTilemapLayer.
              */
             tileset: Phaser.Tilemaps.Tileset;
 
             /**
              * The tilemap layer that contains this Tile. This will only return null if accessed from a
-             * 
              * LayerData instance before the tile is placed within a StaticTilemapLayer or
-             * 
              * DynamicTilemapLayer.
              */
             tilemapLayer: Phaser.Tilemaps.StaticTilemapLayer | Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * The tilemap that contains this Tile. This will only return null if accessed from a LayerData
-             * 
              * instance before the tile is placed within a StaticTilemapLayer or DynamicTilemapLayer.
              */
             tilemap: Phaser.Tilemaps.Tilemap;
 
             /**
              * Clears all alpha values associated with this Game Object.
-             * 
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
             clearAlpha(): Phaser.GameObjects.GameObject;
 
             /**
              * Set the Alpha level of this Game Object. The alpha controls the opacity of the Game Object as it renders.
-             * 
              * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
              * 
-             * 
-             * 
              * If your game is running under WebGL you can optionally specify four different alpha values, each of which
-             * 
              * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
              * @param topLeft The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object. Default 1.
              * @param topRight The alpha value used for the top-right of the Game Object. WebGL only.
@@ -49178,54 +44061,44 @@ declare namespace Phaser {
             /**
              * The alpha value of the Game Object.
              * 
-             * 
-             * 
              * This is a global value, impacting the entire Game Object, not just a region of it.
              */
             alpha: number;
 
             /**
              * The alpha value starting from the top-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopLeft: number;
 
             /**
              * The alpha value starting from the top-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaTopRight: number;
 
             /**
              * The alpha value starting from the bottom-left of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomLeft: number;
 
             /**
              * The alpha value starting from the bottom-right of the Game Object.
-             * 
              * This value is interpolated from the corner to the center of the Game Object.
              */
             alphaBottomRight: number;
 
             /**
              * The horizontally flipped state of the Game Object.
-             * 
              * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipX: boolean;
 
             /**
              * The vertically flipped state of the Game Object.
-             * 
              * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-             * 
              * Flipping always takes place from the middle of the texture and does not impact the scale value.
              */
             flipY: boolean;
@@ -49267,16 +44140,12 @@ declare namespace Phaser {
             /**
              * The visible state of the Game Object.
              * 
-             * 
-             * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              */
             visible: boolean;
 
             /**
              * Sets the visibility of this Game Object.
-             * 
-             * 
              * 
              * An invisible Game Object will skip rendering, but will still process update logic.
              * @param value The visible state of the Game Object.
@@ -49288,59 +44157,31 @@ declare namespace Phaser {
         /**
          * A Tilemap is a container for Tilemap data. This isn't a display object, rather, it holds data
          * 
-         * 
-         * 
          * about the map and allows you to add tilesets and tilemap layers to it. A map can have one or
          * 
-         * 
-         * 
          * more tilemap layers (StaticTilemapLayer or DynamicTilemapLayer), which are the display
-         * 
-         * 
          * 
          * objects that actually render tiles.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * The Tilemap data be parsed from a Tiled JSON file, a CSV file or a 2D array. Tiled is a free
          * 
-         * 
-         * 
          * software package specifically for creating tile maps, and is available from:
-         * 
-         * 
          * 
          * http://www.mapeditor.org
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * A Tilemap has handy methods for getting & manipulating the tiles within a layer. You can only
-         * 
-         * 
          * 
          * use the methods that change tiles (e.g. removeTileAt) on a DynamicTilemapLayer.
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Note that all Tilemaps use a base tile size to calculate dimensions from, but that a
          * 
-         * 
-         * 
          * StaticTilemapLayer or DynamicTilemapLayer may have its own unique tile size that overrides
-         * 
-         * 
          * 
          * it.
          */
@@ -49356,14 +44197,12 @@ declare namespace Phaser {
 
             /**
              * The base width of a tile in pixels. Note that individual layers may have a different tile
-             * 
              * width.
              */
             tileWidth: integer;
 
             /**
              * The base height of a tile in pixels. Note that individual layers may have a different
-             * 
              * tile height.
              */
             tileHeight: integer;
@@ -49437,127 +44276,89 @@ declare namespace Phaser {
 
             /**
              * Adds an image to the map to be used as a tileset. A single map may use multiple tilesets.
-             * 
              * Note that the tileset name can be found in the JSON file exported from Tiled, or in the Tiled
-             * 
              * editor.
              * @param tilesetName The name of the tileset as specified in the map data.
              * @param key The key of the Phaser.Cache image used for this tileset. If
-             * 
              * `undefined` or `null` it will look for an image with a key matching the tileset parameter.
              * @param tileWidth The width of the tile (in pixels) in the Tileset Image. If not
-             * 
              * given it will default to the map's tileWidth value, or the tileWidth specified in the Tiled
-             * 
              * JSON file.
              * @param tileHeight The height of the tiles (in pixels) in the Tileset Image. If
-             * 
              * not given it will default to the map's tileHeight value, or the tileHeight specified in the
-             * 
              * Tiled JSON file.
              * @param tileMargin The margin around the tiles in the sheet (in pixels). If not
-             * 
              * specified, it will default to 0 or the value specified in the Tiled JSON file.
              * @param tileSpacing The spacing between each the tile in the sheet (in pixels).
-             * 
              * If not specified, it will default to 0 or the value specified in the Tiled JSON file.
              * @param gid If adding multiple tilesets to a blank map, specify the starting
-             * 
              * GID this set will use here. Default 0.
              */
             addTilesetImage(tilesetName: string, key?: string, tileWidth?: integer, tileHeight?: integer, tileMargin?: integer, tileSpacing?: integer, gid?: integer): Phaser.Tilemaps.Tileset;
 
             /**
              * Turns the StaticTilemapLayer associated with the given layer into a DynamicTilemapLayer. If
-             * 
              * no layer specified, the map's current layer is used. This is useful if you want to manipulate
-             * 
              * a map at the start of a scene, but then make it non-manipulable and optimize it for speed.
-             * 
              * Note: the DynamicTilemapLayer passed in is destroyed, so make sure to store the value
-             * 
              * returned from this method if you want to manipulate the new StaticTilemapLayer.
              * @param layer The name of the layer from Tiled, the
-             * 
              * index of the layer in the map, or a DynamicTilemapLayer.
              */
             convertLayerToStatic(layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * See component documentation. If no layer specified, the map's current layer is used. This
-             * 
              * cannot be applied to StaticTilemapLayers.
              */
             copy(): Phaser.Tilemaps.Tilemap;
 
             /**
              * Creates a new and empty DynamicTilemapLayer. The currently selected layer in the map is set
-             * 
              * to this new layer.
              * @param name The name of this layer. Must be unique within the map.
              * @param tileset The tileset the new layer will use.
              * @param width The width of the layer in tiles. If not specified, it will default
-             * 
              * to the map's width.
              * @param height The height of the layer in tiles. If not specified, it will default
-             * 
              * to the map's height.
              * @param tileWidth The width of the tiles the layer uses for calculations. If not
-             * 
              * specified, it will default to the map's tileWidth.
              * @param tileHeight The height of the tiles the layer uses for calculations. If not
-             * 
              * specified, it will default to the map's tileHeight.
              */
             createBlankDynamicLayer(name: string, tileset: Phaser.Tilemaps.Tileset, width: integer, height: integer, tileWidth: integer, tileHeight: integer): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Creates a new DynamicTilemapLayer that renders the LayerData associated with the given
-             * 
              * `layerID`. The currently selected layer in the map is set to this new layer.
              * 
-             * 
-             * 
              * The `layerID` is important. If you've created your map in Tiled then you can get this by
-             * 
              * looking in Tiled and looking at the layer name. Or you can open the JSON file it exports and
-             * 
              * look at the layers[].name value. Either way it must match.
              * 
-             * 
-             * 
              * Unlike a static layer, a dynamic layer can be modified. See DynamicTilemapLayer for more
-             * 
              * information.
              * @param layerID The layer array index value, or if a string is given, the
-             * 
              * layer name from Tiled.
              * @param tileset The tileset the new layer will use.
              * @param x The x position to place the layer in the world. If not specified, it will
-             * 
              * default to the layer offset from Tiled or 0.
              * @param y The y position to place the layer in the world. If not specified, it will
-             * 
              * default to the layer offset from Tiled or 0.
              */
             createDynamicLayer(layerID: integer | string, tileset: Phaser.Tilemaps.Tileset, x: number, y: number): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Creates a Sprite for every object matching the given gid in the map data. All properties from
-             * 
              * the map data objectgroup are copied into the `spriteConfig`, so you can use this as an easy
-             * 
              * way to configure Sprite properties from within the map editor. For example giving an object a
-             * 
              * property of alpha: 0.5 in the map editor will duplicate that when the Sprite is created.
              * @param name The name of the object layer (from Tiled) to create Sprites from.
              * @param id Either the id (object), gid (tile object) or name (object or
-             * 
              * tile object) from Tiled. Ids are unique in Tiled, but a gid is shared by all tile objects
-             * 
              * with the same graphic. The same name can be used on multiple objects.
              * @param spriteConfig The config object to pass into the Sprite creator (i.e.
-             * 
              * scene.make.sprite).
              * @param scene The Scene to create the Sprites within. Default the scene the map is within.
              */
@@ -49565,20 +44366,14 @@ declare namespace Phaser {
 
             /**
              * Creates a Sprite for every object matching the given tile indexes in the layer. You can
-             * 
              * optionally specify if each tile will be replaced with a new tile after the Sprite has been
-             * 
              * created. This is useful if you want to lay down special tiles in a level that are converted to
-             * 
              * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
              * @param indexes The tile index, or array of indexes, to create Sprites from.
              * @param replacements The tile index, or array of indexes, to change a converted
-             * 
              * tile to. Set to `null` to leave the tiles unchanged. If an array is given, it is assumed to be a
-             * 
              * one-to-one mapping with the indexes array.
              * @param spriteConfig The config object to pass into the Sprite creator (i.e.
-             * 
              * scene.make.sprite).
              * @param scene The Scene to create the Sprites within. Default scene the map is within.
              * @param camera The Camera to use when determining the world XY Default main camera.
@@ -49588,53 +44383,36 @@ declare namespace Phaser {
 
             /**
              * Creates a new StaticTilemapLayer that renders the LayerData associated with the given
-             * 
              * `layerID`. The currently selected layer in the map is set to this new layer.
              * 
-             * 
-             * 
              * The `layerID` is important. If you've created your map in Tiled then you can get this by
-             * 
              * looking in Tiled and looking at the layer name. Or you can open the JSON file it exports and
-             * 
              * look at the layers[].name value. Either way it must match.
              * 
-             * 
-             * 
              * It's important to remember that a static layer cannot be modified. See StaticTilemapLayer for
-             * 
              * more information.
              * @param layerID The layer array index value, or if a string is given, the
-             * 
              * layer name from Tiled.
              * @param tileset The tileset the new layer will use.
              * @param x The x position to place the layer in the world. If not specified, it will
-             * 
              * default to the layer offset from Tiled or 0.
              * @param y The y position to place the layer in the world. If not specified, it will
-             * 
              * default to the layer offset from Tiled or 0.
              */
             createStaticLayer(layerID: integer | string, tileset: Phaser.Tilemaps.Tileset, x: number, y: number): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Removes all layer data from this Tilemap and nulls the scene reference. This will destroy any
-             * 
              * StaticTilemapLayers or DynamicTilemapLayers that have been linked to LayerData.
              */
             destroy(): void;
 
             /**
              * Sets the tiles in the given rectangular area (in tile coordinates) of the layer with the
-             * 
              * specified index. Tiles will be set to collide if the given index is a colliding index.
-             * 
              * Collision information in the region will be recalculated.
              * 
-             * 
-             * 
              * If no layer specified, the map's current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param index [description]
              * @param tileX [description] Default 0.
@@ -49648,15 +44426,11 @@ declare namespace Phaser {
 
             /**
              * For each object in the given object layer, run the given filter callback function. Any
-             * 
              * objects that pass the filter test (i.e. where the callback returns true) will returned as a
-             * 
              * new array. Similar to Array.prototype.Filter in vanilla JS.
              * @param objectLayer The name of an object layer (from Tiled) or an
-             * 
              * ObjectLayer instance.
              * @param callback The callback. Each object in the given area will be passed to
-             * 
              * this callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              */
@@ -49664,16 +44438,11 @@ declare namespace Phaser {
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * filter callback function. Any tiles that pass the filter test (i.e. where the callback returns
-             * 
              * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
-             * 
              * If no layer specified, the map's current layer is used.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter. The callback should return true for tiles that pass the
-             * 
              * filter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -49682,13 +44451,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer [description]
              */
@@ -49696,20 +44462,14 @@ declare namespace Phaser {
 
             /**
              * Searches the entire map layer for the first tile matching the given index, then returns that Tile
-             * 
              * object. If no match is found, it returns null. The search starts from the top-left tile and
-             * 
              * continues horizontally until it hits the end of the row, then it drops down to the next column.
-             * 
              * If the reverse boolean is true, it scans starting from the bottom-right corner traveling up to
-             * 
              * the top-left.
-             * 
              * If no layer specified, the map's current layer is used.
              * @param index The tile index value to search for.
              * @param skip The number of times to skip a matching tile before returning. Default 0.
              * @param reverse If true it will scan the layer in reverse, starting at the
-             * 
              * bottom-right. Otherwise it scans from the top-left. Default false.
              * @param layer [description]
              */
@@ -49717,15 +44477,11 @@ declare namespace Phaser {
 
             /**
              * Find the first object in the given object layer that satisfies the provided testing function.
-             * 
              * I.e. finds the first object for which `callback` returns true. Similar to
-             * 
              * Array.prototype.find in vanilla JS.
              * @param objectLayer The name of an object layer (from Tiled) or an
-             * 
              * ObjectLayer instance.
              * @param callback The callback. Each object in the given area will be passed to
-             * 
              * this callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              */
@@ -49733,14 +44489,10 @@ declare namespace Phaser {
 
             /**
              * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
-             * 
              * satisfies the provided testing function. I.e. finds the first tile for which `callback` returns
-             * 
              * true. Similar to Array.prototype.find in vanilla JS.
-             * 
              * If no layer specified, the maps current layer is used.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -49749,13 +44501,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer [description]
              */
@@ -49763,14 +44512,10 @@ declare namespace Phaser {
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * 
              * callback. Similar to Array.prototype.forEach in vanilla JS.
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param callback The callback. Each tile in the given area will be passed to this
-             * 
              * callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              * @param tileX [description] Default 0.
@@ -49779,13 +44524,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide
-             * 
              * on at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer [description]
              */
@@ -49799,7 +44541,6 @@ declare namespace Phaser {
 
             /**
              * Internally used. Returns the index of the object in one of the Tilemaps arrays whose name
-             * 
              * property matches the given `name`.
              * @param location The Tilemap array to search.
              * @param name The name of the array element to get.
@@ -49808,19 +44549,15 @@ declare namespace Phaser {
 
             /**
              * Gets the LayerData from this.layers that is associated with `layer`, or null if an invalid
-             * 
              * `layer` is given.
              * @param layer The name of the
-             * 
              * layer from Tiled, the index of the layer in the map, a DynamicTilemapLayer or a
-             * 
              * StaticTilemapLayer. If not given will default to the maps current layer index.
              */
             getLayer(layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer): Phaser.Tilemaps.LayerData;
 
             /**
              * Gets the ObjectLayer from this.objects that has the given `name`, or null if no ObjectLayer
-             * 
              * is found with that name.
              * @param name The name of the object layer from Tiled.
              */
@@ -49828,19 +44565,15 @@ declare namespace Phaser {
 
             /**
              * Gets the LayerData index of the given `layer` within this.layers, or null if an invalid
-             * 
              * `layer` is given.
              * @param layer The name of the
-             * 
              * layer from Tiled, the index of the layer in the map, a DynamicTilemapLayer or a
-             * 
              * StaticTilemapLayer. If not given will default to the map's current layer index.
              */
             getLayerIndex(layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer): integer;
 
             /**
              * Gets the index of the LayerData within this.layers that has the given `name`, or null if an
-             * 
              * invalid `name` is given.
              * @param name The name of the layer to get.
              */
@@ -49848,12 +44581,10 @@ declare namespace Phaser {
 
             /**
              * Gets a tile at the given tile coordinates from the given layer.
-             * 
              * If no layer specified, the map's current layer is used.
              * @param tileX X position to get the tile from (given in tile units, not pixels).
              * @param tileY Y position to get the tile from (given in tile units, not pixels).
              * @param nonNull If true getTile won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              * @param layer [description]
              */
@@ -49861,12 +44592,10 @@ declare namespace Phaser {
 
             /**
              * Gets a tile at the given world coordinates from the given layer.
-             * 
              * If no layer specified, the map's current layer is used.
              * @param worldX X position to get the tile from (given in pixels)
              * @param worldY Y position to get the tile from (given in pixels)
              * @param nonNull If true, function won't return null for empty tiles, but a Tile
-             * 
              * object with an index of -1. Default false.
              * @param camera [description] Default main camera.
              * @param layer [description]
@@ -49875,7 +44604,6 @@ declare namespace Phaser {
 
             /**
              * Gets the tiles in the given rectangular area (in tile coordinates) of the layer.
-             * 
              * If no layer specified, the maps current layer is used.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -49883,13 +44611,10 @@ declare namespace Phaser {
              * @param height [description] Default max height based on tileY.
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param layer [description]
              */
@@ -49897,20 +44622,15 @@ declare namespace Phaser {
 
             /**
              * Gets the tiles that overlap with the given shape in the given layer. The shape must be a Circle,
-             * 
              * Line, Rectangle or Triangle. The shape should be in world coordinates.
-             * 
              * If no layer specified, the maps current layer is used.
              * @param shape A shape in world (pixel) coordinates
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              * @param layer [description]
@@ -49919,7 +44639,6 @@ declare namespace Phaser {
 
             /**
              * Gets the tiles in the given rectangular area (in world coordinates) of the layer.
-             * 
              * If no layer specified, the maps current layer is used.
              * @param worldX [description]
              * @param worldY [description]
@@ -49927,13 +44646,10 @@ declare namespace Phaser {
              * @param height [description]
              * @param filteringOptions Optional filters to apply when getting the tiles.
              * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * 
              * -1 for an index. Default false.
              * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * 
              * at least one side. Default false.
              * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * 
              * have at least one interesting face. Default false.
              * @param camera [description] Default main camera.
              * @param layer [description]
@@ -49942,7 +44658,6 @@ declare namespace Phaser {
 
             /**
              * Gets the index of the Tileset within this.tilesets that has the given `name`, or null if an
-             * 
              * invalid `name` is given.
              * @param name The name of the Tileset to get.
              */
@@ -49950,10 +44665,7 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in tile coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param tileX [description]
@@ -49964,10 +44676,7 @@ declare namespace Phaser {
 
             /**
              * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
-             * 
              * false if there is no tile or if the tile at that location has an index of -1.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param worldX [description]
@@ -49979,25 +44688,17 @@ declare namespace Phaser {
 
             /**
              * The LayerData object that is currently selected in the map. You can set this property using
-             * 
              * any type supported by setLayer.
              */
             layer: Phaser.Tilemaps.LayerData;
 
             /**
              * Puts a tile at the given tile coordinates in the specified layer. You can pass in either an index
-             * 
              * or a Tile object. If you pass in a Tile, all attributes will be copied over to the specified
-             * 
              * location. If you pass in an index, only the index at the specified location will be changed.
-             * 
              * Collision information will be recalculated at the specified location.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
-             * 
              * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tile The index of this tile to set or a Tile object.
@@ -50010,17 +44711,11 @@ declare namespace Phaser {
 
             /**
              * Puts a tile at the given world coordinates (pixels) in the specified layer. You can pass in either
-             * 
              * an index or a Tile object. If you pass in a Tile, all attributes will be copied over to the
-             * 
              * specified location. If you pass in an index, only the index at the specified location will be
-             * 
              * changed. Collision information will be recalculated at the specified location.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used. This
-             * 
              * cannot be applied to StaticTilemapLayers.
              * @param tile The index of this tile to set or a Tile object.
              * @param worldX [description]
@@ -50033,22 +44728,14 @@ declare namespace Phaser {
 
             /**
              * Puts an array of tiles or a 2D array of tiles at the given tile coordinates in the specified
-             * 
              * layer. The array can be composed of either tile indexes or Tile objects. If you pass in a Tile,
-             * 
              * all attributes will be copied over to the specified location. If you pass in an index, only the
-             * 
              * index at the specified location will be changed. Collision information will be recalculated
-             * 
              * within the region tiles were changed.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tile A row (array) or grid (2D array) of Tiles
-             * 
              * or tile indexes to place.
              * @param tileX [description]
              * @param tileY [description]
@@ -50059,19 +44746,12 @@ declare namespace Phaser {
 
             /**
              * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * 
              * specified layer. Each tile will recieve a new index. If an array of indexes is passed in, then
-             * 
              * those will be used for randomly assigning new tile indexes. If an array is not provided, the
-             * 
              * indexes found within the region (excluding -1) will be used for randomly assigning new tile
-             * 
              * indexes. This method only modifies tile indexes and does not change collision information.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -50084,12 +44764,8 @@ declare namespace Phaser {
 
             /**
              * Calculates interesting faces at the given tile coordinates of the specified layer. Interesting
-             * 
              * faces are used internally for optimizing collisions against tiles. This method is mostly used
-             * 
              * internally to optimize recalculating faces when only one tile has been changed.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param tileX [description]
@@ -50100,12 +44776,8 @@ declare namespace Phaser {
 
             /**
              * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
-             * 
              * layer. Interesting faces are used internally for optimizing collisions against tiles. This method
-             * 
              * is mostly used internally.
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param tileX [description] Default 0.
@@ -50118,26 +44790,20 @@ declare namespace Phaser {
 
             /**
              * Removes all layers from this Tilemap and destroys any associated StaticTilemapLayers or
-             * 
              * DynamicTilemapLayers.
              */
             removeAllLayers(): Phaser.Tilemaps.Tilemap;
 
             /**
              * Removes the tile at the given tile coordinates in the specified layer and updates the layer's
-             * 
              * collision information.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tile The index of this tile to set or a Tile object.
              * @param tileX [description]
              * @param tileY [description]
              * @param replaceWithNull If true, this will replace the tile at the specified
-             * 
              * location with null instead of a Tile with an index of -1. Default true.
              * @param recalculateFaces [description] Default true.
              * @param layer [description]
@@ -50146,19 +44812,14 @@ declare namespace Phaser {
 
             /**
              * Removes the tile at the given world coordinates in the specified layer and updates the layer's
-             * 
              * collision information.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tile The index of this tile to set or a Tile object.
              * @param worldX [description]
              * @param worldY [description]
              * @param replaceWithNull If true, this will replace the tile at the specified
-             * 
              * location with null instead of a Tile with an index of -1. Default true.
              * @param recalculateFaces [description] Default true.
              * @param camera [description] Default main camera.
@@ -50168,26 +44829,18 @@ declare namespace Phaser {
 
             /**
              * Draws a debug representation of the layer to the given Graphics. This is helpful when you want to
-             * 
              * get a quick idea of which of your tiles are colliding and which have interesting faces. The tiles
-             * 
              * are drawn starting at (0, 0) in the Graphics, allowing you to place the debug representation
-             * 
              * wherever you want on the screen.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param graphics The target Graphics object to draw upon.
              * @param styleConfig An object specifying the colors to use for the debug drawing.
              * @param styleConfig.tileColor Color to use for drawing a filled rectangle at
-             * 
              * non-colliding tile locations. If set to null, non-colliding tiles will not be drawn. Default blue.
              * @param styleConfig.collidingTileColor Color to use for drawing a filled
-             * 
              * rectangle at colliding tile locations. If set to null, colliding tiles will not be drawn. Default orange.
              * @param styleConfig.faceColor Color to use for drawing a line at interesting
-             * 
              * tile faces. If set to null, interesting tile faces will not be drawn. Default grey.
              * @param layer [description]
              */
@@ -50195,15 +44848,10 @@ declare namespace Phaser {
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * 
              * `findIndex` and updates their index to match `newIndex`. This only modifies the index and does
-             * 
              * not change collision information.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param findIndex [description]
              * @param newIndex [description]
@@ -50217,20 +44865,14 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the given tile or tiles within a layer by index. You can pass in either a
-             * 
              * single numeric index or an array of indexes: [2, 3, 15, 20]. The `collides` parameter controls if
-             * 
              * collision will be enabled (true) or disabled (false).
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param indexes Either a single tile index, or an array of tile indexes.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer [description]
              */
@@ -50238,23 +44880,16 @@ declare namespace Phaser {
 
             /**
              * Sets collision on a range of tiles in a layer whose index is between the specified `start` and
-             * 
              * `stop` (inclusive). Calling this with a start value of 10 and a stop value of 14 would set
-             * 
              * collision for tiles 10, 11, 12, 13 and 14. The `collides` parameter controls if collision will be
-             * 
              * enabled (true) or disabled (false).
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param start The first index of the tile to be set for collision.
              * @param stop The last index of the tile to be set for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer [description]
              */
@@ -50262,30 +44897,19 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking tile properties. If a tile has a property
-             * 
              * that matches the given properties object, its collision flag will be set. The `collides`
-             * 
              * parameter controls if collision will be enabled (true) or disabled (false). Passing in
-             * 
              * `{ collides: true }` would update the collision flag on any tiles with a "collides" property that
-             * 
              * has a value of true. Any tile that doesn't have "collides" set to true will be ignored. You can
-             * 
              * also use an array of values, e.g. `{ types: ["stone", "lava", "sand" ] }`. If a tile has a
-             * 
              * "types" property that matches any of those values, its collision flag will be updated.
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param properties An object with tile properties and corresponding values that should
-             * 
              * be checked.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer [description]
              */
@@ -50293,20 +44917,14 @@ declare namespace Phaser {
 
             /**
              * Sets collision on all tiles in the given layer, except for tiles that have an index specified in
-             * 
              * the given array. The `collides` parameter controls if collision will be enabled (true) or
-             * 
              * disabled (false).
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param indexes An array of the tile indexes to not be counted for collision.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer [description]
              */
@@ -50314,21 +44932,14 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking each tile's collision group data
-             * 
              * (typically defined in Tiled within the tileset collision editor). If any objects are found within
-             * 
              * a tile's collision group, the tile's colliding information will be set. The `collides` parameter
-             * 
              * controls if collision will be enabled (true) or disabled (false).
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param collides If true it will enable collision. If false it will clear
-             * 
              * collision. Default true.
              * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * 
              * update. Default true.
              * @param layer [description]
              */
@@ -50336,18 +44947,12 @@ declare namespace Phaser {
 
             /**
              * Sets a global collision callback for the given tile index within the layer. This will affect all
-             * 
              * tiles on this layer that have the same index. If a callback is already set for the tile index it
-             * 
              * will be replaced. Set the callback to null to remove it. If you want to set a callback for a tile
-             * 
              * at a specific location on the map then see setTileLocationCallback.
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param indexes Either a single tile index, or an array of tile indexes to have a
-             * 
              * collision callback set for.
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
@@ -50357,12 +44962,8 @@ declare namespace Phaser {
 
             /**
              * Sets a collision callback for the given rectangular area (in tile coordindates) within the layer.
-             * 
              * If a callback is already set for the tile index it will be replaced. Set the callback to null to
-             * 
              * remove it.
-             * 
-             * 
              * 
              * If no layer specified, the map's current layer is used.
              * @param tileX [description] Default 0.
@@ -50378,16 +44979,13 @@ declare namespace Phaser {
             /**
              * Sets the current layer to the LayerData associated with `layer`.
              * @param layer The name of the
-             * 
              * layer from Tiled, the index of the layer in the map, a DynamicTilemapLayer or a
-             * 
              * StaticTilemapLayer. If not given will default to the map's current layer index.
              */
             setLayer(layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer): Phaser.Tilemaps.Tilemap;
 
             /**
              * Sets the base tile size for the map. Note: this does not necessarily match the tileWidth and
-             * 
              * tileHeight for all layers. This also updates the base size on all tiles across all layers.
              * @param tileWidth The width of the tiles the map uses for calculations.
              * @param tileHeight The height of the tiles the map uses for calculations.
@@ -50396,33 +44994,23 @@ declare namespace Phaser {
 
             /**
              * Sets the tile size for a specific `layer`. Note: this does not necessarily match the map's
-             * 
              * tileWidth and tileHeight for all layers. This will set the tile size for the layer and any
-             * 
              * tiles the layer has.
              * @param tileWidth The width of the tiles (in pixels) in the layer.
              * @param tileHeight The height of the tiles (in pixels) in the layer.
              * @param layer The name of the
-             * 
              * layer from Tiled, the index of the layer in the map, a DynamicTilemapLayer or a
-             * 
              * StaticTilemapLayer. If not given will default to the map's current layer index.
              */
             setLayerTileSize(tileWidth: integer, tileHeight: integer, layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer): Phaser.Tilemaps.Tilemap;
 
             /**
              * Shuffles the tiles in a rectangular region (specified in tile coordinates) within the given
-             * 
              * layer. It will only randomize the tiles in that area, so if they're all the same nothing will
-             * 
              * appear to have changed! This method only modifies tile indexes and does not change collision
-             * 
              * information.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
@@ -50434,15 +45022,10 @@ declare namespace Phaser {
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * 
              * `indexA` and swaps then with `indexB`. This only modifies the index and does not change collision
-             * 
              * information.
              * 
-             * 
-             * 
              * If no layer specified, the maps current layer is used.
-             * 
              * This cannot be applied to StaticTilemapLayers.
              * @param tileA First tile index.
              * @param tileB Second tile index.
@@ -50456,10 +45039,7 @@ declare namespace Phaser {
 
             /**
              * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param tileX [description]
@@ -50470,10 +45050,7 @@ declare namespace Phaser {
 
             /**
              * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param tileY [description]
@@ -50484,12 +45061,8 @@ declare namespace Phaser {
 
             /**
              * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
-             * 
              * layers position, scale and scroll. This will return a new Vector2 object or update the given
-             * 
              * `point` object.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param tileX [description]
@@ -50502,44 +45075,27 @@ declare namespace Phaser {
 
             /**
              * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * 
              * specified layer. Each tile will receive a new index. New indexes are drawn from the given
-             * 
              * weightedIndexes array. An example weighted array:
              * 
-             * 
-             * 
              * [
-             * 
              *  { index: 6, weight: 4 },    // Probability of index 6 is 4 / 8
-             * 
              *  { index: 7, weight: 2 },    // Probability of index 7 would be 2 / 8
-             * 
              *  { index: 8, weight: 1.5 },  // Probability of index 8 would be 1.5 / 8
-             * 
              *  { index: 26, weight: 0.5 }  // Probability of index 27 would be 0.5 / 8
-             * 
              * ]
              * 
-             * 
-             * 
              * The probability of any index being choose is (the index's weight) / (sum of all weights). This
-             * 
              * method only modifies tile indexes and does not change collision information.
              * 
-             * 
-             * 
              * If no layer specified, the map's current layer is used. This
-             * 
              * cannot be applied to StaticTilemapLayers.
              * @param tileX [description] Default 0.
              * @param tileY [description] Default 0.
              * @param width [description] Default max width based on tileX.
              * @param height [description] Default max height based on tileY.
              * @param weightedIndexes An array of objects to randomly draw from during
-             * 
              * randomization. They should be in the form: { index: 0, weight: 4 } or
-             * 
              * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
              * @param layer [description]
              */
@@ -50547,15 +45103,11 @@ declare namespace Phaser {
 
             /**
              * Converts from world X coordinates (pixels) to tile X coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param worldX [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              * @param layer [description]
@@ -50564,15 +45116,11 @@ declare namespace Phaser {
 
             /**
              * Converts from world Y coordinates (pixels) to tile Y coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param worldY [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              * @param layer [description]
@@ -50581,18 +45129,13 @@ declare namespace Phaser {
 
             /**
              * Converts from world XY coordinates (pixels) to tile XY coordinates (tile units), factoring in the
-             * 
              * layers position, scale and scroll. This will return a new Vector2 object or update the given
-             * 
              * `point` object.
-             * 
-             * 
              * 
              * If no layer specified, the maps current layer is used.
              * @param worldX [description]
              * @param worldY [description]
              * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * 
              * nearest integer. Default true.
              * @param point [description]
              * @param camera [description] Default main camera.
@@ -50604,8 +45147,6 @@ declare namespace Phaser {
 
         /**
          * A Tileset is a combination of an image containing the tiles and a container for data about
-         * 
-         * 
          * 
          * each tile.
          */
@@ -50619,10 +45160,8 @@ declare namespace Phaser {
              * @param tileMargin The margin around all tiles in the sheet (in pixels). Default 0.
              * @param tileSpacing The spacing between each tile in the sheet (in pixels). Default 0.
              * @param tileProperties Custom properties defined per tile in the Tileset.
-             * 
              * These typically are custom properties created in Tiled when editing a tileset. Default {}.
              * @param tileData Data stored per tile. These typically are created in Tiled
-             * 
              * when editing a tileset, e.g. from Tiled's tile collision editor or terrain editor. Default {}.
              */
             constructor(name: string, firstgid: integer, tileWidth?: integer, tileHeight?: integer, tileMargin?: integer, tileSpacing?: integer, tileProperties?: object, tileData?: object);
@@ -50659,14 +45198,12 @@ declare namespace Phaser {
 
             /**
              * Tileset-specific properties per tile that are typically defined in the Tiled editor in the
-             * 
              * Tileset editor.
              */
             tileProperties: object;
 
             /**
              * Tileset-specific data per tile that are typically defined in the Tiled editor, e.g. within
-             * 
              * the Tileset collision editor. This is where collision objects and terrain are stored.
              */
             tileData: object;
@@ -50693,14 +45230,12 @@ declare namespace Phaser {
 
             /**
              * The look-up table to specific tile image texture coordinates (UV in pixels). Each element
-             * 
              * contains the coordinates for a tile in an object of the form {x, y}.
              */
             texCoordinates: object[];
 
             /**
              * Get a tiles properties that are stored in the Tileset. Returns null if tile index is not
-             * 
              * contained in this Tileset. This is typically defined in Tiled under the Tileset editor.
              * @param tileIndex The unique id of the tile across all tilesets in the map.
              */
@@ -50708,9 +45243,7 @@ declare namespace Phaser {
 
             /**
              * Get a tile's data that is stored in the Tileset. Returns null if tile index is not contained
-             * 
              * in this Tileset. This is typically defined in Tiled and will contain both Tileset collision
-             * 
              * info and terrain mapping.
              * @param tileIndex The unique id of the tile across all tilesets in the map.
              */
@@ -50718,7 +45251,6 @@ declare namespace Phaser {
 
             /**
              * Get a tile's collision group that is stored in the Tileset. Returns null if tile index is not
-             * 
              * contained in this Tileset. This is typically defined within Tiled's tileset collision editor.
              * @param tileIndex The unique id of the tile across all tilesets in the map.
              */
@@ -50732,7 +45264,6 @@ declare namespace Phaser {
 
             /**
              * Returns the texture coordinates (UV in pixels) in the Tileset image for the given tile index.
-             * 
              * Returns null if tile index is not contained in this Tileset.
              * @param tileIndex The unique id of the tile across all tilesets in the map.
              */
@@ -51112,14 +45643,12 @@ declare namespace Phaser {
 
             /**
              * Scales the time applied to this Tween. A value of 1 runs in real-time. A value of 0.5 runs 50% slower, and so on.
-             * 
              * Value isn't used when calculating total duration of the tween, it's a run-time delta adjustment only.
              */
             timeScale: number;
 
             /**
              * Loop this tween? Can be -1 for an infinite loop, or an integer.
-             * 
              * When enabled it will play through ALL TweenDatas again (use TweenData.repeat to loop a single TD)
              */
             loop: number;
@@ -51280,7 +45809,6 @@ declare namespace Phaser {
 
             /**
              * Returns 'true' if this Timeline has finished and should be removed from the Tween Manager.
-             * 
              * Otherwise, returns false.
              * @param timestamp [description]
              * @param delta [description]
@@ -51411,14 +45939,12 @@ declare namespace Phaser {
 
             /**
              * Scales the time applied to this Tween. A value of 1 runs in real-time. A value of 0.5 runs 50% slower, and so on.
-             * 
              * Value isn't used when calculating total duration of the tween, it's a run-time delta adjustment only.
              */
             timeScale: number;
 
             /**
              * Loop this tween? Can be -1 for an infinite loop, or an integer.
-             * 
              * When enabled it will play through ALL TweenDatas again (use TweenData.repeat to loop a single TD)
              */
             loop: number;
@@ -51598,13 +46124,8 @@ declare namespace Phaser {
             /**
              * Flags the Tween as being complete, whatever stage of progress it is at.
              * 
-             * 
-             * 
              * If an onComplete callback has been defined it will automatically invoke it, unless a `delay`
-             * 
              * argument is provided, in which case the Tween will delay for that period of time before calling the callback.
-             * 
-             * 
              * 
              * If you don't need a delay, or have an onComplete callback, then call `Tween.stop` instead.
              * @param delay The time to wait before invoking the complete callback. If zero it will fire immediately. Default 0.
@@ -51999,29 +46520,17 @@ declare namespace Phaser {
 
             /**
              * Create an array representing the range of numbers (usually integers), between, and inclusive of,
-             * 
              * the given `start` and `end` arguments. For example:
              * 
-             * 
-             * 
              * `var array = numberArray(2, 4); // array = [2, 3, 4]`
-             * 
              * `var array = numberArray(0, 9); // array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`
-             * 
-             * 
              * 
              * This is equivalent to `numberArrayStep(start, end, 1)`.
              * 
-             * 
-             * 
              * You can optionally provide a prefix and / or suffix string. If given the array will contain
-             * 
              * strings, not integers. For example:
              * 
-             * 
-             * 
              * `var array = numberArray(1, 4, 'Level '); // array = ["Level 1", "Level 2", "Level 3", "Level 4"]`
-             * 
              * `var array = numberArray(5, 7, 'HD-', '.png'); // array = ["HD-5.png", "HD-6.png", "HD-7.png"]`
              * @param start The minimum value the array starts with.
              * @param end The maximum value the array contains.
@@ -52032,17 +46541,11 @@ declare namespace Phaser {
 
             /**
              * Create an array of numbers (positive and/or negative) progressing from `start`
-             * 
              * up to but not including `end` by advancing by `step`.
-             * 
-             * 
              * 
              * If `start` is less than `end` a zero-length range is created unless a negative `step` is specified.
              * 
-             * 
-             * 
              * Certain values for `start` and `end` (eg. NaN/undefined/null) are currently coerced to 0;
-             * 
              * for forward compatibility make sure to pass in actual numbers.
              * @param start The start of the range. Default 0.
              * @param end The end of the range. Default null.
@@ -52070,7 +46573,6 @@ declare namespace Phaser {
 
             /**
              * Removes a random object from the given array and returns it.
-             * 
              * Will return null if there are no array items that fall within the specified range or if there is no item for the randomly chosen index.
              * @param array The array to removed a random element from.
              * @param start The array index to start the search from. Default 0.
@@ -52080,7 +46582,6 @@ declare namespace Phaser {
 
             /**
              * Moves the element at the start of the array to the end, shifting all items in the process.
-             * 
              * The "rotation" happens to the left.
              * @param array The array to shift to the left. This array is modified in place.
              * @param total The number of times to shift the array. Default 1.
@@ -52089,7 +46590,6 @@ declare namespace Phaser {
 
             /**
              * Moves the element at the end of the array to the start, shifting all items in the process.
-             * 
              * The "rotation" happens to the right.
              * @param array The array to shift to the right. This array is modified in place.
              * @param total The number of times to shift the array. Default 1.
@@ -52098,8 +46598,6 @@ declare namespace Phaser {
 
             /**
              * Shuffles the contents of the given array using the Fisher-Yates implementation.
-             * 
-             * 
              * 
              * The original array is modified directly and returned.
              * @param array The array to shuffle. This array is modified in place.
@@ -52118,10 +46616,7 @@ declare namespace Phaser {
         /**
          * A NOOP (No Operation) callback function.
          * 
-         * 
-         * 
          * Used internally by Phaser when it's more expensive to determine if a callback exists
-         * 
          * than it is to just invoke an empty function.
          */
         function NOOP(): void;
@@ -52195,7 +46690,6 @@ declare namespace Phaser {
 
             /**
              * This is a slightly modified version of jQuery.isPlainObject.
-             * 
              * A plain object is an object whose internal class property is [object Object].
              * @param obj The object to inspect.
              */
@@ -52203,7 +46697,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Object using all values from obj1 and obj2.
-             * 
              * If a value exists in both obj1 and obj2, the value in obj1 is used.
              * @param obj1 [description]
              * @param obj2 [description]
@@ -52212,8 +46705,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Object using all values from obj1.
-             * 
-             * 
              * 
              * Then scans obj2. If a property is found in obj2 that *also* exists in obj1, the value from obj2 is used, otherwise the property is skipped.
              * @param obj1 [description]
@@ -52226,10 +46717,7 @@ declare namespace Phaser {
         namespace String {
             /**
              * Takes a string and replaces instances of markers with values in the given array.
-             * 
              * The markers take the form of `%1`, `%2`, etc. I.e.:
-             * 
-             * 
              * 
              * `Format("The %1 is worth %2 gold", [ 'Sword', 500 ])`
              * @param string The string containing the replacement markers.
@@ -52239,38 +46727,21 @@ declare namespace Phaser {
 
             /**
              * Takes the given string and pads it out, to the length required, using the character
-             * 
              * specified. For example if you need a string to be 6 characters long, you can call:
-             * 
-             * 
              * 
              * `pad('bob', 6, '-', 2)`
              * 
-             * 
-             * 
              * This would return: `bob---` as it has padded it out to 6 characters, using the `-` on the right.
-             * 
-             * 
              * 
              * You can also use it to pad numbers (they are always returned as strings):
              * 
-             * 
-             * 
              * `pad(512, 6, '0', 1)`
-             * 
-             * 
              * 
              * Would return: `000512` with the string padded to the left.
              * 
-             * 
-             * 
              * If you don't specify a direction it'll pad to both sides:
              * 
-             * 
-             * 
              * `pad('c64', 7, '*')`
-             * 
-             * 
              * 
              * Would return: `**c64**`
              * @param str The target string. `toString()` will be called on the string, which means you can also pass in common data types like numbers.
@@ -52282,7 +46753,6 @@ declare namespace Phaser {
 
             /**
              * Takes the given string and reverses it, returning the reversed string.
-             * 
              * For example if given the string `Atari 520ST` it would return `TS025 iratA`.
              * @param string The string to be reversed.
              */
@@ -52427,17 +46897,13 @@ declare namespace Phaser {
     class Plugins {
         /**
          * These are the Global Managers that are created by the Phaser.Game instance.
-         * 
          * They are referenced from Scene.Systems so that plugins can use them.
          */
         static Global: any[];
 
         /**
          * These are the core plugins that are installed into every Scene.Systems instance, no matter what.
-         * 
          * They are optionally exposed in the Scene as well (see the InjectionMap for details)
-         * 
-         * 
          * 
          * They are created in the order in which they appear in this array and EventEmitter is always first.
          */
@@ -52446,23 +46912,126 @@ declare namespace Phaser {
         /**
          * These plugins are created in Scene.Systems in addition to the CoreScenePlugins.
          * 
-         * 
-         * 
          * You can elect not to have these plugins by either creating a DefaultPlugins object as part
-         * 
          * of the Game Config, by creating a Plugins object as part of a Scene Config, or by modifying this array
-         * 
          * and building your own bundle.
          * 
-         * 
-         * 
          * They are optionally exposed in the Scene as well (see the InjectionMap for details)
-         * 
-         * 
          * 
          * They are always created in the order in which they appear in the array.
          */
         static DefaultScene: any[];
+
+    }
+
+    class BlendModes {
+        /**
+         * Skips the Blend Mode check in the renderer.
+         */
+        static SKIP_CHECK: integer;
+
+        /**
+         * Normal blend mode.
+         */
+        static NORMAL: integer;
+
+        /**
+         * Add blend mode.
+         */
+        static ADD: integer;
+
+        /**
+         * Multiply blend mode.
+         */
+        static MULTIPLY: integer;
+
+        /**
+         * Screen blend mode.
+         */
+        static SCREEN: integer;
+
+        /**
+         * Overlay blend mode.
+         */
+        static OVERLAY: integer;
+
+        /**
+         * Darken blend mode.
+         */
+        static DARKEN: integer;
+
+        /**
+         * Lighten blend mode.
+         */
+        static LIGHTEN: integer;
+
+        /**
+         * Color Dodge blend mode.
+         */
+        static COLOR_DODGE: integer;
+
+        /**
+         * Color Burn blend mode.
+         */
+        static COLOR_BURN: integer;
+
+        /**
+         * Hard Light blend mode.
+         */
+        static HARD_LIGHT: integer;
+
+        /**
+         * Soft Light blend mode.
+         */
+        static SOFT_LIGHT: integer;
+
+        /**
+         * Difference blend mode.
+         */
+        static DIFFERENCE: integer;
+
+        /**
+         * Exclusion blend mode.
+         */
+        static EXCLUSION: integer;
+
+        /**
+         * Hue blend mode.
+         */
+        static HUE: integer;
+
+        /**
+         * Saturation blend mode.
+         */
+        static SATURATION: integer;
+
+        /**
+         * Color blend mode.
+         */
+        static COLOR: integer;
+
+        /**
+         * Luminosity blend mode.
+         */
+        static LUMINOSITY: integer;
+
+    }
+
+    class ScaleModes {
+        /**
+         * Default Scale Mode (Linear).
+         */
+        static DEFAULT: integer;
+
+        /**
+         * Linear Scale Mode.
+         */
+        static LINEAR: integer;
+
+        /**
+         * Nearest Scale Mode.
+         */
+        static NEAREST: integer;
 
     }
 
@@ -53207,11 +47776,7 @@ declare namespace MatterJS {
     /**
      * The `Matter.Body` module contains methods for creating and manipulating body models.
      * 
-     * 
-     * 
      * A `Matter.Body` is a rigid body that can be simulated by a `Matter.Engine`.
-     * 
-     * 
      * 
      * Factories for commonly used body configurations (such as rectangles, circles and other polygons) can be found in the module `Matter.Bodies`.
      */
@@ -53221,15 +47786,9 @@ declare namespace MatterJS {
     /**
      * The `Matter.Composite` module contains methods for creating and manipulating composite bodies.
      * 
-     * 
-     * 
      * A composite body is a collection of `Matter.Body`, `Matter.Constraint` and other `Matter.Composite`, therefore composites form a tree structure.
      * 
-     * 
-     * 
      * It is important to use the functions in this module to modify composites, rather than directly modifying their properties.
-     * 
-     * 
      * 
      * Note that the `Matter.World` object is also a type of `Matter.Composite` and as such all composite methods here can also operate on a `Matter.World`.
      */
@@ -53239,19 +47798,11 @@ declare namespace MatterJS {
     /**
      * The `Matter.World` module contains methods for creating and manipulating the world composite.
      * 
-     * 
-     * 
      * A `Matter.World` is a `Matter.Composite` body, which is a collection of `Matter.Body`, `Matter.Constraint` and other `Matter.Composite`.
-     * 
-     * 
      * 
      * A `Matter.World` has a few additional properties including `gravity` and `bounds`.
      * 
-     * 
-     * 
      * It is important to use the functions in the `Matter.Composite` module to modify the world composite, rather than directly modifying its properties.
-     * 
-     * 
      * 
      * There are also a few methods here that alias those in `Matter.Composite` for easier readability.
      */
@@ -53261,11 +47812,7 @@ declare namespace MatterJS {
     /**
      * The `Matter.Constraint` module contains methods for creating and manipulating constraints.
      * 
-     * 
-     * 
      * Constraints are used for specifying that a fixed distance must be maintained between two bodies (or a body and a fixed world-space position).
-     * 
-     * 
      * 
      * The stiffness of constraints can be modified to create springs or elastic.
      */
@@ -53274,8 +47821,6 @@ declare namespace MatterJS {
 
     /**
      * The `Matter.Engine` module contains methods for creating and manipulating engines.
-     * 
-     * 
      * 
      * An engine is a controller that manages updating the simulation of the world.
      */
@@ -53594,7 +48139,6 @@ declare class Phaser {
 
     /**
      * In Phaser the value -1 means 'forever' in lots of cases, this const allows you to use it instead
-     * 
      * to help you remember what the value is doing in your code.
      */
     static FOREVER: integer;
