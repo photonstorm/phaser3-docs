@@ -63,6 +63,11 @@ export class Parser {
         this.topLevel.push(dom.create.alias('DOMHighResTimeStamp', dom.type.number));
         this.topLevel.push(dom.create.alias('Image', dom.create.namedTypeReference("HTMLImageElement")));
         this.topLevel.push(dom.create.alias('Point', dom.type.any));
+
+        // add declare module
+        const phaserPkgModuleDOM = dom.create.module('phaser');
+        phaserPkgModuleDOM.members.push(dom.create.exportEquals('Phaser'));
+        this.topLevel.push(phaserPkgModuleDOM);
     }
 
     emit() {
