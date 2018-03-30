@@ -1,5 +1,7 @@
 import * as dom from "dts-dom"
 
+const regexEndLine = /^.*((\r\n|\n|\r)|$)/gm
+
 export class Parser {
 
     topLevel: dom.TopLevelDeclaration[];
@@ -135,6 +137,10 @@ export class Parser {
                     obj = this.createInterface(doclet);
                     break;
                 case 'member':
+                    if(doclet.isEnum === true) {
+                        obj = this.createEnum(doclet);
+                        break;
+                    }
                 case 'constant':
                     obj = this.createMember(doclet);
                     break;
@@ -142,8 +148,8 @@ export class Parser {
                     obj = this.createFunction(doclet);
                     break;
                 case 'typedef':
-                        obj = this.createTypedef(doclet);
-                        break;
+                    obj = this.createTypedef(doclet);
+                    break;
                 default:
                     console.log("Ignored doclet kind: " + doclet.kind);
                     break;
@@ -153,7 +159,7 @@ export class Parser {
                 this.objects[doclet.longname] = obj;
                 if(doclet.description) {
                     let otherDocs = obj.jsDocComment || "";
-                    obj.jsDocComment = doclet.description.split(/(\r\n?)/g).join('\n') + otherDocs;
+                    obj.jsDocComment = doclet.description.match(regexEndLine).join('\n') + otherDocs;
                 }
             }
         }
@@ -239,7 +245,7 @@ export class Parser {
                     }
                     insertTypeNames(param.type);
                 }
-            } else if(doclet.kind === 'member') {
+            } else if(doclet.kind === 'member' && !doclet.isEnum) {
                 let o = obj as dom.PropertyDeclaration;
                 if(!o.type) {
                     console.log(`o.type null:`)
@@ -431,8 +437,10 @@ export class Parser {
             }
 
             // classes should be inside namespaces and properties inside classes
-            if((doclet.kind === 'class' && (<any>parent).kind === 'class') ||
-                (doclet.kind === 'member' || doclet.kind === 'constant') && (<any>parent).kind === 'namespace') {
+            let isClass = doclet.kind === 'class' || doclet.isEnum;
+            let isMember = (doclet.kind === 'member' || doclet.kind === 'constant') && !doclet.isEnum;
+            if((isClass && (<any>parent).kind === 'class') ||
+                (isMember && (<any>parent).kind === 'namespace')) {
 
                 console.log(`moving to another parent type ${doclet.memberof} for member ${doclet.name}`);
 
@@ -494,6 +502,8 @@ export class Parser {
 
                         let baseType = this.objects[doclet.augments[i]] as dom.ClassDeclaration | dom.InterfaceDeclaration;
 
+                        //TODO handle augment with type parameters
+
                         if (!baseType) {
                             console.log('ERROR: Did not find base type: '+doclet.augments[0]);
                         } else {
@@ -519,23 +529,20 @@ export class Parser {
     private createClass(doclet:any):dom.ClassDeclaration {
         let obj = dom.create.class(doclet.name);
 
+        let params = null;
         if (doclet.params) {
             let ctor = dom.create.constructor(null);
             this.setParams(doclet, ctor);
+            params = ctor.parameters;
 
             obj.members.push(ctor);
             (<any>ctor)._parent = obj;
         }
 
-        if(doclet.tags)
-        for(let tag of doclet.tags) {
-            if(tag.originalTitle === 'generic') {
-                obj.typeParameters.push(dom.create.typeParameter(this.processTypeName(tag.value)));
-            }
-        }
+        this.processGeneric(doclet, obj, params);
 
         if(doclet.classdesc)
-            doclet.description = doclet.classdesc.split(/(\r\n?)/g).join('\n'); // make sure docs will be added
+            doclet.description = doclet.classdesc.match(regexEndLine).join('\n'); // make sure docs will be added
 
         return obj;
     }
@@ -548,6 +555,16 @@ export class Parser {
         let type = this.parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
+
+        this.processGeneric(doclet, obj, null);
+
+        this.processFlags(doclet, obj);
+
+        return obj;
+    }
+
+    private createEnum(doclet:any):dom.EnumDeclaration {
+        let obj = dom.create.enum(doclet.name, false);
 
         this.processFlags(doclet, obj);
 
@@ -568,6 +585,8 @@ export class Parser {
         let obj = dom.create.function(doclet.name, null, returnType);
         this.setParams(doclet, obj);
 
+        this.processGeneric(doclet, obj, obj.parameters);
+
         this.processFlags(doclet, obj);
 
         return obj;
@@ -584,7 +603,7 @@ export class Parser {
                 let prop = this.createMember(propDoc);
                 properties.push(prop);
                 if(propDoc.description)
-                    prop.jsDocComment = propDoc.description.split(/(\r\n?)/g).join('\n');
+                    prop.jsDocComment = propDoc.description.match(regexEndLine).join('\n');
             }
 
             type = dom.create.objectType(properties);
@@ -594,7 +613,11 @@ export class Parser {
             this.setParams(doclet, type);
         }
 
-        return dom.create.alias(doclet.name, type);
+        let alias = dom.create.alias(doclet.name, type);
+
+        this.processGeneric(doclet, alias, null);
+
+        return alias;
     }
 
     private setParams(doclet:any, obj:dom.FunctionDeclaration|dom.ConstructorDeclaration):void {
@@ -622,7 +645,7 @@ export class Parser {
 
                     let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
                     if(paramDoc.description)
-                        obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.split(/(\r\n?)/g).join('\n')}` + defaultVal;
+                        obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.match(regexEndLine).join('\n')}` + defaultVal;
                     else if(defaultVal.length)
                         obj.jsDocComment += `\n@param ${paramDoc.name} ` + defaultVal;
                     continue;
@@ -651,7 +674,7 @@ export class Parser {
                 let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
 
                 if(paramDoc.description)
-                    obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.split(/(\r\n?)/g).join('\n')}` + defaultVal;
+                    obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.match(regexEndLine).join('\n')}` + defaultVal;
                 else if(defaultVal.length)
                     obj.jsDocComment += `\n@param ${paramDoc.name} ` + defaultVal;
             }
@@ -667,8 +690,6 @@ export class Parser {
             let types = [];
             for(let name of typeDoc.type.names) {
                 // TODO remove when stable
-
-                if(name.indexOf("Phaser.Textures.FilterMode") == 0) return dom.type.any;
 
                 if(name.indexOf('~') != -1) {
                     name = (<string>name).split('~').join('');
@@ -739,6 +760,43 @@ export class Parser {
         }
         if(doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
         if(doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
+    }
+
+    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration|dom.PropertyDeclaration|dom.TypeAliasDeclaration, params:dom.Parameter[]) {
+        if(doclet.tags)
+        for(let tag of doclet.tags) {
+            if(tag.originalTitle === 'generic') {
+                let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
+                (<dom.ClassDeclaration|dom.FunctionDeclaration|dom.TypeAliasDeclaration>obj).typeParameters.push(typeParam);
+                handleOverrides(matches[3], matches[2]);
+            } else if(tag.originalTitle === 'genericUse') {
+                let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                let overrideType:string = matches[1];
+                if(overrideType.indexOf('.<') != -1) {
+                    overrideType = overrideType.split('.<').join('<');
+                }
+                handleOverrides(matches[2], this.processTypeName(overrideType));
+            }
+        }
+        function handleOverrides(matchedString:string, overrideType:string) {
+            if(matchedString != null) {
+                let overrides = matchedString.split(',');
+                if(params != null) {
+                    for(let param of params)  {
+                        if(overrides.indexOf(param.name) != -1) {
+                            param.type = dom.create.namedTypeReference(overrideType);
+                        }
+                    }
+                }
+                if(overrides.indexOf('$return') != -1) {// has $return, must be a function
+                    (<dom.FunctionDeclaration>obj).returnType = dom.create.namedTypeReference(overrideType);
+                }
+                if(overrides.indexOf('$type') != -1) {// has $type, must be a property
+                    (<dom.PropertyDeclaration>obj).type =  dom.create.namedTypeReference(overrideType);
+                }
+            }
+        }
     }
 
     private getQualifiedName(local:any, target:any):string {
