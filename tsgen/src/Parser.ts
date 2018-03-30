@@ -148,8 +148,8 @@ export class Parser {
                     obj = this.createFunction(doclet);
                     break;
                 case 'typedef':
-                        obj = this.createTypedef(doclet);
-                        break;
+                    obj = this.createTypedef(doclet);
+                    break;
                 default:
                     console.log("Ignored doclet kind: " + doclet.kind);
                     break;
@@ -502,6 +502,8 @@ export class Parser {
 
                         let baseType = this.objects[doclet.augments[i]] as dom.ClassDeclaration | dom.InterfaceDeclaration;
 
+                        //TODO handle augment with type parameters
+
                         if (!baseType) {
                             console.log('ERROR: Did not find base type: '+doclet.augments[0]);
                         } else {
@@ -611,7 +613,11 @@ export class Parser {
             this.setParams(doclet, type);
         }
 
-        return dom.create.alias(doclet.name, type);
+        let alias = dom.create.alias(doclet.name, type);
+
+        this.processGeneric(doclet, alias, null);
+
+        return alias;
     }
 
     private setParams(doclet:any, obj:dom.FunctionDeclaration|dom.ConstructorDeclaration):void {
@@ -756,13 +762,13 @@ export class Parser {
         if(doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
     }
 
-    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration|dom.PropertyDeclaration, params:dom.Parameter[]) {
+    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration|dom.PropertyDeclaration|dom.TypeAliasDeclaration, params:dom.Parameter[]) {
         if(doclet.tags)
         for(let tag of doclet.tags) {
             if(tag.originalTitle === 'generic') {
                 let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                 let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
-                (<dom.ClassDeclaration|dom.FunctionDeclaration>obj).typeParameters.push(typeParam);
+                (<dom.ClassDeclaration|dom.FunctionDeclaration|dom.TypeAliasDeclaration>obj).typeParameters.push(typeParam);
                 handleOverrides(matches[3], matches[2]);
             } else if(tag.originalTitle === 'genericUse') {
                 let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
