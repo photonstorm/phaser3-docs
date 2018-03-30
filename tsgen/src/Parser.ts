@@ -135,6 +135,10 @@ export class Parser {
                     obj = this.createInterface(doclet);
                     break;
                 case 'member':
+                    if(doclet.isEnum === true) {
+                        obj = this.createEnum(doclet);
+                        break;
+                    }
                 case 'constant':
                     obj = this.createMember(doclet);
                     break;
@@ -239,7 +243,7 @@ export class Parser {
                     }
                     insertTypeNames(param.type);
                 }
-            } else if(doclet.kind === 'member') {
+            } else if(doclet.kind === 'member' && !doclet.isEnum) {
                 let o = obj as dom.PropertyDeclaration;
                 if(!o.type) {
                     console.log(`o.type null:`)
@@ -431,8 +435,10 @@ export class Parser {
             }
 
             // classes should be inside namespaces and properties inside classes
-            if((doclet.kind === 'class' && (<any>parent).kind === 'class') ||
-                (doclet.kind === 'member' || doclet.kind === 'constant') && (<any>parent).kind === 'namespace') {
+            let isClass = doclet.kind === 'class' || doclet.isEnum;
+            let isMember = (doclet.kind === 'member' || doclet.kind === 'constant') && !doclet.isEnum;
+            if((isClass && (<any>parent).kind === 'class') ||
+                (isMember && (<any>parent).kind === 'namespace')) {
 
                 console.log(`moving to another parent type ${doclet.memberof} for member ${doclet.name}`);
 
@@ -548,6 +554,14 @@ export class Parser {
         let type = this.parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
+
+        this.processFlags(doclet, obj);
+
+        return obj;
+    }
+
+    private createEnum(doclet:any):dom.EnumDeclaration {
+        let obj = dom.create.enum(doclet.name, true);
 
         this.processFlags(doclet, obj);
 
