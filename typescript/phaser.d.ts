@@ -43411,7 +43411,7 @@ declare namespace Phaser {
             /**
              * The objects that belong to this collection.
              */
-            list: any[];
+            list: T[];
 
             /**
              * [description]
@@ -43422,32 +43422,32 @@ declare namespace Phaser {
              * [description]
              * @param child [description]
              */
-            add(child: any): any;
+            add(child: T): T;
 
             /**
              * [description]
              * @param child [description]
              * @param index [description] Default 0.
              */
-            addAt(child: any, index?: integer): any;
+            addAt(child: T, index?: integer): T;
 
             /**
              * [description]
              * @param children [description]
              */
-            addMultiple(children: any[]): any[];
+            addMultiple(children: T[]): T[];
 
             /**
              * [description]
              * @param index [description]
              */
-            getAt(index: integer): any;
+            getAt(index: integer): T;
 
             /**
              * [description]
              * @param child [description]
              */
-            getIndex(child: any): integer;
+            getIndex(child: T): integer;
 
             /**
              * Given an array of objects, sort the array and return it,
@@ -43455,14 +43455,14 @@ declare namespace Phaser {
              * so that the objects are in index order with the lowest at the bottom.
              * @param children [description]
              */
-            sort(children: any[]): any[];
+            sort(children: T[]): T[];
 
             /**
              * [description]
              * @param childA [description]
              * @param childB [description]
              */
-            sortIndexHandler(childA: any, childB: any): integer;
+            sortIndexHandler(childA: T, childB: T): integer;
 
             /**
              * Gets the first item from the set based on the property strictly equaling the value given.
@@ -43471,7 +43471,7 @@ declare namespace Phaser {
              * @param property The property to check against the value.
              * @param value The value to check if the property strictly equals.
              */
-            getByKey(property: string, value: any): any;
+            getByKey(property: string, value: T): ?T;
 
             /**
              * Searches the Group for the first instance of a child with the `name`
@@ -43481,14 +43481,14 @@ declare namespace Phaser {
              * the same name only the first instance is returned.
              * @param name The name to search for.
              */
-            getByName(name: string): any;
+            getByName(name: string): ?T;
 
             /**
              * Returns a random child from the group.
              * @param startIndex Offset from the front of the group (lowest child). Default 0.
              * @param length Restriction on the number of values you want to randomly select from. Default (to top).
              */
-            getRandom(startIndex?: integer, length?: integer): any;
+            getRandom(startIndex?: integer, length?: integer): ?T;
 
             /**
              * [description]
@@ -43497,7 +43497,7 @@ declare namespace Phaser {
              * @param startIndex [description] Default 0.
              * @param endIndex [description]
              */
-            getFirst(property: string, value: any, startIndex?: number, endIndex?: number): any;
+            getFirst(property: string, value: T, startIndex?: number, endIndex?: number): ?T;
 
             /**
              * Returns all children in this List.
@@ -43522,47 +43522,47 @@ declare namespace Phaser {
              * @param startIndex The first child index to start the search from. Default 0.
              * @param endIndex The last child index to search up until.
              */
-            getAll(property?: string, value?: any, startIndex?: integer, endIndex?: integer): any[];
+            getAll(property?: string, value?: T, startIndex?: integer, endIndex?: integer): T[];
 
             /**
              * [description]
              * @param property [description]
              * @param value [description]
              */
-            count(property: string, value: any): integer;
+            count(property: string, value: T): integer;
 
             /**
              * [description]
              * @param child1 [description]
              * @param child2 [description]
              */
-            swap(child1: any, child2: any): void;
+            swap(child1: T, child2: T): void;
 
             /**
              * [description]
              * @param child [description]
              * @param index [description]
              */
-            moveTo(child: any, index: integer): any;
+            moveTo(child: T, index: integer): T;
 
             /**
              * [description]
              * @param child [description]
              */
-            remove(child: any): any;
+            remove(child: T): T;
 
             /**
              * [description]
              * @param index [description]
              */
-            removeAt(index: integer): any;
+            removeAt(index: integer): T;
 
             /**
              * [description]
              * @param beginIndex [description] Default 0.
              * @param endIndex [description]
              */
-            removeBetween(beginIndex?: integer, endIndex?: integer): any[];
+            removeBetween(beginIndex?: integer, endIndex?: integer): T[];
 
             /**
              * Removes all the items.
@@ -43614,14 +43614,14 @@ declare namespace Phaser {
              * [description]
              * @param child [description]
              */
-            exists(child: any): boolean;
+            exists(child: T): boolean;
 
             /**
              * Sets the property `key` to the given value on all members of this List.
              * @param key [description]
              * @param value [description]
              */
-            setAll(key: string, value: any): void;
+            setAll(key: string, value: T): void;
 
             /**
              * Passes all children to the given callback.
@@ -43629,7 +43629,7 @@ declare namespace Phaser {
              * @param thisArg Value to use as `this` when executing callback.
              * @param args Additional arguments that will be passed to the callback, after the child.
              */
-            each(callback: EachListCallback, thisArg?: any, ...args: any[]): void;
+            each(callback: EachListCallback<T>, thisArg?: any, ...args: any[]): void;
 
             /**
              * [description]
@@ -43696,12 +43696,12 @@ declare namespace Phaser {
              * 
              * @param elements [description]
              */
-            constructor(elements: any[]);
+            constructor(elements: T[]);
 
             /**
              * [description]
              */
-            entries: {[key: string]:  any};
+            entries: {[key: string]:  T};
 
             /**
              * [description]
@@ -43713,18 +43713,18 @@ declare namespace Phaser {
              * @param key [description]
              * @param value [description]
              */
-            set(key: string, value: any): Phaser.Structs.Map;
+            set(key: string, value: T): Phaser.Structs.Map;
 
             /**
              * [description]
              * @param key [description]
              */
-            get(key: string): any;
+            get(key: string): T;
 
             /**
              * [description]
              */
-            getArray(): any[];
+            getArray(): T[];
 
             /**
              * [description]
@@ -43751,7 +43751,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            values(): any[];
+            values(): T[];
 
             /**
              * [description]
@@ -43762,13 +43762,13 @@ declare namespace Phaser {
              * [description]
              * @param callback [description]
              */
-            each(callback: EachMapCallback): Phaser.Structs.Map;
+            each(callback: EachMapCallback<T>): Phaser.Structs.Map;
 
             /**
              * [description]
              * @param value [description]
              */
-            contains(value: any): boolean;
+            contains(value: T): boolean;
 
             /**
              * Merges all new keys from the given Map into this one
@@ -43791,23 +43791,23 @@ declare namespace Phaser {
              * [description]
              * @param item [description]
              */
-            add(item: any): Phaser.Structs.ProcessQueue;
+            add(item: T): Phaser.Structs.ProcessQueue;
 
             /**
              * [description]
              * @param item [description]
              */
-            remove(item: any): Phaser.Structs.ProcessQueue;
+            remove(item: T): Phaser.Structs.ProcessQueue;
 
             /**
              * [description]
              */
-            update(): any[];
+            update(): T[];
 
             /**
              * [description]
              */
-            getActive(): any[];
+            getActive(): T[];
 
             /**
              * [description]
@@ -43846,36 +43846,36 @@ declare namespace Phaser {
              * 
              * @param elements [description]
              */
-            constructor(elements?: any[]);
+            constructor(elements?: T[]);
 
             /**
              * [description]
              */
-            entries: any[];
+            entries: T[];
 
             /**
              * [description]
              * @param value [description]
              */
-            set(value: any): Phaser.Structs.Set;
+            set(value: T): Phaser.Structs.Set;
 
             /**
              * [description]
              * @param property [description]
              * @param value [description]
              */
-            get(property: string, value: any): any;
+            get(property: string, value: T): T;
 
             /**
              * [description]
              */
-            getArray(): any[];
+            getArray(): T[];
 
             /**
              * [description]
              * @param value [description]
              */
-            delete(value: any): Phaser.Structs.Set;
+            delete(value: T): Phaser.Structs.Set;
 
             /**
              * [description]
@@ -43887,14 +43887,14 @@ declare namespace Phaser {
              * @param callback [description]
              * @param callbackScope [description]
              */
-            each(callback: EachSetCallback, callbackScope: any): Phaser.Structs.Set;
+            each(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set;
 
             /**
              * For when you absolutely know this Set won't be modified during the iteration.
              * @param callback [description]
              * @param callbackScope [description]
              */
-            iterate(callback: EachSetCallback, callbackScope: any): Phaser.Structs.Set;
+            iterate(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set;
 
             /**
              * [description]
@@ -43912,7 +43912,7 @@ declare namespace Phaser {
              * [description]
              * @param value [description]
              */
-            contains(value: any): boolean;
+            contains(value: T): boolean;
 
             /**
              * [description]

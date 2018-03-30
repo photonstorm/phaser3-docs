@@ -552,6 +552,8 @@ export class Parser {
 
         let obj = dom.create.property(doclet.name, type);
 
+        this.processGeneric(doclet, obj, null);
+
         this.processFlags(doclet, obj);
 
         return obj;
@@ -752,23 +754,38 @@ export class Parser {
         if(doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
     }
 
-    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration, params:dom.Parameter[]) {
+    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration|dom.PropertyDeclaration, params:dom.Parameter[]) {
         if(doclet.tags)
         for(let tag of doclet.tags) {
             if(tag.originalTitle === 'generic') {
                 let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                 let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
-                obj.typeParameters.push(typeParam);
-                let overrides = matches[3] != null ? matches[3].split(',') : [];
+                (<dom.ClassDeclaration|dom.FunctionDeclaration>obj).typeParameters.push(typeParam);
+                handleOverrides(matches[3], matches[2]);
+            } else if(tag.originalTitle === 'genericUse') {
+                let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                let overrideType:string = matches[1];
+                if(overrideType.indexOf('.<') != -1) {
+                    overrideType = overrideType.split('.<').join('<');
+                }
+                handleOverrides(matches[2], this.processTypeName(overrideType));
+            }
+        }
+        function handleOverrides(matchedString:string, overrideType:string) {
+            if(matchedString != null) {
+                let overrides = matchedString.split(',');
                 if(params != null) {
                     for(let param of params)  {
                         if(overrides.indexOf(param.name) != -1) {
-                            param.type = dom.create.namedTypeReference(matches[2]);
+                            param.type = dom.create.namedTypeReference(overrideType);
                         }
                     }
                 }
-                if(overrides.indexOf('$return') != -1) {
-                    (<dom.FunctionDeclaration>obj).returnType = dom.create.namedTypeReference(matches[2]);
+                if(overrides.indexOf('$return') != -1) {// has $return, must be a function
+                    (<dom.FunctionDeclaration>obj).returnType = dom.create.namedTypeReference(overrideType);
+                }
+                if(overrides.indexOf('$type') != -1) {// has $type, must be a property
+                    (<dom.PropertyDeclaration>obj).type =  dom.create.namedTypeReference(overrideType);
                 }
             }
         }

@@ -3,40 +3,36 @@ src/game.ts(6,5): error TS2322: Type '{ type: number; width: number; height: num
 ../../typescript/phaser.d.ts(2943,30): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
 ../../typescript/phaser.d.ts(3544,22): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
 ../../typescript/phaser.d.ts(10979,35): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(33261,45): error TS2694: Namespace 'Phaser.Physics.Impact' has no exported member 'TYPE'.
-../../typescript/phaser.d.ts(33266,53): error TS2694: Namespace 'Phaser.Physics.Impact' has no exported member 'TYPE'.
-../../typescript/phaser.d.ts(33271,49): error TS2694: Namespace 'Phaser.Physics.Impact' has no exported member 'COLLIDES'.
-../../typescript/phaser.d.ts(40131,51): error TS2694: Namespace 'Phaser.Renderer.Canvas' has no exported member 'DrawImage'.
-../../typescript/phaser.d.ts(40136,51): error TS2694: Namespace 'Phaser.Renderer.Canvas' has no exported member 'BlitImage'.
-../../typescript/phaser.d.ts(43274,23): error TS2300: Duplicate identifier 'T'.
-../../typescript/phaser.d.ts(43445,26): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43474,24): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43479,24): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43591,43): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43614,34): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43619,22): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43640,46): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43657,24): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43657,65): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43669,29): error TS2314: Generic type 'ProcessQueue<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43675,32): error TS2314: Generic type 'ProcessQueue<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43735,30): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43753,33): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43765,66): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43772,69): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43779,64): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43784,22): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43796,24): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43796,45): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43802,28): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43802,49): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43808,29): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(43808,50): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
-../../typescript/phaser.d.ts(44321,51): error TS2694: Namespace 'Phaser.Textures' has no exported member 'LINEAR'.
-../../typescript/phaser.d.ts(44321,76): error TS2694: Namespace 'Phaser.Textures' has no exported member 'NEAREST'.
-../../typescript/phaser.d.ts(44722,51): error TS2694: Namespace 'Phaser.Textures' has no exported member 'LINEAR'.
-../../typescript/phaser.d.ts(44722,76): error TS2694: Namespace 'Phaser.Textures' has no exported member 'NEAREST'.
-../../typescript/phaser.d.ts(53001,33): error TS2694: Namespace 'Phaser.Physics.Impact' has no exported member 'TYPE'.
-../../typescript/phaser.d.ts(53005,41): error TS2694: Namespace 'Phaser.Physics.Impact' has no exported member 'TYPE'.
-../../typescript/phaser.d.ts(53009,37): error TS2694: Namespace 'Phaser.Physics.Impact' has no exported member 'COLLIDES'.
-../../typescript/phaser.d.ts(53463,53): error TS2304: Cannot find name 'E'.
+../../typescript/phaser.d.ts(40241,51): error TS2694: Namespace 'Phaser.Renderer.Canvas' has no exported member 'DrawImage'.
+../../typescript/phaser.d.ts(40246,51): error TS2694: Namespace 'Phaser.Renderer.Canvas' has no exported member 'BlitImage'.
+../../typescript/phaser.d.ts(43399,23): error TS2300: Duplicate identifier 'T'.
+../../typescript/phaser.d.ts(43570,26): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43599,24): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43604,24): error TS2314: Generic type 'List<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43632,28): error TS2315: Type 'EachListCallback' is not generic.
+../../typescript/phaser.d.ts(43716,41): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43739,34): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43744,22): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43765,28): error TS2315: Type 'EachMapCallback' is not generic.
+../../typescript/phaser.d.ts(43765,49): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43782,24): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43782,65): error TS2314: Generic type 'Map<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43794,27): error TS2314: Generic type 'ProcessQueue<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43800,30): error TS2314: Generic type 'ProcessQueue<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43860,28): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43878,31): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43890,28): error TS2315: Type 'EachSetCallback' is not generic.
+../../typescript/phaser.d.ts(43890,69): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43897,31): error TS2315: Type 'EachSetCallback' is not generic.
+../../typescript/phaser.d.ts(43897,72): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43904,64): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43909,22): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43921,24): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43921,45): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43927,28): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43927,49): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43933,29): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(43933,50): error TS2314: Generic type 'Set<T>' requires 1 type argument(s).
+../../typescript/phaser.d.ts(44460,35): error TS2535: Enum type 'FilterMode' has members with initializers that are not literals.
+../../typescript/phaser.d.ts(44460,71): error TS2535: Enum type 'FilterMode' has members with initializers that are not literals.
+../../typescript/phaser.d.ts(53491,53): error TS2304: Cannot find name 'E'.
