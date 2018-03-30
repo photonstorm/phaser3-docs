@@ -564,7 +564,7 @@ export class Parser {
     }
 
     private createEnum(doclet:any):dom.EnumDeclaration {
-        let obj = dom.create.enum(doclet.name, true);
+        let obj = dom.create.enum(doclet.name, false);
 
         this.processFlags(doclet, obj);
 

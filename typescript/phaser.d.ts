@@ -1509,7 +1509,7 @@ declare type Pad = {
     /**
      * [description]
      */
-    index: number;
+    index: integer;
 };
 
 declare type GamepadHandler = ()=>void;
@@ -1536,9 +1536,6 @@ declare type KeyComboConfig = {
 };
 
 declare type KeyboardHandler = ()=>void;
-
-declare namespace module {
-}
 
 declare type MouseHandler = ()=>void;
 
@@ -2641,23 +2638,11 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * An AnimationFrame consists of a reference to the Texture it uses for rendering, references to other
-         * 
-         * 
          * 
          * frames in the animation, and index data. It also has the ability to fire its own `onUpdate` callback
          * 
-         * 
-         * 
          * and modify the animation timing.
-         * 
-         * 
-         * 
-         * 
          * 
          * 
          * 
@@ -2715,14 +2700,12 @@ declare namespace Phaser {
 
             /**
              * Additional time (in ms) that this frame should appear for during playback.
-             * 
              * The value is added onto the msPerFrame set by the animation.
              */
             duration: number;
 
             /**
              * What % through the animation does this frame come?
-             * 
              * This value is generated when the animation is created and cached here.
              */
             progress: number;
@@ -3353,17 +3336,9 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * 
-         * 
-         * 
-         * 
          * Various systems, such as the file Loader, rely on this cache in order to store the files
          * 
-         * 
-         * 
          * it has loaded. The manager itself doesn't store any files, but instead owns multiple BaseCache
-         * 
-         * 
          * 
          * instances, one per type of file. You can also add your own custom caches.
          */
@@ -3386,7 +3361,6 @@ declare namespace Phaser {
 
             /**
              * A Cache storing all bitmap font data files, typically added via the Loader.
-             * 
              * Only the font data is stored in this cache, the textures are part of the Texture Manager.
              */
             protected bitmapFont: Phaser.Cache.BaseCache;
@@ -3423,7 +3397,6 @@ declare namespace Phaser {
 
             /**
              * A Cache storing all tilemap data files, typically added via the Loader.
-             * 
              * Only the data is stored in this cache, the textures are part of the Texture Manager.
              */
             protected tilemap: Phaser.Cache.BaseCache;
@@ -3435,16 +3408,13 @@ declare namespace Phaser {
 
             /**
              * An object that contains your own custom BaseCache entries.
-             * 
              * Add to this via the `addCustom` method.
              */
             protected custom: {[key: string]: Phaser.Cache.BaseCache};
 
             /**
              * Add your own custom Cache for storing your own files.
-             * 
              * The cache will be available under `Cache.custom.key`.
-             * 
              * The cache will only be created if the key is not already in use.
              * @param key The unique key of your custom cache.
              */
@@ -4552,6 +4522,21 @@ declare namespace Phaser {
                 setFOV(value: number): Phaser.Cameras.Sprite3D.PerspectiveCamera;
 
             }
+
+        }
+
+        class Controls {
+            /**
+             * This alias will be removed in a future version.
+             * Use `FixedKeyControl` instead.
+             */
+            static Fixed: any;
+
+            /**
+             * This alias will be removed in a future version.
+             * Use `SmoothedKeyControl` instead.
+             */
+            static Smoothed: any;
 
         }
 
@@ -6249,9 +6234,7 @@ declare namespace Phaser {
 
             /**
              * Returns the amount the Game Object is visually offset from its x coordinate.
-             * 
              * This is the same as `width * origin.x`.
-             * 
              * This value will only be > 0 if `origin.x` is not equal to zero.
              * @param gameObject The Game Object to get the bounds value from.
              */
@@ -6259,9 +6242,7 @@ declare namespace Phaser {
 
             /**
              * Returns the amount the Game Object is visually offset from its y coordinate.
-             * 
              * This is the same as `width * origin.y`.
-             * 
              * This value will only be > 0 if `origin.y` is not equal to zero.
              * @param gameObject The Game Object to get the bounds value from.
              */
@@ -9164,33 +9145,33 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter(output?: O): O;
+                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds(output?: O): O;
+                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
             }
 
             /**
@@ -10059,7 +10040,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class DisplayList extends Phaser.Structs.List {
+        class DisplayList {
             /**
              * 
              * @param scene [description]
@@ -14268,8 +14249,6 @@ declare namespace Phaser {
                 /**
                  * Sets the texture and frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * Textures are referenced by their string-based keys, as stored in the Texture Manager.
                  * @param key The key of the texture to be used, as stored in the Texture Manager.
                  * @param frame The name or index of the frame within the Texture.
@@ -14279,11 +14258,7 @@ declare namespace Phaser {
                 /**
                  * Sets the frame this Game Object will use to render with.
                  * 
-                 * 
-                 * 
                  * The Frame has to belong to the current Texture being used.
-                 * 
-                 * 
                  * 
                  * It can be either a string or an index.
                  * @param frame The name or index of the frame within the Texture.
@@ -14340,11 +14315,7 @@ declare namespace Phaser {
                 /**
                  * Pauses this Emitter Manager.
                  * 
-                 * 
-                 * 
                  * This has the effect of pausing all emitters, and all particles of those emitters, currently under its control.
-                 * 
-                 * 
                  * 
                  * The particles will still render, but they will not have any of their logic updated.
                  */
@@ -20526,21 +20497,12 @@ declare namespace Phaser {
             /**
              * Sets this Polygon to the given points.
              * 
-             * 
-             * 
              * The points can be set from a variety of formats:
              * 
-             * 
-             * 
              * - An array of Point objects: `[new Phaser.Point(x1, y1), ...]`
-             * 
              * - An array of objects with public x/y properties: `[obj1, obj2, ...]`
-             * 
              * - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
-             * 
              * - An array of arrays with two elements representing x/y coordinates: `[[x1, y1], [x2, y2], ...]`
-             * 
-             * 
              * 
              * `setTo` may also be called without any arguments to remove all points.
              * @param points [description]
@@ -21291,7 +21253,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            target: any;
+            target: Phaser.GameObjects.GameObject;
             /**
              * [description]
              */
@@ -21370,9 +21332,15 @@ declare namespace Phaser {
                 index: integer;
 
                 /**
-                 * Between -1 and 1 with 0 being dead center.
+                 * The raw axis value, between -1 and 1 with 0 being dead center.
+                 * Use the method `getValue` to get a normalized value with the threshold applied.
                  */
                 value: number;
+
+                /**
+                 * Movement tolerance threshold below which axis values are ignored in `getValue`.
+                 */
+                threshold: number;
 
                 /**
                  * [description]
@@ -21459,11 +21427,6 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                events: Phaser.Events.EventEmitter;
-
-                /**
-                 * [description]
-                 */
                 id: string;
 
                 /**
@@ -21502,7 +21465,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            class GamepadManager {
+            class GamepadManager extends Phaser.Events.EventEmitter {
                 /**
                  * 
                  * @param inputManager [description]
@@ -21513,11 +21476,6 @@ declare namespace Phaser {
                  * [description]
                  */
                 manager: Phaser.Input.InputManager;
-
-                /**
-                 * [description]
-                 */
-                events: Phaser.Events.EventEmitter;
 
                 /**
                  * [description]
@@ -22518,7 +22476,90 @@ declare namespace Phaser {
 
             }
 
-            namespace KeyCodes {
+            /**
+             * Keyboard Codes.
+             */
+            enum KeyCodes {
+                BACKSPACE,
+                TAB,
+                ENTER,
+                SHIFT,
+                CTRL,
+                ALT,
+                PAUSE,
+                CAPS_LOCK,
+                ESC,
+                SPACE,
+                PAGE_UP,
+                PAGE_DOWN,
+                END,
+                HOME,
+                LEFT,
+                UP,
+                RIGHT,
+                DOWN,
+                PRINT_SCREEN,
+                INSERT,
+                DELETE,
+                ZERO,
+                ONE,
+                TWO,
+                THREE,
+                FOUR,
+                FIVE,
+                SIX,
+                SEVEN,
+                EIGHT,
+                NINE,
+                A,
+                B,
+                C,
+                D,
+                E,
+                F,
+                G,
+                H,
+                I,
+                J,
+                K,
+                L,
+                M,
+                N,
+                O,
+                P,
+                Q,
+                R,
+                S,
+                T,
+                U,
+                V,
+                W,
+                X,
+                Y,
+                Z,
+                F1,
+                F2,
+                F3,
+                F4,
+                F5,
+                F6,
+                F7,
+                F8,
+                F9,
+                F10,
+                F11,
+                F12,
+                SEMICOLON,
+                PLUS,
+                COMMA,
+                MINUS,
+                PERIOD,
+                FORWARD_SLASH,
+                BACK_SLASH,
+                QUOTES,
+                BACKTICK,
+                OPEN_BRACKET,
+                CLOSED_BRACKET,
             }
 
             namespace Keys {
@@ -22553,169 +22594,6 @@ declare namespace Phaser {
              * @param duration [description] Default 50.
              */
             function UpDuration(key: Phaser.Input.Keyboard.Key, duration?: integer): boolean;
-
-            class KeyCodes {
-                static BACKSPACE: integer;
-
-                static TAB: integer;
-
-                static ENTER: integer;
-
-                static SHIFT: integer;
-
-                static CTRL: integer;
-
-                static ALT: integer;
-
-                static PAUSE: integer;
-
-                static CAPS_LOCK: integer;
-
-                static ESC: integer;
-
-                static SPACE: integer;
-
-                static PAGE_UP: integer;
-
-                static PAGE_DOWN: integer;
-
-                static END: integer;
-
-                static HOME: integer;
-
-                static LEFT: integer;
-
-                static UP: integer;
-
-                static RIGHT: integer;
-
-                static DOWN: integer;
-
-                static PRINT_SCREEN: integer;
-
-                static INSERT: integer;
-
-                static DELETE: integer;
-
-                static ZERO: integer;
-
-                static ONE: integer;
-
-                static TWO: integer;
-
-                static THREE: integer;
-
-                static FOUR: integer;
-
-                static FIVE: integer;
-
-                static SIX: integer;
-
-                static SEVEN: integer;
-
-                static EIGHT: integer;
-
-                static NINE: integer;
-
-                static A: integer;
-
-                static B: integer;
-
-                static C: integer;
-
-                static D: integer;
-
-                static E: integer;
-
-                static F: integer;
-
-                static G: integer;
-
-                static H: integer;
-
-                static I: integer;
-
-                static J: integer;
-
-                static K: integer;
-
-                static L: integer;
-
-                static M: integer;
-
-                static N: integer;
-
-                static O: integer;
-
-                static P: integer;
-
-                static Q: integer;
-
-                static R: integer;
-
-                static S: integer;
-
-                static T: integer;
-
-                static U: integer;
-
-                static V: integer;
-
-                static W: integer;
-
-                static X: integer;
-
-                static Y: integer;
-
-                static Z: integer;
-
-                static F1: integer;
-
-                static F2: integer;
-
-                static F3: integer;
-
-                static F4: integer;
-
-                static F5: integer;
-
-                static F6: integer;
-
-                static F7: integer;
-
-                static F8: integer;
-
-                static F9: integer;
-
-                static F10: integer;
-
-                static F11: integer;
-
-                static F12: integer;
-
-                static SEMICOLON: integer;
-
-                static PLUS: integer;
-
-                static COMMA: integer;
-
-                static MINUS: integer;
-
-                static PERIOD: integer;
-
-                static FORWARD_SLASH: integer;
-
-                static BACK_SLASH: integer;
-
-                static QUOTES: integer;
-
-                static BACKTICK: integer;
-
-                static OPEN_BRACKET: integer;
-
-                static CLOSED_BRACKET: integer;
-
-            }
 
         }
 
@@ -22844,24 +22722,17 @@ declare namespace Phaser {
 
             /**
              * The camera the Pointer interacted with during its last update.
-             * 
              * A Pointer can only ever interact with one camera at once, which will be the top-most camera
-             * 
              * in the list should multiple cameras be positioned on-top of each other.
              */
             camera: Phaser.Cameras.Scene2D.Camera;
 
             /**
              * 0: No button or un-initialized
-             * 
              * 1: Left button
-             * 
              * 2: Right button
-             * 
              * 4: Wheel button or middle button
-             * 
              * 8: 4th button (typically the "Browser Back" button)
-             * 
              * 16: 5th button (typically the "Browser Forward" button)
              */
             buttons: number;
@@ -22909,12 +22780,8 @@ declare namespace Phaser {
             /**
              * The Drag State of the Pointer:
              * 
-             * 
-             * 
              * 0 = Not dragging anything
-             * 
              * 1 = Being checked if dragging
-             * 
              * 2 = Dragging something
              */
             dragState: number;
@@ -30184,6 +30051,38 @@ declare namespace Phaser {
             }
 
             /**
+             * Collision Types - Determine if and how entities collide with each other.
+             * 
+             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
+             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
+             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
+             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
+             * FIXED collisions is undefined.
+             */
+            enum COLLIDES {
+                /**
+                 * Never collides.
+                 */
+                NEVER,
+                /**
+                 * Lite collision.
+                 */
+                LITE,
+                /**
+                 * Passive collision.
+                 */
+                PASSIVE,
+                /**
+                 * Active collision.
+                 */
+                ACTIVE,
+                /**
+                 * Fixed collision.
+                 */
+                FIXED,
+            }
+
+            /**
              * [description]
              */
             class CollisionMap {
@@ -32781,6 +32680,34 @@ declare namespace Phaser {
              * @param bodyB [description]
              */
             function Solver(world: Phaser.Physics.Impact.World, bodyA: Phaser.Physics.Impact.Body, bodyB: Phaser.Physics.Impact.Body): void;
+
+            /**
+             * Collision Types - Determine if and how entities collide with each other.
+             * 
+             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
+             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
+             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
+             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
+             * FIXED collisions is undefined.
+             */
+            enum TYPE {
+                /**
+                 * Collides with nothing.
+                 */
+                NONE,
+                /**
+                 * Type A. Collides with Type B.
+                 */
+                A,
+                /**
+                 * Type B. Collides with Type A.
+                 */
+                B,
+                /**
+                 * Collides with both types A and B.
+                 */
+                BOTH,
+            }
 
             /**
              * Set up the trace-result
@@ -36087,37 +36014,87 @@ declare namespace Phaser {
 
         }
 
-        class Impact {
-            /**
-             * Collision Types - Determine if and how entities collide with each other.
-             * 
-             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
-             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
-             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
-             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
-             * FIXED collisions is undefined.
-             */
-            static COLLIDES: object;
-
-            /**
-             * Collision Types - Determine if and how entities collide with each other.
-             * 
-             * In ACTIVE vs. LITE or FIXED vs. ANY collisions, only the "weak" entity moves,
-             * while the other one stays fixed. In ACTIVE vs. ACTIVE and ACTIVE vs. PASSIVE
-             * collisions, both entities are moved. LITE or PASSIVE entities don't collide
-             * with other LITE or PASSIVE entities at all. The behavior for FIXED vs.
-             * FIXED collisions is undefined.
-             */
-            static TYPE: object;
-
-        }
-
     }
 
     namespace Plugins {
     }
 
-    namespace BlendModes {
+    /**
+     * Phaser Blend Modes.
+     */
+    enum BlendModes {
+        /**
+         * Skips the Blend Mode check in the renderer.
+         */
+        SKIP_CHECK,
+        /**
+         * Normal blend mode.
+         */
+        NORMAL,
+        /**
+         * Add blend mode.
+         */
+        ADD,
+        /**
+         * Multiply blend mode.
+         */
+        MULTIPLY,
+        /**
+         * Screen blend mode.
+         */
+        SCREEN,
+        /**
+         * Overlay blend mode.
+         */
+        OVERLAY,
+        /**
+         * Darken blend mode.
+         */
+        DARKEN,
+        /**
+         * Lighten blend mode.
+         */
+        LIGHTEN,
+        /**
+         * Color Dodge blend mode.
+         */
+        COLOR_DODGE,
+        /**
+         * Color Burn blend mode.
+         */
+        COLOR_BURN,
+        /**
+         * Hard Light blend mode.
+         */
+        HARD_LIGHT,
+        /**
+         * Soft Light blend mode.
+         */
+        SOFT_LIGHT,
+        /**
+         * Difference blend mode.
+         */
+        DIFFERENCE,
+        /**
+         * Exclusion blend mode.
+         */
+        EXCLUSION,
+        /**
+         * Hue blend mode.
+         */
+        HUE,
+        /**
+         * Saturation blend mode.
+         */
+        SATURATION,
+        /**
+         * Color blend mode.
+         */
+        COLOR,
+        /**
+         * Luminosity blend mode.
+         */
+        LUMINOSITY,
     }
 
     namespace Renderer {
@@ -36185,12 +36162,12 @@ declare namespace Phaser {
                 /**
                  * Map to the required function.
                  */
-                drawImage: Phaser.Renderer.Canvas.DrawImage;
+                drawImage: Function;
 
                 /**
                  * [description]
                  */
-                blitImage: Phaser.Renderer.Canvas.BlitImage;
+                blitImage: Function;
 
                 /**
                  * [description]
@@ -37755,7 +37732,22 @@ declare namespace Phaser {
 
     }
 
-    namespace ScaleModes {
+    /**
+     * Phaser Scale Modes.
+     */
+    enum ScaleModes {
+        /**
+         * Default Scale Mode (Linear).
+         */
+        DEFAULT,
+        /**
+         * Linear Scale Mode.
+         */
+        LINEAR,
+        /**
+         * Nearest Scale Mode.
+         */
+        NEAREST,
     }
 
     namespace Scenes {
@@ -39181,7 +39173,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class List<T, T> {
+        class List<T> {
             /**
              * 
              * @param parent [description]
@@ -39254,7 +39246,7 @@ declare namespace Phaser {
              * @param property The property to check against the value.
              * @param value The value to check if the property strictly equals.
              */
-            getByKey(property: string, value: T): ?T;
+            getByKey(property: string, value: T): T | null;
 
             /**
              * Searches the Group for the first instance of a child with the `name`
@@ -39262,14 +39254,14 @@ declare namespace Phaser {
              * the same name only the first instance is returned.
              * @param name The name to search for.
              */
-            getByName(name: string): ?T;
+            getByName(name: string): T | null;
 
             /**
              * Returns a random child from the group.
              * @param startIndex Offset from the front of the group (lowest child). Default 0.
              * @param length Restriction on the number of values you want to randomly select from. Default (to top).
              */
-            getRandom(startIndex?: integer, length?: integer): ?T;
+            getRandom(startIndex?: integer, length?: integer): T | null;
 
             /**
              * [description]
@@ -39278,7 +39270,7 @@ declare namespace Phaser {
              * @param startIndex [description] Default 0.
              * @param endIndex [description]
              */
-            getFirst(property: string, value: T, startIndex?: number, endIndex?: number): ?T;
+            getFirst(property: string, value: T, startIndex?: number, endIndex?: number): T | null;
 
             /**
              * Returns all children in this List.
@@ -39340,48 +39332,48 @@ declare namespace Phaser {
             /**
              * Removes all the items.
              */
-            removeAll(): Phaser.Structs.List;
+            removeAll(): Phaser.Structs.List<T>;
 
             /**
              * Brings the given child to the top of this List.
              * @param child [description]
              */
-            bringToTop<O extends T>(child: O): O;
+            bringToTop(child: T): T;
 
             /**
              * Sends the given child to the bottom of this List.
              * @param child [description]
              */
-            sendToBack<O extends T>(child: O): O;
+            sendToBack(child: T): T;
 
             /**
              * Moves the given child up one place in this group unless it's already at the top.
              * @param child [description]
              */
-            moveUp<O extends T>(child: O): O;
+            moveUp(child: T): T;
 
             /**
              * Moves the given child down one place in this group unless it's already at the bottom.
              * @param child [description]
              */
-            moveDown<O extends T>(child: O): O;
+            moveDown(child: T): T;
 
             /**
              * Reverses the order of all children in this List.
              */
-            reverse(): Phaser.Structs.List;
+            reverse(): Phaser.Structs.List<T>;
 
             /**
              * [description]
              */
-            shuffle(): Phaser.Structs.List;
+            shuffle(): Phaser.Structs.List<T>;
 
             /**
              * Replaces a child of this List with the given newChild. The newChild cannot be a member of this List.
              * @param oldChild The child in this List that will be replaced.
              * @param newChild The child to be inserted into this List.
              */
-            replace<O extends T>(oldChild: O, newChild: O): O;
+            replace(oldChild: T, newChild: T): T;
 
             /**
              * [description]
@@ -39454,17 +39446,17 @@ declare namespace Phaser {
          * 
          * ]);
          */
-        class Map<T> {
+        class Map<K, V> {
             /**
              * 
              * @param elements [description]
              */
-            constructor(elements: T[]);
+            constructor(elements: V[]);
 
             /**
              * [description]
              */
-            entries: {[key: string]:  T};
+            entries: {[key: string]:  V};
 
             /**
              * [description]
@@ -39476,45 +39468,45 @@ declare namespace Phaser {
              * @param key [description]
              * @param value [description]
              */
-            set(key: string, value: T): Phaser.Structs.Map;
+            set(key: K, value: V): Phaser.Structs.Map<K, V>;
 
             /**
              * [description]
              * @param key [description]
              */
-            get(key: string): T;
+            get(key: K): V;
 
             /**
              * [description]
              */
-            getArray(): T[];
-
-            /**
-             * [description]
-             * @param key [description]
-             */
-            has(key: string): boolean;
+            getArray(): V[];
 
             /**
              * [description]
              * @param key [description]
              */
-            delete(key: string): Phaser.Structs.Map;
+            has(key: K): boolean;
+
+            /**
+             * [description]
+             * @param key [description]
+             */
+            delete(key: K): Phaser.Structs.Map<K, V>;
 
             /**
              * [description]
              */
-            clear(): Phaser.Structs.Map;
+            clear(): Phaser.Structs.Map<K, V>;
 
             /**
              * [description]
              */
-            keys(): string[];
+            keys(): K[];
 
             /**
              * [description]
              */
-            values(): T[];
+            values(): V[];
 
             /**
              * [description]
@@ -39525,13 +39517,13 @@ declare namespace Phaser {
              * [description]
              * @param callback [description]
              */
-            each(callback: EachMapCallback<T>): Phaser.Structs.Map;
+            each(callback: EachMapCallback<V>): Phaser.Structs.Map<K, V>;
 
             /**
              * [description]
              * @param value [description]
              */
-            contains(value: T): boolean;
+            contains(value: V): boolean;
 
             /**
              * Merges all new keys from the given Map into this one
@@ -39540,7 +39532,7 @@ declare namespace Phaser {
              * @param map [description]
              * @param override [description] Default false.
              */
-            merge(map: Phaser.Structs.Map, override?: boolean): Phaser.Structs.Map;
+            merge(map: Phaser.Structs.Map<K, V>, override?: boolean): Phaser.Structs.Map<K, V>;
 
         }
 
@@ -39552,13 +39544,13 @@ declare namespace Phaser {
              * [description]
              * @param item [description]
              */
-            add(item: T): Phaser.Structs.ProcessQueue;
+            add(item: T): Phaser.Structs.ProcessQueue<T>;
 
             /**
              * [description]
              * @param item [description]
              */
-            remove(item: T): Phaser.Structs.ProcessQueue;
+            remove(item: T): Phaser.Structs.ProcessQueue<T>;
 
             /**
              * [description]
@@ -39610,7 +39602,7 @@ declare namespace Phaser {
              * [description]
              * @param value [description]
              */
-            set(value: T): Phaser.Structs.Set;
+            set(value: T): Phaser.Structs.Set<T>;
 
             /**
              * [description]
@@ -39628,7 +39620,7 @@ declare namespace Phaser {
              * [description]
              * @param value [description]
              */
-            delete(value: T): Phaser.Structs.Set;
+            delete(value: T): Phaser.Structs.Set<T>;
 
             /**
              * [description]
@@ -39640,26 +39632,26 @@ declare namespace Phaser {
              * @param callback [description]
              * @param callbackScope [description]
              */
-            each(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set;
+            each(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set<T>;
 
             /**
              * For when you absolutely know this Set won't be modified during the iteration.
              * @param callback [description]
              * @param callbackScope [description]
              */
-            iterate(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set;
+            iterate(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set<T>;
 
             /**
              * [description]
              * @param callbackKey [description]
              * @param args Additional arguments that will be passed to the callback, after the child.
              */
-            iterateLocal(callbackKey: string, ...args: any[]): Phaser.Structs.Set;
+            iterateLocal(callbackKey: string, ...args: any[]): Phaser.Structs.Set<T>;
 
             /**
              * [description]
              */
-            clear(): Phaser.Structs.Set;
+            clear(): Phaser.Structs.Set<T>;
 
             /**
              * [description]
@@ -39671,19 +39663,19 @@ declare namespace Phaser {
              * [description]
              * @param set [description]
              */
-            union(set: Phaser.Structs.Set): Phaser.Structs.Set;
+            union(set: Phaser.Structs.Set<T>): Phaser.Structs.Set<T>;
 
             /**
              * [description]
              * @param set [description]
              */
-            intersect(set: Phaser.Structs.Set): Phaser.Structs.Set;
+            intersect(set: Phaser.Structs.Set<T>): Phaser.Structs.Set<T>;
 
             /**
              * [description]
              * @param set [description]
              */
-            difference(set: Phaser.Structs.Set): Phaser.Structs.Set;
+            difference(set: Phaser.Structs.Set<T>): Phaser.Structs.Set<T>;
 
             /**
              * [description]
@@ -39698,7 +39690,7 @@ declare namespace Phaser {
         /**
          * Filter Types.
          */
-        const enum FilterMode {
+        enum FilterMode {
             /**
              * Linear filter type.
              */
@@ -40147,7 +40139,7 @@ declare namespace Phaser {
              * The mode applies to the entire Texture, not just a specific Frame of it.
              * @param filterMode The Filter Mode.
              */
-            setFilter(filterMode: Phaser.Textures.FilterMode.LINEAR | Phaser.Textures.FilterMode.NEAREST): void;
+            setFilter(filterMode: Phaser.Textures.FilterMode): void;
 
             /**
              * Destroys this Texture and releases references to its sources and frames.
@@ -40499,7 +40491,7 @@ declare namespace Phaser {
              * For pixel-art you should use Nearest.
              * @param filterMode The Filter Mode.
              */
-            setFilter(filterMode: Phaser.Textures.FilterMode.LINEAR | Phaser.Textures.FilterMode.NEAREST): void;
+            setFilter(filterMode: Phaser.Textures.FilterMode): void;
 
             /**
              * Destroys this Texture Source and nulls the source image reference.
@@ -46924,117 +46916,6 @@ declare namespace Phaser {
 
     }
 
-    class BlendModes {
-        /**
-         * Skips the Blend Mode check in the renderer.
-         */
-        static SKIP_CHECK: integer;
-
-        /**
-         * Normal blend mode.
-         */
-        static NORMAL: integer;
-
-        /**
-         * Add blend mode.
-         */
-        static ADD: integer;
-
-        /**
-         * Multiply blend mode.
-         */
-        static MULTIPLY: integer;
-
-        /**
-         * Screen blend mode.
-         */
-        static SCREEN: integer;
-
-        /**
-         * Overlay blend mode.
-         */
-        static OVERLAY: integer;
-
-        /**
-         * Darken blend mode.
-         */
-        static DARKEN: integer;
-
-        /**
-         * Lighten blend mode.
-         */
-        static LIGHTEN: integer;
-
-        /**
-         * Color Dodge blend mode.
-         */
-        static COLOR_DODGE: integer;
-
-        /**
-         * Color Burn blend mode.
-         */
-        static COLOR_BURN: integer;
-
-        /**
-         * Hard Light blend mode.
-         */
-        static HARD_LIGHT: integer;
-
-        /**
-         * Soft Light blend mode.
-         */
-        static SOFT_LIGHT: integer;
-
-        /**
-         * Difference blend mode.
-         */
-        static DIFFERENCE: integer;
-
-        /**
-         * Exclusion blend mode.
-         */
-        static EXCLUSION: integer;
-
-        /**
-         * Hue blend mode.
-         */
-        static HUE: integer;
-
-        /**
-         * Saturation blend mode.
-         */
-        static SATURATION: integer;
-
-        /**
-         * Color blend mode.
-         */
-        static COLOR: integer;
-
-        /**
-         * Luminosity blend mode.
-         */
-        static LUMINOSITY: integer;
-
-    }
-
-    class ScaleModes {
-        /**
-         * Default Scale Mode (Linear).
-         */
-        static DEFAULT: integer;
-
-        /**
-         * Linear Scale Mode.
-         */
-        static LINEAR: integer;
-
-        /**
-         * Nearest Scale Mode.
-         */
-        static NEAREST: integer;
-
-    }
-
     class Scenes {
         /**
          * Scene state.
@@ -48031,11 +47912,11 @@ declare type SoundMarker = {
     config: SoundConfig;
 };
 
-declare type EachListCallback = (item: any, ...args: any[])=>void;
+declare type EachListCallback<I> = (item: any, ...args: any[])=>void;
 
-declare type EachMapCallback = (key: string, entry: E)=>void;
+declare type EachMapCallback<E> = (key: string, entry: E)=>void;
 
-declare type EachSetCallback = (entry: any, index: number)=>void;
+declare type EachSetCallback<E> = (entry: any, index: number)=>void;
 
 declare type EachTextureCallback = (texture: Phaser.Textures.Texture, ...args: any[])=>void;
 
@@ -48225,11 +48106,6 @@ declare class ParseRetroFont {
      * Text Set 11 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,"-+!?()':;0123456789
      */
     static readonly TEXT_SET11: string;
-
-}
-
-declare class module {
-    static exports: any;
 
 }
 
