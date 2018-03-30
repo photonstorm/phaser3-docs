@@ -682,8 +682,6 @@ export class Parser {
             for(let name of typeDoc.type.names) {
                 // TODO remove when stable
 
-                if(name.indexOf("Phaser.Textures.FilterMode") == 0) return dom.type.any;
-
                 if(name.indexOf('~') != -1) {
                     name = (<string>name).split('~').join('');
                 }
