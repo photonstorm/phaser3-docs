@@ -9145,33 +9145,33 @@ declare namespace Phaser {
                  * Gets the center coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
+                getCenter(output?: O): O;
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft(output?: O): O;
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight(output?: O): O;
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft(output?: O): O;
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight(output?: O): O;
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds(output?: O): O;
             }
 
             /**
@@ -48126,4 +48126,9 @@ declare type DOMHighResTimeStamp = number;
 declare type Image = HTMLImageElement;
 
 declare type Point = any;
+
+declare module 'phaser' {
+    export = Phaser;
+
+}
 
