@@ -5,32 +5,32 @@ declare type GridAlignConfig = {
      * The width of the grid in items (not pixels). -1 means lay all items out horizontally, regardless of quantity.
      *                                  If both this value and height are set to -1 then this value overrides it and the `height` value is ignored.
      */
-    width: integer;
+    width?: integer;
     /**
      * The height of the grid in items (not pixels). -1 means lay all items out vertically, regardless of quantity.
      *                                   If both this value and `width` are set to -1 then `width` overrides it and this value is ignored.
      */
-    height: integer;
+    height?: integer;
     /**
      * The width of the cell, in pixels, in which the item is positioned.
      */
-    cellWidth: boolean;
+    cellWidth?: boolean;
     /**
      * The height of the cell, in pixels, in which the item is positioned.
      */
-    cellHeight: integer;
+    cellHeight?: integer;
     /**
      * The alignment position. One of the Phaser.Display.Align consts such as `TOP_LEFT` or `RIGHT_CENTER`.
      */
-    position: integer;
+    position?: integer;
     /**
      * Optionally place the top-left of the final grid at this coordinate.
      */
-    x: number;
+    x?: number;
     /**
      * Optionally place the top-left of the final grid at this coordinate.
      */
-    y: number;
+    y?: number;
 };
 
 declare type JSONAnimation = {
@@ -96,98 +96,98 @@ declare type AnimationFrameConfig = {
     /**
      * [description]
      */
-    duration: number;
+    duration?: number;
     /**
      * [description]
      */
-    visible: boolean;
+    visible?: boolean;
     /**
      * [description]
      */
-    onUpdate: Function;
+    onUpdate?: Function;
 };
 
 declare type AnimationConfig = {
     /**
      * [description]
      */
-    frames: AnimationFrameConfig[];
+    frames?: AnimationFrameConfig[];
     /**
      * [description]
      */
-    defaultTextureKey: string;
+    defaultTextureKey?: string;
     /**
      * The frame rate of playback in frames per second (default 24 if duration is null)
      */
-    frameRate: integer;
+    frameRate?: integer;
     /**
      * How long the animation should play for.
      */
-    duration: integer;
+    duration?: integer;
     /**
      * Skip frames if the time lags, or always advanced anyway?
      */
-    skipMissedFrames: boolean;
+    skipMissedFrames?: boolean;
     /**
      * Delay before starting playback (in seconds)
      */
-    delay: integer;
+    delay?: integer;
     /**
      * Number of times to repeat the animation (-1 for infinity)
      */
-    repeat: integer;
+    repeat?: integer;
     /**
      * Delay before the repeat starts (in seconds)
      */
-    repeatDelay: integer;
+    repeatDelay?: integer;
     /**
      * Should the animation yoyo? (reverse back down to the start) before repeating?
      */
-    yoyo: boolean;
+    yoyo?: boolean;
     /**
      * Should sprite.visible = true when the animation starts to play?
      */
-    showOnStart: boolean;
+    showOnStart?: boolean;
     /**
      * Should sprite.visible = false when the animation finishes?
      */
-    hideOnComplete: boolean;
+    hideOnComplete?: boolean;
     /**
      * [description]
      */
-    callbackScope: any;
+    callbackScope?: any;
     /**
      * [description]
      */
-    onStart: false | Function;
+    onStart?: false | Function;
     /**
      * [description]
      */
-    onStartParams: any[];
+    onStartParams?: any[];
     /**
      * [description]
      */
-    onRepeat: false | Function;
+    onRepeat?: false | Function;
     /**
      * [description]
      */
-    onRepeatParams: any[];
+    onRepeatParams?: any[];
     /**
      * [description]
      */
-    onUpdate: false | Function;
+    onUpdate?: false | Function;
     /**
      * [description]
      */
-    onUpdateParams: any[];
+    onUpdateParams?: any[];
     /**
      * [description]
      */
-    onComplete: false | Function;
+    onComplete?: false | Function;
     /**
      * [description]
      */
-    onCompleteParams: any[];
+    onCompleteParams?: any[];
 };
 
 declare type JSONAnimationFrame = {
@@ -227,253 +227,253 @@ declare type FPSConfig = {
     /**
      * [description]
      */
-    min: integer;
+    min?: integer;
     /**
      * [description]
      */
-    target: integer;
+    target?: integer;
     /**
      * [description]
      */
-    forceSetTimeOut: boolean;
+    forceSetTimeOut?: boolean;
     /**
      * [description]
      */
-    deltaHistory: integer;
+    deltaHistory?: integer;
     /**
      * [description]
      */
-    panicMax: integer;
+    panicMax?: integer;
 };
 
 declare type LoaderConfig = {
     /**
      * [description]
      */
-    baseURL: string;
+    baseURL?: string;
     /**
      * [description]
      */
-    path: string;
+    path?: string;
     /**
      * [description]
      */
-    enableParallel: boolean;
+    enableParallel?: boolean;
     /**
      * [description]
      */
-    maxParallelDownloads: integer;
+    maxParallelDownloads?: integer;
     /**
      * [description]
      */
-    crossOrigin: string | undefined;
+    crossOrigin?: string | undefined;
     /**
      * [description]
      */
-    responseType: string;
+    responseType?: string;
     /**
      * [description]
      */
-    async: boolean;
+    async?: boolean;
     /**
      * [description]
      */
-    user: string;
+    user?: string;
     /**
      * [description]
      */
-    password: string;
+    password?: string;
     /**
      * [description]
      */
-    timeout: integer;
+    timeout?: integer;
 };
 
 declare type GameConfig = {
     /**
      * [description]
      */
-    width: integer | string;
+    width?: integer | string;
     /**
      * [description]
      */
-    height: integer | string;
+    height?: integer | string;
     /**
      * [description]
      */
-    zoom: number;
+    zoom?: number;
     /**
      * [description]
      */
-    resolution: number;
+    resolution?: number;
     /**
      * [description]
      */
-    type: number;
+    type?: number;
     /**
      * [description]
      */
-    "?parent": any;
+    parent?: any;
     /**
      * [description]
      */
-    "?canvas": HTMLCanvasElement;
+    canvas?: HTMLCanvasElement;
     /**
      * [description]
      */
-    "?canvasStyle": string;
+    canvasStyle?: string;
     /**
      * [description]
      */
-    "?scene": object;
+    scene?: object;
     /**
      * [description]
      */
-    seed: string[];
+    seed?: string[];
     /**
      * [description]
      */
-    title: string;
+    title?: string;
     /**
      * [description]
      */
-    url: string;
+    url?: string;
     /**
      * [description]
      */
-    version: string;
+    version?: string;
     /**
      * [description]
      */
-    input: boolean | object;
+    input?: boolean | object;
     /**
      * [description]
      */
-    "input.keyboard": boolean;
+    "input.keyboard"?: boolean;
     /**
      * [description]
      */
-    "input.keyboard.target": any;
+    "input.keyboard.target"?: any;
     /**
      * [description]
      */
-    "input.mouse": boolean | object;
+    "input.mouse"?: boolean | object;
     /**
      * [description]
      */
-    "?input.mouse.target": any;
+    "input.mouse.target"?: any;
     /**
      * [description]
      */
-    "input.touch": boolean;
+    "input.touch"?: boolean;
     /**
      * [description]
      */
-    "?input.touch.target": any;
+    "input.touch.target"?: any;
     /**
      * [description]
      */
-    "?input.touch.capture": boolean;
+    "input.touch.capture"?: boolean;
     /**
      * [description]
      */
-    "input.gamepad": boolean | object;
+    "input.gamepad"?: boolean | object;
     /**
      * [description]
      */
-    disableContextMenu: boolean;
+    disableContextMenu?: boolean;
     /**
      * [description]
      */
-    banner: boolean | object;
+    banner?: boolean | object;
     /**
      * [description]
      */
-    "banner.hidePhaser": boolean;
+    "banner.hidePhaser"?: boolean;
     /**
      * [description]
      */
-    "banner.text": string;
+    "banner.text"?: string;
     /**
      * [description]
      */
-    "banner.background": string[];
+    "banner.background"?: string[];
     /**
      * [description]
      */
-    "?fps": FPSConfig;
+    fps?: FPSConfig;
     /**
      * [description]
      */
-    antialias: boolean;
+    antialias?: boolean;
     /**
      * [description]
      */
-    pixelArt: boolean;
+    pixelArt?: boolean;
     /**
      * [description]
      */
-    autoResize: boolean;
+    autoResize?: boolean;
     /**
      * [description]
      */
-    roundPixels: boolean;
+    roundPixels?: boolean;
     /**
      * [description]
      */
-    transparent: boolean;
+    transparent?: boolean;
     /**
      * [description]
      */
-    clearBeforeRender: boolean;
+    clearBeforeRender?: boolean;
     /**
      * [description]
      */
-    premultipliedAlpha: boolean;
+    premultipliedAlpha?: boolean;
     /**
      * [description]
      */
-    preserveDrawingBuffer: boolean;
+    preserveDrawingBuffer?: boolean;
     /**
      * [description]
      */
-    failIfMajorPerformanceCaveat: boolean;
+    failIfMajorPerformanceCaveat?: boolean;
     /**
      * "high-performance", "low-power" or "default"
      */
-    powerPreference: boolean;
+    powerPreference?: boolean;
     /**
      * [description]
      */
-    backgroundColor: string | number;
+    backgroundColor?: string | number;
     /**
      * [description]
      */
-    "?callbacks": object;
+    callbacks?: object;
     /**
      * [description]
      */
-    "callbacks.preBoot": BootCallback;
+    "callbacks.preBoot"?: BootCallback;
     /**
      * [description]
      */
-    "callbacks.postBoot": BootCallback;
+    "callbacks.postBoot"?: BootCallback;
     /**
      * [description]
      */
-    "?loader": LoaderConfig;
+    loader?: LoaderConfig;
     /**
      * [description]
      */
-    "?images": object;
+    images?: object;
     /**
      * [description]
      */
-    "images.default": string;
+    "images.default"?: string;
     /**
      * [description]
      */
-    "images.missing": string;
+    "images.missing"?: string;
 };
 
 declare type GameStepCallback = ()=>void;
@@ -542,23 +542,23 @@ declare type JSONCamera = {
     /**
      * The bounds of camera
      */
-    bounds: object;
+    bounds?: object;
     /**
      * The horizontal position of bounds of camera
      */
-    "bounds.x": number;
+    "bounds.x"?: number;
     /**
      * The vertical position of bounds of camera
      */
-    "bounds.y": number;
+    "bounds.y"?: number;
     /**
      * The width of the bounds of camera
      */
-    "bounds.width": number;
+    "bounds.width"?: number;
     /**
      * The height of the bounds of camera
      */
-    "bounds.height": number;
+    "bounds.height"?: number;
 };
 
 declare type Camera2DCallback = (camera: Phaser.Cameras.Scene2D.Camera)=>void;
@@ -567,145 +567,145 @@ declare type InputJSONCameraObject = {
     /**
      * [description]
      */
-    name: string;
+    name?: string;
     /**
      * [description]
      */
-    x: integer;
+    x?: integer;
     /**
      * [description]
      */
-    y: integer;
+    y?: integer;
     /**
      * [description]
      */
-    width: integer;
+    width?: integer;
     /**
      * [description]
      */
-    height: integer;
+    height?: integer;
     /**
      * [description]
      */
-    zoom: number;
+    zoom?: number;
     /**
      * [description]
      */
-    rotation: number;
+    rotation?: number;
     /**
      * [description]
      */
-    roundPixels: boolean;
+    roundPixels?: boolean;
     /**
      * [description]
      */
-    scrollX: number;
+    scrollX?: number;
     /**
      * [description]
      */
-    scrollY: number;
+    scrollY?: number;
     /**
      * [description]
      */
-    backgroundColor: false | string;
+    backgroundColor?: false | string;
     /**
      * [description]
      */
-    bounds: object;
+    bounds?: object;
     /**
      * [description]
      */
-    "bounds.x": number;
+    "bounds.x"?: number;
     /**
      * [description]
      */
-    "bounds.y": number;
+    "bounds.y"?: number;
     /**
      * [description]
      */
-    "bounds.width": number;
+    "bounds.width"?: number;
     /**
      * [description]
      */
-    "bounds.height": number;
+    "bounds.height"?: number;
 };
 
 declare type FixedKeyControlConfig = {
     /**
      * The Camera that this Control will update.
      */
-    camera: Phaser.Cameras.Scene2D.Camera;
+    camera?: Phaser.Cameras.Scene2D.Camera;
     /**
      * The Key to be pressed that will move the Camera left.
      */
-    left: Phaser.Input.Keyboard.Key;
+    left?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera right.
      */
-    right: Phaser.Input.Keyboard.Key;
+    right?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera up.
      */
-    up: Phaser.Input.Keyboard.Key;
+    up?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera in.
      */
-    zoomIn: Phaser.Input.Keyboard.Key;
+    zoomIn?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera out.
      */
-    zoomOut: Phaser.Input.Keyboard.Key;
+    zoomOut?: Phaser.Input.Keyboard.Key;
     /**
      * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
      */
-    zoomSpeed: number;
+    zoomSpeed?: number;
     /**
      * The horizontal and vertical speed the camera will move.
      */
-    speed: number | Object;
+    speed?: number | Object;
 };
 
 declare type SmoothedKeyControlConfig = {
     /**
      * The Camera that this Control will update.
      */
-    camera: Phaser.Cameras.Scene2D.Camera;
+    camera?: Phaser.Cameras.Scene2D.Camera;
     /**
      * The Key to be pressed that will move the Camera left.
      */
-    left: Phaser.Input.Keyboard.Key;
+    left?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera right.
      */
-    right: Phaser.Input.Keyboard.Key;
+    right?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera up.
      */
-    up: Phaser.Input.Keyboard.Key;
+    up?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera in.
      */
-    zoomIn: Phaser.Input.Keyboard.Key;
+    zoomIn?: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera out.
      */
-    zoomOut: Phaser.Input.Keyboard.Key;
+    zoomOut?: Phaser.Input.Keyboard.Key;
     /**
      * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
      */
-    zoomSpeed: number;
+    zoomSpeed?: number;
     /**
      * The horizontal and vertical acceleration the camera will move.
      */
-    acceleration: number | Object;
+    acceleration?: number | Object;
     /**
      * The horizontal and vertical drag applied to the camera when it is moving.
      */
-    drag: number | Object;
+    drag?: number | Object;
     /**
      * The maximum horizontal and vertical speed the camera will move.
      */
-    maxSpeed: number | Object;
+    maxSpeed?: number | Object;
 };
 
 declare type RayDef = {
@@ -725,39 +725,39 @@ declare type GenerateTextureConfig = {
     /**
      * [description]
      */
-    data: any[];
+    data?: any[];
     /**
      * [description]
      */
-    canvas: HTMLCanvasElement;
+    canvas?: HTMLCanvasElement;
     /**
      * [description]
      */
-    palette: Palette;
+    palette?: Palette;
     /**
      * [description]
      */
-    pixelWidth: number;
+    pixelWidth?: number;
     /**
      * [description]
      */
-    pixelHeight: number;
+    pixelHeight?: number;
     /**
      * [description]
      */
-    resizeCanvas: boolean;
+    resizeCanvas?: boolean;
     /**
      * [description]
      */
-    clearCanvas: boolean;
+    clearCanvas?: boolean;
     /**
      * [description]
      */
-    preRender: GenerateTextureRendererCallback;
+    preRender?: GenerateTextureRendererCallback;
     /**
      * [description]
      */
-    postRender: GenerateTextureRendererCallback;
+    postRender?: GenerateTextureRendererCallback;
 };
 
 declare type Palette = {
@@ -870,35 +870,35 @@ declare type EllipseCurveConfig = {
     /**
      * [description]
      */
-    x: number;
+    x?: number;
     /**
      * [description]
      */
-    y: number;
+    y?: number;
     /**
      * [description]
      */
-    xRadius: number;
+    xRadius?: number;
     /**
      * [description]
      */
-    yRadius: number;
+    yRadius?: number;
     /**
      * [description]
      */
-    startAngle: integer;
+    startAngle?: integer;
     /**
      * [description]
      */
-    endAngle: integer;
+    endAngle?: integer;
     /**
      * [description]
      */
-    clockwise: boolean;
+    clockwise?: boolean;
     /**
      * [description]
      */
-    rotation: integer;
+    rotation?: integer;
 };
 
 declare type JSONCurve = {
@@ -946,19 +946,19 @@ declare type InputColorObject = {
     /**
      * The red color value in the range 0 to 255.
      */
-    r: number;
+    r?: number;
     /**
      * The green color value in the range 0 to 255.
      */
-    g: number;
+    g?: number;
     /**
      * The blue color value in the range 0 to 255.
      */
-    b: number;
+    b?: number;
     /**
      * The alpha color value in the range 0 to 255.
      */
-    a: number;
+    a?: number;
 };
 
 declare type ColorObject = ()=>void;
@@ -986,19 +986,19 @@ declare type BitmapTextConfig = {
     /**
      * [description]
      */
-    font: string;
+    font?: string;
     /**
      * [description]
      */
-    text: string;
+    text?: string;
     /**
      * [description]
      */
-    size: number | false;
+    size?: number | false;
     /**
      * [description]
      */
-    align: string;
+    align?: string;
 };
 
 declare namespace ParseRetroFont {
@@ -1068,63 +1068,63 @@ declare type GameObjectConfig = {
     /**
      * [description]
      */
-    x: number;
+    x?: number;
     /**
      * [description]
      */
-    y: number;
+    y?: number;
     /**
      * [description]
      */
-    depth: number;
+    depth?: number;
     /**
      * [description]
      */
-    flipX: boolean;
+    flipX?: boolean;
     /**
      * [description]
      */
-    flipY: boolean;
+    flipY?: boolean;
     /**
      * [description]
      */
-    scale: number | object;
+    scale?: number | object;
     /**
      * [description]
      */
-    scrollFactor: number | object;
+    scrollFactor?: number | object;
     /**
      * [description]
      */
-    rotation: number;
+    rotation?: number;
     /**
      * [description]
      */
-    angle: number;
+    angle?: number;
     /**
      * [description]
      */
-    alpha: number;
+    alpha?: number;
     /**
      * [description]
      */
-    origin: number | object;
+    origin?: number | object;
     /**
      * [description]
      */
-    scaleMode: number;
+    scaleMode?: number;
     /**
      * [description]
      */
-    blendMode: number;
+    blendMode?: number;
     /**
      * [description]
      */
-    visible: boolean;
+    visible?: boolean;
     /**
      * [description]
      */
-    add: boolean;
+    add?: boolean;
 };
 
 declare type JSONGameObject = {
@@ -1218,162 +1218,162 @@ declare type GroupConfig = {
     /**
      * [description]
      */
-    classType: object;
+    classType?: object;
     /**
      * [description]
      */
-    active: boolean;
+    active?: boolean;
     /**
      * [description]
      */
-    maxSize: number;
+    maxSize?: number;
     /**
      * [description]
      */
-    defaultKey: string;
+    defaultKey?: string;
     /**
      * [description]
      */
-    defaultFrame: string | integer;
+    defaultFrame?: string | integer;
     /**
      * [description]
      */
-    runChildUpdate: boolean;
+    runChildUpdate?: boolean;
     /**
      * [description]
      */
-    createCallback: GroupCallback;
+    createCallback?: GroupCallback;
     /**
      * [description]
      */
-    removeCallback: GroupCallback;
+    removeCallback?: GroupCallback;
     /**
      * [description]
      */
-    createMultipleCallback: GroupMultipleCreateCallback;
+    createMultipleCallback?: GroupMultipleCreateCallback;
 };
 
 declare type GroupCreateConfig = {
     /**
      * [description]
      */
-    classType: object;
+    classType?: object;
     /**
      * [description]
      */
-    key: string;
+    key?: string;
     /**
      * [description]
      */
-    frame: string | integer;
+    frame?: string | integer;
     /**
      * [description]
      */
-    visible: boolean;
+    visible?: boolean;
     /**
      * [description]
      */
-    active: boolean;
+    active?: boolean;
     /**
      * [description]
      */
-    repeat: number;
+    repeat?: number;
     /**
      * [description]
      */
-    randomKey: boolean;
+    randomKey?: boolean;
     /**
      * [description]
      */
-    randomFrame: boolean;
+    randomFrame?: boolean;
     /**
      * [description]
      */
-    yoyo: boolean;
+    yoyo?: boolean;
     /**
      * [description]
      */
-    frameQuantity: number;
+    frameQuantity?: number;
     /**
      * [description]
      */
-    max: number;
+    max?: number;
     /**
      * [description]
      */
-    setXY: object;
+    setXY?: object;
     /**
      * [description]
      */
-    "setXY.x": number;
+    "setXY.x"?: number;
     /**
      * [description]
      */
-    "setXY.y": number;
+    "setXY.y"?: number;
     /**
      * [description]
      */
-    "setXY.stepX": number;
+    "setXY.stepX"?: number;
     /**
      * [description]
      */
-    "setXY.stepY": number;
+    "setXY.stepY"?: number;
     /**
      * [description]
      */
-    setRotation: object;
+    setRotation?: object;
     /**
      * [description]
      */
-    "setRotation.value": number;
+    "setRotation.value"?: number;
     /**
      * [description]
      */
-    "setRotation.step": number;
+    "setRotation.step"?: number;
     /**
      * [description]
      */
-    setScale: object;
+    setScale?: object;
     /**
      * [description]
      */
-    "setScale.x": number;
+    "setScale.x"?: number;
     /**
      * [description]
      */
-    "setScale.y": number;
+    "setScale.y"?: number;
     /**
      * [description]
      */
-    "setScale.stepX": number;
+    "setScale.stepX"?: number;
     /**
      * [description]
      */
-    "setScale.stepY": number;
+    "setScale.stepY"?: number;
     /**
      * [description]
      */
-    setAlpha: object;
+    setAlpha?: object;
     /**
      * [description]
      */
-    "setAlpha.value": number;
+    "setAlpha.value"?: number;
     /**
      * [description]
      */
-    "setAlpha.step": number;
+    "setAlpha.step"?: number;
     /**
      * [description]
      */
-    hitArea: any;
+    hitArea?: any;
     /**
      * [description]
      */
-    hitAreaCallback: HitAreaCallback;
+    hitAreaCallback?: HitAreaCallback;
     /**
      * [description]
      */
-    gridAlign: false | GridAlignConfig;
+    gridAlign?: false | GridAlignConfig;
 };
 
 declare type LightForEach = (light: Phaser.GameObjects.Light)=>void;
@@ -1392,23 +1392,23 @@ declare type GravityWellConfig = {
     /**
      * The x coordinate of the Gravity Well, in world space.
      */
-    x: number;
+    x?: number;
     /**
      * The y coordinate of the Gravity Well, in world space.
      */
-    y: number;
+    y?: number;
     /**
      * The power of the Gravity Well.
      */
-    power: number;
+    power?: number;
     /**
      * [description]
      */
-    epsilon: number;
+    epsilon?: number;
     /**
      * The gravitational force of this Gravity Well.
      */
-    gravity: number;
+    gravity?: number;
 };
 
 declare type ParticleEmitterCallback = (particle: Phaser.GameObjects.Particles.Particle, emitter: Phaser.GameObjects.Particles.ParticleEmitter)=>void;
@@ -1431,38 +1431,38 @@ declare type PathConfig = {
     /**
      * [description]
      */
-    positionOnPath: boolean;
+    positionOnPath?: boolean;
     /**
      * [description]
      */
-    rotateToPath: boolean;
+    rotateToPath?: boolean;
     /**
      * [description]
      */
-    rotationOffset: number;
+    rotationOffset?: number;
     /**
      * [description]
      */
-    verticalAdjust: boolean;
+    verticalAdjust?: boolean;
 };
 
 declare type RenderTextureConfig = {
     /**
      * [description]
      */
-    x: number;
+    x?: number;
     /**
      * [description]
      */
-    y: number;
+    y?: number;
     /**
      * [description]
      */
-    width: number;
+    width?: number;
     /**
      * [description]
      */
-    height: number;
+    height?: number;
 };
 
 /**
@@ -1474,27 +1474,27 @@ declare type TileSprite = {
     /**
      * [description]
      */
-    x: number;
+    x?: number;
     /**
      * [description]
      */
-    y: number;
+    y?: number;
     /**
      * [description]
      */
-    width: number;
+    width?: number;
     /**
      * [description]
      */
-    height: number;
+    height?: number;
     /**
      * [description]
      */
-    key: string;
+    key?: string;
     /**
      * [description]
      */
-    frame: string;
+    frame?: string;
 };
 
 declare type CenterFunction = (triangle: Phaser.Geom.Triangle)=>void;
@@ -1520,19 +1520,19 @@ declare type KeyComboConfig = {
     /**
      * [description]
      */
-    resetOnWrongKey: boolean;
+    resetOnWrongKey?: boolean;
     /**
      * [description]
      */
-    maxKeyDelay: number;
+    maxKeyDelay?: number;
     /**
      * [description]
      */
-    resetOnMatch: boolean;
+    resetOnMatch?: boolean;
     /**
      * [description]
      */
-    deleteOnMatch: boolean;
+    deleteOnMatch?: boolean;
 };
 
 declare type KeyboardHandler = ()=>void;
@@ -1547,35 +1547,35 @@ declare type FileConfig = {
     /**
      * The file type string (image, json, etc) for sorting within the Loader.
      */
-    type: string | false;
+    type?: string | false;
     /**
      * Unique cache key (unique within its file type)
      */
-    key: string | false;
+    key?: string | false;
     /**
      * The URL of the file, not including baseURL.
      */
-    url: string;
+    url?: string;
     /**
      * [description]
      */
-    path: string;
+    path?: string;
     /**
      * [description]
      */
-    extension: string;
+    extension?: string;
     /**
      * [description]
      */
-    responseType: XMLHttpRequestResponseType;
+    responseType?: XMLHttpRequestResponseType;
     /**
      * [description]
      */
-    xhrSettings: XHRSettingsObject | false;
+    xhrSettings?: XHRSettingsObject | false;
     /**
      * A config object that can be used by file types to store transitional data.
      */
-    config: object;
+    config?: object;
 };
 
 declare type XHRConfig = {
@@ -1590,11 +1590,11 @@ declare type XHRConfig = {
     /**
      * [description]
      */
-    data: string;
+    data?: string;
     /**
      * [description]
      */
-    xhr: XHRConfig;
+    xhr?: XHRConfig;
 };
 
 declare type FileTypeConfig = {
@@ -1609,31 +1609,31 @@ declare type FileTypeConfig = {
     /**
      * [description]
      */
-    data: string;
+    data?: string;
     /**
      * [description]
      */
-    url: string;
+    url?: string;
     /**
      * [description]
      */
-    path: string;
+    path?: string;
     /**
      * [description]
      */
-    extension: string;
+    extension?: string;
     /**
      * [description]
      */
-    responseType: string;
+    responseType?: string;
     /**
      * [description]
      */
-    config: object;
+    config?: object;
     /**
      * [description]
      */
-    xhr: XHRConfig;
+    xhr?: XHRConfig;
 };
 
 declare type LinkFileObject = {
@@ -1663,63 +1663,63 @@ declare type LoaderFileObject = {
     /**
      * [description]
      */
-    url: string;
+    url?: string;
     /**
      * [description]
      */
-    urls: string[];
+    urls?: string[];
     /**
      * [description]
      */
-    textureURL: string;
+    textureURL?: string;
     /**
      * [description]
      */
-    atlasURL: string;
+    atlasURL?: string;
     /**
      * [description]
      */
-    xmlURL: string;
+    xmlURL?: string;
     /**
      * [description]
      */
-    textureURLs: string[];
+    textureURLs?: string[];
     /**
      * [description]
      */
-    atlasURLs: string[];
+    atlasURLs?: string[];
     /**
      * [description]
      */
-    config: object;
+    config?: object;
     /**
      * [description]
      */
-    json: object;
+    json?: object;
     /**
      * [description]
      */
-    xhrSettings: XHRSettingsObject;
+    xhrSettings?: XHRSettingsObject;
     /**
      * [description]
      */
-    textureXhrSettings: XHRSettingsObject;
+    textureXhrSettings?: XHRSettingsObject;
     /**
      * [description]
      */
-    atlasXhrSettings: XHRSettingsObject;
+    atlasXhrSettings?: XHRSettingsObject;
     /**
      * [description]
      */
-    xmlXhrSettings: XHRSettingsObject;
+    xmlXhrSettings?: XHRSettingsObject;
     /**
      * [description]
      */
-    audioXhrSettings: XHRSettingsObject;
+    audioXhrSettings?: XHRSettingsObject;
     /**
      * [description]
      */
-    jsonXhrSettings: XHRSettingsObject;
+    jsonXhrSettings?: XHRSettingsObject;
 };
 
 declare type XHRSettingsObject = {
@@ -5434,52 +5434,57 @@ declare namespace Phaser {
         class DataManager {
             /**
              * 
-             * @param parent [description]
-             * @param eventEmitter [description]
+             * @param parent The object that this DataManager belongs to.
+             * @param eventEmitter The DataManager's event emitter.
              */
-            constructor(parent: any, eventEmitter: Phaser.Events.EventEmitter);
+            constructor(parent: object, eventEmitter: Phaser.Events.EventEmitter);
 
             /**
-             * [description]
+             * The object that this DataManager belongs to.
              */
             parent: any;
 
             /**
-             * [description]
+             * The DataManager's event emitter.
              */
             events: Phaser.Events.EventEmitter;
 
             /**
-             * [description]
+             * The data list.
              */
             list: {[key: string]:  any};
 
             /**
-             * [description]
+             * Whether setting data is blocked for this DataManager.
+             * 
+             * Used temporarily to allow 'changedata' event listeners to prevent
+             * specific data from being set.
              */
             blockSet: boolean;
 
             /**
              * Retrieves the value for the given key, or undefined if it doesn't exist.
-             * @param key [description]
+             * @param key The key of the value to retrieve.
              */
             get(key: string): any;
 
             /**
-             * [description]
+             * Retrieves all data values.
              */
             getAll(): {[key: string]:  any};
 
             /**
-             * [description]
-             * @param search [description]
+             * Queries the DataManager for the values of keys matching the given search string.
+             * @param search The search string.
              */
             query(search: string): {[key: string]:  any};
 
             /**
-             * [description]
-             * @param key [description]
-             * @param data [description]
+             * Sets the value for the given key.
+             * 
+             * Emits the 'changedata' and 'setdata' events.
+             * @param key The key to set the value for.
+             * @param data The value to set.
              */
             set(key: string, data: any): Phaser.Data.DataManager;
 
@@ -5492,48 +5497,48 @@ declare namespace Phaser {
             each(callback: DataEachCallback, scope?: any, ...args: any[]): Phaser.Data.DataManager;
 
             /**
-             * [description]
-             * @param data [description]
-             * @param overwrite [description]
+             * Merge the given data object into this DataManager's data object.
+             * @param data The data to merge.
+             * @param overwrite Whether to overwrite existing data. Defaults to true.
              */
             merge(data: {[key: string]:  any}, overwrite: boolean): Phaser.Data.DataManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Remove the value for the given key.
+             * @param key The key to remove
              */
             remove(key: string): Phaser.Data.DataManager;
 
             /**
-             * Gets the data associated with the given 'key', deletes it from this Data store, then returns it.
-             * @param key [description]
+             * Retrieves the data associated with the given 'key', deletes it from this Data store, then returns it.
+             * @param key The key of the value to retrieve and delete.
              */
             pop(key: string): any;
 
             /**
-             * [description]
-             * @param key [description]
+             * Determines whether the given key is set in this Data store.
+             * @param key The key to check.
              */
             has(key: string): boolean;
 
             /**
-             * [description]
-             * @param value [description]
+             * Freeze or unfreeze this Data store, to allow or prevent setting its values.
+             * @param value Whether to freeze the Data store.
              */
             setFreeze(value: boolean): Phaser.Data.DataManager;
 
             /**
-             * [description]
+             * Delete all data in this Data store and unfreeze it.
              */
             reset(): Phaser.Data.DataManager;
 
             /**
-             * [description]
+             * Destroy this data manager.
              */
             destroy(): void;
 
             /**
-             * Freeze this Data component, so no changes can be written to it.
+             * Freeze this Data component, so no values can be set.
              */
             freeze: boolean;
 
@@ -5547,7 +5552,11 @@ declare namespace Phaser {
         /**
          * The Data Component features a means to store pieces of data specific to a Game Object, System or Plugin.
          * 
+         * 
+         * 
          * You can then search, query it, and retrieve the data. The parent must either extend EventEmitter,
+         * 
+         * 
          * 
          * or have a property called `events` that is an instance of it.
          */
@@ -6609,8 +6618,11 @@ declare namespace Phaser {
 
             /**
              * Converts an HSV (hue, saturation and value) color value to RGB.
+             * 
              * Conversion formula from http://en.wikipedia.org/wiki/HSL_color_space.
+             * 
              * Assumes HSV values are contained in the set [0, 1].
+             * 
              * Based on code by Michael Jackson (https://github.com/mjijackson)
              * @param h The hue, in the range 0 - 1.
              * @param s The saturation, in the range 0 - 1.
@@ -6647,6 +6659,7 @@ declare namespace Phaser {
 
             /**
              * Creates a new Color object where the r, g, and b values have been set to random values
+             * 
              * based on the given min max values.
              * @param min The minimum value to set the random range from (between 0 and 255) Default 0.
              * @param max The maximum value to set the random range from (between 0 and 255) Default 255.
@@ -6655,6 +6668,8 @@ declare namespace Phaser {
 
             /**
              * Converts a CSS 'web' string into a Phaser Color object.
+             * 
+             * 
              * 
              * The web string can be in the format `'rgb(r,g,b)'` or `'rgba(r,g,b,a)'` where r/g/b are in the range [0..255] and a is in the range [0..1].
              * @param rgb The CSS format color string, using the `rgb` or `rgba` format.
@@ -22308,9 +22323,9 @@ declare namespace Phaser {
                  * 
                  * For example,
                  * 
-                 *     addKeys( { 'up': Phaser.KeyCode.W, 'down': Phaser.KeyCode.S, 'left': Phaser.KeyCode.A, 'right': Phaser.KeyCode.D } );
+                 *     addKeys({ 'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S });
                  * 
-                 * would return an object containing properties (`up`, `down`, `left` and `right`) referring to {@link Phaser.Key} object.
+                 * would return an object containing properties (`up` and `down`) referring to {@link Phaser.Input.Keyboard.Key} objects.
                  * @param keys [description]
                  */
                 addKeys(keys: object): object;
@@ -24497,11 +24512,11 @@ declare namespace Phaser {
             function CubicBezier(t: number, p0: number, p1: number, p2: number, p3: number): number;
 
             /**
-             * [description]
-             * @param v [description]
-             * @param k [description]
+             * A Linear Interpolation Method.
+             * @param v The input array of values to interpolate between.
+             * @param k The percentage of interploation, between 0 and 1.
              */
-            function Linear(v: number, k: number): number;
+            function Linear(v: number[], k: number): number;
 
             /**
              * [description]
@@ -24527,10 +24542,10 @@ declare namespace Phaser {
         function IsEvenStrict(value: number): boolean;
 
         /**
-         * [description]
-         * @param p0 [description]
-         * @param p1 [description]
-         * @param t [description]
+         * Calculates a linear (interpolation) value over t.
+         * @param p0 The first point
+         * @param p1 The second point
+         * @param t The percentage between p0 and p1 to return represented as a number between 0 and 1.
          */
         function Linear(p0: number, p1: number, t: number): number;
 
@@ -29172,6 +29187,13 @@ declare namespace Phaser {
                  * based on the current Game Object it is bound to.
                  */
                 updateFromGameObject(): Phaser.Physics.Arcade.StaticBody;
+
+                /**
+                 * [description]
+                 * @param x [description]
+                 * @param y [description]
+                 */
+                setOffset(x: number, y: number): Phaser.Physics.Arcade.StaticBody;
 
                 /**
                  * [description]
@@ -37781,7 +37803,7 @@ declare namespace Phaser {
             constructor(game: Phaser.Game, sceneConfig: object);
 
             /**
-             * [description]
+             * The Game that this SceneManager belongs to.
              */
             game: Phaser.Game;
 
@@ -37796,7 +37818,7 @@ declare namespace Phaser {
             scenes: any[];
 
             /**
-             * [description]
+             * Process the Scene operations queue.
              */
             processQueue(): void;
 
@@ -37814,7 +37836,7 @@ declare namespace Phaser {
              * 
              * If a function is given then a new Scene will be created by calling it.
              * @param key A unique key used to reference the Scene, i.e. `MainMenu` or `Level1`.
-             * @param sceneConfig [description]
+             * @param sceneConfig The config for the Scene
              * @param autoStart If `true` the Scene will be started immediately after being added. Default false.
              */
             add(key: string, sceneConfig: Phaser.Scene | SettingsConfig | Function, autoStart?: boolean): Phaser.Scene;
@@ -37832,131 +37854,136 @@ declare namespace Phaser {
             remove(scene: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param time [description]
-             * @param delta [description]
+             * Updates the Scenes.
+             * @param time Time elapsed.
+             * @param delta Delta time from the last update.
              */
             update(time: number, delta: number): void;
 
             /**
-             * [description]
+             * Informs the Scenes of the Game being resized.
              * @param width The new width of the game.
              * @param height The new height of the game.
              */
             resize(width: number, height: number): void;
 
             /**
-             * [description]
-             * @param renderer [description]
+             * Renders the Scenes.
+             * @param renderer The renderer to use.
              */
-            render(renderer: any): void;
+            render(renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer): void;
 
             /**
-             * [description]
-             * @param key [description]
+             * Retrieves a Scene.
+             * @param key The Scene to retrieve.
              */
             getScene(key: string): Phaser.Scene;
 
             /**
-             * [description]
-             * @param key [description]
+             * Determines whether a Scene is active.
+             * @param key The Scene to check.
              */
             isActive(key: string): boolean;
 
             /**
-             * [description]
-             * @param key [description]
+             * Determines whether a Scene is visible.
+             * @param key The Scene to check.
              */
             isVisible(key: string): boolean;
 
             /**
-             * [description]
-             * @param key [description]
+             * Determines whether a Scene is sleeping.
+             * @param key The Scene to check.
              */
             isSleeping(key: string): boolean;
 
             /**
-             * [description]
-             * @param key [description]
+             * Pauses the given Scene.
+             * @param key The Scene to pause.
              */
             pause(key: string): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Resumes the given Scene.
+             * @param key The Scene to resume.
              */
             resume(key: string): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Puts the given Scene to sleep.
+             * @param key The Scene to put to sleep.
              */
             sleep(key: string): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Awakens the given Scene.
+             * @param key The Scene to wake up.
              */
             wake(key: string): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
-             * @param data [description]
+             * Starts the given Scene.
+             * @param key The Scene to start.
+             * @param data The Scene data.
              */
             start(key: string, data?: object): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Stops the given Scene.
+             * @param key The Scene to stop.
              */
             stop(key: string): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param from [description]
-             * @param to [description]
+             * Sleeps one one Scene and starts the other.
+             * @param from The Scene to sleep.
+             * @param to The Scene to start.
              */
             switch(from: string, to: string): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param index [description]
+             * Retrieves a Scene by numeric index.
+             * @param index The index of the Scene to retrieve.
              */
             getAt(index: integer): Phaser.Scene | undefined;
 
             /**
-             * [description]
-             * @param key [description]
+             * Retrieves the numeric index of a Scene.
+             * @param key The key of the Scene.
              */
             getIndex(key: string | Phaser.Scene): integer;
 
             /**
-             * [description]
-             * @param key [description]
+             * Brings a Scene to the top of the Scenes list.
+             * 
+             * This means it will render above all other Scenes.
+             * @param key The Scene to move.
              */
             bringToTop(key: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Sends a Scene to the back of the Scenes list.
+             * 
+             * This means it will render below all other Scenes.
+             * @param key The Scene to move.
              */
             sendToBack(key: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Moves a Scene down one position in the Scenes list.
+             * @param key The Scene to move.
              */
             moveDown(key: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Moves a Scene up one position in the Scenes list.
+             * @param key The Scene to move.
              */
             moveUp(key: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
              * Moves a Scene so it is immediately above another Scene in the Scenes list.
+             * 
              * This means it will render over the top of the other Scene.
              * @param keyA The Scene that Scene B will be moved above.
              * @param keyB The Scene to be moved.
@@ -37965,6 +37992,7 @@ declare namespace Phaser {
 
             /**
              * Moves a Scene so it is immediately below another Scene in the Scenes list.
+             * 
              * This means it will render behind the other Scene.
              * @param keyA The Scene that Scene B will be moved above.
              * @param keyB The Scene to be moved.
@@ -37972,14 +38000,19 @@ declare namespace Phaser {
             moveBelow(keyA: string | Phaser.Scene, keyB: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param keyA [description]
-             * @param keyB [description]
+             * Swaps the positions of two Scenes in the Scenes list.
+             * @param keyA The first Scene to swap.
+             * @param keyB The second Scene to swap.
              */
             swapPosition(keyA: string | Phaser.Scene, keyB: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
+             * Dumps debug information about each Scene to the developer console.
+             */
+            dump(): void;
+
+            /**
+             * Destroy the SceneManager and all of its Scene's systems.
              */
             destroy(): void;
 
@@ -37991,130 +38024,133 @@ declare namespace Phaser {
         class ScenePlugin {
             /**
              * 
-             * @param scene [description]
+             * @param scene The Scene that this ScenePlugin belongs to.
              */
             constructor(scene: Phaser.Scene);
 
             /**
-             * [description]
+             * The Scene that this ScenePlugin belongs to.
              */
             scene: Phaser.Scene;
 
             /**
-             * [description]
+             * The Scene Systems instance of the Scene that this ScenePlugin belongs to.
              */
             systems: Phaser.Scenes.Systems;
 
             /**
-             * [description]
+             * The settings of the Scene this ScenePlugin belongs to.
              */
             settings: SettingsObject;
 
             /**
-             * [description]
+             * The key of the Scene this ScenePlugin belongs to.
              */
             key: string;
 
             /**
-             * [description]
+             * The Game's SceneManager.
              */
             manager: Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
+             * Boot the ScenePlugin.
+             * 
+             * Registers event handlers.
              */
             boot(): void;
 
             /**
              * Shutdown this Scene and run the given one.
-             * @param key [description]
-             * @param data [description]
+             * @param key The Scene to start.
+             * @param data The Scene data.
              */
             start(key: string, data?: object): Phaser.Scenes.ScenePlugin;
 
             /**
              * Add the Scene into the Scene Manager and start it if 'autoStart' is true or the Scene config 'active' property is set.
-             * @param key [description]
-             * @param sceneConfig [description]
-             * @param autoStart [description]
+             * @param key The Scene key.
+             * @param sceneConfig The config for the Scene.
+             * @param autoStart Whether to start the Scene after it's added.
              */
-            add(key: string, sceneConfig: object, autoStart: boolean): Phaser.Scenes.ScenePlugin;
+            add(key: string, sceneConfig: Phaser.Scene | SettingsConfig | Function, autoStart: boolean): Phaser.Scenes.ScenePlugin;
 
             /**
              * Launch the given Scene and run it in parallel with this one.
-             * @param key [description]
-             * @param data [description]
+             * @param key The Scene to launch.
+             * @param data The Scene data.
              */
             launch(key: string, data?: object): Phaser.Scenes.ScenePlugin;
 
             /**
              * Pause the Scene - this stops the update step from happening but it still renders.
-             * @param key [description]
+             * @param key The Scene to pause.
              */
             pause(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
              * Resume the Scene - starts the update loop again.
-             * @param key [description]
+             * @param key The Scene to resume.
              */
             resume(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
              * Makes the Scene sleep (no update, no render) but doesn't shutdown.
-             * @param key [description]
+             * @param key The Scene to put to sleep.
              */
             sleep(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
              * Makes the Scene wake-up (starts update and render)
-             * @param key [description]
+             * @param key The Scene to wake up.
              */
             wake(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
              * Makes this Scene sleep then starts the Scene given.
-             * @param key [description]
+             * @param key The Scene to start.
              */
             switch(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
              * Shutdown the Scene, clearing display list, timers, etc.
-             * @param key [description]
+             * @param key The Scene to stop.
              */
             stop(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
              * Sets the active state of the given Scene.
-             * @param value [description]
+             * @param value The Scene to set the active state for.
              */
             setActive(value: boolean): Phaser.Scenes.ScenePlugin;
 
             /**
              * Sets the visible state of the given Scene.
-             * @param value [description]
+             * @param value The Scene to set the visible state for.
              */
             setVisible(value: boolean): Phaser.Scenes.ScenePlugin;
 
             /**
              * Checks if the given Scene is sleeping or not?
-             * @param key [description]
+             * @param key The Scene to check.
              */
             isSleeping(key: string): boolean;
 
             /**
              * Checks if the given Scene is active or not?
-             * @param key [description]
+             * @param key The Scene to check.
              */
             isActive(key: string): boolean;
 
             /**
              * Checks if the given Scene is visible or not?
-             * @param key [description]
+             * @param key The Scene to check.
              */
             isVisible(key: string): boolean;
 
             /**
              * Swaps the position of two scenes in the Scenes list.
+             * 
              * This controls the order in which they are rendered and updated.
              * @param keyA The first Scene to swap.
              * @param keyB The second Scene to swap. If none is given it defaults to this Scene.
@@ -38123,6 +38159,7 @@ declare namespace Phaser {
 
             /**
              * Swaps the position of two scenes in the Scenes list, so that Scene B is directly above Scene A.
+             * 
              * This controls the order in which they are rendered and updated.
              * @param keyA The Scene that Scene B will be moved to be above.
              * @param keyB The Scene to be moved. If none is given it defaults to this Scene.
@@ -38131,6 +38168,7 @@ declare namespace Phaser {
 
             /**
              * Swaps the position of two scenes in the Scenes list, so that Scene B is directly below Scene A.
+             * 
              * This controls the order in which they are rendered and updated.
              * @param keyA The Scene that Scene B will be moved to be below.
              * @param keyB The Scene to be moved. If none is given it defaults to this Scene.
@@ -38145,47 +38183,51 @@ declare namespace Phaser {
              * 
              * If the SceneManager is processing the Scenes when this method is called it wil
              * queue the operation for the next update sequence.
-             * @param scene The Scene to be removed.
+             * @param key The Scene to be removed.
              */
-            remove(scene: string | Phaser.Scene): Phaser.Scenes.SceneManager;
+            remove(key: string | Phaser.Scene): Phaser.Scenes.SceneManager;
 
             /**
-             * [description]
-             * @param key [description]
+             * Moves a Scene up one position in the Scenes list.
+             * @param key The Scene to move.
              */
             moveUp(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
-             * [description]
-             * @param key [description]
+             * Moves a Scene down one position in the Scenes list.
+             * @param key The Scene to move.
              */
             moveDown(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
-             * [description]
-             * @param key [description]
+             * Brings a Scene to the top of the Scenes list.
+             * 
+             * This means it will render above all other Scenes.
+             * @param key The Scene to move.
              */
             bringToTop(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
-             * [description]
-             * @param key [description]
+             * Sends a Scene to the back of the Scenes list.
+             * 
+             * This means it will render below all other Scenes.
+             * @param key The Scene to move.
              */
             sendToBack(key: string): Phaser.Scenes.ScenePlugin;
 
             /**
-             * [description]
-             * @param key [description]
+             * Retrieve a Scene.
+             * @param key The Scene to retrieve.
              */
             get(key: string): Phaser.Scene;
 
             /**
-             * [description]
+             * Shut down the given Scene.
              */
             shutdown(): void;
 
             /**
-             * [description]
+             * Destroy the given Scene.
              */
             destroy(): void;
 
@@ -38292,7 +38334,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            displayList: null;
+            displayList: Phaser.GameObjects.DisplayList;
 
             /**
              * [description]
@@ -38438,9 +38480,143 @@ declare namespace Phaser {
         sys: Phaser.Scenes.Systems;
 
         /**
-         * Should be overridden by your own Scenes.
+         * A reference to the Phaser.Game instance.
+         * This property will only be available if defined in the Scene Injection Map.
          */
-        update(): void;
+        game: Phaser.Game;
+
+        /**
+         * A reference to the global Animation Manager.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        anims: Phaser.Animations.AnimationManager;
+
+        /**
+         * A reference to the global Cache.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        cache: Phaser.Cache.CacheManager;
+
+        /**
+         * A reference to the game level Data Manager.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        registry: Phaser.Data.DataManager;
+
+        /**
+         * A reference to the Sound Manager.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        sound: Phaser.Sound.BaseSoundManager;
+
+        /**
+         * A reference to the Texture Manager.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        textures: Phaser.Textures.TextureManager;
+
+        /**
+         * A scene level Event Emitter.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        events: Phaser.Events.EventEmitter;
+
+        /**
+         * A scene level Camera System.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        cameras: Phaser.Cameras.Scene2D.CameraManager;
+
+        /**
+         * A scene level 3D Camera System.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        cameras3d: Phaser.Cameras.Sprite3D.CameraManager;
+
+        /**
+         * A scene level Game Object Factory.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        add: Phaser.GameObjects.GameObjectFactory;
+
+        /**
+         * A scene level Game Object Creator.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        make: Phaser.GameObjects.GameObjectCreator;
+
+        /**
+         * A reference to the Scene Manager Plugin.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        scene: Phaser.Scenes.ScenePlugin;
+
+        /**
+         * A scene level Game Object Display List.
+         * This property will only be available if defined in the Scene Injection Map.
+         */
+        children: Phaser.GameObjects.DisplayList;
+
+        /**
+         * A scene level Lights Manager Plugin.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        lights: Phaser.GameObjects.DisplayList;
+
+        /**
+         * A scene level Data Manager Plugin.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        data: Phaser.Data.DataManager;
+
+        /**
+         * A scene level Input Manager Plugin.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        input: Phaser.Input.InputPlugin;
+
+        /**
+         * A scene level Loader Plugin.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        load: Phaser.Loader.LoadPlugin;
+
+        /**
+         * A scene level Time and Clock Plugin.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        time: Phaser.Time.Clock;
+
+        /**
+         * A scene level Tween Manager Plugin.
+         * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
+         */
+        tweens: Phaser.Tweens.TweenManager;
+
+        /**
+         * A scene level Arcade Physics Plugin.
+         * This property will only be available if defined in the Scene Injection Map, the plugin is installed and configured.
+         */
+        physics: Phaser.Physics.Arcade.ArcadePhysics;
+
+        /**
+         * A scene level Impact Physics Plugin.
+         * This property will only be available if defined in the Scene Injection Map, the plugin is installed and configured.
+         */
+        impact: Phaser.Physics.Impact.ImpactPhysics;
+
+        /**
+         * A scene level Matter Physics Plugin.
+         * This property will only be available if defined in the Scene Injection Map, the plugin is installed and configured.
+         */
+        matter: Phaser.Physics.Matter.MatterPhysics;
+
+        /**
+         * Should be overridden by your own Scenes.
+         * @param time [description]
+         * @param delta [description]
+         */
+        update(time: number, delta: number): void;
 
     }
 
@@ -45843,43 +46019,43 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            delay: number;
+            delay?: number;
             /**
              * [description]
              */
-            duration: number;
+            duration?: number;
             /**
              * [description]
              */
-            ease: string;
+            ease?: string;
             /**
              * [description]
              */
-            easeParams: any[];
+            easeParams?: any[];
             /**
              * [description]
              */
-            hold: number;
+            hold?: number;
             /**
              * [description]
              */
-            repeat: number;
+            repeat?: number;
             /**
              * [description]
              */
-            repeatDelay: number;
+            repeatDelay?: number;
             /**
              * [description]
              */
-            yoyo: boolean;
+            yoyo?: boolean;
             /**
              * [description]
              */
-            flipX: boolean;
+            flipX?: boolean;
             /**
              * [description]
              */
-            flipY: boolean;
+            flipY?: boolean;
         };
 
         /**
@@ -46187,79 +46363,79 @@ declare namespace Phaser {
             /**
              * Duration of the tween in ms/frames, excludes time for yoyo or repeats.
              */
-            duration: number;
+            duration?: number;
             /**
              * The total calculated duration of this TweenData (based on duration, repeat, delay and yoyo)
              */
-            totalDuration: number;
+            totalDuration?: number;
             /**
              * Time in ms/frames before tween will start.
              */
-            delay: number;
+            delay?: number;
             /**
              * Cause the tween to return back to its start value after hold has expired.
              */
-            yoyo: boolean;
+            yoyo?: boolean;
             /**
              * Time in ms/frames the tween will pause before running the yoyo or starting a repeat.
              */
-            hold: number;
+            hold?: number;
             /**
              * Number of times to repeat the tween. The tween will always run once regardless, so a repeat value of '1' will play the tween twice.
              */
-            repeat: integer;
+            repeat?: integer;
             /**
              * Time in ms/frames before the repeat will start.
              */
-            repeatDelay: number;
+            repeatDelay?: number;
             /**
              * Automatically call toggleFlipX when the TweenData yoyos or repeats
              */
-            flipX: boolean;
+            flipX?: boolean;
             /**
              * Automatically call toggleFlipY when the TweenData yoyos or repeats
              */
-            flipY: boolean;
+            flipY?: boolean;
             /**
              * Between 0 and 1 showing completion of this TweenData.
              */
-            progress: number;
+            progress?: number;
             /**
              * Delta counter
              */
-            elapsed: number;
+            elapsed?: number;
             /**
              * How many repeats are left to run?
              */
-            repeatCounter: integer;
+            repeatCounter?: integer;
             /**
              * Ease value data.
              */
-            start: number;
+            start?: number;
             /**
              * Ease value data.
              */
-            current: number;
+            current?: number;
             /**
              * Ease value data.
              */
-            end: number;
+            end?: number;
             /**
              * Time duration 1.
              */
-            t1: number;
+            t1?: number;
             /**
              * Time duration 2.
              */
-            t2: number;
+            t2?: number;
             /**
              * LoadValue generation functions.
              */
-            gen: TweenDataGenConfig;
+            gen?: TweenDataGenConfig;
             /**
              * TWEEN_CONST.CREATED
              */
-            state: integer;
+            state?: integer;
         };
 
         /**
@@ -46533,11 +46709,17 @@ declare namespace Phaser {
 
             /**
              * Create an array of numbers (positive and/or negative) progressing from `start`
+             * 
              * up to but not including `end` by advancing by `step`.
+             * 
+             * 
              * 
              * If `start` is less than `end` a zero-length range is created unless a negative `step` is specified.
              * 
+             * 
+             * 
              * Certain values for `start` and `end` (eg. NaN/undefined/null) are currently coerced to 0;
+             * 
              * for forward compatibility make sure to pass in actual numbers.
              * @param start The start of the range. Default 0.
              * @param end The end of the range. Default null.
@@ -46682,6 +46864,7 @@ declare namespace Phaser {
 
             /**
              * This is a slightly modified version of jQuery.isPlainObject.
+             * 
              * A plain object is an object whose internal class property is [object Object].
              * @param obj The object to inspect.
              */
@@ -46689,6 +46872,7 @@ declare namespace Phaser {
 
             /**
              * Creates a new Object using all values from obj1 and obj2.
+             * 
              * If a value exists in both obj1 and obj2, the value in obj1 is used.
              * @param obj1 [description]
              * @param obj2 [description]
@@ -46697,6 +46881,8 @@ declare namespace Phaser {
 
             /**
              * Creates a new Object using all values from obj1.
+             * 
+             * 
              * 
              * Then scans obj2. If a property is found in obj2 that *also* exists in obj1, the value from obj2 is used, otherwise the property is skipped.
              * @param obj1 [description]
@@ -46719,21 +46905,38 @@ declare namespace Phaser {
 
             /**
              * Takes the given string and pads it out, to the length required, using the character
+             * 
              * specified. For example if you need a string to be 6 characters long, you can call:
+             * 
+             * 
              * 
              * `pad('bob', 6, '-', 2)`
              * 
+             * 
+             * 
              * This would return: `bob---` as it has padded it out to 6 characters, using the `-` on the right.
+             * 
+             * 
              * 
              * You can also use it to pad numbers (they are always returned as strings):
              * 
+             * 
+             * 
              * `pad(512, 6, '0', 1)`
+             * 
+             * 
              * 
              * Would return: `000512` with the string padded to the left.
              * 
+             * 
+             * 
              * If you don't specify a direction it'll pad to both sides:
              * 
+             * 
+             * 
              * `pad('c64', 7, '*')`
+             * 
+             * 
              * 
              * Would return: `**c64**`
              * @param str The target string. `toString()` will be called on the string, which means you can also pass in common data types like numbers.
@@ -47120,75 +47323,75 @@ declare type PhysicsGroupConfig = {
     /**
      * [description]
      */
-    collideWorldBounds: any;
+    collideWorldBounds?: any;
     /**
      * [description]
      */
-    accelerationX: number;
+    accelerationX?: number;
     /**
      * [description]
      */
-    accelerationY: number;
+    accelerationY?: number;
     /**
      * [description]
      */
-    bounceX: number;
+    bounceX?: number;
     /**
      * [description]
      */
-    bounceY: number;
+    bounceY?: number;
     /**
      * [description]
      */
-    dragX: number;
+    dragX?: number;
     /**
      * [description]
      */
-    dragY: number;
+    dragY?: number;
     /**
      * [description]
      */
-    gravityX: number;
+    gravityX?: number;
     /**
      * [description]
      */
-    gravityY: number;
+    gravityY?: number;
     /**
      * [description]
      */
-    frictionX: number;
+    frictionX?: number;
     /**
      * [description]
      */
-    frictionY: number;
+    frictionY?: number;
     /**
      * [description]
      */
-    velocityX: number;
+    velocityX?: number;
     /**
      * [description]
      */
-    velocityY: number;
+    velocityY?: number;
     /**
      * [description]
      */
-    angularVelocity: number;
+    angularVelocity?: number;
     /**
      * [description]
      */
-    angularAcceleration: number;
+    angularAcceleration?: number;
     /**
      * [description]
      */
-    angularDrag: number;
+    angularDrag?: number;
     /**
      * [description]
      */
-    mass: number;
+    mass?: number;
     /**
      * [description]
      */
-    immovable: boolean;
+    immovable?: boolean;
 };
 
 declare type PhysicsGroupDefaults = {
@@ -47270,99 +47473,99 @@ declare type ArcadeWorldConfig = {
     /**
      * [description]
      */
-    gravity: object;
+    gravity?: object;
     /**
      * [description]
      */
-    "gravity.x": number;
+    "gravity.x"?: number;
     /**
      * [description]
      */
-    "gravity.y": number;
+    "gravity.y"?: number;
     /**
      * [description]
      */
-    x: number;
+    x?: number;
     /**
      * [description]
      */
-    y: number;
+    y?: number;
     /**
      * [description]
      */
-    width: number;
+    width?: number;
     /**
      * [description]
      */
-    height: number;
+    height?: number;
     /**
      * [description]
      */
-    checkCollision: object;
+    checkCollision?: object;
     /**
      * [description]
      */
-    "checkCollision.up": boolean;
+    "checkCollision.up"?: boolean;
     /**
      * [description]
      */
-    "checkCollision.down": boolean;
+    "checkCollision.down"?: boolean;
     /**
      * [description]
      */
-    "checkCollision.left": boolean;
+    "checkCollision.left"?: boolean;
     /**
      * [description]
      */
-    "checkCollision.right": boolean;
+    "checkCollision.right"?: boolean;
     /**
      * [description]
      */
-    overlapBias: number;
+    overlapBias?: number;
     /**
      * [description]
      */
-    tileBias: number;
+    tileBias?: number;
     /**
      * [description]
      */
-    forceX: boolean;
+    forceX?: boolean;
     /**
      * [description]
      */
-    isPaused: boolean;
+    isPaused?: boolean;
     /**
      * [description]
      */
-    debug: boolean;
+    debug?: boolean;
     /**
      * [description]
      */
-    debugShowBody: boolean;
+    debugShowBody?: boolean;
     /**
      * [description]
      */
-    debugShowStaticBody: boolean;
+    debugShowStaticBody?: boolean;
     /**
      * [description]
      */
-    debugShowVelocity: boolean;
+    debugShowVelocity?: boolean;
     /**
      * [description]
      */
-    debugBodyColor: number;
+    debugBodyColor?: number;
     /**
      * [description]
      */
-    debugStaticBodyColor: number;
+    debugStaticBodyColor?: number;
     /**
      * [description]
      */
-    debugVelocityColor: number;
+    debugVelocityColor?: number;
     /**
      * [description]
      */
-    maxEntries: number;
+    maxEntries?: number;
 };
 
 declare type CheckCollisionObject = {
@@ -47493,103 +47696,103 @@ declare type ImpactWorldConfig = {
     /**
      * [description]
      */
-    gravity: number;
+    gravity?: number;
     /**
      * [description]
      */
-    cellSize: number;
+    cellSize?: number;
     /**
      * [description]
      */
-    timeScale: number;
+    timeScale?: number;
     /**
      * [description]
      */
-    maxStep: number;
+    maxStep?: number;
     /**
      * [description]
      */
-    debug: boolean;
+    debug?: boolean;
     /**
      * [description]
      */
-    maxVelocity: number;
+    maxVelocity?: number;
     /**
      * [description]
      */
-    debugShowBody: boolean;
+    debugShowBody?: boolean;
     /**
      * [description]
      */
-    debugShowVelocity: boolean;
+    debugShowVelocity?: boolean;
     /**
      * [description]
      */
-    debugBodyColor: number;
+    debugBodyColor?: number;
     /**
      * [description]
      */
-    debugVelocityColor: number;
+    debugVelocityColor?: number;
     /**
      * [description]
      */
-    maxVelocityX: number;
+    maxVelocityX?: number;
     /**
      * [description]
      */
-    maxVelocityY: number;
+    maxVelocityY?: number;
     /**
      * [description]
      */
-    minBounceVelocity: number;
+    minBounceVelocity?: number;
     /**
      * [description]
      */
-    gravityFactor: number;
+    gravityFactor?: number;
     /**
      * [description]
      */
-    bounciness: number;
+    bounciness?: number;
     /**
      * [description]
      */
-    setBounds: object | boolean;
+    setBounds?: object | boolean;
     /**
      * [description]
      */
-    "setBounds.x": number;
+    "setBounds.x"?: number;
     /**
      * [description]
      */
-    "setBounds.y": number;
+    "setBounds.y"?: number;
     /**
      * [description]
      */
-    "setBounds.width": number;
+    "setBounds.width"?: number;
     /**
      * [description]
      */
-    "setBounds.height": number;
+    "setBounds.height"?: number;
     /**
      * [description]
      */
-    "setBounds.thickness": number;
+    "setBounds.thickness"?: number;
     /**
      * [description]
      */
-    "setBounds.left": boolean;
+    "setBounds.left"?: boolean;
     /**
      * [description]
      */
-    "setBounds.right": boolean;
+    "setBounds.right"?: boolean;
     /**
      * [description]
      */
-    "setBounds.top": boolean;
+    "setBounds.top"?: boolean;
     /**
      * [description]
      */
-    "setBounds.bottom": boolean;
+    "setBounds.bottom"?: boolean;
 };
 
 /**
@@ -47760,39 +47963,39 @@ declare type SettingsConfig = {
     /**
      * [description]
      */
-    key: string;
+    key?: string;
     /**
      * [description]
      */
-    active: boolean;
+    active?: boolean;
     /**
      * [description]
      */
-    visible: boolean;
+    visible?: boolean;
     /**
      * [description]
      */
-    files: false | LoaderFileObject[];
+    files?: false | LoaderFileObject[];
     /**
      * [description]
      */
-    cameras: InputJSONCameraObject | InputJSONCameraObject[];
+    cameras?: InputJSONCameraObject | InputJSONCameraObject[];
     /**
      * [description]
      */
-    map: {[key: string]:  string};
+    map?: {[key: string]:  string};
     /**
      * [description]
      */
-    physics: object;
+    physics?: object;
     /**
      * [description]
      */
-    loader: object;
+    loader?: object;
     /**
      * [description]
      */
-    plugins: false | any;
+    plugins?: false | any;
 };
 
 declare type SettingsObject = {
@@ -47863,31 +48066,31 @@ declare type SoundConfig = {
     /**
      * Boolean indicating whether the sound should be muted or not.
      */
-    mute: boolean;
+    mute?: boolean;
     /**
      * A value between 0 (silence) and 1 (full volume).
      */
-    volume: number;
+    volume?: number;
     /**
      * Defines the speed at which the sound should be played.
      */
-    rate: number;
+    rate?: number;
     /**
      * Represents detuning of sound in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
      */
-    detune: number;
+    detune?: number;
     /**
      * Position of playback for this sound, in seconds.
      */
-    seek: number;
+    seek?: number;
     /**
      * Whether or not the sound or current sound marker should loop.
      */
-    loop: boolean;
+    loop?: boolean;
     /**
      * Time, in seconds, that should elapse before the sound actually starts its playback.
      */
-    delay: number;
+    delay?: number;
 };
 
 /**
@@ -47901,15 +48104,15 @@ declare type SoundMarker = {
     /**
      * Sound position offset at witch playback should start.
      */
-    start: number;
+    start?: number;
     /**
      * Playback duration of this marker.
      */
-    duration: number;
+    duration?: number;
     /**
      * An optional config object containing default marker settings.
      */
-    config: SoundConfig;
+    config?: SoundConfig;
 };
 
 declare type EachListCallback<I> = (item: any, ...args: any[])=>void;
@@ -47932,39 +48135,39 @@ declare type TimerEventConfig = {
     /**
      * [description]
      */
-    delay: number;
+    delay?: number;
     /**
      * [description]
      */
-    repeat: number;
+    repeat?: number;
     /**
      * [description]
      */
-    loop: boolean;
+    loop?: boolean;
     /**
      * [description]
      */
-    callback: Function;
+    callback?: Function;
     /**
      * [description]
      */
-    callbackScope: any;
+    callbackScope?: any;
     /**
      * [description]
      */
-    args: any[];
+    args?: any[];
     /**
      * [description]
      */
-    timeScale: number;
+    timeScale?: number;
     /**
      * [description]
      */
-    startAt: number;
+    startAt?: number;
     /**
      * [description]
      */
-    paused: boolean;
+    paused?: boolean;
 };
 
 declare function hasGetStart(): void;
