@@ -758,7 +758,10 @@ export class Parser {
                 console.log(`Warning: ${doclet.name} rest parameter should be an array`);
                 type.name = type.name + '[]'; // Must be an array
             }
-        } else if(doclet.optional === true) obj.flags |= dom.ParameterFlags.Optional; // Rest implies Optional
+        } else if (doclet.optional === true) {
+            if (obj["kind"] === "parameter") obj.flags |= dom.ParameterFlags.Optional; // Rest implies Optional
+            else obj.flags |= dom.DeclarationFlags.Optional; // Rest implies Optional
+        }
         switch(doclet.access) {
             case "protected": obj.flags |= dom.DeclarationFlags.Protected; break;
             case "private": obj.flags |= dom.DeclarationFlags.Private; break;
