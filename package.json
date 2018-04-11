@@ -29,9 +29,9 @@
   "homepage": "https://github.com/photonstorm/phaser3-docs#readme",
   "devDependencies": {
     "better-sqlite3": "^4.0.3",
-    "directory-tree": "^2.0.0",
+    "directory-tree": "^2.1.0",
     "doctrine": "^2.0.0",
-    "dts-dom": "^2.1.0",
+    "dts-dom": "^3.0.0",
     "extract-comments": "^0.10.1",
     "foodoc": "0.0.8",
     "fs-extra": "^4.0.2",
