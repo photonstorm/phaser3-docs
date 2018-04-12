@@ -5,32 +5,32 @@ declare type GridAlignConfig = {
      * The width of the grid in items (not pixels). -1 means lay all items out horizontally, regardless of quantity.
      *                                  If both this value and height are set to -1 then this value overrides it and the `height` value is ignored.
      */
-    width?: integer;
+    width: integer;
     /**
      * The height of the grid in items (not pixels). -1 means lay all items out vertically, regardless of quantity.
      *                                   If both this value and `width` are set to -1 then `width` overrides it and this value is ignored.
      */
-    height?: integer;
+    height: integer;
     /**
      * The width of the cell, in pixels, in which the item is positioned.
      */
-    cellWidth?: boolean;
+    cellWidth: boolean;
     /**
      * The height of the cell, in pixels, in which the item is positioned.
      */
-    cellHeight?: integer;
+    cellHeight: integer;
     /**
      * The alignment position. One of the Phaser.Display.Align consts such as `TOP_LEFT` or `RIGHT_CENTER`.
      */
-    position?: integer;
+    position: integer;
     /**
      * Optionally place the top-left of the final grid at this coordinate.
      */
-    x?: number;
+    x: number;
     /**
      * Optionally place the top-left of the final grid at this coordinate.
      */
-    y?: number;
+    y: number;
 };
 
 declare type JSONAnimation = {
@@ -96,58 +96,58 @@ declare type AnimationFrameConfig = {
     /**
      * [description]
      */
-    duration?: number;
+    duration: number;
     /**
      * [description]
      */
-    visible?: boolean;
+    visible: boolean;
 };
 
 declare type AnimationConfig = {
     /**
      * [description]
      */
-    frames?: AnimationFrameConfig[];
+    frames: AnimationFrameConfig[];
     /**
      * [description]
      */
-    defaultTextureKey?: string;
+    defaultTextureKey: string;
     /**
      * The frame rate of playback in frames per second (default 24 if duration is null)
      */
-    frameRate?: integer;
+    frameRate: integer;
     /**
      * How long the animation should play for in milliseconds. If not given its derived from frameRate.
      */
-    duration?: integer;
+    duration: integer;
     /**
      * Skip frames if the time lags, or always advanced anyway?
      */
-    skipMissedFrames?: boolean;
+    skipMissedFrames: boolean;
     /**
      * Delay before starting playback. Value given in milliseconds.
      */
-    delay?: integer;
+    delay: integer;
     /**
      * Number of times to repeat the animation (-1 for infinity)
      */
-    repeat?: integer;
+    repeat: integer;
     /**
      * Delay before the animation repeats. Value given in milliseconds.
      */
-    repeatDelay?: integer;
+    repeatDelay: integer;
     /**
      * Should the animation yoyo? (reverse back down to the start) before repeating?
      */
-    yoyo?: boolean;
+    yoyo: boolean;
     /**
      * Should sprite.visible = true when the animation starts to play?
      */
-    showOnStart?: boolean;
+    showOnStart: boolean;
     /**
      * Should sprite.visible = false when the animation finishes?
      */
-    hideOnComplete?: boolean;
+    hideOnComplete: boolean;
 };
 
 declare type JSONAnimationFrame = {
@@ -187,257 +187,257 @@ declare type FPSConfig = {
     /**
      * [description]
      */
-    min?: integer;
+    min: integer;
     /**
      * [description]
      */
-    target?: integer;
+    target: integer;
     /**
      * [description]
      */
-    forceSetTimeOut?: boolean;
+    forceSetTimeOut: boolean;
     /**
      * [description]
      */
-    deltaHistory?: integer;
+    deltaHistory: integer;
     /**
      * [description]
      */
-    panicMax?: integer;
+    panicMax: integer;
 };
 
 declare type LoaderConfig = {
     /**
      * [description]
      */
-    baseURL?: string;
+    baseURL: string;
     /**
      * [description]
      */
-    path?: string;
+    path: string;
     /**
      * [description]
      */
-    enableParallel?: boolean;
+    enableParallel: boolean;
     /**
      * [description]
      */
-    maxParallelDownloads?: integer;
+    maxParallelDownloads: integer;
     /**
      * [description]
      */
-    crossOrigin?: string | undefined;
+    crossOrigin: string | undefined;
     /**
      * [description]
      */
-    responseType?: string;
+    responseType: string;
     /**
      * [description]
      */
-    async?: boolean;
+    async: boolean;
     /**
      * [description]
      */
-    user?: string;
+    user: string;
     /**
      * [description]
      */
-    password?: string;
+    password: string;
     /**
      * [description]
      */
-    timeout?: integer;
+    timeout: integer;
 };
 
 declare type GameConfig = {
     /**
      * [description]
      */
-    width?: integer | string;
+    width: integer | string;
     /**
      * [description]
      */
-    height?: integer | string;
+    height: integer | string;
     /**
      * [description]
      */
-    zoom?: number;
+    zoom: number;
     /**
      * [description]
      */
-    resolution?: number;
+    resolution: number;
     /**
      * [description]
      */
-    type?: number;
+    type: number;
     /**
      * [description]
      */
-    parent?: any;
+    parent: any;
     /**
      * [description]
      */
-    canvas?: HTMLCanvasElement;
+    canvas: HTMLCanvasElement;
     /**
      * [description]
      */
-    canvasStyle?: string;
+    canvasStyle: string;
     /**
      * [description]
      */
-    scene?: object;
+    scene: object;
     /**
      * [description]
      */
-    seed?: string[];
+    seed: string[];
     /**
      * [description]
      */
-    title?: string;
+    title: string;
     /**
      * [description]
      */
-    url?: string;
+    url: string;
     /**
      * [description]
      */
-    version?: string;
+    version: string;
     /**
      * [description]
      */
-    input?: boolean | object;
+    input: boolean | object;
     /**
      * [description]
      */
-    "input.keyboard"?: boolean;
+    "input.keyboard": boolean;
     /**
      * [description]
      */
-    "input.keyboard.target"?: any;
+    "input.keyboard.target": any;
     /**
      * [description]
      */
-    "input.mouse"?: boolean | object;
+    "input.mouse": boolean | object;
     /**
      * [description]
      */
-    "input.mouse.target"?: any;
+    "input.mouse.target": any;
     /**
      * [description]
      */
-    "input.touch"?: boolean;
+    "input.touch": boolean;
     /**
      * [description]
      */
-    "input.touch.target"?: any;
+    "input.touch.target": any;
     /**
      * [description]
      */
-    "input.touch.capture"?: boolean;
+    "input.touch.capture": boolean;
     /**
      * [description]
      */
-    "input.gamepad"?: boolean | object;
+    "input.gamepad": boolean | object;
     /**
      * [description]
      */
-    disableContextMenu?: boolean;
+    disableContextMenu: boolean;
     /**
      * [description]
      */
-    banner?: boolean | object;
+    banner: boolean | object;
     /**
      * [description]
      */
-    "banner.hidePhaser"?: boolean;
+    "banner.hidePhaser": boolean;
     /**
      * [description]
      */
-    "banner.text"?: string;
+    "banner.text": string;
     /**
      * [description]
      */
-    "banner.background"?: string[];
+    "banner.background": string[];
     /**
      * [description]
      */
-    fps?: FPSConfig;
+    fps: FPSConfig;
     /**
      * [description]
      */
-    antialias?: boolean;
+    antialias: boolean;
     /**
      * [description]
      */
-    pixelArt?: boolean;
+    pixelArt: boolean;
     /**
      * [description]
      */
-    autoResize?: boolean;
+    autoResize: boolean;
     /**
      * [description]
      */
-    roundPixels?: boolean;
+    roundPixels: boolean;
     /**
      * [description]
      */
-    transparent?: boolean;
+    transparent: boolean;
     /**
      * [description]
      */
-    clearBeforeRender?: boolean;
+    clearBeforeRender: boolean;
     /**
      * [description]
      */
-    premultipliedAlpha?: boolean;
+    premultipliedAlpha: boolean;
     /**
      * [description]
      */
-    preserveDrawingBuffer?: boolean;
+    preserveDrawingBuffer: boolean;
     /**
      * [description]
      */
-    failIfMajorPerformanceCaveat?: boolean;
+    failIfMajorPerformanceCaveat: boolean;
     /**
      * "high-performance", "low-power" or "default"
      */
-    powerPreference?: boolean;
+    powerPreference: boolean;
     /**
      * [description]
      */
-    backgroundColor?: string | number;
+    backgroundColor: string | number;
     /**
      * [description]
      */
-    callbacks?: object;
+    callbacks: object;
     /**
      * [description]
      */
-    "callbacks.preBoot"?: BootCallback;
+    "callbacks.preBoot": BootCallback;
     /**
      * [description]
      */
-    "callbacks.postBoot"?: BootCallback;
+    "callbacks.postBoot": BootCallback;
     /**
      * [description]
      */
-    loader?: LoaderConfig;
+    loader: LoaderConfig;
     /**
      * [description]
      */
-    images?: object;
+    images: object;
     /**
      * [description]
      */
-    "images.default"?: string;
+    "images.default": string;
     /**
      * [description]
      */
-    "images.missing"?: string;
+    "images.missing": string;
     /**
      * [description]
      */
-    physics?: object;
+    physics: object;
 };
 
 declare type GameStepCallback = ()=>void;
@@ -506,23 +506,23 @@ declare type JSONCamera = {
     /**
      * The bounds of camera
      */
-    bounds?: object;
+    bounds: object;
     /**
      * The horizontal position of bounds of camera
      */
-    "bounds.x"?: number;
+    "bounds.x": number;
     /**
      * The vertical position of bounds of camera
      */
-    "bounds.y"?: number;
+    "bounds.y": number;
     /**
      * The width of the bounds of camera
      */
-    "bounds.width"?: number;
+    "bounds.width": number;
     /**
      * The height of the bounds of camera
      */
-    "bounds.height"?: number;
+    "bounds.height": number;
 };
 
 declare type Camera2DCallback = (camera: Phaser.Cameras.Scene2D.Camera)=>void;
@@ -531,145 +531,145 @@ declare type InputJSONCameraObject = {
     /**
      * [description]
      */
-    name?: string;
+    name: string;
     /**
      * [description]
      */
-    x?: integer;
+    x: integer;
     /**
      * [description]
      */
-    y?: integer;
+    y: integer;
     /**
      * [description]
      */
-    width?: integer;
+    width: integer;
     /**
      * [description]
      */
-    height?: integer;
+    height: integer;
     /**
      * [description]
      */
-    zoom?: number;
+    zoom: number;
     /**
      * [description]
      */
-    rotation?: number;
+    rotation: number;
     /**
      * [description]
      */
-    roundPixels?: boolean;
+    roundPixels: boolean;
     /**
      * [description]
      */
-    scrollX?: number;
+    scrollX: number;
     /**
      * [description]
      */
-    scrollY?: number;
+    scrollY: number;
     /**
      * [description]
      */
-    backgroundColor?: false | string;
+    backgroundColor: false | string;
     /**
      * [description]
      */
-    bounds?: object;
+    bounds: object;
     /**
      * [description]
      */
-    "bounds.x"?: number;
+    "bounds.x": number;
     /**
      * [description]
      */
-    "bounds.y"?: number;
+    "bounds.y": number;
     /**
      * [description]
      */
-    "bounds.width"?: number;
+    "bounds.width": number;
     /**
      * [description]
      */
-    "bounds.height"?: number;
+    "bounds.height": number;
 };
 
 declare type FixedKeyControlConfig = {
     /**
      * The Camera that this Control will update.
      */
-    camera?: Phaser.Cameras.Scene2D.Camera;
+    camera: Phaser.Cameras.Scene2D.Camera;
     /**
      * The Key to be pressed that will move the Camera left.
      */
-    left?: Phaser.Input.Keyboard.Key;
+    left: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera right.
      */
-    right?: Phaser.Input.Keyboard.Key;
+    right: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera up.
      */
-    up?: Phaser.Input.Keyboard.Key;
+    up: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera in.
      */
-    zoomIn?: Phaser.Input.Keyboard.Key;
+    zoomIn: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera out.
      */
-    zoomOut?: Phaser.Input.Keyboard.Key;
+    zoomOut: Phaser.Input.Keyboard.Key;
     /**
      * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
      */
-    zoomSpeed?: number;
+    zoomSpeed: number;
     /**
      * The horizontal and vertical speed the camera will move.
      */
-    speed?: number | Object;
+    speed: number | Object;
 };
 
 declare type SmoothedKeyControlConfig = {
     /**
      * The Camera that this Control will update.
      */
-    camera?: Phaser.Cameras.Scene2D.Camera;
+    camera: Phaser.Cameras.Scene2D.Camera;
     /**
      * The Key to be pressed that will move the Camera left.
      */
-    left?: Phaser.Input.Keyboard.Key;
+    left: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera right.
      */
-    right?: Phaser.Input.Keyboard.Key;
+    right: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will move the Camera up.
      */
-    up?: Phaser.Input.Keyboard.Key;
+    up: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera in.
      */
-    zoomIn?: Phaser.Input.Keyboard.Key;
+    zoomIn: Phaser.Input.Keyboard.Key;
     /**
      * The Key to be pressed that will zoom the Camera out.
      */
-    zoomOut?: Phaser.Input.Keyboard.Key;
+    zoomOut: Phaser.Input.Keyboard.Key;
     /**
      * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
      */
-    zoomSpeed?: number;
+    zoomSpeed: number;
     /**
      * The horizontal and vertical acceleration the camera will move.
      */
-    acceleration?: number | Object;
+    acceleration: number | Object;
     /**
      * The horizontal and vertical drag applied to the camera when it is moving.
      */
-    drag?: number | Object;
+    drag: number | Object;
     /**
      * The maximum horizontal and vertical speed the camera will move.
      */
-    maxSpeed?: number | Object;
+    maxSpeed: number | Object;
 };
 
 declare type RayDef = {
@@ -689,39 +689,39 @@ declare type GenerateTextureConfig = {
     /**
      * [description]
      */
-    data?: any[];
+    data: any[];
     /**
      * [description]
      */
-    canvas?: HTMLCanvasElement;
+    canvas: HTMLCanvasElement;
     /**
      * [description]
      */
-    palette?: Palette;
+    palette: Palette;
     /**
      * [description]
      */
-    pixelWidth?: number;
+    pixelWidth: number;
     /**
      * [description]
      */
-    pixelHeight?: number;
+    pixelHeight: number;
     /**
      * [description]
      */
-    resizeCanvas?: boolean;
+    resizeCanvas: boolean;
     /**
      * [description]
      */
-    clearCanvas?: boolean;
+    clearCanvas: boolean;
     /**
      * [description]
      */
-    preRender?: GenerateTextureRendererCallback;
+    preRender: GenerateTextureRendererCallback;
     /**
      * [description]
      */
-    postRender?: GenerateTextureRendererCallback;
+    postRender: GenerateTextureRendererCallback;
 };
 
 declare type Palette = {
@@ -834,35 +834,35 @@ declare type EllipseCurveConfig = {
     /**
      * [description]
      */
-    x?: number;
+    x: number;
     /**
      * [description]
      */
-    y?: number;
+    y: number;
     /**
      * [description]
      */
-    xRadius?: number;
+    xRadius: number;
     /**
      * [description]
      */
-    yRadius?: number;
+    yRadius: number;
     /**
      * [description]
      */
-    startAngle?: integer;
+    startAngle: integer;
     /**
      * [description]
      */
-    endAngle?: integer;
+    endAngle: integer;
     /**
      * [description]
      */
-    clockwise?: boolean;
+    clockwise: boolean;
     /**
      * [description]
      */
-    rotation?: integer;
+    rotation: integer;
 };
 
 declare type JSONCurve = {
@@ -910,19 +910,19 @@ declare type InputColorObject = {
     /**
      * The red color value in the range 0 to 255.
      */
-    r?: number;
+    r: number;
     /**
      * The green color value in the range 0 to 255.
      */
-    g?: number;
+    g: number;
     /**
      * The blue color value in the range 0 to 255.
      */
-    b?: number;
+    b: number;
     /**
      * The alpha color value in the range 0 to 255.
      */
-    a?: number;
+    a: number;
 };
 
 declare type ColorObject = ()=>void;
@@ -950,19 +950,19 @@ declare type BitmapTextConfig = {
     /**
      * [description]
      */
-    font?: string;
+    font: string;
     /**
      * [description]
      */
-    text?: string;
+    text: string;
     /**
      * [description]
      */
-    size?: number | false;
+    size: number | false;
     /**
      * [description]
      */
-    align?: string;
+    align: string;
 };
 
 declare namespace ParseRetroFont {
@@ -1036,63 +1036,63 @@ declare type GameObjectConfig = {
     /**
      * [description]
      */
-    x?: number;
+    x: number;
     /**
      * [description]
      */
-    y?: number;
+    y: number;
     /**
      * [description]
      */
-    depth?: number;
+    depth: number;
     /**
      * [description]
      */
-    flipX?: boolean;
+    flipX: boolean;
     /**
      * [description]
      */
-    flipY?: boolean;
+    flipY: boolean;
     /**
      * [description]
      */
-    scale?: number | object;
+    scale: number | object;
     /**
      * [description]
      */
-    scrollFactor?: number | object;
+    scrollFactor: number | object;
     /**
      * [description]
      */
-    rotation?: number;
+    rotation: number;
     /**
      * [description]
      */
-    angle?: number;
+    angle: number;
     /**
      * [description]
      */
-    alpha?: number;
+    alpha: number;
     /**
      * [description]
      */
-    origin?: number | object;
+    origin: number | object;
     /**
      * [description]
      */
-    scaleMode?: number;
+    scaleMode: number;
     /**
      * [description]
      */
-    blendMode?: number;
+    blendMode: number;
     /**
      * [description]
      */
-    visible?: boolean;
+    visible: boolean;
     /**
      * [description]
      */
-    add?: boolean;
+    add: boolean;
 };
 
 declare type JSONGameObject = {
@@ -1188,162 +1188,162 @@ declare type GroupConfig = {
     /**
      * [description]
      */
-    classType?: object;
+    classType: object;
     /**
      * [description]
      */
-    active?: boolean;
+    active: boolean;
     /**
      * [description]
      */
-    maxSize?: number;
+    maxSize: number;
     /**
      * [description]
      */
-    defaultKey?: string;
+    defaultKey: string;
     /**
      * [description]
      */
-    defaultFrame?: string | integer;
+    defaultFrame: string | integer;
     /**
      * [description]
      */
-    runChildUpdate?: boolean;
+    runChildUpdate: boolean;
     /**
      * [description]
      */
-    createCallback?: GroupCallback;
+    createCallback: GroupCallback;
     /**
      * [description]
      */
-    removeCallback?: GroupCallback;
+    removeCallback: GroupCallback;
     /**
      * [description]
      */
-    createMultipleCallback?: GroupMultipleCreateCallback;
+    createMultipleCallback: GroupMultipleCreateCallback;
 };
 
 declare type GroupCreateConfig = {
     /**
      * [description]
      */
-    classType?: object;
+    classType: object;
     /**
      * [description]
      */
-    key?: string;
+    key: string;
     /**
      * [description]
      */
-    frame?: string | integer;
+    frame: string | integer;
     /**
      * [description]
      */
-    visible?: boolean;
+    visible: boolean;
     /**
      * [description]
      */
-    active?: boolean;
+    active: boolean;
     /**
      * [description]
      */
-    repeat?: number;
+    repeat: number;
     /**
      * [description]
      */
-    randomKey?: boolean;
+    randomKey: boolean;
     /**
      * [description]
      */
-    randomFrame?: boolean;
+    randomFrame: boolean;
     /**
      * [description]
      */
-    yoyo?: boolean;
+    yoyo: boolean;
     /**
      * [description]
      */
-    frameQuantity?: number;
+    frameQuantity: number;
     /**
      * [description]
      */
-    max?: number;
+    max: number;
     /**
      * [description]
      */
-    setXY?: object;
+    setXY: object;
     /**
      * [description]
      */
-    "setXY.x"?: number;
+    "setXY.x": number;
     /**
      * [description]
      */
-    "setXY.y"?: number;
+    "setXY.y": number;
     /**
      * [description]
      */
-    "setXY.stepX"?: number;
+    "setXY.stepX": number;
     /**
      * [description]
      */
-    "setXY.stepY"?: number;
+    "setXY.stepY": number;
     /**
      * [description]
      */
-    setRotation?: object;
+    setRotation: object;
     /**
      * [description]
      */
-    "setRotation.value"?: number;
+    "setRotation.value": number;
     /**
      * [description]
      */
-    "setRotation.step"?: number;
+    "setRotation.step": number;
     /**
      * [description]
      */
-    setScale?: object;
+    setScale: object;
     /**
      * [description]
      */
-    "setScale.x"?: number;
+    "setScale.x": number;
     /**
      * [description]
      */
-    "setScale.y"?: number;
+    "setScale.y": number;
     /**
      * [description]
      */
-    "setScale.stepX"?: number;
+    "setScale.stepX": number;
     /**
      * [description]
      */
-    "setScale.stepY"?: number;
+    "setScale.stepY": number;
     /**
      * [description]
      */
-    setAlpha?: object;
+    setAlpha: object;
     /**
      * [description]
      */
-    "setAlpha.value"?: number;
+    "setAlpha.value": number;
     /**
      * [description]
      */
-    "setAlpha.step"?: number;
+    "setAlpha.step": number;
     /**
      * [description]
      */
-    hitArea?: any;
+    hitArea: any;
     /**
      * [description]
      */
-    hitAreaCallback?: HitAreaCallback;
+    hitAreaCallback: HitAreaCallback;
     /**
      * [description]
      */
-    gridAlign?: false | GridAlignConfig;
+    gridAlign: false | GridAlignConfig;
 };
 
 declare type LightForEach = (light: Phaser.GameObjects.Light)=>void;
@@ -1362,23 +1362,23 @@ declare type GravityWellConfig = {
     /**
      * The x coordinate of the Gravity Well, in world space.
      */
-    x?: number;
+    x: number;
     /**
      * The y coordinate of the Gravity Well, in world space.
      */
-    y?: number;
+    y: number;
     /**
      * The power of the Gravity Well.
      */
-    power?: number;
+    power: number;
     /**
      * [description]
      */
-    epsilon?: number;
+    epsilon: number;
     /**
      * The gravitational force of this Gravity Well.
      */
-    gravity?: number;
+    gravity: number;
 };
 
 declare type ParticleEmitterCallback = (particle: Phaser.GameObjects.Particles.Particle, emitter: Phaser.GameObjects.Particles.ParticleEmitter)=>void;
@@ -1401,38 +1401,38 @@ declare type PathConfig = {
     /**
      * [description]
      */
-    positionOnPath?: boolean;
+    positionOnPath: boolean;
     /**
      * [description]
      */
-    rotateToPath?: boolean;
+    rotateToPath: boolean;
     /**
      * [description]
      */
-    rotationOffset?: number;
+    rotationOffset: number;
     /**
      * [description]
      */
-    verticalAdjust?: boolean;
+    verticalAdjust: boolean;
 };
 
 declare type RenderTextureConfig = {
     /**
      * [description]
      */
-    x?: number;
+    x: number;
     /**
      * [description]
      */
-    y?: number;
+    y: number;
     /**
      * [description]
      */
-    width?: number;
+    width: number;
     /**
      * [description]
      */
-    height?: number;
+    height: number;
 };
 
 /**
@@ -1444,27 +1444,27 @@ declare type TileSprite = {
     /**
      * [description]
      */
-    x?: number;
+    x: number;
     /**
      * [description]
      */
-    y?: number;
+    y: number;
     /**
      * [description]
      */
-    width?: number;
+    width: number;
     /**
      * [description]
      */
-    height?: number;
+    height: number;
     /**
      * [description]
      */
-    key?: string;
+    key: string;
     /**
      * [description]
      */
-    frame?: string;
+    frame: string;
 };
 
 declare type CenterFunction = (triangle: Phaser.Geom.Triangle)=>void;
@@ -1490,19 +1490,19 @@ declare type KeyComboConfig = {
     /**
      * [description]
      */
-    resetOnWrongKey?: boolean;
+    resetOnWrongKey: boolean;
     /**
      * [description]
      */
-    maxKeyDelay?: number;
+    maxKeyDelay: number;
     /**
      * [description]
      */
-    resetOnMatch?: boolean;
+    resetOnMatch: boolean;
     /**
      * [description]
      */
-    deleteOnMatch?: boolean;
+    deleteOnMatch: boolean;
 };
 
 declare type KeyboardHandler = ()=>void;
@@ -1511,27 +1511,27 @@ declare type CursorKeys = {
     /**
      * [description]
      */
-    up?: Phaser.Input.Keyboard.Key;
+    up: Phaser.Input.Keyboard.Key;
     /**
      * [description]
      */
-    down?: Phaser.Input.Keyboard.Key;
+    down: Phaser.Input.Keyboard.Key;
     /**
      * [description]
      */
-    left?: Phaser.Input.Keyboard.Key;
+    left: Phaser.Input.Keyboard.Key;
     /**
      * [description]
      */
-    right?: Phaser.Input.Keyboard.Key;
+    right: Phaser.Input.Keyboard.Key;
     /**
      * [description]
      */
-    space?: Phaser.Input.Keyboard.Key;
+    space: Phaser.Input.Keyboard.Key;
     /**
      * [description]
      */
-    shift?: Phaser.Input.Keyboard.Key;
+    shift: Phaser.Input.Keyboard.Key;
 };
 
 declare type MouseHandler = ()=>void;
@@ -1544,35 +1544,35 @@ declare type FileConfig = {
     /**
      * The file type string (image, json, etc) for sorting within the Loader.
      */
-    type?: string | false;
+    type: string | false;
     /**
      * Unique cache key (unique within its file type)
      */
-    key?: string | false;
+    key: string | false;
     /**
      * The URL of the file, not including baseURL.
      */
-    url?: string;
+    url: string;
     /**
      * [description]
      */
-    path?: string;
+    path: string;
     /**
      * [description]
      */
-    extension?: string;
+    extension: string;
     /**
      * [description]
      */
-    responseType?: XMLHttpRequestResponseType;
+    responseType: XMLHttpRequestResponseType;
     /**
      * [description]
      */
-    xhrSettings?: XHRSettingsObject | false;
+    xhrSettings: XHRSettingsObject | false;
     /**
      * A config object that can be used by file types to store transitional data.
      */
-    config?: object;
+    config: object;
 };
 
 declare type XHRConfig = {
@@ -1587,11 +1587,11 @@ declare type XHRConfig = {
     /**
      * [description]
      */
-    data?: string;
+    data: string;
     /**
      * [description]
      */
-    xhr?: XHRConfig;
+    xhr: XHRConfig;
 };
 
 declare type FileTypeConfig = {
@@ -1606,31 +1606,31 @@ declare type FileTypeConfig = {
     /**
      * [description]
      */
-    data?: string;
+    data: string;
     /**
      * [description]
      */
-    url?: string;
+    url: string;
     /**
      * [description]
      */
-    path?: string;
+    path: string;
     /**
      * [description]
      */
-    extension?: string;
+    extension: string;
     /**
      * [description]
      */
-    responseType?: string;
+    responseType: string;
     /**
      * [description]
      */
-    config?: object;
+    config: object;
     /**
      * [description]
      */
-    xhr?: XHRConfig;
+    xhr: XHRConfig;
 };
 
 declare type LinkFileObject = {
@@ -1660,63 +1660,63 @@ declare type LoaderFileObject = {
     /**
      * [description]
      */
-    url?: string;
+    url: string;
     /**
      * [description]
      */
-    urls?: string[];
+    urls: string[];
     /**
      * [description]
      */
-    textureURL?: string;
+    textureURL: string;
     /**
      * [description]
      */
-    atlasURL?: string;
+    atlasURL: string;
     /**
      * [description]
      */
-    xmlURL?: string;
+    xmlURL: string;
     /**
      * [description]
      */
-    textureURLs?: string[];
+    textureURLs: string[];
     /**
      * [description]
      */
-    atlasURLs?: string[];
+    atlasURLs: string[];
     /**
      * [description]
      */
-    config?: object;
+    config: object;
     /**
      * [description]
      */
-    json?: object;
+    json: object;
     /**
      * [description]
      */
-    xhrSettings?: XHRSettingsObject;
+    xhrSettings: XHRSettingsObject;
     /**
      * [description]
      */
-    textureXhrSettings?: XHRSettingsObject;
+    textureXhrSettings: XHRSettingsObject;
     /**
      * [description]
      */
-    atlasXhrSettings?: XHRSettingsObject;
+    atlasXhrSettings: XHRSettingsObject;
     /**
      * [description]
      */
-    xmlXhrSettings?: XHRSettingsObject;
+    xmlXhrSettings: XHRSettingsObject;
     /**
      * [description]
      */
-    audioXhrSettings?: XHRSettingsObject;
+    audioXhrSettings: XHRSettingsObject;
     /**
      * [description]
      */
-    jsonXhrSettings?: XHRSettingsObject;
+    jsonXhrSettings: XHRSettingsObject;
 };
 
 declare type XHRSettingsObject = {
@@ -5495,11 +5495,7 @@ declare namespace Phaser {
         /**
          * The Data Component features a means to store pieces of data specific to a Game Object, System or Plugin.
          * 
-         * 
-         * 
          * You can then search, query it, and retrieve the data. The parent must either extend EventEmitter,
-         * 
-         * 
          * 
          * or have a property called `events` that is an instance of it.
          */
@@ -6561,11 +6557,8 @@ declare namespace Phaser {
 
             /**
              * Converts an HSV (hue, saturation and value) color value to RGB.
-             * 
              * Conversion formula from http://en.wikipedia.org/wiki/HSL_color_space.
-             * 
              * Assumes HSV values are contained in the set [0, 1].
-             * 
              * Based on code by Michael Jackson (https://github.com/mjijackson)
              * @param h The hue, in the range 0 - 1.
              * @param s The saturation, in the range 0 - 1.
@@ -6602,7 +6595,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Color object where the r, g, and b values have been set to random values
-             * 
              * based on the given min max values.
              * @param min The minimum value to set the random range from (between 0 and 255) Default 0.
              * @param max The maximum value to set the random range from (between 0 and 255) Default 255.
@@ -6611,8 +6603,6 @@ declare namespace Phaser {
 
             /**
              * Converts a CSS 'web' string into a Phaser Color object.
-             * 
-             * 
              * 
              * The web string can be in the format `'rgb(r,g,b)'` or `'rgba(r,g,b,a)'` where r/g/b are in the range [0..255] and a is in the range [0..1].
              * @param rgb The CSS format color string, using the `rgb` or `rgba` format.
@@ -9197,29 +9187,38 @@ declare namespace Phaser {
             interface GetBounds {
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
@@ -10153,6 +10152,76 @@ declare namespace Phaser {
 
         /**
          * A Container Game Object.
+         * 
+         * 
+         * 
+         * WARNING: EXPERIMENTAL. There are several known cases where Containers will not behave correctly,
+         * 
+         * especially if you use a multi-camera or transformed camera set-up. We are still working on them,
+         * 
+         * but wanted to release as part of 3.4 under a beta feature flag, because in the main they work
+         * 
+         * are and worth getting used to.
+         * 
+         * 
+         * 
+         * A Container, as the name implies, can 'contain' other types of Game Object.
+         * 
+         * When a Game Object is added to a Container, the Container becomes responsible for the rendering of it.
+         * 
+         * By default it will be removed from the Display List and instead added to the Containers own internal list.
+         * 
+         * 
+         * 
+         * The position of the Game Object automatically becomes relative to the position of the Container.
+         * 
+         * 
+         * 
+         * When the Container is rendered, all of its children are rendered as well, in the order in which they exist
+         * 
+         * within the Container. Container children can be repositioned using methods such as `MoveUp`, `MoveDown` and `SendToBack`.
+         * 
+         * 
+         * 
+         * If you modify a transform property of the Container, such as `Container.x` or `Container.rotation` then it will
+         * 
+         * automatically influence all children as well.
+         * 
+         * 
+         * 
+         * Containers can include other Containers for deeply nested transforms.
+         * 
+         * 
+         * 
+         * Containers can have masks set on them and can be used as a mask too. However, Container children cannot be masked.
+         * 
+         * The masks do not 'stack up'. Only a Container on the root of the display list will use its mask.
+         * 
+         * 
+         * 
+         * Containers can be enabled for input. Because they do not have a texture you need to provide a shape for them
+         * 
+         * to use as their hit area. Container children can also be enabled for input, independent of the Container.
+         * 
+         * 
+         * 
+         * Containers can be given a physics body for either Arcade Physics, Impact Physics or Matter Physics. However,
+         * 
+         * if Container children are enabled for physics you may get unexpected results,such as offset bodies,
+         * 
+         * if the Container itself, or any of its ancestors, is positioned anywhere other than at 0x0.
+         * 
+         * 
+         * 
+         * It's important to understand the impact of using Containers. They add additional processing overhead into
+         * 
+         * every one of their children. The deeper you nest them, the more the cost escalates. This is especially true
+         * 
+         * for input events. You also loose the ability to set the display depth of Container children in the same
+         * 
+         * flexible manner as those not within them. In short, don't use them for the sake of it. You pay a small cost
+         * 
+         * every time you create one, try to structure your game around avoiding that where possible.
          */
         class Container extends GameObject implements Components.Alpha, Components.BlendMode, Components.ComputedSize, Components.Depth, Components.ScrollFactor, Components.Transform, Components.Visible {
             /**
@@ -10210,6 +10279,18 @@ declare namespace Phaser {
              * Internal value to allow Containers to be used for input and physics.
              * Do not change this value. It has no effect other than to break things.
              */
+            originX: number;
+
+            /**
+             * Internal value to allow Containers to be used for input and physics.
+             * Do not change this value. It has no effect other than to break things.
+             */
+            originY: number;
+
+            /**
+             * Internal value to allow Containers to be used for input and physics.
+             * Do not change this value. It has no effect other than to break things.
+             */
             displayOriginX: number;
 
             /**
@@ -10254,6 +10335,12 @@ declare namespace Phaser {
              * @param output A destination object to store the transformed point in. If none given a Vector2 will be created and returned.
              */
             pointToContainer(source: object | Phaser.Geom.Point | Phaser.Math.Vector2, output?: object | Phaser.Geom.Point | Phaser.Math.Vector2): object | Phaser.Geom.Point | Phaser.Math.Vector2;
+
+            /**
+             * Returns the world transform matrix as used for Bounds checks.
+             * The returned matrix is a temporal and shouldn't be stored.
+             */
+            getBoundsTransformMatrix(): Phaser.GameObjects.Components.TransformMatrix;
 
             /**
              * Adds the given Game Object, or array of Game Objects, to this Container.
@@ -11086,6 +11173,16 @@ declare namespace Phaser {
             willRender(): boolean;
 
             /**
+             * Returns an array containing the display list index of either this Game Object, or if it has one,
+             * its parent Container. It then iterates up through all of the parent containers until it hits the
+             * root of the display list (which is index 0 in the returned array).
+             * 
+             * Used internally by the InputPlugin but also useful if you wish to find out the display depth of
+             * this Game Object and all of its ancestors.
+             */
+            getIndexList(): integer[];
+
+            /**
              * Destroys this Game Object removing it from the Display List and Update List and
              * severing all ties to parent resources.
              * 
@@ -11386,7 +11483,7 @@ declare namespace Phaser {
              * @param y The vertical position of this Game Object in the world.
              * @param children An optional array of Game Objects to add to this Container.
              */
-            container(x: number, y: number, children?: Phaser.GameObjects.GameObject[]): Phaser.GameObjects.Container;
+            container(x: number, y: number, children?: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]): Phaser.GameObjects.Container;
 
             /**
              * The Scene to which this Game Object Factory belongs.
@@ -12772,33 +12869,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -13648,33 +13754,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -15701,33 +15816,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -16459,33 +16583,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -17102,33 +17235,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -17741,33 +17883,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -18755,33 +18906,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -19365,33 +19525,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -19993,33 +20162,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -23040,24 +23218,11 @@ declare namespace Phaser {
 
             /**
              * Return the child lowest down the display list (with the smallest index)
-             * @param childA [description]
-             * @param childB [description]
+             * Will iterate through all parent containers, if present.
+             * @param childA The first Game Object to compare.
+             * @param childB The second Game Object to compare.
              */
             sortHandlerGO(childA: Phaser.GameObjects.GameObject, childB: Phaser.GameObjects.GameObject): integer;
-
-            /**
-             * Return the child lowest down the display list (with the smallest index)
-             * @param childA [description]
-             * @param childB [description]
-             */
-            sortHandlerIO(childA: Phaser.Input.InteractiveObject, childB: Phaser.Input.InteractiveObject): integer;
-
-            /**
-             * Given an array of Interactive Objects, sort the array and return it,
-             * so that the objects are in index order with the lowest at the bottom.
-             * @param interactiveObjects [description]
-             */
-            sortInteractiveObjects(interactiveObjects: Phaser.Input.InteractiveObject[]): Phaser.Input.InteractiveObject[];
 
             /**
              * [description]
@@ -27112,33 +27277,42 @@ declare namespace Phaser {
 
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -28167,33 +28341,42 @@ declare namespace Phaser {
 
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -32082,33 +32265,42 @@ declare namespace Phaser {
 
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -33061,33 +33253,42 @@ declare namespace Phaser {
 
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -34869,33 +35070,42 @@ declare namespace Phaser {
 
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -35850,33 +36060,42 @@ declare namespace Phaser {
 
                 /**
                  * Gets the center coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
                  */
                 getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
                 /**
                  * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+                 * The returned point is calculated in local space and does not factor in any parent containers
                  * @param output An object to store the values in. If not provided a new Vector2 will be created.
+                 * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
                  */
-                getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
                 /**
                  * Gets the bounds of this Game Object, regardless of origin.
@@ -43150,33 +43369,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -44647,33 +44875,42 @@ declare namespace Phaser {
 
             /**
              * Gets the center coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
              */
             getCenter<O extends Phaser.Math.Vector2>(output?: O): O;
 
             /**
              * Gets the top-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the top-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getTopRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
+             * The returned point is calculated in local space and does not factor in any parent containers
              * @param output An object to store the values in. If not provided a new Vector2 will be created.
+             * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
              */
-            getBottomRight<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
             /**
              * Gets the bounds of this Game Object, regardless of origin.
@@ -44961,7 +45198,7 @@ declare namespace Phaser {
         /**
          * A Tile is a representation of a single tile within the Tilemap. This is a lightweight data
          * 
-         * representation, so it's position information is stored without factoring in scroll, layer
+         * representation, so its position information is stored without factoring in scroll, layer
          * 
          * scale or layer position.
          */
@@ -47096,43 +47333,43 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            delay?: number;
+            delay: number;
             /**
              * [description]
              */
-            duration?: number;
+            duration: number;
             /**
              * [description]
              */
-            ease?: string;
+            ease: string;
             /**
              * [description]
              */
-            easeParams?: any[];
+            easeParams: any[];
             /**
              * [description]
              */
-            hold?: number;
+            hold: number;
             /**
              * [description]
              */
-            repeat?: number;
+            repeat: number;
             /**
              * [description]
              */
-            repeatDelay?: number;
+            repeatDelay: number;
             /**
              * [description]
              */
-            yoyo?: boolean;
+            yoyo: boolean;
             /**
              * [description]
              */
-            flipX?: boolean;
+            flipX: boolean;
             /**
              * [description]
              */
-            flipY?: boolean;
+            flipY: boolean;
         };
 
         /**
@@ -47441,79 +47678,79 @@ declare namespace Phaser {
             /**
              * Duration of the tween in ms/frames, excludes time for yoyo or repeats.
              */
-            duration?: number;
+            duration: number;
             /**
              * The total calculated duration of this TweenData (based on duration, repeat, delay and yoyo)
              */
-            totalDuration?: number;
+            totalDuration: number;
             /**
              * Time in ms/frames before tween will start.
              */
-            delay?: number;
+            delay: number;
             /**
              * Cause the tween to return back to its start value after hold has expired.
              */
-            yoyo?: boolean;
+            yoyo: boolean;
             /**
              * Time in ms/frames the tween will pause before running the yoyo or starting a repeat.
              */
-            hold?: number;
+            hold: number;
             /**
              * Number of times to repeat the tween. The tween will always run once regardless, so a repeat value of '1' will play the tween twice.
              */
-            repeat?: integer;
+            repeat: integer;
             /**
              * Time in ms/frames before the repeat will start.
              */
-            repeatDelay?: number;
+            repeatDelay: number;
             /**
              * Automatically call toggleFlipX when the TweenData yoyos or repeats
              */
-            flipX?: boolean;
+            flipX: boolean;
             /**
              * Automatically call toggleFlipY when the TweenData yoyos or repeats
              */
-            flipY?: boolean;
+            flipY: boolean;
             /**
              * Between 0 and 1 showing completion of this TweenData.
              */
-            progress?: number;
+            progress: number;
             /**
              * Delta counter
              */
-            elapsed?: number;
+            elapsed: number;
             /**
              * How many repeats are left to run?
              */
-            repeatCounter?: integer;
+            repeatCounter: integer;
             /**
              * Ease value data.
              */
-            start?: number;
+            start: number;
             /**
              * Ease value data.
              */
-            current?: number;
+            current: number;
             /**
              * Ease value data.
              */
-            end?: number;
+            end: number;
             /**
              * Time duration 1.
              */
-            t1?: number;
+            t1: number;
             /**
              * Time duration 2.
              */
-            t2?: number;
+            t2: number;
             /**
              * LoadValue generation functions.
              */
-            gen?: TweenDataGenConfig;
+            gen: TweenDataGenConfig;
             /**
              * TWEEN_CONST.CREATED
              */
-            state?: integer;
+            state: integer;
         };
 
         /**
@@ -47927,17 +48164,11 @@ declare namespace Phaser {
 
             /**
              * Create an array of numbers (positive and/or negative) progressing from `start`
-             * 
              * up to but not including `end` by advancing by `step`.
-             * 
-             * 
              * 
              * If `start` is less than `end` a zero-length range is created unless a negative `step` is specified.
              * 
-             * 
-             * 
              * Certain values for `start` and `end` (eg. NaN/undefined/null) are currently coerced to 0;
-             * 
              * for forward compatibility make sure to pass in actual numbers.
              * @param start The start of the range. Default 0.
              * @param end The end of the range. Default null.
@@ -48174,7 +48405,6 @@ declare namespace Phaser {
 
             /**
              * This is a slightly modified version of jQuery.isPlainObject.
-             * 
              * A plain object is an object whose internal class property is [object Object].
              * @param obj The object to inspect.
              */
@@ -48182,7 +48412,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Object using all values from obj1 and obj2.
-             * 
              * If a value exists in both obj1 and obj2, the value in obj1 is used.
              * @param obj1 [description]
              * @param obj2 [description]
@@ -48191,8 +48420,6 @@ declare namespace Phaser {
 
             /**
              * Creates a new Object using all values from obj1.
-             * 
-             * 
              * 
              * Then scans obj2. If a property is found in obj2 that *also* exists in obj1, the value from obj2 is used, otherwise the property is skipped.
              * @param obj1 [description]
@@ -48215,38 +48442,21 @@ declare namespace Phaser {
 
             /**
              * Takes the given string and pads it out, to the length required, using the character
-             * 
              * specified. For example if you need a string to be 6 characters long, you can call:
-             * 
-             * 
              * 
              * `pad('bob', 6, '-', 2)`
              * 
-             * 
-             * 
              * This would return: `bob---` as it has padded it out to 6 characters, using the `-` on the right.
-             * 
-             * 
              * 
              * You can also use it to pad numbers (they are always returned as strings):
              * 
-             * 
-             * 
              * `pad(512, 6, '0', 1)`
-             * 
-             * 
              * 
              * Would return: `000512` with the string padded to the left.
              * 
-             * 
-             * 
              * If you don't specify a direction it'll pad to both sides:
              * 
-             * 
-             * 
              * `pad('c64', 7, '*')`
-             * 
-             * 
              * 
              * Would return: `**c64**`
              * @param str The target string. `toString()` will be called on the string, which means you can also pass in common data types like numbers.
@@ -48633,75 +48843,75 @@ declare type PhysicsGroupConfig = {
     /**
      * [description]
      */
-    collideWorldBounds?: any;
+    collideWorldBounds: any;
     /**
      * [description]
      */
-    accelerationX?: number;
+    accelerationX: number;
     /**
      * [description]
      */
-    accelerationY?: number;
+    accelerationY: number;
     /**
      * [description]
      */
-    bounceX?: number;
+    bounceX: number;
     /**
      * [description]
      */
-    bounceY?: number;
+    bounceY: number;
     /**
      * [description]
      */
-    dragX?: number;
+    dragX: number;
     /**
      * [description]
      */
-    dragY?: number;
+    dragY: number;
     /**
      * [description]
      */
-    gravityX?: number;
+    gravityX: number;
     /**
      * [description]
      */
-    gravityY?: number;
+    gravityY: number;
     /**
      * [description]
      */
-    frictionX?: number;
+    frictionX: number;
     /**
      * [description]
      */
-    frictionY?: number;
+    frictionY: number;
     /**
      * [description]
      */
-    velocityX?: number;
+    velocityX: number;
     /**
      * [description]
      */
-    velocityY?: number;
+    velocityY: number;
     /**
      * [description]
      */
-    angularVelocity?: number;
+    angularVelocity: number;
     /**
      * [description]
      */
-    angularAcceleration?: number;
+    angularAcceleration: number;
     /**
      * [description]
      */
-    angularDrag?: number;
+    angularDrag: number;
     /**
      * [description]
      */
-    mass?: number;
+    mass: number;
     /**
      * [description]
      */
-    immovable?: boolean;
+    immovable: boolean;
 };
 
 declare type PhysicsGroupDefaults = {
@@ -48783,99 +48993,99 @@ declare type ArcadeWorldConfig = {
     /**
      * [description]
      */
-    gravity?: object;
+    gravity: object;
     /**
      * [description]
      */
-    "gravity.x"?: number;
+    "gravity.x": number;
     /**
      * [description]
      */
-    "gravity.y"?: number;
+    "gravity.y": number;
     /**
      * [description]
      */
-    x?: number;
+    x: number;
     /**
      * [description]
      */
-    y?: number;
+    y: number;
     /**
      * [description]
      */
-    width?: number;
+    width: number;
     /**
      * [description]
      */
-    height?: number;
+    height: number;
     /**
      * [description]
      */
-    checkCollision?: object;
+    checkCollision: object;
     /**
      * [description]
      */
-    "checkCollision.up"?: boolean;
+    "checkCollision.up": boolean;
     /**
      * [description]
      */
-    "checkCollision.down"?: boolean;
+    "checkCollision.down": boolean;
     /**
      * [description]
      */
-    "checkCollision.left"?: boolean;
+    "checkCollision.left": boolean;
     /**
      * [description]
      */
-    "checkCollision.right"?: boolean;
+    "checkCollision.right": boolean;
     /**
      * [description]
      */
-    overlapBias?: number;
+    overlapBias: number;
     /**
      * [description]
      */
-    tileBias?: number;
+    tileBias: number;
     /**
      * [description]
      */
-    forceX?: boolean;
+    forceX: boolean;
     /**
      * [description]
      */
-    isPaused?: boolean;
+    isPaused: boolean;
     /**
      * [description]
      */
-    debug?: boolean;
+    debug: boolean;
     /**
      * [description]
      */
-    debugShowBody?: boolean;
+    debugShowBody: boolean;
     /**
      * [description]
      */
-    debugShowStaticBody?: boolean;
+    debugShowStaticBody: boolean;
     /**
      * [description]
      */
-    debugShowVelocity?: boolean;
+    debugShowVelocity: boolean;
     /**
      * [description]
      */
-    debugBodyColor?: number;
+    debugBodyColor: number;
     /**
      * [description]
      */
-    debugStaticBodyColor?: number;
+    debugStaticBodyColor: number;
     /**
      * [description]
      */
-    debugVelocityColor?: number;
+    debugVelocityColor: number;
     /**
      * [description]
      */
-    maxEntries?: number;
+    maxEntries: number;
 };
 
 declare type CheckCollisionObject = {
@@ -49006,103 +49216,103 @@ declare type ImpactWorldConfig = {
     /**
      * [description]
      */
-    gravity?: number;
+    gravity: number;
     /**
      * [description]
      */
-    cellSize?: number;
+    cellSize: number;
     /**
      * [description]
      */
-    timeScale?: number;
+    timeScale: number;
     /**
      * [description]
      */
-    maxStep?: number;
+    maxStep: number;
     /**
      * [description]
      */
-    debug?: boolean;
+    debug: boolean;
     /**
      * [description]
      */
-    maxVelocity?: number;
+    maxVelocity: number;
     /**
      * [description]
      */
-    debugShowBody?: boolean;
+    debugShowBody: boolean;
     /**
      * [description]
      */
-    debugShowVelocity?: boolean;
+    debugShowVelocity: boolean;
     /**
      * [description]
      */
-    debugBodyColor?: number;
+    debugBodyColor: number;
     /**
      * [description]
      */
-    debugVelocityColor?: number;
+    debugVelocityColor: number;
     /**
      * [description]
      */
-    maxVelocityX?: number;
+    maxVelocityX: number;
     /**
      * [description]
      */
-    maxVelocityY?: number;
+    maxVelocityY: number;
     /**
      * [description]
      */
-    minBounceVelocity?: number;
+    minBounceVelocity: number;
     /**
      * [description]
      */
-    gravityFactor?: number;
+    gravityFactor: number;
     /**
      * [description]
      */
-    bounciness?: number;
+    bounciness: number;
     /**
      * [description]
      */
-    setBounds?: object | boolean;
+    setBounds: object | boolean;
     /**
      * [description]
      */
-    "setBounds.x"?: number;
+    "setBounds.x": number;
     /**
      * [description]
      */
-    "setBounds.y"?: number;
+    "setBounds.y": number;
     /**
      * [description]
      */
-    "setBounds.width"?: number;
+    "setBounds.width": number;
     /**
      * [description]
      */
-    "setBounds.height"?: number;
+    "setBounds.height": number;
     /**
      * [description]
      */
-    "setBounds.thickness"?: number;
+    "setBounds.thickness": number;
     /**
      * [description]
      */
-    "setBounds.left"?: boolean;
+    "setBounds.left": boolean;
     /**
      * [description]
      */
-    "setBounds.right"?: boolean;
+    "setBounds.right": boolean;
     /**
      * [description]
      */
-    "setBounds.top"?: boolean;
+    "setBounds.top": boolean;
     /**
      * [description]
      */
-    "setBounds.bottom"?: boolean;
+    "setBounds.bottom": boolean;
 };
 
 /**
@@ -49273,43 +49483,43 @@ declare type SettingsConfig = {
     /**
      * [description]
      */
-    key?: string;
+    key: string;
     /**
      * [description]
      */
-    active?: boolean;
+    active: boolean;
     /**
      * [description]
      */
-    visible?: boolean;
+    visible: boolean;
     /**
      * [description]
      */
-    files?: false | LoaderFileObject[];
+    files: false | LoaderFileObject[];
     /**
      * [description]
      */
-    cameras?: InputJSONCameraObject | InputJSONCameraObject[];
+    cameras: InputJSONCameraObject | InputJSONCameraObject[];
     /**
      * Overwrites the default injection map for a scene.
      */
-    map?: {[key: string]:  string};
+    map: {[key: string]:  string};
     /**
      * Extends the injection map for a scene.
      */
-    mapAdd?: {[key: string]:  string};
+    mapAdd: {[key: string]:  string};
     /**
      * [description]
      */
-    physics?: object;
+    physics: object;
     /**
      * [description]
      */
-    loader?: object;
+    loader: object;
     /**
      * [description]
      */
-    plugins?: false | any;
+    plugins: false | any;
 };
 
 declare type SettingsObject = {
@@ -49377,31 +49587,31 @@ declare type SoundConfig = {
     /**
      * Boolean indicating whether the sound should be muted or not.
      */
-    mute?: boolean;
+    mute: boolean;
     /**
      * A value between 0 (silence) and 1 (full volume).
      */
-    volume?: number;
+    volume: number;
     /**
      * Defines the speed at which the sound should be played.
      */
-    rate?: number;
+    rate: number;
     /**
      * Represents detuning of sound in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
      */
-    detune?: number;
+    detune: number;
     /**
      * Position of playback for this sound, in seconds.
      */
-    seek?: number;
+    seek: number;
     /**
      * Whether or not the sound or current sound marker should loop.
      */
-    loop?: boolean;
+    loop: boolean;
     /**
      * Time, in seconds, that should elapse before the sound actually starts its playback.
      */
-    delay?: number;
+    delay: number;
 };
 
 /**
@@ -49415,15 +49625,15 @@ declare type SoundMarker = {
     /**
      * Sound position offset at witch playback should start.
      */
-    start?: number;
+    start: number;
     /**
      * Playback duration of this marker.
      */
-    duration?: number;
+    duration: number;
     /**
      * An optional config object containing default marker settings.
      */
-    config?: SoundConfig;
+    config: SoundConfig;
 };
 
 declare type EachListCallback<I> = (item: any, ...args: any[])=>void;
@@ -49446,39 +49656,39 @@ declare type TimerEventConfig = {
     /**
      * [description]
      */
-    delay?: number;
+    delay: number;
     /**
      * [description]
      */
-    repeat?: number;
+    repeat: number;
     /**
      * [description]
      */
-    loop?: boolean;
+    loop: boolean;
     /**
      * [description]
      */
-    callback?: Function;
+    callback: Function;
     /**
      * [description]
      */
-    callbackScope?: any;
+    callbackScope: any;
     /**
      * [description]
      */
-    args?: any[];
+    args: any[];
     /**
      * [description]
      */
-    timeScale?: number;
+    timeScale: number;
     /**
      * [description]
      */
-    startAt?: number;
+    startAt: number;
     /**
      * [description]
      */
-    paused?: boolean;
+    paused: boolean;
 };
 
 declare function hasGetStart(): void;
