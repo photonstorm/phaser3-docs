@@ -1,0 +1,33 @@
+../../typescript/phaser.d.ts(7336,23): error TS2315: Type 'JSONGameObject' is not generic.
+../../typescript/phaser.d.ts(7881,23): error TS2315: Type 'JSONGameObject' is not generic.
+../../typescript/phaser.d.ts(15671,15): error TS2415: Class 'PathFollower' incorrectly extends base class 'Sprite'.
+  Property 'preUpdate' is protected in type 'PathFollower' but public in type 'Sprite'.
+../../typescript/phaser.d.ts(18555,15): error TS2415: Class 'Text' incorrectly extends base class 'GameObject'.
+  Types of property 'toJSON' are incompatible.
+    Type '() => object' is not assignable to type '() => JSONGameObject'.
+      Type 'object' is not assignable to type 'JSONGameObject'.
+        Property 'name' is missing in type '{}'.
+../../typescript/phaser.d.ts(18593,50): error TS2694: Namespace 'Phaser.GameObjects.Components' has no exported member 'TextStyle'.
+../../typescript/phaser.d.ts(24556,43): error TS2304: Cannot find name 'Image'.
+../../typescript/phaser.d.ts(24563,43): error TS2304: Cannot find name 'Image'.
+../../typescript/phaser.d.ts(24575,137): error TS2694: Namespace 'Phaser.Loader.FileTypes' has no exported member 'AnimationJSONFile'.
+../../typescript/phaser.d.ts(28416,19): error TS2420: Class 'Sprite' incorrectly implements interface 'Animation'.
+  Property 'load' is protected in type 'Sprite' but public in type 'Animation'.
+../../typescript/phaser.d.ts(30700,17): error TS2425: Class 'Group' defines instance member property 'createCallback', but extended class 'Group' defines it as instance member function.
+../../typescript/phaser.d.ts(30706,17): error TS2425: Class 'Group' defines instance member property 'removeCallback', but extended class 'Group' defines it as instance member function.
+../../typescript/phaser.d.ts(31111,17): error TS2425: Class 'Group' defines instance member property 'createCallback', but extended class 'StaticGroup' defines it as instance member function.
+../../typescript/phaser.d.ts(31117,17): error TS2425: Class 'Group' defines instance member property 'removeCallback', but extended class 'StaticGroup' defines it as instance member function.
+../../typescript/phaser.d.ts(31123,17): error TS2425: Class 'Group' defines instance member property 'createMultipleCallback', but extended class 'StaticGroup' defines it as instance member function.
+../../typescript/phaser.d.ts(32619,19): error TS2420: Class 'ImpactImage' incorrectly implements interface 'Collides'.
+  Types of property 'setActive' are incompatible.
+    Type '(value: boolean) => GameObject' is not assignable to type '() => GameObject'.
+../../typescript/phaser.d.ts(33602,19): error TS2420: Class 'ImpactSprite' incorrectly implements interface 'Animation'.
+  Property 'load' is protected in type 'ImpactSprite' but public in type 'Animation'.
+../../typescript/phaser.d.ts(33602,19): error TS2420: Class 'ImpactSprite' incorrectly implements interface 'Collides'.
+  Types of property 'setActive' are incompatible.
+    Type '(value: boolean) => GameObject' is not assignable to type '() => GameObject'.
+../../typescript/phaser.d.ts(36668,19): error TS2420: Class 'Sprite' incorrectly implements interface 'Animation'.
+  Property 'load' is protected in type 'Sprite' but public in type 'Animation'.
+../../typescript/phaser.d.ts(42732,87): error TS2304: Cannot find name 'Image'.
+../../typescript/phaser.d.ts(42845,33): error TS2304: Cannot find name 'Image'.
+../../typescript/phaser.d.ts(43140,67): error TS2304: Cannot find name 'Image'.

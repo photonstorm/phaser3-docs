@@ -966,6 +966,61 @@ declare type BitmapTextConfig = {
 };
 
 declare namespace ParseRetroFont {
+    /**
+     * Text Set 1 =  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+     */
+    const TEXT_SET1: string;
+
+    /**
+     * Text Set 2 =  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ
+     */
+    const TEXT_SET2: string;
+
+    /**
+     * Text Set 3 = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+     */
+    const TEXT_SET3: string;
+
+    /**
+     * Text Set 4 = ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
+     */
+    const TEXT_SET4: string;
+
+    /**
+     * Text Set 5 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,/() '!?-*:0123456789
+     */
+    const TEXT_SET5: string;
+
+    /**
+     * Text Set 6 = ABCDEFGHIJKLMNOPQRSTUVWXYZ!?:;0123456789"(),-.'
+     */
+    const TEXT_SET6: string;
+
+    /**
+     * Text Set 7 = AGMSY+:4BHNTZ!;5CIOU.?06DJPV,(17EKQW")28FLRX-'39
+     */
+    const TEXT_SET7: string;
+
+    /**
+     * Text Set 8 = 0123456789 .ABCDEFGHIJKLMNOPQRSTUVWXYZ
+     */
+    const TEXT_SET8: string;
+
+    /**
+     * Text Set 9 = ABCDEFGHIJKLMNOPQRSTUVWXYZ()-0123456789.:,'"?!
+     */
+    const TEXT_SET9: string;
+
+    /**
+     * Text Set 10 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+     */
+    const TEXT_SET10: string;
+
+    /**
+     * Text Set 11 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,"-+!?()':;0123456789
+     */
+    const TEXT_SET11: string;
+
 }
 
 declare type TextBounds = {
@@ -1753,8 +1808,6 @@ declare type XHRSettingsObject = {
      */
     overrideMimeType: string | undefined;
 };
-
-declare function P0(): void;
 
 declare type SinCosTable = {
     /**
@@ -3939,6 +3992,18 @@ declare namespace Phaser {
             }
 
             /**
+             * This alias will be removed in a future version.
+             * Use `FixedKeyControl` instead.
+             */
+            var Fixed: any;
+
+            /**
+             * This alias will be removed in a future version.
+             * Use `SmoothedKeyControl` instead.
+             */
+            var Smoothed: any;
+
+            /**
              * [description]
              */
             class SmoothedKeyControl {
@@ -4301,6 +4366,101 @@ declare namespace Phaser {
             /**
              * [description]
              */
+            var scene: Phaser.Scene;
+
+            /**
+             * [description]
+             */
+            var displayList: Phaser.GameObjects.DisplayList;
+
+            /**
+             * [description]
+             */
+            var updateList: Phaser.GameObjects.UpdateList;
+
+            /**
+             * [description]
+             */
+            var name: string;
+
+            /**
+             * [description]
+             */
+            var direction: Phaser.Math.Vector3;
+
+            /**
+             * [description]
+             */
+            var up: Phaser.Math.Vector3;
+
+            /**
+             * [description]
+             */
+            var position: Phaser.Math.Vector3;
+
+            /**
+             * [description]
+             */
+            var pixelScale: number;
+
+            /**
+             * [description]
+             */
+            var projection: Phaser.Math.Matrix4;
+
+            /**
+             * [description]
+             */
+            var view: Phaser.Math.Matrix4;
+
+            /**
+             * [description]
+             */
+            var combined: Phaser.Math.Matrix4;
+
+            /**
+             * [description]
+             */
+            var invProjectionView: Phaser.Math.Matrix4;
+
+            /**
+             * [description]
+             */
+            var near: number;
+
+            /**
+             * [description]
+             */
+            var far: number;
+
+            /**
+             * [description]
+             */
+            var ray: RayDef;
+
+            /**
+             * [description]
+             */
+            var viewportWidth: number;
+
+            /**
+             * [description]
+             */
+            var viewportHeight: number;
+
+            /**
+             * [description]
+             */
+            var billboardMatrixDirty: boolean;
+
+            /**
+             * [description]
+             */
+            var children: Phaser.Structs.Set<Phaser.GameObjects.GameObject>;
+
+            /**
+             * [description]
+             */
             class CameraManager {
                 /**
                  * 
@@ -4425,6 +4585,11 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
+                update(): Phaser.Cameras.Sprite3D.OrthographicCamera;
+
+                /**
+                 * [description]
+                 */
                 zoom: number;
 
             }
@@ -4463,124 +4628,72 @@ declare namespace Phaser {
                  */
                 setFOV(value: number): Phaser.Cameras.Sprite3D.PerspectiveCamera;
 
+                /**
+                 * [description]
+                 */
+                update(): Phaser.Cameras.Sprite3D.PerspectiveCamera;
+
             }
 
         }
 
-        class Controls {
-            /**
-             * This alias will be removed in a future version.
-             * Use `FixedKeyControl` instead.
-             */
-            static Fixed: any;
-
-            /**
-             * This alias will be removed in a future version.
-             * Use `SmoothedKeyControl` instead.
-             */
-            static Smoothed: any;
-
-        }
-
-        class Sprite3D {
-            /**
-             * [description]
-             */
-            scene: Phaser.Scene;
-
-            /**
-             * [description]
-             */
-            displayList: Phaser.GameObjects.DisplayList;
-
-            /**
-             * [description]
-             */
-            updateList: Phaser.GameObjects.UpdateList;
-
-            /**
-             * [description]
-             */
-            name: string;
-
-            /**
-             * [description]
-             */
-            direction: Phaser.Math.Vector3;
-
-            /**
-             * [description]
-             */
-            up: Phaser.Math.Vector3;
-
-            /**
-             * [description]
-             */
-            position: Phaser.Math.Vector3;
-
-            /**
-             * [description]
-             */
-            pixelScale: number;
-
-            /**
-             * [description]
-             */
-            projection: Phaser.Math.Matrix4;
-
-            /**
-             * [description]
-             */
-            view: Phaser.Math.Matrix4;
-
-            /**
-             * [description]
-             */
-            combined: Phaser.Math.Matrix4;
-
-            /**
-             * [description]
-             */
-            invProjectionView: Phaser.Math.Matrix4;
-
-            /**
-             * [description]
-             */
-            near: number;
-
-            /**
-             * [description]
-             */
-            far: number;
-
-            /**
-             * [description]
-             */
-            ray: RayDef;
-
-            /**
-             * [description]
-             */
-            viewportWidth: number;
-
-            /**
-             * [description]
-             */
-            viewportHeight: number;
-
-            /**
-             * [description]
-             */
-            billboardMatrixDirty: boolean;
-
-            /**
-             * [description]
-             */
-            children: Phaser.Structs.Set<Phaser.GameObjects.GameObject>;
-
-        }
-
     }
+
+    /**
+     * Phaser Release Version
+     */
+    var VERSION: string;
+
+    /**
+     * AUTO Detect Renderer.
+     */
+    var AUTO: integer;
+
+    /**
+     * Canvas Renderer.
+     */
+    var CANVAS: integer;
+
+    /**
+     * WebGL Renderer.
+     */
+    var WEBGL: integer;
+
+    /**
+     * Headless Renderer.
+     */
+    var HEADLESS: integer;
+
+    /**
+     * In Phaser the value -1 means 'forever' in lots of cases, this const allows you to use it instead
+     * to help you remember what the value is doing in your code.
+     */
+    var FOREVER: integer;
+
+    /**
+     * Direction constant.
+     */
+    var NONE: integer;
+
+    /**
+     * Direction constant.
+     */
+    var UP: integer;
+
+    /**
+     * Direction constant.
+     */
+    var DOWN: integer;
+
+    /**
+     * Direction constant.
+     */
+    var LEFT: integer;
+
+    /**
+     * Direction constant.
+     */
+    var RIGHT: integer;
 
     namespace Create {
         /**
@@ -4590,33 +4703,30 @@ declare namespace Phaser {
         function GenerateTexture(config: GenerateTextureConfig): HTMLCanvasElement;
 
         namespace Palettes {
-        }
-
-        class Palettes {
             /**
              * A 16 color palette by [Arne](http://androidarts.com/palette/16pal.htm)
              */
-            static ARNE16: Palette;
+            var ARNE16: Palette;
 
             /**
              * A 16 color palette inspired by the Commodore 64.
              */
-            static C64: Palette;
+            var C64: Palette;
 
             /**
              * A 16 color CGA inspired palette by [Arne](http://androidarts.com/palette/16pal.htm)
              */
-            static CGA: Palette;
+            var CGA: Palette;
 
             /**
              * A 16 color JMP palette by [Arne](http://androidarts.com/palette/16pal.htm)
              */
-            static JMP: Palette;
+            var JMP: Palette;
 
             /**
              * A 16 color palette inspired by Japanese computers like the MSX.
              */
-            static MSX: Palette;
+            var MSX: Palette;
 
         }
 
@@ -4657,6 +4767,12 @@ declare namespace Phaser {
             p3: Phaser.Math.Vector2;
 
             /**
+             * Gets the starting point on the curve.
+             * @param out A Vector2 object to store the result in. If not given will be created.
+             */
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
+
+            /**
              * [description]
              * @param divisions The amount of divisions used by this curve.
              */
@@ -4668,6 +4784,13 @@ declare namespace Phaser {
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
             getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
+
+            /**
+             * [description]
+             * @param graphics [description]
+             * @param pointsTotal [description] Default 32.
+             */
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): G;
 
             /**
              * [description]
@@ -4860,6 +4983,12 @@ declare namespace Phaser {
             p0: Phaser.Math.Vector2;
 
             /**
+             * Gets the starting point on the curve.
+             * @param out A Vector2 object to store the result in. If not given will be created.
+             */
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
+
+            /**
              * [description]
              * @param divisions [description]
              */
@@ -4990,6 +5119,18 @@ declare namespace Phaser {
             p0: Phaser.Math.Vector2;
 
             /**
+             * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
+             * @param out A Rectangle object to store the bounds in. If not given a new Rectangle will be created.
+             */
+            getBounds<O extends Phaser.Geom.Rectangle>(out?: O): O;
+
+            /**
+             * Gets the starting point on the curve.
+             * @param out A Vector2 object to store the result in. If not given will be created.
+             */
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
+
+            /**
              * [description]
              * @param divisions [description] Default 1.
              */
@@ -5001,6 +5142,27 @@ declare namespace Phaser {
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
             getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
+
+            /**
+             * [description]
+             * @param u The position along the curve to return. Where 0 is the start and 1 is the end.
+             * @param out A Vector2 object to store the result in. If not given will be created.
+             */
+            getPointAt<O extends Phaser.Math.Vector2>(u: number, out?: O): O;
+
+            /**
+             * [description]
+             */
+            getTangent(): Phaser.Math.Vector2;
+
+            /**
+             * Draws this curve on the given Graphics object.
+             * 
+             * The curve is drawn using `Graphics.lineBetween` so will be drawn at whatever the present Graphics line color is.
+             * The Graphics object is not cleared before the draw, so the curve will appear on-top of anything else already rendered to it.
+             * @param graphics The Graphics instance onto which this curve will be drawn.
+             */
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: G): G;
 
             /**
              * [description]
@@ -5285,6 +5447,12 @@ declare namespace Phaser {
             p2: Phaser.Math.Vector2;
 
             /**
+             * Gets the starting point on the curve.
+             * @param out A Vector2 object to store the result in. If not given will be created.
+             */
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
+
+            /**
              * [description]
              * @param divisions [description]
              */
@@ -5296,6 +5464,13 @@ declare namespace Phaser {
              * @param out A Vector2 object to store the result in. If not given will be created.
              */
             getPoint<O extends Phaser.Math.Vector2>(t: number, out?: O): O;
+
+            /**
+             * [description]
+             * @param graphics [description]
+             * @param pointsTotal [description] Default 32.
+             */
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: G, pointsTotal?: integer): G;
 
             /**
              * [description]
@@ -5337,6 +5512,12 @@ declare namespace Phaser {
              * @param y [description]
              */
             addPoint(x: number, y: number): Phaser.Math.Vector2;
+
+            /**
+             * Gets the starting point on the curve.
+             * @param out A Vector2 object to store the result in. If not given will be created.
+             */
+            getStartPoint<O extends Phaser.Math.Vector2>(out?: O): O;
 
             /**
              * [description]
@@ -5939,6 +6120,71 @@ declare namespace Phaser {
 
     namespace Display {
         namespace Align {
+            /**
+             * A constant representing a top-left alignment or position.
+             */
+            const TOP_LEFT: integer;
+
+            /**
+             * A constant representing a top-center alignment or position.
+             */
+            const TOP_CENTER: integer;
+
+            /**
+             * A constant representing a top-right alignment or position.
+             */
+            const TOP_RIGHT: integer;
+
+            /**
+             * A constant representing a left-top alignment or position.
+             */
+            const LEFT_TOP: integer;
+
+            /**
+             * A constant representing a left-center alignment or position.
+             */
+            const LEFT_CENTER: integer;
+
+            /**
+             * A constant representing a left-bottom alignment or position.
+             */
+            const LEFT_BOTTOM: integer;
+
+            /**
+             * A constant representing a center alignment or position.
+             */
+            const CENTER: integer;
+
+            /**
+             * A constant representing a right-top alignment or position.
+             */
+            const RIGHT_TOP: integer;
+
+            /**
+             * A constant representing a right-center alignment or position.
+             */
+            const RIGHT_CENTER: integer;
+
+            /**
+             * A constant representing a right-bottom alignment or position.
+             */
+            const RIGHT_BOTTOM: integer;
+
+            /**
+             * A constant representing a bottom-left alignment or position.
+             */
+            const BOTTOM_LEFT: integer;
+
+            /**
+             * A constant representing a bottom-center alignment or position.
+             */
+            const BOTTOM_CENTER: integer;
+
+            /**
+             * A constant representing a bottom-right alignment or position.
+             */
+            const BOTTOM_RIGHT: integer;
+
             namespace In {
                 /**
                  * Takes given Game Object and aligns it so that it is positioned in the bottom center of the other.
@@ -6776,74 +7022,6 @@ declare namespace Phaser {
 
         }
 
-        class Align {
-            /**
-             * A constant representing a top-left alignment or position.
-             */
-            static readonly TOP_LEFT: integer;
-
-            /**
-             * A constant representing a top-center alignment or position.
-             */
-            static readonly TOP_CENTER: integer;
-
-            /**
-             * A constant representing a top-right alignment or position.
-             */
-            static readonly TOP_RIGHT: integer;
-
-            /**
-             * A constant representing a left-top alignment or position.
-             */
-            static readonly LEFT_TOP: integer;
-
-            /**
-             * A constant representing a left-center alignment or position.
-             */
-            static readonly LEFT_CENTER: integer;
-
-            /**
-             * A constant representing a left-bottom alignment or position.
-             */
-            static readonly LEFT_BOTTOM: integer;
-
-            /**
-             * A constant representing a center alignment or position.
-             */
-            static readonly CENTER: integer;
-
-            /**
-             * A constant representing a right-top alignment or position.
-             */
-            static readonly RIGHT_TOP: integer;
-
-            /**
-             * A constant representing a right-center alignment or position.
-             */
-            static readonly RIGHT_CENTER: integer;
-
-            /**
-             * A constant representing a right-bottom alignment or position.
-             */
-            static readonly RIGHT_BOTTOM: integer;
-
-            /**
-             * A constant representing a bottom-left alignment or position.
-             */
-            static readonly BOTTOM_LEFT: integer;
-
-            /**
-             * A constant representing a bottom-center alignment or position.
-             */
-            static readonly BOTTOM_CENTER: integer;
-
-            /**
-             * A constant representing a bottom-right alignment or position.
-             */
-            static readonly BOTTOM_RIGHT: integer;
-
-        }
-
     }
 
     namespace DOM {
@@ -7151,6 +7329,11 @@ declare namespace Phaser {
              * [description]
              */
             height: number;
+
+            /**
+             * [description]
+             */
+            toJSON(): JSONGameObject<JSONBitmapText>;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -7691,6 +7874,11 @@ declare namespace Phaser {
              * [description]
              */
             height: number;
+
+            /**
+             * [description]
+             */
+            toJSON(): JSONGameObject<JSONBitmapText>;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -8742,99 +8930,71 @@ declare namespace Phaser {
                 alphaBottomRight: number;
             }
 
-            /**
-             * A Game Object Animation Controller.
-             * 
-             * 
-             * 
-             * This controller lives as an instance within a Game Object, accessible as `sprite.anims`.
-             */
-            class Animation {
-                /**
-                 * 
-                 * @param parent The Game Object to which this animation controller belongs.
-                 */
-                constructor(parent: Phaser.GameObjects.GameObject);
-
+            interface Animation {
                 /**
                  * The Game Object to which this animation controller belongs.
                  */
                 parent: Phaser.GameObjects.GameObject;
-
                 /**
                  * A reference to the global Animation Manager.
                  */
                 animationManager: Phaser.Animations.AnimationManager;
-
                 /**
                  * Is an animation currently playing or not?
                  */
                 isPlaying: boolean;
-
                 /**
                  * The current Animation loaded into this Animation Controller.
                  */
                 currentAnim: Phaser.Animations.Animation;
-
                 /**
                  * The current AnimationFrame being displayed by this Animation Controller.
                  */
                 currentFrame: Phaser.Animations.AnimationFrame;
-
                 /**
                  * The frame rate of playback in frames per second.
                  * The default is 24 if the `duration` property is `null`.
                  */
                 frameRate: number;
-
                 /**
                  * How long the animation should play for, in milliseconds.
                  * If the `frameRate` property has been set then it overrides this value,
                  * otherwise the `frameRate` is derived from `duration`.
                  */
                 duration: number;
-
                 /**
                  * ms per frame, not including frame specific modifiers that may be present in the Animation data.
                  */
                 msPerFrame: number;
-
                 /**
                  * Skip frames if the time lags, or always advanced anyway?
                  */
                 skipMissedFrames: boolean;
-
                 /**
                  * Will the playhead move forwards (`true`) or in reverse (`false`)
                  */
                 forward: boolean;
-
                 /**
                  * Internal time overflow accumulator.
                  */
                 accumulator: number;
-
                 /**
                  * The time point at which the next animation frame will change.
                  */
                 nextTick: number;
-
                 /**
                  * An internal counter keeping track of how many repeats are left to play.
                  */
                 repeatCounter: number;
-
                 /**
                  * An internal flag keeping track of pending repeats.
                  */
                 pendingRepeat: boolean;
-
                 /**
                  * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
                  * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
                  */
                 delay(value?: integer): Phaser.GameObjects.GameObject;
-
                 /**
                  * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
                  * @param delay The delay, in milliseconds, to wait before starting the animation playing.
@@ -8842,38 +9002,32 @@ declare namespace Phaser {
                  * @param startFrame The frame of the animation to start from. Default 0.
                  */
                 delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
                 /**
                  * Returns the key of the animation currently loaded into this component.
                  */
                 getCurrentKey(): string;
-
                 /**
                  * Internal method used to load an animation into this component.
                  * @param key [description]
                  * @param startFrame [description] Default 0.
                  */
-                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
+                load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
                 /**
                  * Pause the current animation and set the `isPlaying` property to `false`.
                  * You can optionally pause it at a specific frame.
                  * @param atFrame An optional frame to set after pausing the animation.
                  */
                 pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
                 /**
                  * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
                  * You can optionally tell it to start playback from a specific frame.
                  * @param fromFrame An optional frame to set before restarting playback.
                  */
                 resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
                 /**
                  * `true` if the current animation is paused, otherwise `false`.
                  */
                 isPaused: boolean;
-
                 /**
                  * Plays an Animation on the Game Object that owns this Animation Component.
                  * @param key The string-based key of the animation to play, as defined previously in the Animation Manager.
@@ -8881,27 +9035,23 @@ declare namespace Phaser {
                  * @param startFrame Optionally start the animation playing from this frame index. Default 0.
                  */
                 play(key: string, ignoreIfPlaying?: boolean, startFrame?: integer): Phaser.GameObjects.GameObject;
-
                 /**
                  * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
                  * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
                  * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
                  */
                 getProgress(): number;
-
                 /**
                  * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
                  * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
                  * @param value [description] Default 0.
                  */
                 setProgress(value?: number): Phaser.GameObjects.GameObject;
-
                 /**
                  * [description]
                  * @param event [description]
                  */
                 remove(event?: Phaser.Animations.Animation): void;
-
                 /**
                  * Gets the number of times that the animation will repeat
                  * after its first iteration. For example, if returns 1, the animation will
@@ -8909,7 +9059,6 @@ declare namespace Phaser {
                  * A value of -1 means the animation will repeat indefinitely.
                  */
                 getRepeat(): integer;
-
                 /**
                  * Sets the number of times that the animation should repeat
                  * after its first iteration. For example, if repeat is 1, the animation will
@@ -8918,12 +9067,10 @@ declare namespace Phaser {
                  * @param value [description]
                  */
                 setRepeat(value: integer): Phaser.GameObjects.GameObject;
-
                 /**
                  * Gets the amount of delay between repeats, if any.
                  */
                 getRepeatDelay(): number;
-
                 /**
                  * Sets the amount of time in seconds between repeats.
                  * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
@@ -8932,85 +9079,71 @@ declare namespace Phaser {
                  * @param value The delay to wait between repeats, in seconds.
                  */
                 setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
-
                 /**
                  * Restarts the current animation from its beginning, optionally including its delay value.
                  * @param includeDelay [description] Default false.
                  */
                 restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
-
                 /**
                  * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
                  */
                 stop(): Phaser.GameObjects.GameObject;
-
                 /**
                  * Stops the current animation from playing after the specified time delay, given in milliseconds.
                  * @param delay The number of miliseconds to wait before stopping this animation.
                  */
                 stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
-
                 /**
                  * Stops the current animation from playing when it next repeats.
                  */
                 stopOnRepeat(): Phaser.GameObjects.GameObject;
-
                 /**
                  * Stops the current animation from playing when it next sets the given frame.
                  * If this frame doesn't exist within the animation it will not stop it from playing.
                  * @param delay The frame to check before stopping this animation.
                  */
                 stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
                 /**
                  * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
                  * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
                  * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
                  */
                 setTimeScale(value?: number): Phaser.GameObjects.GameObject;
-
                 /**
                  * Gets the Time Scale factor.
                  */
                 getTimeScale(): number;
-
                 /**
                  * Returns the total number of frames in this animation.
                  */
                 getTotalFrames(): integer;
-
                 /**
                  * The internal update loop for the Animation Component.
                  * @param timestamp [description]
                  * @param delta The delta time, in ms, elapsed since the last frame.
                  */
                 update(timestamp: number, delta: number): void;
-
                 /**
                  * Sets the given Animation Frame as being the current frame
                  * and applies it to the parent Game Object, adjusting its size and origin as needed.
                  * @param animationFrame The Animation Frame to set as being current.
                  */
                 setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
                 /**
                  * Sets if the current Animation will yoyo when it reaches the end.
                  * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
                  * @param value `true` if the animation should yoyo, `false` to not. Default false.
                  */
                 setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
-
                 /**
                  * Gets if the current Animation will yoyo when it reaches the end.
                  * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
                  */
                 getYoyo(): boolean;
-
                 /**
                  * [description]
                  */
                 destroy(): void;
-
             }
 
             /**
@@ -9850,6 +9983,116 @@ declare namespace Phaser {
 
             namespace TextStyle {
                 /**
+                 * The Text object that this TextStyle is styling.
+                 */
+                var parent: Phaser.GameObjects.Text;
+
+                /**
+                 * [description]
+                 */
+                var fontFamily: string;
+
+                /**
+                 * [description]
+                 */
+                var fontSize: string;
+
+                /**
+                 * [description]
+                 */
+                var fontStyle: string;
+
+                /**
+                 * [description]
+                 */
+                var backgroundColor: string;
+
+                /**
+                 * [description]
+                 */
+                var color: string;
+
+                /**
+                 * [description]
+                 */
+                var stroke: string;
+
+                /**
+                 * [description]
+                 */
+                var strokeThickness: number;
+
+                /**
+                 * [description]
+                 */
+                var shadowOffsetX: number;
+
+                /**
+                 * [description]
+                 */
+                var shadowOffsetY: number;
+
+                /**
+                 * [description]
+                 */
+                var shadowColor: string;
+
+                /**
+                 * [description]
+                 */
+                var shadowBlur: number;
+
+                /**
+                 * [description]
+                 */
+                var shadowStroke: boolean;
+
+                /**
+                 * [description]
+                 */
+                var shadowFill: boolean;
+
+                /**
+                 * [description]
+                 */
+                var align: string;
+
+                /**
+                 * [description]
+                 */
+                var maxLines: integer;
+
+                /**
+                 * [description]
+                 */
+                var fixedWidth: number;
+
+                /**
+                 * [description]
+                 */
+                var fixedHeight: number;
+
+                /**
+                 * [description]
+                 */
+                var rtl: boolean;
+
+                /**
+                 * [description]
+                 */
+                var testString: string;
+
+                /**
+                 * The amount of horizontal padding adding to the width of the text when calculating the font metrics.
+                 */
+                var baselineX: number;
+
+                /**
+                 * The amount of vertical padding adding to the width of the text when calculating the font metrics.
+                 */
+                var baselineY: number;
+
+                /**
                  * [description]
                  * @param style [description]
                  * @param updateText [description] Default true.
@@ -10032,119 +10275,6 @@ declare namespace Phaser {
                  * [description]
                  */
                 function destroy(): void;
-
-            }
-
-            class TextStyle {
-                /**
-                 * The Text object that this TextStyle is styling.
-                 */
-                parent: Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 */
-                fontFamily: string;
-
-                /**
-                 * [description]
-                 */
-                fontSize: string;
-
-                /**
-                 * [description]
-                 */
-                fontStyle: string;
-
-                /**
-                 * [description]
-                 */
-                backgroundColor: string;
-
-                /**
-                 * [description]
-                 */
-                color: string;
-
-                /**
-                 * [description]
-                 */
-                stroke: string;
-
-                /**
-                 * [description]
-                 */
-                strokeThickness: number;
-
-                /**
-                 * [description]
-                 */
-                shadowOffsetX: number;
-
-                /**
-                 * [description]
-                 */
-                shadowOffsetY: number;
-
-                /**
-                 * [description]
-                 */
-                shadowColor: string;
-
-                /**
-                 * [description]
-                 */
-                shadowBlur: number;
-
-                /**
-                 * [description]
-                 */
-                shadowStroke: boolean;
-
-                /**
-                 * [description]
-                 */
-                shadowFill: boolean;
-
-                /**
-                 * [description]
-                 */
-                align: string;
-
-                /**
-                 * [description]
-                 */
-                maxLines: integer;
-
-                /**
-                 * [description]
-                 */
-                fixedWidth: number;
-
-                /**
-                 * [description]
-                 */
-                fixedHeight: number;
-
-                /**
-                 * [description]
-                 */
-                rtl: boolean;
-
-                /**
-                 * [description]
-                 */
-                testString: string;
-
-                /**
-                 * The amount of horizontal padding adding to the width of the text when calculating the font metrics.
-                 */
-                baselineX: number;
-
-                /**
-                 * The amount of vertical padding adding to the width of the text when calculating the font metrics.
-                 */
-                baselineY: number;
 
             }
 
@@ -15640,9 +15770,12 @@ declare namespace Phaser {
             stopFollow(): Phaser.GameObjects.PathFollower;
 
             /**
-             * [description]
+             * Internal update handler that advances this PathFollower along the path.
+             * Called automatically by the Scene step, should not typically be called directly.
+             * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
+             * @param delta The delta time, in ms, elapsed since the last frame.
              */
-            toJSON(): JSONGameObject;
+            protected preUpdate(time: integer, delta: number): void;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -17712,6 +17845,11 @@ declare namespace Phaser {
             play(key: string, ignoreIfPlaying?: boolean, startFrame?: integer): Phaser.GameObjects.Sprite;
 
             /**
+             * [description]
+             */
+            toJSON(): JSONGameObject;
+
+            /**
              * Clears all alpha values associated with this Game Object.
              * Immediately sets the alpha levels back to 1 (fully opaque)
              */
@@ -18701,6 +18839,11 @@ declare namespace Phaser {
              * [description]
              */
             getTextMetrics(): object;
+
+            /**
+             * [description]
+             */
+            toJSON(): object;
 
             /**
              * [description]
@@ -22592,6 +22735,23 @@ declare namespace Phaser {
             }
 
             namespace Configs {
+                /**
+                 * Tatar SNES USB Controller Gamepad Configuration.
+                 * USB Gamepad  (STANDARD GAMEPAD Vendor: 0079 Product: 0011)
+                 */
+                var SNES_USB: object;
+
+                /**
+                 * PlayStation DualShock 4 Gamepad Configuration.
+                 * Sony PlayStation DualShock 4 (v2) wireless controller
+                 */
+                var DUALSHOCK_4: object;
+
+                /**
+                 * XBox 360 Gamepad Configuration.
+                 */
+                var XBOX_360: object;
+
             }
 
             /**
@@ -22753,26 +22913,6 @@ declare namespace Phaser {
                  * The total number of connected game pads.
                  */
                 total: number;
-
-            }
-
-            class Configs {
-                /**
-                 * Tatar SNES USB Controller Gamepad Configuration.
-                 * USB Gamepad  (STANDARD GAMEPAD Vendor: 0079 Product: 0011)
-                 */
-                static SNES_USB: object;
-
-                /**
-                 * PlayStation DualShock 4 Gamepad Configuration.
-                 * Sony PlayStation DualShock 4 (v2) wireless controller
-                 */
-                static DUALSHOCK_4: object;
-
-                /**
-                 * XBox 360 Gamepad Configuration.
-                 */
-                static XBOX_360: object;
 
             }
 
@@ -24165,6 +24305,96 @@ declare namespace Phaser {
 
     namespace Loader {
         /**
+         * The Loader is idle.
+         */
+        var LOADER_IDLE: integer;
+
+        /**
+         * The Loader is actively loading.
+         */
+        var LOADER_LOADING: integer;
+
+        /**
+         * The Loader is processing files is has loaded.
+         */
+        var LOADER_PROCESSING: integer;
+
+        /**
+         * The Loader has completed loading and processing.
+         */
+        var LOADER_COMPLETE: integer;
+
+        /**
+         * The Loader is shutting down.
+         */
+        var LOADER_SHUTDOWN: integer;
+
+        /**
+         * The Loader has been destroyed.
+         */
+        var LOADER_DESTROYED: integer;
+
+        /**
+         * File is in the load queue but not yet started
+         */
+        var FILE_PENDING: integer;
+
+        /**
+         * File has been started to load by the loader (onLoad called)
+         */
+        var FILE_LOADING: integer;
+
+        /**
+         * File has loaded successfully, awaiting processing
+         */
+        var FILE_LOADED: integer;
+
+        /**
+         * File failed to load
+         */
+        var FILE_FAILED: integer;
+
+        /**
+         * File is being processed (onProcess callback)
+         */
+        var FILE_PROCESSING: integer;
+
+        /**
+         * File is waiting for its linkfile to load.
+         */
+        var FILE_WAITING_LINKFILE: integer;
+
+        /**
+         * The File has errored somehow during processing.
+         */
+        var FILE_ERRORED: integer;
+
+        /**
+         * File has finished processing.
+         */
+        var FILE_COMPLETE: integer;
+
+        /**
+         * File has been destroyed
+         */
+        var FILE_DESTROYED: integer;
+
+        /**
+         * File was populated from local data and doesn't need an HTTP request
+         */
+        var FILE_POPULATED: integer;
+
+        /**
+         * A special Texture Atlas const.
+         */
+        var TEXTURE_ATLAS_JSON_ARRAY: integer;
+
+        /**
+         * A special Texture Atlas const.
+         */
+        var TEXTURE_ATLAS_JSON_HASH: integer;
+
+        /**
          * [description]
          */
         class File {
@@ -24342,7 +24572,7 @@ declare namespace Phaser {
              * @param path The path of the file.
              * @param xhrSettings Optional file specific XHR settings.
              */
-            function AnimationJSONFile(key: string, url: string, path: string, xhrSettings: XHRSettingsObject): any;
+            function AnimationJSONFile(key: string, url: string, path: string, xhrSettings: XHRSettingsObject): Phaser.Loader.FileTypes.AnimationJSONFile;
 
             /**
              * An Atlas JSON File.
@@ -25288,6 +25518,36 @@ declare namespace Phaser {
          * @param max The maximum bounds.
          */
         function Clamp(value: number, min: number, max: number): number;
+
+        /**
+         * The value of PI * 2.
+         */
+        var PI2: number;
+
+        /**
+         * The value of PI * 0.5.
+         */
+        var TAU: number;
+
+        /**
+         * An epsilon value (1.0e-6)
+         */
+        var EPSILON: number;
+
+        /**
+         * For converting degrees to radians (PI / 180)
+         */
+        var DEG_TO_RAD: number;
+
+        /**
+         * For converting radians to degrees (180 / PI)
+         */
+        var RAD_TO_DEG: number;
+
+        /**
+         * An instance of the Random Number Generator.
+         */
+        var RND: Phaser.Math.RandomDataGenerator;
 
         /**
          * [description]
@@ -28153,7 +28413,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class Sprite extends Phaser.GameObjects.Components.Animation implements Components.Acceleration, Components.Angular, Components.Bounce, Components.Debug, Components.Drag, Components.Enable, Components.Friction, Components.Gravity, Components.Immovable, Components.Mass, Components.Size, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Sprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.Angular, Components.Bounce, Components.Debug, Components.Drag, Components.Enable, Components.Friction, Components.Gravity, Components.Immovable, Components.Mass, Components.Size, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Animation, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -28163,11 +28423,6 @@ declare namespace Phaser {
                  * @param frame An optional frame from the Texture this Game Object is rendering with.
                  */
                 constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | integer);
-
-                /**
-                 * [description]
-                 */
-                toJSON(): JSONGameObject;
 
                 /**
                  * Clears all alpha values associated with this Game Object.
@@ -29005,6 +29260,241 @@ declare namespace Phaser {
                  * @param y [description] Default x.
                  */
                 setMaxVelocity(x: number, y?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * The Game Object to which this animation controller belongs.
+                 */
+                parent: Phaser.GameObjects.GameObject;
+
+                /**
+                 * A reference to the global Animation Manager.
+                 */
+                animationManager: Phaser.Animations.AnimationManager;
+
+                /**
+                 * Is an animation currently playing or not?
+                 */
+                isPlaying: boolean;
+
+                /**
+                 * The current Animation loaded into this Animation Controller.
+                 */
+                currentAnim: Phaser.Animations.Animation;
+
+                /**
+                 * The current AnimationFrame being displayed by this Animation Controller.
+                 */
+                currentFrame: Phaser.Animations.AnimationFrame;
+
+                /**
+                 * The frame rate of playback in frames per second.
+                 * The default is 24 if the `duration` property is `null`.
+                 */
+                frameRate: number;
+
+                /**
+                 * How long the animation should play for, in milliseconds.
+                 * If the `frameRate` property has been set then it overrides this value,
+                 * otherwise the `frameRate` is derived from `duration`.
+                 */
+                duration: number;
+
+                /**
+                 * ms per frame, not including frame specific modifiers that may be present in the Animation data.
+                 */
+                msPerFrame: number;
+
+                /**
+                 * Skip frames if the time lags, or always advanced anyway?
+                 */
+                skipMissedFrames: boolean;
+
+                /**
+                 * Will the playhead move forwards (`true`) or in reverse (`false`)
+                 */
+                forward: boolean;
+
+                /**
+                 * Internal time overflow accumulator.
+                 */
+                accumulator: number;
+
+                /**
+                 * The time point at which the next animation frame will change.
+                 */
+                nextTick: number;
+
+                /**
+                 * An internal counter keeping track of how many repeats are left to play.
+                 */
+                repeatCounter: number;
+
+                /**
+                 * An internal flag keeping track of pending repeats.
+                 */
+                pendingRepeat: boolean;
+
+                /**
+                 * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
+                 * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
+                 */
+                delay(value?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
+                 * @param delay The delay, in milliseconds, to wait before starting the animation playing.
+                 * @param key The key of the animation to play.
+                 * @param startFrame The frame of the animation to start from. Default 0.
+                 */
+                delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Returns the key of the animation currently loaded into this component.
+                 */
+                getCurrentKey(): string;
+
+                /**
+                 * Internal method used to load an animation into this component.
+                 * @param key [description]
+                 * @param startFrame [description] Default 0.
+                 */
+                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Pause the current animation and set the `isPlaying` property to `false`.
+                 * You can optionally pause it at a specific frame.
+                 * @param atFrame An optional frame to set after pausing the animation.
+                 */
+                pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
+                 * You can optionally tell it to start playback from a specific frame.
+                 * @param fromFrame An optional frame to set before restarting playback.
+                 */
+                resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * `true` if the current animation is paused, otherwise `false`.
+                 */
+                isPaused: boolean;
+
+                /**
+                 * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
+                 * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
+                 * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
+                 */
+                getProgress(): number;
+
+                /**
+                 * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
+                 * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
+                 * @param value [description] Default 0.
+                 */
+                setProgress(value?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 * @param event [description]
+                 */
+                remove(event?: Phaser.Animations.Animation): void;
+
+                /**
+                 * Gets the number of times that the animation will repeat
+                 * after its first iteration. For example, if returns 1, the animation will
+                 * play a total of twice (the initial play plus 1 repeat).
+                 * A value of -1 means the animation will repeat indefinitely.
+                 */
+                getRepeat(): integer;
+
+                /**
+                 * Sets the number of times that the animation should repeat
+                 * after its first iteration. For example, if repeat is 1, the animation will
+                 * play a total of twice (the initial play plus 1 repeat).
+                 * To repeat indefinitely, use -1. repeat should always be an integer.
+                 * @param value [description]
+                 */
+                setRepeat(value: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets the amount of delay between repeats, if any.
+                 */
+                getRepeatDelay(): number;
+
+                /**
+                 * Sets the amount of time in seconds between repeats.
+                 * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
+                 * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
+                 * before doing its final repeat.
+                 * @param value The delay to wait between repeats, in seconds.
+                 */
+                setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Restarts the current animation from its beginning, optionally including its delay value.
+                 * @param includeDelay [description] Default false.
+                 */
+                restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
+                 */
+                stop(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing after the specified time delay, given in milliseconds.
+                 * @param delay The number of miliseconds to wait before stopping this animation.
+                 */
+                stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing when it next repeats.
+                 */
+                stopOnRepeat(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing when it next sets the given frame.
+                 * If this frame doesn't exist within the animation it will not stop it from playing.
+                 * @param delay The frame to check before stopping this animation.
+                 */
+                stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
+                 * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
+                 * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
+                 */
+                setTimeScale(value?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets the Time Scale factor.
+                 */
+                getTimeScale(): number;
+
+                /**
+                 * Returns the total number of frames in this animation.
+                 */
+                getTotalFrames(): integer;
+
+                /**
+                 * Sets the given Animation Frame as being the current frame
+                 * and applies it to the parent Game Object, adjusting its size and origin as needed.
+                 * @param animationFrame The Animation Frame to set as being current.
+                 */
+                setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets if the current Animation will yoyo when it reaches the end.
+                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+                 * @param value `true` if the animation should yoyo, `false` to not. Default false.
+                 */
+                setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets if the current Animation will yoyo when it reaches the end.
+                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+                 */
+                getYoyo(): boolean;
 
             }
 
@@ -30001,6 +30491,51 @@ declare namespace Phaser {
             }
 
             /**
+             * [description]
+             */
+            var DYNAMIC_BODY: number;
+
+            /**
+             * [description]
+             */
+            var STATIC_BODY: number;
+
+            /**
+             * [description]
+             */
+            var GROUP: number;
+
+            /**
+             * [description]
+             */
+            var TILEMAPLAYER: number;
+
+            /**
+             * [description]
+             */
+            var FACING_NONE: number;
+
+            /**
+             * [description]
+             */
+            var FACING_UP: number;
+
+            /**
+             * [description]
+             */
+            var FACING_DOWN: number;
+
+            /**
+             * [description]
+             */
+            var FACING_LEFT: number;
+
+            /**
+             * [description]
+             */
+            var FACING_RIGHT: number;
+
+            /**
              * The Arcade Physics Factory allows you to easily create Arcade Physics enabled Game Objects.
              * 
              * Objects that are created by this Factory are automatically added to the physics world.
@@ -30157,6 +30692,18 @@ declare namespace Phaser {
                  * [description]
                  */
                 defaults: PhysicsGroupDefaults;
+
+                /**
+                 * [description]
+                 * @param child [description]
+                 */
+                createCallback(child: Phaser.GameObjects.GameObject): void;
+
+                /**
+                 * [description]
+                 * @param child [description]
+                 */
+                removeCallback(child: Phaser.GameObjects.GameObject): void;
 
                 /**
                  * [description]
@@ -30556,6 +31103,24 @@ declare namespace Phaser {
                  * [description]
                  */
                 physicsType: integer;
+
+                /**
+                 * [description]
+                 * @param child [description]
+                 */
+                createCallback(child: Phaser.GameObjects.GameObject): void;
+
+                /**
+                 * [description]
+                 * @param child [description]
+                 */
+                removeCallback(child: Phaser.GameObjects.GameObject): void;
+
+                /**
+                 * [description]
+                 * @param entries [description]
+                 */
+                createMultipleCallback(entries: object): void;
 
                 /**
                  * [description]
@@ -31536,6 +32101,10 @@ declare namespace Phaser {
                      * [description]
                      */
                     setPassive(): Phaser.GameObjects.GameObject;
+                    /**
+                     * [description]
+                     */
+                    setActive(): Phaser.GameObjects.GameObject;
                     /**
                      * [description]
                      */
@@ -33030,7 +33599,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class ImpactSprite extends Phaser.GameObjects.Components.Animation implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class ImpactSprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Animation, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -33075,11 +33644,6 @@ declare namespace Phaser {
                  * [description]
                  */
                 maxVel: Object;
-
-                /**
-                 * [description]
-                 */
-                toJSON(): JSONGameObject;
 
                 /**
                  * Clears all alpha values associated with this Game Object.
@@ -33929,6 +34493,241 @@ declare namespace Phaser {
                  * @param y [description] Default x.
                  */
                 setMaxVelocity(x: number, y?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * The Game Object to which this animation controller belongs.
+                 */
+                parent: Phaser.GameObjects.GameObject;
+
+                /**
+                 * A reference to the global Animation Manager.
+                 */
+                animationManager: Phaser.Animations.AnimationManager;
+
+                /**
+                 * Is an animation currently playing or not?
+                 */
+                isPlaying: boolean;
+
+                /**
+                 * The current Animation loaded into this Animation Controller.
+                 */
+                currentAnim: Phaser.Animations.Animation;
+
+                /**
+                 * The current AnimationFrame being displayed by this Animation Controller.
+                 */
+                currentFrame: Phaser.Animations.AnimationFrame;
+
+                /**
+                 * The frame rate of playback in frames per second.
+                 * The default is 24 if the `duration` property is `null`.
+                 */
+                frameRate: number;
+
+                /**
+                 * How long the animation should play for, in milliseconds.
+                 * If the `frameRate` property has been set then it overrides this value,
+                 * otherwise the `frameRate` is derived from `duration`.
+                 */
+                duration: number;
+
+                /**
+                 * ms per frame, not including frame specific modifiers that may be present in the Animation data.
+                 */
+                msPerFrame: number;
+
+                /**
+                 * Skip frames if the time lags, or always advanced anyway?
+                 */
+                skipMissedFrames: boolean;
+
+                /**
+                 * Will the playhead move forwards (`true`) or in reverse (`false`)
+                 */
+                forward: boolean;
+
+                /**
+                 * Internal time overflow accumulator.
+                 */
+                accumulator: number;
+
+                /**
+                 * The time point at which the next animation frame will change.
+                 */
+                nextTick: number;
+
+                /**
+                 * An internal counter keeping track of how many repeats are left to play.
+                 */
+                repeatCounter: number;
+
+                /**
+                 * An internal flag keeping track of pending repeats.
+                 */
+                pendingRepeat: boolean;
+
+                /**
+                 * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
+                 * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
+                 */
+                delay(value?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
+                 * @param delay The delay, in milliseconds, to wait before starting the animation playing.
+                 * @param key The key of the animation to play.
+                 * @param startFrame The frame of the animation to start from. Default 0.
+                 */
+                delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Returns the key of the animation currently loaded into this component.
+                 */
+                getCurrentKey(): string;
+
+                /**
+                 * Internal method used to load an animation into this component.
+                 * @param key [description]
+                 * @param startFrame [description] Default 0.
+                 */
+                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Pause the current animation and set the `isPlaying` property to `false`.
+                 * You can optionally pause it at a specific frame.
+                 * @param atFrame An optional frame to set after pausing the animation.
+                 */
+                pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
+                 * You can optionally tell it to start playback from a specific frame.
+                 * @param fromFrame An optional frame to set before restarting playback.
+                 */
+                resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * `true` if the current animation is paused, otherwise `false`.
+                 */
+                isPaused: boolean;
+
+                /**
+                 * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
+                 * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
+                 * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
+                 */
+                getProgress(): number;
+
+                /**
+                 * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
+                 * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
+                 * @param value [description] Default 0.
+                 */
+                setProgress(value?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 * @param event [description]
+                 */
+                remove(event?: Phaser.Animations.Animation): void;
+
+                /**
+                 * Gets the number of times that the animation will repeat
+                 * after its first iteration. For example, if returns 1, the animation will
+                 * play a total of twice (the initial play plus 1 repeat).
+                 * A value of -1 means the animation will repeat indefinitely.
+                 */
+                getRepeat(): integer;
+
+                /**
+                 * Sets the number of times that the animation should repeat
+                 * after its first iteration. For example, if repeat is 1, the animation will
+                 * play a total of twice (the initial play plus 1 repeat).
+                 * To repeat indefinitely, use -1. repeat should always be an integer.
+                 * @param value [description]
+                 */
+                setRepeat(value: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets the amount of delay between repeats, if any.
+                 */
+                getRepeatDelay(): number;
+
+                /**
+                 * Sets the amount of time in seconds between repeats.
+                 * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
+                 * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
+                 * before doing its final repeat.
+                 * @param value The delay to wait between repeats, in seconds.
+                 */
+                setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Restarts the current animation from its beginning, optionally including its delay value.
+                 * @param includeDelay [description] Default false.
+                 */
+                restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
+                 */
+                stop(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing after the specified time delay, given in milliseconds.
+                 * @param delay The number of miliseconds to wait before stopping this animation.
+                 */
+                stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing when it next repeats.
+                 */
+                stopOnRepeat(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing when it next sets the given frame.
+                 * If this frame doesn't exist within the animation it will not stop it from playing.
+                 * @param delay The frame to check before stopping this animation.
+                 */
+                stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
+                 * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
+                 * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
+                 */
+                setTimeScale(value?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets the Time Scale factor.
+                 */
+                getTimeScale(): number;
+
+                /**
+                 * Returns the total number of frames in this animation.
+                 */
+                getTotalFrames(): integer;
+
+                /**
+                 * Sets the given Animation Frame as being the current frame
+                 * and applies it to the parent Game Object, adjusting its size and origin as needed.
+                 * @param animationFrame The Animation Frame to set as being current.
+                 */
+                setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets if the current Animation will yoyo when it reaches the end.
+                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+                 * @param value `true` if the animation should yoyo, `false` to not. Default false.
+                 */
+                setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets if the current Animation will yoyo when it reaches the end.
+                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+                 */
+                getYoyo(): boolean;
 
             }
 
@@ -35866,7 +36665,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class Sprite extends Phaser.GameObjects.Components.Animation implements Components.Bounce, Components.Collision, Components.Force, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.SetBody, Components.Sleep, Components.Static, Components.Transform, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Sprite extends Phaser.GameObjects.Sprite implements Components.Bounce, Components.Collision, Components.Force, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.SetBody, Components.Sleep, Components.Static, Components.Transform, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Animation, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -35882,11 +36681,6 @@ declare namespace Phaser {
                  * [description]
                  */
                 world: Phaser.Physics.Matter.World;
-
-                /**
-                 * [description]
-                 */
-                toJSON(): JSONGameObject;
 
                 /**
                  * Clears all alpha values associated with this Game Object.
@@ -36721,6 +37515,241 @@ declare namespace Phaser {
                  */
                 setVelocity(x: number, y?: number): Phaser.GameObjects.GameObject;
 
+                /**
+                 * The Game Object to which this animation controller belongs.
+                 */
+                parent: Phaser.GameObjects.GameObject;
+
+                /**
+                 * A reference to the global Animation Manager.
+                 */
+                animationManager: Phaser.Animations.AnimationManager;
+
+                /**
+                 * Is an animation currently playing or not?
+                 */
+                isPlaying: boolean;
+
+                /**
+                 * The current Animation loaded into this Animation Controller.
+                 */
+                currentAnim: Phaser.Animations.Animation;
+
+                /**
+                 * The current AnimationFrame being displayed by this Animation Controller.
+                 */
+                currentFrame: Phaser.Animations.AnimationFrame;
+
+                /**
+                 * The frame rate of playback in frames per second.
+                 * The default is 24 if the `duration` property is `null`.
+                 */
+                frameRate: number;
+
+                /**
+                 * How long the animation should play for, in milliseconds.
+                 * If the `frameRate` property has been set then it overrides this value,
+                 * otherwise the `frameRate` is derived from `duration`.
+                 */
+                duration: number;
+
+                /**
+                 * ms per frame, not including frame specific modifiers that may be present in the Animation data.
+                 */
+                msPerFrame: number;
+
+                /**
+                 * Skip frames if the time lags, or always advanced anyway?
+                 */
+                skipMissedFrames: boolean;
+
+                /**
+                 * Will the playhead move forwards (`true`) or in reverse (`false`)
+                 */
+                forward: boolean;
+
+                /**
+                 * Internal time overflow accumulator.
+                 */
+                accumulator: number;
+
+                /**
+                 * The time point at which the next animation frame will change.
+                 */
+                nextTick: number;
+
+                /**
+                 * An internal counter keeping track of how many repeats are left to play.
+                 */
+                repeatCounter: number;
+
+                /**
+                 * An internal flag keeping track of pending repeats.
+                 */
+                pendingRepeat: boolean;
+
+                /**
+                 * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
+                 * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
+                 */
+                delay(value?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
+                 * @param delay The delay, in milliseconds, to wait before starting the animation playing.
+                 * @param key The key of the animation to play.
+                 * @param startFrame The frame of the animation to start from. Default 0.
+                 */
+                delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Returns the key of the animation currently loaded into this component.
+                 */
+                getCurrentKey(): string;
+
+                /**
+                 * Internal method used to load an animation into this component.
+                 * @param key [description]
+                 * @param startFrame [description] Default 0.
+                 */
+                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Pause the current animation and set the `isPlaying` property to `false`.
+                 * You can optionally pause it at a specific frame.
+                 * @param atFrame An optional frame to set after pausing the animation.
+                 */
+                pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
+                 * You can optionally tell it to start playback from a specific frame.
+                 * @param fromFrame An optional frame to set before restarting playback.
+                 */
+                resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * `true` if the current animation is paused, otherwise `false`.
+                 */
+                isPaused: boolean;
+
+                /**
+                 * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
+                 * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
+                 * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
+                 */
+                getProgress(): number;
+
+                /**
+                 * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
+                 * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
+                 * @param value [description] Default 0.
+                 */
+                setProgress(value?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 * @param event [description]
+                 */
+                remove(event?: Phaser.Animations.Animation): void;
+
+                /**
+                 * Gets the number of times that the animation will repeat
+                 * after its first iteration. For example, if returns 1, the animation will
+                 * play a total of twice (the initial play plus 1 repeat).
+                 * A value of -1 means the animation will repeat indefinitely.
+                 */
+                getRepeat(): integer;
+
+                /**
+                 * Sets the number of times that the animation should repeat
+                 * after its first iteration. For example, if repeat is 1, the animation will
+                 * play a total of twice (the initial play plus 1 repeat).
+                 * To repeat indefinitely, use -1. repeat should always be an integer.
+                 * @param value [description]
+                 */
+                setRepeat(value: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets the amount of delay between repeats, if any.
+                 */
+                getRepeatDelay(): number;
+
+                /**
+                 * Sets the amount of time in seconds between repeats.
+                 * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
+                 * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
+                 * before doing its final repeat.
+                 * @param value The delay to wait between repeats, in seconds.
+                 */
+                setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Restarts the current animation from its beginning, optionally including its delay value.
+                 * @param includeDelay [description] Default false.
+                 */
+                restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
+                 */
+                stop(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing after the specified time delay, given in milliseconds.
+                 * @param delay The number of miliseconds to wait before stopping this animation.
+                 */
+                stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing when it next repeats.
+                 */
+                stopOnRepeat(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Stops the current animation from playing when it next sets the given frame.
+                 * If this frame doesn't exist within the animation it will not stop it from playing.
+                 * @param delay The frame to check before stopping this animation.
+                 */
+                stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
+                 * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
+                 * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
+                 */
+                setTimeScale(value?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets the Time Scale factor.
+                 */
+                getTimeScale(): number;
+
+                /**
+                 * Returns the total number of frames in this animation.
+                 */
+                getTotalFrames(): integer;
+
+                /**
+                 * Sets the given Animation Frame as being the current frame
+                 * and applies it to the parent Game Object, adjusting its size and origin as needed.
+                 * @param animationFrame The Animation Frame to set as being current.
+                 */
+                setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets if the current Animation will yoyo when it reaches the end.
+                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+                 * @param value `true` if the animation should yoyo, `false` to not. Default false.
+                 */
+                setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Gets if the current Animation will yoyo when it reaches the end.
+                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+                 */
+                getYoyo(): boolean;
+
             }
 
             /**
@@ -37285,57 +38314,36 @@ declare namespace Phaser {
 
         }
 
-        class Arcade {
-            /**
-             * [description]
-             */
-            static DYNAMIC_BODY: number;
-
-            /**
-             * [description]
-             */
-            static STATIC_BODY: number;
-
-            /**
-             * [description]
-             */
-            static GROUP: number;
-
-            /**
-             * [description]
-             */
-            static TILEMAPLAYER: number;
-
-            /**
-             * [description]
-             */
-            static FACING_NONE: number;
-
-            /**
-             * [description]
-             */
-            static FACING_UP: number;
-
-            /**
-             * [description]
-             */
-            static FACING_DOWN: number;
-
-            /**
-             * [description]
-             */
-            static FACING_LEFT: number;
-
-            /**
-             * [description]
-             */
-            static FACING_RIGHT: number;
-
-        }
-
     }
 
     namespace Plugins {
+        /**
+         * These are the Global Managers that are created by the Phaser.Game instance.
+         * They are referenced from Scene.Systems so that plugins can use them.
+         */
+        var Global: any[];
+
+        /**
+         * These are the core plugins that are installed into every Scene.Systems instance, no matter what.
+         * They are optionally exposed in the Scene as well (see the InjectionMap for details)
+         * 
+         * They are created in the order in which they appear in this array and EventEmitter is always first.
+         */
+        var CoreScene: any[];
+
+        /**
+         * These plugins are created in Scene.Systems in addition to the CoreScenePlugins.
+         * 
+         * You can elect not to have these plugins by either creating a DefaultPlugins object as part
+         * of the Game Config, by creating a Plugins object as part of a Scene Config, or by modifying this array
+         * and building your own bundle.
+         * 
+         * They are optionally exposed in the Scene as well (see the InjectionMap for details)
+         * 
+         * They are always created in the order in which they appear in the array.
+         */
+        var DefaultScene: any[];
+
     }
 
     /**
@@ -37668,6 +38676,19 @@ declare namespace Phaser {
 
                 /**
                  * [description]
+                 */
+                onBind(): Phaser.Renderer.WebGL.BitmapMaskPipeline;
+
+                /**
+                 * [description]
+                 * @param width [description]
+                 * @param height [description]
+                 * @param resolution [description]
+                 */
+                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.BitmapMaskPipeline;
+
+                /**
+                 * [description]
                  * @param mask [description]
                  * @param maskedObject [description]
                  * @param camera [description]
@@ -37711,6 +38732,19 @@ declare namespace Phaser {
                  * [description]
                  */
                 polygonCache: any[];
+
+                /**
+                 * [description]
+                 */
+                onBind(): Phaser.Renderer.WebGL.FlatTintPipeline;
+
+                /**
+                 * [description]
+                 * @param width [description]
+                 * @param height [description]
+                 * @param resolution [description]
+                 */
+                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.FlatTintPipeline;
 
                 /**
                  * [description]
@@ -37946,6 +38980,18 @@ declare namespace Phaser {
 
                 /**
                  * [description]
+                 */
+                onBind(): Phaser.Renderer.WebGL.ForwardDiffuseLightPipeline;
+
+                /**
+                 * [description]
+                 * @param scene [description]
+                 * @param camera [description]
+                 */
+                onRender(scene: Phaser.Scene, camera: Phaser.Cameras.Scene2D.Camera): Phaser.Renderer.WebGL.ForwardDiffuseLightPipeline;
+
+                /**
+                 * [description]
                  * @param tilemap [description]
                  * @param camera [description]
                  */
@@ -37953,11 +38999,66 @@ declare namespace Phaser {
 
                 /**
                  * [description]
-                 * @param width [description]
-                 * @param height [description]
-                 * @param resolution [description]
+                 * @param emitterManager [description]
+                 * @param camera [description]
                  */
-                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.TextureTintPipeline;
+                drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param blitter [description]
+                 * @param camera [description]
+                 */
+                drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param sprite [description]
+                 * @param camera [description]
+                 */
+                batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param mesh [description]
+                 * @param camera [description]
+                 */
+                batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param bitmapText [description]
+                 * @param camera [description]
+                 */
+                batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param bitmapText [description]
+                 * @param camera [description]
+                 */
+                batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param text [description]
+                 * @param camera [description]
+                 */
+                batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param tilemapLayer [description]
+                 * @param camera [description]
+                 */
+                batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                /**
+                 * [description]
+                 * @param tileSprite [description]
+                 * @param camera [description]
+                 */
+                batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera): void;
 
             }
 
@@ -38005,6 +39106,24 @@ declare namespace Phaser {
                  * [description]
                  */
                 pushBatch(): void;
+
+                /**
+                 * [description]
+                 */
+                flush(): Phaser.Renderer.WebGL.TextureTintPipeline;
+
+                /**
+                 * [description]
+                 */
+                onBind(): Phaser.Renderer.WebGL.TextureTintPipeline;
+
+                /**
+                 * [description]
+                 * @param width [description]
+                 * @param height [description]
+                 * @param resolution [description]
+                 */
+                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.TextureTintPipeline;
 
                 /**
                  * [description]
@@ -39020,6 +40139,56 @@ declare namespace Phaser {
     }
 
     namespace Scenes {
+        /**
+         * Scene state.
+         */
+        var PENDING: integer;
+
+        /**
+         * Scene state.
+         */
+        var INIT: integer;
+
+        /**
+         * Scene state.
+         */
+        var START: integer;
+
+        /**
+         * Scene state.
+         */
+        var LOADING: integer;
+
+        /**
+         * Scene state.
+         */
+        var CREATING: integer;
+
+        /**
+         * Scene state.
+         */
+        var RUNNING: integer;
+
+        /**
+         * Scene state.
+         */
+        var PAUSED: integer;
+
+        /**
+         * Scene state.
+         */
+        var SLEEPING: integer;
+
+        /**
+         * Scene state.
+         */
+        var SHUTDOWN: integer;
+
+        /**
+         * Scene state.
+         */
+        var DESTROYED: integer;
+
         /**
          * Builds an array of which physics plugins should be activated for the given Scene.
          * @param sys [description]
@@ -40224,6 +41393,30 @@ declare namespace Phaser {
             constructor(manager: Phaser.Sound.HTML5AudioSoundManager, key: string, config?: SoundConfig);
 
             /**
+             * Play this sound, or a marked section of it.
+             * It always plays the sound from the start. If you want to start playback from a specific time
+             * you can set 'seek' setting of the config object, provided to this call, to that value.
+             * @param markerName If you want to play a marker then provide the marker name here, otherwise omit it to play the full sound. Default ''.
+             * @param config Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
+             */
+            play(markerName?: string, config?: SoundConfig): boolean;
+
+            /**
+             * Pauses the sound.
+             */
+            pause(): boolean;
+
+            /**
+             * Resumes the sound.
+             */
+            resume(): boolean;
+
+            /**
+             * Stop playing this sound.
+             */
+            stop(): boolean;
+
+            /**
              * Update method called automatically by sound manager on every game step.
              * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
              * @param delta The delta time elapsed since the last frame.
@@ -40355,6 +41548,19 @@ declare namespace Phaser {
             loopEndOffset: number;
 
             /**
+             * Adds a new sound into the sound manager.
+             * @param key Asset key for the sound.
+             * @param config An optional config object containing default sound settings.
+             */
+            add(key: string, config?: SoundConfig): Phaser.Sound.HTML5AudioSound;
+
+            /**
+             * Unlocks HTML5 Audio loading and playback on mobile
+             * devices on the initial explicit user interaction.
+             */
+            unlock(): void;
+
+            /**
              * Method used internally for pausing sound manager if
              * Phaser.Sound.HTML5AudioSoundManager#pauseOnBlur is set to true.
              */
@@ -40465,6 +41671,31 @@ declare namespace Phaser {
             constructor(manager: Phaser.Sound.WebAudioSoundManager, key: string, config?: SoundConfig);
 
             /**
+             * Play this sound, or a marked section of it.
+             * 
+             * It always plays the sound from the start. If you want to start playback from a specific time
+             * you can set 'seek' setting of the config object, provided to this call, to that value.
+             * @param markerName If you want to play a marker then provide the marker name here, otherwise omit it to play the full sound. Default ''.
+             * @param config Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
+             */
+            play(markerName?: string, config?: SoundConfig): boolean;
+
+            /**
+             * Pauses the sound.
+             */
+            pause(): boolean;
+
+            /**
+             * Resumes the sound.
+             */
+            resume(): boolean;
+
+            /**
+             * Stop playing this sound.
+             */
+            stop(): boolean;
+
+            /**
              * Method used internally for applying config values to some of the sound properties.
              */
             protected applyConfig(): void;
@@ -40571,6 +41802,20 @@ declare namespace Phaser {
              * @param game Reference to the current game instance.
              */
             constructor(game: Phaser.Game);
+
+            /**
+             * Adds a new sound into the sound manager.
+             * @param key Asset key for the sound.
+             * @param config An optional config object containing default sound settings.
+             */
+            add(key: string, config?: SoundConfig): Phaser.Sound.WebAudioSound;
+
+            /**
+             * Unlocks Web Audio API on iOS devices on the initial touch event.
+             * 
+             * Read more about how this issue is handled here in [this article](https://medium.com/@pgoloskokovic/unlocking-web-audio-the-smarter-way-8858218c0e09).
+             */
+            unlock(): void;
 
             /**
              * Method used internally for pausing sound manager if
@@ -41349,6 +42594,16 @@ declare namespace Phaser {
             canvasData: object;
 
         }
+
+        /**
+         * Linear filter type.
+         */
+        const LINEAR: any;
+
+        /**
+         * Nearest Neighbor filter type.
+         */
+        const NEAREST: any;
 
         namespace Parsers {
             /**
@@ -43690,6 +44945,26 @@ declare namespace Phaser {
         }
 
         namespace Formats {
+            /**
+             * CSV Map Type
+             */
+            var CSV: number;
+
+            /**
+             * Tiled JSON Map Type
+             */
+            var TILED_JSON: number;
+
+            /**
+             * 2D Array Map Type
+             */
+            var ARRAY_2D: number;
+
+            /**
+             * Weltmeister (Impact.js) Map Type
+             */
+            var WELTMEISTER: number;
+
         }
 
         /**
@@ -46780,29 +48055,6 @@ declare namespace Phaser {
 
         }
 
-        class Formats {
-            /**
-             * CSV Map Type
-             */
-            static CSV: number;
-
-            /**
-             * Tiled JSON Map Type
-             */
-            static TILED_JSON: number;
-
-            /**
-             * 2D Array Map Type
-             */
-            static ARRAY_2D: number;
-
-            /**
-             * Weltmeister (Impact.js) Map Type
-             */
-            static WELTMEISTER: number;
-
-        }
-
     }
 
     namespace Time {
@@ -47324,6 +48576,91 @@ declare namespace Phaser {
             destroy(): void;
 
         }
+
+        /**
+         * TweenData state.
+         */
+        var CREATED: integer;
+
+        /**
+         * TweenData state.
+         */
+        var INIT: integer;
+
+        /**
+         * TweenData state.
+         */
+        var DELAY: integer;
+
+        /**
+         * TweenData state.
+         */
+        var OFFSET_DELAY: integer;
+
+        /**
+         * TweenData state.
+         */
+        var PENDING_RENDER: integer;
+
+        /**
+         * TweenData state.
+         */
+        var PLAYING_FORWARD: integer;
+
+        /**
+         * TweenData state.
+         */
+        var PLAYING_BACKWARD: integer;
+
+        /**
+         * TweenData state.
+         */
+        var HOLD_DELAY: integer;
+
+        /**
+         * TweenData state.
+         */
+        var REPEAT_DELAY: integer;
+
+        /**
+         * TweenData state.
+         */
+        var COMPLETE: integer;
+
+        /**
+         * Tween state.
+         */
+        var PENDING_ADD: integer;
+
+        /**
+         * Tween state.
+         */
+        var PAUSED: integer;
+
+        /**
+         * Tween state.
+         */
+        var LOOP_DELAY: integer;
+
+        /**
+         * Tween state.
+         */
+        var ACTIVE: integer;
+
+        /**
+         * Tween state.
+         */
+        var COMPLETE_DELAY: integer;
+
+        /**
+         * Tween state.
+         */
+        var PENDING_REMOVE: integer;
+
+        /**
+         * Tween state.
+         */
+        var REMOVED: integer;
 
         type TweenConfigDefaults = {
             /**
@@ -48483,316 +49820,6 @@ declare namespace Phaser {
 
     }
 
-    class Loader {
-        /**
-         * The Loader is idle.
-         */
-        static LOADER_IDLE: integer;
-
-        /**
-         * The Loader is actively loading.
-         */
-        static LOADER_LOADING: integer;
-
-        /**
-         * The Loader is processing files is has loaded.
-         */
-        static LOADER_PROCESSING: integer;
-
-        /**
-         * The Loader has completed loading and processing.
-         */
-        static LOADER_COMPLETE: integer;
-
-        /**
-         * The Loader is shutting down.
-         */
-        static LOADER_SHUTDOWN: integer;
-
-        /**
-         * The Loader has been destroyed.
-         */
-        static LOADER_DESTROYED: integer;
-
-        /**
-         * File is in the load queue but not yet started
-         */
-        static FILE_PENDING: integer;
-
-        /**
-         * File has been started to load by the loader (onLoad called)
-         */
-        static FILE_LOADING: integer;
-
-        /**
-         * File has loaded successfully, awaiting processing
-         */
-        static FILE_LOADED: integer;
-
-        /**
-         * File failed to load
-         */
-        static FILE_FAILED: integer;
-
-        /**
-         * File is being processed (onProcess callback)
-         */
-        static FILE_PROCESSING: integer;
-
-        /**
-         * File is waiting for its linkfile to load.
-         */
-        static FILE_WAITING_LINKFILE: integer;
-
-        /**
-         * The File has errored somehow during processing.
-         */
-        static FILE_ERRORED: integer;
-
-        /**
-         * File has finished processing.
-         */
-        static FILE_COMPLETE: integer;
-
-        /**
-         * File has been destroyed
-         */
-        static FILE_DESTROYED: integer;
-
-        /**
-         * File was populated from local data and doesn't need an HTTP request
-         */
-        static FILE_POPULATED: integer;
-
-        /**
-         * A special Texture Atlas const.
-         */
-        static TEXTURE_ATLAS_JSON_ARRAY: integer;
-
-        /**
-         * A special Texture Atlas const.
-         */
-        static TEXTURE_ATLAS_JSON_HASH: integer;
-
-    }
-
-    class Math {
-        /**
-         * The value of PI * 2.
-         */
-        static PI2: number;
-
-        /**
-         * The value of PI * 0.5.
-         */
-        static TAU: number;
-
-        /**
-         * An epsilon value (1.0e-6)
-         */
-        static EPSILON: number;
-
-        /**
-         * For converting degrees to radians (PI / 180)
-         */
-        static DEG_TO_RAD: number;
-
-        /**
-         * For converting radians to degrees (180 / PI)
-         */
-        static RAD_TO_DEG: number;
-
-        /**
-         * An instance of the Random Number Generator.
-         */
-        static RND: Phaser.Math.RandomDataGenerator;
-
-    }
-
-    class Plugins {
-        /**
-         * These are the Global Managers that are created by the Phaser.Game instance.
-         * They are referenced from Scene.Systems so that plugins can use them.
-         */
-        static Global: any[];
-
-        /**
-         * These are the core plugins that are installed into every Scene.Systems instance, no matter what.
-         * They are optionally exposed in the Scene as well (see the InjectionMap for details)
-         * 
-         * They are created in the order in which they appear in this array and EventEmitter is always first.
-         */
-        static CoreScene: any[];
-
-        /**
-         * These plugins are created in Scene.Systems in addition to the CoreScenePlugins.
-         * 
-         * You can elect not to have these plugins by either creating a DefaultPlugins object as part
-         * of the Game Config, by creating a Plugins object as part of a Scene Config, or by modifying this array
-         * and building your own bundle.
-         * 
-         * They are optionally exposed in the Scene as well (see the InjectionMap for details)
-         * 
-         * They are always created in the order in which they appear in the array.
-         */
-        static DefaultScene: any[];
-
-    }
-
-    class Scenes {
-        /**
-         * Scene state.
-         */
-        static PENDING: integer;
-
-        /**
-         * Scene state.
-         */
-        static INIT: integer;
-
-        /**
-         * Scene state.
-         */
-        static START: integer;
-
-        /**
-         * Scene state.
-         */
-        static LOADING: integer;
-
-        /**
-         * Scene state.
-         */
-        static CREATING: integer;
-
-        /**
-         * Scene state.
-         */
-        static RUNNING: integer;
-
-        /**
-         * Scene state.
-         */
-        static PAUSED: integer;
-
-        /**
-         * Scene state.
-         */
-        static SLEEPING: integer;
-
-        /**
-         * Scene state.
-         */
-        static SHUTDOWN: integer;
-
-        /**
-         * Scene state.
-         */
-        static DESTROYED: integer;
-
-    }
-
-    class Textures {
-        /**
-         * Linear filter type.
-         */
-        static readonly LINEAR: any;
-
-        /**
-         * Nearest Neighbor filter type.
-         */
-        static readonly NEAREST: any;
-
-    }
-
-    class Tweens {
-        /**
-         * TweenData state.
-         */
-        static CREATED: integer;
-
-        /**
-         * TweenData state.
-         */
-        static INIT: integer;
-
-        /**
-         * TweenData state.
-         */
-        static DELAY: integer;
-
-        /**
-         * TweenData state.
-         */
-        static OFFSET_DELAY: integer;
-
-        /**
-         * TweenData state.
-         */
-        static PENDING_RENDER: integer;
-
-        /**
-         * TweenData state.
-         */
-        static PLAYING_FORWARD: integer;
-
-        /**
-         * TweenData state.
-         */
-        static PLAYING_BACKWARD: integer;
-
-        /**
-         * TweenData state.
-         */
-        static HOLD_DELAY: integer;
-
-        /**
-         * TweenData state.
-         */
-        static REPEAT_DELAY: integer;
-
-        /**
-         * TweenData state.
-         */
-        static COMPLETE: integer;
-
-        /**
-         * Tween state.
-         */
-        static PENDING_ADD: integer;
-
-        /**
-         * Tween state.
-         */
-        static PAUSED: integer;
-
-        /**
-         * Tween state.
-         */
-        static LOOP_DELAY: integer;
-
-        /**
-         * Tween state.
-         */
-        static ACTIVE: integer;
-
-        /**
-         * Tween state.
-         */
-        static COMPLETE_DELAY: integer;
-
-        /**
-         * Tween state.
-         */
-        static PENDING_REMOVE: integer;
-
-        /**
-         * Tween state.
-         */
-        static REMOVED: integer;
-
-    }
-
 }
 
 declare type ArcadeBodyBounds = {
@@ -49691,8 +50718,6 @@ declare type TimerEventConfig = {
     paused?: boolean;
 };
 
-declare function hasGetStart(): void;
-
 declare type TweenDataGenConfig = {
     /**
      * [description]
@@ -49716,132 +50741,19 @@ declare type TweenDataGenConfig = {
     repeatDelay: Function;
 };
 
-declare class Phaser {
+/**
+ * Class
+ */
+declare class Class {
     /**
-     * Phaser Release Version
+     * 
+     * @param definition a dictionary of functions for the class
      */
-    static VERSION: string;
-
-    /**
-     * AUTO Detect Renderer.
-     */
-    static AUTO: integer;
-
-    /**
-     * Canvas Renderer.
-     */
-    static CANVAS: integer;
-
-    /**
-     * WebGL Renderer.
-     */
-    static WEBGL: integer;
-
-    /**
-     * Headless Renderer.
-     */
-    static HEADLESS: integer;
-
-    /**
-     * In Phaser the value -1 means 'forever' in lots of cases, this const allows you to use it instead
-     * to help you remember what the value is doing in your code.
-     */
-    static FOREVER: integer;
-
-    /**
-     * Direction constant.
-     */
-    static NONE: integer;
-
-    /**
-     * Direction constant.
-     */
-    static UP: integer;
-
-    /**
-     * Direction constant.
-     */
-    static DOWN: integer;
-
-    /**
-     * Direction constant.
-     */
-    static LEFT: integer;
-
-    /**
-     * Direction constant.
-     */
-    static RIGHT: integer;
-
-}
-
-declare class ParseRetroFont {
-    /**
-     * Text Set 1 =  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-     */
-    static readonly TEXT_SET1: string;
-
-    /**
-     * Text Set 2 =  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     */
-    static readonly TEXT_SET2: string;
-
-    /**
-     * Text Set 3 = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-     */
-    static readonly TEXT_SET3: string;
-
-    /**
-     * Text Set 4 = ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
-     */
-    static readonly TEXT_SET4: string;
-
-    /**
-     * Text Set 5 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,/() '!?-*:0123456789
-     */
-    static readonly TEXT_SET5: string;
-
-    /**
-     * Text Set 6 = ABCDEFGHIJKLMNOPQRSTUVWXYZ!?:;0123456789"(),-.'
-     */
-    static readonly TEXT_SET6: string;
-
-    /**
-     * Text Set 7 = AGMSY+:4BHNTZ!;5CIOU.?06DJPV,(17EKQW")28FLRX-'39
-     */
-    static readonly TEXT_SET7: string;
-
-    /**
-     * Text Set 8 = 0123456789 .ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     */
-    static readonly TEXT_SET8: string;
-
-    /**
-     * Text Set 9 = ABCDEFGHIJKLMNOPQRSTUVWXYZ()-0123456789.:,'"?!
-     */
-    static readonly TEXT_SET9: string;
-
-    /**
-     * Text Set 10 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     */
-    static readonly TEXT_SET10: string;
-
-    /**
-     * Text Set 11 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,"-+!?()':;0123456789
-     */
-    static readonly TEXT_SET11: string;
+    constructor(definition: Object);
 
 }
 
 declare type integer = number;
-
-declare type int = number;
-
-declare type DOMHighResTimeStamp = number;
-
-declare type Image = HTMLImageElement;
-
-declare type Point = any;
 
 declare module 'phaser' {
     export = Phaser;

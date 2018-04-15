@@ -8,7 +8,7 @@ export function publish(data:any, opts:any) {
     // remove package data
     data({ kind: 'package' }).remove();
     // remove header comments
-    data({ name: 'Class' }).remove();
+    data({ copyright: { isString: true }}).remove();
     // remove private members
     data({ access: 'private' }).remove();
 
