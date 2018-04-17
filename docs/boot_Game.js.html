@@ -137,7 +137,7 @@ var VisibilityHandler = require('./VisibilityHandler');
  * @constructor
  * @since 3.0.0
  *
- * @param {object} [GameConfig] - The configuration object for your Phaser Game instance.
+ * @param {GameConfig} [GameConfig] - The configuration object for your Phaser Game instance.
  */
 var Game = new Class({
 
@@ -208,7 +208,7 @@ var Game = new Class({
          * An Event Emitter which is used to broadcast game-level events from the global systems.
          *
          * @name Phaser.Game#events
-         * @type {EventEmitter}
+         * @type {Phaser.Events.EventEmitter}
          * @since 3.0.0
          */
         this.events = new EventEmitter();
@@ -247,7 +247,7 @@ var Game = new Class({
         this.cache = new CacheManager(this);
 
         /**
-         * [description]
+         * An instance of the Data Manager
          *
          * @name Phaser.Game#registry
          * @type {Phaser.Data.DataManager}
@@ -295,7 +295,7 @@ var Game = new Class({
          * The Sound Manager is a global system responsible for the playback and updating of all audio in your game.
          *
          * @name Phaser.Game#sound
-         * @type {Phaser.BaseSoundManager}
+         * @type {Phaser.Sound.BaseSoundManager}
          * @since 3.0.0
          */
         this.sound = SoundManagerCreator.create(this);
@@ -334,6 +334,26 @@ var Game = new Class({
          * @since 3.0.0
          */
         this.onStepCallback = NOOP;
+
+        /**
+         * Is this Game pending destruction at the start of the next frame?
+         *
+         * @name Phaser.Game#pendingDestroy
+         * @type {boolean}
+         * @private
+         * @since 3.5.0
+         */
+        this.pendingDestroy = false;
+
+        /**
+         * Remove the Canvas once the destroy is over?
+         *
+         * @name Phaser.Game#removeCanvas
+         * @type {boolean}
+         * @private
+         * @since 3.5.0
+         */
+        this.removeCanvas = false;
 
         //  Wait for the DOM Ready event, then call boot.
         DOMContentLoaded(this.boot.bind(this));
@@ -416,7 +436,7 @@ var Game = new Class({
      * the Scenes for rendering, but it won't have actually drawn anything yet.
      *
      * @event Phaser.Game#prerenderEvent
-     * @param {(Phaser.Renderer.CanvasRenderer|Phaser.Renderer.WebGLRenderer)} renderer - A reference to the current renderer.
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - A reference to the current renderer.
      */
 
     /**
@@ -426,7 +446,7 @@ var Game = new Class({
      * Every Scene will have rendered and drawn to the canvas.
      *
      * @event Phaser.Game#postrenderEvent
-     * @param {(Phaser.Renderer.CanvasRenderer|Phaser.Renderer.WebGLRenderer)} renderer - A reference to the current renderer.
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - A reference to the current renderer.
      */
 
     /**
@@ -447,6 +467,11 @@ var Game = new Class({
      */
     step: function (time, delta)
     {
+        if (this.pendingDestroy)
+        {
+            return this.runDestroy();
+        }
+
         //  Global Managers
 
         this.input.update(time, delta);
@@ -620,29 +645,51 @@ var Game = new Class({
     },
 
     /**
-     * Destroys this Phaser.Game instance, all global systems, all sub-systems and all Scenes.
+     * Flags this Game instance as needing to be destroyed on the next frame.
+     * It will wait until the current frame has completed and then call `runDestroy` internally.
      *
      * @method Phaser.Game#destroy
      * @since 3.0.0
+     *
+     * @param {boolean} removeCanvas - Set to `true` if you would like the parent canvas element removed from the DOM, or `false` to leave it in place.
      */
     destroy: function (removeCanvas)
     {
-        this.loop.destroy();
+        this.pendingDestroy = true;
 
-        this.scene.destroy();
+        this.removeCanvas = removeCanvas;
+    },
 
-        this.renderer.destroy();
-
+    /**
+     * Destroys this Phaser.Game instance, all global systems, all sub-systems and all Scenes.
+     *
+     * @method Phaser.Game#runDestroy
+     * @private
+     * @since 3.5.0
+     */
+    runDestroy: function ()
+    {
         this.events.emit('destroy');
 
         this.events.removeAllListeners();
 
+        this.scene.destroy();
+
+        if (this.renderer)
+        {
+            this.renderer.destroy();
+        }
+
         this.onStepCallback = null;
 
-        if (removeCanvas)
+        if (this.removeCanvas &amp;&amp; this.canvas)
         {
             CanvasPool.remove(this.canvas);
         }
+
+        this.loop.destroy();
+
+        this.pendingDestroy = false;
     }
 
 });
@@ -656,7 +703,7 @@ module.exports = Game;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

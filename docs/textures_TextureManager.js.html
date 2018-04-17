@@ -110,7 +110,7 @@ var Texture = require('./Texture');
  * @callback EachTextureCallback
  *
  * @param {Phaser.Textures.Texture} texture - [description]
- * @param {...*} [arguments] - Additional arguments that will be passed to the callback, after the child.
+ * @param {...*} [args] - Additional arguments that will be passed to the callback, after the child.
  */
 
 /**
@@ -123,7 +123,7 @@ var Texture = require('./Texture');
  * Access it via `scene.textures`.
  *
  * @class TextureManager
- * @extends EventEmitter
+ * @extends Phaser.Events.EventEmitter
  * @memberOf Phaser.Textures
  * @constructor
  * @since 3.0.0
@@ -485,6 +485,17 @@ var TextureManager = new Class({
     },
 
     /**
+     * @typedef {object} SpriteSheetConfig
+     * 
+     * @property {integer} frameWidth - The fixed width of each frame.
+     * @property {integer} [frameHeight] - The fixed height of each frame. If not set it will use the frameWidth as the height.
+     * @property {integer} [startFrame=0] - Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.
+     * @property {integer} [endFrame=-1] - The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames".
+     * @property {integer} [margin=0] - If the frames have been drawn with a margin, specify the amount here.
+     * @property {integer} [spacing=0] - If the frames have been drawn with spacing between them, specify the amount here.
+     */
+
+    /**
      * Adds a Sprite Sheet to this Texture Manager.
      *
      * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
@@ -495,13 +506,7 @@ var TextureManager = new Class({
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {HTMLImageElement} source - The source Image element.
-     * @param {object} config - The configuration object for this Sprite Sheet.
-     * @param {integer} config.frameWidth - The fixed width of each frame.
-     * @param {integer} [config.frameHeight] - The fixed height of each frame. If not set it will use the frameWidth as the height.
-     * @param {integer} [config.startFrame=0] - Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.
-     * @param {integer} [config.endFrame=-1] - The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames".
-     * @param {integer} [config.margin=0] - If the frames have been drawn with a margin, specify the amount here.
-     * @param {integer} [config.spacing=0] - If the frames have been drawn with spacing between them, specify the amount here.
+     * @param {SpriteSheetConfig} config - The configuration object for this Sprite Sheet.
      *
      * @return {Phaser.Textures.Texture} The Texture that was created.
      */
@@ -518,6 +523,19 @@ var TextureManager = new Class({
     },
 
     /**
+     * @typedef {object} SpriteSheetFromAtlasConfig
+     * 
+     * @property {string} atlas - The key of the Texture Atlas in which this Sprite Sheet can be found.
+     * @property {string} frame - The key of the Texture Atlas Frame in which this Sprite Sheet can be found.
+     * @property {integer} frameWidth - The fixed width of each frame.
+     * @property {integer} [frameHeight] - The fixed height of each frame. If not set it will use the frameWidth as the height.
+     * @property {integer} [startFrame=0] - Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.
+     * @property {integer} [endFrame=-1] - The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames".
+     * @property {integer} [margin=0] - If the frames have been drawn with a margin, specify the amount here.
+     * @property {integer} [spacing=0] - If the frames have been drawn with spacing between them, specify the amount here.
+     */
+
+    /**
      * Adds a Sprite Sheet to this Texture Manager, where the Sprite Sheet exists as a Frame within a Texture Atlas.
      *
      * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
@@ -527,15 +545,7 @@ var TextureManager = new Class({
      * @since 3.0.0
      *
      * @param {string} key - The unique string-based key of the Texture.
-     * @param {object} config - The configuration object for this Sprite Sheet.
-     * @param {string} config.atlas - The key of the Texture Atlas in which this Sprite Sheet can be found.
-     * @param {string} config.frame - The key of the Texture Atlas Frame in which this Sprite Sheet can be found.
-     * @param {integer} config.frameWidth - The fixed width of each frame.
-     * @param {integer} [config.frameHeight] - The fixed height of each frame. If not set it will use the frameWidth as the height.
-     * @param {integer} [config.startFrame=0] - Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.
-     * @param {integer} [config.endFrame=-1] - The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames".
-     * @param {integer} [config.margin=0] - If the frames have been drawn with a margin, specify the amount here.
-     * @param {integer} [config.spacing=0] - If the frames have been drawn with spacing between them, specify the amount here.
+     * @param {SpriteSheetFromAtlasConfig} config - The configuration object for this Sprite Sheet.
      *
      * @return {Phaser.Textures.Texture} The Texture that was created.
      */
@@ -840,7 +850,7 @@ var TextureManager = new Class({
      *
      * @param {EachTextureCallback} callback - The callback function to be sent the Textures.
      * @param {object} scope - The value to use as `this` when executing the callback.
-     * @param {...*} [arguments] - Additional arguments that will be passed to the callback, after the child.
+     * @param {...*} [args] - Additional arguments that will be passed to the callback, after the child.
      */
     each: function (callback, scope)
     {
@@ -888,7 +898,7 @@ module.exports = TextureManager;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -81,7 +81,7 @@
 	</header>
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
-				<span class="kind">namespace</span>
+				<span class="kind">class</span>
 				<h1><span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.Display.html">.Display</a>.</span><span class="name">Color</span></h1>
 			</div>
 		</div>
@@ -90,22 +90,82 @@
 			<div class="col-md-9 main-content">
 						<ol class="breadcrumb">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="list_namespace.html">Namespaces</a></li>
+							<li><a href="list_class.html">Classes</a></li>
 							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Display.html">.Display</a>.Color</li>
 						</ol>
 					<section>
 							<dl class="symbol primary">
-								<dt class="symbol-title namespace">
-			<h2 class="namespace"><span class="name">Color</span></h2>
+								<dt class="symbol-title class">
+			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">Color</span><span class="signature-params">( [&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">alpha</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h2>
 </dt>
-<dd class="symbol-details namespace" style="max-height: 9999px;">
+<dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">The Color class holds a single color value and allows for easy modification and reading of it.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>red</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The red color value. A number between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>green</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The green color value. A number between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>blue</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The blue color value. A number between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>alpha</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>255</td>
+							<td class="last">
+									The alpha value. A number between 0 and 255.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
 			
 			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
 			
 			
 			
@@ -120,7 +180,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="display_color_index.js.html">display/color/index.js</a>, <a href="display_color_index.js.html#line-24">line 24</a></p>
+									<p class="form-control-static"><a href="display_color_Color.js.html">display/color/Color.js</a>, <a href="display_color_Color.js.html#line-11">line 11</a></p>
 								</div>
 							</div>
 			
@@ -1339,10 +1399,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Converts an HSV (hue, saturation and value) color value to RGB.
-			Conversion formula from http://en.wikipedia.org/wiki/HSL_color_space.
-			Assumes HSV values are contained in the set [0, 1].
-			Based on code by Michael Jackson (https://github.com/mjijackson)</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Converts an HSV (hue, saturation and value) color value to RGB.Conversion formula from http://en.wikipedia.org/wiki/HSL_color_space.Assumes HSV values are contained in the set [0, 1].Based on code by Michael Jackson (https://github.com/mjijackson)</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1732,8 +1789,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a new Color object where the r, g, and b values have been set to random values
-			based on the given min max values.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a new Color object where the r, g, and b values have been set to random valuesbased on the given min max values.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1819,9 +1875,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Converts a CSS 'web' string into a Phaser Color object.
-			
-			The web string can be in the format `'rgb(r,g,b)'` or `'rgba(r,g,b,a)'` where r/g/b are in the range [0..255] and a is in the range [0..1].</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Converts a CSS 'web' string into a Phaser Color object.The web string can be in the format `'rgb(r,g,b)'` or `'rgba(r,g,b,a)'` where r/g/b are in the range [0..255] and a is in the range [0..1].</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2610,7 +2664,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

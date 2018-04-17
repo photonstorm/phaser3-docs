@@ -105,10 +105,10 @@ var NOOP = require('../utils/NOOP');
 
 /**
  * @classdesc
- * Class containing all the shared state and behaviour of a sound object, independent of the implementation.
+ * Class containing all the shared state and behavior of a sound object, independent of the implementation.
  *
  * @class BaseSound
- * @extends EventEmitter
+ * @extends Phaser.Events.EventEmitter
  * @memberOf Phaser.Sound
  * @constructor
  * @since 3.0.0
@@ -213,10 +213,15 @@ var BaseSound = new Class({
          * @since 3.0.0
          */
         this.config = {
-            /**
-             * Initializing delay config setting
-             */
+
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
             delay: 0
+
         };
 
         /**
@@ -230,74 +235,6 @@ var BaseSound = new Class({
          */
         this.currentConfig = this.config;
 
-        /**
-         * Boolean indicating whether the sound is muted or not.
-         * Gets or sets the muted state of this sound.
-         *
-         * @name Phaser.Sound.BaseSound#mute
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.mute = false;
-
-        /**
-         * Gets or sets the volume of this sound,
-         * a value between 0 (silence) and 1 (full volume).
-         *
-         * @name Phaser.Sound.BaseSound#volume
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.volume = 1;
-
-        /**
-         * Defines the speed at which the audio asset will be played.
-         * Value of 1.0 plays the audio at full speed, 0.5 plays the audio
-         * at half speed and 2.0 doubles the audio's playback speed.
-         * This value gets multiplied by global rate to have the final playback speed.
-         *
-         * @name Phaser.Sound.BaseSound#rate
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.rate = 1;
-
-        /**
-         * Represents detuning of sound in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-         * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
-         *
-         * @name Phaser.Sound.BaseSound#detune
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.detune = 0;
-
-        /**
-         * Property representing the position of playback for this sound, in seconds.
-         * Setting it to a specific value moves current playback to that position.
-         * The value given is clamped to the range 0 to current marker duration.
-         * Setting seek of a stopped sound has no effect.
-         *
-         * @name Phaser.Sound.BaseSound#seek
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.seek = 0;
-
-        /**
-         * Flag indicating whether or not the sound or current sound marker will loop.
-         *
-         * @name Phaser.Sound.BaseSound#loop
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.loop = false;
         this.config = Extend(this.config, config);
 
         /**
@@ -401,7 +338,7 @@ var BaseSound = new Class({
         if (!this.markers[marker.name])
         {
             // eslint-disable-next-line no-console
-            console.error('updateMarker - Marker with name \'' + marker.name + '\' does not exist for sound \'' + this.key + '\'!');
+            console.warn('Audio Marker: ' + marker.name + ' missing in Sound: ' + this.key);
 
             return false;
         }
@@ -460,9 +397,6 @@ var BaseSound = new Class({
 
         if (typeof markerName !== 'string')
         {
-            // eslint-disable-next-line no-console
-            console.error('Sound marker name has to be a string!');
-
             return false;
         }
 
@@ -477,7 +411,7 @@ var BaseSound = new Class({
             if (!this.markers[markerName])
             {
                 // eslint-disable-next-line no-console
-                console.error('No marker with name \'' + markerName + '\' found for sound \'' + this.key + '\'!');
+                console.warn('Marker: ' + markerName + ' missing in Sound: ' + this.key);
 
                 return false;
             }
@@ -621,113 +555,6 @@ var BaseSound = new Class({
     },
 
     /**
-     * @event Phaser.Sound.BaseSound#rate
-     * @param {Phaser.Sound.BaseSound} sound - Reference to the sound that emitted the event.
-     * @param {number} value - An updated value of Phaser.Sound.BaseSound#rate property.
-     */
-
-    /**
-     * Sets the playback rate of this Sound.
-     * 
-     * For example, a value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-     * and 2.0 doubles the audios playback speed.
-     *
-     * @method Phaser.Sound.BaseSound#setRate
-     * @fires Phaser.Sound.BaseSound#rate
-     * @since 3.3.0
-     *
-     * @param {number} value - The playback rate at of this Sound.
-     *
-     * @return {Phaser.Sound.BaseSound} This Sound.
-     */
-    setRate: function (value)
-    {
-        this.rate = value;
-
-        return this;
-    },
-
-    /**
-     * Rate at which this Sound will be played.
-     * Value of 1.0 plays the audio at full speed, 0.5 plays the audio at half speed
-     * and 2.0 doubles the audios playback speed.
-     *
-     * @name Phaser.Sound.BaseSound#rate
-     * @type {number}
-     * @default 1
-     * @since 3.0.0
-     */
-    rate: {
-
-        get: function ()
-        {
-            return this.currentConfig.rate;
-        },
-
-        set: function (value)
-        {
-            this.currentConfig.rate = value;
-
-            this.calculateRate();
-
-            this.emit('rate', this, value);
-        }
-
-    },
-
-    /**
-     * Sets the detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-     * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
-     *
-     * @method Phaser.Sound.BaseSound#setDetune
-     * @fires Phaser.Sound.BaseSound#detune
-     * @since 3.3.0
-     *
-     * @param {number} value - The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
-     *
-     * @return {Phaser.Sound.BaseSound} This Sound.
-     */
-    setDetune: function (value)
-    {
-        this.detune = value;
-
-        return this;
-    },
-
-    /**
-     * @event Phaser.Sound.BaseSound#detune
-     * @param {Phaser.Sound.BaseSound} sound - Reference to the Sound that emitted event.
-     * @param {number} value - An updated value of Phaser.Sound.BaseSound#detune property.
-     */
-
-    /**
-     * The detune value of this Sound, given in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-     * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
-     *
-     * @name Phaser.Sound.BaseSound#detune
-     * @type {number}
-     * @default 0
-     * @since 3.0.0
-     */
-    detune: {
-
-        get: function ()
-        {
-            return this.currentConfig.detune;
-        },
-
-        set: function (value)
-        {
-            this.currentConfig.detune = value;
-
-            this.calculateRate();
-
-            this.emit('detune', this, value);
-        }
-
-    },
-
-    /**
      * Destroys this sound and all associated events and marks it for removal from the sound manager.
      *
      * @method Phaser.Sound.BaseSound#destroy
@@ -740,6 +567,7 @@ var BaseSound = new Class({
             return;
         }
 
+        this.emit('destroy', this);
         this.pendingRemove = true;
         this.manager = null;
         this.key = '';
@@ -763,7 +591,7 @@ module.exports = BaseSound;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

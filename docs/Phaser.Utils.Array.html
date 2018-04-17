@@ -147,11 +147,240 @@
 									<dl class="symbol">
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".FindClosestInSorted" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">FindClosestInSorted</span><span class="signature-params">( <span class="signature-param">value</span>, <span class="signature-param">array</span>&nbsp;)</span></h4>
+			<h4 id=".Add" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Add</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span> [,&nbsp;<span class="signature-param">limit</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds the given item, or array of items, to the array.Each item must be unique within the array.The array is modified in-place and returned.You can optionally specify a limit to the maximum size of the array. If the quantity of items beingadded will take the array length over this limit, it will stop adding once the limit is reached.You can optionally specify a callback to be invoked for each item successfully added to the array.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to be added to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">any</span> | <span class="param-type">Array.&lt;any></span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The item, or array of items, to add to the array. Each item must be unique within the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>limit</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									Optional limit which caps the size of the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									A callback to be invoked for each item successfully added to the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_Add.js.html">utils/array/Add.js</a>, <a href="utils_array_Add.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".AddAt" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">AddAt</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span> [,&nbsp;<span class="signature-param">index</span> [,&nbsp;<span class="signature-param">limit</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds the given item, or array of items, to the array starting at the index specified.Each item must be unique within the array.Existing elements in the array are shifted up.The array is modified in-place and returned.You can optionally specify a limit to the maximum size of the array. If the quantity of items beingadded will take the array length over this limit, it will stop adding once the limit is reached.You can optionally specify a callback to be invoked for each item successfully added to the array.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array to be added to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">any</span> | <span class="param-type">Array.&lt;any></span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The item, or array of items, to add to the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The index in the array where the item will be inserted.
+							</td>
+						</tr>
+						<tr>
+								<td><code>limit</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									Optional limit which caps the size of the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									A callback to be invoked for each item successfully added to the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_AddAt.js.html">utils/array/AddAt.js</a>, <a href="utils_array_AddAt.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".BringToTop" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">BringToTop</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves the given element to the top of the array.The array is modified in-place.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -164,17 +393,17 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>value</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									The value to search for in the array.
-							</td>
-						</tr>
-						<tr>
 								<td><code>array</code></td>
 							<td><span class="param-type">array</span></td>
 							<td class="last">
-									The array to search, which must be sorted.
+									The array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element to move.
 							</td>
 						</tr>
 					</tbody>
@@ -182,9 +411,421 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">*</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The nearest value found in the array.</div>
+									<div class="form-control-static returns-description">The element that was moved.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_BringToTop.js.html">utils/array/BringToTop.js</a>, <a href="utils_array_BringToTop.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".CountAllMatching" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">CountAllMatching</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">property</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">startIndex</span> [,&nbsp;<span class="signature-param">endIndex</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns the total number of elements in the array which have a property matching the given value.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to search.
+							</td>
+						</tr>
+						<tr>
+								<td><code>property</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The property to test on each array element.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The value to test the property against. Must pass a strict (`===`) comparison check.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional start index to search from.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional end index to search to.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The total number of elements with properties matching the given value.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_CountAllMatching.js.html">utils/array/CountAllMatching.js</a>, <a href="utils_array_CountAllMatching.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".Each" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Each</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">callback</span>, <span class="signature-param">context</span> [,&nbsp;<span class="signature-param">...args</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Passes each element in the array to the given callback.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to search.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									A callback to be invoked for each item in the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+						<tr>
+								<td><code>args</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/>&lt;repeatable&gt;<br/></td>
+							<td class="last">
+									Additional arguments that will be passed to the callback, after the child.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_Each.js.html">utils/array/Each.js</a>, <a href="utils_array_Each.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".EachInRange" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">EachInRange</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">callback</span>, <span class="signature-param">context</span>, <span class="signature-param">startIndex</span>, <span class="signature-param">endIndex</span> [,&nbsp;<span class="signature-param">...args</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Passes each element in the array, between the start and end indexes, to the given callback.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to search.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									A callback to be invoked for each item in the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The start index to search from.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The end index to search to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>args</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/>&lt;repeatable&gt;<br/></td>
+							<td class="last">
+									Additional arguments that will be passed to the callback, after the child.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_EachInRange.js.html">utils/array/EachInRange.js</a>, <a href="utils_array_EachInRange.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".FindClosestInSorted" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">FindClosestInSorted</span><span class="signature-params">( <span class="signature-param">value</span>, <span class="signature-param">array</span> [,&nbsp;<span class="signature-param">key</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The value to search for in the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to search, which must be sorted.
+							</td>
+						</tr>
+						<tr>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional property key. If specified the array elements property will be checked against value.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span> | <span class="param-type">object</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The nearest value found in the array, or if a `key` was given, the nearest object with the matching property value.</div>
 								</div>
 							</div>
 					</form>
@@ -227,11 +868,231 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id=".GetRandomElement" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetRandomElement</span><span class="signature-params">( <span class="signature-param">array</span> [,&nbsp;<span class="signature-param">start</span> [,&nbsp;<span class="signature-param">length</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id=".GetAll" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetAll</span><span class="signature-params">( <span class="signature-param">array</span> [,&nbsp;<span class="signature-param">property</span> [,&nbsp;<span class="signature-param">value</span> [,&nbsp;<span class="signature-param">startIndex</span> [,&nbsp;<span class="signature-param">endIndex</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns all elements in the array.You can optionally specify a matching criteria using the `property` and `value` arguments.For example: `getAll('visible', true)` would return only elements that have their visible property set.Optionally you can specify a start and end index. For example if the array had 100 elements,and you set `startIndex` to 0 and `endIndex` to 50, it would return matches from onlythe first 50 elements.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to search.
+							</td>
+						</tr>
+						<tr>
+								<td><code>property</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The property to test on each array element.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The value to test the property against. Must pass a strict (`===`) comparison check.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional start index to search from.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional end index to search to.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">All matching elements from the array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_GetAll.js.html">utils/array/GetAll.js</a>, <a href="utils_array_GetAll.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".GetFirst" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetFirst</span><span class="signature-params">( <span class="signature-param">array</span> [,&nbsp;<span class="signature-param">property</span> [,&nbsp;<span class="signature-param">value</span> [,&nbsp;<span class="signature-param">startIndex</span> [,&nbsp;<span class="signature-param">endIndex</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns the first element in the array.You can optionally specify a matching criteria using the `property` and `value` arguments.For example: `getAll('visible', true)` would return the first element that had its `visible` property set.Optionally you can specify a start and end index. For example if the array had 100 elements,and you set `startIndex` to 0 and `endIndex` to 50, it would search only the first 50 elements.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array to search.
+							</td>
+						</tr>
+						<tr>
+								<td><code>property</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The property to test on each array element.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The value to test the property against. Must pass a strict (`===`) comparison check.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									An optional start index to search from.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>array.length</td>
+							<td class="last">
+									An optional end index to search up to (but not included)
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">object</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The first matching element from the array, or `null` if no element could be found in the range given.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_GetFirst.js.html">utils/array/GetFirst.js</a>, <a href="utils_array_GetFirst.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".GetRandom" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">GetRandom</span><span class="signature-params">( <span class="signature-param">array</span> [,&nbsp;<span class="signature-param">startIndex</span> [,&nbsp;<span class="signature-param">length</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns a Random element from the array.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -255,12 +1116,12 @@
 							</td>
 						</tr>
 						<tr>
-								<td><code>start</code></td>
+								<td><code>startIndex</code></td>
 							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									An optional start index.
 							</td>
 						</tr>
 						<tr>
@@ -269,7 +1130,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>array.length</td>
 							<td class="last">
-									[description]
+									An optional length, the total number of elements (from the startIndex) to choose from.
 							</td>
 						</tr>
 					</tbody>
@@ -310,7 +1171,254 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils_array_GetRandomElement.js.html">utils/array/GetRandomElement.js</a>, <a href="utils_array_GetRandomElement.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="utils_array_GetRandom.js.html">utils/array/GetRandom.js</a>, <a href="utils_array_GetRandom.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".MoveDown" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">MoveDown</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves the given array element down one place in the array.The array is modified in-place.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+							<td class="last">
+									The input array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element to move down the array.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_MoveDown.js.html">utils/array/MoveDown.js</a>, <a href="utils_array_MoveDown.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".MoveTo" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">MoveTo</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span>, <span class="signature-param">index</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves an element in an array to a new position within the same array.The array is modified in-place.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+							<td class="last">
+									The array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element to move.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									The new index that the element will be moved to.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">*</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The element that was moved.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_MoveTo.js.html">utils/array/MoveTo.js</a>, <a href="utils_array_MoveTo.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".MoveUp" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">MoveUp</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves the given array element up one place in the array.The array is modified in-place.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+							<td class="last">
+									The input array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element to move up the array.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_MoveUp.js.html">utils/array/MoveUp.js</a>, <a href="utils_array_MoveUp.js.html#line-7">line 7</a></p>
 								</div>
 							</div>
 			
@@ -425,13 +1533,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Create an array of numbers (positive and/or negative) progressing from `start`
-			up to but not including `end` by advancing by `step`.
-			
-			If `start` is less than `end` a zero-length range is created unless a negative `step` is specified.
-			
-			Certain values for `start` and `end` (eg. NaN/undefined/null) are currently coerced to 0;
-			for forward compatibility make sure to pass in actual numbers.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Create an array of numbers (positive and/or negative) progressing from `start`up to but not including `end` by advancing by `step`.If `start` is less than `end` a zero-length range is created unless a negative `step` is specified.Certain values for `start` and `end` (eg. NaN/undefined/null) are currently coerced to 0;for forward compatibility make sure to pass in actual numbers.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -484,23 +1586,7 @@
 							</div>
 					</form>
 			</div>			<div class="callout callout-example"><h5>Examples</h5>		<div class="example-code">
-						<pre class="prettyprint source language-javascript"><code class="language-javascript">NumberArrayStep(4);
-			// &#x3D;&gt; [0, 1, 2, 3]
-			
-			NumberArrayStep(1, 5);
-			// &#x3D;&gt; [1, 2, 3, 4]
-			
-			NumberArrayStep(0, 20, 5);
-			// &#x3D;&gt; [0, 5, 10, 15]
-			
-			NumberArrayStep(0, -4, -1);
-			// &#x3D;&gt; [0, -1, -2, -3]
-			
-			NumberArrayStep(1, 4, 0);
-			// &#x3D;&gt; [1, 1, 1]
-			
-			NumberArrayStep(0);
-			// &#x3D;&gt; []</code></pre>
+						<pre class="prettyprint source language-javascript"><code class="language-javascript">NumberArrayStep(4);// &#x3D;&gt; [0, 1, 2, 3]NumberArrayStep(1, 5);// &#x3D;&gt; [1, 2, 3, 4]NumberArrayStep(0, 20, 5);// &#x3D;&gt; [0, 5, 10, 15]NumberArrayStep(0, -4, -1);// &#x3D;&gt; [0, -1, -2, -3]NumberArrayStep(1, 4, 0);// &#x3D;&gt; [1, 1, 1]NumberArrayStep(0);// &#x3D;&gt; []</code></pre>
 					</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
@@ -721,6 +1807,311 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
+			<h4 id=".Remove" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Remove</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes the given item, or array of items, from the array.The array is modified in-place.You can optionally specify a callback to be invoked for each item successfully removed from the array.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to be modified.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">*</span> | <span class="param-type">Array.&lt;*></span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The item, or array of items, to be removed from the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									A callback to be invoked for each item successfully removed from the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">*</span> | <span class="param-type">Array.&lt;*></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The item, or array of items, that were successfully removed from the array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_Remove.js.html">utils/array/Remove.js</a>, <a href="utils_array_Remove.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".RemoveAt" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">RemoveAt</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">index</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes the item from the given position in the array.The array is modified in-place.You can optionally specify a callback to be invoked for the item if it is successfully removed from the array.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to be modified.
+							</td>
+						</tr>
+						<tr>
+								<td><code>index</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array index to remove the item from. The index must be in bounds or it will throw an error.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									A callback to be invoked for the item removed from the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">*</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The item that was removed.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_RemoveAt.js.html">utils/array/RemoveAt.js</a>, <a href="utils_array_RemoveAt.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".RemoveBetween" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">RemoveBetween</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">startIndex</span>, <span class="signature-param">endIndex</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes the item within the given range in the array.The array is modified in-place.You can optionally specify a callback to be invoked for the item/s successfully removed from the array.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to be modified.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The start index to remove from.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The end index to remove to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									A callback to be invoked for the item removed from the array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The context in which the callback is invoked.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">Array.&lt;*></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">An array of items that were removed.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_RemoveBetween.js.html">utils/array/RemoveBetween.js</a>, <a href="utils_array_RemoveBetween.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
 			<h4 id=".RemoveRandomElement" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">RemoveRandomElement</span><span class="signature-params">( <span class="signature-param">array</span> [,&nbsp;<span class="signature-param">start</span> [,&nbsp;<span class="signature-param">length</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
@@ -805,6 +2196,86 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="utils_array_RemoveRandomElement.js.html">utils/array/RemoveRandomElement.js</a>, <a href="utils_array_RemoveRandomElement.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".Replace" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Replace</span><span class="signature-params">( <span class="signature-param">oldChild</span>, <span class="signature-param">newChild</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Replaces an element of the array with the new element.The new element cannot already be a member of the array.The array is modified in-place.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>oldChild</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element in the array that will be replaced.
+							</td>
+						</tr>
+						<tr>
+								<td><code>newChild</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element to be inserted into the array at the position of `oldChild`.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">Returns true if the oldChild was successfully replaced, otherwise returns false.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_Replace.js.html">utils/array/Replace.js</a>, <a href="utils_array_Replace.js.html#line-7">line 7</a></p>
 								</div>
 							</div>
 			
@@ -988,6 +2459,297 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
+			<h4 id=".SafeRange" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SafeRange</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">startIndex</span>, <span class="signature-param">endIndex</span> [,&nbsp;<span class="signature-param">throwError</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Tests if the start and end indexes are a safe range for the given array.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The array to check.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The start index.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The end index.
+							</td>
+						</tr>
+						<tr>
+								<td><code>throwError</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>true</td>
+							<td class="last">
+									Throw an error if the range is out of bounds.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">True if the range is safe, otherwise false.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_SafeRange.js.html">utils/array/SafeRange.js</a>, <a href="utils_array_SafeRange.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SendToBack" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SendToBack</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves the given element to the bottom of the array.The array is modified in-place.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+							<td class="last">
+									The array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The element to move.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">*</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The element that was moved.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_SendToBack.js.html">utils/array/SendToBack.js</a>, <a href="utils_array_SendToBack.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".SetAll" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">SetAll</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">property</span>, <span class="signature-param">value</span> [,&nbsp;<span class="signature-param">startIndex</span> [,&nbsp;<span class="signature-param">endIndex</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Scans the array for elements with the given property. If found, the property is set to the `value`.For example: `SetAll('visible', true)` would set all elements that have a `visible` property to `false`.Optionally you can specify a start and end index. For example if the array had 100 elements,and you set `startIndex` to 0 and `endIndex` to 50, it would update only the first 50 elements.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The array to search.
+							</td>
+						</tr>
+						<tr>
+								<td><code>property</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The property to test for on each array element.
+							</td>
+						</tr>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The value to set the property to.
+							</td>
+						</tr>
+						<tr>
+								<td><code>startIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional start index to search from.
+							</td>
+						</tr>
+						<tr>
+								<td><code>endIndex</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									An optional end index to search to.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_SetAll.js.html">utils/array/SetAll.js</a>, <a href="utils_array_SetAll.js.html#line-9">line 9</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
 			<h4 id=".Shuffle" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Shuffle</span><span class="signature-params">( <span class="signature-param">array</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
@@ -1065,7 +2827,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes a single item from an array and returns it without creating gc (like the native splice does)</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes a single item from an array and returns it without creating gc, like the native splice does.Based on code by Mike Reinstein.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1129,7 +2891,94 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils_array_SpliceOne.js.html">utils/array/SpliceOne.js</a>, <a href="utils_array_SpliceOne.js.html#line-9">line 9</a></p>
+									<p class="form-control-static"><a href="utils_array_SpliceOne.js.html">utils/array/SpliceOne.js</a>, <a href="utils_array_SpliceOne.js.html#line-7">line 7</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id=".Swap" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">Swap</span><span class="signature-params">( <span class="signature-param">array</span>, <span class="signature-param">item1</span>, <span class="signature-param">item2</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Swaps the position of two elements in the given array.The elements must exist in the same array.The array is modified in-place.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>array</code></td>
+							<td><span class="param-type">array</span></td>
+							<td class="last">
+									The input array.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item1</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The first element to swap.
+							</td>
+						</tr>
+						<tr>
+								<td><code>item2</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									The second element to swap.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The input array.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="utils_array_Swap.js.html">utils/array/Swap.js</a>, <a href="utils_array_Swap.js.html#line-7">line 7</a></p>
 								</div>
 							</div>
 			
@@ -1151,7 +3000,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -108,6 +108,14 @@ var PluginManager = require('../boot/PluginManager');
 var XHRSettings = require('./XHRSettings');
 
 /**
+ * @typedef {object} LinkFileObject
+ *
+ * @property {string} type - [description]
+ * @property {Phaser.Loader.File} fileA - [description]
+ * @property {Phaser.Loader.File} fileB - [description]
+ */
+
+/**
  * @typedef {object} LoaderFileObject
  *
  * @property {string} key - [description]
@@ -134,7 +142,7 @@ var XHRSettings = require('./XHRSettings');
  * [description]
  *
  * @class LoaderPlugin
- * @extends EventEmitter
+ * @extends Phaser.Events.EventEmitter
  * @memberOf Phaser.Loader
  * @constructor
  * @since 3.0.0
@@ -168,11 +176,6 @@ var LoaderPlugin = new Class({
          * @since 3.0.0
          */
         this.systems = scene.sys;
-
-        if (!scene.sys.settings.isBooted)
-        {
-            scene.sys.events.once('boot', this.boot, this);
-        }
 
         /**
          * [description]
@@ -281,7 +284,7 @@ var LoaderPlugin = new Class({
          * [description]
          *
          * @name Phaser.Loader.LoaderPlugin#list
-         * @type {Phaser.Structs.Set}
+         * @type {Phaser.Structs.Set.&lt;Phaser.Loader.File>}
          * @since 3.0.0
          */
         this.list = new CustomSet();
@@ -290,7 +293,7 @@ var LoaderPlugin = new Class({
          * [description]
          *
          * @name Phaser.Loader.LoaderPlugin#inflight
-         * @type {Phaser.Structs.Set}
+         * @type {Phaser.Structs.Set.&lt;Phaser.Loader.File>}
          * @since 3.0.0
          */
         this.inflight = new CustomSet();
@@ -299,7 +302,7 @@ var LoaderPlugin = new Class({
          * [description]
          *
          * @name Phaser.Loader.LoaderPlugin#failed
-         * @type {Phaser.Structs.Set}
+         * @type {Phaser.Structs.Set.&lt;Phaser.Loader.File>}
          * @since 3.0.0
          */
         this.failed = new CustomSet();
@@ -308,7 +311,7 @@ var LoaderPlugin = new Class({
          * [description]
          *
          * @name Phaser.Loader.LoaderPlugin#queue
-         * @type {Phaser.Structs.Set}
+         * @type {Phaser.Structs.Set.&lt;Phaser.Loader.File>}
          * @since 3.0.0
          */
         this.queue = new CustomSet();
@@ -317,7 +320,7 @@ var LoaderPlugin = new Class({
          * [description]
          *
          * @name Phaser.Loader.LoaderPlugin#storage
-         * @type {Phaser.Structs.Set}
+         * @type {Phaser.Structs.Set.&lt;(Phaser.Loader.File|LinkFileObject)>}
          * @since 3.0.0
          */
         this.storage = new CustomSet();
@@ -330,20 +333,36 @@ var LoaderPlugin = new Class({
          * @since 3.0.0
          */
         this.state = CONST.LOADER_IDLE;
+
+        scene.sys.events.once('boot', this.boot, this);
+        scene.sys.events.on('start', this.pluginStart, this);
     },
 
     /**
-     * [description]
+     * This method is called automatically, only once, when the Scene is first created.
+     * Do not invoke it directly.
      *
      * @method Phaser.Loader.LoaderPlugin#boot
-     * @since 3.0.0
+     * @private
+     * @since 3.5.1
      */
     boot: function ()
     {
-        var eventEmitter = this.systems.events;
+        this.systems.events.once('destroy', this.destroy, this);
+    },
 
-        eventEmitter.on('shutdown', this.shutdown, this);
-        eventEmitter.on('destroy', this.destroy, this);
+    /**
+     * This method is called automatically by the Scene when it is starting up.
+     * It is responsible for creating local systems, properties and listening for Scene events.
+     * Do not invoke it directly.
+     *
+     * @method Phaser.Loader.LoaderPlugin#pluginStart
+     * @private
+     * @since 3.5.1
+     */
+    pluginStart: function ()
+    {
+        this.systems.events.once('shutdown', this.shutdown, this);
     },
 
     /**
@@ -454,7 +473,7 @@ var LoaderPlugin = new Class({
      */
     isReady: function ()
     {
-        return (this.state === CONST.LOADER_IDLE || this.state === CONST.LOADER_COMPLETE || this.state === CONST.LOADER_FAILED);
+        return (this.state === CONST.LOADER_IDLE || this.state === CONST.LOADER_COMPLETE);
     },
 
     /**
@@ -1061,27 +1080,46 @@ var LoaderPlugin = new Class({
     },
 
     /**
-     * [description]
+     * The Scene that owns this plugin is shutting down.
+     * We need to kill and reset all internal properties as well as stop listening to Scene events.
      *
      * @method Phaser.Loader.LoaderPlugin#shutdown
+     * @private
      * @since 3.0.0
      */
     shutdown: function ()
     {
         this.reset();
+
         this.state = CONST.LOADER_SHUTDOWN;
+
+        this.systems.events.off('shutdown', this.shutdown, this);
     },
 
     /**
-     * [description]
+     * The Scene that owns this plugin is being destroyed.
+     * We need to shutdown and then kill off all external references.
      *
      * @method Phaser.Loader.LoaderPlugin#destroy
+     * @private
      * @since 3.0.0
      */
     destroy: function ()
     {
-        this.reset();
+        this.shutdown();
+
         this.state = CONST.LOADER_DESTROYED;
+
+        this.systems.events.off('start', this.pluginStart, this);
+
+        this.list = null;
+        this.inflight = null;
+        this.failed = null;
+        this.queue = null;
+        this.storage = null;
+
+        this.scene = null;
+        this.systems = null;
     }
 
 });
@@ -1097,7 +1135,7 @@ module.exports = LoaderPlugin;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

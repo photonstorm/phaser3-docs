@@ -42,7 +42,7 @@
 		<script type="text/javascript">
 			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
-			window.DOCLET_AFILTER_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = true;
 		</script>
 </head>
 <body>
@@ -93,6 +93,20 @@
 							<li><a href="list_class.html">Classes</a></li>
 							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Cameras.html">.Cameras</a><a href="Phaser.Cameras.Scene2D.html">.Scene2D</a>.Camera</li>
 						</ol>
+						<div class="access-filter">
+								<label class="checkbox-inline">
+									<input class="toggle-inherited" type="checkbox" value="" checked>
+									Inherited
+								</label>
+								<label class="checkbox-inline">
+									<input class="toggle-public" type="checkbox" value="" checked>
+									Public
+								</label>
+								<label class="checkbox-inline">
+									<input class="toggle-protected" type="checkbox" value="" checked>
+									Protected
+								</label>
+						</div>
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
@@ -100,7 +114,7 @@
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">A Camera.The Camera is the way in which all games are rendered in Phaser. They provide a view into your game world,and can be positioned, rotated, zoomed and scrolled accordingly.A Camera consists of two elements: The viewport and the scroll values.The viewport is the physical position and size of the Camera within your game. Cameras, by default, arecreated the same size as your game, but their position and size can be set to anything. This means if youwanted to create a camera that was 320x200 in size, positioned in the bottom-right corner of your game,you'd adjust the viewport to do that (using methods like `setViewport` and `setSize`).If you wish to change where the Camera is looking in your game, then you scroll it. You can do thisvia the properties `scrollX` and `scrollY` or the method `setScroll`. Scrolling has no impact on theviewport, and changing the viewport has no impact on the scrolling.By default a Camera will render all Game Objects it can see. You can change this using the `ignore` method,allowing you to filter Game Objects out on a per-Camera basis.A Camera also has built-in special effects including Fade, Flash and Camera Shake.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -147,6 +161,13 @@
 			
 			
 			
+							<!-- augments -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Augments</label>
+								<div class="col-sm-9">
+										<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></p>
+								</div>
+							</div>
 			
 			
 							<!-- since -->
@@ -170,7 +191,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-35">line 35</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-37">line 37</a></p>
 								</div>
 							</div>
 			
@@ -225,7 +246,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-223">line 223</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-239">line 239</a></p>
 								</div>
 							</div>
 			
@@ -237,65 +258,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="clearBeforeRender" class="member public"><span class="name">clearBeforeRender</span><span class="signature-type"> :boolean</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">TODO</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
-								</div>
-							</div>
-			
-							<!-- defaultvalue -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Default Value</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">true</p>
-								</div>
-							</div>
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-213">line 213</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="culledObjects" class="member public"><span class="name">culledObjects</span><span class="signature-type"> :array</span></h4>
+			<h4 id="culledObjects" class="member public"><span class="name">culledObjects</span><span class="signature-type"> :Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -306,7 +269,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
+									<div class="form-control-static type-names"><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></div>
 								</div>
 							</div>
 			
@@ -341,7 +304,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-243">line 243</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-289">line 289</a></p>
 								</div>
 							</div>
 			
@@ -357,7 +320,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Should the camera cull Game Objects before rendering?In some special cases it may be beneficial to disable this.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Should the camera cull Game Objects before checking them for input hit tests?In some special cases it may be beneficial to disable this.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -399,7 +362,109 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-232">line 232</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-278">line 278</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="fadeEffect" class="member public"><span class="name">fadeEffect</span><span class="signature-type"> :<a href="Phaser.Cameras.Scene2D.Effects.Fade.html">Phaser.Cameras.Scene2D.Effects.Fade</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The Camera Fade effect handler.To fade this camera see the `Camera.fade` methods.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Effects.Fade.html">Phaser.Cameras.Scene2D.Effects.Fade</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.5.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-248">line 248</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="flashEffect" class="member public"><span class="name">flashEffect</span><span class="signature-type"> :<a href="Phaser.Cameras.Scene2D.Effects.Flash.html">Phaser.Cameras.Scene2D.Effects.Flash</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The Camera Flash effect handler.To flash this camera see the `Camera.flash` method.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Effects.Flash.html">Phaser.Cameras.Scene2D.Effects.Flash</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.5.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-258">line 258</a></p>
 								</div>
 							</div>
 			
@@ -450,7 +515,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-101">line 101</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-127">line 127</a></p>
 								</div>
 							</div>
 			
@@ -508,7 +573,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-141">line 141</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-167">line 167</a></p>
 								</div>
 							</div>
 			
@@ -520,7 +585,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="matrix" class="member public"><span class="name">matrix</span><span class="signature-type"> :TransformMatrix</span></h4>
+			<h4 id="matrix" class="member public"><span class="name">matrix</span><span class="signature-type"> :<a href="Phaser.GameObjects.Components.TransformMatrix.html">Phaser.GameObjects.Components.TransformMatrix</a></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
@@ -531,7 +596,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">TransformMatrix</span></div>
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.GameObjects.Components.TransformMatrix.html">Phaser.GameObjects.Components.TransformMatrix</a></span></div>
 								</div>
 							</div>
 			
@@ -559,7 +624,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-194">line 194</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-220">line 220</a></p>
 								</div>
 							</div>
 			
@@ -617,7 +682,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-90">line 90</a></p>
 								</div>
 							</div>
 			
@@ -675,7 +740,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-184">line 184</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-210">line 210</a></p>
 								</div>
 							</div>
 			
@@ -733,7 +798,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-110">line 110</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-136">line 136</a></p>
 								</div>
 							</div>
 			
@@ -784,7 +849,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-55">line 55</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-81">line 81</a></p>
 								</div>
 							</div>
 			
@@ -842,7 +907,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-151">line 151</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-177">line 177</a></p>
 								</div>
 							</div>
 			
@@ -900,7 +965,58 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-162">line 162</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-188">line 188</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="shakeEffect" class="member public"><span class="name">shakeEffect</span><span class="signature-type"> :<a href="Phaser.Cameras.Scene2D.Effects.Shake.html">Phaser.Cameras.Scene2D.Effects.Shake</a></span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The Camera Shake effect handler.To shake this camera see the `Camera.shake` method.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Effects.Shake.html">Phaser.Cameras.Scene2D.Effects.Shake</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.5.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-268">line 268</a></p>
 								</div>
 							</div>
 			
@@ -958,7 +1074,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-203">line 203</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-229">line 229</a></p>
 								</div>
 							</div>
 			
@@ -1016,7 +1132,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-120">line 120</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-146">line 146</a></p>
 								</div>
 							</div>
 			
@@ -1067,7 +1183,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-118">line 118</a></p>
 								</div>
 							</div>
 			
@@ -1118,7 +1234,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-74">line 74</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-100">line 100</a></p>
 								</div>
 							</div>
 			
@@ -1169,7 +1285,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-83">line 83</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-109">line 109</a></p>
 								</div>
 							</div>
 			
@@ -1227,7 +1343,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-173">line 173</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-199">line 199</a></p>
 								</div>
 							</div>
 			
@@ -1241,12 +1357,114 @@
 									<h3>Methods</h3>
 									<dl class="symbol">
 											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="addListener" class="function public inherited"><span class="name">addListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The listener function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>this</td>
+							<td class="last">
+									The context to invoke the listener with.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#addListener">Phaser.Events.EventEmitter#addListener</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-115">line 115</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
 											<dt class="symbol-title function public">
 			<h4 id="centerToBounds" class="function public"><span class="name">centerToBounds</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Scrolls the Camera so that it is looking at the center of the Camera Bounds (if previously enabled)</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
@@ -1282,7 +1500,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-463">line 463</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-322">line 322</a></p>
 								</div>
 							</div>
 			
@@ -1298,7 +1516,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Scrolls the Camera so that it is re-centered based on its viewport size.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
@@ -1334,7 +1552,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-479">line 479</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-341">line 341</a></p>
 								</div>
 							</div>
 			
@@ -1350,7 +1568,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Takes an array of Game Objects and returns a new array featuring only those objectsvisible by this camera.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1364,9 +1582,9 @@
 					<tbody>
 						<tr>
 								<td><code>renderableObjects</code></td>
-							<td><span class="param-type">array</span></td>
+							<td><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
-									[description]
+									An array of Game Objects to cull.
 							</td>
 						</tr>
 					</tbody>
@@ -1374,9 +1592,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">An array of Game Objects visible to this Camera.</div>
 								</div>
 							</div>
 					</form>
@@ -1407,7 +1625,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-495">line 495</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-357">line 357</a></p>
 								</div>
 							</div>
 			
@@ -1418,12 +1636,71 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="cullHitTest" class="function public"><span class="name">cullHitTest</span><span class="signature-params">( <span class="signature-param">interactiveObjects</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function protected">
+			<h4 id="destroy" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">destroy</span><span class="signature-params">()</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function protected">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroys this Camera instance.Called by the Camera Manager. If you wish to destroy a Camera please use `CameraManager.remove` ascameras are stored in a pool, ready for recycling later, and calling this directly will prevent that.</div>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="global.html#undefinedevent:CameraDestroyEvent">CameraDestroyEvent</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+							<!-- overrides -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Overrides</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#destroy">Phaser.Events.EventEmitter#destroy</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1147">line 1147</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span> [,&nbsp;<span class="signature-param">...args</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calls each of the listeners registered for a given event.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1431,15 +1708,25 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>interactiveObjects</code></td>
-							<td><span class="param-type">array</span></td>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>args</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/>&lt;repeatable&gt;<br/></td>
+							<td class="last">
+									Additional arguments that will be passed to the event handler.
 							</td>
 						</tr>
 					</tbody>
@@ -1447,9 +1734,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">`true` if the event had listeners, else `false`.</div>
 								</div>
 							</div>
 					</form>
@@ -1467,6 +1754,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#emit">Phaser.Events.EventEmitter#emit</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1480,7 +1774,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-572">line 572</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-90">line 90</a></p>
 								</div>
 							</div>
 			
@@ -1491,38 +1785,17 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="cullTilemap" class="function public"><span class="name">cullTilemap</span><span class="signature-params">( <span class="signature-param">tilemap</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="eventNames" class="function public inherited"><span class="name">eventNames</span><span class="signature-params">()</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>tilemap</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return an array listing the events for which the emitter has registered listeners.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description"></div>
 								</div>
 							</div>
 					</form>
@@ -1540,6 +1813,13 @@
 								</div>
 							</div>
 			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#eventNames">Phaser.Events.EventEmitter#eventNames</a></p>
+								</div>
+							</div>
 			
 			
 			
@@ -1553,7 +1833,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-648">line 648</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-59">line 59</a></p>
 								</div>
 							</div>
 			
@@ -1565,55 +1845,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="destroy" class="function public"><span class="name">destroy</span><span class="signature-params">()</span></h4>
+			<h4 id="fade" class="function public"><span class="name">fade</span><span class="signature-params">( [&nbsp;<span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1469">line 1469</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="fade" class="function public"><span class="name">fade</span><span class="signature-params">( <span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Fades the Camera to the given color over the duration specified.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Fades the Camera from transparent to the given color over the duration specified.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1629,38 +1865,38 @@
 					<tbody>
 						<tr>
 								<td><code>duration</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1000</td>
 							<td class="last">
 									The duration of the effect in milliseconds.
 							</td>
 						</tr>
 						<tr>
 								<td><code>red</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									The value to fade the red channel to. A value between 0 and 1.
+									The amount to fade the red channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
 								<td><code>green</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									The value to fade the green channel to. A value between 0 and 1.
+									The amount to fade the green channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
 								<td><code>blue</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									The value to fade the blue channel to. A value between 0 and 1.
+									The amount to fade the blue channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
@@ -1669,7 +1905,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>false</td>
 							<td class="last">
-									Force the fade effect to start immediately, even if already running.
+									Force the effect to start immediately, even if already running.
 							</td>
 						</tr>
 						<tr>
@@ -1678,7 +1914,16 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
+									This callback will be invoked every frame for the duration of the effect.It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">any</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
 							</td>
 						</tr>
 					</tbody>
@@ -1719,7 +1964,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-761">line 761</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-502">line 502</a></p>
 								</div>
 							</div>
 			
@@ -1731,7 +1976,138 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="fadeIn" class="function public"><span class="name">fadeIn</span><span class="signature-params">( <span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id="fadeFrom" class="function public"><span class="name">fadeFrom</span><span class="signature-params">( [&nbsp;<span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Fades the Camera from the given color to transparent over the duration specified.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>duration</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1000</td>
+							<td class="last">
+									The duration of the effect in milliseconds.
+							</td>
+						</tr>
+						<tr>
+								<td><code>red</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the red channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>green</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the green channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>blue</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the blue channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>force</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>false</td>
+							<td class="last">
+									Force the effect to start immediately, even if already running.
+							</td>
+						</tr>
+						<tr>
+								<td><code>callback</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									This callback will be invoked every frame for the duration of the effect.It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">any</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Camera instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.5.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-480">line 480</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="fadeIn" class="function public"><span class="name">fadeIn</span><span class="signature-params">( [&nbsp;<span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -1751,11 +2127,38 @@
 					<tbody>
 						<tr>
 								<td><code>duration</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1000</td>
 							<td class="last">
 									The duration of the effect in milliseconds.
+							</td>
+						</tr>
+						<tr>
+								<td><code>red</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the red channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>green</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the green channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>blue</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the blue channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
@@ -1764,34 +2167,16 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
+									This callback will be invoked every frame for the duration of the effect.It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
 							</td>
 						</tr>
 						<tr>
-								<td><code>red</code></td>
-							<td><span class="param-type">number</span></td>
+								<td><code>context</code></td>
+							<td><span class="param-type">any</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
+								<td></td>
 							<td class="last">
-									The value to fade the red channel from. A value between 0 and 1.
-							</td>
-						</tr>
-						<tr>
-								<td><code>green</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									The value to fade the green channel from. A value between 0 and 1.
-							</td>
-						</tr>
-						<tr>
-								<td><code>blue</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									The value to fade the blue channel from. A value between 0 and 1.
+									The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
 							</td>
 						</tr>
 					</tbody>
@@ -1832,7 +2217,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-714">line 714</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-437">line 437</a></p>
 								</div>
 							</div>
 			
@@ -1844,7 +2229,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="fadeOut" class="function public"><span class="name">fadeOut</span><span class="signature-params">( <span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id="fadeOut" class="function public"><span class="name">fadeOut</span><span class="signature-params">( [&nbsp;<span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -1864,11 +2249,38 @@
 					<tbody>
 						<tr>
 								<td><code>duration</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>1000</td>
 							<td class="last">
 									The duration of the effect in milliseconds.
+							</td>
+						</tr>
+						<tr>
+								<td><code>red</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the red channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>green</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the green channel towards. A value between 0 and 255.
+							</td>
+						</tr>
+						<tr>
+								<td><code>blue</code></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The amount to fade the blue channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
@@ -1877,34 +2289,16 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
+									This callback will be invoked every frame for the duration of the effect.It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
 							</td>
 						</tr>
 						<tr>
-								<td><code>red</code></td>
-							<td><span class="param-type">number</span></td>
+								<td><code>context</code></td>
+							<td><span class="param-type">any</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
+								<td></td>
 							<td class="last">
-									The value to fade the red channel from. A value between 0 and 1.
-							</td>
-						</tr>
-						<tr>
-								<td><code>green</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									The value to fade the green channel from. A value between 0 and 1.
-							</td>
-						</tr>
-						<tr>
-								<td><code>blue</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>0</td>
-							<td class="last">
-									The value to fade the blue channel from. A value between 0 and 1.
+									The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
 							</td>
 						</tr>
 					</tbody>
@@ -1945,7 +2339,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-737">line 737</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-458">line 458</a></p>
 								</div>
 							</div>
 			
@@ -1957,11 +2351,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="flash" class="function public"><span class="name">flash</span><span class="signature-params">( <span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id="flash" class="function public"><span class="name">flash</span><span class="signature-params">( [&nbsp;<span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">red</span> [,&nbsp;<span class="signature-param">green</span> [,&nbsp;<span class="signature-param">blue</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Flashes the Camera to the given color over the duration specified.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Flashes the Camera by setting it to the given color immediately and then fading it away again quickly over the duration specified.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1977,38 +2371,38 @@
 					<tbody>
 						<tr>
 								<td><code>duration</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>250</td>
 							<td class="last">
 									The duration of the effect in milliseconds.
 							</td>
 						</tr>
 						<tr>
 								<td><code>red</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>1</td>
+								<td>255</td>
 							<td class="last">
-									The value to flash the red channel to. A value between 0 and 1.
+									The amount to fade the red channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
 								<td><code>green</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>1</td>
+								<td>255</td>
 							<td class="last">
-									The value to flash the green channel to. A value between 0 and 1.
+									The amount to fade the green channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
 								<td><code>blue</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>1</td>
+								<td>255</td>
 							<td class="last">
-									The value to flash the blue channel to. A value between 0 and 1.
+									The amount to fade the blue channel towards. A value between 0 and 255.
 							</td>
 						</tr>
 						<tr>
@@ -2017,7 +2411,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>false</td>
 							<td class="last">
-									Force the flash effect to start immediately, even if already running.
+									Force the effect to start immediately, even if already running.
 							</td>
 						</tr>
 						<tr>
@@ -2026,7 +2420,16 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									An optional callback to invoke when the flash completes. Will be sent one argument - a reference to this camera.
+									This callback will be invoked every frame for the duration of the effect.It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">any</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
 							</td>
 						</tr>
 					</tbody>
@@ -2067,7 +2470,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-800">line 800</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-524">line 524</a></p>
 								</div>
 							</div>
 			
@@ -2079,11 +2482,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="getWorldPoint" class="function public"><span class="name">getWorldPoint</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">output</span>&nbsp;)</span></h4>
+			<h4 id="getWorldPoint" class="function public"><span class="name">getWorldPoint</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span> [,&nbsp;<span class="signature-param">output</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Converts the given `x` and `y` coordinates into World space, based on this Cameras transform.You can optionally provide a Vector2, or similar object, to store the results in.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2091,6 +2494,7 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
@@ -2098,22 +2502,25 @@
 						<tr>
 								<td><code>x</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The x position to convert to world space.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The y position to convert to world space.
 							</td>
 						</tr>
 						<tr>
 								<td><code>output</code></td>
 							<td><span class="param-type">object</span> | <span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									An optional object to store the results in. If not provided a new Vector2 will be created.
 							</td>
 						</tr>
 					</tbody>
@@ -2123,7 +2530,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">An object holding the converted values in its `x` and `y` properties.</div>
 								</div>
 							</div>
 					</form>
@@ -2154,7 +2561,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-873">line 873</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-566">line 566</a></p>
 								</div>
 							</div>
 			
@@ -2166,11 +2573,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="ignore" class="function public"><span class="name">ignore</span><span class="signature-params">( <span class="signature-param">gameObjectOrArray</span>&nbsp;)</span></h4>
+			<h4 id="ignore" class="function public"><span class="name">ignore</span><span class="signature-params">( <span class="signature-param">gameObject</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Given a Game Object, or an array of Game Objects, it will update all of their camera filter settingsso that they are ignored by this Camera. This means they will not be rendered by this Camera.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2183,10 +2590,10 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>gameObjectOrArray</code></td>
+								<td><code>gameObject</code></td>
 							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a>></span></td>
 							<td class="last">
-									[description]
+									The Game Object, or array of Game Objects, to be ignored by this Camera.
 							</td>
 						</tr>
 					</tbody>
@@ -2227,7 +2634,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-936">line 936</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-632">line 632</a></p>
 								</div>
 							</div>
 			
@@ -2238,12 +2645,477 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="preRender" class="function public"><span class="name">preRender</span><span class="signature-params">( <span class="signature-param">baseScale</span>, <span class="signature-param">resolution</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="listenerCount" class="function public inherited"><span class="name">listenerCount</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the number of listeners listening to a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The number of listeners.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#listenerCount">Phaser.Events.EventEmitter#listenerCount</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-79">line 79</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="listeners" class="function public inherited"><span class="name">listeners</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Return the listeners registered for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">The registered listeners.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#listeners">Phaser.Events.EventEmitter#listeners</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-68">line 68</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="off" class="function public inherited"><span class="name">off</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									Only remove the listeners that match this function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									Only remove the listeners that have this context.
+							</td>
+						</tr>
+						<tr>
+								<td><code>once</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Only remove one-time listeners.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#off">Phaser.Events.EventEmitter#off</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-155">line 155</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="on" class="function public inherited"><span class="name">on</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a listener for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The listener function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>this</td>
+							<td class="last">
+									The context to invoke the listener with.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#on">Phaser.Events.EventEmitter#on</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="once" class="function public inherited"><span class="name">once</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add a one-time listener for a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The listener function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>this</td>
+							<td class="last">
+									The context to invoke the listener with.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#once">Phaser.Events.EventEmitter#once</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-128">line 128</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function protected">
+			<h4 id="preRender" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">preRender</span><span class="signature-params">( <span class="signature-param">baseScale</span>, <span class="signature-param">resolution</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function protected">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Internal preRender step.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2259,14 +3131,14 @@
 								<td><code>baseScale</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									The base scale, as set in the Camera Manager.
 							</td>
 						</tr>
 						<tr>
 								<td><code>resolution</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									The game resolution.
 							</td>
 						</tr>
 					</tbody>
@@ -2299,7 +3171,89 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-963">line 963</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-662">line 662</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeAllListeners" class="function public inherited"><span class="name">removeAllListeners</span><span class="signature-params">( [&nbsp;<span class="signature-param">event</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove all listeners, or those of the specified event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#removeAllListeners">Phaser.Events.EventEmitter#removeAllListeners</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-169">line 169</a></p>
 								</div>
 							</div>
 			
@@ -2315,7 +3269,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Camera has previously had movement bounds set on it, this will remove them.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
@@ -2351,7 +3305,108 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1033">line 1033</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-733">line 733</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeListener" class="function public inherited"><span class="name">removeListener</span><span class="signature-params">( <span class="signature-param">event</span>, <span class="signature-param">fn</span>, <span class="signature-param">context</span>, <span class="signature-param">once</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Remove the listeners of a given event.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>event</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">symbol</span></td>
+							<td class="last">
+									The event name.
+							</td>
+						</tr>
+						<tr>
+								<td><code>fn</code></td>
+							<td><span class="param-type">function</span></td>
+							<td class="last">
+									Only remove the listeners that match this function.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">*</span></td>
+							<td class="last">
+									Only remove the listeners that have this context.
+							</td>
+						</tr>
+						<tr>
+								<td><code>once</code></td>
+							<td><span class="param-type">boolean</span></td>
+							<td class="last">
+									Only remove one-time listeners.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`this`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#removeListener">Phaser.Events.EventEmitter#removeListener</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-141">line 141</a></p>
 								</div>
 							</div>
 			
@@ -2403,7 +3458,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1363">line 1363</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1105">line 1105</a></p>
 								</div>
 							</div>
 			
@@ -2415,410 +3470,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setAngle" class="function public"><span class="name">setAngle</span><span class="signature-params">( <span class="signature-param">value</span>&nbsp;)</span></h4>
+			<h4 id="setAngle" class="function public"><span class="name">setAngle</span><span class="signature-params">( [&nbsp;<span class="signature-param">value</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>value</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Camera instance.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1050">line 1050</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setBackgroundColor" class="function public"><span class="name">setBackgroundColor</span><span class="signature-params">( <span class="signature-param">color</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>color</code></td>
-							<td><span class="param-type">string</span> | <span class="param-type">number</span> | <span class="param-type"><a href="global.html#InputColorObject">InputColorObject</a></span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Camera instance.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1069">line 1069</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setBounds" class="function public"><span class="name">setBounds</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>width</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>height</code></td>
-							<td><span class="param-type">number</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Camera instance.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1090">line 1090</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setName" class="function public"><span class="name">setName</span><span class="signature-params">( <span class="signature-param">value</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>value</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Camera instance.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1112">line 1112</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setPosition" class="function public"><span class="name">setPosition</span><span class="signature-params">( <span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>x</td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Camera instance.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1131">line 1131</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="setRotation" class="function public"><span class="name">setRotation</span><span class="signature-params">( [&nbsp;<span class="signature-param">value</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the rotation of this Camera. This causes everything it renders to appear rotated.Rotating a camera does not rotate the viewport itself, it is applied during rendering.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2838,7 +3494,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>0</td>
 							<td class="last">
-									[description]
+									The cameras angle of rotation, given in degrees.
 							</td>
 						</tr>
 					</tbody>
@@ -2879,7 +3535,418 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1152">line 1152</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-750">line 750</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setBackgroundColor" class="function public"><span class="name">setBackgroundColor</span><span class="signature-params">( [&nbsp;<span class="signature-param">color</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the background color for this Camera.By default a Camera has a transparent background but it can be given a solid color, with any levelof transparency, via this method.The color value can be specified using CSS color notation, hex or numbers.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>color</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type">number</span> | <span class="param-type"><a href="global.html#InputColorObject">InputColorObject</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>&#x27;rgba(0,0,0,0)&#x27;</td>
+							<td class="last">
+									The color value. In CSS, hex or numeric color notation.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Camera instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-771">line 771</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setBounds" class="function public"><span class="name">setBounds</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the world bounds for this Camera.A Camera bounds controls where the camera can scroll to within the world. It does not limitrendering of the camera, or placement of the viewport within your game.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									The top-left x coordinate of the bounds.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									The top-left y coordinate of the bounds.
+							</td>
+						</tr>
+						<tr>
+								<td><code>width</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									The width of the bounds, in pixels.
+							</td>
+						</tr>
+						<tr>
+								<td><code>height</code></td>
+							<td><span class="param-type">integer</span></td>
+							<td class="last">
+									The height of the bounds, in pixels.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Camera instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-797">line 797</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setName" class="function public"><span class="name">setName</span><span class="signature-params">( [&nbsp;<span class="signature-param">value</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the name of this Camera.This value is for your own use and isn't used internally.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">string</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>&#x27;&#x27;</td>
+							<td class="last">
+									The name of the Camera.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Camera instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-822">line 822</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setPosition" class="function public"><span class="name">setPosition</span><span class="signature-params">( <span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the position of the Camera viewport within the game.This does not change where the camera is 'looking'. See `setScroll` to control that.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
+							<td class="last">
+									The top-left x coordinate of the Camera viewport.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>x</td>
+							<td class="last">
+									The top-left y coordinate of the Camera viewport.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Camera instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-842">line 842</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="setRotation" class="function public"><span class="name">setRotation</span><span class="signature-params">( [&nbsp;<span class="signature-param">value</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the rotation of this Camera. This causes everything it renders to appear rotated.Rotating a camera does not rotate the viewport itself, it is applied during rendering.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The rotation of the Camera, in radians.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Camera instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-865">line 865</a></p>
 								</div>
 							</div>
 			
@@ -2895,7 +3962,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Should the Camera round pixel values to whole integers when scrolling?In some types of game this is required to prevent sub-pixel aliasing.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2911,7 +3978,7 @@
 								<td><code>value</code></td>
 							<td><span class="param-type">boolean</span></td>
 							<td class="last">
-									[description]
+									`true` to round Camera pixels, `false` to not.
 							</td>
 						</tr>
 					</tbody>
@@ -2952,7 +4019,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1171">line 1171</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-886">line 886</a></p>
 								</div>
 							</div>
 			
@@ -2968,7 +4035,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the Scene the Camera is bound to.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2984,7 +4051,7 @@
 								<td><code>scene</code></td>
 							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene the camera is bound to.
 							</td>
 						</tr>
 					</tbody>
@@ -3025,7 +4092,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1188">line 1188</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-904">line 904</a></p>
 								</div>
 							</div>
 			
@@ -3041,7 +4108,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the position of where the Camera is looking within the game.You can also modify the properties `Camera.scrollX` and `Camera.scrollY` directly.Use this method, or the scroll properties, to move your camera around the game world.This does not change where the camera viewport is placed. See `setPosition` to control that.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3061,7 +4128,7 @@
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The x coordinate of the Camera in the game world.
 							</td>
 						</tr>
 						<tr>
@@ -3070,7 +4137,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>x</td>
 							<td class="last">
-									[description]
+									The y coordinate of the Camera in the game world.
 							</td>
 						</tr>
 					</tbody>
@@ -3111,7 +4178,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1205">line 1205</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-921">line 921</a></p>
 								</div>
 							</div>
 			
@@ -3127,7 +4194,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the size of the Camera viewport.By default a Camera is the same size as the game, but can be made smaller via this method,allowing you to create mini-cam style effects by creating and positioning a smaller Cameraviewport within your game.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3143,20 +4210,20 @@
 					<tbody>
 						<tr>
 								<td><code>width</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The width of the Camera viewport.
 							</td>
 						</tr>
 						<tr>
 								<td><code>height</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>width</td>
 							<td class="last">
-									[description]
+									The height of the Camera viewport.
 							</td>
 						</tr>
 					</tbody>
@@ -3197,7 +4264,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1226">line 1226</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-946">line 946</a></p>
 								</div>
 							</div>
 			
@@ -3209,11 +4276,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="setViewport" class="function public"><span class="name">setViewport</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span>&nbsp;)</span></h4>
+			<h4 id="setViewport" class="function public"><span class="name">setViewport</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">width</span> [,&nbsp;<span class="signature-param">height</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">This method sets the position and size of the Camera viewport in a single call.If you're trying to change where the Camera is looking at in your game, then seethe method `Camera.setScroll` instead. This method is for changing the viewportitself, not what the camera can see.By default a Camera is the same size as the game, but can be made smaller via this method,allowing you to create mini-cam style effects by creating and positioning a smaller Cameraviewport within your game.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3221,6 +4288,8 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
@@ -3228,29 +4297,37 @@
 						<tr>
 								<td><code>x</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The top-left x coordinate of the Camera viewport.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
 							<td><span class="param-type">number</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The top-left y coordinate of the Camera viewport.
 							</td>
 						</tr>
 						<tr>
 								<td><code>width</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The width of the Camera viewport.
 							</td>
 						</tr>
 						<tr>
 								<td><code>height</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>width</td>
 							<td class="last">
-									[description]
+									The height of the Camera viewport.
 							</td>
 						</tr>
 					</tbody>
@@ -3291,7 +4368,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1247">line 1247</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-971">line 971</a></p>
 								</div>
 							</div>
 			
@@ -3307,7 +4384,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set the zoom value of the Camera.Changing to a smaller value, such as 0.5, will cause the camera to 'zoom out'.Changing to a larger value, such as 2, will cause the camera to 'zoom in'.A value of 1 means 'no zoom' and is the default.Changing the zoom does not impact the Camera viewport in any way, it is only applied during rendering.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3327,7 +4404,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td>1</td>
 							<td class="last">
-									[description]
+									The zoom value of the Camera.
 							</td>
 						</tr>
 					</tbody>
@@ -3368,7 +4445,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1270">line 1270</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1002">line 1002</a></p>
 								</div>
 							</div>
 			
@@ -3380,7 +4457,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="shake" class="function public"><span class="name">shake</span><span class="signature-params">( <span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">intensity</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+			<h4 id="shake" class="function public"><span class="name">shake</span><span class="signature-params">( [&nbsp;<span class="signature-param">duration</span> [,&nbsp;<span class="signature-param">intensity</span> [,&nbsp;<span class="signature-param">force</span> [,&nbsp;<span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">context</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -3400,9 +4477,9 @@
 					<tbody>
 						<tr>
 								<td><code>duration</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
-								<td></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>100</td>
 							<td class="last">
 									The duration of the effect in milliseconds.
 							</td>
@@ -3431,7 +4508,16 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									An optional callback to invoke when the shake completes. Will be sent one argument - a reference to this camera.
+									This callback will be invoked every frame for the duration of the effect.It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+							</td>
+						</tr>
+						<tr>
+								<td><code>context</code></td>
+							<td><span class="param-type">any</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
 							</td>
 						</tr>
 					</tbody>
@@ -3472,7 +4558,58 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-839">line 839</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-546">line 546</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="shutdown" class="function public inherited"><span class="name">shutdown</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes all listeners.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Events.EventEmitter.html#shutdown">Phaser.Events.EventEmitter#shutdown</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-35">line 35</a></p>
 								</div>
 							</div>
 			
@@ -3484,11 +4621,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="startFollow" class="function public"><span class="name">startFollow</span><span class="signature-params">( <span class="signature-param">target</span>, <span class="signature-param">roundPx</span>&nbsp;)</span></h4>
+			<h4 id="startFollow" class="function public"><span class="name">startFollow</span><span class="signature-params">( <span class="signature-param">target</span> [,&nbsp;<span class="signature-param">roundPx</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the Camera to follow a Game Object.When enabled the Camera will automatically adjust its scroll position to keep the target Game Objectin its center.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3496,6 +4633,8 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
@@ -3503,15 +4642,19 @@
 						<tr>
 								<td><code>target</code></td>
 							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span> | <span class="param-type">object</span></td>
+								<td class="attributes"></td>
+								<td></td>
 							<td class="last">
-									[description]
+									The target for the Camera to follow.
 							</td>
 						</tr>
 						<tr>
 								<td><code>roundPx</code></td>
 							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>false</td>
 							<td class="last">
-									[description]
+									Round the movement pixels to whole integers?
 							</td>
 						</tr>
 					</tbody>
@@ -3552,7 +4695,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1289">line 1289</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1028">line 1028</a></p>
 								</div>
 							</div>
 			
@@ -3568,7 +4711,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Stops a Camera from following a Game Object, if previously set via `Camera.startFollow`.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></label>
@@ -3604,7 +4747,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1311">line 1311</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1053">line 1053</a></p>
 								</div>
 							</div>
 			
@@ -3620,12 +4763,12 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns an Object suitable for JSON storage containing all of the Camera viewport and rendering properties.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="global.html#JSONCamera">JSONCamera</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">A well-formed object suitable for conversion to JSON.</div>
 								</div>
 							</div>
 					</form>
@@ -3656,7 +4799,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1326">line 1326</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1068">line 1068</a></p>
 								</div>
 							</div>
 			
@@ -3667,12 +4810,12 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="update" class="function public"><span class="name">update</span><span class="signature-params">( <span class="signature-param">time</span>, <span class="signature-param">delta</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function protected">
+			<h4 id="update" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">update</span><span class="signature-params">( <span class="signature-param">time</span>, <span class="signature-param">delta</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function protected">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Internal method called automatically by the Camera Manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3728,7 +4871,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1383">line 1383</a></p>
+									<p class="form-control-static"><a href="cameras_2d_Camera.js.html">cameras/2d/Camera.js</a>, <a href="cameras_2d_Camera.js.html#line-1123">line 1123</a></p>
 								</div>
 							</div>
 			
@@ -3750,7 +4893,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
