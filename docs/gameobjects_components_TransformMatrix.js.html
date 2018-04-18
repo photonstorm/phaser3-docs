@@ -108,12 +108,12 @@ var Class = require('../../utils/Class');
  * @constructor
  * @since 3.0.0
  *
- * @param {number} [a=1] - [description]
- * @param {number} [b=0] - [description]
- * @param {number} [c=0] - [description]
- * @param {number} [d=1] - [description]
- * @param {number} [tx=0] - [description]
- * @param {number} [ty=0] - [description]
+ * @param {number} [a=1] - The Scale X value.
+ * @param {number} [b=0] - The Shear Y value.
+ * @param {number} [c=0] - The Shear X value.
+ * @param {number} [d=1] - The Scale Y value.
+ * @param {number} [tx=0] - The Translate X value.
+ * @param {number} [ty=0] - The Translate Y value.
  */
 var TransformMatrix = new Class({
 
@@ -151,6 +151,183 @@ var TransformMatrix = new Class({
             scaleY: 1,
             rotation: 0
         };
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#a
+     * @type {number}
+     * @since 3.4.0
+     */
+    a: {
+
+        get: function ()
+        {
+            return this.matrix[0];
+        },
+
+        set: function (value)
+        {
+            this.matrix[0] = value;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#b
+     * @type {number}
+     * @since 3.4.0
+     */
+    b: {
+
+        get: function ()
+        {
+            return this.matrix[1];
+        },
+
+        set: function (value)
+        {
+            this.matrix[1] = value;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#c
+     * @type {number}
+     * @since 3.4.0
+     */
+    c: {
+
+        get: function ()
+        {
+            return this.matrix[2];
+        },
+
+        set: function (value)
+        {
+            this.matrix[2] = value;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#d
+     * @type {number}
+     * @since 3.4.0
+     */
+    d: {
+
+        get: function ()
+        {
+            return this.matrix[3];
+        },
+
+        set: function (value)
+        {
+            this.matrix[3] = value;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#tx
+     * @type {number}
+     * @since 3.4.0
+     */
+    tx: {
+
+        get: function ()
+        {
+            return this.matrix[4];
+        },
+
+        set: function (value)
+        {
+            this.matrix[4] = value;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#ty
+     * @type {number}
+     * @since 3.4.0
+     */
+    ty: {
+
+        get: function ()
+        {
+            return this.matrix[5];
+        },
+
+        set: function (value)
+        {
+            this.matrix[5] = value;
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#rotation
+     * @type {number}
+     * @readOnly
+     * @since 3.4.0
+     */
+    rotation: {
+
+        get: function ()
+        {
+            return Math.acos(this.a / this.scaleX) * (Math.atan(-this.c / this.a) &lt; 0 ? -1 : 1);
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#scaleX
+     * @type {number}
+     * @readOnly
+     * @since 3.4.0
+     */
+    scaleX: {
+
+        get: function ()
+        {
+            return Math.sqrt((this.a * this.a) + (this.c * this.c));
+        }
+
+    },
+
+    /**
+     * [description]
+     *
+     * @name Phaser.GameObjects.Components.TransformMatrix#scaleY
+     * @type {number}
+     * @readOnly
+     * @since 3.4.0
+     */
+    scaleY: {
+
+        get: function ()
+        {
+            return Math.sqrt((this.b * this.b) + (this.d * this.d));
+        }
+
     },
 
     /**
@@ -233,8 +410,18 @@ var TransformMatrix = new Class({
     {
         var radianSin = Math.sin(radian);
         var radianCos = Math.cos(radian);
+        var matrix = this.matrix;
+        var a = matrix[0];
+        var b = matrix[1];
+        var c = matrix[2];
+        var d = matrix[3];
 
-        return this.transform(radianCos, radianSin, -radianSin, radianCos, 0, 0);
+        matrix[0] = a * radianCos + c * radianSin;
+        matrix[1] = b * radianCos + d * radianSin;
+        matrix[2] = a * -radianSin + c * radianCos;
+        matrix[3] = b * -radianSin + d * radianCos;
+
+        return this;
     },
 
     /**
@@ -282,12 +469,12 @@ var TransformMatrix = new Class({
      * @method Phaser.GameObjects.Components.TransformMatrix#transform
      * @since 3.0.0
      *
-     * @param {number} a - [description]
-     * @param {number} b - [description]
-     * @param {number} c - [description]
-     * @param {number} d - [description]
-     * @param {number} tx - [description]
-     * @param {number} ty - [description]
+     * @param {number} a - The Scale X value.
+     * @param {number} b - The Shear Y value.
+     * @param {number} c - The Shear X value.
+     * @param {number} d - The Scale Y value.
+     * @param {number} tx - The Translate X value.
+     * @param {number} ty - The Translate Y value.
      *
      * @return {Phaser.GameObjects.Components.TransformMatrix} This TransformMatrix.
      */
@@ -417,6 +604,11 @@ var TransformMatrix = new Class({
 
         var matrix = this.matrix;
 
+        //  a = scale X (1)
+        //  b = shear Y (0)
+        //  c = shear X (0)
+        //  d = scale Y (1)
+
         var a = matrix[0];
         var b = matrix[1];
         var c = matrix[2];
@@ -459,20 +651,32 @@ var TransformMatrix = new Class({
     {
         var matrix = this.matrix;
 
-        var sr = Math.sin(rotation);
-        var cr = Math.cos(rotation);
+        var radianSin = Math.sin(rotation);
+        var radianCos = Math.cos(rotation);
 
         // Translate
         matrix[4] = x;
         matrix[5] = y;
 
         // Rotate and Scale
-        matrix[0] = cr * scaleX;
-        matrix[1] = -sr * scaleX;
-        matrix[2] = sr * scaleY;
-        matrix[3] = cr * scaleY;
+        matrix[0] = radianCos * scaleX;
+        matrix[1] = radianSin * scaleX;
+        matrix[2] = -radianSin * scaleY;
+        matrix[3] = radianCos * scaleY;
 
         return this;
+    },
+
+    /**
+     * Destroys this Transform Matrix.
+     *
+     * @method Phaser.GameObjects.Components.TransformMatrix#destroy
+     * @since 3.4.0
+     */
+    destroy: function ()
+    {
+        this.matrix = null;
+        this.decomposedMatrix = null;
     }
 
 });
@@ -486,7 +690,7 @@ module.exports = TransformMatrix;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

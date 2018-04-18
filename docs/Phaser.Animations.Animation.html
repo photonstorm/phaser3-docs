@@ -42,7 +42,7 @@
 		<script type="text/javascript">
 			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
 			window.DOCLET_TOC_ENABLED = true;
-			window.DOCLET_AFILTER_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = true;
 		</script>
 </head>
 <body>
@@ -93,6 +93,16 @@
 							<li><a href="list_class.html">Classes</a></li>
 							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Animations.html">.Animations</a>.Animation</li>
 						</ol>
+						<div class="access-filter">
+								<label class="checkbox-inline">
+									<input class="toggle-public" type="checkbox" value="" checked>
+									Public
+								</label>
+								<label class="checkbox-inline">
+									<input class="toggle-protected" type="checkbox" value="" checked>
+									Protected
+								</label>
+						</div>
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
@@ -163,7 +173,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-63">line 63</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-55">line 55</a></p>
 								</div>
 							</div>
 			
@@ -179,62 +189,11 @@
 									<dl class="symbol">
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="callbackScope" class="member public"><span class="name">callbackScope</span><span class="signature-type"> :object</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-249">line 249</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
 			<h4 id="delay" class="member public"><span class="name">delay</span><span class="signature-type"> :integer</span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Delay before starting playback (in seconds)</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The delay in ms before the playback will begin.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -276,7 +235,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-189">line 189</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-182">line 182</a></p>
 								</div>
 							</div>
 			
@@ -292,7 +251,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">How long the animation should play for.If frameRate is set it overrides this value otherwise frameRate is derived from duration.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">How long the animation should play for, in milliseconds.If the `frameRate` property has been set then it overrides this value,otherwise the `frameRate` is derived from `duration`.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -327,7 +286,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-139">line 139</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-131">line 131</a></p>
 								</div>
 							</div>
 			
@@ -385,7 +344,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-129">line 129</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-121">line 121</a></p>
 								</div>
 							</div>
 			
@@ -436,7 +395,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-116">line 116</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-108">line 108</a></p>
 								</div>
 							</div>
 			
@@ -494,7 +453,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-239">line 239</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-232">line 232</a></p>
 								</div>
 							</div>
 			
@@ -545,7 +504,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-97">line 97</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-89">line 89</a></p>
 								</div>
 							</div>
 			
@@ -596,7 +555,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-88">line 88</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-80">line 80</a></p>
 								</div>
 							</div>
 			
@@ -612,7 +571,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">ms per frame (without including frame specific modifiers)</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">How many ms per frame, not including frame specific modifiers.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -647,415 +606,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-170">line 170</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onComplete" class="member public"><span class="name">onComplete</span><span class="signature-type"> :function</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">function</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-313">line 313</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onCompleteParams" class="member public"><span class="name">onCompleteParams</span><span class="signature-type"> :array</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-322">line 322</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onRepeat" class="member public"><span class="name">onRepeat</span><span class="signature-type"> :function</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">function</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-276">line 276</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onRepeatParams" class="member public"><span class="name">onRepeatParams</span><span class="signature-type"> :array</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-285">line 285</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onStart" class="member public"><span class="name">onStart</span><span class="signature-type"> :function</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">function</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-258">line 258</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onStartParams" class="member public"><span class="name">onStartParams</span><span class="signature-type"> :array</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-267">line 267</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onUpdate" class="member public"><span class="name">onUpdate</span><span class="signature-type"> :function</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called for EVERY frame of the animation.See AnimationFrame.onUpdate for a frame specific callback.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">function</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-294">line 294</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="onUpdateParams" class="member public"><span class="name">onUpdateParams</span><span class="signature-type"> :array</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">array</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-304">line 304</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-163">line 163</a></p>
 								</div>
 							</div>
 			
@@ -1071,7 +622,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Global pause, effects all Game Objects using this Animation instance</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Global pause. All Game Objects using this Animation instance are impacted by this property.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1113,7 +664,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-331">line 331</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-242">line 242</a></p>
 								</div>
 							</div>
 			
@@ -1129,7 +680,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Number of times to repeat the animation (-1 for infinity)</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Number of times to repeat the animation. Set to -1 to repeat forever.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1171,7 +722,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-199">line 199</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-192">line 192</a></p>
 								</div>
 							</div>
 			
@@ -1187,7 +738,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Delay before the repeat starts (in seconds)</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The delay in ms before the a repeat playthrough starts.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1229,7 +780,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-209">line 209</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-202">line 202</a></p>
 								</div>
 							</div>
 			
@@ -1287,7 +838,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-229">line 229</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-222">line 222</a></p>
 								</div>
 							</div>
 			
@@ -1345,7 +896,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-179">line 179</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-172">line 172</a></p>
 								</div>
 							</div>
 			
@@ -1403,7 +954,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-106">line 106</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-98">line 98</a></p>
 								</div>
 							</div>
 			
@@ -1461,7 +1012,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-219">line 219</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-212">line 212</a></p>
 								</div>
 							</div>
 			
@@ -1480,7 +1031,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add frames to the end of the animation.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1537,7 +1088,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-347">line 347</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-256">line 256</a></p>
 								</div>
 							</div>
 			
@@ -1553,7 +1104,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Add frame/s into the animation.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1617,7 +1168,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-364">line 364</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-271">line 271</a></p>
 								</div>
 							</div>
 			
@@ -1633,7 +1184,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Check if the given frame index is valid.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1649,7 +1200,7 @@
 								<td><code>index</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									The index to be checked.
 							</td>
 						</tr>
 					</tbody>
@@ -1659,7 +1210,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">`true` if the index is valid, otherwise `false`.</div>
 								</div>
 							</div>
 					</form>
@@ -1690,7 +1241,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-403">line 403</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-310">line 310</a></p>
 								</div>
 							</div>
 			
@@ -1701,10 +1252,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="completeAnimation" class="function public"><span class="name">completeAnimation</span><span class="signature-params">( <span class="signature-param">component</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function protected">
+			<h4 id="completeAnimation" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">completeAnimation</span><span class="signature-params">( <span class="signature-param">component</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function protected">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-info">
@@ -1755,7 +1306,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-418">line 418</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-325">line 325</a></p>
 								</div>
 							</div>
 			
@@ -1799,7 +1350,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-919">line 919</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-850">line 850</a></p>
 								</div>
 							</div>
 			
@@ -1810,10 +1361,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="getFirstTick" class="function public"><span class="name">getFirstTick</span><span class="signature-params">( <span class="signature-param">component</span> [,&nbsp;<span class="signature-param">includeDelay</span>&nbsp;]&nbsp;)</span></h4>
+											<dt class="symbol-title function protected">
+			<h4 id="getFirstTick" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">getFirstTick</span><span class="signature-params">( <span class="signature-param">component</span> [,&nbsp;<span class="signature-param">includeDelay</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function protected">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-info">
@@ -1877,7 +1428,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-436">line 436</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-344">line 344</a></p>
 								</div>
 							</div>
 			
@@ -1888,10 +1439,10 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="getFrameAt" class="function public"><span class="name">getFrameAt</span><span class="signature-params">( <span class="signature-param">index</span>&nbsp;)</span></h4>
+											<dt class="symbol-title function protected">
+			<h4 id="getFrameAt" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">getFrameAt</span><span class="signature-params">( <span class="signature-param">index</span>&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function protected">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
 			</div>			<div class="callout callout-info">
@@ -1950,7 +1501,80 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-459">line 459</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-368">line 368</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="getFrameByProgress" class="function public"><span class="name">getFrameByProgress</span><span class="signature-params">( <span class="signature-param">value</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns the frame closest to the given progress value between 0 and 1.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>value</code></td>
+							<td><span class="param-type">float</span></td>
+							<td class="last">
+									A value between 0 and 1.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Animations.AnimationFrame.html">Phaser.Animations.AnimationFrame</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">[description]</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-541">line 541</a></p>
 								</div>
 							</div>
 			
@@ -2041,7 +1665,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-474">line 474</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-384">line 384</a></p>
 								</div>
 							</div>
 			
@@ -2106,79 +1730,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-577">line 577</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="load" class="function public"><span class="name">load</span><span class="signature-params">( <span class="signature-param">component</span>, <span class="signature-param">startFrame</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>component</code></td>
-							<td><span class="param-type"><a href="Phaser.GameObjects.Components.Animation.html">Phaser.GameObjects.Components.Animation</a></span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>startFrame</code></td>
-							<td><span class="param-type">integer</span></td>
-							<td class="last">
-									[description]
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-596">line 596</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-486">line 486</a></p>
 								</div>
 							</div>
 			
@@ -2243,7 +1795,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-632">line 632</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-558">line 558</a></p>
 								</div>
 							</div>
 			
@@ -2295,7 +1847,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-889">line 889</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-820">line 820</a></p>
 								</div>
 							</div>
 			
@@ -2360,7 +1912,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-678">line 678</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-604">line 604</a></p>
 								</div>
 							</div>
 			
@@ -2433,7 +1985,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-714">line 714</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-640">line 640</a></p>
 								</div>
 							</div>
 			
@@ -2506,7 +2058,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-736">line 736</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-662">line 662</a></p>
 								</div>
 							</div>
 			
@@ -2571,7 +2123,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-755">line 755</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-681">line 681</a></p>
 								</div>
 							</div>
 			
@@ -2623,7 +2175,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-904">line 904</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-835">line 835</a></p>
 								</div>
 							</div>
 			
@@ -2688,7 +2240,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-790">line 790</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-721">line 721</a></p>
 								</div>
 							</div>
 			
@@ -2740,7 +2292,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-811">line 811</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-742">line 742</a></p>
 								</div>
 							</div>
 			
@@ -2792,7 +2344,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-844">line 844</a></p>
+									<p class="form-control-static"><a href="animations_Animation.js.html">animations/Animation.js</a>, <a href="animations_Animation.js.html#line-775">line 775</a></p>
 								</div>
 							</div>
 			
@@ -2814,7 +2366,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

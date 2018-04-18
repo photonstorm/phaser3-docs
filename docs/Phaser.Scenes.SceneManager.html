@@ -176,7 +176,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The Game that this SceneManager belongs to.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -212,6 +212,122 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-36">line 36</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="isBooted" class="member public"><span class="signature-attribs">&lt;readonly> </span><span class="name">isBooted</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Has the Scene Manager properly started?</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">false</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.4.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-114">line 114</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public">
+			<h4 id="isProcessing" class="member public"><span class="signature-attribs">&lt;readonly> </span><span class="name">isProcessing</span><span class="signature-type"> :boolean</span></h4>
+		</dt>
+<dd class="symbol-details member public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Is the Scene Manager actively processing the Scenes list?</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
+								</div>
+							</div>
+			
+							<!-- defaultvalue -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Default Value</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">false</p>
+								</div>
+							</div>
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-103">line 103</a></p>
 								</div>
 							</div>
 			
@@ -328,7 +444,7 @@
 									<dl class="symbol">
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="add" class="function public"><span class="name">add</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">sceneConfig</span> [,&nbsp;<span class="signature-param">autoStart</span>&nbsp;]&nbsp;)</span></h4>
+			<h4 id="add" class="function public"><span class="name">add</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">sceneConfig</span> [,&nbsp;<span class="signature-param">autoStart</span> [,&nbsp;<span class="signature-param">data</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
@@ -357,11 +473,11 @@
 						</tr>
 						<tr>
 								<td><code>sceneConfig</code></td>
-							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span> | <span class="param-type"><a href="global.html#SettingsConfig">SettingsConfig</a></span> | <span class="param-type">function</span></td>
+							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span> | <span class="param-type">SettingsConfig</span> | <span class="param-type">function</span></td>
 								<td class="attributes"></td>
 								<td></td>
 							<td class="last">
-									[description]
+									The config for the Scene
 							</td>
 						</tr>
 						<tr>
@@ -373,6 +489,15 @@
 									If `true` the Scene will be started immediately after being added.
 							</td>
 						</tr>
+						<tr>
+								<td><code>data</code></td>
+							<td><span class="param-type">object</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									Optional data object. This will be set as Scene.settings.data and passed to `Scene.init`.
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -380,7 +505,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The added Scene, if it was added immediately, otherwise `null`.</div>
 								</div>
 							</div>
 					</form>
@@ -411,7 +536,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-242">line 242</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-283">line 283</a></p>
 								</div>
 							</div>
 			
@@ -427,7 +552,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Brings a Scene to the top of the Scenes list.This means it will render above all other Scenes.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -443,7 +568,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene to move.
 							</td>
 						</tr>
 					</tbody>
@@ -453,7 +578,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -484,7 +609,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1084">line 1084</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1156">line 1156</a></p>
 								</div>
 							</div>
 			
@@ -500,7 +625,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroy the SceneManager and all of its Scene's systems.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
@@ -528,7 +653,51 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1366">line 1366</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1463">line 1463</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="dump" class="function public"><span class="name">dump</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Dumps debug information about each Scene to the developer console.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.2.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1439">line 1439</a></p>
 								</div>
 							</div>
 			
@@ -544,7 +713,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Retrieves a Scene by numeric index.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -560,7 +729,7 @@
 								<td><code>index</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									The index of the Scene to retrieve.
 							</td>
 						</tr>
 					</tbody>
@@ -570,7 +739,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span> | <span class="param-type">undefined</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The Scene.</div>
 								</div>
 							</div>
 					</form>
@@ -601,7 +770,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1052">line 1052</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1124">line 1124</a></p>
 								</div>
 							</div>
 			
@@ -617,7 +786,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Retrieves the numeric index of a Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -633,7 +802,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The key of the Scene.
 							</td>
 						</tr>
 					</tbody>
@@ -643,7 +812,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The index of the Scene.</div>
 								</div>
 							</div>
 					</form>
@@ -674,7 +843,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1067">line 1067</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1139">line 1139</a></p>
 								</div>
 							</div>
 			
@@ -690,7 +859,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Retrieves a Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -704,9 +873,9 @@
 					<tbody>
 						<tr>
 								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
+							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene to retrieve.
 							</td>
 						</tr>
 					</tbody>
@@ -716,7 +885,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">The Scene.</div>
 								</div>
 							</div>
 					</form>
@@ -747,7 +916,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-742">line 742</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-822">line 822</a></p>
 								</div>
 							</div>
 			
@@ -763,7 +932,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines whether a Scene is active.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -779,7 +948,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to check.
 							</td>
 						</tr>
 					</tbody>
@@ -789,7 +958,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Whether the Scene is active.</div>
 								</div>
 							</div>
 					</form>
@@ -820,7 +989,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-775">line 775</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-855">line 855</a></p>
 								</div>
 							</div>
 			
@@ -836,7 +1005,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines whether a Scene is sleeping.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -852,7 +1021,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to check.
 							</td>
 						</tr>
 					</tbody>
@@ -862,7 +1031,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Whether the Scene is sleeping.</div>
 								</div>
 							</div>
 					</form>
@@ -893,7 +1062,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-819">line 819</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-899">line 899</a></p>
 								</div>
 							</div>
 			
@@ -909,7 +1078,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Determines whether a Scene is visible.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -925,7 +1094,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to check.
 							</td>
 						</tr>
 					</tbody>
@@ -935,7 +1104,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Whether the Scene is visible.</div>
 								</div>
 							</div>
 					</form>
@@ -966,7 +1135,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-797">line 797</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-877">line 877</a></p>
 								</div>
 							</div>
 			
@@ -982,7 +1151,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves a Scene so it is immediately above another Scene in the Scenes list.This means it will render over the top of the other Scene.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves a Scene so it is immediately above another Scene in the Scenes list.This means it will render over the top of the other Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1015,7 +1184,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1046,7 +1215,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1216">line 1216</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1292">line 1292</a></p>
 								</div>
 							</div>
 			
@@ -1062,7 +1231,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves a Scene so it is immediately below another Scene in the Scenes list.This means it will render behind the other Scene.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves a Scene so it is immediately below another Scene in the Scenes list.This means it will render behind the other Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1095,7 +1264,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1126,7 +1295,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1259">line 1259</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1336">line 1336</a></p>
 								</div>
 							</div>
 			
@@ -1142,7 +1311,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves a Scene down one position in the Scenes list.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1158,7 +1327,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene to move.
 							</td>
 						</tr>
 					</tbody>
@@ -1168,7 +1337,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1199,7 +1368,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1148">line 1148</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1224">line 1224</a></p>
 								</div>
 							</div>
 			
@@ -1215,7 +1384,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Moves a Scene up one position in the Scenes list.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1231,7 +1400,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene to move.
 							</td>
 						</tr>
 					</tbody>
@@ -1241,7 +1410,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1272,7 +1441,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1182">line 1182</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1258">line 1258</a></p>
 								</div>
 							</div>
 			
@@ -1288,7 +1457,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Pauses the given Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1304,7 +1473,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to pause.
 							</td>
 						</tr>
 					</tbody>
@@ -1314,7 +1483,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1345,7 +1514,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-841">line 841</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-921">line 921</a></p>
 								</div>
 							</div>
 			
@@ -1361,7 +1530,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Process the Scene operations queue.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
@@ -1389,7 +1558,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-189">line 189</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-230">line 230</a></p>
 								</div>
 							</div>
 			
@@ -1462,7 +1631,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-323">line 323</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-369">line 369</a></p>
 								</div>
 							</div>
 			
@@ -1478,7 +1647,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Renders the Scenes.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1492,9 +1661,9 @@
 					<tbody>
 						<tr>
 								<td><code>renderer</code></td>
-							<td><span class="param-type">*</span></td>
+							<td><span class="param-type"><a href="Phaser.Renderer.Canvas.CanvasRenderer.html">Phaser.Renderer.Canvas.CanvasRenderer</a></span> | <span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLRenderer.html">Phaser.Renderer.WebGL.WebGLRenderer</a></span></td>
 							<td class="last">
-									[description]
+									The renderer to use.
 							</td>
 						</tr>
 					</tbody>
@@ -1527,7 +1696,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-503">line 503</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-565">line 565</a></p>
 								</div>
 							</div>
 			
@@ -1543,7 +1712,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Informs the Scenes of the Game being resized.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1599,7 +1768,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-483">line 483</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-545">line 545</a></p>
 								</div>
 							</div>
 			
@@ -1615,7 +1784,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Resumes the given Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1631,7 +1800,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to resume.
 							</td>
 						</tr>
 					</tbody>
@@ -1641,7 +1810,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1672,7 +1841,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-863">line 863</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-943">line 943</a></p>
 								</div>
 							</div>
 			
@@ -1688,7 +1857,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sends a Scene to the back of the Scenes list.This means it will render below all other Scenes.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1704,7 +1873,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene to move.
 							</td>
 						</tr>
 					</tbody>
@@ -1714,7 +1883,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1745,7 +1914,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1116">line 1116</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1190">line 1190</a></p>
 								</div>
 							</div>
 			
@@ -1761,7 +1930,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Puts the given Scene to sleep.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1777,7 +1946,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to put to sleep.
 							</td>
 						</tr>
 					</tbody>
@@ -1787,7 +1956,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1818,7 +1987,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-885">line 885</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-965">line 965</a></p>
 								</div>
 							</div>
 			
@@ -1834,7 +2003,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Starts the given Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1852,7 +2021,7 @@
 							<td><span class="param-type">string</span></td>
 								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The Scene to start.
 							</td>
 						</tr>
 						<tr>
@@ -1860,7 +2029,7 @@
 							<td><span class="param-type">object</span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									Optional data object to pass to Scene.Settings and Scene.init.
 							</td>
 						</tr>
 					</tbody>
@@ -1870,7 +2039,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1901,7 +2070,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-929">line 929</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1009">line 1009</a></p>
 								</div>
 							</div>
 			
@@ -1917,7 +2086,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Stops the given Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1933,7 +2102,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to stop.
 							</td>
 						</tr>
 					</tbody>
@@ -1943,7 +2112,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -1974,7 +2143,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-997">line 997</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1069">line 1069</a></p>
 								</div>
 							</div>
 			
@@ -1990,7 +2159,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Swaps the positions of two Scenes in the Scenes list.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2006,14 +2175,14 @@
 								<td><code>keyA</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The first Scene to swap.
 							</td>
 						</tr>
 						<tr>
 								<td><code>keyB</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The second Scene to swap.
 							</td>
 						</tr>
 					</tbody>
@@ -2023,7 +2192,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -2054,7 +2223,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1309">line 1309</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1400">line 1400</a></p>
 								</div>
 							</div>
 			
@@ -2070,7 +2239,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sleeps one one Scene and starts the other.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2086,14 +2255,14 @@
 								<td><code>from</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to sleep.
 							</td>
 						</tr>
 						<tr>
 								<td><code>to</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to start.
 							</td>
 						</tr>
 					</tbody>
@@ -2103,7 +2272,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -2134,7 +2303,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1019">line 1019</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-1091">line 1091</a></p>
 								</div>
 							</div>
 			
@@ -2150,7 +2319,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Updates the Scenes.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2166,14 +2335,14 @@
 								<td><code>time</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Time elapsed.
 							</td>
 						</tr>
 						<tr>
 								<td><code>delta</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Delta time from the last update.
 							</td>
 						</tr>
 					</tbody>
@@ -2206,7 +2375,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-456">line 456</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-518">line 518</a></p>
 								</div>
 							</div>
 			
@@ -2222,7 +2391,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Awakens the given Scene.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2238,7 +2407,7 @@
 								<td><code>key</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The Scene to wake up.
 							</td>
 						</tr>
 					</tbody>
@@ -2248,7 +2417,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">This SceneManager.</div>
 								</div>
 							</div>
 					</form>
@@ -2279,7 +2448,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-907">line 907</a></p>
+									<p class="form-control-static"><a href="scene_SceneManager.js.html">scene/SceneManager.js</a>, <a href="scene_SceneManager.js.html#line-987">line 987</a></p>
 								</div>
 							</div>
 			
@@ -2301,7 +2470,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 26th Mar 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

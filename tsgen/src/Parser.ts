@@ -99,9 +99,9 @@ export class Parser {
                     doclet.kind = "mixin";
                     break;
             }
-            if((doclet.longname.indexOf("Phaser.Physics.Arcade.Components") == 0
-                || doclet.longname.indexOf("Phaser.Physics.Impact.Components") == 0
-                || doclet.longname.indexOf("Phaser.Physics.Matter.Components") == 0)
+            if((doclet.longname.indexOf("Phaser.Physics.Arcade.Components.") == 0
+                || doclet.longname.indexOf("Phaser.Physics.Impact.Components.") == 0
+                || doclet.longname.indexOf("Phaser.Physics.Matter.Components.") == 0)
                 && doclet.longname.indexOf('#') == -1)
                 doclet.kind = "mixin";
             /////////////////////////
@@ -241,8 +241,8 @@ export class Parser {
             }
 
             // classes should be inside namespaces
-            let isClass = doclet.kind === 'class' || doclet.isEnum;
-            if((isClass && (<any>parent).kind === 'class')) {
+            let isNamespaceMember = doclet.kind === 'class' || doclet.isEnum || doclet.kind === 'typedef';
+            if((isNamespaceMember && (<any>parent).kind === 'class')) {
                 console.log(`moving to another parent type ${doclet.memberof} for member ${doclet.name}`);
 
                 (<any>parent).members.splice((<any>parent).members.indexOf(obj), 1);// break old connection
