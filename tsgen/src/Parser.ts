@@ -392,6 +392,15 @@ export class Parser {
 
             type = dom.create.objectType(properties);
 
+            if (doclet.augments && doclet.augments.length) {
+                let intersectionTypes = [];
+                for(let i = 0; i < doclet.augments.length; i++) {
+                    intersectionTypes.push(dom.create.namedTypeReference(doclet.augments[i]));
+                }
+                intersectionTypes.push(type);
+                type = dom.create.intersection(intersectionTypes);
+            }
+
         } else {
             type = dom.create.functionType(null, dom.type.void);
             this.setParams(doclet, type);
