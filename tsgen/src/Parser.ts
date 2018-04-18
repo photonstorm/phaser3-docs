@@ -63,6 +63,10 @@ export class Parser {
         this.topLevel.push(dom.create.alias('DOMHighResTimeStamp', dom.type.number));
         this.topLevel.push(dom.create.alias('Image', dom.create.namedTypeReference("HTMLImageElement")));
         this.topLevel.push(dom.create.alias('Point', dom.type.any));
+        this.topLevel.push(dom.create.alias('SettingsObject', dom.type.any));
+        this.topLevel.push(dom.create.alias('SettingsConfig', dom.type.any));
+        let scenes:dom.NamespaceDeclaration = <dom.NamespaceDeclaration>this.objects["Phaser.Scenes"];
+        scenes.members.push(dom.create.alias('SettingsConfig', dom.type.any));
 
         // add declare module
         const phaserPkgModuleDOM = dom.create.module('phaser');
@@ -122,9 +126,9 @@ export class Parser {
                     doclet.kind = "mixin";
                     break;
             }
-            if((doclet.longname.indexOf("Phaser.Physics.Arcade.Components") == 0
-                || doclet.longname.indexOf("Phaser.Physics.Impact.Components") == 0
-                || doclet.longname.indexOf("Phaser.Physics.Matter.Components") == 0)
+            if((doclet.longname.indexOf("Phaser.Physics.Arcade.Components.") == 0
+                || doclet.longname.indexOf("Phaser.Physics.Impact.Components.") == 0
+                || doclet.longname.indexOf("Phaser.Physics.Matter.Components.") == 0)
                 && doclet.longname.indexOf('#') == -1)
                 doclet.kind = "mixin";
             /////////////////////////
@@ -442,9 +446,9 @@ export class Parser {
             }
 
             // classes should be inside namespaces and properties inside classes
-            let isClass = doclet.kind === 'class' || doclet.isEnum;
+            let isNamespaceMember = doclet.kind === 'class' || doclet.isEnum || doclet.kind === 'typedef';
             let isMember = (doclet.kind === 'member' || doclet.kind === 'constant') && !doclet.isEnum;
-            if((isClass && (<any>parent).kind === 'class') ||
+            if((isNamespaceMember && (<any>parent).kind === 'class') ||
                 (isMember && (<any>parent).kind === 'namespace')) {
 
                 console.log(`moving to another parent type ${doclet.memberof} for member ${doclet.name}`);
@@ -706,6 +710,15 @@ export class Parser {
                 }
 
                 if(name.indexOf('function()') != -1) name = name.split('function()').join('Function');
+
+                if(name == "Phaser.Renderer.WebGL.WebGLPipeline.FlatTintPipeline")
+                    name = "Phaser.Renderer.WebGL.FlatTintPipeline";
+
+                if(name == "Phaser.GameObjects.Components.TextStyle")
+                    name = "Phaser.GameObjects.Text.TextStyle";
+
+                if(name == "Phaser.Scenes.ScenePlugin#SceneTransitionConfig")
+                    name = "Phaser.Scenes.ScenePlugin.SceneTransitionConfig";
 
                 //////////////////////////
                 if(name.indexOf('.<') != -1) {
