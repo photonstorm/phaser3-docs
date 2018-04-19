@@ -1086,64 +1086,6 @@ declare type BitmapTextConfig = GameObjectConfig & {
     align?: string;
 };
 
-declare namespace ParseRetroFont {
-    /**
-     * Text Set 1 =  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-     */
-    const TEXT_SET1: string;
-
-    /**
-     * Text Set 2 =  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     */
-    const TEXT_SET2: string;
-
-    /**
-     * Text Set 3 = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-     */
-    const TEXT_SET3: string;
-
-    /**
-     * Text Set 4 = ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
-     */
-    const TEXT_SET4: string;
-
-    /**
-     * Text Set 5 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,/() '!?-*:0123456789
-     */
-    const TEXT_SET5: string;
-
-    /**
-     * Text Set 6 = ABCDEFGHIJKLMNOPQRSTUVWXYZ!?:;0123456789"(),-.'
-     */
-    const TEXT_SET6: string;
-
-    /**
-     * Text Set 7 = AGMSY+:4BHNTZ!;5CIOU.?06DJPV,(17EKQW")28FLRX-'39
-     */
-    const TEXT_SET7: string;
-
-    /**
-     * Text Set 8 = 0123456789 .ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     */
-    const TEXT_SET8: string;
-
-    /**
-     * Text Set 9 = ABCDEFGHIJKLMNOPQRSTUVWXYZ()-0123456789.:,'"?!
-     */
-    const TEXT_SET9: string;
-
-    /**
-     * Text Set 10 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
-     */
-    const TEXT_SET10: string;
-
-    /**
-     * Text Set 11 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,"-+!?()':;0123456789
-     */
-    const TEXT_SET11: string;
-
-}
-
 declare type TextBounds = {
     /**
      * [description]
@@ -2168,17 +2110,6 @@ declare type CursorKeys = {
     shift?: Phaser.Input.Keyboard.Key;
 };
 
-declare namespace Phaser.Input.Keyboard.Keys {
-    /**
-     * Resets a Key object back to its default settings.
-     * Optionally resets the keyCode as well.
-     * @param key [description]
-     * @param clearKeyCode [description] Default false.
-     */
-    function ResetKey(key: Phaser.Input.Keyboard.Key, clearKeyCode?: boolean): Phaser.Input.Keyboard.Key;
-
-}
-
 declare type MouseHandler = ()=>void;
 
 declare type TouchHandler = (event: TouchEvent)=>void;
@@ -2586,10 +2517,10 @@ declare namespace Phaser {
         function PlaceOnTriangle<G extends Phaser.GameObjects.GameObject[]>(items: G, triangle: Phaser.Geom.Triangle, stepRate?: number): G;
 
         /**
-         * [description]
+         * Play an animation with the given key, starting at the given startFrame on all Game Objects in items.
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
-         * @param key [description]
-         * @param startFrame [description]
+         * @param key The name of the animation to play.
+         * @param startFrame The starting frame of the animation with the given key.
          */
         function PlayAnimation<G extends Phaser.GameObjects.GameObject[]>(items: G, key: string, startFrame?: string | integer): G;
 
@@ -3797,9 +3728,26 @@ declare namespace Phaser {
             started: boolean;
 
             /**
+             * A flag that is set once the TimeStep has started running and toggled when it stops.
+             * The difference between this value and `started` is that `running` is toggled when
+             * the TimeStep is sent to sleep, where-as `started` remains `true`, only changing if
+             * the TimeStep is actually stopped, not just paused.
+             */
+            running: boolean;
+
+            /**
              * The minimum fps rate you want the Time Step to run at.
              */
             minFps: integer;
+
+            /**
+             * The target fps rate for the Time Step to run at.
+             * 
+             * Setting this value will not actually change the speed at which the browser runs, that is beyond
+             * the control of Phaser. Instead, it allows you to determine performance issues and if the Time Step
+             * is spiraling out of control.
+             */
+            targetFps: integer;
 
             /**
              * An exponential moving average of the frames per second.
@@ -6202,6 +6150,11 @@ declare namespace Phaser {
              * [description]
              */
             p0: Phaser.Math.Vector2;
+
+            /**
+             * [description]
+             */
+            p1: Phaser.Math.Vector2;
 
             /**
              * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
@@ -8879,6 +8832,111 @@ declare namespace Phaser {
 
         }
 
+        namespace RetroFont {
+            /**
+             * Text Set 1 =  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+             */
+            var TEXT_SET1: string;
+
+            /**
+             * Text Set 2 =  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ
+             */
+            var TEXT_SET2: string;
+
+            /**
+             * Text Set 3 = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+             */
+            var TEXT_SET3: string;
+
+            /**
+             * Text Set 4 = ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
+             */
+            var TEXT_SET4: string;
+
+            /**
+             * Text Set 5 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,/() '!?-*:0123456789
+             */
+            var TEXT_SET5: string;
+
+            /**
+             * Text Set 6 = ABCDEFGHIJKLMNOPQRSTUVWXYZ!?:;0123456789"(),-.'
+             */
+            var TEXT_SET6: string;
+
+            /**
+             * Text Set 7 = AGMSY+:4BHNTZ!;5CIOU.?06DJPV,(17EKQW")28FLRX-'39
+             */
+            var TEXT_SET7: string;
+
+            /**
+             * Text Set 8 = 0123456789 .ABCDEFGHIJKLMNOPQRSTUVWXYZ
+             */
+            var TEXT_SET8: string;
+
+            /**
+             * Text Set 9 = ABCDEFGHIJKLMNOPQRSTUVWXYZ()-0123456789.:,'"?!
+             */
+            var TEXT_SET9: string;
+
+            /**
+             * Text Set 10 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+             */
+            var TEXT_SET10: string;
+
+            /**
+             * Text Set 11 = ABCDEFGHIJKLMNOPQRSTUVWXYZ.,"-+!?()':;0123456789
+             */
+            var TEXT_SET11: string;
+
+            /**
+             * Parses a Retro Font configuration object so you can pass it to the BitmapText constructor
+             * and create a BitmapText object using a fixed-width retro font.
+             * @param scene A reference to the Phaser Scene.
+             * @param config The font configuration object.
+             */
+            function Parse(scene: Phaser.Scene, config: Phaser.GameObjects.RetroFont.Config): void;
+
+            type Config = {
+                /**
+                 * [description]
+                 */
+                image: string;
+                /**
+                 * If the font set doesn't start at the top left of the given image, specify the X coordinate offset here.
+                 */
+                "offset.x": number;
+                /**
+                 * If the font set doesn't start at the top left of the given image, specify the Y coordinate offset here.
+                 */
+                "offset.y": number;
+                /**
+                 * The width of each character in the font set.
+                 */
+                width: number;
+                /**
+                 * The height of each character in the font set.
+                 */
+                height: number;
+                /**
+                 * The characters used in the font set, in display order. You can use the TEXT_SET consts for common font set arrangements.
+                 */
+                chars: string;
+                /**
+                 * The number of characters per row in the font set. If not given charsPerRow will be the image width / characterWidth.
+                 */
+                charsPerRow: number;
+                /**
+                 * If the characters in the font set have horizontal spacing between them set the required amount here.
+                 */
+                "spacing.x": number;
+                /**
+                 * If the characters in the font set have vertical spacing between them set the required amount here.
+                 */
+                "spacing.y": number;
+            };
+
+        }
+
         /**
          * [description]
          */
@@ -11073,16 +11131,6 @@ declare namespace Phaser {
          * 
          * 
          * 
-         * WARNING: EXPERIMENTAL. There are several known cases where Containers will not behave correctly,
-         * 
-         * especially if you use a multi-camera or transformed camera set-up. We are still working on them,
-         * 
-         * but wanted to release as part of 3.4 under a beta feature flag, because in the main they work
-         * 
-         * are and worth getting used to.
-         * 
-         * 
-         * 
          * A Container, as the name implies, can 'contain' other types of Game Object.
          * 
          * When a Game Object is added to a Container, the Container becomes responsible for the rendering of it.
@@ -11125,9 +11173,13 @@ declare namespace Phaser {
          * 
          * Containers can be given a physics body for either Arcade Physics, Impact Physics or Matter Physics. However,
          * 
-         * if Container children are enabled for physics you may get unexpected results,such as offset bodies,
+         * if Container _children_ are enabled for physics you may get unexpected results, such as offset bodies,
          * 
-         * if the Container itself, or any of its ancestors, is positioned anywhere other than at 0x0.
+         * if the Container itself, or any of its ancestors, is positioned anywhere other than at 0 x 0. Container children
+         * 
+         * with physics do not factor in the Container due to the excessive extra calculations needed. Please structure
+         * 
+         * your game to work around this.
          * 
          * 
          * 
@@ -13435,21 +13487,23 @@ declare namespace Phaser {
             addMultiple(children: Phaser.GameObjects.GameObject[], addToScene?: boolean): Phaser.GameObjects.Group;
 
             /**
-             * Removes a member of this group.
+             * Removes a member of this Group and optionally removes it from the Scene and / or destroys it.
              * 
              * Calls {@link Phaser.GameObjects.Group#removeCallback}.
              * @param child The Game Object to remove.
-             * @param removeFromScene Also remove the group member from the scene. Default false.
+             * @param removeFromScene Optionally remove the Group member from the Scene it belongs to. Default false.
+             * @param destroyChild Optionally call destroy on the removed Group member. Default false.
              */
-            remove(child: Phaser.GameObjects.GameObject, removeFromScene?: boolean): Phaser.GameObjects.Group;
+            remove(child: Phaser.GameObjects.GameObject, removeFromScene?: boolean, destroyChild?: boolean): Phaser.GameObjects.Group;
 
             /**
-             * Removes all members of this group.
+             * Removes all members of this Group and optionally removes them from the Scene and / or destroys them.
              * 
              * Does not call {@link Phaser.GameObjects.Group#removeCallback}.
-             * @param removeFromScene Also remove each group member from the scene. Default false.
+             * @param removeFromScene Optionally remove each Group member from the Scene. Default false.
+             * @param destroyChild Optionally call destroy on the removed Group members. Default false.
              */
-            clear(removeFromScene?: boolean): Phaser.GameObjects.Group;
+            clear(removeFromScene?: boolean, destroyChild?: boolean): Phaser.GameObjects.Group;
 
             /**
              * Tests if a Game Object is a member of this group.
@@ -15442,16 +15496,6 @@ declare namespace Phaser {
                  * The angle of this Particle in radians.
                  */
                 rotation: number;
-
-                /**
-                 * The horizontal scroll factor of this Particle.
-                 */
-                scrollFactorX: number;
-
-                /**
-                 * The vertical scroll factor of this Particle.
-                 */
-                scrollFactorY: number;
 
                 /**
                  * The tint applied to this Particle.
@@ -22038,10 +22082,10 @@ declare namespace Phaser {
         class Line {
             /**
              * 
-             * @param x1 [description] Default 0.
-             * @param y1 [description] Default 0.
-             * @param x2 [description] Default 0.
-             * @param y2 [description] Default 0.
+             * @param x1 The x coordinate of the lines starting point. Default 0.
+             * @param y1 The y coordinate of the lines starting point. Default 0.
+             * @param x2 The x coordinate of the lines ending point. Default 0.
+             * @param y2 The y coordinate of the lines ending point. Default 0.
              */
             constructor(x1?: number, y1?: number, x2?: number, y2?: number);
 
@@ -22132,22 +22176,22 @@ declare namespace Phaser {
             static Length(line: Phaser.Geom.Line): number;
 
             /**
-             * [description]
+             * The x coordinate of the lines starting point.
              */
             x1: number;
 
             /**
-             * [description]
+             * The y coordinate of the lines starting point.
              */
             y1: number;
 
             /**
-             * [description]
+             * The x coordinate of the lines ending point.
              */
             x2: number;
 
             /**
-             * [description]
+             * The y coordinate of the lines ending point.
              */
             y2: number;
 
@@ -22167,17 +22211,17 @@ declare namespace Phaser {
             getPoints<O extends Phaser.Geom.Point>(quantity: integer, stepRate?: integer, output?: O): O;
 
             /**
-             * [description]
-             * @param point [description]
+             * Get a random Point on the Line.
+             * @param point An instance of a Point to be modified.
              */
             getRandomPoint<O extends Phaser.Geom.Point>(point?: O): O;
 
             /**
-             * [description]
-             * @param x1 [description] Default 0.
-             * @param y1 [description] Default 0.
-             * @param x2 [description] Default 0.
-             * @param y2 [description] Default 0.
+             * Set new coordinates for the line endpoints.
+             * @param x1 The x coordinate of the lines starting point. Default 0.
+             * @param y1 The y coordinate of the lines starting point. Default 0.
+             * @param x2 The x coordinate of the lines ending point. Default 0.
+             * @param y2 The y coordinate of the lines ending point. Default 0.
              */
             setTo(x1?: number, y1?: number, x2?: number, y2?: number): Phaser.Geom.Line;
 
@@ -22246,9 +22290,9 @@ declare namespace Phaser {
             static PerpSlope(line: Phaser.Geom.Line): number;
 
             /**
-             * [description]
-             * @param line [description]
-             * @param out [description]
+             * Returns a random point on a given Line.
+             * @param line The Line to calculate the random Point on.
+             * @param out An instance of a Point to be modified.
              */
             static Random<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
@@ -22308,7 +22352,7 @@ declare namespace Phaser {
         }
 
         /**
-         * [description]
+         * Defines a Point in 2D space, with an x and y component.
          */
         class Point {
             /**
@@ -22409,7 +22453,7 @@ declare namespace Phaser {
             y: number;
 
             /**
-             * [description]
+             * Set the x and y coordinates of the point to the given values.
              * @param x The x coordinate of this Point. Default 0.
              * @param y The y coordinate of this Point. Default x.
              */
@@ -24461,6 +24505,11 @@ declare namespace Phaser {
                  */
                 repeats: number;
 
+                /**
+                 * Resets this Key object back to its default un-pressed state.
+                 */
+                static reset(): Phaser.Input.Keyboard.Key;
+
             }
 
             /**
@@ -25260,6 +25309,11 @@ declare namespace Phaser {
                  * @param audioContext [description]
                  */
                 constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject, audioContext?: AudioContext);
+
+                /**
+                 * [description]
+                 */
+                context: AudioContext;
 
                 /**
                  * [description]
@@ -39081,11 +39135,6 @@ declare namespace Phaser {
 
                     /**
                      * [description]
-                     */
-                    onBind(): Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline;
-
-                    /**
-                     * [description]
                      * @param scene [description]
                      * @param camera [description]
                      */
@@ -39093,73 +39142,75 @@ declare namespace Phaser {
 
                     /**
                      * [description]
-                     * @param tilemap [description]
-                     * @param camera [description]
-                     */
-                    drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                    /**
-                     * [description]
                      * @param emitterManager [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param blitter [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param sprite [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param mesh [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param bitmapText [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param bitmapText [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param text [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param tilemapLayer [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
                      * @param tileSprite [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                 }
 
@@ -39227,8 +39278,9 @@ declare namespace Phaser {
                      * [description]
                      * @param tilemap [description]
                      * @param camera [description]
+                     * @param parentTransformMatrix [description]
                      */
-                    drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
                     /**
                      * [description]
@@ -42509,6 +42561,12 @@ declare namespace Phaser {
          * Spatial index is a special data structure for points and rectangles that allows you to perform queries like
          * 
          * "all items within this bounding box" very efficiently (e.g. hundreds of times faster than looping over all items).
+         * 
+         * 
+         * 
+         * This version of RBush uses a fixed min/max accessor structure of `[ '.left', '.top', '.right', '.bottom' ]`.
+         * 
+         * This is to avoid the eval like function creation that the original library used, which caused CSP policy violations.
          */
         class RTree {
         }
