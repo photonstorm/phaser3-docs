@@ -6,6 +6,7 @@ export class Parser {
 
     topLevel: dom.TopLevelDeclaration[];
     objects: { [key: string]: dom.DeclarationBase };
+    namespaces: { [key: string]: dom.NamespaceDeclaration };
 
     constructor(docs:any[]) {
 
@@ -26,6 +27,7 @@ export class Parser {
 
         this.topLevel = [];
         this.objects = {};
+        this.namespaces = {};
 
         // parse doclets and create corresponding dom objects
         this.parseObjects(docs);
@@ -70,12 +72,6 @@ export class Parser {
 
             let doclet = docs[i];
 
-            if (this.objects[doclet.longname]) {//TODO: coming from classes and namespaces having the same name
-                console.log('Warning: ignoring duplicate doc name: '+doclet.longname);
-                docs.splice(i--, 1);
-                continue;
-            }
-
             // TODO: Custom temporary rules
             switch(doclet.longname) {
                 case "Phaser.GameObjects.Components.Alpha":
@@ -108,9 +104,11 @@ export class Parser {
 
 
             let obj:dom.DeclarationBase;
+            let container = this.objects;
             switch(doclet.kind) {
                 case 'namespace':
                     obj = this.createNamespace(doclet);
+                    container = this.namespaces;
                     break;
                 case 'class':
                     obj = this.createClass(doclet);
@@ -138,7 +136,12 @@ export class Parser {
             }
 
             if(obj) {
-                this.objects[doclet.longname] = obj;
+                if (container[doclet.longname]) {
+                    console.log('Warning: ignoring duplicate doc name: '+doclet.longname);
+                    docs.splice(i--, 1);
+                    continue;
+                }
+                container[doclet.longname] = obj;
                 if(doclet.description) {
                     let otherDocs = obj.jsDocComment || "";
                     obj.jsDocComment = doclet.description.match(regexEndLine).join('\n') + otherDocs;
@@ -150,7 +153,7 @@ export class Parser {
     private resolveObjects(docs:any[]) {
         let allTypes = new Set<string>();
         for(let doclet of docs) {
-            let obj = this.objects[doclet.longname];
+            let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
             if(!obj) {
                 console.log(`Warning: Didn't find object for ${doclet.longname}`);
@@ -160,7 +163,8 @@ export class Parser {
             if(!doclet.memberof) {
                 this.topLevel.push(obj as dom.TopLevelDeclaration);
             } else {
-                let parent = this.objects[doclet.memberof];
+                let isNamespaceMember = doclet.kind === 'class' || doclet.kind === 'typedef' || doclet.kind == 'namespace' || doclet.isEnum;
+                let parent = isNamespaceMember ? this.namespaces[doclet.memberof] : (this.objects[doclet.memberof] || this.namespaces[doclet.memberof]);
 
                 //TODO: this whole section should be removed once stable
                 if(!parent) {
@@ -171,14 +175,14 @@ export class Parser {
                     parent = this.objects[parts.join('.')] as dom.NamespaceDeclaration;
                     if(parent == null) {
                         parent = dom.create.namespace(doclet.memberof);
-                        this.objects[doclet.memberof] = parent;
+                        this.namespaces[doclet.memberof] = <dom.NamespaceDeclaration>parent;
                         this.topLevel.push(<dom.NamespaceDeclaration>parent);
                     } else {
                         while(newParts.length > 0) {
                             let oldParent = <dom.NamespaceDeclaration>parent;
                             parent = dom.create.namespace(newParts.shift());
                             parts.push((<dom.NamespaceDeclaration>parent).name);
-                            this.objects[parts.join('.')] = parent;
+                            this.namespaces[parts.join('.')] = <dom.NamespaceDeclaration>parent;
                             oldParent.members.push(<dom.NamespaceDeclaration>parent);
                             (<any>parent)._parent = oldParent;
                         }
@@ -204,7 +208,7 @@ export class Parser {
 
     private resolveInheritance(docs:any[]) {
         for(let doclet of docs) {
-            let obj = this.objects[doclet.longname];
+            let obj = doclet.kind === "namespace" ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
             if(!obj) {
                 console.log(`Didn't find type ${doclet.longname} ???`);
                 continue;
@@ -227,58 +231,7 @@ export class Parser {
     private resolveParents(docs:any[]) {
         for(let doclet of docs) {
             let obj = this.objects[doclet.longname];
-
-            if(!obj) {
-                console.log('Didn\'t find object for '+doclet.longname);
-                continue;
-            }
-
-            let parent = this.objects[doclet.memberof];
-
-            if(!parent) {
-                console.log(`Didn't find parent for: ${(<any>obj).name}`);
-                continue;
-            }
-
-            // classes should be inside namespaces
-            let isNamespaceMember = doclet.kind === 'class' || doclet.isEnum || doclet.kind === 'typedef';
-            if((isNamespaceMember && (<any>parent).kind === 'class')) {
-                console.log(`moving to another parent type ${doclet.memberof} for member ${doclet.name}`);
-
-                (<any>parent).members.splice((<any>parent).members.indexOf(obj), 1);// break old connection
-
-                // find/create a namespace for class to sit in
-                let parentNamespace:dom.NamespaceDeclaration = (<any>parent)._parent;
-
-                let members;
-                if(!parentNamespace) {
-                    members = this.topLevel;
-                    console.log(`didn't find parent for: `+(<any>parent).name);
-                } else {
-                    members = parentNamespace.members;
-                }
-                let properParent = members.find(nm => nm.kind === "namespace"
-                    && nm.name === (<dom.NamespaceDeclaration|dom.ClassDeclaration>parent).name);
-                if(!properParent) {
-                    console.log(`Creating new parent.`);
-                    properParent = dom.create.namespace((<dom.ClassDeclaration>parent).name);
-                    members.push(properParent);
-                }
-                parent = properParent;
-
-                // connect
-                (<any>parent).members.push(obj);
-                (<any>obj)._parent = parent;
-            }
-
-
-        }
-
-        // now that parents are resolved, check augments
-        for(let doclet of docs) {
-            let obj = this.objects[doclet.longname];
-            let parent = this.objects[doclet.memberof];
-            if(!obj || !parent)
+            if(!obj)
                 continue;
 
             if (doclet.kind === 'class') {
@@ -519,7 +472,8 @@ export class Parser {
             obj.flags |= dom.ParameterFlags.Rest;
             let type:any = (<dom.Parameter>obj).type;
             if(!type.name.endsWith('[]')) {
-                console.log(`Warning: rest parameter should be an array type for ${doclet.name}`);
+                if(type.name != 'any')
+                    console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
                 type.name = type.name + '[]'; // Must be an array
             }
         } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such

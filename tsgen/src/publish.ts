@@ -11,6 +11,8 @@ export function publish(data:any, opts:any) {
     data({ copyright: { isString: true }}).remove();
     // remove private members
     data({ access: 'private' }).remove();
+    // remove ignored doclets
+    data({ ignore: true }).remove();
 
     if (!fs.existsSync(opts.destination)){
         fs.mkdirSync(opts.destination);

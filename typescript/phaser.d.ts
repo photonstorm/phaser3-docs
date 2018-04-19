@@ -176,6 +176,60 @@ declare type JSONAnimationManager = {
     globalTimeScale: number;
 };
 
+declare type GenerateFrameNamesConfig = {
+    /**
+     * [description]
+     */
+    prefix?: string;
+    /**
+     * [description]
+     */
+    start?: integer;
+    /**
+     * [description]
+     */
+    end?: integer;
+    /**
+     * [description]
+     */
+    suffix?: string;
+    /**
+     * [description]
+     */
+    zeroPad?: integer;
+    /**
+     * [description]
+     */
+    outputArray?: AnimationFrameConfig[];
+    /**
+     * [description]
+     */
+    frames?: boolean;
+};
+
+declare type GenerateFrameNumbersConfig = {
+    /**
+     * [description]
+     */
+    start?: integer;
+    /**
+     * [description]
+     */
+    end?: integer;
+    /**
+     * [description]
+     */
+    first?: boolean;
+    /**
+     * [description]
+     */
+    outputArray?: AnimationFrameConfig[];
+    /**
+     * [description]
+     */
+    frames?: boolean;
+};
+
 /**
  * This callback type is completely empty, a no-operation.
  */
@@ -442,20 +496,6 @@ declare type GameConfig = {
 
 declare type GameStepCallback = ()=>void;
 
-declare namespace PluginManager {
-    /**
-     * Static method called directly by the Plugins
-     * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
-     * Plugin is the object to instantiate to create the plugin
-     * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
-     * @param key [description]
-     * @param plugin [description]
-     * @param mapping [description]
-     */
-    function register(key: string, plugin: object, mapping: string): void;
-
-}
-
 declare type TimeStepCallback = (time: number, average: number, interpolation: number)=>void;
 
 declare type JSONCamera = {
@@ -525,8 +565,6 @@ declare type JSONCamera = {
     "bounds.height"?: number;
 };
 
-declare type Camera2DCallback = (camera: Phaser.Cameras.Scene2D.Camera)=>void;
-
 declare type InputJSONCameraObject = {
     /**
      * [description]
@@ -593,6 +631,12 @@ declare type InputJSONCameraObject = {
      */
     "bounds.height"?: number;
 };
+
+declare type CameraFadeCallback = (camera: Phaser.Cameras.Scene2D.Camera, progress: number)=>void;
+
+declare type CameraFlashCallback = (camera: Phaser.Cameras.Scene2D.Camera, progress: number)=>void;
+
+declare type CameraShakeCallback = (camera: Phaser.Cameras.Scene2D.Camera, progress: number)=>void;
 
 declare type FixedKeyControlConfig = {
     /**
@@ -927,6 +971,48 @@ declare type InputColorObject = {
 
 declare type ColorObject = ()=>void;
 
+declare namespace Phaser.Display.Color {
+    /**
+     * Interpolates color values
+     */
+    namespace Interpolate {
+        /**
+         * Interpolates between the two given color ranges over the length supplied.
+         * @param r1 Red value.
+         * @param g1 Blue value.
+         * @param b1 Green value.
+         * @param r2 Red value.
+         * @param g2 Blue value.
+         * @param b2 Green value.
+         * @param length Distance to interpolate over. Default 100.
+         * @param index Index to start from. Default 0.
+         */
+        function RGBWithRGB(r1: number, g1: number, b1: number, r2: number, g2: number, b2: number, length?: number, index?: number): ColorObject;
+
+        /**
+         * Interpolates between the two given color objects over the length supplied.
+         * @param color1 The first Color object.
+         * @param color2 The second Color object.
+         * @param length Distance to interpolate over. Default 100.
+         * @param index Index to start from. Default 0.
+         */
+        function ColorWithColor(color1: Phaser.Display.Color, color2: Phaser.Display.Color, length?: number, index?: number): ColorObject;
+
+        /**
+         * Interpolates between the Color object and color values over the length supplied.
+         * @param color1 The first Color object.
+         * @param r Red value.
+         * @param g Blue value.
+         * @param b Green value.
+         * @param length Distance to interpolate over. Default 100.
+         * @param index Index to start from. Default 0.
+         */
+        function ColorWithRGB(color1: Phaser.Display.Color, r: number, g: number, b: number, length?: number, index?: number): ColorObject;
+
+    }
+
+}
+
 declare type HSLColorObject = {
     /**
      * The hue color value. A number between 0 and 1
@@ -944,9 +1030,44 @@ declare type HSLColorObject = {
 
 declare type ContentLoadedCallback = ()=>void;
 
-declare type DisplayCallback = (display: object)=>void;
+declare type DisplayCallbackConfig = {
+    /**
+     * [description]
+     */
+    tint: Object;
+    /**
+     * [description]
+     */
+    index: number;
+    /**
+     * [description]
+     */
+    charCode: number;
+    /**
+     * [description]
+     */
+    x: number;
+    /**
+     * [description]
+     */
+    y: number;
+    /**
+     * [description]
+     */
+    scale: number;
+    /**
+     * [description]
+     */
+    rotation: number;
+    /**
+     * [description]
+     */
+    data: any;
+};
 
-declare type BitmapTextConfig = {
+declare type DisplayCallback = (display: DisplayCallbackConfig)=>void;
+
+declare type BitmapTextConfig = GameObjectConfig & {
     /**
      * [description]
      */
@@ -1066,7 +1187,7 @@ declare type TextBounds = {
     "global.height": number;
 };
 
-declare type JSONBitmapText = {
+declare type JSONBitmapText = JSONGameObject & {
     /**
      * [description]
      */
@@ -1085,7 +1206,150 @@ declare type JSONBitmapText = {
     letterSpacing: number;
 };
 
-declare type BlitterFromCallback = (blitter: Phaser.GameObjects.Blitter, index: integer)=>void;
+declare namespace Phaser.GameObjects.Blitter {
+    type BlitterFromCallback = (blitter: Phaser.GameObjects.Blitter, index: integer)=>void;
+
+    /**
+     * A Bob Game Object.
+     * 
+     * 
+     * 
+     * A Bob belongs to a Blitter Game Object. The Blitter is responsible for managing and rendering this object.
+     * 
+     * 
+     * 
+     * A Bob has a position, alpha value and a frame from a texture that it uses to render with. You can also toggle
+     * 
+     * the flipped and visible state of the Bob. The Frame the Bob uses to render can be changed dynamically, but it
+     * 
+     * must be a Frame within the Texture used by the parent Blitter.
+     * 
+     * 
+     * 
+     * Bob positions are relative to the Blitter parent. So if you move the Blitter parent, all Bob children will
+     * 
+     * have their positions impacted by this change as well.
+     * 
+     * 
+     * 
+     * You can manipulate Bob objects directly from your game code, but the creation and destruction of them should be
+     * 
+     * handled via the Blitter parent.
+     */
+    class Bob {
+        /**
+         * 
+         * @param blitter The parent Blitter object is responsible for updating this Bob.
+         * @param x The horizontal position of this Game Object in the world, relative to the parent Blitter position.
+         * @param y The vertical position of this Game Object in the world, relative to the parent Blitter position.
+         * @param frame The Frame this Bob will render with, as defined in the Texture the parent Blitter is using.
+         * @param visible Should the Bob render visible or not to start with?
+         */
+        constructor(blitter: Phaser.GameObjects.Blitter, x: number, y: number, frame: string | integer, visible: boolean);
+
+        /**
+         * [description]
+         */
+        parent: Phaser.GameObjects.Blitter;
+
+        /**
+         * [description]
+         */
+        x: number;
+
+        /**
+         * [description]
+         */
+        y: number;
+
+        /**
+         * [description]
+         */
+        frame: string | integer;
+
+        /**
+         * [description]
+         */
+        data: object;
+
+        /**
+         * [description]
+         */
+        flipX: boolean;
+
+        /**
+         * [description]
+         */
+        flipY: boolean;
+
+        /**
+         * [description]
+         * @param frame [description]
+         */
+        setFrame(frame?: Phaser.Textures.Frame): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         */
+        resetFlip(): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         * @param x [description]
+         * @param y [description]
+         * @param frame [description]
+         */
+        reset(x: number, y: number, frame: Phaser.Textures.Frame): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         * @param value [description]
+         */
+        setFlipX(value: number): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         * @param value [description]
+         */
+        setFlipY(value: number): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         * @param x [description]
+         * @param y [description]
+         */
+        setFlip(x: number, y: number): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         * @param value [description]
+         */
+        setVisible(value: boolean): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         * @param value [description]
+         */
+        setAlpha(value: number): Phaser.GameObjects.Blitter.Bob;
+
+        /**
+         * [description]
+         */
+        destroy(): void;
+
+        /**
+         * [description]
+         */
+        visible: boolean;
+
+        /**
+         * [description]
+         */
+        alpha: number;
+
+    }
+
+}
 
 declare type GameObjectConfig = {
     /**
@@ -1235,168 +1499,173 @@ declare type JSONGameObject = {
 
 declare type EachContainerCallback<I> = (item: any, ...args: any[])=>void;
 
+declare namespace Phaser.GameObjects.Graphics {
+    namespace Commands {
+    }
+
+}
+
 declare type GroupCallback = (item: Phaser.GameObjects.GameObject)=>void;
 
 declare type GroupMultipleCreateCallback = (items: Phaser.GameObjects.GameObject[])=>void;
 
 declare type GroupConfig = {
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#classType}.
      */
     classType?: object;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#active}.
      */
     active?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#maxSize}.
      */
     maxSize?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#defaultKey}.
      */
     defaultKey?: string;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#defaultFrame}.
      */
     defaultFrame?: string | integer;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#runChildUpdate}.
      */
     runChildUpdate?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#createCallback}.
      */
     createCallback?: GroupCallback;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#removeCallback}.
      */
     removeCallback?: GroupCallback;
     /**
-     * [description]
+     * Sets {@link Phaser.GameObjects.Group#createMultipleCallback}.
      */
     createMultipleCallback?: GroupMultipleCreateCallback;
 };
 
+/**
+ * The total number of objects created will be
+ * 
+ *     key.length * frame.length * frameQuantity * (yoyo ? 2 : 1) * (1 + repeat)
+ * 
+ * In the simplest case, 1 + `repeat` objects will be created.
+ * 
+ * If `max` is positive, then the total created will not exceed `max`.
+ * 
+ * `key` is required. {@link Phaser.GameObjects.Group#defaultKey} is not used.
+ */
 declare type GroupCreateConfig = {
     /**
-     * [description]
+     * The class of each new Game Object.
      */
     classType?: object;
     /**
-     * [description]
+     * The texture key of each new Game Object.
      */
     key?: string;
     /**
-     * [description]
+     * The texture frame of each new Game Object.
      */
     frame?: string | integer;
     /**
-     * [description]
+     * The visible state of each new Game Object.
      */
     visible?: boolean;
     /**
-     * [description]
+     * The active state of each new Game Object.
      */
     active?: boolean;
     /**
-     * [description]
+     * The number of times each `key` × `frame` combination will be *repeated* (after the first combination).
      */
     repeat?: number;
     /**
-     * [description]
+     * Select a `key` at random.
      */
     randomKey?: boolean;
     /**
-     * [description]
+     * Select a `frame` at random.
      */
     randomFrame?: boolean;
     /**
-     * [description]
+     * Select keys and frames by moving forward then backward through `key` and `frame`.
      */
     yoyo?: boolean;
     /**
-     * [description]
+     * The number of times each `frame` should be combined with one `key`.
      */
     frameQuantity?: number;
     /**
-     * [description]
+     * The maximum number of new Game Objects to create. 0 is no maximum.
      */
     max?: number;
-    /**
-     * [description]
-     */
     setXY?: object;
     /**
-     * [description]
+     * The horizontal position of each new Game Object.
      */
     "setXY.x"?: number;
     /**
-     * [description]
+     * The vertical position of each new Game Object.
      */
     "setXY.y"?: number;
     /**
-     * [description]
+     * Increment each Game Object's horizontal position from the previous by this amount, starting from `setXY.x`.
      */
     "setXY.stepX"?: number;
     /**
-     * [description]
+     * Increment each Game Object's vertical position from the previous by this amount, starting from `setXY.y`.
      */
     "setXY.stepY"?: number;
-    /**
-     * [description]
-     */
     setRotation?: object;
     /**
-     * [description]
+     * Rotation of each new Game Object.
      */
     "setRotation.value"?: number;
     /**
-     * [description]
+     * Increment each Game Object's rotation from the previous by this amount, starting at `setRotation.value`.
      */
     "setRotation.step"?: number;
-    /**
-     * [description]
-     */
     setScale?: object;
     /**
-     * [description]
+     * The horizontal scale of each new Game Object.
      */
     "setScale.x"?: number;
     /**
-     * [description]
+     * The vertical scale of each new Game Object.
      */
     "setScale.y"?: number;
     /**
-     * [description]
+     * Increment each Game Object's horizontal scale from the previous by this amount, starting from `setScale.x`.
      */
     "setScale.stepX"?: number;
     /**
-     * [description]
+     * Increment each Game object's vertical scale from the previous by this amount, starting from `setScale.y`.
      */
     "setScale.stepY"?: number;
-    /**
-     * [description]
-     */
     setAlpha?: object;
     /**
-     * [description]
+     * The alpha value of each new Game Object.
      */
     "setAlpha.value"?: number;
     /**
-     * [description]
+     * Increment each Game Object's alpha from the previous by this amount, starting from `setAlpha.value`.
      */
     "setAlpha.step"?: number;
     /**
-     * [description]
+     * A geometric shape that defines the hit area for the Game Object.
      */
     hitArea?: any;
     /**
-     * [description]
+     * A callback to be invoked when the Game Object is interacted with.
      */
     hitAreaCallback?: HitAreaCallback;
     /**
-     * [description]
+     * Align the new Game Objects in a grid using these settings.
      */
     gridAlign?: false | GridAlignConfig;
 };
@@ -1495,7 +1764,317 @@ declare type RenderTextureConfig = {
  */
 declare type TextStyleWordWrapCallback = (text: string, textObject: Phaser.GameObjects.Text)=>void;
 
-declare type TileSprite = {
+declare namespace Phaser.GameObjects.Text {
+    /**
+     * [description]
+     */
+    class TextStyle {
+        /**
+         * 
+         * @param text The Text object that this TextStyle is styling.
+         * @param style [description]
+         */
+        constructor(text: Phaser.GameObjects.Text, style: object);
+
+        /**
+         * The Text object that this TextStyle is styling.
+         */
+        parent: Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         */
+        fontFamily: string;
+
+        /**
+         * [description]
+         */
+        fontSize: string;
+
+        /**
+         * [description]
+         */
+        fontStyle: string;
+
+        /**
+         * [description]
+         */
+        backgroundColor: string;
+
+        /**
+         * [description]
+         */
+        color: string;
+
+        /**
+         * [description]
+         */
+        stroke: string;
+
+        /**
+         * [description]
+         */
+        strokeThickness: number;
+
+        /**
+         * [description]
+         */
+        shadowOffsetX: number;
+
+        /**
+         * [description]
+         */
+        shadowOffsetY: number;
+
+        /**
+         * [description]
+         */
+        shadowColor: string;
+
+        /**
+         * [description]
+         */
+        shadowBlur: number;
+
+        /**
+         * [description]
+         */
+        shadowStroke: boolean;
+
+        /**
+         * [description]
+         */
+        shadowFill: boolean;
+
+        /**
+         * [description]
+         */
+        align: string;
+
+        /**
+         * [description]
+         */
+        maxLines: integer;
+
+        /**
+         * [description]
+         */
+        fixedWidth: number;
+
+        /**
+         * [description]
+         */
+        fixedHeight: number;
+
+        /**
+         * [description]
+         */
+        rtl: boolean;
+
+        /**
+         * [description]
+         */
+        testString: string;
+
+        /**
+         * The amount of horizontal padding adding to the width of the text when calculating the font metrics.
+         */
+        baselineX: number;
+
+        /**
+         * The amount of vertical padding adding to the width of the text when calculating the font metrics.
+         */
+        baselineY: number;
+
+        /**
+         * [description]
+         * @param style [description]
+         * @param updateText [description] Default true.
+         */
+        setStyle(style: CSSStyleRule, updateText?: boolean): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param canvas [description]
+         * @param context [description]
+         */
+        syncFont(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void;
+
+        /**
+         * [description]
+         * @param canvas [description]
+         * @param context [description]
+         */
+        syncStyle(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void;
+
+        /**
+         * [description]
+         * @param context [description]
+         * @param enabled [description]
+         */
+        syncShadow(context: CanvasRenderingContext2D, enabled: boolean): void;
+
+        /**
+         * [description]
+         * @param recalculateMetrics [description]
+         */
+        update(recalculateMetrics: boolean): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param font [description]
+         */
+        setFont(font: string | object): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param family [description]
+         */
+        setFontFamily(family: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param style [description]
+         */
+        setFontStyle(style: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param size [description]
+         */
+        setFontSize(size: number | string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param string [description]
+         */
+        setTestString(string: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param width [description]
+         * @param height [description]
+         */
+        setFixedSize(width: number, height: number): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param color [description]
+         */
+        setBackgroundColor(color: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param color [description]
+         */
+        setFill(color: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param color [description]
+         */
+        setColor(color: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param color [description]
+         * @param thickness [description]
+         */
+        setStroke(color: string, thickness: number): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param x [description] Default 0.
+         * @param y [description] Default 0.
+         * @param color [description] Default '#000'.
+         * @param blur [description] Default 0.
+         * @param shadowStroke [description] Default false.
+         * @param shadowFill [description] Default true.
+         */
+        setShadow(x?: number, y?: number, color?: string, blur?: number, shadowStroke?: boolean, shadowFill?: boolean): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param x [description] Default 0.
+         * @param y [description] Default 0.
+         */
+        setShadowOffset(x?: number, y?: number): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param color [description] Default '#000'.
+         */
+        setShadowColor(color?: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param blur [description] Default 0.
+         */
+        setShadowBlur(blur?: number): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param enabled [description]
+         */
+        setShadowStroke(enabled: boolean): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param enabled [description]
+         */
+        setShadowFill(enabled: boolean): Phaser.GameObjects.Text;
+
+        /**
+         * Set the width (in pixels) to use for wrapping lines. Pass in null to remove wrapping by width.
+         * @param width The maximum width of a line in pixels. Set to null to remove wrapping.
+         * @param useAdvancedWrap Whether or not to use the advanced wrapping
+         * algorithm. If true, spaces are collapsed and whitespace is trimmed from lines. If false,
+         * spaces and whitespace are left as is. Default false.
+         */
+        setWordWrapWidth(width: number, useAdvancedWrap?: boolean): Phaser.GameObjects.Text;
+
+        /**
+         * Set a custom callback for wrapping lines. Pass in null to remove wrapping by callback.
+         * @param callback A custom function that will be responsible for wrapping the
+         * text. It will receive two arguments: text (the string to wrap), textObject (this Text
+         * instance). It should return the wrapped lines either as an array of lines or as a string with
+         * newline characters in place to indicate where breaks should happen.
+         * @param scope The scope that will be applied when the callback is invoked. Default null.
+         */
+        setWordWrapCallback(callback: TextStyleWordWrapCallback, scope?: object): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param align [description]
+         */
+        setAlign(align: string): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         * @param max [description] Default 0.
+         */
+        setMaxLines(max?: integer): Phaser.GameObjects.Text;
+
+        /**
+         * [description]
+         */
+        getTextMetrics(): object;
+
+        /**
+         * [description]
+         */
+        toJSON(): object;
+
+        /**
+         * [description]
+         */
+        destroy(): void;
+
+    }
+
+}
+
+declare type TileSprite = GameObjectConfig & {
     /**
      * [description]
      */
@@ -1588,6 +2167,17 @@ declare type CursorKeys = {
      */
     shift?: Phaser.Input.Keyboard.Key;
 };
+
+declare namespace Phaser.Input.Keyboard.Keys {
+    /**
+     * Resets a Key object back to its default settings.
+     * Optionally resets the keyCode as well.
+     * @param key [description]
+     * @param clearKeyCode [description] Default false.
+     */
+    function ResetKey(key: Phaser.Input.Keyboard.Key, clearKeyCode?: boolean): Phaser.Input.Keyboard.Key;
+
+}
 
 declare type MouseHandler = ()=>void;
 
@@ -2807,27 +3397,15 @@ declare namespace Phaser {
              * [description]
              * @param key [description]
              * @param config [description]
-             * @param config.prefix [description] Default ''.
-             * @param config.start [description] Default 0.
-             * @param config.end [description] Default 0.
-             * @param config.suffix [description] Default ''.
-             * @param config.zeroPad [description] Default 0.
-             * @param config.outputArray [description] Default [].
-             * @param config.frames [description] Default false.
              */
-            generateFrameNames(key: string, config: object): AnimationFrameConfig[];
+            generateFrameNames(key: string, config: GenerateFrameNamesConfig): AnimationFrameConfig[];
 
             /**
              * [description]
              * @param key [description]
              * @param config [description]
-             * @param config.start [description] Default 0.
-             * @param config.end [description] Default -1.
-             * @param config.first [description] Default false.
-             * @param config.outputArray [description] Default [].
-             * @param config.frames [description] Default false.
              */
-            generateFrameNumbers(key: string, config: object): AnimationFrameConfig[];
+            generateFrameNumbers(key: string, config: GenerateFrameNumbersConfig): AnimationFrameConfig[];
 
             /**
              * [description]
@@ -3094,9 +3672,11 @@ declare namespace Phaser {
         resize(width: number, height: number): void;
 
         /**
-         * Destroys this Phaser.Game instance, all global systems, all sub-systems and all Scenes.
+         * Flags this Game instance as needing to be destroyed on the next frame.
+         * It will wait until the current frame has completed and then call `runDestroy` internally.
+         * @param removeCanvas Set to `true` if you would like the parent canvas element removed from the DOM, or `false` to leave it in place.
          */
-        destroy(): void;
+        destroy(removeCanvas: boolean): void;
 
     }
 
@@ -3178,6 +3758,17 @@ declare namespace Phaser {
              */
             destroy(): void;
 
+            /**
+             * Static method called directly by the Plugins
+             * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
+             * Plugin is the object to instantiate to create the plugin
+             * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
+             * @param key [description]
+             * @param plugin [description]
+             * @param mapping [description]
+             */
+            static register(key: string, plugin: object, mapping: string): void;
+
         }
 
         /**
@@ -3189,6 +3780,109 @@ declare namespace Phaser {
              * @param game A reference to the Phaser.Game instance that owns this Time Step.
              */
             constructor(game: Phaser.Game, config: FPSConfig);
+
+            /**
+             * A reference to the Phaser.Game instance.
+             */
+            game: Phaser.Game;
+
+            /**
+             * [description]
+             */
+            raf: Phaser.DOM.RequestAnimationFrame;
+
+            /**
+             * A flag that is set once the TimeStep has started running and toggled when it stops.
+             */
+            started: boolean;
+
+            /**
+             * The minimum fps rate you want the Time Step to run at.
+             */
+            minFps: integer;
+
+            /**
+             * An exponential moving average of the frames per second.
+             */
+            actualFps: integer;
+
+            /**
+             * [description]
+             */
+            nextFpsUpdate: integer;
+
+            /**
+             * The number of frames processed this second.
+             */
+            framesThisSecond: integer;
+
+            /**
+             * A callback to be invoked each time the Time Step steps.
+             */
+            callback: TimeStepCallback;
+
+            /**
+             * You can force the Time Step to use Set Timeout instead of Request Animation Frame by setting
+             * the `forceSetTimeOut` property to `true` in the Game Configuration object. It cannot be changed at run-time.
+             */
+            forceSetTimeOut: boolean;
+
+            /**
+             * [description]
+             */
+            time: integer;
+
+            /**
+             * [description]
+             */
+            startTime: integer;
+
+            /**
+             * [description]
+             */
+            lastTime: integer;
+
+            /**
+             * [description]
+             */
+            frame: integer;
+
+            /**
+             * [description]
+             */
+            inFocus: boolean;
+
+            /**
+             * [description]
+             */
+            delta: integer;
+
+            /**
+             * [description]
+             */
+            deltaIndex: integer;
+
+            /**
+             * [description]
+             */
+            deltaHistory: any[];
+
+            /**
+             * [description]
+             */
+            deltaSmoothingMax: integer;
+
+            /**
+             * [description]
+             */
+            panicMax: integer;
+
+            /**
+             * The actual elapsed time in ms between one update and the next.
+             * Unlike with `delta` no smoothing, capping, or averaging is applied to this value.
+             * So please be careful when using this value in calculations.
+             */
+            rawDelta: number;
 
             /**
              * Called when the DOM window.onBlur event triggers.
@@ -3433,9 +4127,47 @@ declare namespace Phaser {
     namespace Cameras {
         namespace Scene2D {
             /**
-             * [description]
+             * A Camera.
+             * 
+             * 
+             * 
+             * The Camera is the way in which all games are rendered in Phaser. They provide a view into your game world,
+             * 
+             * and can be positioned, rotated, zoomed and scrolled accordingly.
+             * 
+             * 
+             * 
+             * A Camera consists of two elements: The viewport and the scroll values.
+             * 
+             * 
+             * 
+             * The viewport is the physical position and size of the Camera within your game. Cameras, by default, are
+             * 
+             * created the same size as your game, but their position and size can be set to anything. This means if you
+             * 
+             * wanted to create a camera that was 320x200 in size, positioned in the bottom-right corner of your game,
+             * 
+             * you'd adjust the viewport to do that (using methods like `setViewport` and `setSize`).
+             * 
+             * 
+             * 
+             * If you wish to change where the Camera is looking in your game, then you scroll it. You can do this
+             * 
+             * via the properties `scrollX` and `scrollY` or the method `setScroll`. Scrolling has no impact on the
+             * 
+             * viewport, and changing the viewport has no impact on the scrolling.
+             * 
+             * 
+             * 
+             * By default a Camera will render all Game Objects it can see. You can change this using the `ignore` method,
+             * 
+             * allowing you to filter Game Objects out on a per-Camera basis.
+             * 
+             * 
+             * 
+             * A Camera also has built-in special effects including Fade, Flash and Camera Shake.
              */
-            class Camera {
+            class Camera extends Phaser.Events.EventEmitter {
                 /**
                  * 
                  * @param x The x position of the Camera, relative to the top-left of the game canvas.
@@ -3525,17 +4257,30 @@ declare namespace Phaser {
                 transparent: boolean;
 
                 /**
-                 * TODO
-                 */
-                clearBeforeRender: boolean;
-
-                /**
                  * The background color of this Camera. Only used if `transparent` is `false`.
                  */
                 backgroundColor: Phaser.Display.Color;
 
                 /**
-                 * Should the camera cull Game Objects before rendering?
+                 * The Camera Fade effect handler.
+                 * To fade this camera see the `Camera.fade` methods.
+                 */
+                fadeEffect: Phaser.Cameras.Scene2D.Effects.Fade;
+
+                /**
+                 * The Camera Flash effect handler.
+                 * To flash this camera see the `Camera.flash` method.
+                 */
+                flashEffect: Phaser.Cameras.Scene2D.Effects.Flash;
+
+                /**
+                 * The Camera Shake effect handler.
+                 * To shake this camera see the `Camera.shake` method.
+                 */
+                shakeEffect: Phaser.Cameras.Scene2D.Effects.Shake;
+
+                /**
+                 * Should the camera cull Game Objects before checking them for input hit tests?
                  * In some special cases it may be beneficial to disable this.
                  */
                 disableCull: boolean;
@@ -3546,200 +4291,262 @@ declare namespace Phaser {
                 culledObjects: Phaser.GameObjects.GameObject[];
 
                 /**
-                 * [description]
+                 * Scrolls the Camera so that it is looking at the center of the Camera Bounds (if previously enabled)
                  */
                 centerToBounds(): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
+                 * Scrolls the Camera so that it is re-centered based on its viewport size.
                  */
                 centerToSize(): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param renderableObjects [description]
+                 * Takes an array of Game Objects and returns a new array featuring only those objects
+                 * visible by this camera.
+                 * @param renderableObjects An array of Game Objects to cull.
                  */
                 cull<G extends Phaser.GameObjects.GameObject[]>(renderableObjects: G): G;
 
                 /**
-                 * [description]
-                 * @param interactiveObjects [description]
-                 */
-                cullHitTest<G extends Phaser.GameObjects.GameObject[]>(interactiveObjects: G): G;
-
-                /**
                  * Fades the Camera in from the given color over the duration specified.
-                 * @param duration The duration of the effect in milliseconds.
-                 * @param callback An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
-                 * @param red The value to fade the red channel from. A value between 0 and 1. Default 0.
-                 * @param green The value to fade the green channel from. A value between 0 and 1. Default 0.
-                 * @param blue The value to fade the blue channel from. A value between 0 and 1. Default 0.
+                 * @param duration The duration of the effect in milliseconds. Default 1000.
+                 * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 0.
+                 * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 0.
+                 * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 0.
+                 * @param callback This callback will be invoked every frame for the duration of the effect.
+                 * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                 * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
                  */
-                fadeIn(duration: number, callback?: Function, red?: number, green?: number, blue?: number): Phaser.Cameras.Scene2D.Camera;
+                fadeIn(duration?: integer, red?: integer, green?: integer, blue?: integer, callback?: Function, context?: any): Phaser.Cameras.Scene2D.Camera;
 
                 /**
                  * Fades the Camera out to the given color over the duration specified.
                  * This is an alias for Camera.fade that forces the fade to start, regardless of existing fades.
-                 * @param duration The duration of the effect in milliseconds.
-                 * @param callback An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
-                 * @param red The value to fade the red channel from. A value between 0 and 1. Default 0.
-                 * @param green The value to fade the green channel from. A value between 0 and 1. Default 0.
-                 * @param blue The value to fade the blue channel from. A value between 0 and 1. Default 0.
+                 * @param duration The duration of the effect in milliseconds. Default 1000.
+                 * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 0.
+                 * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 0.
+                 * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 0.
+                 * @param callback This callback will be invoked every frame for the duration of the effect.
+                 * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                 * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
                  */
-                fadeOut(duration: number, callback?: Function, red?: number, green?: number, blue?: number): Phaser.Cameras.Scene2D.Camera;
+                fadeOut(duration?: integer, red?: integer, green?: integer, blue?: integer, callback?: Function, context?: any): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * Fades the Camera to the given color over the duration specified.
-                 * @param duration The duration of the effect in milliseconds.
-                 * @param red The value to fade the red channel to. A value between 0 and 1. Default 0.
-                 * @param green The value to fade the green channel to. A value between 0 and 1. Default 0.
-                 * @param blue The value to fade the blue channel to. A value between 0 and 1. Default 0.
-                 * @param force Force the fade effect to start immediately, even if already running. Default false.
-                 * @param callback An optional callback to invoke when the fade completes. Will be sent one argument - a reference to this camera.
+                 * Fades the Camera from the given color to transparent over the duration specified.
+                 * @param duration The duration of the effect in milliseconds. Default 1000.
+                 * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 0.
+                 * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 0.
+                 * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 0.
+                 * @param force Force the effect to start immediately, even if already running. Default false.
+                 * @param callback This callback will be invoked every frame for the duration of the effect.
+                 * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                 * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
                  */
-                fade(duration: number, red?: number, green?: number, blue?: number, force?: boolean, callback?: Function): Phaser.Cameras.Scene2D.Camera;
+                fadeFrom(duration?: integer, red?: integer, green?: integer, blue?: integer, force?: boolean, callback?: Function, context?: any): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * Flashes the Camera to the given color over the duration specified.
-                 * @param duration The duration of the effect in milliseconds.
-                 * @param red The value to flash the red channel to. A value between 0 and 1. Default 1.
-                 * @param green The value to flash the green channel to. A value between 0 and 1. Default 1.
-                 * @param blue The value to flash the blue channel to. A value between 0 and 1. Default 1.
-                 * @param force Force the flash effect to start immediately, even if already running. Default false.
-                 * @param callback An optional callback to invoke when the flash completes. Will be sent one argument - a reference to this camera.
+                 * Fades the Camera from transparent to the given color over the duration specified.
+                 * @param duration The duration of the effect in milliseconds. Default 1000.
+                 * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 0.
+                 * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 0.
+                 * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 0.
+                 * @param force Force the effect to start immediately, even if already running. Default false.
+                 * @param callback This callback will be invoked every frame for the duration of the effect.
+                 * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                 * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
                  */
-                flash(duration: number, red?: number, green?: number, blue?: number, force?: boolean, callback?: Function): Phaser.Cameras.Scene2D.Camera;
+                fade(duration?: integer, red?: integer, green?: integer, blue?: integer, force?: boolean, callback?: Function, context?: any): Phaser.Cameras.Scene2D.Camera;
+
+                /**
+                 * Flashes the Camera by setting it to the given color immediately and then fading it away again quickly over the duration specified.
+                 * @param duration The duration of the effect in milliseconds. Default 250.
+                 * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 255.
+                 * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 255.
+                 * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 255.
+                 * @param force Force the effect to start immediately, even if already running. Default false.
+                 * @param callback This callback will be invoked every frame for the duration of the effect.
+                 * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                 * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
+                 */
+                flash(duration?: integer, red?: integer, green?: integer, blue?: integer, force?: boolean, callback?: Function, context?: any): Phaser.Cameras.Scene2D.Camera;
 
                 /**
                  * Shakes the Camera by the given intensity over the duration specified.
-                 * @param duration The duration of the effect in milliseconds.
+                 * @param duration The duration of the effect in milliseconds. Default 100.
                  * @param intensity The intensity of the shake. Default 0.05.
                  * @param force Force the shake effect to start immediately, even if already running. Default false.
-                 * @param callback An optional callback to invoke when the shake completes. Will be sent one argument - a reference to this camera.
+                 * @param callback This callback will be invoked every frame for the duration of the effect.
+                 * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                 * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
                  */
-                shake(duration: number, intensity?: number, force?: boolean, callback?: Function): Phaser.Cameras.Scene2D.Camera;
+                shake(duration?: integer, intensity?: number, force?: boolean, callback?: Function, context?: any): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
-                 * @param output [description]
+                 * Converts the given `x` and `y` coordinates into World space, based on this Cameras transform.
+                 * You can optionally provide a Vector2, or similar object, to store the results in.
+                 * @param x The x position to convert to world space.
+                 * @param y The y position to convert to world space.
+                 * @param output An optional object to store the results in. If not provided a new Vector2 will be created.
                  */
                 getWorldPoint<O extends Phaser.Math.Vector2>(x: number, y: number, output?: O): O;
 
                 /**
-                 * [description]
-                 * @param gameObjectOrArray [description]
+                 * Given a Game Object, or an array of Game Objects, it will update all of their camera filter settings
+                 * so that they are ignored by this Camera. This means they will not be rendered by this Camera.
+                 * @param gameObject The Game Object, or array of Game Objects, to be ignored by this Camera.
                  */
-                ignore(gameObjectOrArray: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]): Phaser.Cameras.Scene2D.Camera;
+                ignore(gameObject: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param baseScale [description]
-                 * @param resolution [description]
+                 * Internal preRender step.
+                 * @param baseScale The base scale, as set in the Camera Manager.
+                 * @param resolution The game resolution.
                  */
-                preRender(baseScale: number, resolution: number): void;
+                protected preRender(baseScale: number, resolution: number): void;
 
                 /**
-                 * [description]
+                 * If this Camera has previously had movement bounds set on it, this will remove them.
                  */
                 removeBounds(): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param value [description] Default 0.
+                 * Set the rotation of this Camera. This causes everything it renders to appear rotated.
+                 * 
+                 * Rotating a camera does not rotate the viewport itself, it is applied during rendering.
+                 * @param value The cameras angle of rotation, given in degrees. Default 0.
                  */
                 setAngle(value?: number): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param color [description] Default 'rgba(0,0,0,0)'.
+                 * Sets the background color for this Camera.
+                 * 
+                 * By default a Camera has a transparent background but it can be given a solid color, with any level
+                 * of transparency, via this method.
+                 * 
+                 * The color value can be specified using CSS color notation, hex or numbers.
+                 * @param color The color value. In CSS, hex or numeric color notation. Default 'rgba(0,0,0,0)'.
                  */
                 setBackgroundColor(color?: string | number | InputColorObject): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
-                 * @param width [description]
-                 * @param height [description]
+                 * Set the world bounds for this Camera.
+                 * 
+                 * A Camera bounds controls where the camera can scroll to within the world. It does not limit
+                 * rendering of the camera, or placement of the viewport within your game.
+                 * @param x The top-left x coordinate of the bounds.
+                 * @param y The top-left y coordinate of the bounds.
+                 * @param width The width of the bounds, in pixels.
+                 * @param height The height of the bounds, in pixels.
                  */
-                setBounds(x: number, y: number, width: number, height: number): Phaser.Cameras.Scene2D.Camera;
+                setBounds(x: integer, y: integer, width: integer, height: integer): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param value [description] Default ''.
+                 * Sets the name of this Camera.
+                 * This value is for your own use and isn't used internally.
+                 * @param value The name of the Camera. Default ''.
                  */
                 setName(value?: string): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description] Default x.
+                 * Set the position of the Camera viewport within the game.
+                 * 
+                 * This does not change where the camera is 'looking'. See `setScroll` to control that.
+                 * @param x The top-left x coordinate of the Camera viewport.
+                 * @param y The top-left y coordinate of the Camera viewport. Default x.
                  */
                 setPosition(x: number, y?: number): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param value [description] Default 0.
+                 * Set the rotation of this Camera. This causes everything it renders to appear rotated.
+                 * 
+                 * Rotating a camera does not rotate the viewport itself, it is applied during rendering.
+                 * @param value The rotation of the Camera, in radians. Default 0.
                  */
                 setRotation(value?: number): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Should the Camera round pixel values to whole integers when scrolling?
+                 * In some types of game this is required to prevent sub-pixel aliasing.
+                 * @param value `true` to round Camera pixels, `false` to not.
                  */
                 setRoundPixels(value: boolean): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param scene [description]
+                 * Sets the Scene the Camera is bound to.
+                 * @param scene The Scene the camera is bound to.
                  */
                 setScene(scene: Phaser.Scene): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description] Default x.
+                 * Set the position of where the Camera is looking within the game.
+                 * You can also modify the properties `Camera.scrollX` and `Camera.scrollY` directly.
+                 * Use this method, or the scroll properties, to move your camera around the game world.
+                 * 
+                 * This does not change where the camera viewport is placed. See `setPosition` to control that.
+                 * @param x The x coordinate of the Camera in the game world.
+                 * @param y The y coordinate of the Camera in the game world. Default x.
                  */
                 setScroll(x: number, y?: number): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param width [description]
-                 * @param height [description] Default width.
+                 * Set the size of the Camera viewport.
+                 * 
+                 * By default a Camera is the same size as the game, but can be made smaller via this method,
+                 * allowing you to create mini-cam style effects by creating and positioning a smaller Camera
+                 * viewport within your game.
+                 * @param width The width of the Camera viewport.
+                 * @param height The height of the Camera viewport. Default width.
                  */
-                setSize(width: number, height?: number): Phaser.Cameras.Scene2D.Camera;
+                setSize(width: integer, height?: integer): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
-                 * @param width [description]
-                 * @param height [description]
+                 * This method sets the position and size of the Camera viewport in a single call.
+                 * 
+                 * If you're trying to change where the Camera is looking at in your game, then see
+                 * the method `Camera.setScroll` instead. This method is for changing the viewport
+                 * itself, not what the camera can see.
+                 * 
+                 * By default a Camera is the same size as the game, but can be made smaller via this method,
+                 * allowing you to create mini-cam style effects by creating and positioning a smaller Camera
+                 * viewport within your game.
+                 * @param x The top-left x coordinate of the Camera viewport.
+                 * @param y The top-left y coordinate of the Camera viewport.
+                 * @param width The width of the Camera viewport.
+                 * @param height The height of the Camera viewport. Default width.
                  */
-                setViewport(x: number, y: number, width: number, height: number): Phaser.Cameras.Scene2D.Camera;
+                setViewport(x: number, y: number, width: integer, height?: integer): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param value [description] Default 1.
+                 * Set the zoom value of the Camera.
+                 * 
+                 * Changing to a smaller value, such as 0.5, will cause the camera to 'zoom out'.
+                 * Changing to a larger value, such as 2, will cause the camera to 'zoom in'.
+                 * 
+                 * A value of 1 means 'no zoom' and is the default.
+                 * 
+                 * Changing the zoom does not impact the Camera viewport in any way, it is only applied during rendering.
+                 * @param value The zoom value of the Camera. Default 1.
                  */
                 setZoom(value?: number): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
-                 * @param target [description]
-                 * @param roundPx [description] Default false.
+                 * Sets the Camera to follow a Game Object.
+                 * 
+                 * When enabled the Camera will automatically adjust its scroll position to keep the target Game Object
+                 * in its center.
+                 * @param target The target for the Camera to follow.
+                 * @param roundPx Round the movement pixels to whole integers? Default false.
                  */
                 startFollow(target: Phaser.GameObjects.GameObject | object, roundPx?: boolean): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
+                 * Stops a Camera from following a Game Object, if previously set via `Camera.startFollow`.
                  */
                 stopFollow(): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
+                 * Returns an Object suitable for JSON storage containing all of the Camera viewport and rendering properties.
                  */
                 toJSON(): JSONCamera;
 
@@ -3750,14 +4557,17 @@ declare namespace Phaser {
                 resetFX(): Phaser.Cameras.Scene2D.Camera;
 
                 /**
-                 * [description]
+                 * Internal method called automatically by the Camera Manager.
                  * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
                  * @param delta The delta time, in ms, elapsed since the last frame.
                  */
-                update(time: integer, delta: number): void;
+                protected update(time: integer, delta: number): void;
 
                 /**
-                 * [description]
+                 * Destroys this Camera instance. You rarely need to call this directly.
+                 * 
+                 * Called by the Camera Manager. If you wish to destroy a Camera please use `CameraManager.remove` as
+                 * cameras are stored in a pool, ready for recycling later, and calling this directly will prevent that.
                  */
                 destroy(): void;
 
@@ -3807,12 +4617,6 @@ declare namespace Phaser {
                  * This scale affects all cameras. It's used by Scale Manager.
                  */
                 baseScale: number;
-
-                /**
-                 * Called when the Camera Manager boots.
-                 * Starts the event listeners running.
-                 */
-                boot(): void;
 
                 /**
                  * [description]
@@ -3882,15 +4686,311 @@ declare namespace Phaser {
                  */
                 resize(width: number, height: number): void;
 
+            }
+
+            namespace Effects {
                 /**
-                 * [description]
+                 * A Camera Fade effect.
+                 * 
+                 * 
+                 * 
+                 * This effect will fade the camera viewport to the given color, over the duration specified.
+                 * 
+                 * 
+                 * 
+                 * Only the camera viewport is faded. None of the objects it is displaying are impacted, i.e. their colors do
+                 * 
+                 * not change.
+                 * 
+                 * 
+                 * 
+                 * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
+                 * 
+                 * which is invoked each frame for the duration of the effect, if required.
                  */
-                shutdown(): void;
+                class Fade {
+                    /**
+                     * 
+                     * @param camera The camera this effect is acting upon.
+                     */
+                    constructor(camera: Phaser.Cameras.Scene2D.Camera);
+
+                    /**
+                     * The Camera this effect belongs to.
+                     */
+                    camera: Phaser.Cameras.Scene2D.Camera;
+
+                    /**
+                     * Is this effect actively running?
+                     */
+                    isRunning: boolean;
+
+                    /**
+                     * Has this effect finished running?
+                     * 
+                     * This is different from `isRunning` because it remains set to `true` when the effect is over,
+                     * until the effect is either reset or started again.
+                     */
+                    isComplete: boolean;
+
+                    /**
+                     * The direction of the fade.
+                     * `true` = fade out (transparent to color), `false` = fade in (color to transparent)
+                     */
+                    direction: boolean;
+
+                    /**
+                     * The duration of the effect, in milliseconds.
+                     */
+                    duration: integer;
+
+                    /**
+                     * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+                     */
+                    progress: number;
+
+                    /**
+                     * Fades the Camera to or from the given color over the duration specified.
+                     * @param direction The direction of the fade. `true` = fade out (transparent to color), `false` = fade in (color to transparent) Default true.
+                     * @param duration The duration of the effect in milliseconds. Default 1000.
+                     * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 0.
+                     * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 0.
+                     * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 0.
+                     * @param force Force the effect to start immediately, even if already running. Default false.
+                     * @param callback This callback will be invoked every frame for the duration of the effect.
+                     * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                     * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
+                     */
+                    start(direction?: boolean, duration?: integer, red?: integer, green?: integer, blue?: integer, force?: boolean, callback?: CameraFadeCallback, context?: any): Phaser.Cameras.Scene2D.Camera;
+
+                    /**
+                     * The main update loop for this effect. Called automatically by the Camera.
+                     * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
+                     * @param delta The delta time, in ms, elapsed since the last frame.
+                     */
+                    update(time: integer, delta: number): void;
+
+                    /**
+                     * Called internally by the Canvas Renderer.
+                     * @param ctx The Canvas context to render to.
+                     */
+                    postRenderCanvas(ctx: CanvasRenderingContext2D): boolean;
+
+                    /**
+                     * Called internally by the WebGL Renderer.
+                     * @param pipeline The WebGL Pipeline to render to.
+                     * @param getTintFunction A function that will return the gl safe tint colors.
+                     */
+                    postRenderWebGL(pipeline: Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline, getTintFunction: Function): boolean;
+
+                    /**
+                     * Called internally when the effect completes.
+                     */
+                    effectComplete(): void;
+
+                    /**
+                     * Resets this camera effect.
+                     * If it was previously running, it stops instantly without calling its onComplete callback or emitting an event.
+                     */
+                    reset(): void;
+
+                    /**
+                     * Destroys this effect, releasing it from the Camera.
+                     */
+                    destroy(): void;
+
+                }
 
                 /**
-                 * [description]
+                 * A Camera Flash effect.
+                 * 
+                 * 
+                 * 
+                 * This effect will flash the camera viewport to the given color, over the duration specified.
+                 * 
+                 * 
+                 * 
+                 * Only the camera viewport is flashed. None of the objects it is displaying are impacted, i.e. their colors do
+                 * 
+                 * not change.
+                 * 
+                 * 
+                 * 
+                 * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
+                 * 
+                 * which is invoked each frame for the duration of the effect, if required.
                  */
-                destroy(): void;
+                class Flash {
+                    /**
+                     * 
+                     * @param camera The camera this effect is acting upon.
+                     */
+                    constructor(camera: Phaser.Cameras.Scene2D.Camera);
+
+                    /**
+                     * The Camera this effect belongs to.
+                     */
+                    camera: Phaser.Cameras.Scene2D.Camera;
+
+                    /**
+                     * Is this effect actively running?
+                     */
+                    isRunning: boolean;
+
+                    /**
+                     * The duration of the effect, in milliseconds.
+                     */
+                    duration: integer;
+
+                    /**
+                     * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+                     */
+                    progress: number;
+
+                    /**
+                     * Flashes the Camera to or from the given color over the duration specified.
+                     * @param duration The duration of the effect in milliseconds. Default 250.
+                     * @param red The amount to fade the red channel towards. A value between 0 and 255. Default 255.
+                     * @param green The amount to fade the green channel towards. A value between 0 and 255. Default 255.
+                     * @param blue The amount to fade the blue channel towards. A value between 0 and 255. Default 255.
+                     * @param force Force the effect to start immediately, even if already running. Default false.
+                     * @param callback This callback will be invoked every frame for the duration of the effect.
+                     * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                     * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
+                     */
+                    start(duration?: integer, red?: integer, green?: integer, blue?: integer, force?: boolean, callback?: CameraFlashCallback, context?: any): Phaser.Cameras.Scene2D.Camera;
+
+                    /**
+                     * The main update loop for this effect. Called automatically by the Camera.
+                     * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
+                     * @param delta The delta time, in ms, elapsed since the last frame.
+                     */
+                    update(time: integer, delta: number): void;
+
+                    /**
+                     * Called internally by the Canvas Renderer.
+                     * @param ctx The Canvas context to render to.
+                     */
+                    postRenderCanvas(ctx: CanvasRenderingContext2D): boolean;
+
+                    /**
+                     * Called internally by the WebGL Renderer.
+                     * @param pipeline The WebGL Pipeline to render to.
+                     * @param getTintFunction A function that will return the gl safe tint colors.
+                     */
+                    postRenderWebGL(pipeline: Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline, getTintFunction: Function): boolean;
+
+                    /**
+                     * Called internally when the effect completes.
+                     */
+                    effectComplete(): void;
+
+                    /**
+                     * Resets this camera effect.
+                     * If it was previously running, it stops instantly without calling its onComplete callback or emitting an event.
+                     */
+                    reset(): void;
+
+                    /**
+                     * Destroys this effect, releasing it from the Camera.
+                     */
+                    destroy(): void;
+
+                }
+
+                /**
+                 * A Camera Shake effect.
+                 * 
+                 * 
+                 * 
+                 * This effect will shake the camera viewport by a random amount, bounded by the specified intensity, each frame.
+                 * 
+                 * 
+                 * 
+                 * Only the camera viewport is moved. None of the objects it is displaying are impacted, i.e. their positions do
+                 * 
+                 * not change.
+                 * 
+                 * 
+                 * 
+                 * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
+                 * 
+                 * which is invoked each frame for the duration of the effect if required.
+                 */
+                class Shake {
+                    /**
+                     * 
+                     * @param camera The camera this effect is acting upon.
+                     */
+                    constructor(camera: Phaser.Cameras.Scene2D.Camera);
+
+                    /**
+                     * The Camera this effect belongs to.
+                     */
+                    camera: Phaser.Cameras.Scene2D.Camera;
+
+                    /**
+                     * Is this effect actively running?
+                     */
+                    isRunning: boolean;
+
+                    /**
+                     * The duration of the effect, in milliseconds.
+                     */
+                    duration: integer;
+
+                    /**
+                     * The intensity of the effect. Use small float values. The default when the effect starts is 0.05.
+                     * This is a Vector2 object, allowing you to control the shake intensity independently across x and y.
+                     * You can modify this value while the effect is active to create more varied shake effects.
+                     */
+                    intensity: Phaser.Math.Vector2;
+
+                    /**
+                     * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+                     */
+                    progress: number;
+
+                    /**
+                     * Shakes the Camera by the given intensity over the duration specified.
+                     * @param duration The duration of the effect in milliseconds. Default 100.
+                     * @param intensity The intensity of the shake. Default 0.05.
+                     * @param force Force the shake effect to start immediately, even if already running. Default false.
+                     * @param callback This callback will be invoked every frame for the duration of the effect.
+                     * It is sent two arguments: A reference to the camera and a progress amount between 0 and 1 indicating how complete the effect is.
+                     * @param context The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
+                     */
+                    start(duration?: integer, intensity?: number, force?: boolean, callback?: CameraShakeCallback, context?: any): Phaser.Cameras.Scene2D.Camera;
+
+                    /**
+                     * The pre-render step for this effect. Called automatically by the Camera.
+                     */
+                    preRender(): void;
+
+                    /**
+                     * The main update loop for this effect. Called automatically by the Camera.
+                     * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
+                     * @param delta The delta time, in ms, elapsed since the last frame.
+                     */
+                    update(time: integer, delta: number): void;
+
+                    /**
+                     * Called internally when the effect completes.
+                     */
+                    effectComplete(): void;
+
+                    /**
+                     * Resets this camera effect.
+                     * If it was previously running, it stops instantly without calling its onComplete callback or emitting an event.
+                     */
+                    reset(): void;
+
+                    /**
+                     * Destroys this effect, releasing it from the Camera.
+                     */
+                    destroy(): void;
+
+                }
 
             }
 
@@ -4485,11 +5585,6 @@ declare namespace Phaser {
 
                 /**
                  * [description]
-                 */
-                boot(): void;
-
-                /**
-                 * [description]
                  * @param fieldOfView [description] Default 80.
                  * @param width [description]
                  * @param height [description]
@@ -4534,16 +5629,6 @@ declare namespace Phaser {
                  * @param delta [description]
                  */
                 update(timestep: number, delta: number): void;
-
-                /**
-                 * [description]
-                 */
-                shutdown(): void;
-
-                /**
-                 * [description]
-                 */
-                destroy(): void;
 
             }
 
@@ -4790,7 +5875,7 @@ declare namespace Phaser {
              * @param graphics [description]
              * @param pointsTotal [description] Default 32.
              */
-            draw<G extends Phaser.GameObjects.Graphics>(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): G;
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: G, pointsTotal?: integer): G;
 
             /**
              * [description]
@@ -4857,7 +5942,7 @@ declare namespace Phaser {
              * @param graphics The Graphics instance onto which this curve will be drawn.
              * @param pointsTotal The resolution of the curve. The higher the value the smoother it will render, at the cost of rendering performance. Default 32.
              */
-            draw<G extends Phaser.GameObjects.Graphics>(graphics: Phaser.GameObjects.Graphics, pointsTotal?: integer): G;
+            draw<G extends Phaser.GameObjects.Graphics>(graphics: G, pointsTotal?: integer): G;
 
             /**
              * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
@@ -5153,7 +6238,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            getTangent(): Phaser.Math.Vector2;
+            getTangent<O extends Phaser.Math.Vector2>(): O;
 
             /**
              * Draws this curve on the given Graphics object.
@@ -5698,19 +6783,10 @@ declare namespace Phaser {
             systems: Phaser.Scenes.Systems;
 
             /**
-             * [description]
+             * The Scene that owns this plugin is being destroyed.
+             * We need to shutdown and then kill off all external references.
              */
-            boot(): void;
-
-            /**
-             * [description]
-             */
-            shutdownPlugin(): void;
-
-            /**
-             * [description]
-             */
-            destroyPlugin(): void;
+            destroy(): void;
 
         }
 
@@ -6515,12 +7591,12 @@ declare namespace Phaser {
             }
 
             /**
-             * The CanvasPool is a global static object, that allows Phaser to recycle and pool Canvas DOM elements.
+             * The CanvasPool is a global static object, that allows Phaser to recycle and pool 2D Context Canvas DOM elements.
+             * It does not pool WebGL Contexts, because once the context options are set they cannot be modified again, 
+             * which is useless for some of the Phaser pipelines / renderer.
              * 
-             * This singleton is instantiated as soon as Phaser loads,
-             * before a Phaser.Game instance has even been created.
-             * Which means all instances of Phaser Games on the same page
-             * can share the one single pool
+             * This singleton is instantiated as soon as Phaser loads, before a Phaser.Game instance has even been created.
+             * Which means all instances of Phaser Games on the same page can share the one single pool.
              */
             namespace CanvasPool {
                 /**
@@ -6831,7 +7907,6 @@ declare namespace Phaser {
              * @param input The color value to convert into a Color object.
              */
             static IntegerToRGB(input: integer): ColorObject;
-
 
             /**
              * Converts an object containing `r`, `g`, `b` and `a` properties into a Color class instance.
@@ -7253,6 +8328,12 @@ declare namespace Phaser {
             fontSize: number;
 
             /**
+             * Adds/Removes spacing between characters
+             * Can be a negative or positive number
+             */
+            letterSpacing: number;
+
+            /**
              * [description]
              */
             scrollX: number;
@@ -7333,7 +8414,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            toJSON(): JSONGameObject<JSONBitmapText>;
+            toJSON(): JSONBitmapText;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -7878,7 +8959,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            toJSON(): JSONGameObject<JSONBitmapText>;
+            toJSON(): JSONBitmapText;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -8421,7 +9502,7 @@ declare namespace Phaser {
              * @param frame The Frame the Bobs will use. It must be part of the Blitter Texture.
              * @param visible [description] Default true.
              */
-            createFromCallback(callback: BlitterFromCallback, quantity: integer, frame?: string | integer | Phaser.Textures.Frame | string[] | integer[] | Phaser.Textures.Frame[], visible?: boolean): Phaser.GameObjects.Blitter.Bob[];
+            createFromCallback(callback: Phaser.GameObjects.Blitter.BlitterFromCallback, quantity: integer, frame?: string | integer | Phaser.Textures.Frame | string[] | integer[] | Phaser.Textures.Frame[], visible?: boolean): Phaser.GameObjects.Blitter.Bob[];
 
             /**
              * [description]
@@ -8994,7 +10075,11 @@ declare namespace Phaser {
                  * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
                  * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
                  */
-                delay(value?: integer): Phaser.GameObjects.GameObject;
+                setDelay(value?: integer): Phaser.GameObjects.GameObject;
+                /**
+                 * Gets the amount of time, in milliseconds that the animation will be delayed before starting playback.
+                 */
+                getDelay(): integer;
                 /**
                  * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
                  * @param delay The delay, in milliseconds, to wait before starting the animation playing.
@@ -9090,7 +10175,7 @@ declare namespace Phaser {
                 stop(): Phaser.GameObjects.GameObject;
                 /**
                  * Stops the current animation from playing after the specified time delay, given in milliseconds.
-                 * @param delay The number of miliseconds to wait before stopping this animation.
+                 * @param delay The number of milliseconds to wait before stopping this animation.
                  */
                 stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
                 /**
@@ -9981,303 +11066,6 @@ declare namespace Phaser {
                 setVisible(value: boolean): Phaser.GameObjects.GameObject;
             }
 
-            namespace TextStyle {
-                /**
-                 * The Text object that this TextStyle is styling.
-                 */
-                var parent: Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 */
-                var fontFamily: string;
-
-                /**
-                 * [description]
-                 */
-                var fontSize: string;
-
-                /**
-                 * [description]
-                 */
-                var fontStyle: string;
-
-                /**
-                 * [description]
-                 */
-                var backgroundColor: string;
-
-                /**
-                 * [description]
-                 */
-                var color: string;
-
-                /**
-                 * [description]
-                 */
-                var stroke: string;
-
-                /**
-                 * [description]
-                 */
-                var strokeThickness: number;
-
-                /**
-                 * [description]
-                 */
-                var shadowOffsetX: number;
-
-                /**
-                 * [description]
-                 */
-                var shadowOffsetY: number;
-
-                /**
-                 * [description]
-                 */
-                var shadowColor: string;
-
-                /**
-                 * [description]
-                 */
-                var shadowBlur: number;
-
-                /**
-                 * [description]
-                 */
-                var shadowStroke: boolean;
-
-                /**
-                 * [description]
-                 */
-                var shadowFill: boolean;
-
-                /**
-                 * [description]
-                 */
-                var align: string;
-
-                /**
-                 * [description]
-                 */
-                var maxLines: integer;
-
-                /**
-                 * [description]
-                 */
-                var fixedWidth: number;
-
-                /**
-                 * [description]
-                 */
-                var fixedHeight: number;
-
-                /**
-                 * [description]
-                 */
-                var rtl: boolean;
-
-                /**
-                 * [description]
-                 */
-                var testString: string;
-
-                /**
-                 * The amount of horizontal padding adding to the width of the text when calculating the font metrics.
-                 */
-                var baselineX: number;
-
-                /**
-                 * The amount of vertical padding adding to the width of the text when calculating the font metrics.
-                 */
-                var baselineY: number;
-
-                /**
-                 * [description]
-                 * @param style [description]
-                 * @param updateText [description] Default true.
-                 */
-                function setStyle(style: CSSStyleRule, updateText?: boolean): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param canvas [description]
-                 * @param context [description]
-                 */
-                function syncFont(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void;
-
-                /**
-                 * [description]
-                 * @param canvas [description]
-                 * @param context [description]
-                 */
-                function syncStyle(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void;
-
-                /**
-                 * [description]
-                 * @param context [description]
-                 * @param enabled [description]
-                 */
-                function syncShadow(context: CanvasRenderingContext2D, enabled: boolean): void;
-
-                /**
-                 * [description]
-                 * @param recalculateMetrics [description]
-                 */
-                function update(recalculateMetrics: boolean): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param font [description]
-                 */
-                function setFont(font: string | object): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param family [description]
-                 */
-                function setFontFamily(family: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param style [description]
-                 */
-                function setFontStyle(style: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param size [description]
-                 */
-                function setFontSize(size: number | string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param string [description]
-                 */
-                function setTestString(string: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param width [description]
-                 * @param height [description]
-                 */
-                function setFixedSize(width: number, height: number): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param color [description]
-                 */
-                function setBackgroundColor(color: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param color [description]
-                 */
-                function setFill(color: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param color [description]
-                 */
-                function setColor(color: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param color [description]
-                 * @param thickness [description]
-                 */
-                function setStroke(color: string, thickness: number): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param x [description] Default 0.
-                 * @param y [description] Default 0.
-                 * @param color [description] Default '#000'.
-                 * @param blur [description] Default 0.
-                 * @param shadowStroke [description] Default false.
-                 * @param shadowFill [description] Default true.
-                 */
-                function setShadow(x?: number, y?: number, color?: string, blur?: number, shadowStroke?: boolean, shadowFill?: boolean): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param x [description] Default 0.
-                 * @param y [description] Default 0.
-                 */
-                function setShadowOffset(x?: number, y?: number): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param color [description] Default '#000'.
-                 */
-                function setShadowColor(color?: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param blur [description] Default 0.
-                 */
-                function setShadowBlur(blur?: number): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param enabled [description]
-                 */
-                function setShadowStroke(enabled: boolean): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param enabled [description]
-                 */
-                function setShadowFill(enabled: boolean): Phaser.GameObjects.Text;
-
-                /**
-                 * Set the width (in pixels) to use for wrapping lines. Pass in null to remove wrapping by width.
-                 * @param width The maximum width of a line in pixels. Set to null to remove wrapping.
-                 * @param useAdvancedWrap Whether or not to use the advanced wrapping
-                 * algorithm. If true, spaces are collapsed and whitespace is trimmed from lines. If false,
-                 * spaces and whitespace are left as is. Default false.
-                 */
-                function setWordWrapWidth(width: number, useAdvancedWrap?: boolean): Phaser.GameObjects.Text;
-
-                /**
-                 * Set a custom callback for wrapping lines. Pass in null to remove wrapping by callback.
-                 * @param callback A custom function that will be responsible for wrapping the
-                 * text. It will receive two arguments: text (the string to wrap), textObject (this Text
-                 * instance). It should return the wrapped lines either as an array of lines or as a string with
-                 * newline characters in place to indicate where breaks should happen.
-                 * @param scope The scope that will be applied when the callback is invoked. Default null.
-                 */
-                function setWordWrapCallback(callback: TextStyleWordWrapCallback, scope?: object): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param align [description]
-                 */
-                function setAlign(align: string): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 * @param max [description] Default 0.
-                 */
-                function setMaxLines(max?: integer): Phaser.GameObjects.Text;
-
-                /**
-                 * [description]
-                 */
-                function getTextMetrics(): object;
-
-                /**
-                 * [description]
-                 */
-                function toJSON(): object;
-
-                /**
-                 * [description]
-                 */
-                function destroy(): void;
-
-            }
-
         }
 
         /**
@@ -11128,11 +11916,6 @@ declare namespace Phaser {
             systems: Phaser.Scenes.Systems;
 
             /**
-             * [description]
-             */
-            boot(): void;
-
-            /**
              * Force a sort of the display list on the next call to depthSort.
              */
             queueDepthSort(): void;
@@ -11245,6 +12028,14 @@ declare namespace Phaser {
              * If this Game Object is enabled for physics then this property will contain a reference to a Physics Body.
              */
             body: object;
+
+            /**
+             * This Game Object will ignore all calls made to its destroy method if this flag is set to `true`.
+             * This includes calls that may come from a Group, Container or the Scene itself.
+             * While it allows you to persist a Game Object across Scenes, please understand you are entirely
+             * responsible for managing references to and from this Game Object.
+             */
+            ignoreDestroy: boolean;
 
             /**
              * Sets the `active` property of this Game Object and returns this Game Object for further chaining.
@@ -11407,16 +12198,6 @@ declare namespace Phaser {
             protected "updateList;": Phaser.GameObjects.UpdateList;
 
             /**
-             * Shuts this plugin down.
-             */
-            shutdown(): void;
-
-            /**
-             * Destroys this plugin.
-             */
-            destroy(): void;
-
-            /**
              * Creates a new Graphics Game Object and returns it.
              * 
              * Note: This method will only be available if the Graphics Game Object has been built into Phaser.
@@ -11518,22 +12299,8 @@ declare namespace Phaser {
              * from a map from Tiled, the tileWidth, tileHeight, width & height will be pulled from the map
              * data. For an empty map, you should specify tileWidth, tileHeight, width & height.
              * @param config The config options for the Tilemap.
-             * @param config.key The key in the Phaser cache that corresponds to the loaded tilemap
-             * data.
-             * @param config.data Instead of loading from the cache, you can also load
-             * directly from a 2D array of tile indexes.
-             * @param config.tileWidth The width of a tile in pixels. Default 32.
-             * @param config.tileHeight The height of a tile in pixels. Default 32.
-             * @param config.width The width of the map in tiles. Default 10.
-             * @param config.height The height of the map in tiles. Default 10.
-             * @param config.insertNull Controls how empty tiles, tiles with an index of -1,
-             * in the map data are handled. If `true`, empty locations will get a value of `null`. If `false`,
-             * empty location will get a Tile object with an index of -1. If you've a large sparsely populated
-             * map and the tile data doesn't need to change then setting this value to `true` will help with
-             * memory consumption. However if your map is small or you need to update the tiles dynamically,
-             * then leave the default value set. Default false.
              */
-            tilemap(config?: object): Phaser.Tilemaps.Tilemap;
+            tilemap(config?: TilemapConfig): Phaser.Tilemaps.Tilemap;
 
             /**
              * Creates a new Tween object and returns it.
@@ -11643,16 +12410,6 @@ declare namespace Phaser {
              * @param child The child to be added to this Scene.
              */
             existing(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
-
-            /**
-             * Shuts this plugin down.
-             */
-            shutdown(): void;
-
-            /**
-             * Destroys this plugin.
-             */
-            destroy(): void;
 
             /**
              * Creates a new Graphics Game Object and adds it to the Scene.
@@ -11844,7 +12601,6 @@ declare namespace Phaser {
              * @param options [description]
              */
             constructor(scene: Phaser.Scene, options: object);
-
 
             /**
              * [description]
@@ -12540,264 +13296,348 @@ declare namespace Phaser {
         }
 
         /**
-         * [description]
+         * A Group is a way for you to create, manipulate, or recycle similar Game Objects.
          * 
          * 
          * 
-         *  children can be either an array of children, or a config object
+         * Group membership is non-exclusive. A Game Object can belong to several groups, one group, or none.
          * 
-         *  config can be either a config object, or undefined if passed as the children argument instead
+         * 
+         * 
+         * Groups themselves aren't displayable, and can't be positioned, rotated, scaled, or hidden.
          */
         class Group {
             /**
              * 
-             * @param scene [description]
-             * @param children [description]
-             * @param config [description]
+             * @param scene The scene this group belongs to.
+             * @param children Game objects to add to this group; or the `config` argument.
+             * @param config Settings for this group. If `key` is set, Phaser.GameObjects.Group#createMultiple is also called with these settings.
              */
-            constructor(scene: Phaser.Scene, children: Phaser.GameObjects.GameObject[] | GroupConfig, config?: GroupConfig);
+            constructor(scene: Phaser.Scene, children?: Phaser.GameObjects.GameObject[] | GroupConfig, config?: GroupConfig | GroupCreateConfig);
 
             /**
-             * [description]
+             * This scene this group belongs to.
              */
             scene: Phaser.Scene;
 
             /**
-             * [description]
+             * Members of this group.
              */
             children: Phaser.Structs.Set<Phaser.GameObjects.GameObject>;
 
             /**
-             * [description]
+             * A flag identifying this object as a group.
              */
             isParent: boolean;
 
             /**
-             * [description]
+             * The class to create new group members from.
              */
             classType: object;
 
             /**
-             * [description]
+             * Whether this group runs its {@link Phaser.GameObjects.Group#preUpdate} method
+             * (which may update any members).
              */
             active: boolean;
 
             /**
-             * [description]
+             * The maximum size of this group, if used as a pool. -1 is no limit.
              */
             maxSize: integer;
 
             /**
-             * [description]
+             * A default texture key to use when creating new group members.
+             * 
+             * This is used in {@link Phaser.GameObjects.Group#create}
+             * but not in {@link Phaser.GameObjects.Group#createMultiple}.
              */
             defaultKey: string;
 
             /**
-             * [description]
+             * A default texture frame to use when creating new group members.
              */
             defaultFrame: string | integer;
 
             /**
-             * [description]
+             * Whether to call the update method of any members.
              */
             runChildUpdate: boolean;
 
             /**
-             * [description]
+             * A function to be called when adding or creating group members.
              */
             createCallback: GroupCallback;
 
             /**
-             * [description]
+             * A function to be called when removing group members.
              */
             removeCallback: GroupCallback;
 
             /**
-             * [description]
+             * A function to be called when creating several group members at once.
              */
             createMultipleCallback: GroupMultipleCreateCallback;
 
             /**
-             * [description]
-             * @param x The horizontal position of this Game Object in the world. Default 0.
-             * @param y The vertical position of this Game Object in the world. Default 0.
-             * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager. Default defaultKey.
-             * @param frame An optional frame from the Texture this Game Object is rendering with. Default defaultFrame.
-             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of this Game Object. Default true.
-             * @param active The {@link Phaser.GameObjects.GameObject#active} state of this Game Object. Default true.
+             * Creates a new Game Object and adds it to this group, unless the group {@link Phaser.GameObjects.Group#isFull is full}.
+             * 
+             * Calls {@link Phaser.GameObjects.Group#createCallback}.
+             * @param x The horizontal position of the new Game Object in the world. Default 0.
+             * @param y The vertical position of the new Game Object in the world. Default 0.
+             * @param key The texture key of the new Game Object. Default defaultKey.
+             * @param frame The texture frame of the new Game Object. Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of the new Game Object. Default true.
+             * @param active The {@link Phaser.GameObjects.GameObject#active} state of the new Game Object. Default true.
              */
             create(x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean, active?: boolean): Phaser.GameObjects.GameObject;
 
             /**
-             * [description]
-             * @param config [description]
+             * Creates several Game Objects and adds them to this group.
+             * 
+             * If the group becomes {@link Phaser.GameObjects.Group#isFull}, no further Game Objects are created.
+             * 
+             * Calls {@link Phaser.GameObjects.Group#createMultipleCallback}
+             * and {@link Phaser.GameObjects.Group#createCallback}.
+             * @param config Creation settings. This can be a single configuration object or an array of such objects, which will be applied in turn.
              */
-            createMultiple(config: GroupCreateConfig): Phaser.GameObjects.GameObject[];
+            createMultiple(config: GroupCreateConfig | GroupCreateConfig[]): Phaser.GameObjects.GameObject[];
 
             /**
-             * [description]
-             * @param options [description]
+             * A helper for {@link Phaser.GameObjects.Group#createMultiple}.
+             * @param options Creation settings.
              */
             createFromConfig(options: GroupCreateConfig): Phaser.GameObjects.GameObject[];
 
             /**
-             * [description]
-             * @param time [description]
-             * @param delta [description]
+             * Updates any group members, if {@link Phaser.GameObjects.Group#runChildUpdate} is enabled.
+             * @param time The current timestamp.
+             * @param delta The delta time elapsed since the last frame.
              */
             preUpdate(time: number, delta: number): void;
 
             /**
-             * [description]
-             * @param child [description]
-             * @param addToScene [description] Default false.
+             * Adds a Game Object to this group.
+             * 
+             * Calls {@link Phaser.GameObjects.Group#createCallback}.
+             * @param child The Game Object to add.
+             * @param addToScene Also add the Game Object to the scene. Default false.
              */
             add(child: Phaser.GameObjects.GameObject, addToScene?: boolean): Phaser.GameObjects.Group;
 
             /**
-             * [description]
-             * @param children [description]
-             * @param addToScene [description] Default false.
+             * Adds several Game Objects to this group.
+             * 
+             * Calls {@link Phaser.GameObjects.Group#createCallback}.
+             * @param children The Game Objects to add.
+             * @param addToScene Also add the Game Objects to the scene. Default false.
              */
             addMultiple(children: Phaser.GameObjects.GameObject[], addToScene?: boolean): Phaser.GameObjects.Group;
 
             /**
-             * [description]
-             * @param child [description]
-             * @param removeFromScene [description] Default false.
+             * Removes a member of this group.
+             * 
+             * Calls {@link Phaser.GameObjects.Group#removeCallback}.
+             * @param child The Game Object to remove.
+             * @param removeFromScene Also remove the group member from the scene. Default false.
              */
             remove(child: Phaser.GameObjects.GameObject, removeFromScene?: boolean): Phaser.GameObjects.Group;
 
             /**
-             * [description]
-             * @param removeFromScene [description] Default false.
+             * Removes all members of this group.
+             * 
+             * Does not call {@link Phaser.GameObjects.Group#removeCallback}.
+             * @param removeFromScene Also remove each group member from the scene. Default false.
              */
             clear(removeFromScene?: boolean): Phaser.GameObjects.Group;
 
             /**
-             * [description]
-             * @param child [description]
+             * Tests if a Game Object is a member of this group.
+             * @param child A Game Object.
              */
             contains(child: Phaser.GameObjects.GameObject): boolean;
 
             /**
-             * [description]
+             * All members of the group.
              */
             getChildren(): Phaser.GameObjects.GameObject[];
 
             /**
-             * [description]
+             * The number of members of the group.
              */
             getLength(): integer;
 
             /**
-             * [description]
-             * @param state [description] Default false.
-             * @param createIfNull [description] Default false.
-             * @param x The horizontal position of this Game Object in the world. Default 0.
-             * @param y The vertical position of this Game Object in the world. Default 0.
-             * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager. Default defaultKey.
-             * @param frame An optional frame from the Texture this Game Object is rendering with. Default defaultFrame.
-             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of this Game Object. Default true.
+             * Scans the Group, from top to bottom, for the first member that has an {@link Phaser.GameObjects.GameObject#active} state matching the argument,
+             * assigns `x` and `y`, and returns the member.
+             * 
+             * If no matching member is found and `createIfNull` is true and the group isn't full then it will create a new Game Object using `x`, `y`, `key`, `frame`, and `visible`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param state The {@link Phaser.GameObjects.GameObject#active} value to match. Default false.
+             * @param createIfNull Create a new Game Object if no matching members are found, using the following arguments. Default false.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
              */
             getFirst(state?: boolean, createIfNull?: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
 
             /**
-             * Scans the Group for the first child that has an `active` state set to `false` and returns it.
+             * Scans the Group, from top to bottom, for the nth member that has an {@link Phaser.GameObjects.GameObject#active} state matching the argument,
+             * assigns `x` and `y`, and returns the member.
              * 
-             * If no child is found then it will create a new one using the arguments given to this method.
-             * Unless a new child is being created the arguments are ignored.
-             * @param x The horizontal position of this Game Object in the world. Default 0.
-             * @param y The vertical position of this Game Object in the world. Default 0.
-             * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager. Default defaultKey.
-             * @param frame An optional frame from the Texture this Game Object is rendering with. Default defaultFrame.
-             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of this Game Object. Default true.
+             * If no matching member is found and `createIfNull` is true and the group isn't full then it will create a new Game Object using `x`, `y`, `key`, `frame`, and `visible`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param nth The nth matching Group member to search for.
+             * @param state The {@link Phaser.GameObjects.GameObject#active} value to match. Default false.
+             * @param createIfNull Create a new Game Object if no matching members are found, using the following arguments. Default false.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
+             */
+            getFirstNth(nth: integer, state?: boolean, createIfNull?: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
+
+            /**
+             * Scans the Group for the last member that has an {@link Phaser.GameObjects.GameObject#active} state matching the argument,
+             * assigns `x` and `y`, and returns the member.
+             * 
+             * If no matching member is found and `createIfNull` is true and the group isn't full then it will create a new Game Object using `x`, `y`, `key`, `frame`, and `visible`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param state The {@link Phaser.GameObjects.GameObject#active} value to match. Default false.
+             * @param createIfNull Create a new Game Object if no matching members are found, using the following arguments. Default false.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
+             */
+            getLast(state?: boolean, createIfNull?: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
+
+            /**
+             * Scans the Group for the last nth member that has an {@link Phaser.GameObjects.GameObject#active} state matching the argument,
+             * assigns `x` and `y`, and returns the member.
+             * 
+             * If no matching member is found and `createIfNull` is true and the group isn't full then it will create a new Game Object using `x`, `y`, `key`, `frame`, and `visible`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param nth The nth matching Group member to search for.
+             * @param state The {@link Phaser.GameObjects.GameObject#active} value to match. Default false.
+             * @param createIfNull Create a new Game Object if no matching members are found, using the following arguments. Default false.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
+             */
+            getLastNth(nth: integer, state?: boolean, createIfNull?: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
+
+            /**
+             * Scans the group for the first member that has an {@link Phaser.GameObjects.GameObject#active} state set to `false`,
+             * assigns `x` and `y`, and returns the member.
+             * 
+             * If no inactive member is found and the group isn't full then it will create a new Game Object using `x`, `y`, `key`, `frame`, and `visible`.
+             * The new Game Object will have its active state set to `true`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
              */
             get(x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
 
             /**
-             * Scans the Group for the first child that has an `active` state set to `true` and returns it.
+             * Scans the group for the first member that has an {@link Phaser.GameObjects.GameObject#active} state set to `true`,
+             * assigns `x` and `y`, and returns the member.
              * 
-             * If no child is found, and `createIfNull` is `true`, then it will create a new one using the arguments given to this method.
-             * Unless a new child is being created the arguments are ignored.
-             * @param createIfNull [description]
-             * @param x The horizontal position of this Game Object in the world. Default 0.
-             * @param y The vertical position of this Game Object in the world. Default 0.
-             * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager. Default defaultKey.
-             * @param frame An optional frame from the Texture this Game Object is rendering with. Default defaultFrame.
-             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of this Game Object. Default true.
+             * If no active member is found and `createIfNull` is `true` and the group isn't full then it will create a new one using `x`, `y`, `key`, `frame`, and `visible`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param createIfNull Create a new Game Object if no matching members are found, using the following arguments. Default false.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
              */
-            getFirstAlive(createIfNull: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
+            getFirstAlive(createIfNull?: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
 
             /**
-             * Scans the Group for the first child that has an `active` state set to `false` and returns it.
+             * Scans the group for the first member that has an {@link Phaser.GameObjects.GameObject#active} state set to `false`,
+             * assigns `x` and `y`, and returns the member.
              * 
-             * If no child is found, and `createIfNull` is `true`, then it will create a new one using the arguments given to this method.
-             * Unless a new child is being created the arguments are ignored.
-             * @param createIfNull [description]
-             * @param x The horizontal position of this Game Object in the world. Default 0.
-             * @param y The vertical position of this Game Object in the world. Default 0.
-             * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager. Default defaultKey.
-             * @param frame An optional frame from the Texture this Game Object is rendering with. Default defaultFrame.
-             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of this Game Object. Default true.
+             * If no inactive member is found and `createIfNull` is `true` and the group isn't full then it will create a new one using `x`, `y`, `key`, `frame`, and `visible`.
+             * The new Game Object will have an active state set to `true`.
+             * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
+             * @param createIfNull Create a new Game Object if no matching members are found, using the following arguments. Default false.
+             * @param x The horizontal position of the Game Object in the world.
+             * @param y The vertical position of the Game Object in the world.
+             * @param key The texture key assigned to a new Game Object (if one is created). Default defaultKey.
+             * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
+             * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
              */
-            getFirstDead(createIfNull: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
+            getFirstDead(createIfNull?: boolean, x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): Phaser.GameObjects.GameObject;
 
             /**
-             * [description]
-             * @param key [description]
-             * @param startFrame [description]
+             * {@link Phaser.GameObjects.Components.Animation#play Plays} an animation for all members of this group.
+             * @param key The string-based key of the animation to play.
+             * @param startFrame Optionally start the animation playing from this frame index. Default 0.
              */
-            playAnimation(key: string, startFrame: string): Phaser.GameObjects.Group;
+            playAnimation(key: string, startFrame?: string): Phaser.GameObjects.Group;
 
             /**
-             * [description]
+             * Whether this group's size at its {@link Phaser.GameObjects.Group#maxSize maximum}.
              */
             isFull(): boolean;
 
             /**
-             * [description]
-             * @param value [description] Default true.
+             * Counts the number of active (or inactive) group members.
+             * @param value Count active (true) or inactive (false) group members. Default true.
              */
             countActive(value?: boolean): integer;
 
             /**
-             * [description]
+             * Counts the number of in-use (active) group members.
              */
             getTotalUsed(): integer;
 
             /**
-             * [description]
+             * The difference of {@link Phaser.GameObjects.Group#maxSize} and the number of active group members.
+             * 
+             * This represents the number of group members that could be created or reactivated before reaching the size limit.
              */
             getTotalFree(): integer;
 
             /**
-             * [description]
-             * @param value [description]
-             * @param step [description]
+             * Sets the depth of each group member.
+             * @param value The amount to set the property to.
+             * @param step This is added to the `value` amount, multiplied by the iteration counter.
              */
             setDepth(value: number, step: number): Phaser.GameObjects.Group;
 
             /**
-             * [description]
-             * @param gameObject [description]
+             * Deactivates a member of this group.
+             * @param gameObject A member of this group.
              */
             kill(gameObject: Phaser.GameObjects.GameObject): void;
 
             /**
-             * [description]
-             * @param gameObject [description]
+             * Deactivates and hides a member of this group.
+             * @param gameObject A member of this group.
              */
             killAndHide(gameObject: Phaser.GameObjects.GameObject): void;
 
             /**
-             * [description]
+             * Toggles (flips) the visible state of each member of this group.
              */
             toggleVisible(): Phaser.GameObjects.Group;
 
             /**
-             * [description]
-             * @param destroyChildren Call `GameObject.destroy` on all children of this Group? Default false.
+             * Empties this group and removes it from the scene.
+             * 
+             * Does not call {@link Phaser.GameObjects.Group#removeCallback}.
+             * @param destroyChildren Also {@link Phaser.GameObjects.GameObject#destroy} each group member. Default false.
              */
             destroy(destroyChildren?: boolean): void;
 
@@ -15376,7 +16216,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            class ParticleEmitterManager {
+            class ParticleEmitterManager extends Phaser.GameObjects.GameObject {
                 /**
                  * 
                  * @param scene [description]
@@ -17834,7 +18674,7 @@ declare namespace Phaser {
              * @param time [description]
              * @param delta [description]
              */
-            preUpdate(time: number, delta: number): void;
+            protected preUpdate(time: number, delta: number): void;
 
             /**
              * [description]
@@ -18590,7 +19430,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            style: Phaser.GameObjects.Components.TextStyle;
+            style: Phaser.GameObjects.Text.TextStyle;
 
             /**
              * [description]
@@ -18843,7 +19683,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            toJSON(): object;
+            toJSON(): JSONGameObject;
 
             /**
              * [description]
@@ -20131,11 +20971,6 @@ declare namespace Phaser {
 
             /**
              * [description]
-             */
-            boot(): void;
-
-            /**
-             * [description]
              * @param child [description]
              */
             add(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
@@ -20166,12 +21001,14 @@ declare namespace Phaser {
             removeAll(): Phaser.GameObjects.UpdateList;
 
             /**
-             * [description]
+             * The Scene that owns this plugin is shutting down.
+             * We need to kill and reset all internal properties as well as stop listening to Scene events.
              */
             shutdown(): void;
 
             /**
-             * [description]
+             * The Scene that owns this plugin is being destroyed.
+             * We need to shutdown and then kill off all external references.
              */
             destroy(): void;
 
@@ -20589,165 +21426,6 @@ declare namespace Phaser {
              * @param value The visible state of the Game Object.
              */
             setVisible(value: boolean): Phaser.GameObjects.GameObject;
-
-        }
-
-        namespace Blitter {
-            /**
-             * A Bob Game Object.
-             * 
-             * 
-             * 
-             * A Bob belongs to a Blitter Game Object. The Blitter is responsible for managing and rendering this object.
-             * 
-             * 
-             * 
-             * A Bob has a position, alpha value and a frame from a texture that it uses to render with. You can also toggle
-             * 
-             * the flipped and visible state of the Bob. The Frame the Bob uses to render can be changed dynamically, but it
-             * 
-             * must be a Frame within the Texture used by the parent Blitter.
-             * 
-             * 
-             * 
-             * Bob positions are relative to the Blitter parent. So if you move the Blitter parent, all Bob children will
-             * 
-             * have their positions impacted by this change as well.
-             * 
-             * 
-             * 
-             * You can manipulate Bob objects directly from your game code, but the creation and destruction of them should be
-             * 
-             * handled via the Blitter parent.
-             */
-            class Bob {
-                /**
-                 * 
-                 * @param blitter The parent Blitter object is responsible for updating this Bob.
-                 * @param x The horizontal position of this Game Object in the world, relative to the parent Blitter position.
-                 * @param y The vertical position of this Game Object in the world, relative to the parent Blitter position.
-                 * @param frame The Frame this Bob will render with, as defined in the Texture the parent Blitter is using.
-                 * @param visible Should the Bob render visible or not to start with?
-                 */
-                constructor(blitter: Phaser.GameObjects.Blitter, x: number, y: number, frame: string | integer, visible: boolean);
-
-                /**
-                 * [description]
-                 */
-                parent: Phaser.GameObjects.Blitter;
-
-                /**
-                 * [description]
-                 */
-                x: number;
-
-                /**
-                 * [description]
-                 */
-                y: number;
-
-                /**
-                 * [description]
-                 */
-                frame: string | integer;
-
-                /**
-                 * [description]
-                 */
-                data: object;
-
-                /**
-                 * [description]
-                 */
-                flipX: boolean;
-
-                /**
-                 * [description]
-                 */
-                flipY: boolean;
-
-                /**
-                 * [description]
-                 * @param frame [description]
-                 */
-                setFrame(frame?: Phaser.Textures.Frame): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 */
-                resetFlip(): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
-                 * @param frame [description]
-                 */
-                reset(x: number, y: number, frame: Phaser.Textures.Frame): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 * @param value [description]
-                 */
-                setFlipX(value: number): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 * @param value [description]
-                 */
-                setFlipY(value: number): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
-                 */
-                setFlip(x: number, y: number): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 * @param value [description]
-                 */
-                setVisible(value: boolean): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 * @param value [description]
-                 */
-                setAlpha(value: number): Phaser.GameObjects.Blitter.Bob;
-
-                /**
-                 * [description]
-                 */
-                destroy(): void;
-
-                /**
-                 * [description]
-                 */
-                visible: boolean;
-
-                /**
-                 * [description]
-                 */
-                alpha: number;
-
-            }
-
-        }
-
-        namespace Text {
-            /**
-             * [description]
-             */
-            class TextStyle {
-                /**
-                 * 
-                 * @param text The Text object that this TextStyle is styling.
-                 * @param style [description]
-                 */
-                constructor(text: Phaser.GameObjects.Text, style: object);
-
-            }
 
         }
 
@@ -23122,7 +23800,17 @@ declare namespace Phaser {
             /**
              * [description]
              */
+            settings: Phaser.Scenes.Settings.Object;
+
+            /**
+             * [description]
+             */
             manager: Phaser.Input.InputManager;
+
+            /**
+             * [description]
+             */
+            enabled: boolean;
 
             /**
              * A reference to this.scene.sys.displayList (set in boot)
@@ -23173,11 +23861,6 @@ declare namespace Phaser {
              * The amount of time, in ms, the pointer has to be held down before it thinks it is dragging.
              */
             dragTimeThreshold: number;
-
-            /**
-             * [description]
-             */
-            boot(): void;
 
             /**
              * [description]
@@ -23375,16 +24058,6 @@ declare namespace Phaser {
              * @param delta [description]
              */
             update(time: number, delta: number): void;
-
-            /**
-             * The Scene that owns this plugin is shutting down.
-             */
-            shutdown(): void;
-
-            /**
-             * [description]
-             */
-            destroy(): void;
 
             /**
              * The current active input Pointer.
@@ -23876,30 +24549,19 @@ declare namespace Phaser {
                 CLOSED_BRACKET,
             }
 
-            namespace Keys {
-                /**
-                 * Used internally by the KeyboardManager.
-                 * @param key [description]
-                 * @param event [description]
-                 */
-                function ProcessKeyDown(key: Phaser.Input.Keyboard.Key, event: KeyboardEvent): Phaser.Input.Keyboard.Key;
+            /**
+             * Used internally by the KeyboardManager.
+             * @param key [description]
+             * @param event [description]
+             */
+            function ProcessKeyDown(key: Phaser.Input.Keyboard.Key, event: KeyboardEvent): Phaser.Input.Keyboard.Key;
 
-                /**
-                 * Used internally by the KeyboardManager.
-                 * @param key [description]
-                 * @param event [description]
-                 */
-                function ProcessKeyUp(key: Phaser.Input.Keyboard.Key, event: KeyboardEvent): Phaser.Input.Keyboard.Key;
-
-                /**
-                 * Resets a Key object back to its default settings.
-                 * Optionally resets the keyCode as well.
-                 * @param key [description]
-                 * @param clearKeyCode [description] Default false.
-                 */
-                function ResetKey(key: Phaser.Input.Keyboard.Key, clearKeyCode?: boolean): Phaser.Input.Keyboard.Key;
-
-            }
+            /**
+             * Used internally by the KeyboardManager.
+             * @param key [description]
+             * @param event [description]
+             */
+            function ProcessKeyUp(key: Phaser.Input.Keyboard.Key, event: KeyboardEvent): Phaser.Input.Keyboard.Key;
 
             /**
              * Returns `true` if the Key was released within the `duration` value given, or `false` if it either isn't up,
@@ -24553,14 +25215,14 @@ declare namespace Phaser {
              * @param blob A Blob object to create an object URL for.
              * @param defaultType Default mime type used if blob type is not available.
              */
-            static createObjectURL(image: Image, blob: Blob, defaultType: string): void;
+            static createObjectURL(image: HTMLImageElement, blob: Blob, defaultType: string): void;
 
             /**
              * Static method for releasing an existing object URL which was previously created
              * by calling {@link File#createObjectURL} method.
              * @param image Image object which 'src' attribute should be revoked.
              */
-            static revokeObjectURL(image: Image): void;
+            static revokeObjectURL(image: HTMLImageElement): void;
 
         }
 
@@ -24572,7 +25234,7 @@ declare namespace Phaser {
              * @param path The path of the file.
              * @param xhrSettings Optional file specific XHR settings.
              */
-            function AnimationJSONFile(key: string, url: string, path: string, xhrSettings: XHRSettingsObject): Phaser.Loader.FileTypes.AnimationJSONFile;
+            function AnimationJSONFile(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.FileTypes.JSONFile;
 
             /**
              * An Atlas JSON File.
@@ -24583,7 +25245,7 @@ declare namespace Phaser {
              * @param textureXhrSettings Optional texture file specific XHR settings.
              * @param atlasXhrSettings Optional atlas file specific XHR settings.
              */
-            function AtlasJSONFile(key: string, textureURL: string, atlasURL: string, path: string, textureXhrSettings: XHRSettingsObject, atlasXhrSettings: XHRSettingsObject): object;
+            function AtlasJSONFile(key: string, textureURL: string, atlasURL: string, path: string, textureXhrSettings?: XHRSettingsObject, atlasXhrSettings?: XHRSettingsObject): object;
 
             /**
              * [description]
@@ -24597,7 +25259,7 @@ declare namespace Phaser {
                  * @param xhrSettings [description]
                  * @param audioContext [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject, audioContext: AudioContext);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject, audioContext?: AudioContext);
 
                 /**
                  * [description]
@@ -24618,7 +25280,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24631,7 +25293,7 @@ declare namespace Phaser {
              * @param textureXhrSettings Optional texture file specific XHR settings.
              * @param xmlXhrSettings Optional atlas file specific XHR settings.
              */
-            function BitmapFontFile(key: string, textureURL: string, xmlURL: string, path: string, textureXhrSettings: XHRSettingsObject, xmlXhrSettings: XHRSettingsObject): object;
+            function BitmapFontFile(key: string, textureURL: string, xmlURL: string, path: string, textureXhrSettings?: XHRSettingsObject, xmlXhrSettings?: XHRSettingsObject): object;
 
             /**
              * [description]
@@ -24644,7 +25306,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24658,9 +25320,8 @@ declare namespace Phaser {
                  * @param url [description]
                  * @param path [description]
                  * @param config [description]
-                 * @param locked [description]
                  */
-                constructor(key: string, url: string, path: string, config: XHRSettingsObject, locked: boolean);
+                constructor(key: string, url: string, path: string, config?: XHRSettingsObject);
 
             }
 
@@ -24677,7 +25338,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, width: number, height: number, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, width: number, height: number, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24693,7 +25354,7 @@ declare namespace Phaser {
                  * @param xhrSettings [description]
                  * @param config [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject, config: object);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject, config?: object);
 
             }
 
@@ -24708,7 +25369,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24723,7 +25384,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24738,7 +25399,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24750,7 +25411,7 @@ declare namespace Phaser {
              * @param path Optional texture file specific XHR settings.
              * @param xhrSettings Optional atlas file specific XHR settings.
              */
-            function SpriteSheetFile(key: string, url: string, config: object, path: string, xhrSettings: XHRSettingsObject): object;
+            function SpriteSheetFile(key: string, url: string, config: object, path: string, xhrSettings?: XHRSettingsObject): object;
 
             /**
              * [description]
@@ -24763,7 +25424,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24778,7 +25439,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24794,7 +25455,7 @@ declare namespace Phaser {
                  * @param format [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, format: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, format: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24806,7 +25467,7 @@ declare namespace Phaser {
              * @param format [description]
              * @param xhrSettings [description]
              */
-            function TilemapJSONFile(key: string, url: string, path: string, format: string, xhrSettings: XHRSettingsObject): object;
+            function TilemapJSONFile(key: string, url: string, path: string, format: string, xhrSettings?: XHRSettingsObject): object;
 
             /**
              * An Atlas JSON File.
@@ -24817,7 +25478,7 @@ declare namespace Phaser {
              * @param textureXhrSettings Optional texture file specific XHR settings.
              * @param atlasXhrSettings Optional atlas file specific XHR settings.
              */
-            function UnityAtlasFile(key: string, textureURL: string, atlasURL: string, path: string, textureXhrSettings: XHRSettingsObject, atlasXhrSettings: XHRSettingsObject): object;
+            function UnityAtlasFile(key: string, textureURL: string, atlasURL: string, path: string, textureXhrSettings?: XHRSettingsObject, atlasXhrSettings?: XHRSettingsObject): object;
 
             /**
              * [description]
@@ -24830,7 +25491,7 @@ declare namespace Phaser {
                  * @param path [description]
                  * @param xhrSettings [description]
                  */
-                constructor(key: string, url: string, path: string, xhrSettings: XHRSettingsObject);
+                constructor(key: string, url: string, path: string, xhrSettings?: XHRSettingsObject);
 
             }
 
@@ -24880,7 +25541,7 @@ declare namespace Phaser {
              * @param textureXhrSettings Optional texture file specific XHR settings.
              * @param atlasXhrSettings Optional atlas file specific XHR settings.
              */
-            atlas(key: string, textureURL: string, atlasURL: string, textureXhrSettings: XHRSettingsObject, atlasXhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            atlas(key: string, textureURL: string, atlasURL: string, textureXhrSettings?: XHRSettingsObject, atlasXhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds an Audio file to the current load queue.
@@ -24894,7 +25555,7 @@ declare namespace Phaser {
              * @param config [description]
              * @param xhrSettings [description]
              */
-            audio(key: string, urls: string | string[], config: object, xhrSettings: object): Phaser.Loader.LoaderPlugin;
+            audio(key: string, urls: string | string[], config: object, xhrSettings?: object): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds an Audio Sprite file to the current load queue.
@@ -24910,7 +25571,7 @@ declare namespace Phaser {
              * @param audioXhrSettings Optional file specific XHR settings.
              * @param jsonXhrSettings Optional file specific XHR settings.
              */
-            audioSprite(key: string, urls: string | string[], json: object, config: object, audioXhrSettings: XHRSettingsObject, jsonXhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            audioSprite(key: string, urls: string | string[], json: object, config: object, audioXhrSettings?: XHRSettingsObject, jsonXhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds Binary file to the current load queue.
@@ -24923,7 +25584,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            binary(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            binary(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Bitmap Font file to the current load queue.
@@ -24938,7 +25599,7 @@ declare namespace Phaser {
              * @param textureXhrSettings [description]
              * @param xmlXhrSettings [description]
              */
-            bitmapFont(key: string, textureURL: string, xmlURL: string, textureXhrSettings: XHRSettingsObject, xmlXhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            bitmapFont(key: string, textureURL: string, xmlURL: string, textureXhrSettings?: XHRSettingsObject, xmlXhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a GLSL file to the current load queue.
@@ -24951,7 +25612,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            glsl(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            glsl(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds an HTML file to the current load queue.
@@ -24966,7 +25627,7 @@ declare namespace Phaser {
              * @param height [description]
              * @param xhrSettings [description]
              */
-            html(key: string, url: string, width: number, height: number, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            html(key: string, url: string, width: number, height: number, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds an Image file to the current load queue.
@@ -24979,7 +25640,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            image(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            image(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a JSON file to the current load queue.
@@ -24992,7 +25653,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            json(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            json(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Multi File Texture Atlas to the current load queue.
@@ -25007,7 +25668,7 @@ declare namespace Phaser {
              * @param textureXhrSettings [description]
              * @param atlasXhrSettings [description]
              */
-            multiatlas(key: string, textureURLs: string[], atlasURLs: string[], textureXhrSettings: XHRSettingsObject, atlasXhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            multiatlas(key: string, textureURLs: string[], atlasURLs: string[], textureXhrSettings?: XHRSettingsObject, atlasXhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Plugin file to the current load queue.
@@ -25020,7 +25681,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            plugin(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            plugin(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a JavaScript file to the current load queue.
@@ -25033,7 +25694,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            script(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            script(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Sprite Sheet file to the current load queue.
@@ -25047,7 +25708,7 @@ declare namespace Phaser {
              * @param config config can include: frameWidth, frameHeight, startFrame, endFrame, margin, spacing.
              * @param xhrSettings [description]
              */
-            spritesheet(key: string, url: string, config: object, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            spritesheet(key: string, url: string, config: object, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds an SVG file to the current load queue.
@@ -25060,7 +25721,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            svg(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            svg(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Text file to the current load queue.
@@ -25073,7 +25734,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            text(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            text(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Tilemap CSV file to the current load queue.
@@ -25086,7 +25747,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            tilemapCSV(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            tilemapCSV(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Tilemap (Tiled JSON Format) file to the current load queue.
@@ -25099,7 +25760,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            tilemapTiledJSON(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            tilemapTiledJSON(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Tilemap (Weltmeister Format) file to the current load queue.
@@ -25112,7 +25773,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            tilemapWeltmeister(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            tilemapWeltmeister(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Unity Texture Atlas file to the current load queue.
@@ -25127,7 +25788,7 @@ declare namespace Phaser {
              * @param textureXhrSettings Optional texture file specific XHR settings.
              * @param atlasXhrSettings Optional atlas file specific XHR settings.
              */
-            unityAtlas(key: string, textureURL: string, atlasURL: string, textureXhrSettings: XHRSettingsObject, atlasXhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            unityAtlas(key: string, textureURL: string, atlasURL: string, textureXhrSettings?: XHRSettingsObject, atlasXhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds an XML file to the current load queue.
@@ -25140,7 +25801,7 @@ declare namespace Phaser {
              * @param url [description]
              * @param xhrSettings [description]
              */
-            xml(key: string, url: string, xhrSettings: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            xml(key: string, url: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * [description]
@@ -25221,11 +25882,6 @@ declare namespace Phaser {
              * [description]
              */
             state: integer;
-
-            /**
-             * [description]
-             */
-            boot(): void;
 
             /**
              * [description]
@@ -25347,16 +26003,6 @@ declare namespace Phaser {
              * @param file [description]
              */
             file(file: LoaderFileObject): Phaser.Loader.File;
-
-            /**
-             * [description]
-             */
-            shutdown(): void;
-
-            /**
-             * [description]
-             */
-            destroy(): void;
 
         }
 
@@ -25729,11 +26375,14 @@ declare namespace Phaser {
 
             }
 
-            /**
-             * [description]
-             * @param v [description]
-             */
-            function Linear(v: number): number;
+            namespace Linear {
+                /**
+                 * [description]
+                 * @param v [description]
+                 */
+                function Linear(v: number): number;
+
+            }
 
             namespace Quadratic {
                 /**
@@ -25819,12 +26468,15 @@ declare namespace Phaser {
 
             }
 
-            /**
-             * [description]
-             * @param v [description]
-             * @param steps [description] Default 1.
-             */
-            function Stepped(v: number, steps?: number): number;
+            namespace Stepped {
+                /**
+                 * [description]
+                 * @param v [description]
+                 * @param steps [description] Default 1.
+                 */
+                function Stepped(v: number, steps?: number): number;
+
+            }
 
         }
 
@@ -26542,7 +27194,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            sign: number[];
+            signs: number[];
 
             /**
              * [description]
@@ -26610,6 +27262,11 @@ declare namespace Phaser {
              * @param array The array to pick a random element from.
              */
             pick(array: any[]): any;
+
+            /**
+             * Returns a sign to be used with multiplication operator.
+             */
+            sign(): number;
 
             /**
              * Returns a random element from within the given array, favoring the earlier entries.
@@ -28245,11 +28902,6 @@ declare namespace Phaser {
                 getConfig(): object;
 
                 /**
-                 * [description]
-                 */
-                boot(): void;
-
-                /**
                  * Checks for overlaps between two Game Objects. The objects can be any Game Object that have an Arcade Physics Body.
                  * 
                  * Unlike {@link #collide} the objects are NOT automatically separated or have any physics applied, they merely test for overlap results.
@@ -28383,12 +29035,14 @@ declare namespace Phaser {
                 velocityFromRotation(rotation: number, speed?: number, vec2?: Phaser.Math.Vector2): Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The Scene that owns this plugin is shutting down.
+                 * We need to kill and reset all internal properties as well as stop listening to Scene events.
                  */
                 shutdown(): void;
 
                 /**
-                 * [description]
+                 * The Scene that owns this plugin is being destroyed.
+                 * We need to shutdown and then kill off all external references.
                  */
                 destroy(): void;
 
@@ -28413,7 +29067,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class Sprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.Angular, Components.Bounce, Components.Debug, Components.Drag, Components.Enable, Components.Friction, Components.Gravity, Components.Immovable, Components.Mass, Components.Size, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Animation, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Sprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.Angular, Components.Bounce, Components.Debug, Components.Drag, Components.Enable, Components.Friction, Components.Gravity, Components.Immovable, Components.Mass, Components.Size, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -29261,241 +29915,6 @@ declare namespace Phaser {
                  */
                 setMaxVelocity(x: number, y?: number): Phaser.GameObjects.GameObject;
 
-                /**
-                 * The Game Object to which this animation controller belongs.
-                 */
-                parent: Phaser.GameObjects.GameObject;
-
-                /**
-                 * A reference to the global Animation Manager.
-                 */
-                animationManager: Phaser.Animations.AnimationManager;
-
-                /**
-                 * Is an animation currently playing or not?
-                 */
-                isPlaying: boolean;
-
-                /**
-                 * The current Animation loaded into this Animation Controller.
-                 */
-                currentAnim: Phaser.Animations.Animation;
-
-                /**
-                 * The current AnimationFrame being displayed by this Animation Controller.
-                 */
-                currentFrame: Phaser.Animations.AnimationFrame;
-
-                /**
-                 * The frame rate of playback in frames per second.
-                 * The default is 24 if the `duration` property is `null`.
-                 */
-                frameRate: number;
-
-                /**
-                 * How long the animation should play for, in milliseconds.
-                 * If the `frameRate` property has been set then it overrides this value,
-                 * otherwise the `frameRate` is derived from `duration`.
-                 */
-                duration: number;
-
-                /**
-                 * ms per frame, not including frame specific modifiers that may be present in the Animation data.
-                 */
-                msPerFrame: number;
-
-                /**
-                 * Skip frames if the time lags, or always advanced anyway?
-                 */
-                skipMissedFrames: boolean;
-
-                /**
-                 * Will the playhead move forwards (`true`) or in reverse (`false`)
-                 */
-                forward: boolean;
-
-                /**
-                 * Internal time overflow accumulator.
-                 */
-                accumulator: number;
-
-                /**
-                 * The time point at which the next animation frame will change.
-                 */
-                nextTick: number;
-
-                /**
-                 * An internal counter keeping track of how many repeats are left to play.
-                 */
-                repeatCounter: number;
-
-                /**
-                 * An internal flag keeping track of pending repeats.
-                 */
-                pendingRepeat: boolean;
-
-                /**
-                 * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
-                 * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
-                 */
-                delay(value?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
-                 * @param delay The delay, in milliseconds, to wait before starting the animation playing.
-                 * @param key The key of the animation to play.
-                 * @param startFrame The frame of the animation to start from. Default 0.
-                 */
-                delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Returns the key of the animation currently loaded into this component.
-                 */
-                getCurrentKey(): string;
-
-                /**
-                 * Internal method used to load an animation into this component.
-                 * @param key [description]
-                 * @param startFrame [description] Default 0.
-                 */
-                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Pause the current animation and set the `isPlaying` property to `false`.
-                 * You can optionally pause it at a specific frame.
-                 * @param atFrame An optional frame to set after pausing the animation.
-                 */
-                pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
-                 * You can optionally tell it to start playback from a specific frame.
-                 * @param fromFrame An optional frame to set before restarting playback.
-                 */
-                resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * `true` if the current animation is paused, otherwise `false`.
-                 */
-                isPaused: boolean;
-
-                /**
-                 * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
-                 * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
-                 * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
-                 */
-                getProgress(): number;
-
-                /**
-                 * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
-                 * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
-                 * @param value [description] Default 0.
-                 */
-                setProgress(value?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * [description]
-                 * @param event [description]
-                 */
-                remove(event?: Phaser.Animations.Animation): void;
-
-                /**
-                 * Gets the number of times that the animation will repeat
-                 * after its first iteration. For example, if returns 1, the animation will
-                 * play a total of twice (the initial play plus 1 repeat).
-                 * A value of -1 means the animation will repeat indefinitely.
-                 */
-                getRepeat(): integer;
-
-                /**
-                 * Sets the number of times that the animation should repeat
-                 * after its first iteration. For example, if repeat is 1, the animation will
-                 * play a total of twice (the initial play plus 1 repeat).
-                 * To repeat indefinitely, use -1. repeat should always be an integer.
-                 * @param value [description]
-                 */
-                setRepeat(value: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets the amount of delay between repeats, if any.
-                 */
-                getRepeatDelay(): number;
-
-                /**
-                 * Sets the amount of time in seconds between repeats.
-                 * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
-                 * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
-                 * before doing its final repeat.
-                 * @param value The delay to wait between repeats, in seconds.
-                 */
-                setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Restarts the current animation from its beginning, optionally including its delay value.
-                 * @param includeDelay [description] Default false.
-                 */
-                restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
-                 */
-                stop(): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing after the specified time delay, given in milliseconds.
-                 * @param delay The number of miliseconds to wait before stopping this animation.
-                 */
-                stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing when it next repeats.
-                 */
-                stopOnRepeat(): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing when it next sets the given frame.
-                 * If this frame doesn't exist within the animation it will not stop it from playing.
-                 * @param delay The frame to check before stopping this animation.
-                 */
-                stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
-                 * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
-                 * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
-                 */
-                setTimeScale(value?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets the Time Scale factor.
-                 */
-                getTimeScale(): number;
-
-                /**
-                 * Returns the total number of frames in this animation.
-                 */
-                getTotalFrames(): integer;
-
-                /**
-                 * Sets the given Animation Frame as being the current frame
-                 * and applies it to the parent Game Object, adjusting its size and origin as needed.
-                 * @param animationFrame The Animation Frame to set as being current.
-                 */
-                setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Sets if the current Animation will yoyo when it reaches the end.
-                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
-                 * @param value `true` if the animation should yoyo, `false` to not. Default false.
-                 */
-                setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets if the current Animation will yoyo when it reaches the end.
-                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
-                 */
-                getYoyo(): boolean;
-
             }
 
             /**
@@ -30135,7 +30554,6 @@ declare namespace Phaser {
                  */
                 bottom: number;
 
-
             }
 
             /**
@@ -30641,6 +31059,11 @@ declare namespace Phaser {
                  */
                 group(children?: any[], config?: PhysicsGroupConfig): Phaser.Physics.Arcade.Group;
 
+                /**
+                 * Destroys this Factory.
+                 */
+                destroy(): void;
+
             }
 
             /**
@@ -30697,13 +31120,13 @@ declare namespace Phaser {
                  * [description]
                  * @param child [description]
                  */
-                createCallback(child: Phaser.GameObjects.GameObject): void;
+                createCallbackHandler(child: Phaser.GameObjects.GameObject): void;
 
                 /**
                  * [description]
                  * @param child [description]
                  */
-                removeCallback(child: Phaser.GameObjects.GameObject): void;
+                removeCallbackHandler(child: Phaser.GameObjects.GameObject): void;
 
                 /**
                  * [description]
@@ -31108,19 +31531,19 @@ declare namespace Phaser {
                  * [description]
                  * @param child [description]
                  */
-                createCallback(child: Phaser.GameObjects.GameObject): void;
+                createCallbackHandler(child: Phaser.GameObjects.GameObject): void;
 
                 /**
                  * [description]
                  * @param child [description]
                  */
-                removeCallback(child: Phaser.GameObjects.GameObject): void;
+                removeCallbackHandler(child: Phaser.GameObjects.GameObject): void;
 
                 /**
                  * [description]
                  * @param entries [description]
                  */
-                createMultipleCallback(entries: object): void;
+                createMultipleCallbackHandler(entries: object): void;
 
                 /**
                  * [description]
@@ -31847,7 +32270,6 @@ declare namespace Phaser {
                  */
                 destroy(): void;
 
-
             }
 
             /**
@@ -32096,19 +32518,19 @@ declare namespace Phaser {
                     /**
                      * [description]
                      */
-                    setLite(): Phaser.GameObjects.GameObject;
+                    setLiteCollision(): Phaser.GameObjects.GameObject;
                     /**
                      * [description]
                      */
-                    setPassive(): Phaser.GameObjects.GameObject;
+                    setPassiveCollision(): Phaser.GameObjects.GameObject;
                     /**
                      * [description]
                      */
-                    setActive(): Phaser.GameObjects.GameObject;
+                    setActiveCollision(): Phaser.GameObjects.GameObject;
                     /**
                      * [description]
                      */
-                    setFixed(): Phaser.GameObjects.GameObject;
+                    setFixedCollision(): Phaser.GameObjects.GameObject;
                     /**
                      * [description]
                      */
@@ -32297,6 +32719,11 @@ declare namespace Phaser {
                  */
                 sprite(x: number, y: number, key: string, frame?: string | integer): Phaser.Physics.Impact.ImpactSprite;
 
+                /**
+                 * Destroys this Factory.
+                 */
+                destroy(): void;
+
             }
 
             /**
@@ -32473,22 +32900,22 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                setLite(): Phaser.GameObjects.GameObject;
+                setLiteCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setPassive(): Phaser.GameObjects.GameObject;
+                setPassiveCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setActive(): Phaser.GameObjects.GameObject;
+                setActiveCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setFixed(): Phaser.GameObjects.GameObject;
+                setFixedCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
@@ -33388,17 +33815,22 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                setLite(): Phaser.GameObjects.GameObject;
+                setLiteCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setPassive(): Phaser.GameObjects.GameObject;
+                setPassiveCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setFixed(): Phaser.GameObjects.GameObject;
+                setActiveCollision(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 */
+                setFixedCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
@@ -33556,27 +33988,12 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                boot(): void;
-
-                /**
-                 * [description]
-                 */
                 pause(): Phaser.Physics.Impact.World;
 
                 /**
                  * [description]
                  */
                 resume(): Phaser.Physics.Impact.World;
-
-                /**
-                 * [description]
-                 */
-                shutdown(): void;
-
-                /**
-                 * [description]
-                 */
-                destroy(): void;
 
             }
 
@@ -33599,7 +34016,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class ImpactSprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Animation, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class ImpactSprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -34371,17 +34788,22 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                setLite(): Phaser.GameObjects.GameObject;
+                setLiteCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setPassive(): Phaser.GameObjects.GameObject;
+                setPassiveCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
                  */
-                setFixed(): Phaser.GameObjects.GameObject;
+                setActiveCollision(): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 */
+                setFixedCollision(): Phaser.GameObjects.GameObject;
 
                 /**
                  * [description]
@@ -34494,241 +34916,6 @@ declare namespace Phaser {
                  */
                 setMaxVelocity(x: number, y?: number): Phaser.GameObjects.GameObject;
 
-                /**
-                 * The Game Object to which this animation controller belongs.
-                 */
-                parent: Phaser.GameObjects.GameObject;
-
-                /**
-                 * A reference to the global Animation Manager.
-                 */
-                animationManager: Phaser.Animations.AnimationManager;
-
-                /**
-                 * Is an animation currently playing or not?
-                 */
-                isPlaying: boolean;
-
-                /**
-                 * The current Animation loaded into this Animation Controller.
-                 */
-                currentAnim: Phaser.Animations.Animation;
-
-                /**
-                 * The current AnimationFrame being displayed by this Animation Controller.
-                 */
-                currentFrame: Phaser.Animations.AnimationFrame;
-
-                /**
-                 * The frame rate of playback in frames per second.
-                 * The default is 24 if the `duration` property is `null`.
-                 */
-                frameRate: number;
-
-                /**
-                 * How long the animation should play for, in milliseconds.
-                 * If the `frameRate` property has been set then it overrides this value,
-                 * otherwise the `frameRate` is derived from `duration`.
-                 */
-                duration: number;
-
-                /**
-                 * ms per frame, not including frame specific modifiers that may be present in the Animation data.
-                 */
-                msPerFrame: number;
-
-                /**
-                 * Skip frames if the time lags, or always advanced anyway?
-                 */
-                skipMissedFrames: boolean;
-
-                /**
-                 * Will the playhead move forwards (`true`) or in reverse (`false`)
-                 */
-                forward: boolean;
-
-                /**
-                 * Internal time overflow accumulator.
-                 */
-                accumulator: number;
-
-                /**
-                 * The time point at which the next animation frame will change.
-                 */
-                nextTick: number;
-
-                /**
-                 * An internal counter keeping track of how many repeats are left to play.
-                 */
-                repeatCounter: number;
-
-                /**
-                 * An internal flag keeping track of pending repeats.
-                 */
-                pendingRepeat: boolean;
-
-                /**
-                 * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
-                 * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
-                 */
-                delay(value?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
-                 * @param delay The delay, in milliseconds, to wait before starting the animation playing.
-                 * @param key The key of the animation to play.
-                 * @param startFrame The frame of the animation to start from. Default 0.
-                 */
-                delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Returns the key of the animation currently loaded into this component.
-                 */
-                getCurrentKey(): string;
-
-                /**
-                 * Internal method used to load an animation into this component.
-                 * @param key [description]
-                 * @param startFrame [description] Default 0.
-                 */
-                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Pause the current animation and set the `isPlaying` property to `false`.
-                 * You can optionally pause it at a specific frame.
-                 * @param atFrame An optional frame to set after pausing the animation.
-                 */
-                pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
-                 * You can optionally tell it to start playback from a specific frame.
-                 * @param fromFrame An optional frame to set before restarting playback.
-                 */
-                resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * `true` if the current animation is paused, otherwise `false`.
-                 */
-                isPaused: boolean;
-
-                /**
-                 * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
-                 * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
-                 * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
-                 */
-                getProgress(): number;
-
-                /**
-                 * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
-                 * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
-                 * @param value [description] Default 0.
-                 */
-                setProgress(value?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * [description]
-                 * @param event [description]
-                 */
-                remove(event?: Phaser.Animations.Animation): void;
-
-                /**
-                 * Gets the number of times that the animation will repeat
-                 * after its first iteration. For example, if returns 1, the animation will
-                 * play a total of twice (the initial play plus 1 repeat).
-                 * A value of -1 means the animation will repeat indefinitely.
-                 */
-                getRepeat(): integer;
-
-                /**
-                 * Sets the number of times that the animation should repeat
-                 * after its first iteration. For example, if repeat is 1, the animation will
-                 * play a total of twice (the initial play plus 1 repeat).
-                 * To repeat indefinitely, use -1. repeat should always be an integer.
-                 * @param value [description]
-                 */
-                setRepeat(value: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets the amount of delay between repeats, if any.
-                 */
-                getRepeatDelay(): number;
-
-                /**
-                 * Sets the amount of time in seconds between repeats.
-                 * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
-                 * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
-                 * before doing its final repeat.
-                 * @param value The delay to wait between repeats, in seconds.
-                 */
-                setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Restarts the current animation from its beginning, optionally including its delay value.
-                 * @param includeDelay [description] Default false.
-                 */
-                restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
-                 */
-                stop(): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing after the specified time delay, given in milliseconds.
-                 * @param delay The number of miliseconds to wait before stopping this animation.
-                 */
-                stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing when it next repeats.
-                 */
-                stopOnRepeat(): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing when it next sets the given frame.
-                 * If this frame doesn't exist within the animation it will not stop it from playing.
-                 * @param delay The frame to check before stopping this animation.
-                 */
-                stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
-                 * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
-                 * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
-                 */
-                setTimeScale(value?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets the Time Scale factor.
-                 */
-                getTimeScale(): number;
-
-                /**
-                 * Returns the total number of frames in this animation.
-                 */
-                getTotalFrames(): integer;
-
-                /**
-                 * Sets the given Animation Frame as being the current frame
-                 * and applies it to the parent Game Object, adjusting its size and origin as needed.
-                 * @param animationFrame The Animation Frame to set as being current.
-                 */
-                setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Sets if the current Animation will yoyo when it reaches the end.
-                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
-                 * @param value `true` if the animation should yoyo, `false` to not. Default false.
-                 */
-                setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets if the current Animation will yoyo when it reaches the end.
-                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
-                 */
-                getYoyo(): boolean;
-
             }
 
             /**
@@ -34797,6 +34984,170 @@ declare namespace Phaser {
              */
             function UpdateMotion(body: Phaser.Physics.Impact.Body, res: object): void;
 
+            type WorldConfig = {
+                /**
+                 * [description]
+                 */
+                gravity?: number;
+                /**
+                 * [description]
+                 */
+                cellSize?: number;
+                /**
+                 * [description]
+                 */
+                timeScale?: number;
+                /**
+                 * [description]
+                 */
+                maxStep?: number;
+                /**
+                 * [description]
+                 */
+                debug?: boolean;
+                /**
+                 * [description]
+                 */
+                maxVelocity?: number;
+                /**
+                 * [description]
+                 */
+                debugShowBody?: boolean;
+                /**
+                 * [description]
+                 */
+                debugShowVelocity?: boolean;
+                /**
+                 * [description]
+                 */
+                debugBodyColor?: number;
+                /**
+                 * [description]
+                 */
+                debugVelocityColor?: number;
+                /**
+                 * [description]
+                 */
+                maxVelocityX?: number;
+                /**
+                 * [description]
+                 */
+                maxVelocityY?: number;
+                /**
+                 * [description]
+                 */
+                minBounceVelocity?: number;
+                /**
+                 * [description]
+                 */
+                gravityFactor?: number;
+                /**
+                 * [description]
+                 */
+                bounciness?: number;
+                /**
+                 * [description]
+                 */
+                setBounds?: object | boolean;
+                /**
+                 * [description]
+                 */
+                "setBounds.x"?: number;
+                /**
+                 * [description]
+                 */
+                "setBounds.y"?: number;
+                /**
+                 * [description]
+                 */
+                "setBounds.width"?: number;
+                /**
+                 * [description]
+                 */
+                "setBounds.height"?: number;
+                /**
+                 * [description]
+                 */
+                "setBounds.thickness"?: number;
+                /**
+                 * [description]
+                 */
+                "setBounds.left"?: boolean;
+                /**
+                 * [description]
+                 */
+                "setBounds.right"?: boolean;
+                /**
+                 * [description]
+                 */
+                "setBounds.top"?: boolean;
+                /**
+                 * [description]
+                 */
+                "setBounds.bottom"?: boolean;
+            };
+
+            /**
+             * An object containing the 4 wall bodies that bound the physics world.
+             */
+            type WorldDefaults = {
+                /**
+                 * [description]
+                 */
+                debugShowBody: boolean;
+                /**
+                 * [description]
+                 */
+                debugShowVelocity: boolean;
+                /**
+                 * [description]
+                 */
+                bodyDebugColor: number;
+                /**
+                 * [description]
+                 */
+                velocityDebugColor: number;
+                /**
+                 * [description]
+                 */
+                maxVelocityX: number;
+                /**
+                 * [description]
+                 */
+                maxVelocityY: number;
+                /**
+                 * [description]
+                 */
+                minBounceVelocity: number;
+                /**
+                 * [description]
+                 */
+                gravityFactor: number;
+                /**
+                 * [description]
+                 */
+                bounciness: number;
+            };
+
+            type WorldWalls = {
+                /**
+                 * [description]
+                 */
+                left: Phaser.Physics.Impact.Body;
+                /**
+                 * [description]
+                 */
+                right: Phaser.Physics.Impact.Body;
+                /**
+                 * [description]
+                 */
+                top: Phaser.Physics.Impact.Body;
+                /**
+                 * [description]
+                 */
+                bottom: Phaser.Physics.Impact.Body;
+            };
+
             /**
              * [description]
              */
@@ -34806,7 +35157,7 @@ declare namespace Phaser {
                  * @param scene [description]
                  * @param config [description]
                  */
-                constructor(scene: Phaser.Scene, config: ImpactWorldConfig);
+                constructor(scene: Phaser.Scene, config: Phaser.Physics.Impact.WorldConfig);
 
                 /**
                  * [description]
@@ -34861,12 +35212,12 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                defaults: ImpactWorldDefaults;
+                defaults: Phaser.Physics.Impact.WorldDefaults;
 
                 /**
                  * An object containing the 4 wall bodies that bound the physics world.
                  */
-                walls: ImpactWorldWalls;
+                walls: Phaser.Physics.Impact.WorldWalls;
 
                 /**
                  * [description]
@@ -35391,12 +35742,6 @@ declare namespace Phaser {
 
             }
 
-            namespace Body {
-                namespace Components {
-                }
-
-            }
-
             /**
              * [description]
              */
@@ -35656,6 +36001,11 @@ declare namespace Phaser {
                  * @param options [description]
                  */
                 gameObject(gameObject: Phaser.GameObjects.GameObject, options: object): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Destroys this Factory.
+                 */
+                destroy(): void;
 
             }
 
@@ -36575,11 +36925,6 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                boot(): void;
-
-                /**
-                 * [description]
-                 */
                 enableAttractorPlugin(): Phaser.Physics.Matter.MatterPhysics;
 
                 /**
@@ -36634,16 +36979,6 @@ declare namespace Phaser {
                  */
                 step(delta?: number, correction?: number): void;
 
-                /**
-                 * [description]
-                 */
-                shutdown(): void;
-
-                /**
-                 * [description]
-                 */
-                destroy(): void;
-
             }
 
             /**
@@ -36665,7 +37000,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class Sprite extends Phaser.GameObjects.Sprite implements Components.Bounce, Components.Collision, Components.Force, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.SetBody, Components.Sleep, Components.Static, Components.Transform, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Animation, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Sprite extends Phaser.GameObjects.Sprite implements Components.Bounce, Components.Collision, Components.Force, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.SetBody, Components.Sleep, Components.Static, Components.Transform, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -37514,241 +37849,6 @@ declare namespace Phaser {
                  * @param y [description] Default x.
                  */
                 setVelocity(x: number, y?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * The Game Object to which this animation controller belongs.
-                 */
-                parent: Phaser.GameObjects.GameObject;
-
-                /**
-                 * A reference to the global Animation Manager.
-                 */
-                animationManager: Phaser.Animations.AnimationManager;
-
-                /**
-                 * Is an animation currently playing or not?
-                 */
-                isPlaying: boolean;
-
-                /**
-                 * The current Animation loaded into this Animation Controller.
-                 */
-                currentAnim: Phaser.Animations.Animation;
-
-                /**
-                 * The current AnimationFrame being displayed by this Animation Controller.
-                 */
-                currentFrame: Phaser.Animations.AnimationFrame;
-
-                /**
-                 * The frame rate of playback in frames per second.
-                 * The default is 24 if the `duration` property is `null`.
-                 */
-                frameRate: number;
-
-                /**
-                 * How long the animation should play for, in milliseconds.
-                 * If the `frameRate` property has been set then it overrides this value,
-                 * otherwise the `frameRate` is derived from `duration`.
-                 */
-                duration: number;
-
-                /**
-                 * ms per frame, not including frame specific modifiers that may be present in the Animation data.
-                 */
-                msPerFrame: number;
-
-                /**
-                 * Skip frames if the time lags, or always advanced anyway?
-                 */
-                skipMissedFrames: boolean;
-
-                /**
-                 * Will the playhead move forwards (`true`) or in reverse (`false`)
-                 */
-                forward: boolean;
-
-                /**
-                 * Internal time overflow accumulator.
-                 */
-                accumulator: number;
-
-                /**
-                 * The time point at which the next animation frame will change.
-                 */
-                nextTick: number;
-
-                /**
-                 * An internal counter keeping track of how many repeats are left to play.
-                 */
-                repeatCounter: number;
-
-                /**
-                 * An internal flag keeping track of pending repeats.
-                 */
-                pendingRepeat: boolean;
-
-                /**
-                 * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
-                 * @param value The amount of time, in milliseconds, to wait before starting playback. Default 0.
-                 */
-                delay(value?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
-                 * @param delay The delay, in milliseconds, to wait before starting the animation playing.
-                 * @param key The key of the animation to play.
-                 * @param startFrame The frame of the animation to start from. Default 0.
-                 */
-                delayedPlay(delay: integer, key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Returns the key of the animation currently loaded into this component.
-                 */
-                getCurrentKey(): string;
-
-                /**
-                 * Internal method used to load an animation into this component.
-                 * @param key [description]
-                 * @param startFrame [description] Default 0.
-                 */
-                protected load(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Pause the current animation and set the `isPlaying` property to `false`.
-                 * You can optionally pause it at a specific frame.
-                 * @param atFrame An optional frame to set after pausing the animation.
-                 */
-                pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
-                 * You can optionally tell it to start playback from a specific frame.
-                 * @param fromFrame An optional frame to set before restarting playback.
-                 */
-                resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * `true` if the current animation is paused, otherwise `false`.
-                 */
-                isPaused: boolean;
-
-                /**
-                 * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
-                 * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
-                 * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
-                 */
-                getProgress(): number;
-
-                /**
-                 * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
-                 * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
-                 * @param value [description] Default 0.
-                 */
-                setProgress(value?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * [description]
-                 * @param event [description]
-                 */
-                remove(event?: Phaser.Animations.Animation): void;
-
-                /**
-                 * Gets the number of times that the animation will repeat
-                 * after its first iteration. For example, if returns 1, the animation will
-                 * play a total of twice (the initial play plus 1 repeat).
-                 * A value of -1 means the animation will repeat indefinitely.
-                 */
-                getRepeat(): integer;
-
-                /**
-                 * Sets the number of times that the animation should repeat
-                 * after its first iteration. For example, if repeat is 1, the animation will
-                 * play a total of twice (the initial play plus 1 repeat).
-                 * To repeat indefinitely, use -1. repeat should always be an integer.
-                 * @param value [description]
-                 */
-                setRepeat(value: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets the amount of delay between repeats, if any.
-                 */
-                getRepeatDelay(): number;
-
-                /**
-                 * Sets the amount of time in seconds between repeats.
-                 * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
-                 * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
-                 * before doing its final repeat.
-                 * @param value The delay to wait between repeats, in seconds.
-                 */
-                setRepeatDelay(value: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Restarts the current animation from its beginning, optionally including its delay value.
-                 * @param includeDelay [description] Default false.
-                 */
-                restart(includeDelay?: boolean): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
-                 */
-                stop(): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing after the specified time delay, given in milliseconds.
-                 * @param delay The number of miliseconds to wait before stopping this animation.
-                 */
-                stopAfterDelay(delay: integer): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing when it next repeats.
-                 */
-                stopOnRepeat(): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Stops the current animation from playing when it next sets the given frame.
-                 * If this frame doesn't exist within the animation it will not stop it from playing.
-                 * @param delay The frame to check before stopping this animation.
-                 */
-                stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
-                 * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
-                 * @param value The time scale factor, where 1 is no change, 0.5 is half speed, etc. Default 1.
-                 */
-                setTimeScale(value?: number): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets the Time Scale factor.
-                 */
-                getTimeScale(): number;
-
-                /**
-                 * Returns the total number of frames in this animation.
-                 */
-                getTotalFrames(): integer;
-
-                /**
-                 * Sets the given Animation Frame as being the current frame
-                 * and applies it to the parent Game Object, adjusting its size and origin as needed.
-                 * @param animationFrame The Animation Frame to set as being current.
-                 */
-                setCurrentFrame(animationFrame: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Sets if the current Animation will yoyo when it reaches the end.
-                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
-                 * @param value `true` if the animation should yoyo, `false` to not. Default false.
-                 */
-                setYoyo(value?: boolean): Phaser.GameObjects.GameObject;
-
-                /**
-                 * Gets if the current Animation will yoyo when it reaches the end.
-                 * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
-                 */
-                getYoyo(): boolean;
 
             }
 
@@ -38649,617 +38749,617 @@ declare namespace Phaser {
         }
 
         namespace WebGL {
-            /**
-             * [description]
-             */
-            class BitmapMaskPipeline extends WebGLPipeline {
-                /**
-                 * 
-                 * @param config [description]
-                 */
-                constructor(config: object);
-
-                /**
-                 * [description]
-                 */
-                vertexViewF32: Float32Array;
-
-                /**
-                 * [description]
-                 */
-                maxQuads: number;
-
-                /**
-                 * [description]
-                 */
-                resolutionDirty: boolean;
-
-                /**
-                 * [description]
-                 */
-                onBind(): Phaser.Renderer.WebGL.BitmapMaskPipeline;
-
-                /**
-                 * [description]
-                 * @param width [description]
-                 * @param height [description]
-                 * @param resolution [description]
-                 */
-                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.BitmapMaskPipeline;
-
-                /**
-                 * [description]
-                 * @param mask [description]
-                 * @param maskedObject [description]
-                 * @param camera [description]
-                 */
-                beginMask(mask: Phaser.GameObjects.GameObject, maskedObject: Phaser.GameObjects.GameObject, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param mask [description]
-                 */
-                endMask(mask: Phaser.GameObjects.GameObject): void;
-
-            }
-
-            /**
-             * [description]
-             */
-            class FlatTintPipeline extends WebGLPipeline {
-                /**
-                 * 
-                 * @param config [description]
-                 */
-                constructor(config: object);
-
-                /**
-                 * [description]
-                 */
-                vertexViewF32: Float32Array;
-
-                /**
-                 * [description]
-                 */
-                vertexViewU32: Uint32Array;
-
-                /**
-                 * [description]
-                 */
-                tempTriangle: any[];
-
-                /**
-                 * [description]
-                 */
-                polygonCache: any[];
-
-                /**
-                 * [description]
-                 */
-                onBind(): Phaser.Renderer.WebGL.FlatTintPipeline;
-
-                /**
-                 * [description]
-                 * @param width [description]
-                 * @param height [description]
-                 * @param resolution [description]
-                 */
-                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.FlatTintPipeline;
-
-                /**
-                 * [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcScaleX [description]
-                 * @param srcScaleY [description]
-                 * @param srcRotation [description]
-                 * @param x [description]
-                 * @param y [description]
-                 * @param width [description]
-                 * @param height [description]
-                 * @param fillColor [description]
-                 * @param fillAlpha [description]
-                 * @param a1 [description]
-                 * @param b1 [description]
-                 * @param c1 [description]
-                 * @param d1 [description]
-                 * @param e1 [description]
-                 * @param f1 [description]
-                 * @param currentMatrix [description]
-                 */
-                batchFillRect(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, x: number, y: number, width: number, height: number, fillColor: integer, fillAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
-
-                /**
-                 * [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcScaleX [description]
-                 * @param srcScaleY [description]
-                 * @param srcRotation [description]
-                 * @param x0 [description]
-                 * @param y0 [description]
-                 * @param x1 [description]
-                 * @param y1 [description]
-                 * @param x2 [description]
-                 * @param y2 [description]
-                 * @param fillColor [description]
-                 * @param fillAlpha [description]
-                 * @param a1 [description]
-                 * @param b1 [description]
-                 * @param c1 [description]
-                 * @param d1 [description]
-                 * @param e1 [description]
-                 * @param f1 [description]
-                 * @param currentMatrix [description]
-                 */
-                batchFillTriangle(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, fillColor: integer, fillAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
-
-                /**
-                 * [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcScaleX [description]
-                 * @param srcScaleY [description]
-                 * @param srcRotation [description]
-                 * @param x0 [description]
-                 * @param y0 [description]
-                 * @param x1 [description]
-                 * @param y1 [description]
-                 * @param x2 [description]
-                 * @param y2 [description]
-                 * @param lineWidth [description]
-                 * @param lineColor [description]
-                 * @param lineAlpha [description]
-                 * @param a [description]
-                 * @param b [description]
-                 * @param c [description]
-                 * @param d [description]
-                 * @param e [description]
-                 * @param f [description]
-                 * @param currentMatrix [description]
-                 */
-                batchStrokeTriangle(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, lineWidth: number, lineColor: integer, lineAlpha: number, a: number, b: number, c: number, d: number, e: number, f: number, currentMatrix: Float32Array): void;
-
-                /**
-                 * [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcScaleX [description]
-                 * @param srcScaleY [description]
-                 * @param srcRotation [description]
-                 * @param path [description]
-                 * @param fillColor [description]
-                 * @param fillAlpha [description]
-                 * @param a1 [description]
-                 * @param b1 [description]
-                 * @param c1 [description]
-                 * @param d1 [description]
-                 * @param e1 [description]
-                 * @param f1 [description]
-                 * @param currentMatrix [description]
-                 */
-                batchFillPath(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, path: number, fillColor: integer, fillAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
-
-                /**
-                 * [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcScaleX [description]
-                 * @param srcScaleY [description]
-                 * @param srcRotation [description]
-                 * @param path [description]
-                 * @param lineWidth [description]
-                 * @param lineColor [description]
-                 * @param lineAlpha [description]
-                 * @param a [description]
-                 * @param b [description]
-                 * @param c [description]
-                 * @param d [description]
-                 * @param e [description]
-                 * @param f [description]
-                 * @param isLastPath [description]
-                 * @param currentMatrix [description]
-                 */
-                batchStrokePath(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, path: any[], lineWidth: number, lineColor: integer, lineAlpha: number, a: number, b: number, c: number, d: number, e: number, f: number, isLastPath: boolean, currentMatrix: Float32Array): void;
-
-                /**
-                 * [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcScaleX [description]
-                 * @param srcScaleY [description]
-                 * @param srcRotation [description]
-                 * @param ax [description]
-                 * @param ay [description]
-                 * @param bx [description]
-                 * @param by [description]
-                 * @param aLineWidth [description]
-                 * @param bLineWidth [description]
-                 * @param aLineColor [description]
-                 * @param bLineColor [description]
-                 * @param lineAlpha [description]
-                 * @param a1 [description]
-                 * @param b1 [description]
-                 * @param c1 [description]
-                 * @param d1 [description]
-                 * @param e1 [description]
-                 * @param f1 [description]
-                 * @param currentMatrix [description]
-                 */
-                batchLine(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, ax: number, ay: number, bx: number, by: number, aLineWidth: number, bLineWidth: number, aLineColor: integer, bLineColor: integer, lineAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
-
-                /**
-                 * [description]
-                 * @param graphics [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchGraphics(graphics: Phaser.GameObjects.Graphics, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
-
-                /**
-                 * [description]
-                 * @param tilemap [description]
-                 * @param camera [description]
-                 */
-                drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param emitterManager [description]
-                 * @param camera [description]
-                 */
-                drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param blitter [description]
-                 * @param camera [description]
-                 */
-                drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param sprite [description]
-                 * @param camera [description]
-                 */
-                batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param mesh [description]
-                 * @param camera [description]
-                 */
-                batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param bitmapText [description]
-                 * @param camera [description]
-                 */
-                batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param bitmapText [description]
-                 * @param camera [description]
-                 */
-                batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param text [description]
-                 * @param camera [description]
-                 */
-                batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param tilemapLayer [description]
-                 * @param camera [description]
-                 */
-                batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param tileSprite [description]
-                 * @param camera [description]
-                 */
-                batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-            }
-
-            /**
-             * [description]
-             */
-            class ForwardDiffuseLightPipeline extends TextureTintPipeline {
-                /**
-                 * 
-                 * @param config [description]
-                 */
-                constructor(config: object);
-
-                /**
-                 * [description]
-                 */
-                onBind(): Phaser.Renderer.WebGL.ForwardDiffuseLightPipeline;
-
-                /**
-                 * [description]
-                 * @param scene [description]
-                 * @param camera [description]
-                 */
-                onRender(scene: Phaser.Scene, camera: Phaser.Cameras.Scene2D.Camera): Phaser.Renderer.WebGL.ForwardDiffuseLightPipeline;
-
-                /**
-                 * [description]
-                 * @param tilemap [description]
-                 * @param camera [description]
-                 */
-                drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param emitterManager [description]
-                 * @param camera [description]
-                 */
-                drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param blitter [description]
-                 * @param camera [description]
-                 */
-                drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param sprite [description]
-                 * @param camera [description]
-                 */
-                batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param mesh [description]
-                 * @param camera [description]
-                 */
-                batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param bitmapText [description]
-                 * @param camera [description]
-                 */
-                batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param bitmapText [description]
-                 * @param camera [description]
-                 */
-                batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param text [description]
-                 * @param camera [description]
-                 */
-                batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param tilemapLayer [description]
-                 * @param camera [description]
-                 */
-                batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-                /**
-                 * [description]
-                 * @param tileSprite [description]
-                 * @param camera [description]
-                 */
-                batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera): void;
-
-            }
-
             namespace Pipelines {
-            }
-
-            /**
-             * [description]
-             */
-            class TextureTintPipeline extends WebGLPipeline {
                 /**
-                 * 
-                 * @param config [description]
+                 * [description]
                  */
-                constructor(config: object);
+                class BitmapMaskPipeline extends Phaser.Renderer.WebGL.WebGLPipeline {
+                    /**
+                     * 
+                     * @param config [description]
+                     */
+                    constructor(config: object);
+
+                    /**
+                     * [description]
+                     */
+                    vertexViewF32: Float32Array;
+
+                    /**
+                     * [description]
+                     */
+                    maxQuads: number;
+
+                    /**
+                     * [description]
+                     */
+                    resolutionDirty: boolean;
+
+                    /**
+                     * [description]
+                     */
+                    onBind(): Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline;
+
+                    /**
+                     * [description]
+                     * @param width [description]
+                     * @param height [description]
+                     * @param resolution [description]
+                     */
+                    resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline;
+
+                    /**
+                     * [description]
+                     * @param mask [description]
+                     * @param maskedObject [description]
+                     * @param camera [description]
+                     */
+                    beginMask(mask: Phaser.GameObjects.GameObject, maskedObject: Phaser.GameObjects.GameObject, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param mask [description]
+                     */
+                    endMask(mask: Phaser.GameObjects.GameObject): void;
+
+                }
 
                 /**
                  * [description]
                  */
-                vertexViewF32: Float32Array;
+                class FlatTintPipeline extends Phaser.Renderer.WebGL.WebGLPipeline {
+                    /**
+                     * 
+                     * @param config [description]
+                     */
+                    constructor(config: object);
+
+                    /**
+                     * [description]
+                     */
+                    vertexViewF32: Float32Array;
+
+                    /**
+                     * [description]
+                     */
+                    vertexViewU32: Uint32Array;
+
+                    /**
+                     * [description]
+                     */
+                    tempTriangle: any[];
+
+                    /**
+                     * [description]
+                     */
+                    polygonCache: any[];
+
+                    /**
+                     * [description]
+                     */
+                    onBind(): Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline;
+
+                    /**
+                     * [description]
+                     * @param width [description]
+                     * @param height [description]
+                     * @param resolution [description]
+                     */
+                    resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline;
+
+                    /**
+                     * [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcScaleX [description]
+                     * @param srcScaleY [description]
+                     * @param srcRotation [description]
+                     * @param x [description]
+                     * @param y [description]
+                     * @param width [description]
+                     * @param height [description]
+                     * @param fillColor [description]
+                     * @param fillAlpha [description]
+                     * @param a1 [description]
+                     * @param b1 [description]
+                     * @param c1 [description]
+                     * @param d1 [description]
+                     * @param e1 [description]
+                     * @param f1 [description]
+                     * @param currentMatrix [description]
+                     */
+                    batchFillRect(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, x: number, y: number, width: number, height: number, fillColor: integer, fillAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
+
+                    /**
+                     * [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcScaleX [description]
+                     * @param srcScaleY [description]
+                     * @param srcRotation [description]
+                     * @param x0 [description]
+                     * @param y0 [description]
+                     * @param x1 [description]
+                     * @param y1 [description]
+                     * @param x2 [description]
+                     * @param y2 [description]
+                     * @param fillColor [description]
+                     * @param fillAlpha [description]
+                     * @param a1 [description]
+                     * @param b1 [description]
+                     * @param c1 [description]
+                     * @param d1 [description]
+                     * @param e1 [description]
+                     * @param f1 [description]
+                     * @param currentMatrix [description]
+                     */
+                    batchFillTriangle(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, fillColor: integer, fillAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
+
+                    /**
+                     * [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcScaleX [description]
+                     * @param srcScaleY [description]
+                     * @param srcRotation [description]
+                     * @param x0 [description]
+                     * @param y0 [description]
+                     * @param x1 [description]
+                     * @param y1 [description]
+                     * @param x2 [description]
+                     * @param y2 [description]
+                     * @param lineWidth [description]
+                     * @param lineColor [description]
+                     * @param lineAlpha [description]
+                     * @param a [description]
+                     * @param b [description]
+                     * @param c [description]
+                     * @param d [description]
+                     * @param e [description]
+                     * @param f [description]
+                     * @param currentMatrix [description]
+                     */
+                    batchStrokeTriangle(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, lineWidth: number, lineColor: integer, lineAlpha: number, a: number, b: number, c: number, d: number, e: number, f: number, currentMatrix: Float32Array): void;
+
+                    /**
+                     * [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcScaleX [description]
+                     * @param srcScaleY [description]
+                     * @param srcRotation [description]
+                     * @param path [description]
+                     * @param fillColor [description]
+                     * @param fillAlpha [description]
+                     * @param a1 [description]
+                     * @param b1 [description]
+                     * @param c1 [description]
+                     * @param d1 [description]
+                     * @param e1 [description]
+                     * @param f1 [description]
+                     * @param currentMatrix [description]
+                     */
+                    batchFillPath(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, path: number, fillColor: integer, fillAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
+
+                    /**
+                     * [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcScaleX [description]
+                     * @param srcScaleY [description]
+                     * @param srcRotation [description]
+                     * @param path [description]
+                     * @param lineWidth [description]
+                     * @param lineColor [description]
+                     * @param lineAlpha [description]
+                     * @param a [description]
+                     * @param b [description]
+                     * @param c [description]
+                     * @param d [description]
+                     * @param e [description]
+                     * @param f [description]
+                     * @param isLastPath [description]
+                     * @param currentMatrix [description]
+                     */
+                    batchStrokePath(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, path: any[], lineWidth: number, lineColor: integer, lineAlpha: number, a: number, b: number, c: number, d: number, e: number, f: number, isLastPath: boolean, currentMatrix: Float32Array): void;
+
+                    /**
+                     * [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcScaleX [description]
+                     * @param srcScaleY [description]
+                     * @param srcRotation [description]
+                     * @param ax [description]
+                     * @param ay [description]
+                     * @param bx [description]
+                     * @param by [description]
+                     * @param aLineWidth [description]
+                     * @param bLineWidth [description]
+                     * @param aLineColor [description]
+                     * @param bLineColor [description]
+                     * @param lineAlpha [description]
+                     * @param a1 [description]
+                     * @param b1 [description]
+                     * @param c1 [description]
+                     * @param d1 [description]
+                     * @param e1 [description]
+                     * @param f1 [description]
+                     * @param currentMatrix [description]
+                     */
+                    batchLine(srcX: number, srcY: number, srcScaleX: number, srcScaleY: number, srcRotation: number, ax: number, ay: number, bx: number, by: number, aLineWidth: number, bLineWidth: number, aLineColor: integer, bLineColor: integer, lineAlpha: number, a1: number, b1: number, c1: number, d1: number, e1: number, f1: number, currentMatrix: Float32Array): void;
+
+                    /**
+                     * [description]
+                     * @param graphics [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchGraphics(graphics: Phaser.GameObjects.Graphics, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+
+                    /**
+                     * [description]
+                     * @param tilemap [description]
+                     * @param camera [description]
+                     */
+                    drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param emitterManager [description]
+                     * @param camera [description]
+                     */
+                    drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param blitter [description]
+                     * @param camera [description]
+                     */
+                    drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param sprite [description]
+                     * @param camera [description]
+                     */
+                    batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param mesh [description]
+                     * @param camera [description]
+                     */
+                    batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param bitmapText [description]
+                     * @param camera [description]
+                     */
+                    batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param bitmapText [description]
+                     * @param camera [description]
+                     */
+                    batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param text [description]
+                     * @param camera [description]
+                     */
+                    batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param tilemapLayer [description]
+                     * @param camera [description]
+                     */
+                    batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param tileSprite [description]
+                     * @param camera [description]
+                     */
+                    batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                }
 
                 /**
                  * [description]
                  */
-                vertexViewU32: Uint32Array;
+                class ForwardDiffuseLightPipeline extends TextureTintPipeline {
+                    /**
+                     * 
+                     * @param config [description]
+                     */
+                    constructor(config: object);
+
+                    /**
+                     * [description]
+                     */
+                    onBind(): Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline;
+
+                    /**
+                     * [description]
+                     * @param scene [description]
+                     * @param camera [description]
+                     */
+                    onRender(scene: Phaser.Scene, camera: Phaser.Cameras.Scene2D.Camera): Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline;
+
+                    /**
+                     * [description]
+                     * @param tilemap [description]
+                     * @param camera [description]
+                     */
+                    drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param emitterManager [description]
+                     * @param camera [description]
+                     */
+                    drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param blitter [description]
+                     * @param camera [description]
+                     */
+                    drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param sprite [description]
+                     * @param camera [description]
+                     */
+                    batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param mesh [description]
+                     * @param camera [description]
+                     */
+                    batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param bitmapText [description]
+                     * @param camera [description]
+                     */
+                    batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param bitmapText [description]
+                     * @param camera [description]
+                     */
+                    batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param text [description]
+                     * @param camera [description]
+                     */
+                    batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param tilemapLayer [description]
+                     * @param camera [description]
+                     */
+                    batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                    /**
+                     * [description]
+                     * @param tileSprite [description]
+                     * @param camera [description]
+                     */
+                    batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                }
 
                 /**
                  * [description]
                  */
-                maxQuads: integer;
+                class TextureTintPipeline extends Phaser.Renderer.WebGL.WebGLPipeline {
+                    /**
+                     * 
+                     * @param config [description]
+                     */
+                    constructor(config: object);
 
-                /**
-                 * [description]
-                 */
-                batches: any[];
+                    /**
+                     * [description]
+                     */
+                    vertexViewF32: Float32Array;
 
-                /**
-                 * [description]
-                 * @param texture [description]
-                 * @param textureUnit [description]
-                 */
-                setTexture2D(texture: WebGLTexture, textureUnit: integer): Phaser.Renderer.WebGL.TextureTintPipeline;
+                    /**
+                     * [description]
+                     */
+                    vertexViewU32: Uint32Array;
 
-                /**
-                 * [description]
-                 */
-                pushBatch(): void;
+                    /**
+                     * [description]
+                     */
+                    maxQuads: integer;
 
-                /**
-                 * [description]
-                 */
-                flush(): Phaser.Renderer.WebGL.TextureTintPipeline;
+                    /**
+                     * [description]
+                     */
+                    batches: any[];
 
-                /**
-                 * [description]
-                 */
-                onBind(): Phaser.Renderer.WebGL.TextureTintPipeline;
+                    /**
+                     * [description]
+                     * @param texture [description]
+                     * @param textureUnit [description]
+                     */
+                    setTexture2D(texture: WebGLTexture, textureUnit: integer): Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline;
 
-                /**
-                 * [description]
-                 * @param width [description]
-                 * @param height [description]
-                 * @param resolution [description]
-                 */
-                resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.TextureTintPipeline;
+                    /**
+                     * [description]
+                     */
+                    pushBatch(): void;
 
-                /**
-                 * [description]
-                 * @param tilemap [description]
-                 * @param camera [description]
-                 */
-                drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    /**
+                     * [description]
+                     */
+                    flush(): Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline;
 
-                /**
-                 * [description]
-                 * @param emitterManager [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     */
+                    onBind(): Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline;
 
-                /**
-                 * [description]
-                 * @param blitter [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param width [description]
+                     * @param height [description]
+                     * @param resolution [description]
+                     */
+                    resize(width: number, height: number, resolution: number): Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline;
 
-                /**
-                 * [description]
-                 * @param sprite [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param tilemap [description]
+                     * @param camera [description]
+                     */
+                    drawStaticTilemapLayer(tilemap: Phaser.Tilemaps.StaticTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera): void;
 
-                /**
-                 * [description]
-                 * @param mesh [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param emitterManager [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    drawEmitterManager(emitterManager: Phaser.GameObjects.Particles.ParticleEmitterManager, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param bitmapText [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param blitter [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    drawBlitter(blitter: Phaser.GameObjects.Blitter, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param bitmapText [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param sprite [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchSprite(sprite: Phaser.GameObjects.Sprite, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param text [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param mesh [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchMesh(mesh: Phaser.GameObjects.Mesh, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param tilemapLayer [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param bitmapText [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchBitmapText(bitmapText: Phaser.GameObjects.BitmapText, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param tileSprite [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param bitmapText [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchDynamicBitmapText(bitmapText: Phaser.GameObjects.DynamicBitmapText, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param gameObject [description]
-                 * @param texture [description]
-                 * @param textureWidth [description]
-                 * @param textureHeight [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param srcWidth [description]
-                 * @param srcHeight [description]
-                 * @param scaleX [description]
-                 * @param scaleY [description]
-                 * @param rotation [description]
-                 * @param flipX [description]
-                 * @param flipY [description]
-                 * @param scrollFactorX [description]
-                 * @param scrollFactorY [description]
-                 * @param displayOriginX [description]
-                 * @param displayOriginY [description]
-                 * @param frameX [description]
-                 * @param frameY [description]
-                 * @param frameWidth [description]
-                 * @param frameHeight [description]
-                 * @param tintTL [description]
-                 * @param tintTR [description]
-                 * @param tintBL [description]
-                 * @param tintBR [description]
-                 * @param uOffset [description]
-                 * @param vOffset [description]
-                 * @param camera [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                batchTexture(gameObject: Phaser.GameObjects.GameObject, texture: WebGLTexture, textureWidth: integer, textureHeight: integer, srcX: number, srcY: number, srcWidth: number, srcHeight: number, scaleX: number, scaleY: number, rotation: number, flipX: boolean, flipY: boolean, scrollFactorX: number, scrollFactorY: number, displayOriginX: number, displayOriginY: number, frameX: number, frameY: number, frameWidth: number, frameHeight: number, tintTL: integer, tintTR: integer, tintBL: integer, tintBR: integer, uOffset: number, vOffset: number, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+                    /**
+                     * [description]
+                     * @param text [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchText(text: Phaser.GameObjects.Text, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * Immediately draws a texture with no batching.
-                 * @param texture [description]
-                 * @param srcX [description]
-                 * @param srcY [description]
-                 * @param tint [description]
-                 * @param alpha [description]
-                 * @param frameX [description]
-                 * @param frameY [description]
-                 * @param frameWidth [description]
-                 * @param frameHeight [description]
-                 * @param transformMatrix [description]
-                 * @param parentTransformMatrix [description]
-                 */
-                drawTexture(texture: WebGLTexture, srcX: number, srcY: number, tint: number, alpha: number, frameX: number, frameY: number, frameWidth: number, frameHeight: number, transformMatrix: Phaser.GameObjects.Components.TransformMatrix, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): Phaser.Renderer.WebGL.TextureTintPipeline;
+                    /**
+                     * [description]
+                     * @param tilemapLayer [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchDynamicTilemapLayer(tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
 
-                /**
-                 * [description]
-                 * @param graphics [description]
-                 * @param camera [description]
-                 */
-                batchGraphics(graphics: Phaser.GameObjects.Graphics, camera: Phaser.Cameras.Scene2D.Camera): void;
+                    /**
+                     * [description]
+                     * @param tileSprite [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchTileSprite(tileSprite: Phaser.GameObjects.TileSprite, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+
+                    /**
+                     * [description]
+                     * @param gameObject [description]
+                     * @param texture [description]
+                     * @param textureWidth [description]
+                     * @param textureHeight [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param srcWidth [description]
+                     * @param srcHeight [description]
+                     * @param scaleX [description]
+                     * @param scaleY [description]
+                     * @param rotation [description]
+                     * @param flipX [description]
+                     * @param flipY [description]
+                     * @param scrollFactorX [description]
+                     * @param scrollFactorY [description]
+                     * @param displayOriginX [description]
+                     * @param displayOriginY [description]
+                     * @param frameX [description]
+                     * @param frameY [description]
+                     * @param frameWidth [description]
+                     * @param frameHeight [description]
+                     * @param tintTL [description]
+                     * @param tintTR [description]
+                     * @param tintBL [description]
+                     * @param tintBR [description]
+                     * @param uOffset [description]
+                     * @param vOffset [description]
+                     * @param camera [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    batchTexture(gameObject: Phaser.GameObjects.GameObject, texture: WebGLTexture, textureWidth: integer, textureHeight: integer, srcX: number, srcY: number, srcWidth: number, srcHeight: number, scaleX: number, scaleY: number, rotation: number, flipX: boolean, flipY: boolean, scrollFactorX: number, scrollFactorY: number, displayOriginX: number, displayOriginY: number, frameX: number, frameY: number, frameWidth: number, frameHeight: number, tintTL: integer, tintTR: integer, tintBL: integer, tintBR: integer, uOffset: number, vOffset: number, camera: Phaser.Cameras.Scene2D.Camera, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): void;
+
+                    /**
+                     * Immediately draws a texture with no batching.
+                     * @param texture [description]
+                     * @param srcX [description]
+                     * @param srcY [description]
+                     * @param tint [description]
+                     * @param alpha [description]
+                     * @param frameX [description]
+                     * @param frameY [description]
+                     * @param frameWidth [description]
+                     * @param frameHeight [description]
+                     * @param transformMatrix [description]
+                     * @param parentTransformMatrix [description]
+                     */
+                    drawTexture(texture: WebGLTexture, srcX: number, srcY: number, tint: number, alpha: number, frameX: number, frameY: number, frameWidth: number, frameHeight: number, transformMatrix: Phaser.GameObjects.Components.TransformMatrix, parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix): Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline;
+
+                    /**
+                     * [description]
+                     * @param graphics [description]
+                     * @param camera [description]
+                     */
+                    batchGraphics(graphics: Phaser.GameObjects.Graphics, camera: Phaser.Cameras.Scene2D.Camera): void;
+
+                }
 
             }
 
@@ -40266,7 +40366,7 @@ declare namespace Phaser {
              * @param autoStart If `true` the Scene will be started immediately after being added. Default false.
              * @param data Optional data object. This will be set as Scene.settings.data and passed to `Scene.init`.
              */
-            add(key: string, sceneConfig: Phaser.Scene | SettingsConfig | Function, autoStart?: boolean, data?: object): Phaser.Scene;
+            add(key: string, sceneConfig: Phaser.Scene | Phaser.Scenes.Settings.Config | Function, autoStart?: boolean, data?: object): Phaser.Scene;
 
             /**
              * Removes a Scene from the SceneManager.
@@ -40304,7 +40404,7 @@ declare namespace Phaser {
              * Retrieves a Scene.
              * @param key The Scene to retrieve.
              */
-            getScene(key: string): Phaser.Scene;
+            getScene(key: string | Phaser.Scene): Phaser.Scene;
 
             /**
              * Determines whether a Scene is active.
@@ -40468,7 +40568,7 @@ declare namespace Phaser {
             /**
              * The settings of the Scene this ScenePlugin belongs to.
              */
-            settings: SettingsObject;
+            settings: Phaser.Scenes.Settings.Object;
 
             /**
              * The key of the Scene this ScenePlugin belongs to.
@@ -40481,11 +40581,10 @@ declare namespace Phaser {
             manager: Phaser.Scenes.SceneManager;
 
             /**
-             * Boot the ScenePlugin.
-             * 
-             * Registers event handlers.
+             * If this Scene is currently transitioning to another, this holds
+             * the current percentage of the transition progress, between 0 and 1.
              */
-            boot(): void;
+            transitionProgress: number;
 
             /**
              * Shutdown this Scene and run the given one.
@@ -40501,12 +40600,45 @@ declare namespace Phaser {
             restart(data?: object): Phaser.Scenes.ScenePlugin;
 
             /**
+             * This will start a transition from the current Scene to the target Scene given.
+             * 
+             * The transition will last for the duration specified in milliseconds.
+             * 
+             * You can have the target Scene moved above or below this one in the display list.
+             * 
+             * You can specify an update callback. This callback will be invoked _every frame_ for the duration
+             * of the transition.
+             * 
+             * This Scene can either be sent to sleep at the end of the transition, or stopped. The default is to stop.
+             * 
+             * There are also 5 transition related events: This scene will emit the event `transitionto` when
+             * the transition begins, which is typically the frame after calling this method.
+             * 
+             * The target Scene will emit the event `transitioninit` when that Scene's `init` method is called.
+             * It will then emit the event `transitionstart` when its `create` method is called.
+             * If the Scene was sleeping and has been woken up, it will emit the event `transitionwake` instead of these two,
+             * as the Scenes `init` and `create` methods are not invoked when a sleep wakes up.
+             * 
+             * When the duration of the transition has elapsed it will emit the event `transitioncomplete`.
+             * These events are all cleared of listeners when the Scene shuts down, but not if it is sent to sleep.
+             * 
+             * It's important to understand that the duration of the transition begins the moment you call this method.
+             * If the Scene you are transitioning to includes delayed processes, such as waiting for files to load, the
+             * time still counts down even while that is happening. If the game itself pauses, or something else causes
+             * this Scenes update loop to stop, then the transition will also pause for that duration. There are
+             * checks in place to prevent you accidentally stopping a transitioning Scene but if you've got code to
+             * override this understand that until the target Scene completes it might never be unlocked for input events.
+             * @param config The transition configuration object.
+             */
+            transition(config: Phaser.Scenes.ScenePlugin.SceneTransitionConfig): boolean;
+
+            /**
              * Add the Scene into the Scene Manager and start it if 'autoStart' is true or the Scene config 'active' property is set.
              * @param key The Scene key.
              * @param sceneConfig The config for the Scene.
              * @param autoStart Whether to start the Scene after it's added.
              */
-            add(key: string, sceneConfig: Phaser.Scene | SettingsConfig | Function, autoStart: boolean): Phaser.Scenes.ScenePlugin;
+            add(key: string, sceneConfig: Phaser.Scene | Phaser.Scenes.Settings.Config | Function, autoStart: boolean): Phaser.Scenes.ScenePlugin;
 
             /**
              * Launch the given Scene and run it in parallel with this one.
@@ -40654,24 +40786,124 @@ declare namespace Phaser {
              */
             get(key: string): Phaser.Scene;
 
-            /**
-             * Shut down the given Scene.
-             */
-            shutdown(): void;
-
-            /**
-             * Destroy the given Scene.
-             */
-            destroy(): void;
-
         }
 
         namespace Settings {
+            type Config = {
+                /**
+                 * [description]
+                 */
+                key?: string;
+                /**
+                 * [description]
+                 */
+                active?: boolean;
+                /**
+                 * [description]
+                 */
+                visible?: boolean;
+                /**
+                 * [description]
+                 */
+                files?: false | LoaderFileObject[];
+                /**
+                 * [description]
+                 */
+                cameras?: InputJSONCameraObject | InputJSONCameraObject[];
+                /**
+                 * Overwrites the default injection map for a scene.
+                 */
+                map?: {[key: string]:  string};
+                /**
+                 * Extends the injection map for a scene.
+                 */
+                mapAdd?: {[key: string]:  string};
+                /**
+                 * [description]
+                 */
+                physics?: object;
+                /**
+                 * [description]
+                 */
+                loader?: object;
+                /**
+                 * [description]
+                 */
+                plugins?: false | any;
+            };
+
+            type Object = {
+                /**
+                 * [description]
+                 */
+                status: number;
+                /**
+                 * [description]
+                 */
+                key: string;
+                /**
+                 * [description]
+                 */
+                active: boolean;
+                /**
+                 * [description]
+                 */
+                visible: boolean;
+                /**
+                 * [description]
+                 */
+                isBooted: boolean;
+                /**
+                 * [description]
+                 */
+                isTransition: boolean;
+                /**
+                 * [description]
+                 */
+                transitionFrom: Phaser.Scene;
+                /**
+                 * [description]
+                 */
+                transitionDuration: integer;
+                /**
+                 * [description]
+                 */
+                transitionAllowInput: boolean;
+                /**
+                 * [description]
+                 */
+                data: object;
+                /**
+                 * [description]
+                 */
+                files: false | LoaderFileObject[];
+                /**
+                 * [description]
+                 */
+                cameras: InputJSONCameraObject | InputJSONCameraObject[];
+                /**
+                 * [description]
+                 */
+                map: {[key: string]:  string};
+                /**
+                 * [description]
+                 */
+                physics: object;
+                /**
+                 * [description]
+                 */
+                loader: object;
+                /**
+                 * [description]
+                 */
+                plugins: false | any;
+            };
+
             /**
              * Takes a Scene configuration object and returns a fully formed Systems object.
              * @param config [description]
              */
-            function create(config: string | SettingsConfig): SettingsObject;
+            function create(config: string | Phaser.Scenes.Settings.Config): Phaser.Scenes.Settings.Object;
 
         }
 
@@ -40692,7 +40924,7 @@ declare namespace Phaser {
              * @param scene The Scene that owns this Systems instance.
              * @param config Scene specific configuration settings.
              */
-            constructor(scene: Phaser.Scene, config: string | SettingsConfig);
+            constructor(scene: Phaser.Scene, config: string | Phaser.Scenes.Settings.Config);
 
             /**
              * [description]
@@ -40707,12 +40939,12 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            config: string | SettingsConfig;
+            config: string | Phaser.Scenes.Settings.Config;
 
             /**
              * [description]
              */
-            settings: SettingsObject;
+            settings: Phaser.Scenes.Settings.Object;
 
             /**
              * A handy reference to the Scene canvas / context.
@@ -40790,20 +41022,24 @@ declare namespace Phaser {
             updateList: Phaser.GameObjects.UpdateList;
 
             /**
-             * [description]
-             * @param game A reference to the Phaser Game
+             * This method is called only once by the Scene Manager when the Scene is instantiated.
+             * It is responsible for setting up all of the Scene plugins and references.
+             * It should never be called directly.
+             * @param game A reference to the Phaser Game instance.
              */
-            init(game: Phaser.Game): void;
+            protected init(game: Phaser.Game): void;
 
             /**
-             * [description]
+             * A single game step. Called automatically by the Scene Manager as a result of a Request Animation
+             * Frame or Set Timeout call to the main Game instance.
              * @param time [description]
              * @param delta [description]
              */
             step(time: number, delta: number): void;
 
             /**
-             * [description]
+             * Called automatically by the Scene Manager. Instructs the Scene to render itself via
+             * its Camera Manager to the renderer given.
              * @param renderer [description]
              */
             render(renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer): void;
@@ -40825,15 +41061,17 @@ declare namespace Phaser {
             pause(): Phaser.Scenes.Systems;
 
             /**
-             * Resume this Scene.
+             * Resume this Scene from a paused state.
              */
             resume(): Phaser.Scenes.Systems;
 
             /**
              * Send this Scene to sleep.
              * 
-             * A sleeping Scene doesn't run it's update step or render anything, but it also isn't destroyed,
-             * or have any of its systems or children removed, meaning it can be re-activated at any point.
+             * A sleeping Scene doesn't run it's update step or render anything, but it also isn't shut down
+             * or have any of its systems or children removed, meaning it can be re-activated at any point and
+             * will carry on from where it left off. It also keeps everything in memory and events and callbacks
+             * from other Scenes may still invoke changes within it, so be careful what is left active.
              */
             sleep(): Phaser.Scenes.Systems;
 
@@ -40853,26 +41091,43 @@ declare namespace Phaser {
             isActive(): boolean;
 
             /**
+             * Is this Scene currently transitioning out to, or in from another Scene?
+             */
+            isTransitioning(): boolean;
+
+            /**
+             * Is this Scene currently transitioning out from itself to another Scene?
+             */
+            isTransitionOut(): boolean;
+
+            /**
+             * Is this Scene currently transitioning in from another Scene?
+             */
+            isTransitionIn(): boolean;
+
+            /**
              * Is this Scene visible and rendering?
              */
             isVisible(): boolean;
 
             /**
-             * [description]
+             * Sets the visible state of this Scene.
+             * An invisible Scene will not render, but will still process updates.
              * @param value [description]
              */
             setVisible(value: boolean): Phaser.Scenes.Systems;
 
             /**
-             * [description]
-             * @param value [description]
+             * Set the active state of this Scene.
+             * An active Scene will run its core update loop.
+             * @param value If `true` the Scene will be resumed, if previously paused. If `false` it will be paused.
              */
             setActive(value: boolean): Phaser.Scenes.Systems;
 
             /**
              * Start this Scene running and rendering.
              * Called automatically by the SceneManager.
-             * @param data [description]
+             * @param data Optional data object that may have been passed to this Scene from another.
              */
             start(data: object): void;
 
@@ -40886,13 +41141,12 @@ declare namespace Phaser {
 
             /**
              * Shutdown this Scene and send a shutdown event to all of its systems.
+             * A Scene that has been shutdown will not run its update loop or render, but it does
+             * not destroy any of its plugins or references. It is put into hibernation for later use.
+             * If you don't ever plan to use this Scene again, then it should be destroyed instead
+             * to free-up resources.
              */
             shutdown(): void;
-
-            /**
-             * Destroy this Scene and send a destroy event all of its systems.
-             */
-            destroy(): void;
 
         }
 
@@ -40906,7 +41160,7 @@ declare namespace Phaser {
          * 
          * @param config Scene specific configuration settings.
          */
-        constructor(config: string | SettingsConfig);
+        constructor(config: string | Phaser.Scenes.Settings.Config);
 
         /**
          * The Scene Systems. You must never overwrite this property, or all hell will break lose.
@@ -41101,31 +41355,6 @@ declare namespace Phaser {
             totalDuration: number;
 
             /**
-             * Boolean indicating whether the sound is muted or not.
-             * Gets or sets the muted state of this sound.
-             */
-            mute: boolean;
-
-            /**
-             * Gets or sets the volume of this sound,
-             * a value between 0 (silence) and 1 (full volume).
-             */
-            volume: number;
-
-            /**
-             * Property representing the position of playback for this sound, in seconds.
-             * Setting it to a specific value moves current playback to that position.
-             * The value given is clamped to the range 0 to current marker duration.
-             * Setting seek of a stopped sound has no effect.
-             */
-            seek: number;
-
-            /**
-             * Flag indicating whether or not the sound or current sound marker will loop.
-             */
-            loop: boolean;
-
-            /**
              * Object containing markers definitions.
              */
             markers: {[key: string]:  SoundMarker};
@@ -41268,7 +41497,7 @@ declare namespace Phaser {
              * @param key Asset key for the sound.
              * @param config An optional config object containing default sound settings.
              */
-            addAudioSprite(key: string, config?: SoundConfig): AudioSpriteSound;
+            addAudioSprite(key: string, config?: SoundConfig): Phaser.Sound.BaseSound.AudioSpriteSound;
 
             /**
              * Enables playing sound on the fly without the need to keep a reference to it.
@@ -41435,7 +41664,8 @@ declare namespace Phaser {
             protected calculateRate(): void;
 
             /**
-             * [description]
+             * Boolean indicating whether the sound is muted or not.
+             * Gets or sets the muted state of this sound.
              */
             mute: boolean;
 
@@ -41446,7 +41676,7 @@ declare namespace Phaser {
             setMute(value: boolean): Phaser.Sound.HTML5AudioSound;
 
             /**
-             * [description]
+             * Gets or sets the volume of this sound, a value between 0 (silence) and 1 (full volume).
              */
             volume: number;
 
@@ -41486,7 +41716,10 @@ declare namespace Phaser {
             setDetune(value: number): Phaser.Sound.HTML5AudioSound;
 
             /**
-             * [description]
+             * Property representing the position of playback for this sound, in seconds.
+             * Setting it to a specific value moves current playback to that position.
+             * The value given is clamped to the range 0 to current marker duration.
+             * Setting seek of a stopped sound has no effect.
              */
             seek: number;
 
@@ -41497,7 +41730,7 @@ declare namespace Phaser {
             setSeek(value: number): Phaser.Sound.HTML5AudioSound;
 
             /**
-             * [description]
+             * Flag indicating whether or not the sound or current sound marker will loop.
              */
             loop: boolean;
 
@@ -41748,7 +41981,8 @@ declare namespace Phaser {
             setDetune(value: number): Phaser.Sound.WebAudioSound;
 
             /**
-             * [description]
+             * Boolean indicating whether the sound is muted or not.
+             * Gets or sets the muted state of this sound.
              */
             mute: boolean;
 
@@ -41759,7 +41993,7 @@ declare namespace Phaser {
             setMute(value: boolean): Phaser.Sound.WebAudioSound;
 
             /**
-             * [description]
+             * Gets or sets the volume of this sound, a value between 0 (silence) and 1 (full volume).
              */
             volume: number;
 
@@ -41770,7 +42004,10 @@ declare namespace Phaser {
             setVolume(value: number): Phaser.Sound.WebAudioSound;
 
             /**
-             * [description]
+             * Property representing the position of playback for this sound, in seconds.
+             * Setting it to a specific value moves current playback to that position.
+             * The value given is clamped to the range 0 to current marker duration.
+             * Setting seek of a stopped sound has no effect.
              */
             seek: number;
 
@@ -41781,7 +42018,7 @@ declare namespace Phaser {
             setSeek(value: number): Phaser.Sound.WebAudioSound;
 
             /**
-             * [description]
+             * Flag indicating whether or not the sound or current sound marker will loop.
              */
             loop: boolean;
 
@@ -42606,99 +42843,6 @@ declare namespace Phaser {
         const NEAREST: any;
 
         namespace Parsers {
-            /**
-             * Adds a Canvas Element to a Texture.
-             * @param texture The Texture to add the Frames to.
-             * @param sourceIndex The index of the TextureSource.
-             */
-            function Canvas(texture: Phaser.Textures.Texture, sourceIndex: integer): Phaser.Textures.Texture;
-
-            /**
-             * Adds an Image Element to a Texture.
-             * @param texture The Texture to add the Frames to.
-             * @param sourceIndex The index of the TextureSource.
-             */
-            function Image(texture: Phaser.Textures.Texture, sourceIndex: integer): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Texture Atlas JSON Array and adds the Frames to the Texture.
-             * JSON format expected to match that defined by Texture Packer, with the frames property containing an array of Frames.
-             * @param texture The Texture to add the Frames to.
-             * @param sourceIndex The index of the TextureSource.
-             * @param json The JSON data.
-             */
-            function JSONArray(texture: Phaser.Textures.Texture, sourceIndex: integer, json: object): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Texture Atlas JSON Hash and adds the Frames to the Texture.
-             * JSON format expected to match that defined by Texture Packer, with the frames property containing an object of Frames.
-             * @param texture The Texture to add the Frames to.
-             * @param sourceIndex The index of the TextureSource.
-             * @param json The JSON data.
-             */
-            function JSONHash(texture: Phaser.Textures.Texture, sourceIndex: integer, json: object): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Pyxel JSON object and adds the Frames to a Texture.
-             * @param texture The Texture to add the Frames to.
-             * @param json The JSON data.
-             */
-            function Pyxel(texture: Phaser.Textures.Texture, json: object): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Sprite Sheet and adds the Frames to the Texture.
-             * 
-             * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
-             * same size and cannot be trimmed or rotated.
-             * @param texture The Texture to add the Frames to.
-             * @param sourceIndex The index of the TextureSource.
-             * @param x [description]
-             * @param y [description]
-             * @param width [description]
-             * @param height [description]
-             * @param config An object describing how to parse the Sprite Sheet.
-             * @param config.frameWidth Width in pixels of a single frame in the sprite sheet.
-             * @param config.frameHeight Height in pixels of a single frame in the sprite sheet. Defaults to frameWidth if not provided.
-             * @param config.startFrame [description] Default 0.
-             * @param config.endFrame [description] Default -1.
-             * @param config.margin If the frames have been drawn with a margin, specify the amount here. Default 0.
-             * @param config.spacing If the frames have been drawn with spacing between them, specify the amount here. Default 0.
-             */
-            function SpriteSheet(texture: Phaser.Textures.Texture, sourceIndex: integer, x: integer, y: integer, width: integer, height: integer, config: object): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Sprite Sheet and adds the Frames to the Texture, where the Sprite Sheet is stored as a frame within an Atlas.
-             * 
-             * In Phaser terminology a Sprite Sheet is a texture containing different frames, but each frame is the exact
-             * same size and cannot be trimmed or rotated.
-             * @param texture The Texture to add the Frames to.
-             * @param frame The Frame that contains the Sprite Sheet.
-             * @param config An object describing how to parse the Sprite Sheet.
-             * @param config.frameWidth Width in pixels of a single frame in the sprite sheet.
-             * @param config.frameHeight Height in pixels of a single frame in the sprite sheet. Defaults to frameWidth if not provided.
-             * @param config.startFrame [description] Default 0.
-             * @param config.endFrame [description] Default -1.
-             * @param config.margin If the frames have been drawn with a margin, specify the amount here. Default 0.
-             * @param config.spacing If the frames have been drawn with spacing between them, specify the amount here. Default 0.
-             */
-            function SpriteSheetFromAtlas(texture: Phaser.Textures.Texture, frame: Phaser.Textures.Frame, config: object): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Starling XML object and adds all the Frames into a Texture.
-             * @param texture The Texture to add the Frames to.
-             * @param xml The XML data.
-             */
-            function StarlingXML(texture: Phaser.Textures.Texture, xml: any): Phaser.Textures.Texture;
-
-            /**
-             * Parses a Unity YAML File and creates Frames in the Texture.
-             * For more details about Sprite Meta Data see https://docs.unity3d.com/ScriptReference/SpriteMetaData.html
-             * @param texture The Texture to add the Frames to.
-             * @param sourceIndex The index of the TextureSource.
-             * @param yaml The YAML data.
-             */
-            function UnityYAML(texture: Phaser.Textures.Texture, sourceIndex: integer, yaml: object): Phaser.Textures.Texture;
-
         }
 
         /**
@@ -42729,7 +42873,7 @@ declare namespace Phaser {
              * @param width The width of the Texture. This is optional and automatically derived from the source images.
              * @param height The height of the Texture. This is optional and automatically derived from the source images.
              */
-            constructor(manager: Phaser.Textures.TextureManager, key: string, source: Image | HTMLCanvasElement, width?: number, height?: number);
+            constructor(manager: Phaser.Textures.TextureManager, key: string, source: HTMLImageElement | HTMLCanvasElement, width?: number, height?: number);
 
             /**
              * A reference to the Texture Manager this Texture belongs to.
@@ -42842,7 +42986,7 @@ declare namespace Phaser {
              * equally apply to the normal map.
              * @param data The source image.
              */
-            setDataSource(data: Image | HTMLCanvasElement): void;
+            setDataSource(data: HTMLImageElement | HTMLCanvasElement): void;
 
             /**
              * Sets the Filter Mode for this Texture.
@@ -42997,14 +43141,8 @@ declare namespace Phaser {
              * @param key The unique string-based key of the Texture.
              * @param source The source Image element.
              * @param config The configuration object for this Sprite Sheet.
-             * @param config.frameWidth The fixed width of each frame.
-             * @param config.frameHeight The fixed height of each frame. If not set it will use the frameWidth as the height.
-             * @param config.startFrame Skip a number of frames. Useful when there are multiple sprite sheets in one Texture. Default 0.
-             * @param config.endFrame The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames". Default -1.
-             * @param config.margin If the frames have been drawn with a margin, specify the amount here. Default 0.
-             * @param config.spacing If the frames have been drawn with spacing between them, specify the amount here. Default 0.
              */
-            addSpriteSheet(key: string, source: HTMLImageElement, config: object): Phaser.Textures.Texture;
+            addSpriteSheet(key: string, source: HTMLImageElement, config: SpriteSheetConfig): Phaser.Textures.Texture;
 
             /**
              * Adds a Sprite Sheet to this Texture Manager, where the Sprite Sheet exists as a Frame within a Texture Atlas.
@@ -43013,16 +43151,8 @@ declare namespace Phaser {
              * same size and cannot be trimmed or rotated.
              * @param key The unique string-based key of the Texture.
              * @param config The configuration object for this Sprite Sheet.
-             * @param config.atlas The key of the Texture Atlas in which this Sprite Sheet can be found.
-             * @param config.frame The key of the Texture Atlas Frame in which this Sprite Sheet can be found.
-             * @param config.frameWidth The fixed width of each frame.
-             * @param config.frameHeight The fixed height of each frame. If not set it will use the frameWidth as the height.
-             * @param config.startFrame Skip a number of frames. Useful when there are multiple sprite sheets in one Texture. Default 0.
-             * @param config.endFrame The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames". Default -1.
-             * @param config.margin If the frames have been drawn with a margin, specify the amount here. Default 0.
-             * @param config.spacing If the frames have been drawn with spacing between them, specify the amount here. Default 0.
              */
-            addSpriteSheetFromAtlas(key: string, config: object): Phaser.Textures.Texture;
+            addSpriteSheetFromAtlas(key: string, config: SpriteSheetFromAtlasConfig): Phaser.Textures.Texture;
 
             /**
              * Adds a Texture Atlas to this Texture Manager, where the atlas data is given
@@ -43137,7 +43267,7 @@ declare namespace Phaser {
              * @param width Optional width of the source image. If not given it's derived from the source itself.
              * @param height Optional height of the source image. If not given it's derived from the source itself.
              */
-            constructor(texture: Phaser.Textures.Texture, source: Image | HTMLCanvasElement, width?: integer, height?: integer);
+            constructor(texture: Phaser.Textures.Texture, source: HTMLImageElement | HTMLCanvasElement, width?: integer, height?: integer);
 
             /**
              * The Texture this TextureSource belongs to.
@@ -43219,611 +43349,6 @@ declare namespace Phaser {
 
     namespace Tilemaps {
         namespace Components {
-            /**
-             * Calculates interesting faces at the given tile coordinates of the specified layer. Interesting
-             * faces are used internally for optimizing collisions against tiles. This method is mostly used
-             * internally to optimize recalculating faces when only one tile has been changed.
-             * @param tileX The x coordinate.
-             * @param tileY The y coordinate.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function CalculateFacesAt(tileX: integer, tileY: integer, layer: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
-             * layer. Interesting faces are used internally for optimizing collisions against tiles. This method
-             * is mostly used internally.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function CalculateFacesWithin(tileX?: integer, tileY?: integer, width?: integer, height?: integer, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Copies the tiles in the source rectangular area to a new destination (all specified in tile
-             * coordinates) within the layer. This copies all tile properties & recalculates collision
-             * information in the destination region.
-             * @param srcTileX [description]
-             * @param srcTileY [description]
-             * @param width [description]
-             * @param height [description]
-             * @param destTileX [description]
-             * @param destTileY [description]
-             * @param recalculateFaces [description] Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function Copy(srcTileX: integer, srcTileY: integer, width: integer, height: integer, destTileX: integer, destTileY: integer, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Creates a Sprite for every object matching the given tile indexes in the layer. You can
-             * optionally specify if each tile will be replaced with a new tile after the Sprite has been
-             * created. This is useful if you want to lay down special tiles in a level that are converted to
-             * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
-             * @param indexes The tile index, or array of indexes, to create Sprites from.
-             * @param replacements The tile index, or array of indexes, to change a converted
-             * tile to. Set to `null` to leave the tiles unchanged. If an array is given, it is assumed to be a
-             * one-to-one mapping with the indexes array.
-             * @param spriteConfig The config object to pass into the Sprite creator (i.e.
-             * scene.make.sprite).
-             * @param scene The Scene to create the Sprites within. Default scene the map is within.
-             * @param camera The Camera to use when determining the world XY Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function CreateFromTiles(indexes: integer | any[], replacements: integer | any[], spriteConfig: object, scene?: Phaser.Scene, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.GameObjects.Sprite[];
-
-            /**
-             * Returns the tiles in the given layer that are within the camera's viewport. This is used
-             * internally.
-             * @param layer The Tilemap Layer to act upon.
-             * @param camera The Camera to run the cull check against.
-             * @param outputArray [description]
-             */
-            function CullTiles(layer: Phaser.Tilemaps.LayerData, camera?: Phaser.Cameras.Scene2D.Camera, outputArray?: any[]): Phaser.Tilemaps.Tile[];
-
-            /**
-             * Sets the tiles in the given rectangular area (in tile coordinates) of the layer with the
-             * specified index. Tiles will be set to collide if the given index is a colliding index.
-             * Collision information in the region will be recalculated.
-             * @param index [description]
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param recalculateFaces [description] Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function Fill(index: integer, tileX?: integer, tileY?: integer, width?: integer, height?: integer, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * filter callback function. Any tiles that pass the filter test (i.e. where the callback returns
-             * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
-             * @param callback The callback. Each tile in the given area will be passed to this
-             * callback as the first and only parameter. The callback should return true for tiles that pass the
-             * filter.
-             * @param context The context under which the callback should be run.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param filteringOptions Optional filters to apply when getting the tiles.
-             * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * -1 for an index. Default false.
-             * @param filteringOptions.isColliding If true, only return tiles that collide
-             * on at least one side. Default false.
-             * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * have at least one interesting face. Default false.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function FilterTiles(callback: Function, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile[];
-
-            /**
-             * Searches the entire map layer for the first tile matching the given index, then returns that Tile
-             * object. If no match is found, it returns null. The search starts from the top-left tile and
-             * continues horizontally until it hits the end of the row, then it drops down to the next column.
-             * If the reverse boolean is true, it scans starting from the bottom-right corner traveling up to
-             * the top-left.
-             * @param index The tile index value to search for.
-             * @param skip The number of times to skip a matching tile before returning. Default 0.
-             * @param reverse If true it will scan the layer in reverse, starting at the
-             * bottom-right. Otherwise it scans from the top-left. Default false.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function FindByIndex(index: integer, skip?: integer, reverse?: boolean, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
-             * satisfies the provided testing function. I.e. finds the first tile for which `callback` returns
-             * true. Similar to Array.prototype.find in vanilla JS.
-             * @param callback The callback. Each tile in the given area will be passed to this
-             * callback as the first and only parameter.
-             * @param context The context under which the callback should be run.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param filteringOptions Optional filters to apply when getting the tiles.
-             * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * -1 for an index. Default false.
-             * @param filteringOptions.isColliding If true, only return tiles that collide
-             * on at least one side. Default false.
-             * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * have at least one interesting face. Default false.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function FindTile(callback: FindTileCallback, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
-             * callback. Similar to Array.prototype.forEach in vanilla JS.
-             * @param callback The callback. Each tile in the given area will be passed to this
-             * callback as the first and only parameter.
-             * @param context The context under which the callback should be run.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param filteringOptions Optional filters to apply when getting the tiles.
-             * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * -1 for an index. Default false.
-             * @param filteringOptions.isColliding If true, only return tiles that collide
-             * on at least one side. Default false.
-             * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * have at least one interesting face. Default false.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function ForEachTile(callback: EachTileCallback, context?: object, tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Gets a tile at the given tile coordinates from the given layer.
-             * @param tileX X position to get the tile from (given in tile units, not pixels).
-             * @param tileY Y position to get the tile from (given in tile units, not pixels).
-             * @param nonNull If true getTile won't return null for empty tiles, but a Tile
-             * object with an index of -1. Default false.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function GetTileAt(tileX: integer, tileY: integer, nonNull?: boolean, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Gets a tile at the given world coordinates from the given layer.
-             * @param worldX X position to get the tile from (given in pixels)
-             * @param worldY Y position to get the tile from (given in pixels)
-             * @param nonNull If true, function won't return null for empty tiles, but a Tile
-             * object with an index of -1. Default false.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function GetTileAtWorldXY(worldX: number, worldY: number, nonNull?: boolean, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Gets the tiles in the given rectangular area (in tile coordinates) of the layer.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param filteringOptions Optional filters to apply when getting the tiles.
-             * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * -1 for an index. Default false.
-             * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * at least one side. Default false.
-             * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * have at least one interesting face. Default false.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function GetTilesWithin(tileX?: integer, tileY?: integer, width?: integer, height?: integer, filteringOptions?: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile[];
-
-            /**
-             * Gets the tiles that overlap with the given shape in the given layer. The shape must be a Circle,
-             * Line, Rectangle or Triangle. The shape should be in world coordinates.
-             * @param shape A shape in world (pixel) coordinates
-             * @param filteringOptions Optional filters to apply when getting the tiles.
-             * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * -1 for an index. Default false.
-             * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * at least one side. Default false.
-             * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * have at least one interesting face. Default false.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function GetTilesWithinShape(shape: Phaser.Geom.Circle | Phaser.Geom.Line | Phaser.Geom.Rectangle | Phaser.Geom.Triangle, filteringOptions?: object, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile[];
-
-            /**
-             * Gets the tiles in the given rectangular area (in world coordinates) of the layer.
-             * @param worldX [description]
-             * @param worldY [description]
-             * @param width [description]
-             * @param height [description]
-             * @param filteringOptions Optional filters to apply when getting the tiles.
-             * @param filteringOptions.isNotEmpty If true, only return tiles that don't have
-             * -1 for an index. Default false.
-             * @param filteringOptions.isColliding If true, only return tiles that collide on
-             * at least one side. Default false.
-             * @param filteringOptions.hasInterestingFace If true, only return tiles that
-             * have at least one interesting face. Default false.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function GetTilesWithinWorldXY(worldX: number, worldY: number, width: number, height: number, filteringOptions?: object, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile[];
-
-            /**
-             * Checks if there is a tile at the given location (in tile coordinates) in the given layer. Returns
-             * false if there is no tile or if the tile at that location has an index of -1.
-             * @param tileX [description]
-             * @param tileY [description]
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function HasTileAt(tileX: integer, tileY: integer, layer: Phaser.Tilemaps.LayerData): boolean;
-
-            /**
-             * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
-             * false if there is no tile or if the tile at that location has an index of -1.
-             * @param worldX [description]
-             * @param worldY [description]
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function HasTileAtWorldXY(worldX: number, worldY: number, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): boolean;
-
-            /**
-             * Checks if the given tile coordinates are within the bounds of the layer.
-             * @param tileX [description]
-             * @param tileY [description]
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function IsInLayerBounds(tileX: integer, tileY: integer, layer: Phaser.Tilemaps.LayerData): boolean;
-
-            /**
-             * Puts a tile at the given tile coordinates in the specified layer. You can pass in either an index
-             * or a Tile object. If you pass in a Tile, all attributes will be copied over to the specified
-             * location. If you pass in an index, only the index at the specified location will be changed.
-             * Collision information will be recalculated at the specified location.
-             * @param tile The index of this tile to set or a Tile object.
-             * @param tileX [description]
-             * @param tileY [description]
-             * @param recalculateFaces [description] Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function PutTileAt(tile: integer | Phaser.Tilemaps.Tile, tileX: integer, tileY: integer, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Puts a tile at the given world coordinates (pixels) in the specified layer. You can pass in either
-             * an index or a Tile object. If you pass in a Tile, all attributes will be copied over to the
-             * specified location. If you pass in an index, only the index at the specified location will be
-             * changed. Collision information will be recalculated at the specified location.
-             * @param tile The index of this tile to set or a Tile object.
-             * @param worldX [description]
-             * @param worldY [description]
-             * @param recalculateFaces [description] Default true.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function PutTileAtWorldXY(tile: integer | Phaser.Tilemaps.Tile, worldX: integer, worldY: integer, recalculateFaces?: boolean, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Puts an array of tiles or a 2D array of tiles at the given tile coordinates in the specified
-             * layer. The array can be composed of either tile indexes or Tile objects. If you pass in a Tile,
-             * all attributes will be copied over to the specified location. If you pass in an index, only the
-             * index at the specified location will be changed. Collision information will be recalculated
-             * within the region tiles were changed.
-             * @param tile A row (array) or grid (2D array) of Tiles
-             * or tile indexes to place.
-             * @param tileX [description]
-             * @param tileY [description]
-             * @param recalculateFaces [description] Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function PutTilesAt(tile: integer[] | integer[][] | Phaser.Tilemaps.Tile[] | Phaser.Tilemaps.Tile[][], tileX: integer, tileY: integer, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * specified layer. Each tile will receive a new index. If an array of indexes is passed in, then
-             * those will be used for randomly assigning new tile indexes. If an array is not provided, the
-             * indexes found within the region (excluding -1) will be used for randomly assigning new tile
-             * indexes. This method only modifies tile indexes and does not change collision information.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param indexes An array of indexes to randomly draw from during randomization.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function Randomize(tileX?: integer, tileY?: integer, width?: integer, height?: integer, indexes?: integer[], layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Removes the tile at the given tile coordinates in the specified layer and updates the layer's
-             * collision information.
-             * @param tile The index of this tile to set or a Tile object.
-             * @param tileX [description]
-             * @param tileY [description]
-             * @param replaceWithNull If true, this will replace the tile at the specified
-             * location with null instead of a Tile with an index of -1. Default true.
-             * @param recalculateFaces [description] Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function RemoveTileAt(tile: integer | Phaser.Tilemaps.Tile, tileX: integer, tileY: integer, replaceWithNull?: boolean, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Removes the tile at the given world coordinates in the specified layer and updates the layer's
-             * collision information.
-             * @param tile The index of this tile to set or a Tile object.
-             * @param worldX [description]
-             * @param worldY [description]
-             * @param replaceWithNull If true, this will replace the tile at the specified
-             * location with null instead of a Tile with an index of -1. Default true.
-             * @param recalculateFaces [description] Default true.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function RemoveTileAtWorldXY(tile: integer | Phaser.Tilemaps.Tile, worldX: number, worldY: number, replaceWithNull?: boolean, recalculateFaces?: boolean, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tile;
-
-            /**
-             * Draws a debug representation of the layer to the given Graphics. This is helpful when you want to
-             * get a quick idea of which of your tiles are colliding and which have interesting faces. The tiles
-             * are drawn starting at (0, 0) in the Graphics, allowing you to place the debug representation
-             * wherever you want on the screen.
-             * @param graphics The target Graphics object to draw upon.
-             * @param styleConfig An object specifying the colors to use for the debug drawing.
-             * @param styleConfig.tileColor Color to use for drawing a filled rectangle at
-             * non-colliding tile locations. If set to null, non-colliding tiles will not be drawn. Default blue.
-             * @param styleConfig.collidingTileColor Color to use for drawing a filled
-             * rectangle at colliding tile locations. If set to null, colliding tiles will not be drawn. Default orange.
-             * @param styleConfig.faceColor Color to use for drawing a line at interesting
-             * tile faces. If set to null, interesting tile faces will not be drawn. Default grey.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function RenderDebug(graphics: Phaser.GameObjects.Graphics, styleConfig: object, layer: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * `findIndex` and updates their index to match `newIndex`. This only modifies the index and does
-             * not change collision information.
-             * @param findIndex [description]
-             * @param newIndex [description]
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function ReplaceByIndex(findIndex: integer, newIndex: integer, tileX?: integer, tileY?: integer, width?: integer, height?: integer, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Sets collision on the given tile or tiles within a layer by index. You can pass in either a
-             * single numeric index or an array of indexes: [2, 3, 15, 20]. The `collides` parameter controls if
-             * collision will be enabled (true) or disabled (false).
-             * @param indexes Either a single tile index, or an array of tile indexes.
-             * @param collides If true it will enable collision. If false it will clear
-             * collision. Default true.
-             * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * update. Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetCollision(indexes: integer | any[], collides?: boolean, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Sets collision on a range of tiles in a layer whose index is between the specified `start` and
-             * `stop` (inclusive). Calling this with a start value of 10 and a stop value of 14 would set
-             * collision for tiles 10, 11, 12, 13 and 14. The `collides` parameter controls if collision will be
-             * enabled (true) or disabled (false).
-             * @param start The first index of the tile to be set for collision.
-             * @param stop The last index of the tile to be set for collision.
-             * @param collides If true it will enable collision. If false it will clear
-             * collision. Default true.
-             * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * update. Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetCollisionBetween(start: integer, stop: integer, collides?: boolean, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Sets collision on all tiles in the given layer, except for tiles that have an index specified in
-             * the given array. The `collides` parameter controls if collision will be enabled (true) or
-             * disabled (false).
-             * @param indexes An array of the tile indexes to not be counted for collision.
-             * @param collides If true it will enable collision. If false it will clear
-             * collision. Default true.
-             * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * update. Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetCollisionByExclusion(indexes: integer[], collides?: boolean, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Sets collision on the tiles within a layer by checking tile properties. If a tile has a property
-             * that matches the given properties object, its collision flag will be set. The `collides`
-             * parameter controls if collision will be enabled (true) or disabled (false). Passing in
-             * `{ collides: true }` would update the collision flag on any tiles with a "collides" property that
-             * has a value of true. Any tile that doesn't have "collides" set to true will be ignored. You can
-             * also use an array of values, e.g. `{ types: ["stone", "lava", "sand" ] }`. If a tile has a
-             * "types" property that matches any of those values, its collision flag will be updated.
-             * @param properties An object with tile properties and corresponding values that should
-             * be checked.
-             * @param collides If true it will enable collision. If false it will clear
-             * collision. Default true.
-             * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * update. Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetCollisionByProperty(properties: object, collides?: boolean, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Sets collision on the tiles within a layer by checking each tile's collision group data
-             * (typically defined in Tiled within the tileset collision editor). If any objects are found within
-             * a tile's collision group, the tile's colliding information will be set. The `collides` parameter
-             * controls if collision will be enabled (true) or disabled (false).
-             * @param collides If true it will enable collision. If false it will clear
-             * collision. Default true.
-             * @param recalculateFaces Whether or not to recalculate the tile faces after the
-             * update. Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetCollisionFromCollisionGroup(collides?: boolean, recalculateFaces?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Internally used method to keep track of the tile indexes that collide within a layer. This
-             * updates LayerData.collideIndexes to either contain or not contain the given `tileIndex`.
-             * @param tileIndex [description]
-             * @param collides [description] Default true.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetLayerCollisionIndex(tileIndex: integer, collides?: boolean, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Internally used method to set the colliding state of a tile. This does not recalculate
-             * interesting faces.
-             * @param tile [description]
-             * @param collides [description] Default true.
-             */
-            function SetTileCollision(tile: Phaser.Tilemaps.Tile, collides?: boolean): void;
-
-            /**
-             * Sets a global collision callback for the given tile index within the layer. This will affect all
-             * tiles on this layer that have the same index. If a callback is already set for the tile index it
-             * will be replaced. Set the callback to null to remove it. If you want to set a callback for a tile
-             * at a specific location on the map then see setTileLocationCallback.
-             * @param indexes Either a single tile index, or an array of tile indexes to have a
-             * collision callback set for.
-             * @param callback The callback that will be invoked when the tile is collided with.
-             * @param callbackContext The context under which the callback is called.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetTileIndexCallback(indexes: integer | any[], callback: Function, callbackContext: object, layer: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
-             * If a callback is already set for the tile index it will be replaced. Set the callback to null to
-             * remove it.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param callback The callback that will be invoked when the tile is collided with.
-             * @param callbackContext The context under which the callback is called.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SetTileLocationCallback(tileX?: integer, tileY?: integer, width?: integer, height?: integer, callback?: Function, callbackContext?: object, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Shuffles the tiles in a rectangular region (specified in tile coordinates) within the given
-             * layer. It will only randomize the tiles in that area, so if they're all the same nothing will
-             * appear to have changed! This method only modifies tile indexes and does not change collision
-             * information.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function Shuffle(tileX?: integer, tileY?: integer, width?: integer, height?: integer, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
-             * `indexA` and swaps then with `indexB`. This only modifies the index and does not change collision
-             * information.
-             * @param tileA First tile index.
-             * @param tileB Second tile index.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function SwapByIndex(tileA: integer, tileB: integer, tileX?: integer, tileY?: integer, width?: integer, height?: integer, layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
-             * layer's position, scale and scroll.
-             * @param tileX [description]
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function TileToWorldX(tileX: integer, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): number;
-
-            /**
-             * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
-             * layer's position, scale and scroll. This will return a new Vector2 object or update the given
-             * `point` object.
-             * @param tileX [description]
-             * @param tileY [description]
-             * @param point [description]
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function TileToWorldXY(tileX: integer, tileY: integer, point?: Phaser.Math.Vector2, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Math.Vector2;
-
-            /**
-             * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
-             * layer's position, scale and scroll.
-             * @param tileY [description]
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function TileToWorldY(tileY: integer, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): number;
-
-            /**
-             * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-             * specified layer. Each tile will receive a new index. New indexes are drawn from the given
-             * weightedIndexes array. An example weighted array:
-             * 
-             * [
-             *  { index: 6, weight: 4 },    // Probability of index 6 is 4 / 8
-             *  { index: 7, weight: 2 },    // Probability of index 7 would be 2 / 8
-             *  { index: 8, weight: 1.5 },  // Probability of index 8 would be 1.5 / 8
-             *  { index: 26, weight: 0.5 }  // Probability of index 27 would be 0.5 / 8
-             * ]
-             * 
-             * The probability of any index being choose is (the index's weight) / (sum of all weights). This
-             * method only modifies tile indexes and does not change collision information.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
-             * @param weightedIndexes An array of objects to randomly draw from during
-             * randomization. They should be in the form: { index: 0, weight: 4 } or
-             * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function WeightedRandomize(tileX?: integer, tileY?: integer, width?: integer, height?: integer, weightedIndexes?: object[], layer?: Phaser.Tilemaps.LayerData): void;
-
-            /**
-             * Converts from world X coordinates (pixels) to tile X coordinates (tile units), factoring in the
-             * layer's position, scale and scroll.
-             * @param worldX [description]
-             * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * nearest integer. Default true.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function WorldToTileX(worldX: number, snapToFloor?: boolean, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): number;
-
-            /**
-             * Converts from world XY coordinates (pixels) to tile XY coordinates (tile units), factoring in the
-             * layer's position, scale and scroll. This will return a new Vector2 object or update the given
-             * `point` object.
-             * @param worldX [description]
-             * @param worldY [description]
-             * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * nearest integer. Default true.
-             * @param point [description]
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function WorldToTileXY(worldX: number, worldY: number, snapToFloor?: boolean, point?: Phaser.Math.Vector2, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): Phaser.Math.Vector2;
-
-            /**
-             * Converts from world Y coordinates (pixels) to tile Y coordinates (tile units), factoring in the
-             * layer's position, scale and scroll.
-             * @param worldY [description]
-             * @param snapToFloor Whether or not to round the tile coordinate down to the
-             * nearest integer. Default true.
-             * @param camera [description] Default main camera.
-             * @param layer The Tilemap Layer to act upon.
-             */
-            function WorldToTileY(worldY: number, snapToFloor?: boolean, camera?: Phaser.Cameras.Scene2D.Camera, layer?: Phaser.Tilemaps.LayerData): number;
-
         }
 
         /**
@@ -44310,14 +43835,14 @@ declare namespace Phaser {
              * Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
              * If a callback is already set for the tile index it will be replaced. Set the callback to null to
              * remove it.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
+             * @param tileX [description]
+             * @param tileY [description]
+             * @param width [description]
+             * @param height [description]
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
              */
-            setTileLocationCallback(tileX?: integer, tileY?: integer, width?: integer, height?: integer, callback?: Function, callbackContext?: object): Phaser.Tilemaps.DynamicTilemapLayer;
+            setTileLocationCallback(tileX: integer, tileY: integer, width: integer, height: integer, callback: Function, callbackContext?: object): Phaser.Tilemaps.DynamicTilemapLayer;
 
             /**
              * Shuffles the tiles in a rectangular region (specified in tile coordinates) within the given
@@ -44413,7 +43938,20 @@ declare namespace Phaser {
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              */
-            worldToTileXY(worldY: number, snapToFloor?: boolean, camera?: Phaser.Cameras.Scene2D.Camera): number;
+            worldToTileY(worldY: number, snapToFloor?: boolean, camera?: Phaser.Cameras.Scene2D.Camera): number;
+
+            /**
+             * Converts from world XY coordinates (pixels) to tile XY coordinates (tile units), factoring in the
+             * layers position, scale and scroll. This will return a new Vector2 object or update the given
+             * `point` object.
+             * @param worldX [description]
+             * @param worldY [description]
+             * @param snapToFloor Whether or not to round the tile coordinate down to the
+             * nearest integer. Default true.
+             * @param point [description]
+             * @param camera [description] Default main camera.
+             */
+            worldToTileXY(worldX: number, worldY: number, snapToFloor?: boolean, point?: Phaser.Math.Vector2, camera?: Phaser.Cameras.Scene2D.Camera): Phaser.Math.Vector2;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -45885,14 +45423,14 @@ declare namespace Phaser {
              * Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
              * If a callback is already set for the tile index it will be replaced. Set the callback to null to
              * remove it.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
+             * @param tileX [description]
+             * @param tileY [description]
+             * @param width [description]
+             * @param height [description]
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
              */
-            setTileLocationCallback(tileX?: integer, tileY?: integer, width?: integer, height?: integer, callback?: Function, callbackContext?: object): Phaser.Tilemaps.StaticTilemapLayer;
+            setTileLocationCallback(tileX: integer, tileY: integer, width: integer, height: integer, callback: Function, callbackContext?: object): Phaser.Tilemaps.StaticTilemapLayer;
 
             /**
              * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
@@ -45939,7 +45477,20 @@ declare namespace Phaser {
              * nearest integer. Default true.
              * @param camera [description] Default main camera.
              */
-            worldToTileXY(worldY: number, snapToFloor?: boolean, camera?: Phaser.Cameras.Scene2D.Camera): number;
+            worldToTileY(worldY: number, snapToFloor?: boolean, camera?: Phaser.Cameras.Scene2D.Camera): number;
+
+            /**
+             * Converts from world XY coordinates (pixels) to tile XY coordinates (tile units), factoring in the
+             * layers position, scale and scroll. This will return a new Vector2 object or update the given
+             * `point` object.
+             * @param worldX [description]
+             * @param worldY [description]
+             * @param snapToFloor Whether or not to round the tile coordinate down to the
+             * nearest integer. Default true.
+             * @param point [description]
+             * @param camera [description] Default main camera.
+             */
+            worldToTileXY(worldX: number, worldY: number, snapToFloor?: boolean, point?: Phaser.Math.Vector2, camera?: Phaser.Cameras.Scene2D.Camera): Phaser.Math.Vector2;
 
             /**
              * Clears all alpha values associated with this Game Object.
@@ -46632,6 +46183,13 @@ declare namespace Phaser {
             containsPoint(x: number, y: number): boolean;
 
             /**
+             * Copies the tile data & properties from the given tile to this tile. This copies everything
+             * except for position and interesting faces.
+             * @param tile The tile to copy from.
+             */
+            copy(tile: Phaser.Tilemaps.Tile): Phaser.Tilemaps.Tile;
+
+            /**
              * The collision group for this Tile, defined within the Tileset. This returns a reference to
              * the collision group stored within the Tileset, so any modification of the returned object
              * will impact all tiles that have the same index as this tile.
@@ -47185,13 +46743,11 @@ declare namespace Phaser {
              * For each object in the given object layer, run the given filter callback function. Any
              * objects that pass the filter test (i.e. where the callback returns true) will returned as a
              * new array. Similar to Array.prototype.Filter in vanilla JS.
-             * @param objectLayer The name of an object layer (from Tiled) or an
-             * ObjectLayer instance.
-             * @param callback The callback. Each object in the given area will be passed to
-             * this callback as the first and only parameter.
+             * @param objectLayer The name of an object layer (from Tiled) or an ObjectLayer instance.
+             * @param callback The callback. Each object in the given area will be passed to this callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              */
-            filterObjects(objectLayer?: Phaser.Tilemaps.ObjectLayer | string, callback?: TilemapFilterCallback, context?: object): Phaser.GameObjects.GameObject[];
+            filterObjects(objectLayer: Phaser.Tilemaps.ObjectLayer | string, callback: TilemapFilterCallback, context?: object): Phaser.GameObjects.GameObject[];
 
             /**
              * For each tile in the given rectangular area (in tile coordinates) of the layer, run the given
@@ -47236,13 +46792,11 @@ declare namespace Phaser {
              * Find the first object in the given object layer that satisfies the provided testing function.
              * I.e. finds the first object for which `callback` returns true. Similar to
              * Array.prototype.find in vanilla JS.
-             * @param objectLayer The name of an object layer (from Tiled) or an
-             * ObjectLayer instance.
-             * @param callback The callback. Each object in the given area will be passed to
-             * this callback as the first and only parameter.
+             * @param objectLayer The name of an object layer (from Tiled) or an ObjectLayer instance.
+             * @param callback The callback. Each object in the given area will be passed to this callback as the first and only parameter.
              * @param context The context under which the callback should be run.
              */
-            findObject(objectLayer?: Phaser.Tilemaps.ObjectLayer | string, callback?: TilemapFindCallback, context?: object): Phaser.GameObjects.GameObject;
+            findObject(objectLayer: Phaser.Tilemaps.ObjectLayer | string, callback: TilemapFindCallback, context?: object): Phaser.GameObjects.GameObject;
 
             /**
              * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
@@ -47429,7 +46983,7 @@ declare namespace Phaser {
              * @param tileY [description]
              * @param layer [description]
              */
-            hasTileAt(tileX: integer, tileY: integer, layer: Phaser.Tilemaps.LayerData): boolean;
+            hasTileAt(tileX: integer, tileY: integer, layer?: Phaser.Tilemaps.LayerData): boolean;
 
             /**
              * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
@@ -47529,7 +47083,7 @@ declare namespace Phaser {
              * @param tileY [description]
              * @param layer [description]
              */
-            calculateFacesAt(tileX: integer, tileY: integer, layer: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
+            calculateFacesAt(tileX: integer, tileY: integer, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
 
             /**
              * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
@@ -47601,7 +47155,7 @@ declare namespace Phaser {
              * tile faces. If set to null, interesting tile faces will not be drawn. Default grey.
              * @param layer [description]
              */
-            renderDebug(graphics: Phaser.GameObjects.Graphics, styleConfig: object, layer: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
+            renderDebug(graphics: Phaser.GameObjects.Graphics, styleConfig: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
 
             /**
              * Scans the given rectangular area (given in tile coordinates) for tiles with an index matching
@@ -47715,7 +47269,7 @@ declare namespace Phaser {
              * @param callbackContext The context under which the callback is called.
              * @param layer [description]
              */
-            setTileIndexCallback(indexes: integer | any[], callback: Function, callbackContext: object, layer: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
+            setTileIndexCallback(indexes: integer | any[], callback: Function, callbackContext: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
 
             /**
              * Sets a collision callback for the given rectangular area (in tile coordindates) within the layer.
@@ -47723,15 +47277,15 @@ declare namespace Phaser {
              * remove it.
              * 
              * If no layer specified, the map's current layer is used.
-             * @param tileX [description] Default 0.
-             * @param tileY [description] Default 0.
-             * @param width [description] Default max width based on tileX.
-             * @param height [description] Default max height based on tileY.
+             * @param tileX [description]
+             * @param tileY [description]
+             * @param width [description]
+             * @param height [description]
              * @param callback The callback that will be invoked when the tile is collided with.
              * @param callbackContext The context under which the callback is called.
              * @param layer [description]
              */
-            setTileLocationCallback(tileX?: integer, tileY?: integer, width?: integer, height?: integer, callback?: Function, callbackContext?: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
+            setTileLocationCallback(tileX: integer, tileY: integer, width: integer, height: integer, callback: Function, callbackContext?: object, layer?: Phaser.Tilemaps.LayerData): Phaser.Tilemaps.Tilemap;
 
             /**
              * Sets the current layer to the LayerData associated with `layer`.
@@ -48095,11 +47649,6 @@ declare namespace Phaser {
 
             /**
              * [description]
-             */
-            boot(): void;
-
-            /**
-             * [description]
              * @param config [description]
              */
             addEvent(config: TimerEventConfig): Phaser.Time.TimerEvent;
@@ -48136,16 +47685,6 @@ declare namespace Phaser {
              * @param delta [description]
              */
             update(time: number, delta: number): void;
-
-            /**
-             * [description]
-             */
-            shutdown(): void;
-
-            /**
-             * [description]
-             */
-            destroy(): void;
 
         }
 
@@ -49134,11 +48673,6 @@ declare namespace Phaser {
             timeScale: number;
 
             /**
-             * [description]
-             */
-            boot(): void;
-
-            /**
              * Create a Tween Timeline and return it, but do NOT add it to the active or pending Tween lists.
              * @param config [description]
              */
@@ -49250,12 +48784,14 @@ declare namespace Phaser {
             setGlobalTimeScale(value: number): Phaser.Tweens.TweenManager;
 
             /**
-             * Scene that owns this manager is shutting down.
+             * The Scene that owns this plugin is shutting down.
+             * We need to kill and reset all internal properties as well as stop listening to Scene events.
              */
             shutdown(): void;
 
             /**
-             * [description]
+             * The Scene that owns this plugin is being destroyed.
+             * We need to shutdown and then kill off all external references.
              */
             destroy(): void;
 
@@ -49866,7 +49402,7 @@ declare type ArcadeBodyCollision = {
 
 declare type ArcadePhysicsCallback = (object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject)=>void;
 
-declare type PhysicsGroupConfig = {
+declare type PhysicsGroupConfig = GroupConfig & {
     /**
      * [description]
      */
@@ -50239,170 +49775,6 @@ declare type JSONImpactBody = {
 
 declare type CollideCallback = (body: Phaser.Physics.Impact.Body, other: Phaser.Physics.Impact.Body, axis: string)=>void;
 
-declare type ImpactWorldConfig = {
-    /**
-     * [description]
-     */
-    gravity?: number;
-    /**
-     * [description]
-     */
-    cellSize?: number;
-    /**
-     * [description]
-     */
-    timeScale?: number;
-    /**
-     * [description]
-     */
-    maxStep?: number;
-    /**
-     * [description]
-     */
-    debug?: boolean;
-    /**
-     * [description]
-     */
-    maxVelocity?: number;
-    /**
-     * [description]
-     */
-    debugShowBody?: boolean;
-    /**
-     * [description]
-     */
-    debugShowVelocity?: boolean;
-    /**
-     * [description]
-     */
-    debugBodyColor?: number;
-    /**
-     * [description]
-     */
-    debugVelocityColor?: number;
-    /**
-     * [description]
-     */
-    maxVelocityX?: number;
-    /**
-     * [description]
-     */
-    maxVelocityY?: number;
-    /**
-     * [description]
-     */
-    minBounceVelocity?: number;
-    /**
-     * [description]
-     */
-    gravityFactor?: number;
-    /**
-     * [description]
-     */
-    bounciness?: number;
-    /**
-     * [description]
-     */
-    setBounds?: object | boolean;
-    /**
-     * [description]
-     */
-    "setBounds.x"?: number;
-    /**
-     * [description]
-     */
-    "setBounds.y"?: number;
-    /**
-     * [description]
-     */
-    "setBounds.width"?: number;
-    /**
-     * [description]
-     */
-    "setBounds.height"?: number;
-    /**
-     * [description]
-     */
-    "setBounds.thickness"?: number;
-    /**
-     * [description]
-     */
-    "setBounds.left"?: boolean;
-    /**
-     * [description]
-     */
-    "setBounds.right"?: boolean;
-    /**
-     * [description]
-     */
-    "setBounds.top"?: boolean;
-    /**
-     * [description]
-     */
-    "setBounds.bottom"?: boolean;
-};
-
-/**
- * An object containing the 4 wall bodies that bound the physics world.
- */
-declare type ImpactWorldDefaults = {
-    /**
-     * [description]
-     */
-    debugShowBody: boolean;
-    /**
-     * [description]
-     */
-    debugShowVelocity: boolean;
-    /**
-     * [description]
-     */
-    bodyDebugColor: number;
-    /**
-     * [description]
-     */
-    velocityDebugColor: number;
-    /**
-     * [description]
-     */
-    maxVelocityX: number;
-    /**
-     * [description]
-     */
-    maxVelocityY: number;
-    /**
-     * [description]
-     */
-    minBounceVelocity: number;
-    /**
-     * [description]
-     */
-    gravityFactor: number;
-    /**
-     * [description]
-     */
-    bounciness: number;
-};
-
-declare type ImpactWorldWalls = {
-    /**
-     * [description]
-     */
-    left: Phaser.Physics.Impact.Body;
-    /**
-     * [description]
-     */
-    right: Phaser.Physics.Impact.Body;
-    /**
-     * [description]
-     */
-    top: Phaser.Physics.Impact.Body;
-    /**
-     * [description]
-     */
-    bottom: Phaser.Physics.Impact.Body;
-};
-
 declare namespace MatterJS {
     /**
      * The `Matter.Body` module contains methods for creating and manipulating body models.
@@ -50506,106 +49878,57 @@ declare type SnapshotState = {
     encoder: number;
 };
 
-declare type SettingsConfig = {
-    /**
-     * [description]
-     */
-    key?: string;
-    /**
-     * [description]
-     */
-    active?: boolean;
-    /**
-     * [description]
-     */
-    visible?: boolean;
-    /**
-     * [description]
-     */
-    files?: false | LoaderFileObject[];
-    /**
-     * [description]
-     */
-    cameras?: InputJSONCameraObject | InputJSONCameraObject[];
-    /**
-     * Overwrites the default injection map for a scene.
-     */
-    map?: {[key: string]:  string};
-    /**
-     * Extends the injection map for a scene.
-     */
-    mapAdd?: {[key: string]:  string};
-    /**
-     * [description]
-     */
-    physics?: object;
-    /**
-     * [description]
-     */
-    loader?: object;
-    /**
-     * [description]
-     */
-    plugins?: false | any;
-};
+declare namespace Phaser.Scenes.ScenePlugin {
+    type SceneTransitionConfig = {
+        /**
+         * The Scene key to transition to.
+         */
+        target: string;
+        /**
+         * The duration, in ms, for the transition to last.
+         */
+        duration?: integer;
+        /**
+         * Will the Scene responsible for the transition be sent to sleep on completion (`true`), or stopped? (`false`)
+         */
+        sleep?: boolean;
+        /**
+         * Will the Scenes Input system be able to process events while it is transitioning in or out?
+         */
+        allowInput?: boolean;
+        /**
+         * More the target Scene to be above this one before the transition starts.
+         */
+        moveAbove?: boolean;
+        /**
+         * More the target Scene to be below this one before the transition starts.
+         */
+        moveBelow?: boolean;
+        /**
+         * This callback is invoked every frame for the duration of the transition.
+         */
+        onUpdate?: Function;
+        /**
+         * The context in which the callback is invoked.
+         */
+        onUpdateScope?: any;
+        /**
+         * An object containing any data you wish to be passed to the target Scenes init / create methods.
+         */
+        data?: any;
+    };
 
-declare type SettingsObject = {
-    /**
-     * [description]
-     */
-    status: number;
-    /**
-     * [description]
-     */
-    key: string;
-    /**
-     * [description]
-     */
-    active: boolean;
-    /**
-     * [description]
-     */
-    visible: boolean;
-    /**
-     * [description]
-     */
-    isBooted: boolean;
-    /**
-     * [description]
-     */
-    data: object;
-    /**
-     * [description]
-     */
-    files: false | LoaderFileObject[];
-    /**
-     * [description]
-     */
-    cameras: InputJSONCameraObject | InputJSONCameraObject[];
-    /**
-     * [description]
-     */
-    map: {[key: string]:  string};
-    /**
-     * [description]
-     */
-    physics: object;
-    /**
-     * [description]
-     */
-    loader: object;
-    /**
-     * [description]
-     */
-    plugins: false | any;
-};
+}
 
 declare type EachActiveSoundCallback = (manager: Phaser.Sound.BaseSoundManager, sound: Phaser.Sound.BaseSound, index: number, sounds: Phaser.Sound.BaseSound[])=>void;
 
-/**
- * Audio sprite sound type.
- */
-declare type AudioSpriteSound = ()=>void;
+declare namespace Phaser.Sound.BaseSound {
+    /**
+     * Audio sprite sound type.
+     */
+    type AudioSpriteSound = ()=>void;
+
+}
 
 /**
  * Config object containing various sound settings.
@@ -50671,13 +49994,126 @@ declare type EachSetCallback<E> = (entry: any, index: number)=>void;
 
 declare type EachTextureCallback = (texture: Phaser.Textures.Texture, ...args: any[])=>void;
 
+declare type SpriteSheetConfig = {
+    /**
+     * The fixed width of each frame.
+     */
+    frameWidth: integer;
+    /**
+     * The fixed height of each frame. If not set it will use the frameWidth as the height.
+     */
+    frameHeight?: integer;
+    /**
+     * Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.
+     */
+    startFrame?: integer;
+    /**
+     * The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames".
+     */
+    endFrame?: integer;
+    /**
+     * If the frames have been drawn with a margin, specify the amount here.
+     */
+    margin?: integer;
+    /**
+     * If the frames have been drawn with spacing between them, specify the amount here.
+     */
+    spacing?: integer;
+};
+
+declare type SpriteSheetFromAtlasConfig = {
+    /**
+     * The key of the Texture Atlas in which this Sprite Sheet can be found.
+     */
+    atlas: string;
+    /**
+     * The key of the Texture Atlas Frame in which this Sprite Sheet can be found.
+     */
+    frame: string;
+    /**
+     * The fixed width of each frame.
+     */
+    frameWidth: integer;
+    /**
+     * The fixed height of each frame. If not set it will use the frameWidth as the height.
+     */
+    frameHeight?: integer;
+    /**
+     * Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.
+     */
+    startFrame?: integer;
+    /**
+     * The total number of frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames".
+     */
+    endFrame?: integer;
+    /**
+     * If the frames have been drawn with a margin, specify the amount here.
+     */
+    margin?: integer;
+    /**
+     * If the frames have been drawn with spacing between them, specify the amount here.
+     */
+    spacing?: integer;
+};
+
 declare type FindTileCallback = (value: Phaser.Tilemaps.Tile, index: number, array: Phaser.Tilemaps.Tile[])=>void;
 
 declare type EachTileCallback = (value: Phaser.Tilemaps.Tile, index: number, array: Phaser.Tilemaps.Tile[])=>void;
 
+declare type GetTilesWithinFilteringOptions = {
+    /**
+     * If true, only return tiles that don't have -1 for an index.
+     */
+    isNotEmpty?: boolean;
+    /**
+     * If true, only return tiles that collide on at least one side.
+     */
+    isColliding?: boolean;
+    /**
+     * If true, only return tiles that have at least one interesting face.
+     */
+    hasInterestingFace?: boolean;
+};
+
 declare type TilemapFilterCallback = (value: Phaser.GameObjects.GameObject, index: number, array: Phaser.GameObjects.GameObject[])=>void;
 
 declare type TilemapFindCallback = (value: Phaser.GameObjects.GameObject, index: number, array: Phaser.GameObjects.GameObject[])=>void;
+
+declare type TilemapConfig = {
+    /**
+     * The key in the Phaser cache that corresponds to the loaded tilemap data.
+     */
+    key?: string;
+    /**
+     * Instead of loading from the cache, you can also load directly from a 2D array of tile indexes.
+     */
+    data?: integer[][];
+    /**
+     * The width of a tile in pixels.
+     */
+    tileWidth?: integer;
+    /**
+     * The height of a tile in pixels.
+     */
+    tileHeight?: integer;
+    /**
+     * The width of the map in tiles.
+     */
+    width?: integer;
+    /**
+     * The height of the map in tiles.
+     */
+    height?: integer;
+    /**
+     * Controls how empty tiles, tiles with an index of -1,
+     * in the map data are handled. If `true`, empty locations will get a value of `null`. If `false`,
+     * empty location will get a Tile object with an index of -1. If you've a large sparsely populated
+     * map and the tile data doesn't need to change then setting this value to `true` will help with
+     * memory consumption. However if your map is small or you need to update the tiles dynamically,
+     * then leave the default value set.
+     */
+    insertNull?: boolean;
+};
 
 declare type TimerEventConfig = {
     /**
