@@ -231,29 +231,26 @@ export class Parser {
     private resolveParents(docs:any[]) {
         for(let doclet of docs) {
             let obj = this.objects[doclet.longname];
-            if(!obj)
-                continue;
+            if(!obj || doclet.kind !== 'class') continue;
 
-            if (doclet.kind === 'class') {
-                let o = obj as dom.ClassDeclaration;
+            let o = obj as dom.ClassDeclaration;
 
-                // resolve augments
-                if (doclet.augments && doclet.augments.length) {
-                    for(let i = 0; i < doclet.augments.length; i++) {
+            // resolve augments
+            if (doclet.augments && doclet.augments.length) {
+                for(let augment of doclet.augments) {
+                    let name:string = this.prepareTypeName(augment);
 
-                        let baseType = this.objects[doclet.augments[i]] as dom.ClassDeclaration | dom.InterfaceDeclaration;
+                    let wrappingName = name.match(/[^<]+/s)[0];//gets everything up to a first < (to handle augments with type parameters)
 
-                        //TODO handle augment with type parameters
+                    let baseType = this.objects[wrappingName] as dom.ClassDeclaration | dom.InterfaceDeclaration;
 
-                        if (!baseType) {
-                            console.log('ERROR: Did not find base type: '+doclet.augments[0]);
+                    if (!baseType) {
+                        console.log(`ERROR: Did not find base type: ${augment} for ${doclet.longname}`);
+                    } else {
+                        if(baseType.kind == 'class') {
+                            o.baseType = dom.create.class(name);
                         } else {
-                            let qualifiedName = this.getQualifiedName(o, baseType);
-                            if(baseType.kind == 'class') {
-                                o.baseType = dom.create.class(qualifiedName);
-                            } else {
-                                o.implements.push(dom.create.interface(qualifiedName));
-                            }
+                            o.implements.push(dom.create.interface(name));
                         }
                     }
                 }
@@ -422,13 +419,7 @@ export class Parser {
             let types = [];
             for(let name of typeDoc.type.names) {
 
-                if(name.indexOf('*') != -1) {
-                    name = (<string>name).split('*').join('any');
-                }
-
-                if(name.indexOf('.<') != -1) {
-                    name = (<string>name).split('.<').join('<');
-                }
+                name = this.prepareTypeName(name);
 
                 let type = dom.create.namedTypeReference(this.processTypeName(name));
 
@@ -437,6 +428,16 @@ export class Parser {
             if(types.length == 1) return types[0];
             else return dom.create.union(types);
         }
+    }
+
+    private prepareTypeName(name:string):string {
+        if(name.indexOf('*') != -1) {
+            name = (<string>name).split('*').join('any');
+        }
+        if(name.indexOf('.<') != -1) {
+            name = (<string>name).split('.<').join('<');
+        }
+        return name;
     }
 
     private processTypeName(name:string):string {
@@ -498,10 +499,8 @@ export class Parser {
                 handleOverrides(matches[3], matches[2]);
             } else if(tag.originalTitle === 'genericUse') {
                 let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                let overrideType:string = matches[1];
-                if(overrideType.indexOf('.<') != -1) {
-                    overrideType = overrideType.split('.<').join('<');
-                }
+                let overrideType:string = this.prepareTypeName(matches[1]);
+
                 handleOverrides(matches[2], this.processTypeName(overrideType));
             }
         }
@@ -523,26 +522,6 @@ export class Parser {
                 }
             }
         }
-    }
-
-    private getQualifiedName(local:any, target:any):string {
-        if(!local._parent)
-            throw `ERROR: Could not get qualified name because ${JSON.stringify(local)} does not have a parent`;
-        let localFullPath = this.getFullyQualifiedName(local._parent);
-        let targetFullPath = this.getFullyQualifiedName(target);
-        if(targetFullPath.indexOf(localFullPath) == 0) {
-            return targetFullPath.slice(localFullPath.length + 1);
-        }
-        return targetFullPath;
-    }
-
-    private getFullyQualifiedName(obj:any):string {
-        let fullName = obj.name;
-        while(obj._parent != null) {
-            obj = obj._parent;
-            fullName = obj.name+'.'+fullName;
-        }
-        return fullName;
     }
 
 }

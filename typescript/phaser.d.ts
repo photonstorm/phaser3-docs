@@ -5635,7 +5635,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            class OrthographicCamera extends Camera {
+            class OrthographicCamera extends Phaser.Cameras.Sprite3D.Camera {
                 /**
                  * 
                  * @param scene [description]
@@ -5682,7 +5682,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            class PerspectiveCamera extends Camera {
+            class PerspectiveCamera extends Phaser.Cameras.Sprite3D.Camera {
                 /**
                  * 
                  * @param scene [description]
@@ -5821,7 +5821,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class CubicBezierCurve extends Curve {
+        class CubicBezierCurve extends Phaser.Curves.Curve {
             /**
              * 
              * @param p0 Start point, or an array of point pairs.
@@ -6048,7 +6048,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class EllipseCurve extends Curve {
+        class EllipseCurve extends Phaser.Curves.Curve {
             /**
              * 
              * @param x [description] Default 0.
@@ -6190,7 +6190,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class LineCurve extends Curve {
+        class LineCurve extends Phaser.Curves.Curve {
             /**
              * 
              * @param p0 [description]
@@ -6507,7 +6507,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class QuadraticBezier extends Curve {
+        class QuadraticBezier extends Phaser.Curves.Curve {
             /**
              * 
              * @param p0 Start point, or an array of point pairs.
@@ -6573,7 +6573,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class SplineCurve extends Curve {
+        class SplineCurve extends Phaser.Curves.Curve {
             /**
              * 
              * @param points [description]
@@ -6765,7 +6765,7 @@ declare namespace Phaser {
          * 
          * or have a property called `events` that is an instance of it.
          */
-        class DataManagerPlugin extends DataManager {
+        class DataManagerPlugin extends Phaser.Data.DataManager {
             /**
              * 
              * @param scene [description]
@@ -8295,7 +8295,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class DynamicBitmapText extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Origin, Components.Pipeline, Components.ScrollFactor, Components.Texture, Components.Tint, Components.Transform, Components.Visible {
+        class DynamicBitmapText extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. It can only belong to one Scene at any given time.
@@ -8882,7 +8882,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class BitmapText extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Texture, Components.Tint, Components.Transform, Components.Visible {
+        class BitmapText extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. It can only belong to one Scene at any given time.
@@ -9464,7 +9464,7 @@ declare namespace Phaser {
          * 
          * investigating. They are especially useful for using as a base for your own special effects systems.
          */
-        class Blitter extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Size, Components.Texture, Components.Transform, Components.Visible {
+        class Blitter extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. It can only belong to one Scene at any given time.
@@ -11141,7 +11141,7 @@ declare namespace Phaser {
          * 
          * every time you create one, try to structure your game around avoiding that where possible.
          */
-        class Container extends GameObject implements Components.Alpha, Components.BlendMode, Components.ComputedSize, Components.Depth, Components.ScrollFactor, Components.Transform, Components.Visible {
+        class Container extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.ComputedSize, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -11893,7 +11893,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class DisplayList {
+        class DisplayList extends Phaser.Structs.List<Phaser.GameObjects.GameObject> {
             /**
              * 
              * @param scene [description]
@@ -12594,7 +12594,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class Graphics extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Pipeline, Components.Transform, Components.Visible, Components.ScrollFactor {
+        class Graphics extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible, Phaser.GameObjects.Components.ScrollFactor {
             /**
              * 
              * @param scene [description]
@@ -13656,7 +13656,7 @@ declare namespace Phaser {
          * 
          * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
          */
-        class Image extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Flip, Components.GetBounds, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Size, Components.Texture, Components.Tint, Components.Transform, Components.Visible {
+        class Image extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -14485,7 +14485,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class LightsPlugin extends LightsManager {
+        class LightsPlugin extends Phaser.GameObjects.LightsManager {
             /**
              * 
              * @param scene [description]
@@ -14517,7 +14517,7 @@ declare namespace Phaser {
         /**
          * A Mesh Game Object.
          */
-        class Mesh extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Flip, Components.GetBounds, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.Size, Components.Texture, Components.Transform, Components.Visible, Components.ScrollFactor {
+        class Mesh extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible, Phaser.GameObjects.Components.ScrollFactor {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -16508,7 +16508,7 @@ declare namespace Phaser {
          * 
          * to face the direction of the path, be offset from the path coordinates or rotate independently of the Path.
          */
-        class PathFollower extends Sprite {
+        class PathFollower extends Phaser.GameObjects.Sprite {
             /**
              * 
              * @param scene [description]
@@ -17245,7 +17245,7 @@ declare namespace Phaser {
          * 
          * change their alpha and color values. The quad itself can be moved by adjusting the `x` and `y` properties.
          */
-        class Quad extends Mesh {
+        class Quad extends Phaser.GameObjects.Mesh {
             /**
              * 
              * @param scene [description]
@@ -17956,7 +17956,7 @@ declare namespace Phaser {
         /**
          * A Render Texture.
          */
-        class RenderTexture extends GameObject implements Components.Alpha, Components.BlendMode, Components.ComputedSize, Components.Depth, Components.Flip, Components.GetBounds, Components.MatrixStack, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Tint, Components.Transform, Components.Visible {
+        class RenderTexture extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.ComputedSize, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.MatrixStack, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -18653,7 +18653,7 @@ declare namespace Phaser {
          * 
          * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
          */
-        class Sprite extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Flip, Components.GetBounds, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Size, Components.Texture, Components.Tint, Components.Transform, Components.Visible {
+        class Sprite extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -19311,7 +19311,7 @@ declare namespace Phaser {
          * 
          * it to be rendered by a 3D Camera. The Sprite can be positioned anywhere within 3D space.
          */
-        class Sprite3D extends GameObject {
+        class Sprite3D extends Phaser.GameObjects.GameObject {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -19392,7 +19392,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class Text extends GameObject implements Components.Alpha, Components.BlendMode, Components.ComputedSize, Components.Depth, Components.Flip, Components.GetBounds, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Tint, Components.Transform, Components.Visible {
+        class Text extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.ComputedSize, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -20256,7 +20256,7 @@ declare namespace Phaser {
         /**
          * [description]
          */
-        class TileSprite extends GameObject implements Components.Alpha, Components.BlendMode, Components.Depth, Components.Flip, Components.GetBounds, Components.Origin, Components.Pipeline, Components.ScaleMode, Components.ScrollFactor, Components.Size, Components.Texture, Components.Tint, Components.Transform, Components.Visible {
+        class TileSprite extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -21035,7 +21035,7 @@ declare namespace Phaser {
          * 
          * The default origin is 0.5, the center of the Zone, the same as with Game Objects.
          */
-        class Zone extends GameObject implements Components.Depth, Components.GetBounds, Components.Origin, Components.ScaleMode, Components.Transform, Components.ScrollFactor, Components.Visible {
+        class Zone extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Visible {
             /**
              * 
              * @param scene [description]
@@ -28011,7 +28011,7 @@ declare namespace Phaser {
              * 
              * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
              */
-            class Image extends Phaser.GameObjects.Image implements Components.Acceleration, Components.Angular, Components.Bounce, Components.Debug, Components.Drag, Components.Enable, Components.Friction, Components.Gravity, Components.Immovable, Components.Mass, Components.Size, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Image extends Phaser.GameObjects.Image implements Phaser.Physics.Arcade.Components.Acceleration, Phaser.Physics.Arcade.Components.Angular, Phaser.Physics.Arcade.Components.Bounce, Phaser.Physics.Arcade.Components.Debug, Phaser.Physics.Arcade.Components.Drag, Phaser.Physics.Arcade.Components.Enable, Phaser.Physics.Arcade.Components.Friction, Phaser.Physics.Arcade.Components.Gravity, Phaser.Physics.Arcade.Components.Immovable, Phaser.Physics.Arcade.Components.Mass, Phaser.Physics.Arcade.Components.Size, Phaser.Physics.Arcade.Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -29067,7 +29067,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class Sprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.Angular, Components.Bounce, Components.Debug, Components.Drag, Components.Enable, Components.Friction, Components.Gravity, Components.Immovable, Components.Mass, Components.Size, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Sprite extends Phaser.GameObjects.Sprite implements Phaser.Physics.Arcade.Components.Acceleration, Phaser.Physics.Arcade.Components.Angular, Phaser.Physics.Arcade.Components.Bounce, Phaser.Physics.Arcade.Components.Debug, Phaser.Physics.Arcade.Components.Drag, Phaser.Physics.Arcade.Components.Enable, Phaser.Physics.Arcade.Components.Friction, Phaser.Physics.Arcade.Components.Gravity, Phaser.Physics.Arcade.Components.Immovable, Phaser.Physics.Arcade.Components.Mass, Phaser.Physics.Arcade.Components.Size, Phaser.Physics.Arcade.Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param scene The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
@@ -32739,7 +32739,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            class ImpactBody implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity {
+            class ImpactBody implements Phaser.Physics.Impact.Components.Acceleration, Phaser.Physics.Impact.Components.BodyScale, Phaser.Physics.Impact.Components.BodyType, Phaser.Physics.Impact.Components.Bounce, Phaser.Physics.Impact.Components.CheckAgainst, Phaser.Physics.Impact.Components.Collides, Phaser.Physics.Impact.Components.Debug, Phaser.Physics.Impact.Components.Friction, Phaser.Physics.Impact.Components.Gravity, Phaser.Physics.Impact.Components.Offset, Phaser.Physics.Impact.Components.SetGameObject, Phaser.Physics.Impact.Components.Velocity {
                 /**
                  * 
                  * @param world [description]
@@ -33043,7 +33043,7 @@ declare namespace Phaser {
              * 
              * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
              */
-            class ImpactImage extends Phaser.GameObjects.Image implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class ImpactImage extends Phaser.GameObjects.Image implements Phaser.Physics.Impact.Components.Acceleration, Phaser.Physics.Impact.Components.BodyScale, Phaser.Physics.Impact.Components.BodyType, Phaser.Physics.Impact.Components.Bounce, Phaser.Physics.Impact.Components.CheckAgainst, Phaser.Physics.Impact.Components.Collides, Phaser.Physics.Impact.Components.Debug, Phaser.Physics.Impact.Components.Friction, Phaser.Physics.Impact.Components.Gravity, Phaser.Physics.Impact.Components.Offset, Phaser.Physics.Impact.Components.SetGameObject, Phaser.Physics.Impact.Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -34016,7 +34016,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class ImpactSprite extends Phaser.GameObjects.Sprite implements Components.Acceleration, Components.BodyScale, Components.BodyType, Components.Bounce, Components.CheckAgainst, Components.Collides, Components.Debug, Components.Friction, Components.Gravity, Components.Offset, Components.SetGameObject, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class ImpactSprite extends Phaser.GameObjects.Sprite implements Phaser.Physics.Impact.Components.Acceleration, Phaser.Physics.Impact.Components.BodyScale, Phaser.Physics.Impact.Components.BodyType, Phaser.Physics.Impact.Components.Bounce, Phaser.Physics.Impact.Components.CheckAgainst, Phaser.Physics.Impact.Components.Collides, Phaser.Physics.Impact.Components.Debug, Phaser.Physics.Impact.Components.Friction, Phaser.Physics.Impact.Components.Gravity, Phaser.Physics.Impact.Components.Offset, Phaser.Physics.Impact.Components.SetGameObject, Phaser.Physics.Impact.Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -36030,7 +36030,7 @@ declare namespace Phaser {
              * 
              * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
              */
-            class Image extends Phaser.GameObjects.Image implements Components.Bounce, Components.Collision, Components.Force, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.SetBody, Components.Sleep, Components.Static, Components.Transform, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Image extends Phaser.GameObjects.Image implements Phaser.Physics.Matter.Components.Bounce, Phaser.Physics.Matter.Components.Collision, Phaser.Physics.Matter.Components.Force, Phaser.Physics.Matter.Components.Friction, Phaser.Physics.Matter.Components.Gravity, Phaser.Physics.Matter.Components.Mass, Phaser.Physics.Matter.Components.Sensor, Phaser.Physics.Matter.Components.SetBody, Phaser.Physics.Matter.Components.Sleep, Phaser.Physics.Matter.Components.Static, Phaser.Physics.Matter.Components.Transform, Phaser.Physics.Matter.Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -37000,7 +37000,7 @@ declare namespace Phaser {
              * 
              * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
              */
-            class Sprite extends Phaser.GameObjects.Sprite implements Components.Bounce, Components.Collision, Components.Force, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.SetBody, Components.Sleep, Components.Static, Components.Transform, Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
+            class Sprite extends Phaser.GameObjects.Sprite implements Phaser.Physics.Matter.Components.Bounce, Phaser.Physics.Matter.Components.Collision, Phaser.Physics.Matter.Components.Force, Phaser.Physics.Matter.Components.Friction, Phaser.Physics.Matter.Components.Gravity, Phaser.Physics.Matter.Components.Mass, Phaser.Physics.Matter.Components.Sensor, Phaser.Physics.Matter.Components.SetBody, Phaser.Physics.Matter.Components.Sleep, Phaser.Physics.Matter.Components.Static, Phaser.Physics.Matter.Components.Transform, Phaser.Physics.Matter.Components.Velocity, Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
                 /**
                  * 
                  * @param world [description]
@@ -37873,7 +37873,7 @@ declare namespace Phaser {
              * 
              * Phaser.Physics.Matter.TileBody#setFromTileCollision for more information.
              */
-            class TileBody implements Components.Bounce, Components.Collision, Components.Friction, Components.Gravity, Components.Mass, Components.Sensor, Components.Sleep, Components.Static {
+            class TileBody implements Phaser.Physics.Matter.Components.Bounce, Phaser.Physics.Matter.Components.Collision, Phaser.Physics.Matter.Components.Friction, Phaser.Physics.Matter.Components.Gravity, Phaser.Physics.Matter.Components.Mass, Phaser.Physics.Matter.Components.Sensor, Phaser.Physics.Matter.Components.Sleep, Phaser.Physics.Matter.Components.Static {
                 /**
                  * 
                  * @param world [description]
@@ -39072,7 +39072,7 @@ declare namespace Phaser {
                 /**
                  * [description]
                  */
-                class ForwardDiffuseLightPipeline extends TextureTintPipeline {
+                class ForwardDiffuseLightPipeline extends Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline {
                     /**
                      * 
                      * @param config [description]
@@ -41612,7 +41612,7 @@ declare namespace Phaser {
         /**
          * HTML5 Audio implementation of the sound.
          */
-        class HTML5AudioSound extends BaseSound {
+        class HTML5AudioSound extends Phaser.Sound.BaseSound {
             /**
              * 
              * @param manager Reference to the current sound manager instance.
@@ -41745,7 +41745,7 @@ declare namespace Phaser {
         /**
          * HTML5AudioSoundManager
          */
-        class HTML5AudioSoundManager extends BaseSoundManager {
+        class HTML5AudioSoundManager extends Phaser.Sound.BaseSoundManager {
             /**
              * 
              * @param game Reference to the current game instance.
@@ -41852,7 +41852,7 @@ declare namespace Phaser {
          * 
          * breaking on devices that don't support any audio playback technologies.
          */
-        class NoAudioSound extends BaseSound {
+        class NoAudioSound extends Phaser.Sound.BaseSound {
             /**
              * 
              * @param manager Reference to the current sound manager instance.
@@ -41876,7 +41876,7 @@ declare namespace Phaser {
          * 
          * breaking on devices that don't support any audio playback technologies.
          */
-        class NoAudioSoundManager extends BaseSoundManager {
+        class NoAudioSoundManager extends Phaser.Sound.BaseSoundManager {
             /**
              * 
              * @param game Reference to the current game instance.
@@ -41894,7 +41894,7 @@ declare namespace Phaser {
         /**
          * Web Audio API implementation of the sound.
          */
-        class WebAudioSound extends BaseSound {
+        class WebAudioSound extends Phaser.Sound.BaseSound {
             /**
              * 
              * @param manager Reference to the current sound manager instance.
@@ -42033,7 +42033,7 @@ declare namespace Phaser {
         /**
          * Web Audio API implementation of the sound manager.
          */
-        class WebAudioSoundManager extends BaseSoundManager {
+        class WebAudioSoundManager extends Phaser.Sound.BaseSoundManager {
             /**
              * 
              * @param game Reference to the current game instance.
@@ -49809,7 +49809,7 @@ declare namespace MatterJS {
      * 
      * There are also a few methods here that alias those in `Matter.Composite` for easier readability.
      */
-    class World extends Composite {
+    class World extends MatterJS.Composite {
     }
 
     /**
