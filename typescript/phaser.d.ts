@@ -10392,7 +10392,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
             }
 
             /**
@@ -13775,7 +13775,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -14660,7 +14660,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -16701,7 +16701,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -17462,7 +17462,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -18114,7 +18114,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * [description]
@@ -18759,7 +18759,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -19784,7 +19784,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -20403,7 +20403,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -21028,7 +21028,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -28061,7 +28061,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -29109,7 +29109,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -33110,7 +33110,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -34075,7 +34075,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -36055,7 +36055,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -37017,7 +37017,7 @@ declare namespace Phaser {
                  * The values are stored and returned in a Rectangle, or Rectangle-like, object.
                  * @param output An object to store the values in. If not provided a new Rectangle will be created.
                  */
-                getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+                getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
                 /**
                  * The horizontal origin of this Game Object.
@@ -43929,7 +43929,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
@@ -45452,7 +45452,7 @@ declare namespace Phaser {
              * The values are stored and returned in a Rectangle, or Rectangle-like, object.
              * @param output An object to store the values in. If not provided a new Rectangle will be created.
              */
-            getBounds<O extends Phaser.Math.Vector2>(output?: O): O;
+            getBounds<O extends Phaser.Geom.Rectangle>(output?: O): O;
 
             /**
              * The horizontal origin of this Game Object.
