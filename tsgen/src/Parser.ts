@@ -485,7 +485,7 @@ export class Parser {
             case "protected": obj.flags |= dom.DeclarationFlags.Protected; break;
             case "private": obj.flags |= dom.DeclarationFlags.Private; break;
         }
-        if(doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
+        if(doclet.readonly || doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
         if(doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
     }
 
