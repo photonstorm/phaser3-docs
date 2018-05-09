@@ -20,7 +20,7 @@ tex.setFilter(Phaser.Textures.NEAREST);
 
 let sprite = new Phaser.GameObjects.Sprite(scene, 0, 0, "test");
 
-class MyVec extends Phaser.Math.Vector2 {
+class MyVec extends Phaser.Geom.Rectangle {
 
     public extra() {
 
