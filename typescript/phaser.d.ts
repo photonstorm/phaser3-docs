@@ -329,13 +329,17 @@ declare type GameConfig = {
      */
     parent?: any;
     /**
-     * [description]
+     * Provide your own Canvas element for Phaser to use instead of creating one.
      */
     canvas?: HTMLCanvasElement;
     /**
      * [description]
      */
     canvasStyle?: string;
+    /**
+     * Provide your own Canvas Context for Phaser to use, instead of creating one.
+     */
+    context?: CanvasRenderingContext2D;
     /**
      * [description]
      */
@@ -493,8 +497,6 @@ declare type GameConfig = {
      */
     physics?: object;
 };
-
-declare type GameStepCallback = ()=>void;
 
 declare type TimeStepCallback = (time: number, average: number, interpolation: number)=>void;
 
@@ -3725,14 +3727,20 @@ declare namespace Phaser {
         renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
         /**
-         * A reference to the HTML Canvas Element on which the renderer is drawing.
+         * A reference to the HTML Canvas Element that Phaser uses to render the game.
+         * This is created automatically by Phaser unless you provide a `canvas` property
+         * in your Game Config.
          */
         canvas: HTMLCanvasElement;
 
         /**
-         * A reference to the Canvas Rendering Context belonging to the Canvas Element this game is rendering to.
+         * A reference to the Rendering Context belonging to the Canvas Element this game is rendering to.
+         * If the game is running under Canvas it will be a 2d Canvas Rendering Context.
+         * If the game is running under WebGL it will be a WebGL Rendering Context.
+         * This context is created automatically by Phaser unless you provide a `context` property
+         * in your Game Config.
          */
-        context: CanvasRenderingContext2D;
+        context: CanvasRenderingContext2D | WebGLRenderingContext | WebGL2RenderingContext;
 
         /**
          * A flag indicating when this Game instance has finished its boot process.
@@ -3818,7 +3826,7 @@ declare namespace Phaser {
          * The Plugin Manager is a global system that allows plugins to register themselves with it, and can then install
          * those plugins into Scenes as required.
          */
-        plugins: Phaser.Boot.PluginManager;
+        plugins: Phaser.Plugins.PluginManager;
 
         /**
          * This method is called automatically when the DOM is ready. It is responsible for creating the renderer,
@@ -3943,9 +3951,14 @@ declare namespace Phaser {
             readonly parent: any;
 
             /**
-             * [description]
+             * Force Phaser to use your own Canvas element instead of creating one.
              */
             readonly canvas: HTMLCanvasElement;
+
+            /**
+             * Force Phaser to use your own Canvas context instead of creating one.
+             */
+            readonly context: CanvasRenderingContext2D | WebGLRenderingContext;
 
             /**
              * [description]
@@ -4180,6 +4193,16 @@ declare namespace Phaser {
             /**
              * [description]
              */
+            readonly installGlobalPlugins: any;
+
+            /**
+             * [description]
+             */
+            readonly installScenePlugins: any;
+
+            /**
+             * The plugins installed into every Scene (in addition to CoreScene and Global).
+             */
             readonly defaultPlugins: any;
 
             /**
@@ -4209,66 +4232,6 @@ declare namespace Phaser {
          * @param game The Phaser.Game instance which will output this debug header.
          */
         function DebugHeader(game: Phaser.Game): void;
-
-        /**
-         * The PluginManager is global and belongs to the Game instance, not a Scene.
-         * It handles the installation and removal of all global and Scene based plugins.
-         * Plugins automatically register themselves with the PluginManager in their respective classes.
-         */
-        class PluginManager {
-            /**
-             * 
-             * @param game [description]
-             */
-            constructor(game: Phaser.Game);
-
-            /**
-             * [description]
-             */
-            game: Phaser.Game;
-
-            /**
-             * [description]
-             */
-            boot(): void;
-
-            /**
-             * [description]
-             * @param sys [description]
-             * @param globalPlugins [description]
-             */
-            installGlobal(sys: Phaser.Scenes.Systems, globalPlugins: any[]): void;
-
-            /**
-             * [description]
-             * @param sys [description]
-             * @param scenePlugins [description]
-             */
-            installLocal(sys: Phaser.Scenes.Systems, scenePlugins: any[]): void;
-
-            /**
-             * [description]
-             * @param key [description]
-             */
-            remove(key: string): void;
-
-            /**
-             * [description]
-             */
-            destroy(): void;
-
-            /**
-             * Static method called directly by the Plugins
-             * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
-             * Plugin is the object to instantiate to create the plugin
-             * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
-             * @param key [description]
-             * @param plugin [description]
-             * @param mapping [description]
-             */
-            static register(key: string, plugin: object, mapping: string): void;
-
-        }
 
         /**
          * [description]
@@ -9349,6 +9312,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -10065,6 +10043,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -10612,6 +10605,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -11635,6 +11643,20 @@ declare namespace Phaser {
                  */
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
                 /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+                /**
                  * Sets the rotation of this Game Object.
                  * @param radians The rotation of this Game Object, in radians. Default 0.
                  */
@@ -12015,7 +12037,7 @@ declare namespace Phaser {
 
             /**
              * Returns the world transform matrix as used for Bounds checks.
-             * The returned matrix is a temporal and shouldn't be stored.
+             * The returned matrix is temporal and shouldn't be stored.
              */
             getBoundsTransformMatrix(): Phaser.GameObjects.Components.TransformMatrix;
 
@@ -12578,6 +12600,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -12784,7 +12821,7 @@ declare namespace Phaser {
             /**
              * If this Game Object is enabled for physics then this property will contain a reference to a Physics Body.
              */
-            body: object;
+            body: object | Phaser.Physics.Arcade.Body | Phaser.Physics.Impact.Body;
 
             /**
              * This Game Object will ignore all calls made to its destroy method if this flag is set to `true`.
@@ -13211,10 +13248,10 @@ declare namespace Phaser {
              * Creates a new Group Game Object and adds it to the Scene.
              * 
              * Note: This method will only be available if the Group Game Object has been built into Phaser.
-             * @param children [description]
-             * @param config [description]
+             * @param children Game Objects to add to this Group; or the `config` argument.
+             * @param config A Group Configuration object.
              */
-            group(children: Phaser.GameObjects.GameObject[] | GroupConfig, config?: GroupConfig): Phaser.GameObjects.Group;
+            group(children?: Phaser.GameObjects.GameObject[] | GroupConfig, config?: GroupConfig): Phaser.GameObjects.Group;
 
             /**
              * Creates a new Image Game Object and adds it to the Scene.
@@ -14019,6 +14056,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -15095,6 +15147,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -15943,6 +16010,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -18208,6 +18290,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -18932,6 +19029,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -19712,6 +19824,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -20423,6 +20550,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -21426,6 +21568,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -22175,6 +22332,21 @@ declare namespace Phaser {
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
             /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+            /**
              * Sets the rotation of this Game Object.
              * @param radians The rotation of this Game Object, in radians. Default 0.
              */
@@ -22600,6 +22772,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -25767,6 +25954,16 @@ declare namespace Phaser {
                 SEVEN,
                 EIGHT,
                 NINE,
+                NUMPAD_ZERO,
+                NUMPAD_ONE,
+                NUMPAD_TWO,
+                NUMPAD_THREE,
+                NUMPAD_FOUR,
+                NUMPAD_FIVE,
+                NUMPAD_SIX,
+                NUMPAD_SEVEN,
+                NUMPAD_EIGHT,
+                NUMPAD_NINE,
                 A,
                 B,
                 C,
@@ -27267,6 +27464,10 @@ declare namespace Phaser {
                  */
                 extension?: string;
                 /**
+                 * Automatically start the plugin after loading?
+                 */
+                start?: boolean;
+                /**
                  * Extra XHR Settings specifically for this file.
                  */
                 xhrSettings?: XHRSettingsObject;
@@ -27285,9 +27486,64 @@ declare namespace Phaser {
                  * @param loader A reference to the Loader that is responsible for this file.
                  * @param key The key to use for this file, or a file configuration object.
                  * @param url The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js".
+                 * @param start Automatically start the plugin after loading? Default false.
                  * @param xhrSettings Extra XHR Settings specifically for this file.
                  */
-                constructor(loader: Phaser.Loader.LoaderPlugin, key: string | Phaser.Loader.FileTypes.PluginFileConfig, url?: string, xhrSettings?: XHRSettingsObject);
+                constructor(loader: Phaser.Loader.LoaderPlugin, key: string | Phaser.Loader.FileTypes.PluginFileConfig, url?: string, start?: boolean, xhrSettings?: XHRSettingsObject);
+
+                /**
+                 * Called automatically by Loader.nextFile.
+                 * This method controls what extra work this File does with its loaded data.
+                 */
+                onProcess(): void;
+
+            }
+
+            type ScenePluginFileConfig = {
+                /**
+                 * The key of the file. Must be unique within the Loader.
+                 */
+                key: string;
+                /**
+                 * The absolute or relative URL to load the file from. Or, a Scene Plugin.
+                 */
+                url?: string | Function;
+                /**
+                 * The default file extension to use if no url is provided.
+                 */
+                extension?: string;
+                /**
+                 * If this plugin is to be added to Scene.Systems, this is the property key for it.
+                 */
+                systemKey?: string;
+                /**
+                 * If this plugin is to be added to the Scene, this is the property key for it.
+                 */
+                sceneKey?: string;
+                /**
+                 * Extra XHR Settings specifically for this file.
+                 */
+                xhrSettings?: XHRSettingsObject;
+            };
+
+            /**
+             * A single Scene Plugin Script File suitable for loading by the Loader.
+             * 
+             * These are created when you use the Phaser.Loader.LoaderPlugin#scenePlugin method and are not typically created directly.
+             * 
+             * For documentation about what all the arguments and configuration options mean please see Phaser.Loader.LoaderPlugin#scenePlugin.
+             */
+            class ScenePluginFile extends Phaser.Loader.File {
+                /**
+                 * 
+                 * @param loader A reference to the Loader that is responsible for this file.
+                 * @param key The key to use for this file, or a file configuration object.
+                 * @param url The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js".
+                 * @param systemKey If this plugin is to be added to Scene.Systems, this is the property key for it.
+                 * @param sceneKey If this plugin is to be added to the Scene, this is the property key for it.
+                 * @param xhrSettings Extra XHR Settings specifically for this file.
+                 */
+                constructor(loader: Phaser.Loader.LoaderPlugin, key: string | Phaser.Loader.FileTypes.ScenePluginFileConfig, url?: string, systemKey?: string, sceneKey?: string, xhrSettings?: XHRSettingsObject);
 
                 /**
                  * Called automatically by Loader.nextFile.
@@ -28894,7 +29150,7 @@ declare namespace Phaser {
              * Once the file has finished loading it will automatically be converted into a script element
              * via `document.createElement('script')`. It will have its language set to JavaScript, `defer` set to
              * false and then the resulting element will be appended to `document.head`. Any code then in the
-             * script will be executed. It will then be passed to the Phaser PluginManager.register method.
+             * script will be executed. It will then be passed to the Phaser PluginCache.register method.
              * 
              * The URL can be relative or absolute. If the URL is relative the `Loader.baseURL` and `Loader.path` values will be prepended to it.
              * 
@@ -28905,10 +29161,65 @@ declare namespace Phaser {
              * Note: The ability to load this type of file will only be available if the Script File type has been built into Phaser.
              * It is available in the default build but can be excluded from custom builds.
              * @param key The key to use for this file, or a file configuration object, or array of them.
-             * @param url The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js".
+             * @param url The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js". Or, a plugin function.
+             * @param start The plugin mapping configuration object.
              * @param xhrSettings An XHR Settings configuration object. Used in replacement of the Loaders default XHR Settings.
              */
-            plugin(key: string | Phaser.Loader.FileTypes.PluginFileConfig | Phaser.Loader.FileTypes.PluginFileConfig[], url?: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+            plugin(key: string | Phaser.Loader.FileTypes.PluginFileConfig | Phaser.Loader.FileTypes.PluginFileConfig[], url?: string | Function, start?: boolean, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
+
+            /**
+             * Adds a Scene Plugin Script file, or array of plugin files, to the current load queue.
+             * 
+             * You can call this method from within your Scene's `preload`, along with any other files you wish to load:
+             * 
+             * ```javascript
+             * function preload ()
+             * {
+             *     this.load.scenePlugin('ModPlayer', 'plugins/ModPlayer.js', 'modPlayer', 'mods');
+             * }
+             * ```
+             * 
+             * The file is **not** loaded right away. It is added to a queue ready to be loaded either when the loader starts,
+             * or if it's already running, when the next free load slot becomes available. This happens automatically if you
+             * are calling this from within the Scene's `preload` method, or a related callback. Because the file is queued
+             * it means you cannot use the file immediately after calling this method, but must wait for the file to complete.
+             * The typical flow for a Phaser Scene is that you load assets in the Scene's `preload` method and then when the
+             * Scene's `create` method is called you are guaranteed that all of those assets are ready for use and have been
+             * loaded.
+             * 
+             * The key must be a unique String and not already in-use by another file in the Loader.
+             * 
+             * Instead of passing arguments you can pass a configuration object, such as:
+             * 
+             * ```javascript
+             * this.load.scenePlugin({
+             *     key: 'modplayer',
+             *     url: 'plugins/ModPlayer.js'
+             * });
+             * ```
+             * 
+             * See the documentation for `Phaser.Loader.FileTypes.ScenePluginFileConfig` for more details.
+             * 
+             * Once the file has finished loading it will automatically be converted into a script element
+             * via `document.createElement('script')`. It will have its language set to JavaScript, `defer` set to
+             * false and then the resulting element will be appended to `document.head`. Any code then in the
+             * script will be executed. It will then be passed to the Phaser PluginCache.register method.
+             * 
+             * The URL can be relative or absolute. If the URL is relative the `Loader.baseURL` and `Loader.path` values will be prepended to it.
+             * 
+             * If the URL isn't specified the Loader will take the key and create a filename from that. For example if the key is "alien"
+             * and no URL is given then the Loader will set the URL to be "alien.js". It will always add `.js` as the extension, although
+             * this can be overridden if using an object instead of method arguments. If you do not desire this action then provide a URL.
+             * 
+             * Note: The ability to load this type of file will only be available if the Script File type has been built into Phaser.
+             * It is available in the default build but can be excluded from custom builds.
+             * @param key The key to use for this file, or a file configuration object, or array of them.
+             * @param url The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.js`, i.e. if `key` was "alien" then the URL will be "alien.js". Or, set to a plugin function.
+             * @param systemKey If this plugin is to be added to Scene.Systems, this is the property key for it.
+             * @param sceneKey If this plugin is to be added to the Scene, this is the property key for it.
+             * @param xhrSettings An XHR Settings configuration object. Used in replacement of the Loaders default XHR Settings.
+             */
+            scenePlugin(key: string | Phaser.Loader.FileTypes.ScenePluginFileConfig | Phaser.Loader.FileTypes.ScenePluginFileConfig[], url?: string | Function, systemKey?: string, sceneKey?: string, xhrSettings?: XHRSettingsObject): Phaser.Loader.LoaderPlugin;
 
             /**
              * Adds a Script file, or array of Script files, to the current load queue.
@@ -32557,6 +32868,21 @@ declare namespace Phaser {
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
                 /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+                /**
                  * Sets the rotation of this Game Object.
                  * @param radians The rotation of this Game Object, in radians. Default 0.
                  */
@@ -32938,7 +33264,7 @@ declare namespace Phaser {
                 resume(): Phaser.Physics.Arcade.World;
 
                 /**
-                 * Sets the acceleration.x/y property on the game object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
+                 * Sets the acceleration.x/y property on the game object so it will move towards the x/y coordinates at the given rate (in pixels per second squared)
                  * 
                  * You must give a maximum speed value, beyond which the game object won't go any faster.
                  * 
@@ -32947,14 +33273,14 @@ declare namespace Phaser {
                  * @param gameObject Any Game Object with an Arcade Physics body.
                  * @param x The x coordinate to accelerate towards.
                  * @param y The y coordinate to accelerate towards.
-                 * @param speed The speed it will accelerate in pixels per second. Default 60.
+                 * @param speed The acceleration (change in speed) in pixels per second squared. Default 60.
                  * @param xSpeedMax The maximum x velocity the game object can reach. Default 500.
                  * @param ySpeedMax The maximum y velocity the game object can reach. Default 500.
                  */
                 accelerateTo(gameObject: Phaser.GameObjects.GameObject, x: number, y: number, speed?: number, xSpeedMax?: number, ySpeedMax?: number): number;
 
                 /**
-                 * Sets the acceleration.x/y property on the game object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
+                 * Sets the acceleration.x/y property on the game object so it will move towards the x/y coordinates at the given rate (in pixels per second squared)
                  * 
                  * You must give a maximum speed value, beyond which the game object won't go any faster.
                  * 
@@ -32962,20 +33288,20 @@ declare namespace Phaser {
                  * Note: The game object doesn't stop moving once it reaches the destination coordinates.
                  * @param gameObject Any Game Object with an Arcade Physics body.
                  * @param destination The Game Object to move towards. Can be any object but must have visible x/y properties.
-                 * @param speed The speed it will accelerate in pixels per second. Default 60.
+                 * @param speed The acceleration (change in speed) in pixels per second squared. Default 60.
                  * @param xSpeedMax The maximum x velocity the game object can reach. Default 500.
                  * @param ySpeedMax The maximum y velocity the game object can reach. Default 500.
                  */
                 accelerateToObject(gameObject: Phaser.GameObjects.GameObject, destination: Phaser.GameObjects.GameObject, speed?: number, xSpeedMax?: number, ySpeedMax?: number): number;
 
                 /**
-                 * From a set of points or display objects, find the one closest to a source point or object.
+                 * Finds the Body closest to a source point or object.
                  * @param source Any object with public `x` and `y` properties, such as a Game Object or Geometry object.
                  */
                 closest(source: object): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * From a set of points or display objects, find the one farthest from a source point or object.
+                 * Finds the Body farthest from a source point or object.
                  * @param source Any object with public `x` and `y` properties, such as a Game Object or Geometry object.
                  */
                 furthest(source: object): Phaser.Physics.Arcade.Body;
@@ -33010,19 +33336,19 @@ declare namespace Phaser {
                 moveToObject(gameObject: Phaser.GameObjects.GameObject, destination: object, speed?: number, maxTime?: number): number;
 
                 /**
-                 * Given the angle (in degrees) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
-                 * One way to use this is: velocityFromAngle(angle, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
+                 * Given the angle (in degrees) and speed calculate the velocity and return it as a vector, or set it to the given vector object.
+                 * One way to use this is: velocityFromAngle(angle, 200, sprite.body.velocity) which will set the values directly to the sprite's velocity and not create a new vector object.
                  * @param angle The angle in degrees calculated in clockwise positive direction (down = 90 degrees positive, right = 0 degrees positive, up = 90 degrees negative)
-                 * @param speed The speed it will move, in pixels per second sq. Default 60.
+                 * @param speed The speed it will move, in pixels per second squared. Default 60.
                  * @param vec2 The Vector2 in which the x and y properties will be set to the calculated velocity.
                  */
                 velocityFromAngle(angle: number, speed?: number, vec2?: Phaser.Math.Vector2): Phaser.Math.Vector2;
 
                 /**
-                 * Given the rotation (in radians) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
-                 * One way to use this is: velocityFromRotation(rotation, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
+                 * Given the rotation (in radians) and speed calculate the velocity and return it as a vector, or set it to the given vector object.
+                 * One way to use this is: velocityFromRotation(rotation, 200, sprite.body.velocity) which will set the values directly to the sprite's velocity and not create a new vector object.
                  * @param rotation The angle in radians.
-                 * @param speed The speed it will move, in pixels per second sq. Default 60.
+                 * @param speed The speed it will move, in pixels per second squared Default 60.
                  * @param vec2 The Vector2 in which the x and y properties will be set to the calculated velocity.
                  */
                 velocityFromRotation(rotation: number, speed?: number, vec2?: Phaser.Math.Vector2): Phaser.Math.Vector2;
@@ -33658,6 +33984,21 @@ declare namespace Phaser {
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
                 /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+                /**
                  * Sets the rotation of this Game Object.
                  * @param radians The rotation of this Game Object, in radians. Default 0.
                  */
@@ -33956,639 +34297,652 @@ declare namespace Phaser {
             }
 
             /**
-             * [description]
+             * A Dynamic Arcade Body.
              */
             class Body {
                 /**
                  * 
-                 * @param world [description]
-                 * @param gameObject [description]
+                 * @param world The Arcade Physics simulation this Body belongs to.
+                 * @param gameObject The Game Object this Body belongs to.
                  */
                 constructor(world: Phaser.Physics.Arcade.World, gameObject: Phaser.GameObjects.GameObject);
 
                 /**
-                 * [description]
+                 * The Arcade Physics simulation this Body belongs to.
                  */
                 world: Phaser.Physics.Arcade.World;
 
                 /**
-                 * [description]
+                 * The Game Object this Body belongs to.
                  */
                 gameObject: Phaser.GameObjects.GameObject;
 
                 /**
-                 * [description]
+                 * Transformations applied to this Body.
                  */
                 transform: object;
 
                 /**
-                 * [description]
+                 * Whether the Body's boundary is drawn to the debug display.
                  */
                 debugShowBody: boolean;
 
                 /**
-                 * [description]
+                 * Whether the Body's velocity is drawn to the debug display.
                  */
                 debugShowVelocity: boolean;
 
                 /**
-                 * [description]
+                 * The color of this Body on the debug display.
                  */
                 debugBodyColor: integer;
 
                 /**
-                 * [description]
+                 * Whether this Body is updated by the physics simulation.
                  */
                 enable: boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body's boundary is circular (true) or rectangular (false).
                  */
                 isCircle: boolean;
 
                 /**
-                 * [description]
+                 * The unscaled radius of this Body's boundary (if circular), as set by setCircle, in source pixels.
+                 * The true radius (if circular) is equal to halfWidth.
                  */
                 radius: number;
 
                 /**
-                 * [description]
+                 * The offset of this Body's position from its Game Object's position, in source pixels.
                  */
                 offset: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The position of this Body within the simulation.
                  */
                 position: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The position of this Body during the previous step.
                  */
                 prev: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * Whether this Body's rotation is affected by its angular acceleration and velocity.
                  */
                 allowRotation: boolean;
 
                 /**
-                 * [description]
+                 * This body's rotation, in degrees, based on its angular acceleration and velocity.
+                 * The Body's rotation controls the `angle` of its Game Object.
+                 * It doesn't rotate the Body's boundary, which is always an axis-aligned rectangle or a circle.
                  */
                 rotation: number;
 
                 /**
-                 * [description]
+                 * The Body's rotation, in degrees, during the previous step.
                  */
                 preRotation: number;
 
                 /**
-                 * [description]
+                 * The width of the Body's boundary. If circular, this is also the Body's diameter.
                  */
                 width: number;
 
                 /**
-                 * [description]
+                 * The height of the Body's boundary. If circular, this is also the Body's diameter.
                  */
                 height: number;
 
                 /**
-                 * [description]
+                 * The unscaled width of the Body, in source pixels. The default is the width of the Body's Game Object's texture frame.
                  */
                 sourceWidth: number;
 
                 /**
-                 * [description]
+                 * The unscaled height of the Body, in source pixels. The default is the height of the Body's Game Object's texture frame.
                  */
                 sourceHeight: number;
 
                 /**
-                 * [description]
+                 * Half the Body's width.
                  */
                 halfWidth: number;
 
                 /**
-                 * [description]
+                 * Half the Body's height.
                  */
                 halfHeight: number;
 
                 /**
-                 * [description]
+                 * The center of the Body's boundary. The midpoint of its `position` (top-left corner) and its bottom-right corner.
                  */
                 center: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The Body's change in position, in pixels per second.
                  */
                 velocity: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The Body's calculated change in position, in pixels, at the last step.
                  */
-                newVelocity: Phaser.Math.Vector2;
+                readonly newVelocity: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The Body's absolute maximum change in position, in pixels per step.
                  */
                 deltaMax: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The Body's change in velocity, in pixels per second squared.
                  */
                 acceleration: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * Whether this Body's velocity is affected by its drag vector.
                  */
                 allowDrag: boolean;
 
                 /**
-                 * [description]
+                 * Absolute loss of velocity due to movement, in pixels per second squared.
                  */
                 drag: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * Whether this Body's position is affected by its gravity vector.
                  */
                 allowGravity: boolean;
 
                 /**
-                 * [description]
+                 * Acceleration due to gravity (specific to this Body), in pixels per second squared.
+                 * Total gravity is the sum of this vector and the simulation's `gravity`.
                  */
                 gravity: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * Rebound following a collision, relative to 1.
                  */
                 bounce: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * Rebound following a collision with the world boundary, relative to 1.
+                 * If empty, `bounce` is used instead.
                  */
                 worldBounce: Phaser.Math.Vector2;
 
                 /**
-                 * Emit a `worldbounds` event when this body collides with the world bounds (and `collideWorldBounds` is also true).
+                 * Whether the simulation emits a `worldbounds` event when this Body collides with the world boundary (and `collideWorldBounds` is also true).
                  */
                 onWorldBounds: boolean;
 
                 /**
-                 * [description]
+                 * Whether the simulation emits a `collide` event when this Body collides with another.
                  */
                 onCollide: boolean;
 
                 /**
-                 * [description]
+                 * Whether the simulation emits an `overlap` event when this Body overlaps with another.
                  */
                 onOverlap: boolean;
 
                 /**
-                 * [description]
+                 * The Body's absolute maximum velocity, in pixels per second.
+                 * This limits the Body's rate of movement but not its `velocity` values (which can still exceed `maxVelocity`).
                  */
                 maxVelocity: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * If this Body is `immovable` and in motion, this the proportion of this Body's movement received by the riding body on each axis, relative to 1.
+                 * The default value (1, 0) moves the riding body horizontally in equal proportion and vertically not at all.
                  */
                 friction: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * The rate of change of this Body's rotation, in degrees per second.
                  */
                 angularVelocity: number;
 
                 /**
-                 * [description]
+                 * The rate of change of this Body's angular velocity, in degrees per second squared.
                  */
                 angularAcceleration: number;
 
                 /**
-                 * [description]
+                 * Loss of angular velocity due to angular movement, in degrees per second.
                  */
                 angularDrag: number;
 
                 /**
-                 * [description]
+                 * The Body's maximum angular velocity, in degrees per second.
                  */
                 maxAngular: number;
 
                 /**
-                 * [description]
+                 * The Body's inertia, relative to a default unit (1).
+                 * With `bounce`, this affects the exchange of momentum (velocities) during collisions.
                  */
                 mass: number;
 
                 /**
-                 * [description]
+                 * The angle of this Body's velocity vector, in degrees.
                  */
                 angle: number;
 
                 /**
-                 * [description]
+                 * The magnitude of the Body's velocity, as calculated during the last update.
                  */
                 speed: number;
 
                 /**
-                 * [description]
+                 * The calculated direction of the Body's velocity.
                  */
                 facing: integer;
 
                 /**
-                 * [description]
+                 * Whether this object can be moved by collisions with another body.
                  */
                 immovable: boolean;
 
                 /**
-                 * [description]
+                 * Whether the Body's position and rotation are affected by its velocity, acceleration, drag, and gravity.
                  */
                 moves: boolean;
 
                 /**
-                 * [description]
+                 * A flag disabling the default horizontal separation of colliding bodies. Pass your own `processHandler` to the collider.
                  */
                 customSeparateX: boolean;
 
                 /**
-                 * [description]
+                 * A flag disabling the default vertical separation of colliding bodies. Pass your own `processHandler` to the collider.
                  */
                 customSeparateY: boolean;
 
                 /**
-                 * [description]
+                 * The amount of horizontal overlap (before separation), if this Body is colliding with another.
                  */
                 overlapX: number;
 
                 /**
-                 * [description]
+                 * The amount of vertical overlap (before separation), if this Body is colliding with another.
                  */
                 overlapY: number;
 
                 /**
-                 * [description]
+                 * The amount of overlap (before separation), if this Body is circular and colliding with another circular body.
                  */
                 overlapR: number;
 
                 /**
-                 * [description]
+                 * Whether this Body is overlapped with another and both have zero velocity.
                  */
                 embedded: boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body interacts with the world boundary.
                  */
                 collideWorldBounds: boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body is checked for collisions and for which directions.
+                 * You can set `checkCollision.none = false` to disable collision checks.
                  */
                 checkCollision: ArcadeBodyCollision;
 
                 /**
-                 * [description]
+                 * Whether this Body is colliding with another and in which direction.
                  */
                 touching: ArcadeBodyCollision;
 
                 /**
-                 * [description]
+                 * Whether this Body was colliding with another during the last step, and in which direction.
                  */
                 wasTouching: ArcadeBodyCollision;
 
                 /**
-                 * [description]
+                 * Whether this Body is colliding with a tile or the world boundary.
                  */
                 blocked: ArcadeBodyCollision;
 
                 /**
-                 * [description]
+                 * Whether this Body is in its `update` phase.
                  */
                 dirty: boolean;
 
                 /**
-                 * [description]
+                 * Whether to automatically synchronize this Body's dimensions to the dimensions of its Game Object's visual bounds.
                  */
                 syncBounds: boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body is being moved by the `moveTo` or `moveFrom` methods.
                  */
                 isMoving: boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body's movement by `moveTo` or `moveFrom` will be stopped by collisions with other bodies.
                  */
                 stopVelocityOnCollide: boolean;
 
                 /**
-                 * [description]
+                 * The Body's physics type (dynamic or static).
                  */
                 readonly physicsType: integer;
 
                 /**
-                 * [description]
+                 * Updates this Body's transform, dimensions, and position from its Game Object.
                  */
                 updateBounds(): void;
 
                 /**
-                 * [description]
+                 * Updates the Body's `center` from its `position` and dimensions.
                  */
                 updateCenter(): void;
 
                 /**
-                 * [description]
-                 * @param delta [description]
+                 * Updates the Body.
+                 * @param delta The delta time, in ms, elapsed since the last frame.
                  */
                 update(delta: number): void;
 
                 /**
-                 * Feeds the body results back into the parent gameobject.
+                 * Feeds the Body results back into the parent Game Object.
                  */
                 postUpdate(): void;
 
                 /**
-                 * [description]
+                 * Checks for collisions between this Body and the world boundary and separates them.
                  */
                 checkWorldBounds(): boolean;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the offset of the Body's position from its Game Object's position.
+                 * @param x The horizontal offset, in source pixels.
+                 * @param y The vertical offset, in source pixels. Default x.
                  */
-                setOffset(x: number, y: number): Phaser.Physics.Arcade.Body;
+                setOffset(x: number, y?: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param width [description]
-                 * @param height [description]
-                 * @param center [description] Default true.
+                 * Sizes and positions this Body's boundary, as a rectangle.
+                 * Modifies the Body's `offset` if `center` is true (the default).
+                 * @param width The width of the Body, in source pixels.
+                 * @param height The height of the Body, in source pixels.
+                 * @param center Modify the Body's `offset`, placing the Body's center on its Game Object's center. Default true.
                  */
                 setSize(width: number, height: number, center?: boolean): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param radius [description]
-                 * @param offsetX [description]
-                 * @param offsetY [description]
+                 * Sizes and positions this Body's boundary, as a circle.
+                 * @param radius The radius of the Body, in source pixels.
+                 * @param offsetX The horizontal offset of the Body from its Game Object, in source pixels.
+                 * @param offsetY The vertical offset of the Body from its Game Object, in source pixels.
                  */
                 setCircle(radius: number, offsetX?: number, offsetY?: number): Phaser.Physics.Arcade.Body;
 
                 /**
                  * Resets this Body to the given coordinates. Also positions its parent Game Object to the same coordinates.
-                 * If the body had any velocity or acceleration it is lost as a result of calling this.
+                 * If the Body had any velocity or acceleration it is lost as a result of calling this.
                  * @param x The horizontal position to place the Game Object and Body.
                  * @param y The vertical position to place the Game Object and Body.
                  */
                 reset(x: number, y: number): void;
 
                 /**
-                 * [description]
+                 * Sets acceleration, velocity, and speed to zero.
                  */
                 stop(): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param obj [description]
+                 * Copies the coordinates of this Body's edges into an object.
+                 * @param obj An object to copy the values into.
                  */
                 getBounds(obj: ArcadeBodyBounds): ArcadeBodyBounds;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Tests if the coordinates are within this Body's boundary.
+                 * @param x The horizontal coordinate.
+                 * @param y The vertical coordinate.
                  */
                 hitTest(x: number, y: number): boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body is touching a tile or the world boundary while moving down.
                  */
                 onFloor(): boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body is touching a tile or the world boundary while moving up.
                  */
                 onCeiling(): boolean;
 
                 /**
-                 * [description]
+                 * Whether this Body is touching a tile or the world boundary while moving left or right.
                  */
                 onWall(): boolean;
 
                 /**
-                 * [description]
+                 * The absolute (nonnegative) change in this Body's horizontal position from the previous step.
+                 * This value is set only during the Body's `dirty` (update) phase.
                  */
                 deltaAbsX(): number;
 
                 /**
-                 * [description]
+                 * The absolute (nonnegative) change in this Body's horizontal position from the previous step.
+                 * This value is set only during the Body's `dirty` (update) phase.
                  */
                 deltaAbsY(): number;
 
                 /**
-                 * [description]
+                 * The change in this Body's horizontal position from the previous step.
+                 * This value is set only during the Body's `dirty` (update) phase.
                  */
                 deltaX(): number;
 
                 /**
-                 * [description]
+                 * The change in this Body's vertical position from the previous step.
                  */
                 deltaY(): number;
 
                 /**
-                 * [description]
+                 * The change in this Body's rotation from the previous step, in degrees.
                  */
                 deltaZ(): number;
 
                 /**
-                 * [description]
+                 * Disables this Body and marks it for deletion by the simulation.
                  */
                 destroy(): void;
 
                 /**
-                 * [description]
-                 * @param graphic [description]
+                 * Draws this Body's boundary and velocity, if enabled.
+                 * @param graphic The Graphics object to draw on.
                  */
                 drawDebug(graphic: Phaser.GameObjects.Graphics): void;
 
                 /**
-                 * [description]
+                 * Whether this Body will be drawn to the debug display.
                  */
                 willDrawDebug(): boolean;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets whether this Body collides with the world boundary.
+                 * @param value True (collisions) or false (no collisions).
                  */
                 setCollideWorldBounds(value: boolean): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the Body's velocity.
+                 * @param x The horizontal velocity, in pixels per second.
+                 * @param y The vertical velocity, in pixels per second.
                  */
                 setVelocity(x: number, y: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's horizontal velocity.
+                 * @param value The velocity, in pixels per second.
                  */
                 setVelocityX(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's vertical velocity.
+                 * @param value The velocity, in pixels per second.
                  */
                 setVelocityY(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the Body's bounce.
+                 * @param x The horizontal bounce, relative to 1.
+                 * @param y The vertical bounce, relative to 1.
                  */
                 setBounce(x: number, y: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's horizontal bounce.
+                 * @param value The bounce, relative to 1.
                  */
                 setBounceX(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's vertical bounce.
+                 * @param value The bounce, relative to 1.
                  */
                 setBounceY(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the Body's acceleration.
+                 * @param x The horizontal component, in pixels per second squared.
+                 * @param y The vertical component, in pixels per second squared.
                  */
                 setAcceleration(x: number, y: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's horizontal acceleration.
+                 * @param value The acceleration, in pixels per second squared.
                  */
                 setAccelerationX(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's vertical acceleration.
+                 * @param value The acceleration, in pixels per second squared.
                  */
                 setAccelerationY(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the Body's drag.
+                 * @param x The horizontal component, in pixels per second squared.
+                 * @param y The vertical component, in pixels per second squared.
                  */
                 setDrag(x: number, y: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's horizontal drag.
+                 * @param value The drag, in pixels per second squared.
                  */
                 setDragX(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's vertical drag.
+                 * @param value The drag, in pixels per second squared.
                  */
                 setDragY(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the Body's gravity.
+                 * @param x The horizontal component, in pixels per second squared.
+                 * @param y The vertical component, in pixels per second squared.
                  */
                 setGravity(x: number, y: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's horizontal gravity.
+                 * @param value The gravity, in pixels per second squared.
                  */
                 setGravityX(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's vertical gravity.
+                 * @param value The gravity, in pixels per second squared.
                  */
                 setGravityY(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param x [description]
-                 * @param y [description]
+                 * Sets the Body's friction.
+                 * @param x The horizontal component, relative to 1.
+                 * @param y The vertical component, relative to 1.
                  */
                 setFriction(x: number, y: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's horizontal friction.
+                 * @param value The friction value, relative to 1.
                  */
                 setFrictionX(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's vertical friction.
+                 * @param value The friction value, relative to 1.
                  */
                 setFrictionY(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's angular velocity.
+                 * @param value The velocity, in degrees per second.
                  */
                 setAngularVelocity(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's angular acceleration.
+                 * @param value The acceleration, in degrees per second squared.
                  */
                 setAngularAcceleration(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's angular drag.
+                 * @param value The drag, in degrees per second squared.
                  */
                 setAngularDrag(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's mass.
+                 * @param value The mass value, relative to 1.
                  */
                 setMass(value: number): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
-                 * @param value [description]
+                 * Sets the Body's `immovable` property.
+                 * @param value The value to assign to `immovable`.
                  */
                 setImmovable(value: boolean): Phaser.Physics.Arcade.Body;
 
                 /**
-                 * [description]
+                 * The Body's horizontal position (left edge).
                  */
                 x: number;
 
                 /**
-                 * [description]
+                 * The Body's vertical position (top edge).
                  */
                 y: number;
 
                 /**
-                 * [description]
+                 * The left edge of the Body's boundary. Identical to x.
                  */
                 readonly left: number;
 
                 /**
-                 * [description]
+                 * The right edge of the Body's boundary.
                  */
                 readonly right: number;
 
                 /**
-                 * [description]
+                 * The top edge of the Body's boundary. Identical to y.
                  */
                 readonly top: number;
 
                 /**
-                 * [description]
+                 * The bottom edge of this Body's boundary.
                  */
                 readonly bottom: number;
 
@@ -35142,6 +35496,11 @@ declare namespace Phaser {
                 world: Phaser.Physics.Arcade.World;
 
                 /**
+                 * The class to create new group members from.
+                 */
+                classType: Phaser.Physics.Arcade.Sprite;
+
+                /**
                  * [description]
                  */
                 physicsType: integer;
@@ -35661,145 +36020,152 @@ declare namespace Phaser {
                 constructor(scene: Phaser.Scene, config: ArcadeWorldConfig);
 
                 /**
-                 * [description]
+                 * The Scene this simulation belongs to.
                  */
                 scene: Phaser.Scene;
 
                 /**
-                 * Dynamic Bodies
+                 * Dynamic Bodies in this simulation.
                  */
                 bodies: Phaser.Structs.Set<Phaser.Physics.Arcade.Body>;
 
                 /**
-                 * Static Bodies
+                 * Static Bodies in this simulation.
                  */
                 staticBodies: Phaser.Structs.Set<Phaser.Physics.Arcade.StaticBody>;
 
                 /**
-                 * Static Bodies
+                 * Static Bodies marked for deletion.
                  */
                 pendingDestroy: Phaser.Structs.Set<(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)>;
 
                 /**
-                 * [description]
+                 * This simulation's collision processors.
                  */
                 colliders: Phaser.Structs.ProcessQueue<Phaser.Physics.Arcade.Collider>;
 
                 /**
-                 * [description]
+                 * Acceleration of Bodies due to gravity, in pixels per second.
                  */
                 gravity: Phaser.Math.Vector2;
 
                 /**
-                 * [description]
+                 * A boundary constraining Bodies.
                  */
                 bounds: Phaser.Geom.Rectangle;
 
                 /**
-                 * [description]
+                 * The boundary edges that Bodies can collide with.
                  */
                 checkCollision: CheckCollisionObject;
 
                 /**
-                 * [description]
+                 * The maximum absolute difference of a Body's per-step velocity and its overlap with another Body that will result in separation on *each axis*.
+                 * Larger values favor separation.
+                 * Smaller values favor no separation.
                  */
                 OVERLAP_BIAS: number;
 
                 /**
-                 * [description]
+                 * The maximum absolute value of a Body's overlap with a tile that will result in separation on *each axis*.
+                 * Larger values favor separation.
+                 * Smaller values favor no separation.
+                 * The optimum value may be similar to the tile size.
                  */
                 TILE_BIAS: number;
 
                 /**
-                 * [description]
+                 * Always separate overlapping Bodies horizontally before vertically.
+                 * False (the default) means Bodies are first separated on the axis of greater gravity, or the vertical axis if neither is greater.
                  */
                 forceX: boolean;
 
                 /**
-                 * [description]
+                 * Whether the simulation advances with the game loop.
                  */
                 isPaused: boolean;
 
                 /**
-                 * [description]
+                 * Enables the debug display.
                  */
                 drawDebug: boolean;
 
                 /**
-                 * [description]
+                 * The graphics object drawing the debug display.
                  */
                 debugGraphic: Phaser.GameObjects.Graphics;
 
                 /**
-                 * [description]
+                 * Default debug display settings for new Bodies.
                  */
                 defaults: ArcadeWorldDefaults;
 
                 /**
-                 * [description]
+                 * The maximum number of items per tree node.
                  */
                 maxEntries: integer;
 
                 /**
-                 * [description]
+                 * The spatial index of Dynamic Bodies.
                  */
                 tree: Phaser.Structs.RTree;
 
                 /**
-                 * [description]
+                 * The spatial index of Static Bodies.
                  */
                 staticTree: Phaser.Structs.RTree;
 
                 /**
-                 * [description]
+                 * Recycled input for tree searches.
                  */
                 treeMinMax: ArcadeWorldTreeMinMax;
 
                 /**
-                 * [description]
+                 * Adds an Arcade Physics Body to a Game Object.
                  * @param object [description]
                  * @param bodyType The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
                  */
                 enable(object: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], bodyType?: integer): void;
 
                 /**
-                 * [description]
+                 * Helper for Phaser.Physics.Arcade.World#enable.
                  * @param object [description]
                  * @param bodyType The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
                  */
                 enableBody(object: Phaser.GameObjects.GameObject, bodyType?: integer): Phaser.GameObjects.GameObject;
 
                 /**
-                 * [description]
+                 * Remove a Body from the simulation.
                  * @param object [description]
                  */
                 remove(object: Phaser.Physics.Arcade.Body): void;
 
                 /**
-                 * [description]
+                 * Disables the Body of a Game Object, or the Bodies of several Game Objects.
                  * @param object [description]
                  */
                 disable(object: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]): void;
 
                 /**
-                 * [description]
+                 * Disables the Body of a Game Object.
                  * @param object [description]
                  */
                 disableGameObjectBody(object: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
 
                 /**
-                 * [description]
+                 * Disables a Body.
+                 * A disabled Body is ignored by the simulation. It doesn't move or interact with other Bodies.
                  * @param body [description]
                  */
                 disableBody(body: Phaser.Physics.Arcade.Body): void;
 
                 /**
-                 * [description]
+                 * Creates the graphics object responsible for debug display.
                  */
                 createDebugGraphic(): Phaser.GameObjects.Graphics;
 
                 /**
-                 * [description]
+                 * Sets the dimensions of the world boundary.
                  * @param x [description]
                  * @param y [description]
                  * @param width [description]
@@ -35812,7 +36178,7 @@ declare namespace Phaser {
                 setBounds(x: number, y: number, width: number, height: number, checkLeft?: boolean, checkRight?: boolean, checkUp?: boolean, checkDown?: boolean): Phaser.Physics.Arcade.World;
 
                 /**
-                 * [description]
+                 * Enables or disables collisions on each boundary edge.
                  * @param left [description] Default true.
                  * @param right [description] Default true.
                  * @param up [description] Default true.
@@ -35821,17 +36187,17 @@ declare namespace Phaser {
                 setBoundsCollision(left?: boolean, right?: boolean, up?: boolean, down?: boolean): Phaser.Physics.Arcade.World;
 
                 /**
-                 * [description]
+                 * Pauses the simulation.
                  */
                 pause(): Phaser.Physics.Arcade.World;
 
                 /**
-                 * [description]
+                 * Resumes the simulation, if paused.
                  */
                 resume(): Phaser.Physics.Arcade.World;
 
                 /**
-                 * [description]
+                 * Adds a collision processor, which runs automatically.
                  * @param object1 The first object to check for collision.
                  * @param object2 The second object to check for collision.
                  * @param collideCallback The callback to invoke when the two objects collide.
@@ -35841,7 +36207,7 @@ declare namespace Phaser {
                 addCollider(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
 
                 /**
-                 * [description]
+                 * Adds an overlap processor, which runs automatically.
                  * @param object1 The first object to check for overlap.
                  * @param object2 The second object to check for overlap.
                  * @param collideCallback The callback to invoke when the two objects overlap.
@@ -35851,31 +36217,31 @@ declare namespace Phaser {
                 addOverlap(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
 
                 /**
-                 * [description]
+                 * Removes a collision or overlap processor.
                  * @param collider [description]
                  */
                 removeCollider(collider: Phaser.Physics.Arcade.Collider): Phaser.Physics.Arcade.World;
 
                 /**
-                 * [description]
-                 * @param time [description]
-                 * @param delta [description]
+                 * Advances the simulation.
+                 * @param time The current timestamp as generated by the Request Animation Frame or SetTimeout.
+                 * @param delta The delta time, in ms, elapsed since the last frame.
                  */
                 update(time: number, delta: number): void;
 
                 /**
-                 * [description]
+                 * Updates bodies, draws the debug display, and handles pending queue operations.
                  */
                 postUpdate(): void;
 
                 /**
-                 * [description]
+                 * Calculates a Body's velocity and updates its position.
                  * @param body [description]
                  */
                 updateMotion(body: Phaser.Physics.Arcade.Body): void;
 
                 /**
-                 * [description]
+                 * Calculates a Body's per-axis velocity.
                  * @param axis [description]
                  * @param body [description]
                  * @param velocity [description]
@@ -35886,7 +36252,7 @@ declare namespace Phaser {
                 computeVelocity(axis: integer, body: Phaser.Physics.Arcade.Body, velocity: number, acceleration: number, drag: number, max: number): number;
 
                 /**
-                 * [description]
+                 * Separates two Bodies, when at least one is rectangular.
                  * @param body1 [description]
                  * @param body2 [description]
                  * @param processCallback [description]
@@ -35896,7 +36262,7 @@ declare namespace Phaser {
                 separate(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body, processCallback?: ArcadePhysicsCallback, callbackContext?: any, overlapOnly?: boolean): boolean;
 
                 /**
-                 * [description]
+                 * Separates two Bodies, when both are circular.
                  * @param body1 [description]
                  * @param body2 [description]
                  * @param overlapOnly [description]
@@ -35905,21 +36271,21 @@ declare namespace Phaser {
                 separateCircle(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body, overlapOnly: boolean, bias: number): boolean;
 
                 /**
-                 * [description]
+                 * Tests of two bodies intersect (overlap).
                  * @param body1 [description]
                  * @param body2 [description]
                  */
                 intersects(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body): boolean;
 
                 /**
-                 * [description]
+                 * Tests if a circular Body intersects with another Body.
                  * @param circle [description]
                  * @param body [description]
                  */
                 circleBodyIntersects(circle: Phaser.Physics.Arcade.Body, body: Phaser.Physics.Arcade.Body): boolean;
 
                 /**
-                 * [description]
+                 * Tests if Game Objects overlap.
                  * @param object1 [description]
                  * @param object2 [description]
                  * @param overlapCallback [description]
@@ -35929,7 +36295,7 @@ declare namespace Phaser {
                 overlap(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, overlapCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
 
                 /**
-                 * [description]
+                 * Tests if Game Objects overlap and separates them (if possible).
                  * @param object1 [description]
                  * @param object2 [description]
                  * @param collideCallback [description]
@@ -35939,7 +36305,7 @@ declare namespace Phaser {
                 collide(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
 
                 /**
-                 * [description]
+                 * Helper for Phaser.Physics.Arcade.World#collide.
                  * @param object1 [description]
                  * @param object2 [description]
                  * @param collideCallback [description]
@@ -35950,7 +36316,7 @@ declare namespace Phaser {
                 collideObjects(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
 
                 /**
-                 * [description]
+                 * Helper for Phaser.Physics.Arcade.World#collide and Phaser.Physics.Arcade.World#overlap.
                  * @param object1 [description]
                  * @param object2 [description]
                  * @param collideCallback [description]
@@ -35961,7 +36327,7 @@ declare namespace Phaser {
                 collideHandler(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
 
                 /**
-                 * [description]
+                 * Handler for Sprite vs. Sprite collisions.
                  * @param sprite1 [description]
                  * @param sprite2 [description]
                  * @param collideCallback [description]
@@ -35972,7 +36338,7 @@ declare namespace Phaser {
                 collideSpriteVsSprite(sprite1: Phaser.GameObjects.GameObject, sprite2: Phaser.GameObjects.GameObject, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
 
                 /**
-                 * [description]
+                 * Handler for Sprite vs. Group collisions.
                  * @param sprite [description]
                  * @param group [description]
                  * @param collideCallback [description]
@@ -35983,7 +36349,7 @@ declare namespace Phaser {
                 collideSpriteVsGroup(sprite: Phaser.GameObjects.GameObject, group: Phaser.GameObjects.Group, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
 
                 /**
-                 * [description]
+                 * Helper for Group vs. Tilemap collisions.
                  * @param group [description]
                  * @param tilemapLayer [description]
                  * @param collideCallback [description]
@@ -35994,7 +36360,7 @@ declare namespace Phaser {
                 collideGroupVsTilemapLayer(group: Phaser.GameObjects.Group, tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
 
                 /**
-                 * [description]
+                 * Helper for Sprite vs. Tilemap collisions.
                  * @param sprite [description]
                  * @param tilemapLayer [description]
                  * @param collideCallback [description]
@@ -36005,7 +36371,7 @@ declare namespace Phaser {
                 collideSpriteVsTilemapLayer(sprite: Phaser.GameObjects.GameObject, tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
 
                 /**
-                 * TODO!
+                 * Helper for Group vs. Group collisions.
                  * @param group1 [description]
                  * @param group2 [description]
                  * @param collideCallback [description]
@@ -36038,12 +36404,12 @@ declare namespace Phaser {
                 wrapObject(object: any, padding?: number): void;
 
                 /**
-                 * [description]
+                 * Shuts down the simulation, clearing physics data and removing listeners.
                  */
                 shutdown(): void;
 
                 /**
-                 * [description]
+                 * Shuts down the simulation and disconnects it from the current scene.
                  */
                 destroy(): void;
 
@@ -37712,6 +38078,21 @@ declare namespace Phaser {
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
                 /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+                /**
                  * Sets the rotation of this Game Object.
                  * @param radians The rotation of this Game Object, in radians. Default 0.
                  */
@@ -38728,6 +39109,21 @@ declare namespace Phaser {
                  * @param w The w position of this Game Object. Default 0.
                  */
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+                /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
                 /**
                  * Sets the rotation of this Game Object.
@@ -40763,6 +41159,21 @@ declare namespace Phaser {
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
                 /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+                /**
                  * Sets the rotation of this Game Object.
                  * @param radians The rotation of this Game Object, in radians. Default 0.
                  */
@@ -41778,6 +42189,21 @@ declare namespace Phaser {
                 setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
 
                 /**
+                 * Sets the position of this Game Object to be a random position within the confines of
+                 * the given area.
+                 * 
+                 * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+                 * 
+                 * The position does not factor in the size of this Game Object, meaning that only the origin is
+                 * guaranteed to be within the area.
+                 * @param x The x position of the top-left of the random area. Default 0.
+                 * @param y The y position of the top-left of the random area. Default 0.
+                 * @param width The width of the random area.
+                 * @param height The height of the random area.
+                 */
+                setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
+
+                /**
                  * Sets the rotation of this Game Object.
                  * @param radians The rotation of this Game Object, in radians. Default 0.
                  */
@@ -42628,6 +43054,97 @@ declare namespace Phaser {
 
     namespace Plugins {
         /**
+         * [description]
+         */
+        class BasePlugin {
+            /**
+             * 
+             * @param game [description]
+             */
+            constructor(game: Phaser.Game);
+
+            /**
+             * A handy reference to the Plugin Manager that is responsible for this plugin.
+             * Can be used as a route to gain access to game systems and  events.
+             */
+            protected pluginManager: Phaser.Plugins.BasePluginManager;
+
+            /**
+             * A reference to the Game instance this plugin is running under.
+             */
+            protected game: Phaser.Game;
+
+            /**
+             * A reference to the Scene that has installed this plugin.
+             * Only set if it's a Scene Plugin, otherwise `null`.
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             * You cannot use it during the `init` method, but you can during the `boot` method.
+             */
+            protected scene: Phaser.Scene;
+
+            /**
+             * A reference to the Scene Systems of the Scene that has installed this plugin.
+             * Only set if it's a Scene Plugin, otherwise `null`.
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             * You cannot use it during the `init` method, but you can during the `boot` method.
+             */
+            protected systems: Phaser.Scene.Systems;
+
+            /**
+             * Called by the PluginManager when this plugin is first instantiated.
+             * It will never be called again on this instance.
+             * In here you can set-up whatever you need for this plugin to run.
+             * If a plugin is set to automatically start then `BasePlugin.start` will be called immediately after this.
+             */
+            init(): void;
+
+            /**
+             * Called by the PluginManager when this plugin is started.
+             * If a plugin is stopped, and then started again, this will get called again.
+             * Typically called immediately after `BasePlugin.init`.
+             */
+            start(): void;
+
+            /**
+             * Called by the PluginManager when this plugin is stopped.
+             * The game code has requested that your plugin stop doing whatever it does.
+             * It is now considered as 'inactive' by the PluginManager.
+             * Handle that process here (i.e. stop listening for events, etc)
+             * If the plugin is started again then `BasePlugin.start` will be called again.
+             */
+            stop(): void;
+
+            /**
+             * If this is a Scene Plugin (i.e. installed into a Scene) then this method is called when the Scene boots.
+             * By this point the plugin properties `scene` and `systems` will have already been set.
+             * In here you can listen for Scene events and set-up whatever you need for this plugin to run.
+             */
+            boot(): void;
+
+            /**
+             * Game instance has been destroyed.
+             * You must release everything in here, all references, all objects, free it all up.
+             */
+            destroy(): void;
+
+        }
+
+        type DefaultPlugins = {
+            /**
+             * These are the Global Managers that are created by the Phaser.Game instance.
+             */
+            Global: any[];
+            /**
+             * These are the core plugins that are installed into every Scene.Systems instance, no matter what.
+             */
+            CoreScene: any[];
+            /**
+             * These plugins are created in Scene.Systems in addition to the CoreScenePlugins.
+             */
+            DefaultScene: any[];
+        };
+
+        /**
          * These are the Global Managers that are created by the Phaser.Game instance.
          * They are referenced from Scene.Systems so that plugins can use them.
          */
@@ -42653,6 +43170,342 @@ declare namespace Phaser {
          * They are always created in the order in which they appear in the array.
          */
         var DefaultScene: any[];
+
+        /**
+         * The PluginManager is responsible for installing and adding plugins to Phaser.
+         * 
+         * It is a global system and therefore belongs to the Game instance, not a specific Scene.
+         * 
+         * It works in conjunction with the PluginCache. Core internal plugins automatically register themselves 
+         * with the Cache, but it's the Plugin Manager that is responsible for injecting them into the Scenes.
+         * 
+         * There are two types of plugin:
+         * 
+         * 1) A Global Plugin
+         * 2) A Scene Plugin
+         * 
+         * A Global Plugin is a plugin that lives within the Plugin Manager rather than a Scene. You can get
+         * access to it by calling `PluginManager.get` and providing a key. Any Scene that requests a plugin in
+         * this way will all get access to the same plugin instance, allowing you to use a single plugin across
+         * multiple Scenes.
+         * 
+         * A Scene Plugin is a plugin dedicated to running within a Scene. These are different to Global Plugins
+         * in that their instances do not live within the Plugin Manager, but within the Scene Systems class instead.
+         * And that every Scene created is given its own unique instance of a Scene Plugin. Examples of core Scene
+         * Plugins include the Input Plugin, the Tween Plugin and the physics Plugins.
+         * 
+         * You can add a plugin to Phaser in three different ways:
+         * 
+         * 1) Preload it
+         * 2) Include it in your source code and install it via the Game Config
+         * 3) Include it in your source code and install it within a Scene
+         * 
+         * For examples of all of these approaches please see the Phaser 3 Examples Repo `plugins` folder.
+         * 
+         * For information on creating your own plugin please see the Phaser 3 Plugin Template.
+         */
+        class PluginManager {
+            /**
+             * 
+             * @param game The game instance that owns this Plugin Manager.
+             */
+            constructor(game: Phaser.Game);
+
+            /**
+             * The game instance that owns this Plugin Manager.
+             */
+            game: Phaser.Game;
+
+            /**
+             * The global plugins currently running and managed by this Plugin Manager.
+             * A plugin must have been started at least once in order to appear in this list.
+             */
+            plugins: GlobalPlugin[];
+
+            /**
+             * A list of plugin keys that should be installed into Scenes as well as the Core Plugins.
+             */
+            scenePlugins: string[];
+
+            /**
+             * Run once the game has booted and installs all of the plugins configured in the Game Config.
+             */
+            protected boot(): void;
+
+            /**
+             * Called by the Scene Systems class. Tells the plugin manager to install all Scene plugins into it.
+             * @param sys The Scene Systems class to install all the plugins in to.
+             * @param globalPlugins An array of global plugins to install.
+             * @param scenePlugins An array of scene plugins to install.
+             */
+            protected addToScene(sys: Phaser.Scenes.Systems, globalPlugins: any[], scenePlugins: any[]): void;
+
+            /**
+             * Called by the Scene Systems class. Returns a list of plugins to be installed.
+             */
+            protected getDefaultScenePlugins(): string[];
+
+            /**
+             * Installs a new Scene Plugin into the Plugin Manager and optionally adds it
+             * to the given Scene as well. A Scene Plugin added to the manager in this way
+             * will be automatically installed into all new Scenes using the key and mapping given.
+             * 
+             * The `key` property is what the plugin is injected into Scene.Systems as.
+             * The `mapping` property is optional, and if specified is what the plugin is installed into
+             * the Scene as. For example:
+             * 
+             * ```javascript
+             * this.plugins.installScenePlugin('powerupsPlugin', pluginCode, 'powerups');
+             * 
+             * // and from within the scene:
+             * this.sys.powerupsPlugin; // key value
+             * this.powerups; // mapping value
+             * ```
+             * 
+             * This method is called automatically by Phaser if you install your plugins using either the
+             * Game Configuration object, or by preloading them via the Loader.
+             * @param key The property key that will be used to add this plugin to Scene.Systems.
+             * @param plugin The plugin code. This should be the non-instantiated version.
+             * @param mapping If this plugin is injected into the Phaser.Scene class, this is the property key to use.
+             * @param addToScene Optionally automatically add this plugin to the given Scene.
+             */
+            installScenePlugin(key: string, plugin: Function, mapping?: string, addToScene?: Phaser.Scene): void;
+
+            /**
+             * Installs a new Global Plugin into the Plugin Manager and optionally starts it running.
+             * A global plugin belongs to the Plugin Manager, rather than a specific Scene, and can be accessed
+             * and used by all Scenes in your game.
+             * 
+             * The `key` property is what you use to access this plugin from the Plugin Manager.
+             * 
+             * ```javascript
+             * this.plugins.install('powerupsPlugin', pluginCode);
+             * 
+             * // and from within the scene:
+             * this.plugins.get('powerupsPlugin');
+             * ```
+             * 
+             * This method is called automatically by Phaser if you install your plugins using either the
+             * Game Configuration object, or by preloading them via the Loader.
+             * 
+             * The same plugin can be installed multiple times into the Plugin Manager by simply giving each
+             * instance its own unique key.
+             * @param key The unique handle given to this plugin within the Plugin Manager.
+             * @param plugin The plugin code. This should be the non-instantiated version.
+             * @param start Automatically start the plugin running? Default false.
+             */
+            install(key: string, plugin: Function, start?: boolean): void;
+
+            /**
+             * Gets an index of a global plugin based on the given key.
+             * @param key The unique plugin key.
+             */
+            protected getIndex(key: string): integer;
+
+            /**
+             * Gets a global plugin based on the given key.
+             * @param key The unique plugin key.
+             */
+            protected getEntry(key: string): GlobalPlugin;
+
+            /**
+             * Checks if the given global plugin, based on its key, is active or not.
+             * @param key The unique plugin key.
+             */
+            isActive(key: string): boolean;
+
+            /**
+             * Starts a global plugin running.
+             * 
+             * If the plugin was previously active then calling `start` will reset it to an active state and then
+             * call its `start` method.
+             * 
+             * If the plugin has never been run before a new instance of it will be created within the Plugin Manager,
+             * its active state set and then both of its `init` and `start` methods called, in that order.
+             * 
+             * If the plugin is already running under the given key then nothing happens.
+             * @param key The key of the plugin to start.
+             * @param runAs Run the plugin under a new key. This allows you to run one plugin multiple times.
+             */
+            start(key: string, runAs?: string): Phaser.Plugins.BasePlugin;
+
+            /**
+             * Stops a global plugin from running.
+             * 
+             * If the plugin is active then its active state will be set to false and the plugins `stop` method
+             * will be called.
+             * 
+             * If the plugin is not already running, nothing will happen.
+             * @param key The key of the plugin to stop.
+             */
+            stop(key: string): Phaser.Plugins.PluginManager;
+
+            /**
+             * Gets a global plugin from the Plugin Manager based on the given key and returns it.
+             * 
+             * If it cannot find an active plugin based on the key, but there is one in the Plugin Cache with the same key,
+             * then it will create a new instance of the cached plugin and return that.
+             * @param key The key of the plugin to get.
+             * @param autoStart Automatically start a new instance of the plugin if found in the cache, but not actively running. Default true.
+             */
+            get(key: string, autoStart?: boolean): Phaser.Plugins.BasePlugin | Function;
+
+            /**
+             * Returns the plugin class from the cache.
+             * Used internally by the Plugin Manager.
+             * @param key The key of the plugin to get.
+             */
+            getClass(key: string): Phaser.Plugins.BasePlugin;
+
+            /**
+             * Removes a global plugin from the Plugin Manager and Plugin Cache.
+             * 
+             * It is up to you to remove all references to this plugin that you may hold within your game code.
+             * @param key The key of the plugin to remove.
+             */
+            removeGlobalPlugin(key: string): void;
+
+            /**
+             * Removes a scene plugin from the Plugin Manager and Plugin Cache.
+             * 
+             * This will not remove the plugin from any active Scenes that are already using it.
+             * 
+             * It is up to you to remove all references to this plugin that you may hold within your game code.
+             * @param key The key of the plugin to remove.
+             */
+            removeScenePlugin(key: string): void;
+
+            /**
+             * Registers a new type of Game Object with the global Game Object Factory and / or Creator.
+             * This is usually called from within your Plugin code and is a helpful short-cut for creating
+             * new Game Objects.
+             * 
+             * The key is the property that will be injected into the factories and used to create the
+             * Game Object. For example:
+             * 
+             * ```javascript
+             * this.plugins.registerGameObject('clown', clownFactoryCallback, clownCreatorCallback);
+             * // later in your game code:
+             * this.add.clown();
+             * this.make.clown();
+             * ```
+             * 
+             * The callbacks are what are called when the factories try to create a Game Object
+             * matching the given key. It's important to understand that the callbacks are invoked within
+             * the context of the GameObjectFactory. In this context there are several properties available
+             * to use:
+             * 
+             * this.scene - A reference to the Scene that owns the GameObjectFactory.
+             * this.displayList - A reference to the Display List the Scene owns.
+             * this.updateList - A reference to the Update List the Scene owns.
+             * 
+             * See the GameObjectFactory and GameObjectCreator classes for more details.
+             * Any public property or method listed is available from your callbacks under `this`.
+             * @param key The key of the Game Object that the given callbacks will create, i.e. `image`, `sprite`.
+             * @param factoryCallback The callback to invoke when the Game Object Factory is called.
+             * @param creatorCallback The callback to invoke when the Game Object Creator is called.
+             */
+            registerGameObject(key: string, factoryCallback?: Function, creatorCallback?: Function): void;
+
+            /**
+             * Registers a new file type with the global File Types Manager, making it available to all Loader
+             * Plugins created after this.
+             * 
+             * This is usually called from within your Plugin code and is a helpful short-cut for creating
+             * new loader file types.
+             * 
+             * The key is the property that will be injected into the Loader Plugin and used to load the
+             * files. For example:
+             * 
+             * ```javascript
+             * this.plugins.registerFileType('wad', doomWadLoaderCallback);
+             * // later in your preload code:
+             * this.load.wad();
+             * ```
+             * 
+             * The callback is what is called when the loader tries to load a file  matching the given key.
+             * It's important to understand that the callback is invoked within
+             * the context of the LoaderPlugin. In this context there are several properties / methods available
+             * to use:
+             * 
+             * this.addFile - A method to add the new file to the load queue.
+             * this.scene - The Scene that owns the Loader Plugin instance.
+             * 
+             * See the LoaderPlugin class for more details. Any public property or method listed is available from
+             * your callback under `this`.
+             * @param key The key of the Game Object that the given callbacks will create, i.e. `image`, `sprite`.
+             * @param callback The callback to invoke when the Game Object Factory is called.
+             */
+            registerFileType(key: string, callback: Function): void;
+
+            /**
+             * Destroys this Plugin Manager and all associated plugins.
+             * It will iterate all plugins found and call their `destroy` methods.
+             * Note that the PluginCache is NOT cleared by this as it doesn't hold any plugin instances.
+             */
+            destroy(): void;
+
+        }
+
+        /**
+         * A Scene Level Plugin is installed into every Scene and belongs to that Scene.
+         * It can listen for Scene events and respond to them.
+         * It can map itself to a Scene property, or into the Scene Systems, or both.
+         */
+        class ScenePlugin {
+            /**
+             * 
+             * @param game [description]
+             */
+            constructor(game: Phaser.Game);
+
+            /**
+             * A reference to the Scene that has installed this plugin.
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             */
+            protected scene: Phaser.Scene;
+
+            /**
+             * A reference to the Scene Systems of the Scene that has installed this plugin.
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             */
+            protected systems: Phaser.Scene.Systems;
+
+            /**
+             * This method is called when the Scene boots. It is only ever called once.
+             * 
+             * By this point the plugin properties `scene` and `systems` will have already been set.
+             * 
+             * In here you can listen for Scene events and set-up whatever you need for this plugin to run.
+             * Here are the Scene events you can listen to:
+             * 
+             * start
+             * ready
+             * preupdate
+             * update
+             * postupdate
+             * resize
+             * pause
+             * resume
+             * sleep
+             * wake
+             * transitioninit
+             * transitionstart
+             * transitioncomplete
+             * transitionout
+             * shutdown
+             * destroy
+             * 
+             * At the very least you should offer a destroy handler for when the Scene closes down, i.e:
+             * 
+             * ```javascript
+             * var eventEmitter = this.systems.events;
+             * eventEmitter.once('destroy', this.sceneDestroy, this);
+             * ```
+             */
+            boot(): void;
+
+        }
 
     }
 
@@ -43475,7 +44328,7 @@ declare namespace Phaser {
 
                     /**
                      * Renders immediately a static tilemap. This function won't use
-                     * the batching functionality of the pipieline.
+                     * the batching functionality of the pipeline.
                      * @param tilemap [description]
                      * @param camera [description]
                      * @param parentTransformMatrix [description]
@@ -44112,6 +44965,11 @@ declare namespace Phaser {
                 glFormats: any[];
 
                 /**
+                 * Stores the supported WebGL texture compression formats.
+                 */
+                compression: any[];
+
+                /**
                  * Creates a new WebGLRenderingContext and initializes all internal
                  * state.
                  * @param config [description]
@@ -44510,6 +45368,18 @@ declare namespace Phaser {
                  * @param matrix Matrix data
                  */
                 setMatrix4(program: WebGLProgram, name: string, transpose: boolean, matrix: Float32Array): Phaser.Renderer.WebGL.WebGLRenderer;
+
+                /**
+                 * Returns the maximum number of texture units that can be used in a fragment shader.
+                 */
+                getMaxTextures(): integer;
+
+                /**
+                 * Returns the largest texture size (either width or height) that can be created.
+                 * Note that VRAM may not allow a texture of any given size, it just expresses
+                 * hardware / driver support for a given size.
+                 */
+                getMaxTextureSize(): integer;
 
                 /**
                  * [description]
@@ -45272,7 +46142,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            plugins: Phaser.Boot.PluginManager;
+            plugins: Phaser.Plugins.PluginManager;
 
             /**
              * [description]
@@ -45552,7 +46422,7 @@ declare namespace Phaser {
          * A scene level Lights Manager Plugin.
          * This property will only be available if defined in the Scene Injection Map and the plugin is installed.
          */
-        lights: Phaser.GameObjects.DisplayList;
+        lights: Phaser.GameObjects.LightsManager;
 
         /**
          * A scene level Data Manager Plugin.
@@ -47431,6 +48301,7 @@ declare namespace Phaser {
 
             /**
              * Checks the given texture key and throws a console.warn if the key is already in use, then returns false.
+             * If you wish to avoid the console.warn then use `TextureManager.exists` instead.
              * @param key The texture key to check.
              */
             checkKey(key: string): boolean;
@@ -48802,6 +49673,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -50281,6 +51167,21 @@ declare namespace Phaser {
              * @param w The w position of this Game Object. Default 0.
              */
             setPosition(x?: number, y?: number, z?: number, w?: number): Phaser.GameObjects.GameObject;
+
+            /**
+             * Sets the position of this Game Object to be a random position within the confines of
+             * the given area.
+             * 
+             * If no area is specified a random position between 0 x 0 and the game width x height is used instead.
+             * 
+             * The position does not factor in the size of this Game Object, meaning that only the origin is
+             * guaranteed to be within the area.
+             * @param x The x position of the top-left of the random area. Default 0.
+             * @param y The y position of the top-left of the random area. Default 0.
+             * @param width The width of the random area.
+             * @param height The height of the random area.
+             */
+            setRandomPosition(x?: number, y?: number, width?: number, height?: number): Phaser.GameObjects.GameObject;
 
             /**
              * Sets the rotation of this Game Object.
@@ -53720,42 +54621,42 @@ declare namespace Phaser {
 
 declare type ArcadeBodyBounds = {
     /**
-     * [description]
+     * The left edge.
      */
     x: number;
     /**
-     * [description]
+     * The upper edge.
      */
     y: number;
     /**
-     * [description]
+     * The right edge.
      */
     right: number;
     /**
-     * [description]
+     * The lower edge.
      */
     bottom: number;
 };
 
 declare type ArcadeBodyCollision = {
     /**
-     * [description]
+     * True if the Body is not colliding.
      */
     none: boolean;
     /**
-     * [description]
+     * True if the Body is colliding on its upper edge.
      */
     up: boolean;
     /**
-     * [description]
+     * True if the Body is colliding on its lower edge.
      */
     down: boolean;
     /**
-     * [description]
+     * True if the Body is colliding on its left edge.
      */
     left: boolean;
     /**
-     * [description]
+     * True if the Body is colliding on its right edge.
      */
     right: boolean;
 };
@@ -53764,75 +54665,75 @@ declare type ArcadePhysicsCallback = (object1: Phaser.GameObjects.GameObject, ob
 
 declare type PhysicsGroupConfig = GroupConfig & {
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#collideWorldBounds}.
      */
-    collideWorldBounds?: any;
+    collideWorldBounds?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#acceleration acceleration.x}.
      */
     accelerationX?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#acceleration acceleration.y}.
      */
     accelerationY?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#bounce bounce.x}.
      */
     bounceX?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#bounce bounce.y}.
      */
     bounceY?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#drag drag.x}.
      */
     dragX?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#drag drag.y}.
      */
     dragY?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#gravity gravity.x}.
      */
     gravityX?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#gravity gravity.y}.
      */
     gravityY?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#friction friction.x}.
      */
     frictionX?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#friction friction.y}.
      */
     frictionY?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#velocity velocity.x}.
      */
     velocityX?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#velocity velocity.y}.
      */
     velocityY?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#angularVelocity}.
      */
     angularVelocity?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#angularAcceleration}.
      */
     angularAcceleration?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#angularDrag}.
      */
     angularDrag?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#mass}.
      */
     mass?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.Body#immovable}.
      */
     immovable?: boolean;
 };
@@ -53841,7 +54742,7 @@ declare type PhysicsGroupDefaults = {
     /**
      * [description]
      */
-    setCollideWorldBounds: any;
+    setCollideWorldBounds: boolean;
     /**
      * [description]
      */
@@ -53914,7 +54815,7 @@ declare type PhysicsGroupDefaults = {
 
 declare type ArcadeWorldConfig = {
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#gravity}.
      */
     gravity?: object;
     /**
@@ -53926,23 +54827,23 @@ declare type ArcadeWorldConfig = {
      */
     "gravity.y"?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#bounds bounds.x}.
      */
     x?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#bounds bounds.y}.
      */
     y?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#bounds bounds.width}.
      */
     width?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#bounds bounds.height}.
      */
     height?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#checkCollision}.
      */
     checkCollision?: object;
     /**
@@ -53962,51 +54863,51 @@ declare type ArcadeWorldConfig = {
      */
     "checkCollision.right"?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#OVERLAP_BIAS}.
      */
     overlapBias?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#TILE_BIAS}.
      */
     tileBias?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#forceX}.
      */
     forceX?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#isPaused}.
      */
     isPaused?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#debug}.
      */
     debug?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#defaults debugShowBody}.
      */
     debugShowBody?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#defaults debugShowStaticBody}.
      */
     debugShowStaticBody?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#defaults debugShowStaticBody}.
      */
     debugShowVelocity?: boolean;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#defaults debugBodyColor}.
      */
     debugBodyColor?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#defaults debugStaticBodyColor}.
      */
     debugStaticBodyColor?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#defaults debugVelocityColor}.
      */
     debugVelocityColor?: number;
     /**
-     * [description]
+     * Sets {@link Phaser.Physics.Arcade.World#maxEntries}.
      */
     maxEntries?: number;
 };
@@ -54179,6 +55080,117 @@ declare namespace MatterJS {
     }
 
 }
+
+declare type CorePluginContainer = {
+    /**
+     * The unique name of this plugin in the core plugin cache.
+     */
+    key: string;
+    /**
+     * The plugin to be stored. Should be the source object, not instantiated.
+     */
+    plugin: Function;
+    /**
+     * If this plugin is to be injected into the Scene Systems, this is the property key map used.
+     */
+    mapping?: string;
+    /**
+     * Core Scene plugin or a Custom Scene plugin?
+     */
+    custom?: boolean;
+};
+
+declare type CustomPluginContainer = {
+    /**
+     * The unique name of this plugin in the custom plugin cache.
+     */
+    key: string;
+    /**
+     * The plugin to be stored. Should be the source object, not instantiated.
+     */
+    plugin: Function;
+};
+
+declare namespace Phaser.Plugins.PluginCache {
+    /**
+     * Static method called directly by the Core internal Plugins.
+     * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
+     * Plugin is the object to instantiate to create the plugin
+     * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
+     * @param key A reference used to get this plugin from the plugin cache.
+     * @param plugin The plugin to be stored. Should be the core object, not instantiated.
+     * @param mapping If this plugin is to be injected into the Scene Systems, this is the property key map used.
+     * @param custom Core Scene plugin or a Custom Scene plugin? Default false.
+     */
+    function register(key: string, plugin: Function, mapping: string, custom?: boolean): void;
+
+    /**
+     * Stores a custom plugin in the global plugin cache.
+     * The key must be unique, within the scope of the cache.
+     * @param key A reference used to get this plugin from the plugin cache.
+     * @param plugin The plugin to be stored. Should be the core object, not instantiated.
+     * @param mapping If this plugin is to be injected into the Scene Systems, this is the property key map used.
+     */
+    function registerCustom(key: string, plugin: Function, mapping: string): void;
+
+    /**
+     * Checks if the given key is already being used in the core plugin cache.
+     * @param key The key to check for.
+     */
+    function hasCore(key: string): boolean;
+
+    /**
+     * Checks if the given key is already being used in the custom plugin cache.
+     * @param key The key to check for.
+     */
+    function hasCustom(key: string): boolean;
+
+    /**
+     * Returns the core plugin object from the cache based on the given key.
+     * @param key The key of the core plugin to get.
+     */
+    function getCore(key: string): CorePluginContainer;
+
+    /**
+     * Returns the custom plugin object from the cache based on the given key.
+     * @param key The key of the custom plugin to get.
+     */
+    function getCustom(key: string): CustomPluginContainer;
+
+    /**
+     * Returns an object from the custom cache based on the given key that can be instantiated.
+     * @param key The key of the custom plugin to get.
+     */
+    function getCustomClass(key: string): Function;
+
+    /**
+     * Removes a core plugin based on the given key.
+     * @param key The key of the core plugin to remove.
+     */
+    function remove(key: string): void;
+
+    /**
+     * Removes a custom plugin based on the given key.
+     * @param key The key of the custom plugin to remove.
+     */
+    function removeCustom(key: string): void;
+
+}
+
+declare type GlobalPlugin = {
+    /**
+     * The unique name of this plugin within the plugin cache.
+     */
+    key: string;
+    /**
+     * An instance of the plugin.
+     */
+    plugin: Function;
+    /**
+     * Is the plugin active or not?
+     */
+    active?: boolean;
+};
 
 declare type RendererConfig = {
     /**
