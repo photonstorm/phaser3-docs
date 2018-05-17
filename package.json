@@ -4,6 +4,7 @@
   "description": "Phaser 3 Documentation Generator",
   "main": "src/index.js",
   "scripts": {
+    "help": "node help.js",
     "build": "node src/index.js",
     "gen": "jsdoc -c jsdoc.conf.json -R ../phaser/README.md",
     "json": "jsdoc -c jsdoc.data.json",
@@ -44,7 +45,8 @@
     "node-gyp": "^3.6.2",
     "path": "^0.12.7",
     "sql.js": "^0.4.0",
-    "string-occurrence": "^1.2.0"
+    "string-occurrence": "^1.2.0",
+    "vivid-cli": "^1.1.2"
   },
   "dependencies": {
     "prepend-file": "^1.3.1"
