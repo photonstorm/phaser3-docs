@@ -35379,7 +35379,7 @@ declare namespace Phaser {
                  * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
-                collider(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
+                collider(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group, object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
 
                 /**
                  * Create a new Arcade Physics Collider Overlap object.
@@ -35389,7 +35389,7 @@ declare namespace Phaser {
                  * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
-                overlap(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
+                overlap(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group, object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
 
                 /**
                  * Adds an Arcade Physics Body to the given Game Object.
