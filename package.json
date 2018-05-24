@@ -6,7 +6,7 @@
   "scripts": {
     "help": "node help.js",
     "build": "node src/index.js",
-    "gen": "jsdoc -c jsdoc.conf.json -R ../phaser/README.md",
+    "gen": "node --max_old_space_size=8192 node_modules/jsdoc/jsdoc.js -c jsdoc.conf.json -R ../phaser/README.md",
     "json": "jsdoc -c jsdoc.data.json",
     "sql": "node src/jsdoc-to-sqlite.js",
     "types": "node src/types.js",
