@@ -73,7 +73,8 @@
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "plugins": [
-        "jsdoc-plugins/typedef"
+        "jsdoc-plugins/typedef",
+        "jsdoc-plugins/this"
     ],
     "templates": {
         "systemName": "Phaser",

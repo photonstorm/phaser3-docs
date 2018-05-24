@@ -18,10 +18,11 @@
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "plugins": [
-        "jsdoc-plugins/typedef"
+        "jsdoc-plugins/typedef",
+        "jsdoc-plugins/this"
     ],
     "opts": {
-        "debug": true,
+        "debug": false,
         "destination": "./json/phaser.json",
         "encoding": "utf8",
         "outputSourceFiles": false,
