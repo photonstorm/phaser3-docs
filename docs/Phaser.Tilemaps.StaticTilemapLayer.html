@@ -727,7 +727,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="body" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">body</span><span class="signature-type"> :object</span></h4>
+			<h4 id="body" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">body</span><span class="signature-type"> :object|<a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a>|<a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -738,7 +738,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+									<div class="form-control-static type-names"><span class="param-type">object</span> | <span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span> | <span class="param-type"><a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></span></div>
 								</div>
 							</div>
 			
@@ -3317,7 +3317,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-115">line 115</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-111">line 111</a></p>
 								</div>
 							</div>
 			
@@ -3520,7 +3520,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Clears all alpha values associated with this Game Object.Immediately sets the alpha levels back to 1 (fully opaque)</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -3811,6 +3811,65 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
+			<h4 id="disableInteractive" class="function public inherited"><span class="name">disableInteractive</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Game Object has previously been enabled for input, this will disable it.An object that is disabled for input stops processing or being considered forinput events, but can be turned back on again at any time by simply calling`setInteractive()` with no arguments provided.If want to completely remove interaction from this Game Object then use `removeInteractive` instead.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This GameObject.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#disableInteractive">Phaser.GameObjects.GameObject#disableInteractive</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-294">line 294</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
 			<h4 id="emit" class="function public inherited"><span class="name">emit</span><span class="signature-params">( <span class="signature-param">event</span> [,&nbsp;<span class="signature-param">...args</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
@@ -3889,7 +3948,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-90">line 90</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-86">line 86</a></p>
 								</div>
 							</div>
 			
@@ -3948,7 +4007,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-59">line 59</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-55">line 55</a></p>
 								</div>
 							</div>
 			
@@ -5045,7 +5104,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-330">line 330</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-381">line 381</a></p>
 								</div>
 							</div>
 			
@@ -5127,7 +5186,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-374">line 374</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-406">line 406</a></p>
 								</div>
 							</div>
 			
@@ -6103,7 +6162,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-391">line 391</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-423">line 423</a></p>
 								</div>
 							</div>
 			
@@ -6438,7 +6497,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-79">line 79</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-75">line 75</a></p>
 								</div>
 							</div>
 			
@@ -6518,7 +6577,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-68">line 68</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
 								</div>
 							</div>
 			
@@ -6619,7 +6678,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-155">line 155</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
 								</div>
 							</div>
 			
@@ -6721,7 +6780,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-98">line 98</a></p>
 								</div>
 							</div>
 			
@@ -6823,7 +6882,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-128">line 128</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-124">line 124</a></p>
 								</div>
 							</div>
 			
@@ -6905,7 +6964,66 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-169">line 169</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-165">line 165</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeInteractive" class="function public inherited"><span class="name">removeInteractive</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Game Object has previously been enabled for input, this will remove it.The Interactive Object that was assigned to this Game Object will be destroyed,removed from the Input Manager and cleared from this Game Object.If you wish to re-enable this Game Object at a later date you will need tore-create its InteractiveOobject by calling `setInteractive` again.If you wish to only temporarily stop an object from receiving input then use`disableInteractive` instead, as that toggles the interactive state, where-asthis erases it completely.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This GameObject.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#removeInteractive">Phaser.GameObjects.GameObject#removeInteractive</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-318">line 318</a></p>
 								</div>
 							</div>
 			
@@ -7006,7 +7124,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-141">line 141</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-137">line 137</a></p>
 								</div>
 							</div>
 			
@@ -7145,7 +7263,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Resets the horizontal and vertical flipped state of this Game Object back to their default un-flipped state.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7395,7 +7513,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7479,7 +7597,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7519,7 +7637,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-257">line 257</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-289">line 289</a></p>
 								</div>
 							</div>
 			
@@ -7559,7 +7677,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8267,7 +8385,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8360,7 +8478,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8447,7 +8565,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8534,7 +8652,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8614,7 +8732,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8694,7 +8812,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8779,7 +8897,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									A callback to be invoked when the Game Object is interacted with.
+									A callback to be invoked when the Game Object is interacted with. If you provide a shape you must also provide a callback.
 							</td>
 						</tr>
 						<tr>
@@ -8969,7 +9087,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9028,7 +9146,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the origin of this Game Object based on the Pivot values in its Frame.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9219,7 +9337,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9271,6 +9389,117 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
+			<h4 id="setRandomPosition" class="function public inherited"><span class="name">setRandomPosition</span><span class="signature-params">( [&nbsp;<span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span> [,&nbsp;<span class="signature-param">width</span> [,&nbsp;<span class="signature-param">height</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the position of this Game Object to be a random position within the confines ofthe given area.If no area is specified a random position between 0 x 0 and the game width x height is used instead.The position does not factor in the size of this Game Object, meaning that only the origin isguaranteed to be within the area.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The x position of the top-left of the random area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The y position of the top-left of the random area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>width</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The width of the random area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>height</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The height of the random area.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Game Object instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.8.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Transform#setRandomPosition">Phaser.GameObjects.Components.Transform#setRandomPosition</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-238">line 238</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
 			<h4 id="setRotation" class="function public inherited"><span class="name">setRotation</span><span class="signature-params">( [&nbsp;<span class="signature-param">radians</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
@@ -9303,7 +9532,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9343,7 +9572,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-238">line 238</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-270">line 270</a></p>
 								</div>
 							</div>
 			
@@ -9396,7 +9625,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9436,7 +9665,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-276">line 276</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-308">line 308</a></p>
 								</div>
 							</div>
 			
@@ -9476,7 +9705,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9569,7 +9798,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9656,7 +9885,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -9938,7 +10167,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10022,7 +10251,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10062,7 +10291,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-355">line 355</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-387">line 387</a></p>
 								</div>
 							</div>
 			
@@ -10106,7 +10335,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10146,7 +10375,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-298">line 298</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-330">line 330</a></p>
 								</div>
 							</div>
 			
@@ -10190,7 +10419,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10230,7 +10459,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-317">line 317</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-349">line 349</a></p>
 								</div>
 							</div>
 			
@@ -10274,7 +10503,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10314,7 +10543,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-336">line 336</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-368">line 368</a></p>
 								</div>
 							</div>
 			
@@ -10365,7 +10594,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-35">line 35</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-31">line 31</a></p>
 								</div>
 							</div>
 			
@@ -10660,7 +10889,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Toggles the horizontal flipped state of this Game Object.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10719,7 +10948,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Toggles the vertical flipped state of this Game Object.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -10818,7 +11047,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-304">line 304</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-355">line 355</a></p>
 								</div>
 							</div>
 			
@@ -10869,7 +11098,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-294">line 294</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-345">line 345</a></p>
 								</div>
 							</div>
 			
@@ -10888,7 +11117,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Updates the Display Origin cached values internally stored on this Game Object.You don't usually call this directly, but it is exposed for edge-cases where you may.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -11060,7 +11289,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-317">line 317</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-368">line 368</a></p>
 								</div>
 							</div>
 			
@@ -11385,7 +11614,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

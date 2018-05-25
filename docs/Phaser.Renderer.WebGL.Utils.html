@@ -147,7 +147,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Counts how many attributes of 32 bits a vertex has</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -161,16 +161,16 @@
 					<tbody>
 						<tr>
 								<td><code>attributes</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">array</span></td>
 							<td class="last">
-									[description]
+									Array of attributes
 							</td>
 						</tr>
 						<tr>
 								<td><code>glContext</code></td>
 							<td><span class="param-type">WebGLRenderingContext</span></td>
 							<td class="last">
-									[description]
+									WebGLContext used for check types
 							</td>
 						</tr>
 					</tbody>
@@ -180,7 +180,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Count of 32 bit attributes in vertex</div>
 								</div>
 							</div>
 					</form>
@@ -211,7 +211,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_Utils.js.html">renderer/webgl/Utils.js</a>, <a href="renderer_webgl_Utils.js.html#line-94">line 94</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_Utils.js.html">renderer/webgl/Utils.js</a>, <a href="renderer_webgl_Utils.js.html#line-97">line 97</a></p>
 								</div>
 							</div>
 			
@@ -227,7 +227,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Unpacks a Uint24 RGB into an array of floats of ranges of 0.0 and 1.0</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -243,7 +243,7 @@
 								<td><code>rgb</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									RGB packed as a Uint24
 							</td>
 						</tr>
 					</tbody>
@@ -251,9 +251,9 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">array</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Array of floats representing each component as a float</div>
 								</div>
 							</div>
 					</form>
@@ -284,7 +284,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_Utils.js.html">renderer/webgl/Utils.js</a>, <a href="renderer_webgl_Utils.js.html#line-75">line 75</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_Utils.js.html">renderer/webgl/Utils.js</a>, <a href="renderer_webgl_Utils.js.html#line-78">line 78</a></p>
 								</div>
 							</div>
 			
@@ -300,7 +300,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Packs a Uint24, representing RGB components, with a Float32, representingthe alpha component, with a range between 0.0 and 1.0 and return a Uint32</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -316,14 +316,14 @@
 								<td><code>rgb</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Uint24 representing RGB components
 							</td>
 						</tr>
 						<tr>
 								<td><code>a</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Float32 representing Alpha component
 							</td>
 						</tr>
 					</tbody>
@@ -333,7 +333,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Packed RGBA as Uint32</div>
 								</div>
 							</div>
 					</form>
@@ -380,7 +380,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Packs a Uint24, representing RGB components, with a Float32, representingthe alpha component, with a range between 0.0 and 1.0 and return a swizzled Uint32</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -396,14 +396,14 @@
 								<td><code>rgb</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Uint24 representing RGB components
 							</td>
 						</tr>
 						<tr>
 								<td><code>a</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Float32 representing Alpha component
 							</td>
 						</tr>
 					</tbody>
@@ -413,7 +413,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">number</span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">Packed RGBA as Uint32</div>
 								</div>
 							</div>
 					</form>
@@ -444,7 +444,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_Utils.js.html">renderer/webgl/Utils.js</a>, <a href="renderer_webgl_Utils.js.html#line-54">line 54</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_Utils.js.html">renderer/webgl/Utils.js</a>, <a href="renderer_webgl_Utils.js.html#line-55">line 55</a></p>
 								</div>
 							</div>
 			
@@ -460,7 +460,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Packs four floats on a range from 0.0 to 1.0 into a single Uint32</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -476,7 +476,7 @@
 								<td><code>r</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Red component in a range from 0.0 to 1.0
 							</td>
 						</tr>
 						<tr>
@@ -497,7 +497,7 @@
 								<td><code>a</code></td>
 							<td><span class="param-type">number</span></td>
 							<td class="last">
-									[description]
+									Alpha component in a range from 0.0 to 1.0
 							</td>
 						</tr>
 					</tbody>
@@ -560,7 +560,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

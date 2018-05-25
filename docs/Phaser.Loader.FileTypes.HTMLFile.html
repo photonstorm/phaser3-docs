@@ -106,11 +106,11 @@
 					<section>
 							<dl class="symbol primary">
 								<dt class="symbol-title class">
-			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">HTMLFile</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">url</span>, <span class="signature-param">width</span>, <span class="signature-param">height</span>, <span class="signature-param">path</span> [,&nbsp;<span class="signature-param">xhrSettings</span>&nbsp;]&nbsp;)</span></h2>
+			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">HTMLFile</span><span class="signature-params">( <span class="signature-param">loader</span>, <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">url</span> [,&nbsp;<span class="signature-param">width</span> [,&nbsp;<span class="signature-param">height</span> [,&nbsp;<span class="signature-param">xhrSettings</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h2>
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">A single HTML File suitable for loading by the Loader.These are created when you use the Phaser.Loader.LoaderPlugin#html method and are not typically created directly.For documentation about what all the arguments and configuration options mean please see Phaser.Loader.LoaderPlugin#html.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -124,43 +124,43 @@
 					</thead>
 					<tbody>
 						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
+								<td><code>loader</code></td>
+							<td><span class="param-type"><a href="Phaser.Loader.LoaderPlugin.html">Phaser.Loader.LoaderPlugin</a></span></td>
 								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									A reference to the Loader that is responsible for this file.
+							</td>
+						</tr>
+						<tr>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span> | <span class="param-type"><a href="Phaser.Loader.FileTypes.html#.HTMLFileConfig">Phaser.Loader.FileTypes.HTMLFileConfig</a></span></td>
+								<td class="attributes"></td>
+							<td class="last">
+									The key to use for this file, or a file configuration object.
 							</td>
 						</tr>
 						<tr>
 								<td><code>url</code></td>
 							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
 							</td>
 						</tr>
 						<tr>
 								<td><code>width</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The width of the texture the HTML will be rendered to.
 							</td>
 						</tr>
 						<tr>
 								<td><code>height</code></td>
-							<td><span class="param-type">number</span></td>
-								<td class="attributes"></td>
+							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
-							</td>
-						</tr>
-						<tr>
-								<td><code>path</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									[description]
+									The height of the texture the HTML will be rendered to.
 							</td>
 						</tr>
 						<tr>
@@ -168,7 +168,7 @@
 							<td><span class="param-type"><a href="global.html#XHRSettingsObject">XHRSettingsObject</a></span></td>
 								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									Extra XHR Settings specifically for this file.
 							</td>
 						</tr>
 					</tbody>
@@ -208,7 +208,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_filetypes_HTMLFile.js.html">loader/filetypes/HTMLFile.js</a>, <a href="loader_filetypes_HTMLFile.js.html#line-13">line 13</a></p>
+									<p class="form-control-static"><a href="loader_filetypes_HTMLFile.js.html">loader/filetypes/HTMLFile.js</a>, <a href="loader_filetypes_HTMLFile.js.html#line-25">line 25</a></p>
 								</div>
 							</div>
 			
@@ -277,7 +277,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-153">line 153</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-167">line 167</a></p>
 								</div>
 							</div>
 			
@@ -342,7 +342,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-142">line 142</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-156">line 156</a></p>
 								</div>
 							</div>
 			
@@ -354,7 +354,65 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="config" class="member public inherited"><span class="name">config</span><span class="signature-type"> :object</span></h4>
+			<h4 id="cache" class="member public inherited"><span class="name">cache</span><span class="signature-type"> :<a href="Phaser.Cache.BaseCache.html">Phaser.Cache.BaseCache</a>|<a href="Phaser.Textures.TextureManager.html">Phaser.Textures.TextureManager</a></span></h4>
+		</dt>
+<dd class="symbol-details member public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">A reference to the Cache, or Texture Manager, that is going to store this file if it loads.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Cache.BaseCache.html">Phaser.Cache.BaseCache</a></span> | <span class="param-type"><a href="Phaser.Textures.TextureManager.html">Phaser.Textures.TextureManager</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#cache">Phaser.Loader.File#cache</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-56">line 56</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public inherited">
+			<h4 id="config" class="member public inherited"><span class="name">config</span><span class="signature-type"> :*</span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -365,7 +423,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+									<div class="form-control-static type-names"><span class="param-type">*</span></div>
 								</div>
 							</div>
 			
@@ -400,7 +458,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-194">line 194</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-208">line 208</a></p>
 								</div>
 							</div>
 			
@@ -458,7 +516,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-175">line 175</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-189">line 189</a></p>
 								</div>
 							</div>
 			
@@ -474,7 +532,7 @@
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The processed file data, stored in here after the file has loaded.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The processed file data, stored here after the file has loaded.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -516,7 +574,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-185">line 185</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-199">line 199</a></p>
 								</div>
 							</div>
 			
@@ -574,7 +632,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-60">line 60</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-74">line 74</a></p>
 								</div>
 							</div>
 			
@@ -590,7 +648,7 @@
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this is a multipart file, i.e. an atlas and its json together, then this is a referenceto the linked file. Set and used internally by the Loader.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Does this file have an associated linked file? Such as an image and a normal map.Atlases and Bitmap Fonts use the multiFile, because those files need loading together but aren'tactually bound by data, where-as a linkFile is.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -608,7 +666,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
+									<p class="form-control-static">3.7.0</p>
 								</div>
 							</div>
 			
@@ -632,7 +690,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-203">line 203</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-227">line 227</a></p>
 								</div>
 							</div>
 			
@@ -644,141 +702,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="linkParent" class="member public inherited"><span class="name">linkParent</span><span class="signature-type"> :boolean</span></h4>
+			<h4 id="loader" class="member public inherited"><span class="name">loader</span><span class="signature-type"> :<a href="Phaser.Loader.LoaderPlugin.html">Phaser.Loader.LoaderPlugin</a></span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this is a link file, is this the parent or the sibbling?</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">boolean</span></div>
-								</div>
-							</div>
-			
-							<!-- defaultvalue -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Default Value</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">false</p>
-								</div>
-							</div>
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="Phaser.Loader.File.html#linkParent">Phaser.Loader.File#linkParent</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-224">line 224</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public inherited">
-			<h4 id="linkType" class="member public inherited"><span class="name">linkType</span><span class="signature-type"> :string</span></h4>
-		</dt>
-<dd class="symbol-details member public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this is a multipart file, i.e. an atlas and its json together, then this is a referenceto the type of linked association. Set and used internally by the Loader.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">string</span></div>
-								</div>
-							</div>
-			
-							<!-- defaultvalue -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Default Value</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">&#x27;&#x27;</p>
-								</div>
-							</div>
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="Phaser.Loader.File.html#linkType">Phaser.Loader.File#linkType</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-213">line 213</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title member public inherited">
-			<h4 id="loader" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">loader</span><span class="signature-type"> :<a href="Phaser.Loader.LoaderPlugin.html">Phaser.Loader.LoaderPlugin</a></span></h4>
-		</dt>
-<dd class="symbol-details member public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The LoaderPlugin instance that is loading this file.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">A reference to the Loader that is going to load this file.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -820,7 +748,65 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-115">line 115</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-47">line 47</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public inherited">
+			<h4 id="multiFile" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">multiFile</span><span class="signature-type"> :<a href="Phaser.Loader.MultiFile.html">Phaser.Loader.MultiFile</a></span></h4>
+		</dt>
+<dd class="symbol-details member public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this is a multipart file, i.e. an atlas and its json together, then this is a referenceto the parent MultiFile. Set and used internally by the Loader or specific file types.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Loader.MultiFile.html">Phaser.Loader.MultiFile</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#multiFile">Phaser.Loader.File#multiFile</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-217">line 217</a></p>
 								</div>
 							</div>
 			
@@ -885,7 +871,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-164">line 164</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-178">line 178</a></p>
 								</div>
 							</div>
 			
@@ -901,7 +887,7 @@
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set when the Loader calls 'load' on this file.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The final URL this file will load from, including baseURL and path.Set automatically when the Loader calls 'load' on this file.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -943,7 +929,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-92">line 92</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-114">line 114</a></p>
 								</div>
 							</div>
 			
@@ -1001,7 +987,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-133">line 133</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-147">line 147</a></p>
 								</div>
 							</div>
 			
@@ -1059,7 +1045,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-51">line 51</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-65">line 65</a></p>
 								</div>
 							</div>
 			
@@ -1075,7 +1061,7 @@
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The URL of the file, not including baseURL.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The URL of the file, not including baseURL.Automatically has Loader.path prepended to it.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1117,7 +1103,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-74">line 74</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-95">line 95</a></p>
 								</div>
 							</div>
 			
@@ -1175,7 +1161,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-124">line 124</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-138">line 138</a></p>
 								</div>
 							</div>
 			
@@ -1233,7 +1219,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-101">line 101</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-124">line 124</a></p>
 								</div>
 							</div>
 			
@@ -1247,34 +1233,174 @@
 									<h3>Methods</h3>
 									<dl class="symbol">
 											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="addToCache" class="function public"><span class="name">addToCache</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds this file to its target cache upon successful loading and processing.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+			
+							<!-- overrides -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Overrides</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#addToCache">Phaser.Loader.File#addToCache</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_filetypes_HTMLFile.js.html">loader/filetypes/HTMLFile.js</a>, <a href="loader_filetypes_HTMLFile.js.html#line-149">line 149</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="load" class="function public inherited"><span class="name">load</span><span class="signature-params">( <span class="signature-param">loader</span>&nbsp;)</span></h4>
+			<h4 id="destroy" class="function public inherited"><span class="name">destroy</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called by the Loader, starts the actual file downloading.During the load the methods onLoad, onProgress, etc are called based on the XHR events.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>loader</code></td>
-							<td><span class="param-type"><a href="Phaser.Loader.LoaderPlugin.html">Phaser.Loader.LoaderPlugin</a></span></td>
-							<td class="last">
-									The Loader that will load this File.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroy this File and any references it holds.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#destroy">Phaser.Loader.File#destroy</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-525">line 525</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="hasCacheConflict" class="function public inherited"><span class="name">hasCacheConflict</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Checks if a key matching the one used by this file exists in the target Cache or not.This is called automatically by the LoaderPlugin to decide if the file can be safelyloaded or will conflict.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">`true` if adding this file will cause a conflict, otherwise `false`.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#hasCacheConflict">Phaser.Loader.File#hasCacheConflict</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-419">line 419</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="load" class="function public inherited"><span class="name">load</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called by the Loader, starts the actual file downloading.During the load the methods onLoad, onError and onProgress are called, based on the XHR events.You shouldn't normally call this method directly, it's meant to be invoked by the Loader.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -1308,58 +1434,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-272">line 272</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-											<hr/>
-											<dt class="symbol-title function public inherited">
-			<h4 id="onComplete" class="function public inherited"><span class="name">onComplete</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public inherited">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called with the File has completed loading.Checks on the state of its linkfile, if set.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-							<!-- inherits -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Inherited From</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="Phaser.Loader.File.html#onComplete">Phaser.Loader.File#onComplete</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-383">line 383</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-270">line 270</a></p>
 								</div>
 							</div>
 			
@@ -1431,7 +1506,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-328">line 328</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-331">line 331</a></p>
 								</div>
 							</div>
 			
@@ -1443,7 +1518,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="onLoad" class="function public inherited"><span class="name">onLoad</span><span class="signature-params">( <span class="signature-param">event</span>&nbsp;)</span></h4>
+			<h4 id="onLoad" class="function public inherited"><span class="name">onLoad</span><span class="signature-params">( <span class="signature-param">xhr</span>, <span class="signature-param">event</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
@@ -1459,6 +1534,13 @@
 					</tr>
 					</thead>
 					<tbody>
+						<tr>
+								<td><code>xhr</code></td>
+							<td><span class="param-type">XMLHttpRequest</span></td>
+							<td class="last">
+									The XMLHttpRequest that caused this onload event.
+							</td>
+						</tr>
 						<tr>
 								<td><code>event</code></td>
 							<td><span class="param-type">ProgressEvent</span></td>
@@ -1503,7 +1585,58 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-306">line 306</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-307">line 307</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public">
+			<h4 id="onProcess" class="function public"><span class="name">onProcess</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called automatically by Loader.nextFile.This method controls what extra work this File does with its loaded data.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+			
+							<!-- overrides -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Overrides</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#onProcess">Phaser.Loader.File#onProcess</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_filetypes_HTMLFile.js.html">loader/filetypes/HTMLFile.js</a>, <a href="loader_filetypes_HTMLFile.js.html#line-88">line 88</a></p>
 								</div>
 							</div>
 			
@@ -1515,33 +1648,12 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="onProcess" class="function public inherited"><span class="name">onProcess</span><span class="signature-params">( <span class="signature-param">callback</span>&nbsp;)</span></h4>
+			<h4 id="onProcessComplete" class="function public inherited"><span class="name">onProcessComplete</span><span class="signature-params">()</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Usually overridden by the FileTypes and is called by Loader.finishedLoading.The callback is Loader.processUpdate</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>callback</code></td>
-							<td><span class="param-type"><a href="global.html#FileProcessCallback">FileProcessCallback</a></span></td>
-							<td class="last">
-									The callback to invoke to process this File.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called when the File has completed processing.Checks on the state of its multifile, if set.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -1551,7 +1663,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
+									<p class="form-control-static">3.7.0</p>
 								</div>
 							</div>
 			
@@ -1559,7 +1671,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="Phaser.Loader.File.html#onProcess">Phaser.Loader.File#onProcess</a></p>
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#onProcessComplete">Phaser.Loader.File#onProcessComplete</a></p>
 								</div>
 							</div>
 			
@@ -1575,7 +1687,58 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-365">line 365</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-381">line 381</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="onProcessError" class="function public inherited"><span class="name">onProcessError</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called when the File has completed processing but it generated an error.Checks on the state of its multifile, if set.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#onProcessError">Phaser.Loader.File#onProcessError</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-400">line 400</a></p>
 								</div>
 							</div>
 			
@@ -1647,7 +1810,72 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-343">line 343</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-346">line 346</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="pendingDestroy" class="function public inherited"><span class="name">pendingDestroy</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called once the file has been added to its cache and is now ready for deletion from the Loader.It will emit a `filecomplete` event from the LoaderPlugin.</div>
+			</div>			<div class="callout callout-warning"><h5>Fires</h5>		<form class="form-horizontal fires">
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Loader.File.html#event:fileCompleteEvent">Phaser.Loader.File#fileCompleteEvent</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label fires-event"><a href="Phaser.Loader.File.html#event:singleFileCompleteEvent">Phaser.Loader.File#singleFileCompleteEvent</a></label>
+								<div class="col-sm-9">
+									<div class="form-control-static fires-summary"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#pendingDestroy">Phaser.Loader.File#pendingDestroy</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-503">line 503</a></p>
 								</div>
 							</div>
 			
@@ -1663,7 +1891,7 @@
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Resets the XHRLoader instance.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Resets the XHRLoader instance this file is using.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
@@ -1698,7 +1926,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-256">line 256</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-254">line 254</a></p>
 								</div>
 							</div>
 			
@@ -1710,11 +1938,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
-			<h4 id="setLinkFile" class="function public inherited"><span class="name">setLinkFile</span><span class="signature-params">( <span class="signature-param">fileB</span>, <span class="signature-param">linkType</span>&nbsp;)</span></h4>
+			<h4 id="setLink" class="function public inherited"><span class="name">setLink</span><span class="signature-params">( <span class="signature-param">fileB</span>&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this is a multipart file, i.e. an atlas and its json together, then this is a referenceto the linked file. Set and used internally by the Loader.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Links this File with another, so they depend upon each other for loading and processing.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1730,14 +1958,7 @@
 								<td><code>fileB</code></td>
 							<td><span class="param-type"><a href="Phaser.Loader.File.html">Phaser.Loader.File</a></span></td>
 							<td class="last">
-									The linked file.
-							</td>
-						</tr>
-						<tr>
-								<td><code>linkType</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The type of association.
+									The file to link to this one.
 							</td>
 						</tr>
 					</tbody>
@@ -1753,7 +1974,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
+									<p class="form-control-static">3.7.0</p>
 								</div>
 							</div>
 			
@@ -1761,7 +1982,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="Phaser.Loader.File.html#setLinkFile">Phaser.Loader.File#setLinkFile</a></p>
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#setLink">Phaser.Loader.File#setLink</a></p>
 								</div>
 							</div>
 			
@@ -1777,7 +1998,154 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-235">line 235</a></p>
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-239">line 239</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+									</dl>
+									<h3>Events</h3>
+									<dl class="symbol">
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:fileCompleteEvent" class="event public inherited"><span class="name">fileCompleteEvent</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">You can listen for this event from the LoaderPlugin. It is dispatched _every time_a file loads and is sent 3 arguments, which allow you to identify the file:```javascriptthis.load.on('filecomplete', function (key, type, data) {    // Your handler code});```</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>key</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									The key of the file that just loaded and finished processing.
+							</td>
+						</tr>
+						<tr>
+								<td><code>type</code></td>
+							<td><span class="param-type">string</span></td>
+							<td class="last">
+									The type of the file that just loaded and finished processing.
+							</td>
+						</tr>
+						<tr>
+								<td><code>data</code></td>
+							<td><span class="param-type">any</span></td>
+							<td class="last">
+									The data of the file.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#event:fileCompleteEvent">Phaser.Loader.File#fileCompleteEvent</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-451">line 451</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title event public inherited">
+			<h4 id="event:singleFileCompleteEvent" class="event public inherited"><span class="name">singleFileCompleteEvent</span></h4>
+		</dt>
+<dd class="symbol-details event public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">You can listen for this event from the LoaderPlugin. It is dispatched only once perfile and you have to use a special listener handle to pick it up.The string of the event is based on the file type and the key you gave it, split upusing hyphens.For example, if you have loaded an image with a key of `monster`, you can listen for itusing the following:```javascriptthis.load.on('filecomplete-image-monster', function (key, type, data) {    // Your handler code});```Or, if you have loaded a texture atlas with a key of `Level1`:```javascriptthis.load.on('filecomplete-atlas-Level1', function (key, type, data) {    // Your handler code});```Or, if you have loaded a sprite sheet with a key of `Explosion` and a prefix of `GAMEOVER`:```javascriptthis.load.on('filecomplete-spritesheet-GAMEOVERExplosion', function (key, type, data) {    // Your handler code});```</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>data</code></td>
+							<td><span class="param-type">any</span></td>
+							<td class="last">
+									The data of the file.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.Loader.File.html#event:singleFileCompleteEvent">Phaser.Loader.File#singleFileCompleteEvent</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="loader_File.js.html">loader/File.js</a>, <a href="loader_File.js.html#line-467">line 467</a></p>
 								</div>
 							</div>
 			
@@ -1799,7 +2167,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

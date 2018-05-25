@@ -107,32 +107,38 @@ var Group = require('../../gameobjects/group/Group');
  * @typedef {object} PhysicsGroupConfig
  * @extends GroupConfig
  *
- * @property {[type]} [collideWorldBounds=false] - [description]
- * @property {number} [accelerationX=0] - [description]
- * @property {number} [accelerationY=0] - [description]
- * @property {number} [bounceX=0] - [description]
- * @property {number} [bounceY=0] - [description]
- * @property {number} [dragX=0] - [description]
- * @property {number} [dragY=0] - [description]
- * @property {number} [gravityX=0] - [description]
- * @property {number} [gravityY=0] - [description]
- * @property {number} [frictionX=0] - [description]
- * @property {number} [frictionY=0] - [description]
- * @property {number} [velocityX=0] - [description]
- * @property {number} [velocityY=0] - [description]
- * @property {number} [angularVelocity=0] - [description]
- * @property {number} [angularAcceleration=0] - [description]
- * @property {number} [angularDrag=0] - [description]
- * @property {number} [mass=0] - [description]
- * @property {boolean} [immovable=false] - [description]
+ * @property {boolean} [collideWorldBounds=false] - Sets {@link Phaser.Physics.Arcade.Body#collideWorldBounds}.
+ * @property {number} [accelerationX=0] - Sets {@link Phaser.Physics.Arcade.Body#acceleration acceleration.x}.
+ * @property {number} [accelerationY=0] - Sets {@link Phaser.Physics.Arcade.Body#acceleration acceleration.y}.
+ * @property {boolean} [allowDrag=true] - Sets {@link Phaser.Physics.Arcade.Body#allowDrag}.
+ * @property {boolean} [allowGravity=true] - Sets {@link Phaser.Physics.Arcade.Body#allowGravity}.
+ * @property {boolean} [allowRotation=true] - Sets {@link Phaser.Physics.Arcade.Body#allowRotation}.
+ * @property {number} [bounceX=0] - Sets {@link Phaser.Physics.Arcade.Body#bounce bounce.x}.
+ * @property {number} [bounceY=0] - Sets {@link Phaser.Physics.Arcade.Body#bounce bounce.y}.
+ * @property {number} [dragX=0] - Sets {@link Phaser.Physics.Arcade.Body#drag drag.x}.
+ * @property {number} [dragY=0] - Sets {@link Phaser.Physics.Arcade.Body#drag drag.y}.
+ * @property {number} [gravityX=0] - Sets {@link Phaser.Physics.Arcade.Body#gravity gravity.x}.
+ * @property {number} [gravityY=0] - Sets {@link Phaser.Physics.Arcade.Body#gravity gravity.y}.
+ * @property {number} [frictionX=0] - Sets {@link Phaser.Physics.Arcade.Body#friction friction.x}.
+ * @property {number} [frictionY=0] - Sets {@link Phaser.Physics.Arcade.Body#friction friction.y}.
+ * @property {number} [velocityX=0] - Sets {@link Phaser.Physics.Arcade.Body#velocity velocity.x}.
+ * @property {number} [velocityY=0] - Sets {@link Phaser.Physics.Arcade.Body#velocity velocity.y}.
+ * @property {number} [angularVelocity=0] - Sets {@link Phaser.Physics.Arcade.Body#angularVelocity}.
+ * @property {number} [angularAcceleration=0] - Sets {@link Phaser.Physics.Arcade.Body#angularAcceleration}.
+ * @property {number} [angularDrag=0] - Sets {@link Phaser.Physics.Arcade.Body#angularDrag}.
+ * @property {number} [mass=0] - Sets {@link Phaser.Physics.Arcade.Body#mass}.
+ * @property {boolean} [immovable=false] - Sets {@link Phaser.Physics.Arcade.Body#immovable}.
  */
 
 /**
  * @typedef {object} PhysicsGroupDefaults
  *
- * @property {[type]} setCollideWorldBounds - [description]
+ * @property {boolean} setCollideWorldBounds - [description]
  * @property {number} setAccelerationX - [description]
  * @property {number} setAccelerationY - [description]
+ * @property {boolean} setAllowDrag - [description]
+ * @property {boolean} setAllowGravity - [description]
+ * @property {boolean} setAllowRotation - [description]
  * @property {number} setBounceX - [description]
  * @property {number} setBounceY - [description]
  * @property {number} setDragX - [description]
@@ -194,9 +200,16 @@ var PhysicsGroup = new Class({
          */
         this.world = world;
 
-        config.createCallback = this.createCallback;
-        config.removeCallback = this.removeCallback;
+        config.createCallback = this.createCallbackHandler;
+        config.removeCallback = this.removeCallbackHandler;
 
+        /**
+         * The class to create new group members from.
+         *
+         * @name Phaser.Physics.Arcade.Group#classType
+         * @type {Phaser.Physics.Arcade.Sprite}
+         * @default ArcadeSprite
+         */
         config.classType = GetFastValue(config, 'classType', ArcadeSprite);
 
         /**
@@ -219,6 +232,9 @@ var PhysicsGroup = new Class({
             setCollideWorldBounds: GetFastValue(config, 'collideWorldBounds', false),
             setAccelerationX: GetFastValue(config, 'accelerationX', 0),
             setAccelerationY: GetFastValue(config, 'accelerationY', 0),
+            setAllowDrag: GetFastValue(config, 'allowDrag', true),
+            setAllowGravity: GetFastValue(config, 'allowGravity', true),
+            setAllowRotation: GetFastValue(config, 'allowRotation', true),
             setBounceX: GetFastValue(config, 'bounceX', 0),
             setBounceY: GetFastValue(config, 'bounceY', 0),
             setDragX: GetFastValue(config, 'dragX', 0),
@@ -242,12 +258,12 @@ var PhysicsGroup = new Class({
     /**
      * [description]
      *
-     * @method Phaser.Physics.Arcade.Group#createCallback
+     * @method Phaser.Physics.Arcade.Group#createCallbackHandler
      * @since 3.0.0
      *
      * @param {Phaser.GameObjects.GameObject} child - [description]
      */
-    createCallback: function (child)
+    createCallbackHandler: function (child)
     {
         if (!child.body)
         {
@@ -265,12 +281,12 @@ var PhysicsGroup = new Class({
     /**
      * [description]
      *
-     * @method Phaser.Physics.Arcade.Group#removeCallback
+     * @method Phaser.Physics.Arcade.Group#removeCallbackHandler
      * @since 3.0.0
      *
      * @param {Phaser.GameObjects.GameObject} child - [description]
      */
-    removeCallback: function (child)
+    removeCallbackHandler: function (child)
     {
         if (child.body)
         {
@@ -365,7 +381,7 @@ module.exports = PhysicsGroup;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

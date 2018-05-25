@@ -114,7 +114,7 @@
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">A Particle Emitter Manager creates and controls <a href="Phaser.GameObjects.Particles.ParticleEmitter.html">Particle Emitters</a> and <a href="Phaser.GameObjects.Particles.GravityWell.html">Gravity Wells</a>.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -130,28 +130,28 @@
 								<td><code>scene</code></td>
 							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
 							<td class="last">
-									[description]
+									The Scene to which this Emitter Manager belongs.
 							</td>
 						</tr>
 						<tr>
 								<td><code>texture</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									The key of the Texture this Emitter Manager will use to render particles, as stored in the Texture Manager.
 							</td>
 						</tr>
 						<tr>
 								<td><code>frame</code></td>
 							<td><span class="param-type">string</span> | <span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									An optional frame from the Texture this Emitter Manager will use to render particles.
 							</td>
 						</tr>
 						<tr>
 								<td><code>emitters</code></td>
-							<td><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.Particles.ParticleEmitter.html">Phaser.GameObjects.Particles.ParticleEmitter</a>></span></td>
+							<td><span class="param-type"><a href="global.html#ParticleEmitterConfig">ParticleEmitterConfig</a></span> | <span class="param-type">Array.&lt;<a href="global.html#ParticleEmitterConfig">ParticleEmitterConfig</a>></span></td>
 							<td class="last">
-									[description]
+									Configuration settings for one or more emitters to create.
 							</td>
 						</tr>
 					</tbody>
@@ -277,7 +277,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="body" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">body</span><span class="signature-type"> :object</span></h4>
+			<h4 id="body" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">body</span><span class="signature-type"> :object|<a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a>|<a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -288,7 +288,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+									<div class="form-control-static type-names"><span class="param-type">object</span> | <span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span> | <span class="param-type"><a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></span></div>
 								</div>
 							</div>
 			
@@ -511,7 +511,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-113">line 113</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-115">line 115</a></p>
 								</div>
 							</div>
 			
@@ -527,7 +527,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The texture frame used to render this Emitter Manager's particles.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -569,7 +569,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-83">line 83</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-85">line 85</a></p>
 								</div>
 							</div>
 			
@@ -581,18 +581,18 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public">
-			<h4 id="frameNames" class="member public"><span class="name">frameNames</span><span class="signature-type"> :Array.&lt;<a href="Phaser.Textures.Frame.html">Phaser.Textures.Frame</a>></span></h4>
+			<h4 id="frameNames" class="member public"><span class="name">frameNames</span><span class="signature-type"> :Array.&lt;string></span></h4>
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Names of this Emitter Manager's texture frames.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">Array.&lt;<a href="Phaser.Textures.Frame.html">Phaser.Textures.Frame</a>></span></div>
+									<div class="form-control-static type-names"><span class="param-type">Array.&lt;string></span></div>
 								</div>
 							</div>
 			
@@ -620,7 +620,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-93">line 93</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-95">line 95</a></p>
 								</div>
 							</div>
 			
@@ -1077,7 +1077,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The texture used to render this Emitter Manager's particles.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1119,7 +1119,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-73">line 73</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-75">line 75</a></p>
 								</div>
 							</div>
 			
@@ -1135,7 +1135,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The time scale applied to all emitters and particles, affecting flow rate, lifespan, and movement.Values larger than 1 are faster than normal.This is multiplied with any timeScale set on each individual emitter.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1286,7 +1286,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-122">line 122</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-124">line 124</a></p>
 								</div>
 							</div>
 			
@@ -1305,7 +1305,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds an existing Particle Emitter to this Manager.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds an existing Particle Emitter to this Emitter Manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1362,7 +1362,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-235">line 235</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-237">line 237</a></p>
 								</div>
 							</div>
 			
@@ -1378,7 +1378,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds an existing Gravity Well object to this Manager.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds an existing Gravity Well object to this Emitter Manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1435,7 +1435,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-265">line 265</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-267">line 267</a></p>
 								</div>
 							</div>
 			
@@ -1537,7 +1537,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-115">line 115</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-111">line 111</a></p>
 								</div>
 							</div>
 			
@@ -1553,7 +1553,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a new Particle Emitter object, adds it to this Manager and returns a reference to it.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a new Particle Emitter object, adds it to this Emitter Manager and returns a reference to it.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1610,7 +1610,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-250">line 250</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-252">line 252</a></p>
 								</div>
 							</div>
 			
@@ -1626,7 +1626,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a new Gravity Well, adds it to this Manager and returns a reference to it.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a new Gravity Well, adds it to this Emitter Manager and returns a reference to it.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1683,7 +1683,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-280">line 280</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-282">line 282</a></p>
 								</div>
 							</div>
 			
@@ -1734,7 +1734,66 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-374">line 374</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-425">line 425</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="disableInteractive" class="function public inherited"><span class="name">disableInteractive</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Game Object has previously been enabled for input, this will disable it.An object that is disabled for input stops processing or being considered forinput events, but can be turned back on again at any time by simply calling`setInteractive()` with no arguments provided.If want to completely remove interaction from this Game Object then use `removeInteractive` instead.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This GameObject.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#disableInteractive">Phaser.GameObjects.GameObject#disableInteractive</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-294">line 294</a></p>
 								</div>
 							</div>
 			
@@ -1824,7 +1883,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-90">line 90</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-86">line 86</a></p>
 								</div>
 							</div>
 			
@@ -1836,11 +1895,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="emitParticle" class="function public"><span class="name">emitParticle</span><span class="signature-params">( <span class="signature-param">count</span>, <span class="signature-param">x</span>, <span class="signature-param">y</span>&nbsp;)</span></h4>
+			<h4 id="emitParticle" class="function public"><span class="name">emitParticle</span><span class="signature-params">( [&nbsp;<span class="signature-param">count</span> [,&nbsp;<span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Emits particles from each active emitter.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1848,6 +1907,7 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
@@ -1855,22 +1915,25 @@
 						<tr>
 								<td><code>count</code></td>
 							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The number of particles to release from each emitter. The default is the emitter's own <a href="Phaser.GameObjects.Particles.ParticleEmitter.html#quantity">Phaser.GameObjects.Particles.ParticleEmitter#quantity</a>.
 							</td>
 						</tr>
 						<tr>
 								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The x-coordinate to to emit particles from. The default is the x-coordinate of the emitter's current location.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The y-coordinate to to emit particles from. The default is the y-coordinate of the emitter's current location.
 							</td>
 						</tr>
 					</tbody>
@@ -1880,7 +1943,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -1911,7 +1974,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-295">line 295</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-297">line 297</a></p>
 								</div>
 							</div>
 			
@@ -1923,11 +1986,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="emitParticleAt" class="function public"><span class="name">emitParticleAt</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">count</span>&nbsp;)</span></h4>
+			<h4 id="emitParticleAt" class="function public"><span class="name">emitParticleAt</span><span class="signature-params">( [&nbsp;<span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span> [,&nbsp;<span class="signature-param">count</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Emits particles from each active emitter.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1935,29 +1998,33 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The x-coordinate to to emit particles from. The default is the x-coordinate of the emitter's current location.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">float</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The y-coordinate to to emit particles from. The default is the y-coordinate of the emitter's current location.
 							</td>
 						</tr>
 						<tr>
 								<td><code>count</code></td>
 							<td><span class="param-type">integer</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The number of particles to release from each emitter. The default is the emitter's own <a href="Phaser.GameObjects.Particles.ParticleEmitter.html#quantity">Phaser.GameObjects.Particles.ParticleEmitter#quantity</a>.
 							</td>
 						</tr>
 					</tbody>
@@ -1967,7 +2034,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -1998,7 +2065,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-324">line 324</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-326">line 326</a></p>
 								</div>
 							</div>
 			
@@ -2057,7 +2124,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-59">line 59</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-55">line 55</a></p>
 								</div>
 							</div>
 			
@@ -2196,7 +2263,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-330">line 330</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-381">line 381</a></p>
 								</div>
 							</div>
 			
@@ -2212,12 +2279,12 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets all active particle processors (gravity wells).</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">Array.&lt;<a href="Phaser.GameObjects.Particles.GravityWell.html">Phaser.GameObjects.Particles.GravityWell</a>></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">[description]</div>
+									<div class="form-control-static returns-description">- The active gravity wells.</div>
 								</div>
 							</div>
 					</form>
@@ -2248,7 +2315,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-375">line 375</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-377">line 377</a></p>
 								</div>
 							</div>
 			
@@ -2328,7 +2395,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-79">line 79</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-75">line 75</a></p>
 								</div>
 							</div>
 			
@@ -2408,7 +2475,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-68">line 68</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
 								</div>
 							</div>
 			
@@ -2509,7 +2576,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-155">line 155</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
 								</div>
 							</div>
 			
@@ -2611,7 +2678,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-98">line 98</a></p>
 								</div>
 							</div>
 			
@@ -2713,7 +2780,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-128">line 128</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-124">line 124</a></p>
 								</div>
 							</div>
 			
@@ -2734,7 +2801,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -2765,7 +2832,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-341">line 341</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-343">line 343</a></p>
 								</div>
 							</div>
 			
@@ -2781,7 +2848,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Updates all active emitters.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2802,7 +2869,7 @@
 						</tr>
 						<tr>
 								<td><code>delta</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">float</span></td>
 							<td class="last">
 									The delta time, in ms, elapsed since the last frame.
 							</td>
@@ -2837,7 +2904,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-388">line 388</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-390">line 390</a></p>
 								</div>
 							</div>
 			
@@ -2919,7 +2986,66 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-169">line 169</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-165">line 165</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeInteractive" class="function public inherited"><span class="name">removeInteractive</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Game Object has previously been enabled for input, this will remove it.The Interactive Object that was assigned to this Game Object will be destroyed,removed from the Input Manager and cleared from this Game Object.If you wish to re-enable this Game Object at a later date you will need tore-create its InteractiveOobject by calling `setInteractive` again.If you wish to only temporarily stop an object from receiving input then use`disableInteractive` instead, as that toggles the interactive state, where-asthis erases it completely.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This GameObject.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#removeInteractive">Phaser.GameObjects.GameObject#removeInteractive</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-318">line 318</a></p>
 								</div>
 							</div>
 			
@@ -3020,7 +3146,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-141">line 141</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-137">line 137</a></p>
 								</div>
 							</div>
 			
@@ -3041,7 +3167,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -3072,7 +3198,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-360">line 360</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-362">line 362</a></p>
 								</div>
 							</div>
 			
@@ -3321,7 +3447,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Assigns texture frames to an emitter.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3337,14 +3463,14 @@
 								<td><code>frames</code></td>
 							<td><span class="param-type"><a href="Phaser.Textures.Frame.html">Phaser.Textures.Frame</a></span> | <span class="param-type">Array.&lt;<a href="Phaser.Textures.Frame.html">Phaser.Textures.Frame</a>></span></td>
 							<td class="last">
-									[description]
+									The texture frames.
 							</td>
 						</tr>
 						<tr>
 								<td><code>emitter</code></td>
 							<td><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitter.html">Phaser.GameObjects.Particles.ParticleEmitter</a></span></td>
 							<td class="last">
-									[description]
+									The particle emitter to modify.
 							</td>
 						</tr>
 					</tbody>
@@ -3354,7 +3480,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -3385,7 +3511,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-191">line 191</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-193">line 193</a></p>
 								</div>
 							</div>
 			
@@ -3401,7 +3527,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the frame this Game Object will use to render with.The Frame has to belong to the current Texture being used.It can be either a string or an index.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the frame this Emitter Manager will use to render with.The Frame has to belong to the current Texture being used.It can be either a string or an index.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3429,7 +3555,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -3460,7 +3586,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-166">line 166</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-168">line 168</a></p>
 								</div>
 							</div>
 			
@@ -3505,7 +3631,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									A callback to be invoked when the Game Object is interacted with.
+									A callback to be invoked when the Game Object is interacted with. If you provide a shape you must also provide a callback.
 							</td>
 						</tr>
 						<tr>
@@ -3658,7 +3784,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the texture and frame this Game Object will use to render with.Textures are referenced by their string-based keys, as stored in the Texture Manager.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the texture and frame this Emitter Manager will use to render with.Textures are referenced by their string-based keys, as stored in the Texture Manager.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -3694,7 +3820,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></span></label>
 								<div class="col-sm-9">
-									<div class="form-control-static returns-description">This Game Object.</div>
+									<div class="form-control-static returns-description">This Emitter Manager.</div>
 								</div>
 							</div>
 					</form>
@@ -3725,7 +3851,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-146">line 146</a></p>
+									<p class="form-control-static"><a href="gameobjects_particles_ParticleEmitterManager.js.html">gameobjects/particles/ParticleEmitterManager.js</a>, <a href="gameobjects_particles_ParticleEmitterManager.js.html#line-148">line 148</a></p>
 								</div>
 							</div>
 			
@@ -3776,7 +3902,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-35">line 35</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-31">line 31</a></p>
 								</div>
 							</div>
 			
@@ -3835,7 +3961,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-304">line 304</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-355">line 355</a></p>
 								</div>
 							</div>
 			
@@ -3886,7 +4012,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-294">line 294</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-345">line 345</a></p>
 								</div>
 							</div>
 			
@@ -3945,7 +4071,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-317">line 317</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-368">line 368</a></p>
 								</div>
 							</div>
 			
@@ -3967,7 +4093,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

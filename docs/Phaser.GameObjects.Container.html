@@ -114,7 +114,7 @@
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">A Container Game Object.WARNING: EXPERIMENTAL. There are several known cases where Containers will not behave correctly,especially if you use a multi-camera or transformed camera set-up. We are still working on them,but wanted to release as part of 3.4 under a beta feature flag, because in the main they workare and worth getting used to.A Container, as the name implies, can 'contain' other types of Game Object.When a Game Object is added to a Container, the Container becomes responsible for the rendering of it.By default it will be removed from the Display List and instead added to the Containers own internal list.The position of the Game Object automatically becomes relative to the position of the Container.When the Container is rendered, all of its children are rendered as well, in the order in which they existwithin the Container. Container children can be repositioned using methods such as `MoveUp`, `MoveDown` and `SendToBack`.If you modify a transform property of the Container, such as `Container.x` or `Container.rotation` then it willautomatically influence all children as well.Containers can include other Containers for deeply nested transforms.Containers can have masks set on them and can be used as a mask too. However, Container children cannot be masked.The masks do not 'stack up'. Only a Container on the root of the display list will use its mask.Containers can be enabled for input. Because they do not have a texture you need to provide a shape for themto use as their hit area. Container children can also be enabled for input, independent of the Container.Containers can be given a physics body for either Arcade Physics, Impact Physics or Matter Physics. However,if Container children are enabled for physics you may get unexpected results,such as offset bodies,if the Container itself, or any of its ancestors, is positioned anywhere other than at 0x0.It's important to understand the impact of using Containers. They add additional processing overhead intoevery one of their children. The deeper you nest them, the more the cost escalates. This is especially truefor input events. You also loose the ability to set the display depth of Container children in the sameflexible manner as those not within them. In short, don't use them for the sake of it. You pay a small costevery time you create one, try to structure your game around avoiding that where possible.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">A Container Game Object.A Container, as the name implies, can 'contain' other types of Game Object.When a Game Object is added to a Container, the Container becomes responsible for the rendering of it.By default it will be removed from the Display List and instead added to the Containers own internal list.The position of the Game Object automatically becomes relative to the position of the Container.When the Container is rendered, all of its children are rendered as well, in the order in which they existwithin the Container. Container children can be repositioned using methods such as `MoveUp`, `MoveDown` and `SendToBack`.If you modify a transform property of the Container, such as `Container.x` or `Container.rotation` then it willautomatically influence all children as well.Containers can include other Containers for deeply nested transforms.Containers can have masks set on them and can be used as a mask too. However, Container children cannot be masked.The masks do not 'stack up'. Only a Container on the root of the display list will use its mask.Containers can be enabled for input. Because they do not have a texture you need to provide a shape for themto use as their hit area. Container children can also be enabled for input, independent of the Container.Containers can be given a physics body for either Arcade Physics, Impact Physics or Matter Physics. However,if Container _children_ are enabled for physics you may get unexpected results, such as offset bodies,if the Container itself, or any of its ancestors, is positioned anywhere other than at 0 x 0. Container childrenwith physics do not factor in the Container due to the excessive extra calculations needed. Please structureyour game to work around this.It's important to understand the impact of using Containers. They add additional processing overhead intoevery one of their children. The deeper you nest them, the more the cost escalates. This is especially truefor input events. You also loose the ability to set the display depth of Container children in the sameflexible manner as those not within them. In short, don't use them for the sake of it. You pay a small costevery time you create one, try to structure your game around avoiding that where possible.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -181,6 +181,7 @@
 												<li><a href="Phaser.GameObjects.Components.html#.BlendMode">Phaser.GameObjects.Components.BlendMode</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.ComputedSize">Phaser.GameObjects.Components.ComputedSize</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.Depth">Phaser.GameObjects.Components.Depth</a></li>
+												<li><a href="Phaser.GameObjects.Components.html#.Mask">Phaser.GameObjects.Components.Mask</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.ScrollFactor">Phaser.GameObjects.Components.ScrollFactor</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.Transform">Phaser.GameObjects.Components.Transform</a></li>
 												<li><a href="Phaser.GameObjects.Components.html#.Visible">Phaser.GameObjects.Components.Visible</a></li>
@@ -224,57 +225,6 @@
 							<article class="secondary">
 									<h3>Members</h3>
 									<dl class="symbol">
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="_sortKey" class="member public"><span class="name">_sortKey</span><span class="signature-type"> :string</span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The property key to sort by.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">string</span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.4.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-175">line 175</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
 			<h4 id="active" class="member public inherited"><span class="name">active</span><span class="signature-type"> :boolean</span></h4>
@@ -755,7 +705,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title member public inherited">
-			<h4 id="body" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">body</span><span class="signature-type"> :object</span></h4>
+			<h4 id="body" class="member public inherited"><span class="signature-attribs">&lt;nullable> </span><span class="name">body</span><span class="signature-type"> :object|<a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a>|<a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></span></h4>
 		</dt>
 <dd class="symbol-details member public inherited">
 	<div class="symbol-details-inner">
@@ -766,7 +716,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Type</label>
 								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">object</span></div>
+									<div class="form-control-static type-names"><span class="param-type">object</span> | <span class="param-type"><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></span> | <span class="param-type"><a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></span></div>
 								</div>
 							</div>
 			
@@ -1105,7 +1055,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-230">line 230</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-239">line 239</a></p>
 								</div>
 							</div>
 			
@@ -1156,7 +1106,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-248">line 248</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-257">line 257</a></p>
 								</div>
 							</div>
 			
@@ -1272,7 +1222,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-105">line 105</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-103">line 103</a></p>
 								</div>
 							</div>
 			
@@ -1323,7 +1273,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1089">line 1089</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1100">line 1100</a></p>
 								</div>
 							</div>
 			
@@ -1562,7 +1512,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1117">line 1117</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1128">line 1128</a></p>
 								</div>
 							</div>
 			
@@ -1613,7 +1563,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1072">line 1072</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1083">line 1083</a></p>
 								</div>
 							</div>
 			
@@ -1664,7 +1614,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-96">line 96</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-94">line 94</a></p>
 								</div>
 							</div>
 			
@@ -1715,7 +1665,65 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-146">line 146</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-144">line 144</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title member public inherited">
+			<h4 id="mask" class="member public inherited"><span class="name">mask</span><span class="signature-type"> :<a href="Phaser.Display.Masks.BitmapMask.html">Phaser.Display.Masks.BitmapMask</a>|<a href="Phaser.Display.Masks.GeometryMask.html">Phaser.Display.Masks.GeometryMask</a></span></h4>
+		</dt>
+<dd class="symbol-details member public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The Mask this Game Object is using during render.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+							<!-- type -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Type</label>
+								<div class="col-sm-9">
+									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Display.Masks.BitmapMask.html">Phaser.Display.Masks.BitmapMask</a></span> | <span class="param-type"><a href="Phaser.Display.Masks.GeometryMask.html">Phaser.Display.Masks.GeometryMask</a></span></div>
+								</div>
+							</div>
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Mask#mask">Phaser.GameObjects.Components.Mask#mask</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Mask.js.html">gameobjects/components/Mask.js</a>, <a href="gameobjects_components_Mask.js.html#line-19">line 19</a></p>
 								</div>
 							</div>
 			
@@ -1773,7 +1781,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-125">line 125</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-123">line 123</a></p>
 								</div>
 							</div>
 			
@@ -1889,7 +1897,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1145">line 1145</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1156">line 1156</a></p>
 								</div>
 							</div>
 			
@@ -1940,7 +1948,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-194">line 194</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-203">line 203</a></p>
 								</div>
 							</div>
 			
@@ -1991,7 +1999,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-212">line 212</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-221">line 221</a></p>
 								</div>
 							</div>
 			
@@ -2100,7 +2108,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-137">line 137</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-135">line 135</a></p>
 								</div>
 							</div>
 			
@@ -2151,7 +2159,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1173">line 1173</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1184">line 1184</a></p>
 								</div>
 							</div>
 			
@@ -3174,7 +3182,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-438">line 438</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-449">line 449</a></p>
 								</div>
 							</div>
 			
@@ -3260,7 +3268,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-457">line 457</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-468">line 468</a></p>
 								</div>
 							</div>
 			
@@ -3362,7 +3370,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-115">line 115</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-111">line 111</a></p>
 								</div>
 							</div>
 			
@@ -3435,7 +3443,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-817">line 817</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-828">line 828</a></p>
 								</div>
 							</div>
 			
@@ -3454,7 +3462,7 @@
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Clears all alpha values associated with this Game Object.Immediately sets the alpha levels back to 1 (fully opaque)</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -3495,6 +3503,90 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="gameobjects_components_Alpha.js.html">gameobjects/components/Alpha.js</a>, <a href="gameobjects_components_Alpha.js.html#line-77">line 77</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="clearMask" class="function public inherited"><span class="name">clearMask</span><span class="signature-params">( [&nbsp;<span class="signature-param">destroyMask</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Clears the mask that this Game Object was using.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>destroyMask</code></td>
+							<td><span class="param-type">boolean</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>false</td>
+							<td class="last">
+									Destroy the mask before clearing it?
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Game Object instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.6.2</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Mask#clearMask">Phaser.GameObjects.Components.Mask#clearMask</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Mask.js.html">gameobjects/components/Mask.js</a>, <a href="gameobjects_components_Mask.js.html#line-52">line 52</a></p>
 								</div>
 							</div>
 			
@@ -3598,7 +3690,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-636">line 636</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-647">line 647</a></p>
 								</div>
 							</div>
 			
@@ -3609,12 +3701,43 @@
 			</div>	</div>
 </dd>
 											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="destroy" class="function public"><span class="name">destroy</span><span class="signature-params">()</span></h4>
+											<dt class="symbol-title function public inherited">
+			<h4 id="createBitmapMask" class="function public inherited"><span class="name">createBitmapMask</span><span class="signature-params">( [&nbsp;<span class="signature-param">renderable</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
-<dd class="symbol-details function public">
+<dd class="symbol-details function public inherited">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroys this Container, removing it from the Display List.If `Container.exclusive` is `true` then it will also destroy all children.Use this to remove a Container from your game if you don't ever plan to use it again.As long as no reference to it exists within your own code it should become free forgarbage collection.If you just want to temporarily disable an object then look at using theGame Object Pool instead of destroying it, as destroyed objects cannot be resurrected.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates and returns a Bitmap Mask. This mask can be used by any Game Object,including this one.To create the mask you need to pass in a reference to a renderable Game Object.A renderable Game Object is one that uses a texture to render with, such as anImage, Sprite, Render Texture or BitmapText.If you do not provide a renderable object, and this Game Object has a texture,it will use itself as the object. This means you can call this method to createa Bitmap Mask from any renderable Game Object.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>renderable</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									A renderable Game Object that uses a texture, such as a Sprite.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Display.Masks.BitmapMask.html">Phaser.Display.Masks.BitmapMask</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Bitmap Mask that was created.</div>
+								</div>
+							</div>
+					</form>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
@@ -3625,18 +3748,18 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Since</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">3.4.0</p>
+									<p class="form-control-static">3.6.2</p>
 								</div>
 							</div>
 			
-			
-							<!-- overrides -->
+							<!-- inherits -->
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Overrides</label>
+								<label class="col-sm-3 control-label">Inherited From</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#destroy">Phaser.GameObjects.GameObject#destroy</a></p>
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Mask#createBitmapMask">Phaser.GameObjects.Components.Mask#createBitmapMask</a></p>
 								</div>
 							</div>
+			
 			
 			
 			
@@ -3649,7 +3772,199 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1201">line 1201</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Mask.js.html">gameobjects/components/Mask.js</a>, <a href="gameobjects_components_Mask.js.html#line-76">line 76</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="createGeometryMask" class="function public inherited"><span class="name">createGeometryMask</span><span class="signature-params">( [&nbsp;<span class="signature-param">graphics</span>&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates and returns a Geometry Mask. This mask can be used by any Game Object,including this one.To create the mask you need to pass in a reference to a Graphics Game Object.If you do not provide a graphics object, and this Game Object is an instanceof a Graphics object, then it will use itself to create the mask.This means you can call this method to create a Geometry Mask from any Graphics Game Object.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>graphics</code></td>
+							<td><span class="param-type"><a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+							<td class="last">
+									A Graphics Game Object. The geometry within it will be used as the mask.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Display.Masks.GeometryMask.html">Phaser.Display.Masks.GeometryMask</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Geometry Mask that was created.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.6.2</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Mask#createGeometryMask">Phaser.GameObjects.Components.Mask#createGeometryMask</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Mask.js.html">gameobjects/components/Mask.js</a>, <a href="gameobjects_components_Mask.js.html#line-106">line 106</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="destroy" class="function public inherited"><span class="name">destroy</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroys this Game Object removing it from the Display List and Update List andsevering all ties to parent resources.Also removes itself from the Input Manager and Physics Manager if previously enabled.Use this to remove a Game Object from your game if you don't ever plan to use it again.As long as no reference to it exists within your own code it should become free forgarbage collection by the browser.If you just want to temporarily disable an object then look at using theGame Object Pool instead of destroying it, as destroyed objects cannot be resurrected.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.0.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#destroy">Phaser.GameObjects.GameObject#destroy</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-425">line 425</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="disableInteractive" class="function public inherited"><span class="name">disableInteractive</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Game Object has previously been enabled for input, this will disable it.An object that is disabled for input stops processing or being considered forinput events, but can be turned back on again at any time by simply calling`setInteractive()` with no arguments provided.If want to completely remove interaction from this Game Object then use `removeInteractive` instead.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This GameObject.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#disableInteractive">Phaser.GameObjects.GameObject#disableInteractive</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-294">line 294</a></p>
 								</div>
 							</div>
 			
@@ -3740,7 +4055,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-997">line 997</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1008">line 1008</a></p>
 								</div>
 							</div>
 			
@@ -3830,7 +4145,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-90">line 90</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-86">line 86</a></p>
 								</div>
 							</div>
 			
@@ -3889,7 +4204,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-59">line 59</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-55">line 55</a></p>
 								</div>
 							</div>
 			
@@ -3962,7 +4277,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-948">line 948</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-959">line 959</a></p>
 								</div>
 							</div>
 			
@@ -4066,7 +4381,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-606">line 606</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-617">line 617</a></p>
 								</div>
 							</div>
 			
@@ -4139,7 +4454,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-479">line 479</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-490">line 490</a></p>
 								</div>
 							</div>
 			
@@ -4155,7 +4470,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets the bounds of this Container. It works by iterating all children of the Container,getting their respective bounds, and then working out a min-max rectangle from that.It does not factor in if the children render or not, all are included.Depending on the quantity of children in this Container it could be a really expensive call,so cache it and only poll it as needed.The values are stored and returned in a Rectangle object.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets the bounds of this Container. It works by iterating all children of the Container,getting their respective bounds, and then working out a min-max rectangle from that.It does not factor in if the children render or not, all are included.Some children are unable to return their bounds, such as Graphics objects, in which casethey are skipped.Depending on the quantity of children in this Container it could be a really expensive call,so cache it and only poll it as needed.The values are stored and returned in a Rectangle object.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -4214,7 +4529,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-295">line 295</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-304">line 304</a></p>
 								</div>
 							</div>
 			
@@ -4230,7 +4545,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns the world transform matrix as used for Bounds checks.The returned matrix is a temporal and shouldn't be stored.</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns the world transform matrix as used for Bounds checks.The returned matrix is temporal and shouldn't be stored.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Components.TransformMatrix.html">Phaser.GameObjects.Components.TransformMatrix</a></span></label>
@@ -4266,7 +4581,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-414">line 414</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-435">line 435</a></p>
 								</div>
 							</div>
 			
@@ -4339,7 +4654,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-549">line 549</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-560">line 560</a></p>
 								</div>
 							</div>
 			
@@ -4523,7 +4838,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-581">line 581</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-592">line 592</a></p>
 								</div>
 							</div>
 			
@@ -4596,7 +4911,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-494">line 494</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-505">line 505</a></p>
 								</div>
 							</div>
 			
@@ -4655,7 +4970,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-330">line 330</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-381">line 381</a></p>
 								</div>
 							</div>
 			
@@ -4737,7 +5052,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-374">line 374</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-406">line 406</a></p>
 								</div>
 							</div>
 			
@@ -4823,7 +5138,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-565">line 565</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-576">line 576</a></p>
 								</div>
 							</div>
 			
@@ -4905,7 +5220,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-391">line 391</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-423">line 423</a></p>
 								</div>
 							</div>
 			
@@ -4996,7 +5311,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1037">line 1037</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1048">line 1048</a></p>
 								</div>
 							</div>
 			
@@ -5076,7 +5391,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-79">line 79</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-75">line 75</a></p>
 								</div>
 							</div>
 			
@@ -5156,7 +5471,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-68">line 68</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-64">line 64</a></p>
 								</div>
 							</div>
 			
@@ -5229,7 +5544,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-870">line 870</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-881">line 881</a></p>
 								</div>
 							</div>
 			
@@ -5309,7 +5624,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-678">line 678</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-689">line 689</a></p>
 								</div>
 							</div>
 			
@@ -5382,7 +5697,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-853">line 853</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-864">line 864</a></p>
 								</div>
 							</div>
 			
@@ -5483,7 +5798,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-155">line 155</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-151">line 151</a></p>
 								</div>
 							</div>
 			
@@ -5585,7 +5900,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-102">line 102</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-98">line 98</a></p>
 								</div>
 							</div>
 			
@@ -5687,7 +6002,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-128">line 128</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-124">line 124</a></p>
 								</div>
 							</div>
 			
@@ -5770,7 +6085,51 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-381">line 381</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-402">line 402</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function protected">
+			<h4 id="preDestroy" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">preDestroy</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function protected">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Internal destroy handler, called as part of the destroy process.</div>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.9.0</p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-1212">line 1212</a></p>
 								</div>
 							</div>
 			
@@ -5856,7 +6215,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-701">line 701</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-712">line 712</a></p>
 								</div>
 							</div>
 			
@@ -5933,7 +6292,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-790">line 790</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-801">line 801</a></p>
 								</div>
 							</div>
 			
@@ -6015,7 +6374,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-169">line 169</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-165">line 165</a></p>
 								</div>
 							</div>
 			
@@ -6101,7 +6460,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-736">line 736</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-747">line 747</a></p>
 								</div>
 							</div>
 			
@@ -6196,7 +6555,66 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-761">line 761</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-772">line 772</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="removeInteractive" class="function public inherited"><span class="name">removeInteractive</span><span class="signature-params">()</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">If this Game Object has previously been enabled for input, this will remove it.The Interactive Object that was assigned to this Game Object will be destroyed,removed from the Input Manager and cleared from this Game Object.If you wish to re-enable this Game Object at a later date you will need tore-create its InteractiveOobject by calling `setInteractive` again.If you wish to only temporarily stop an object from receiving input then use`disableInteractive` instead, as that toggles the interactive state, where-asthis erases it completely.</div>
+			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This GameObject.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.7.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.GameObject.html#removeInteractive">Phaser.GameObjects.GameObject#removeInteractive</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-318">line 318</a></p>
 								</div>
 							</div>
 			
@@ -6297,7 +6715,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-141">line 141</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-137">line 137</a></p>
 								</div>
 							</div>
 			
@@ -6392,7 +6810,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-917">line 917</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-928">line 928</a></p>
 								</div>
 							</div>
 			
@@ -6444,7 +6862,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-887">line 887</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-898">line 898</a></p>
 								</div>
 							</div>
 			
@@ -6517,7 +6935,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-835">line 835</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-846">line 846</a></p>
 								</div>
 							</div>
 			
@@ -6701,7 +7119,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-965">line 965</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-976">line 976</a></p>
 								</div>
 							</div>
 			
@@ -6772,7 +7190,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -6856,7 +7274,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -6896,7 +7314,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-257">line 257</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-289">line 289</a></p>
 								</div>
 							</div>
 			
@@ -6936,7 +7354,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7169,7 +7587,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7256,7 +7674,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7373,7 +7791,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-266">line 266</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-275">line 275</a></p>
 								</div>
 							</div>
 			
@@ -7418,7 +7836,7 @@
 								<td class="attributes">&lt;optional&gt;<br/></td>
 								<td></td>
 							<td class="last">
-									A callback to be invoked when the Game Object is interacted with.
+									A callback to be invoked when the Game Object is interacted with. If you provide a shape you must also provide a callback.
 							</td>
 						</tr>
 						<tr>
@@ -7476,6 +7894,86 @@
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
 									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-275">line 275</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
+			<h4 id="setMask" class="function public inherited"><span class="name">setMask</span><span class="signature-params">( <span class="signature-param">mask</span>&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the mask that this Game Object will use to render with.The mask must have been previously created and can be either aGeometryMask or a BitmapMask.Note: Bitmap Masks only work on WebGL. Geometry Masks work on both WebGL and Canvas.If a mask is already set on this Game Object it will be immediately replaced.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>mask</code></td>
+							<td><span class="param-type"><a href="Phaser.Display.Masks.BitmapMask.html">Phaser.Display.Masks.BitmapMask</a></span> | <span class="param-type"><a href="Phaser.Display.Masks.GeometryMask.html">Phaser.Display.Masks.GeometryMask</a></span></td>
+							<td class="last">
+									The mask this Game Object will use when rendering.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Game Object instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.6.2</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Mask#setMask">Phaser.GameObjects.Components.Mask#setMask</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Mask.js.html">gameobjects/components/Mask.js</a>, <a href="gameobjects_components_Mask.js.html#line-28">line 28</a></p>
 								</div>
 							</div>
 			
@@ -7626,7 +8124,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7678,6 +8176,117 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public inherited">
+			<h4 id="setRandomPosition" class="function public inherited"><span class="name">setRandomPosition</span><span class="signature-params">( [&nbsp;<span class="signature-param">x</span> [,&nbsp;<span class="signature-param">y</span> [,&nbsp;<span class="signature-param">width</span> [,&nbsp;<span class="signature-param">height</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
+		</dt>
+<dd class="symbol-details function public inherited">
+	<div class="symbol-details-inner">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Sets the position of this Game Object to be a random position within the confines ofthe given area.If no area is specified a random position between 0 x 0 and the game width x height is used instead.The position does not factor in the size of this Game Object, meaning that only the origin isguaranteed to be within the area.</div>
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+							<th>Attributes</th>
+							<th>Default</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>x</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The x position of the top-left of the random area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>y</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td>0</td>
+							<td class="last">
+									The y position of the top-left of the random area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>width</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The width of the random area.
+							</td>
+						</tr>
+						<tr>
+								<td><code>height</code></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
+								<td></td>
+							<td class="last">
+									The height of the random area.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description">This Game Object instance.</div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+							<!-- since -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Since</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">3.8.0</p>
+								</div>
+							</div>
+			
+							<!-- inherits -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Inherited From</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="Phaser.GameObjects.Components.html#.Transform#setRandomPosition">Phaser.GameObjects.Components.Transform#setRandomPosition</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-238">line 238</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+											<hr/>
+											<dt class="symbol-title function public inherited">
 			<h4 id="setRotation" class="function public inherited"><span class="name">setRotation</span><span class="signature-params">( [&nbsp;<span class="signature-param">radians</span>&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public inherited">
@@ -7710,7 +8319,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7750,7 +8359,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-238">line 238</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-270">line 270</a></p>
 								</div>
 							</div>
 			
@@ -7803,7 +8412,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7843,7 +8452,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-276">line 276</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-308">line 308</a></p>
 								</div>
 							</div>
 			
@@ -7896,7 +8505,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -7983,7 +8592,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8063,7 +8672,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8147,7 +8756,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8187,7 +8796,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-355">line 355</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-387">line 387</a></p>
 								</div>
 							</div>
 			
@@ -8231,7 +8840,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8271,7 +8880,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-298">line 298</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-330">line 330</a></p>
 								</div>
 							</div>
 			
@@ -8315,7 +8924,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8355,7 +8964,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-317">line 317</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-349">line 349</a></p>
 								</div>
 							</div>
 			
@@ -8399,7 +9008,7 @@
 			</div>
 			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></span></label>
+								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></span></label>
 								<div class="col-sm-9">
 									<div class="form-control-static returns-description">This Game Object instance.</div>
 								</div>
@@ -8439,7 +9048,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-336">line 336</a></p>
+									<p class="form-control-static"><a href="gameobjects_components_Transform.js.html">gameobjects/components/Transform.js</a>, <a href="gameobjects_components_Transform.js.html#line-368">line 368</a></p>
 								</div>
 							</div>
 			
@@ -8491,7 +9100,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-902">line 902</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-913">line 913</a></p>
 								</div>
 							</div>
 			
@@ -8542,7 +9151,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-35">line 35</a></p>
+									<p class="form-control-static"><a href="events_EventEmitter.js.html">events/EventEmitter.js</a>, <a href="events_EventEmitter.js.html#line-31">line 31</a></p>
 								</div>
 							</div>
 			
@@ -8615,7 +9224,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-509">line 509</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-520">line 520</a></p>
 								</div>
 							</div>
 			
@@ -8695,7 +9304,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-659">line 659</a></p>
+									<p class="form-control-static"><a href="gameobjects_container_Container.js.html">gameobjects/container/Container.js</a>, <a href="gameobjects_container_Container.js.html#line-670">line 670</a></p>
 								</div>
 							</div>
 			
@@ -8754,7 +9363,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-304">line 304</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-355">line 355</a></p>
 								</div>
 							</div>
 			
@@ -8805,7 +9414,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-294">line 294</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-345">line 345</a></p>
 								</div>
 							</div>
 			
@@ -8864,7 +9473,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-317">line 317</a></p>
+									<p class="form-control-static"><a href="gameobjects_GameObject.js.html">gameobjects/GameObject.js</a>, <a href="gameobjects_GameObject.js.html#line-368">line 368</a></p>
 								</div>
 							</div>
 			
@@ -8886,7 +9495,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

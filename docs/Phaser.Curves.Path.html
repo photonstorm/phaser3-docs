@@ -684,11 +684,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public">
-			<h4 id="cubicBezierTo" class="function public"><span class="name">cubicBezierTo</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">control1X</span>, <span class="signature-param">control1Y</span>, <span class="signature-param">control2X</span>, <span class="signature-param">control2Y</span>&nbsp;)</span></h4>
+			<h4 id="cubicBezierTo" class="function public"><span class="name">cubicBezierTo</span><span class="signature-params">( <span class="signature-param">x</span>, <span class="signature-param">y</span>, <span class="signature-param">control1X</span> [,&nbsp;<span class="signature-param">control1Y</span> [,&nbsp;<span class="signature-param">control2X</span> [,&nbsp;<span class="signature-param">control2Y</span>&nbsp;]&nbsp;]&nbsp;]&nbsp;)</span></h4>
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Creates a cubic bezier curve starting at the previous end point and ending at p3, using p1 and p2 as control points.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -696,50 +696,57 @@
 					<tr>
 							<th>Name</th>
 						<th>Type</th>
+							<th>Attributes</th>
 						<th class="last">Description</th>
 					</tr>
 					</thead>
 					<tbody>
 						<tr>
 								<td><code>x</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">number</span> | <span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The x coordinate of the end point. Or, if a Vec2, the p1 value.
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
-							<td><span class="param-type">number</span></td>
+							<td><span class="param-type">number</span> | <span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The y coordinate of the end point. Or, if a Vec2, the p2 value.
 							</td>
 						</tr>
 						<tr>
 								<td><code>control1X</code></td>
-							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+							<td><span class="param-type">number</span> | <span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+								<td class="attributes"></td>
 							<td class="last">
-									[description]
+									The x coordinate of the first control point. Or, if a Vec2, the p3 value.
 							</td>
 						</tr>
 						<tr>
 								<td><code>control1Y</code></td>
-							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The y coordinate of the first control point. Not used if vec2s are provided as the first 3 arguments.
 							</td>
 						</tr>
 						<tr>
 								<td><code>control2X</code></td>
-							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The x coordinate of the second control point. Not used if vec2s are provided as the first 3 arguments.
 							</td>
 						</tr>
 						<tr>
 								<td><code>control2Y</code></td>
-							<td><span class="param-type"><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></span></td>
+							<td><span class="param-type">number</span></td>
+								<td class="attributes">&lt;optional&gt;<br/></td>
 							<td class="last">
-									[description]
+									The y coordinate of the second control point. Not used if vec2s are provided as the first 3 arguments.
 							</td>
 						</tr>
 					</tbody>
@@ -780,7 +787,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-191">line 191</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-189">line 189</a></p>
 								</div>
 							</div>
 			
@@ -824,7 +831,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-783">line 783</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-781">line 781</a></p>
 								</div>
 							</div>
 			
@@ -910,7 +917,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-266">line 266</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-264">line 264</a></p>
 								</div>
 							</div>
 			
@@ -1018,7 +1025,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-296">line 296</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-294">line 294</a></p>
 								</div>
 							</div>
 			
@@ -1091,7 +1098,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-328">line 328</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-326">line 326</a></p>
 								</div>
 							</div>
 			
@@ -1177,7 +1184,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-380">line 380</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-378">line 378</a></p>
 								</div>
 							</div>
 			
@@ -1229,7 +1236,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-429">line 429</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-427">line 427</a></p>
 								</div>
 							</div>
 			
@@ -1304,7 +1311,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-464">line 464</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-462">line 462</a></p>
 								</div>
 							</div>
 			
@@ -1356,7 +1363,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-492">line 492</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-490">line 490</a></p>
 								</div>
 							</div>
 			
@@ -1439,7 +1446,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-516">line 516</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-514">line 514</a></p>
 								</div>
 							</div>
 			
@@ -1516,7 +1523,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-557">line 557</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-555">line 555</a></p>
 								</div>
 							</div>
 			
@@ -1591,7 +1598,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-611">line 611</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-609">line 609</a></p>
 								</div>
 							</div>
 			
@@ -1668,7 +1675,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-630">line 630</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-628">line 628</a></p>
 								</div>
 							</div>
 			
@@ -1743,7 +1750,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-659">line 659</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-657">line 657</a></p>
 								</div>
 							</div>
 			
@@ -1826,7 +1833,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-680">line 680</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-678">line 678</a></p>
 								</div>
 							</div>
 			
@@ -1906,7 +1913,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-726">line 726</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-724">line 724</a></p>
 								</div>
 							</div>
 			
@@ -2005,7 +2012,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-232">line 232</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-230">line 230</a></p>
 								</div>
 							</div>
 			
@@ -2078,7 +2085,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-709">line 709</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-707">line 707</a></p>
 								</div>
 							</div>
 			
@@ -2130,7 +2137,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-742">line 742</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-740">line 740</a></p>
 								</div>
 							</div>
 			
@@ -2174,7 +2181,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-770">line 770</a></p>
+									<p class="form-control-static"><a href="curves_path_Path.js.html">curves/path/Path.js</a>, <a href="curves_path_Path.js.html#line-768">line 768</a></p>
 								</div>
 							</div>
 			
@@ -2196,7 +2203,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -100,7 +100,7 @@
 </dt>
 <dd class="symbol-details class" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">WebGLPipeline is a class that describes the way elements will be rendererd in WebGL, specially focused on batching vertices (batching is not provided). Pipelines are mostly used for describing 2D rendering passes but it's flexible enough to be used for any type of rendering including 3D. Internally WebGLPipeline will handle things like compiling shaders,creating vertex buffers, assigning primitive topology and binding vertex attributes.The config properties are:- game: Current game instance.- renderer: Current WebGL renderer.- gl: Current WebGL context.- topology: This indicates how the primitives are rendered. The default value is GL_TRIANGLES.             Here is the full list of rendering primitives (https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Constants).- vertShader: Source for vertex shader as a string.- fragShader: Source for fragment shader as a string.- vertexCapacity: The amount of vertices that shall be allocated- vertexSize: The size of a single vertex in bytes.- vertices: An optional buffer of vertices- attributes: An array describing the vertex attributes The vertex attributes properties are:- name : String - Name of the attribute in the vertex shader- size : integer - How many components describe the attribute. For ex: vec3 = size of 3, float = size of 1- type : GLenum - WebGL type (gl.BYTE, gl.SHORT, gl.UNSIGNED_BYTE, gl.UNSIGNED_SHORT, gl.FLOAT)- normalized : boolean - Is the attribute normalized- offset : integer - The offset in bytes to the current attribute in the vertex. Equivalent to offsetof(vertex, attrib) in CHere you can find more information of how to describe an attribute:- https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/vertexAttribPointer</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -169,7 +169,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Array of objects that describe the vertex attributes</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -204,7 +204,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-146">line 146</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-174">line 174</a></p>
 								</div>
 							</div>
 			
@@ -220,7 +220,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Uint8 view to the vertex raw buffer. Used for uploading vertex buffer resourcesto the GPU.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -255,7 +255,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-173">line 173</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-201">line 201</a></p>
 								</div>
 							</div>
 			
@@ -306,7 +306,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-191">line 191</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-220">line 220</a></p>
 								</div>
 							</div>
 			
@@ -357,7 +357,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-37">line 37</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-65">line 65</a></p>
 								</div>
 							</div>
 			
@@ -408,7 +408,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-82">line 82</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-110">line 110</a></p>
 								</div>
 							</div>
 			
@@ -424,7 +424,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Height of the current viewport</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -459,7 +459,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-73">line 73</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-101">line 101</a></p>
 								</div>
 							</div>
 			
@@ -475,7 +475,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Name of the Pipeline. Used for identifying</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -510,7 +510,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-28">line 28</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-56">line 56</a></p>
 								</div>
 							</div>
 			
@@ -526,7 +526,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The handle to a WebGL program</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -561,7 +561,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-137">line 137</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-165">line 165</a></p>
 								</div>
 							</div>
 			
@@ -612,7 +612,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-110">line 110</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-138">line 138</a></p>
 								</div>
 							</div>
 			
@@ -628,7 +628,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Used to store the current game resolution</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -663,7 +663,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-55">line 55</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-83">line 83</a></p>
 								</div>
 							</div>
 			
@@ -679,7 +679,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The primitive topology which the pipeline will use to submit draw calls</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -714,7 +714,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-164">line 164</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-192">line 192</a></p>
 								</div>
 							</div>
 			
@@ -730,7 +730,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The handle to a WebGL vertex buffer object.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -765,7 +765,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-128">line 128</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-156">line 156</a></p>
 								</div>
 							</div>
 			
@@ -781,7 +781,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The limit of vertices that the pipeline can hold</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -816,7 +816,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-101">line 101</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-129">line 129</a></p>
 								</div>
 							</div>
 			
@@ -867,7 +867,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-182">line 182</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-211">line 211</a></p>
 								</div>
 							</div>
 			
@@ -883,7 +883,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">How many vertices have been fed to the current pipeline.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -925,7 +925,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-91">line 91</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-119">line 119</a></p>
 								</div>
 							</div>
 			
@@ -941,7 +941,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Raw byte buffer of vertices.</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -976,7 +976,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-119">line 119</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-147">line 147</a></p>
 								</div>
 							</div>
 			
@@ -992,7 +992,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The size in bytes of the vertex</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1027,7 +1027,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-155">line 155</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-183">line 183</a></p>
 								</div>
 							</div>
 			
@@ -1078,7 +1078,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-46">line 46</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-74">line 74</a></p>
 								</div>
 							</div>
 			
@@ -1094,7 +1094,7 @@
 		</dt>
 <dd class="symbol-details member public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Width of the current viewport</div>
 			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 							<!-- type -->
@@ -1129,7 +1129,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-92">line 92</a></p>
 								</div>
 							</div>
 			
@@ -1148,7 +1148,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Adds a description of vertex attribute to the pipeline</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1164,35 +1164,35 @@
 								<td><code>name</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									Name of the vertex attribute
 							</td>
 						</tr>
 						<tr>
 								<td><code>size</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									Vertex component size
 							</td>
 						</tr>
 						<tr>
 								<td><code>type</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									Type of the attribute
 							</td>
 						</tr>
 						<tr>
 								<td><code>normalized</code></td>
 							<td><span class="param-type">boolean</span></td>
 							<td class="last">
-									[description]
+									Is the value normalized to a range
 							</td>
 						</tr>
 						<tr>
 								<td><code>offset</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									Byte offset to the beginning of the first element in the vertex
 							</td>
 						</tr>
 					</tbody>
@@ -1233,7 +1233,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-202">line 202</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-231">line 231</a></p>
 								</div>
 							</div>
 			
@@ -1249,7 +1249,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Binds the pipeline resources, including programs, vertex buffers and binds attributes</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
@@ -1285,7 +1285,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-261">line 261</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-290">line 290</a></p>
 								</div>
 							</div>
 			
@@ -1337,7 +1337,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-393">line 393</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-423">line 423</a></p>
 								</div>
 							</div>
 			
@@ -1353,7 +1353,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Uploads the vertex data and emits a draw callfor the current batch of vertices.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></span></label>
@@ -1389,7 +1389,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-359">line 359</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-388">line 388</a></p>
 								</div>
 							</div>
 			
@@ -1441,7 +1441,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-300">line 300</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-329">line 329</a></p>
 								</div>
 							</div>
 			
@@ -1493,7 +1493,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-345">line 345</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-374">line 374</a></p>
 								</div>
 							</div>
 			
@@ -1545,7 +1545,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-314">line 314</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-343">line 343</a></p>
 								</div>
 							</div>
 			
@@ -1625,7 +1625,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-328">line 328</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-357">line 357</a></p>
 								</div>
 							</div>
 			
@@ -1641,7 +1641,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Resizes the properties used to describe the viewport</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1712,7 +1712,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-242">line 242</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-271">line 271</a></p>
 								</div>
 							</div>
 			
@@ -1728,7 +1728,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1792,7 +1792,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-415">line 415</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-445">line 445</a></p>
 								</div>
 							</div>
 			
@@ -1808,7 +1808,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1879,7 +1879,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-432">line 432</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-462">line 462</a></p>
 								</div>
 							</div>
 			
@@ -1895,7 +1895,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -1973,7 +1973,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-451">line 451</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-481">line 481</a></p>
 								</div>
 							</div>
 			
@@ -1989,7 +1989,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2005,35 +2005,35 @@
 								<td><code>name</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									Name of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>x</code></td>
 							<td><span class="param-type">float</span></td>
 							<td class="last">
-									[description]
+									X component of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
 							<td><span class="param-type">float</span></td>
 							<td class="last">
-									[description]
+									Y component of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>z</code></td>
 							<td><span class="param-type">float</span></td>
 							<td class="last">
-									[description]
+									Z component of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>w</code></td>
 							<td><span class="param-type">float</span></td>
 							<td class="last">
-									[description]
+									W component of the uniform
 							</td>
 						</tr>
 					</tbody>
@@ -2074,7 +2074,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-471">line 471</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-501">line 501</a></p>
 								</div>
 							</div>
 			
@@ -2090,7 +2090,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2154,7 +2154,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-492">line 492</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-522">line 522</a></p>
 								</div>
 							</div>
 			
@@ -2170,7 +2170,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2241,7 +2241,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-509">line 509</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-539">line 539</a></p>
 								</div>
 							</div>
 			
@@ -2257,7 +2257,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2335,7 +2335,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-527">line 527</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-557">line 557</a></p>
 								</div>
 							</div>
 			
@@ -2351,7 +2351,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2367,35 +2367,35 @@
 								<td><code>name</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									Name of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>x</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									X component of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>y</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									Y component of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>z</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									Z component of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>w</code></td>
 							<td><span class="param-type">integer</span></td>
 							<td class="last">
-									[description]
+									W component of the uniform
 							</td>
 						</tr>
 					</tbody>
@@ -2436,7 +2436,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-546">line 546</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-576">line 576</a></p>
 								</div>
 							</div>
 			
@@ -2452,7 +2452,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.[description]</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2523,7 +2523,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-566">line 566</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-596">line 596</a></p>
 								</div>
 							</div>
 			
@@ -2539,7 +2539,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.[description][description]</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2610,7 +2610,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-584">line 584</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-615">line 615</a></p>
 								</div>
 							</div>
 			
@@ -2626,7 +2626,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Set a uniform value of the current pipeline program.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -2642,21 +2642,21 @@
 								<td><code>name</code></td>
 							<td><span class="param-type">string</span></td>
 							<td class="last">
-									[description]
+									Name of the uniform
 							</td>
 						</tr>
 						<tr>
 								<td><code>transpose</code></td>
 							<td><span class="param-type">boolean</span></td>
 							<td class="last">
-									[description]
+									Should the matrix be transpose
 							</td>
 						</tr>
 						<tr>
 								<td><code>matrix</code></td>
 							<td><span class="param-type">Float32Array</span></td>
 							<td class="last">
-									[description]
+									Matrix data
 							</td>
 						</tr>
 					</tbody>
@@ -2697,7 +2697,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-602">line 602</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-635">line 635</a></p>
 								</div>
 							</div>
 			
@@ -2713,7 +2713,7 @@
 		</dt>
 <dd class="symbol-details function public">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">[description]</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Check if the current batch of vertices is full.</div>
 			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
 							<div class="form-group">
 								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
@@ -2749,7 +2749,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-229">line 229</a></p>
+									<p class="form-control-static"><a href="renderer_webgl_WebGLPipeline.js.html">renderer/webgl/WebGLPipeline.js</a>, <a href="renderer_webgl_WebGLPipeline.js.html#line-258">line 258</a></p>
 								</div>
 							</div>
 			
@@ -2771,7 +2771,7 @@
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

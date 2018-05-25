@@ -101,7 +101,7 @@ var Clamp = require('../math/Clamp');
 var Class = require('../utils/Class');
 var CONST = require('./const');
 var GetFastValue = require('../utils/object/GetFastValue');
-var PluginManager = require('../boot/PluginManager');
+var PluginCache = require('../plugins/PluginCache');
 
 /**
  * @classdesc
@@ -142,7 +142,7 @@ var ScenePlugin = new Class({
          * The settings of the Scene this ScenePlugin belongs to.
          *
          * @name Phaser.Scenes.ScenePlugin#settings
-         * @type {SettingsObject}
+         * @type {Phaser.Scenes.Settings.Object}
          * @since 3.0.0
          */
         this.settings = scene.sys.settings;
@@ -336,14 +336,14 @@ var ScenePlugin = new Class({
     },
 
     /**
-     * @typedef {object} Phaser.Scenes.ScenePlugin#SceneTransitionConfig
+     * @typedef {object} Phaser.Scenes.ScenePlugin.SceneTransitionConfig
      * 
      * @property {string} target - The Scene key to transition to.
      * @property {integer} [duration=1000] - The duration, in ms, for the transition to last.
      * @property {boolean} [sleep=false] - Will the Scene responsible for the transition be sent to sleep on completion (`true`), or stopped? (`false`)
      * @property {boolean} [allowInput=false] - Will the Scenes Input system be able to process events while it is transitioning in or out?
-     * @property {boolean} [moveAbove] - More the target Scene to be above this one before the transition starts.
-     * @property {boolean} [moveBelow] - More the target Scene to be below this one before the transition starts.
+     * @property {boolean} [moveAbove] - Move the target Scene to be above this one before the transition starts.
+     * @property {boolean} [moveBelow] - Move the target Scene to be below this one before the transition starts.
      * @property {function} [onUpdate] - This callback is invoked every frame for the duration of the transition.
      * @property {any} [onUpdateScope] - The context in which the callback is invoked.
      * @property {any} [data] - An object containing any data you wish to be passed to the target Scenes init / create methods.
@@ -382,7 +382,7 @@ var ScenePlugin = new Class({
      * @method Phaser.Scenes.ScenePlugin#transition
      * @since 3.5.0
      *
-     * @param {Phaser.Scenes.ScenePlugin#SceneTransitionConfig} config - The transition configuration object.
+     * @param {Phaser.Scenes.ScenePlugin.SceneTransitionConfig} config - The transition configuration object.
      *
      * @return {boolean} `true` is the transition was started, otherwise `false`.
      */
@@ -441,7 +441,7 @@ var ScenePlugin = new Class({
         }
         else
         {
-            this.manager.start(key);
+            this.manager.start(key, GetFastValue(config, 'data'));
         }
 
         this.systems.events.emit('transitionout', target, duration);
@@ -551,7 +551,7 @@ var ScenePlugin = new Class({
      * @since 3.0.0
      *
      * @param {string} key - The Scene key.
-     * @param {(Phaser.Scene|SettingsConfig|function)} sceneConfig - The config for the Scene.
+     * @param {(Phaser.Scene|Phaser.Scenes.Settings.Config|function)} sceneConfig - The config for the Scene.
      * @param {boolean} autoStart - Whether to start the Scene after it's added.
      *
      * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
@@ -719,13 +719,21 @@ var ScenePlugin = new Class({
      * @method Phaser.Scenes.ScenePlugin#setActive
      * @since 3.0.0
      *
-     * @param {boolean} value - The Scene to set the active state for.
+     * @param {boolean} value - The active value.
+     * @param {string} [key] - The Scene to set the active state for.
      *
      * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
      */
-    setActive: function (value)
+    setActive: function (value, key)
     {
-        this.settings.active = value;
+        if (key === undefined) { key = this.key; }
+
+        var scene = this.manager.getScene(key);
+
+        if (scene)
+        {
+            scene.sys.setActive(value);
+        }
 
         return this;
     },
@@ -736,13 +744,21 @@ var ScenePlugin = new Class({
      * @method Phaser.Scenes.ScenePlugin#setVisible
      * @since 3.0.0
      *
-     * @param {boolean} value - The Scene to set the visible state for.
+     * @param {boolean} value - The visible value.
+     * @param {string} [key] - The Scene to set the visible state for.
      *
      * @return {Phaser.Scenes.ScenePlugin} This ScenePlugin object.
      */
-    setVisible: function (value)
+    setVisible: function (value, key)
     {
-        this.settings.visible = value;
+        if (key === undefined) { key = this.key; }
+
+        var scene = this.manager.getScene(key);
+
+        if (scene)
+        {
+            scene.sys.setVisible(value);
+        }
 
         return this;
     },
@@ -994,6 +1010,23 @@ var ScenePlugin = new Class({
     },
 
     /**
+     * Retrieves the numeric index of a Scene in the Scenes list.
+     *
+     * @method Phaser.Scenes.ScenePlugin#getIndex
+     * @since 3.7.0
+     *
+     * @param {(string|Phaser.Scene)} [key] - The Scene to get the index of.
+     *
+     * @return {integer} The index of the Scene.
+     */
+    getIndex: function (key)
+    {
+        if (key === undefined) { key = this.key; }
+
+        return this.manager.getIndex(key);
+    },
+
+    /**
      * The Scene that owns this plugin is shutting down.
      * We need to kill and reset all internal properties as well as stop listening to Scene events.
      *
@@ -1032,7 +1065,7 @@ var ScenePlugin = new Class({
 
 });
 
-PluginManager.register('ScenePlugin', ScenePlugin, 'scenePlugin');
+PluginCache.register('ScenePlugin', ScenePlugin, 'scenePlugin');
 
 module.exports = ScenePlugin;
 </code></pre>
@@ -1043,7 +1076,7 @@ module.exports = ScenePlugin;
 	<footer>
 				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
 				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 17th Apr 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
