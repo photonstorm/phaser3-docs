@@ -2,8 +2,9 @@
 
 You can either:
 
-1. Go to https://photonstorm.github.io/phaser3-docs/index.html to read the docs online.
-2. Checkout this repository and then read the documentation by pointing your browser to the local `docs/` folder.
+1. Go to https://photonstorm.github.io/phaser3-docs/index.html to read the docs online. You can view a [list of all Classes](https://photonstorm.github.io/phaser3-docs/list_class.html) or you may wish to browse the [Namespaces list](https://photonstorm.github.io/phaser3-docs/list_namespace.html) instead.
+
+2. Or, you can checkout this repository and then read the documentation by pointing your browser to the local `docs/` folder. Again using the Classes and Namespaces links at the top of the page to navigate.
 
 You can also generate new docs locally by running `npm run gen` (and waiting a long time, it takes over an hour to build)
 
