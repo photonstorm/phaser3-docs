@@ -1125,7 +1125,7 @@ declare type GlobalBitmapTextSize = {
     /**
      * The height of the BitmapText, taking into account the y scale of the Game Object.
      */
-    width: number;
+    height: number;
 };
 
 /**
@@ -1147,7 +1147,7 @@ declare type LocalBitmapTextSize = {
     /**
      * The height of the BitmapText.
      */
-    width: number;
+    height: number;
 };
 
 /**
@@ -1195,7 +1195,7 @@ declare type BitmapFontCharacterData = {
     /**
      * Kerning values, keyed by character code.
      */
-    kerning: {[key: integer]:  number};
+    kerning: {[key: string]: number};
 };
 
 /**
@@ -1221,7 +1221,7 @@ declare type BitmapFontData = {
     /**
      * The character data of the font, keyed by character code. Each character datum includes a position, size, offset and more.
      */
-    chars: {[key: integer]:  BitmapFontCharacterData};
+    chars: {[key: number]:  BitmapFontCharacterData};
 };
 
 declare type JSONBitmapText = JSONGameObject & {
@@ -27514,7 +27514,7 @@ declare namespace Phaser {
                  * Internal pointerLockChange handler.
                  * @param event The native event from the browser.
                  */
-                pointerLockChange(event: MouseHandler): void;
+                pointerLockChange(event: MouseEvent): void;
 
                 /**
                  * If the browser supports pointer lock, this will request that the pointer lock is released. If
