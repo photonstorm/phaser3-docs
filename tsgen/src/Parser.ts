@@ -192,7 +192,16 @@ export class Parser {
                 }
                 ///////////////////////////////////////////////////////
 
-                (<any>parent).members.push(obj);
+                if ((<any>parent).members)
+                {
+                    (<any>parent).members.push(obj);
+                }
+                else
+                {
+                    console.log('Cannot find members array for:');
+                    console.log(parent);
+                }
+
                 (<any>obj)._parent = parent;
 
                 // class/interface members have methods, not functions
