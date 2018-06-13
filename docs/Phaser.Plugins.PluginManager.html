@@ -1,1606 +1,3529 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-		<title>Phaser.Plugins.PluginManager</title>
-		<!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
-		<link type="text/css" rel="stylesheet" href="css/template.min.css">
-			<style>
-				.page-header,
-				pre.code-toolbar > .toolbar:hover {
-					background-color: #0f0019;
-				}
-				.callout-primary,
-				.toc .nav > li > a:hover,
-				.toc .nav > li > a:focus,
-				.toc .nav > li.active > a,
-				.toc .nav > li.active > a:hover,
-				.toc .nav > li.active > a:focus,
-				pre.code-toolbar > .toolbar:hover {
-					border-left-color: #0f0019;
-				}
-				pre.code-toolbar > .toolbar:hover {
-					border-bottom-color: #0f0019;
-				}
-				.callout-primary h5,
-				.symbol-title.collapsible-symbol .toggle-icon,
-				.breadcrumb li a,
-				.toc .nav > li > a:hover,
-				.toc .nav > li > a:focus,
-				.toc .nav > li.active > a,
-				.toc .nav > li.active > a:hover,
-				.toc .nav > li.active > a:focus {
-					color: #0f0019;
-				}
-			</style>
-		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Phaser","systemSummary":"HTML5 Game Framework","systemLogo":"","systemColor":"#0f0019","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"Spotted an error in the docs? Please open an issue!","copyright":"Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.","linenums":true,"collapseSymbols":false,"inverseNav":true,"inlineNav":true,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":false,"sort":"longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false,"theme":"cerulean"};
-			window.DOCLET_TOC_ENABLED = true;
-			window.DOCLET_AFILTER_ENABLED = true;
-		</script>
+	<title>Phaser 3 API Documentation - Class: PluginManager</title>
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
 </head>
+
 <body>
-	<!-- start:navbar.hbs -->
-	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">
-					Phaser
-				</a>
-				<!-- displayed on small devices -->
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="navbar-collapse collapse" id="topNavigation">
-				<ul class="nav navbar-nav">
-							<li><a href="list_class.html">Classes</a></li>
-							<li><a href="list_namespace.html">Namespaces</a></li>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="img/phaser3-logo-nav.png"
+		alt="Phaser 3 logo" title="Phaser 3" /></a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="MatterJS.html">MatterJS</a></li><li><a href="Phaser.html">Phaser</a></li><li><a href="Phaser.Actions.html">Phaser.Actions</a></li><li><a href="Phaser.Animations.html">Phaser.Animations</a></li><li><a href="Phaser.Boot.html">Phaser.Boot</a></li><li><a href="Phaser.Cache.html">Phaser.Cache</a></li><li><a href="Phaser.Cameras.html">Phaser.Cameras</a></li><li><a href="Phaser.Cameras.Controls.html">Phaser.Cameras.Controls</a></li><li><a href="Phaser.Cameras.Scene2D.html">Phaser.Cameras.Scene2D</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.html">Phaser.Cameras.Scene2D.Effects</a></li><li><a href="Phaser.Cameras.Sprite3D.html">Phaser.Cameras.Sprite3D</a></li><li><a href="Phaser.Create.html">Phaser.Create</a></li><li><a href="Phaser.Create.Palettes.html">Phaser.Create.Palettes</a></li><li><a href="Phaser.Curves.html">Phaser.Curves</a></li><li><a href="Phaser.Data.html">Phaser.Data</a></li><li><a href="Phaser.Device.html">Phaser.Device</a></li><li><a href="Phaser.Display.html">Phaser.Display</a></li><li><a href="Phaser.Display.Align.html">Phaser.Display.Align</a></li><li><a href="Phaser.Display.Align.In.html">Phaser.Display.Align.In</a></li><li><a href="Phaser.Display.Align.To.html">Phaser.Display.Align.To</a></li><li><a href="Phaser.Display.Bounds.html">Phaser.Display.Bounds</a></li><li><a href="Phaser.Display.Canvas.html">Phaser.Display.Canvas</a></li><li><a href="Phaser.Display.Canvas.CanvasInterpolation.html">Phaser.Display.Canvas.CanvasInterpolation</a></li><li><a href="Phaser.Display.Canvas.CanvasPool.html">Phaser.Display.Canvas.CanvasPool</a></li><li><a href="Phaser.Display.Canvas.Smoothing.html">Phaser.Display.Canvas.Smoothing</a></li><li><a href="Phaser.Display.Color.Interpolate.html">Phaser.Display.Color.Interpolate</a></li><li><a href="Phaser.Display.Masks.html">Phaser.Display.Masks</a></li><li><a href="Phaser.DOM.html">Phaser.DOM</a></li><li><a href="Phaser.Events.html">Phaser.Events</a></li><li><a href="Phaser.GameObjects.html">Phaser.GameObjects</a></li><li><a href="Phaser.GameObjects.Components.html">Phaser.GameObjects.Components</a></li><li><a href="Phaser.GameObjects.Graphics.Commands.html">Phaser.GameObjects.Graphics.Commands</a></li><li><a href="Phaser.GameObjects.Particles.html">Phaser.GameObjects.Particles</a></li><li><a href="Phaser.GameObjects.Particles.Zones.html">Phaser.GameObjects.Particles.Zones</a></li><li><a href="Phaser.GameObjects.RetroFont.html">Phaser.GameObjects.RetroFont</a></li><li><a href="Phaser.Geom.html">Phaser.Geom</a></li><li><a href="Phaser.Geom.Intersects.html">Phaser.Geom.Intersects</a></li><li><a href="Phaser.Input.html">Phaser.Input</a></li><li><a href="Phaser.Input.Gamepad.html">Phaser.Input.Gamepad</a></li><li><a href="Phaser.Input.Gamepad.Configs.html">Phaser.Input.Gamepad.Configs</a></li><li><a href="Phaser.Input.Keyboard.html">Phaser.Input.Keyboard</a></li><li><a href="Phaser.Input.Mouse.html">Phaser.Input.Mouse</a></li><li><a href="Phaser.Input.Touch.html">Phaser.Input.Touch</a></li><li><a href="Phaser.Loader.html">Phaser.Loader</a></li><li><a href="Phaser.Loader.FileTypes.html">Phaser.Loader.FileTypes</a></li><li><a href="Phaser.Math.html">Phaser.Math</a></li><li><a href="Phaser.Math.Angle.html">Phaser.Math.Angle</a></li><li><a href="Phaser.Math.Distance.html">Phaser.Math.Distance</a></li><li><a href="Phaser.Math.Easing.html">Phaser.Math.Easing</a></li><li><a href="Phaser.Math.Easing.Back.html">Phaser.Math.Easing.Back</a></li><li><a href="Phaser.Math.Easing.Bounce.html">Phaser.Math.Easing.Bounce</a></li><li><a href="Phaser.Math.Easing.Circular.html">Phaser.Math.Easing.Circular</a></li><li><a href="Phaser.Math.Easing.Cubic.html">Phaser.Math.Easing.Cubic</a></li><li><a href="Phaser.Math.Easing.Elastic.html">Phaser.Math.Easing.Elastic</a></li><li><a href="Phaser.Math.Easing.Expo.html">Phaser.Math.Easing.Expo</a></li><li><a href="Phaser.Math.Easing.Linear.html">Phaser.Math.Easing.Linear</a></li><li><a href="Phaser.Math.Easing.Quadratic.html">Phaser.Math.Easing.Quadratic</a></li><li><a href="Phaser.Math.Easing.Quartic.html">Phaser.Math.Easing.Quartic</a></li><li><a href="Phaser.Math.Easing.Quintic.html">Phaser.Math.Easing.Quintic</a></li><li><a href="Phaser.Math.Easing.Sine.html">Phaser.Math.Easing.Sine</a></li><li><a href="Phaser.Math.Easing.Stepped.html">Phaser.Math.Easing.Stepped</a></li><li><a href="Phaser.Math.Fuzzy.html">Phaser.Math.Fuzzy</a></li><li><a href="Phaser.Math.Interpolation.html">Phaser.Math.Interpolation</a></li><li><a href="Phaser.Math.Pow2.html">Phaser.Math.Pow2</a></li><li><a href="Phaser.Math.Snap.html">Phaser.Math.Snap</a></li><li><a href="Phaser.Physics.html">Phaser.Physics</a></li><li><a href="Phaser.Physics.Arcade.html">Phaser.Physics.Arcade</a></li><li><a href="Phaser.Physics.Arcade.Components.html">Phaser.Physics.Arcade.Components</a></li><li><a href="Phaser.Physics.Arcade.Tilemap.html">Phaser.Physics.Arcade.Tilemap</a></li><li><a href="Phaser.Physics.Impact.html">Phaser.Physics.Impact</a></li><li><a href="Phaser.Physics.Impact.Components.html">Phaser.Physics.Impact.Components</a></li><li><a href="Phaser.Physics.Matter.html">Phaser.Physics.Matter</a></li><li><a href="Phaser.Physics.Matter.Components.html">Phaser.Physics.Matter.Components</a></li><li><a href="Phaser.Physics.Matter.PhysicsEditorParser.html">Phaser.Physics.Matter.PhysicsEditorParser</a></li><li><a href="Phaser.Plugins.html">Phaser.Plugins</a></li><li><a href="Phaser.Renderer.html">Phaser.Renderer</a></li><li><a href="Phaser.Renderer.Canvas.html">Phaser.Renderer.Canvas</a></li><li><a href="Phaser.Renderer.Snapshot.html">Phaser.Renderer.Snapshot</a></li><li><a href="Phaser.Renderer.WebGL.html">Phaser.Renderer.WebGL</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.html">Phaser.Renderer.WebGL.Pipelines</a></li><li><a href="Phaser.Renderer.WebGL.Utils.html">Phaser.Renderer.WebGL.Utils</a></li><li><a href="Phaser.Scenes.html">Phaser.Scenes</a></li><li><a href="Phaser.Scenes.Settings.html">Phaser.Scenes.Settings</a></li><li><a href="Phaser.Sound.html">Phaser.Sound</a></li><li><a href="Phaser.Structs.html">Phaser.Structs</a></li><li><a href="Phaser.Textures.html">Phaser.Textures</a></li><li><a href="Phaser.Textures.Parsers.html">Phaser.Textures.Parsers</a></li><li><a href="Phaser.Tilemaps.html">Phaser.Tilemaps</a></li><li><a href="Phaser.Tilemaps.Components.html">Phaser.Tilemaps.Components</a></li><li><a href="Phaser.Tilemaps.Formats.html">Phaser.Tilemaps.Formats</a></li><li><a href="Phaser.Tilemaps.Parsers.html">Phaser.Tilemaps.Parsers</a></li><li><a href="Phaser.Tilemaps.Parsers.Impact.html">Phaser.Tilemaps.Parsers.Impact</a></li><li><a href="Phaser.Tilemaps.Parsers.Tiled.html">Phaser.Tilemaps.Parsers.Tiled</a></li><li><a href="Phaser.Time.html">Phaser.Time</a></li><li><a href="Phaser.Tweens.html">Phaser.Tweens</a></li><li><a href="Phaser.Tweens.Builders.html">Phaser.Tweens.Builders</a></li><li><a href="Phaser.Utils.html">Phaser.Utils</a></li><li><a href="Phaser.Utils.Array.html">Phaser.Utils.Array</a></li><li><a href="Phaser.Utils.Array.Matrix.html">Phaser.Utils.Array.Matrix</a></li><li><a href="Phaser.Utils.Object.html">Phaser.Utils.Object</a></li><li><a href="Phaser.Utils.String.html">Phaser.Utils.String</a></li>
 				</ul>
-					<!-- start:lunr-search-navbar.hbs -->
-					<form class="navbar-form navbar-right" role="search">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
-							<div class="input-group-btn">
-								<button class="btn btn-default" id="lunr-search-submit">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</div>
-						</div>
-					</form>
-					<!-- start:lunr-search-navbar.hbs -->		</div>
-		</div>
-	</header>
-	<!-- end:navbar.hbs -->		<div class="page-header">
-			<div class="container">
-				<span class="kind">class</span>
-				<h1><span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.Plugins.html">.Plugins</a>.</span><span class="name">PluginManager</span></h1>
-			</div>
-		</div>
-	<div class="container content">
-		<div class="row">
-			<div class="col-md-9 main-content">
-						<ol class="breadcrumb">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="list_class.html">Classes</a></li>
-							<li class="active"><a href="Phaser.html">Phaser</a><a href="Phaser.Plugins.html">.Plugins</a>.PluginManager</li>
-						</ol>
-						<div class="access-filter">
-								<label class="checkbox-inline">
-									<input class="toggle-public" type="checkbox" value="" checked>
-									Public
-								</label>
-								<label class="checkbox-inline">
-									<input class="toggle-protected" type="checkbox" value="" checked>
-									Protected
-								</label>
-						</div>
-					<section>
-							<dl class="symbol primary">
-								<dt class="symbol-title class">
-			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">PluginManager</span><span class="signature-params">( <span class="signature-param">game</span>&nbsp;)</span></h2>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Class">Class</a></li><li><a href="MatterJS.Body.html">MatterJS.Body</a></li><li><a href="MatterJS.Composite.html">MatterJS.Composite</a></li><li><a href="MatterJS.Constraint.html">MatterJS.Constraint</a></li><li><a href="MatterJS.Engine.html">MatterJS.Engine</a></li><li><a href="MatterJS.World.html">MatterJS.World</a></li><li><a href="Phaser.Animations.Animation.html">Phaser.Animations.Animation</a></li><li><a href="Phaser.Animations.AnimationFrame.html">Phaser.Animations.AnimationFrame</a></li><li><a href="Phaser.Animations.AnimationManager.html">Phaser.Animations.AnimationManager</a></li><li><a href="Phaser.Boot.Config.html">Phaser.Boot.Config</a></li><li><a href="Phaser.Boot.TimeStep.html">Phaser.Boot.TimeStep</a></li><li><a href="Phaser.Cache.BaseCache.html">Phaser.Cache.BaseCache</a></li><li><a href="Phaser.Cache.CacheManager.html">Phaser.Cache.CacheManager</a></li><li><a href="Phaser.Cameras.Controls.FixedKeyControl.html">Phaser.Cameras.Controls.FixedKeyControl</a></li><li><a href="Phaser.Cameras.Controls.SmoothedKeyControl.html">Phaser.Cameras.Controls.SmoothedKeyControl</a></li><li><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></li><li><a href="Phaser.Cameras.Scene2D.CameraManager.html">Phaser.Cameras.Scene2D.CameraManager</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Fade.html">Phaser.Cameras.Scene2D.Effects.Fade</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Flash.html">Phaser.Cameras.Scene2D.Effects.Flash</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Shake.html">Phaser.Cameras.Scene2D.Effects.Shake</a></li><li><a href="Phaser.Cameras.Sprite3D.Camera.html">Phaser.Cameras.Sprite3D.Camera</a></li><li><a href="Phaser.Cameras.Sprite3D.CameraManager.html">Phaser.Cameras.Sprite3D.CameraManager</a></li><li><a href="Phaser.Cameras.Sprite3D.OrthographicCamera.html">Phaser.Cameras.Sprite3D.OrthographicCamera</a></li><li><a href="Phaser.Cameras.Sprite3D.PerspectiveCamera.html">Phaser.Cameras.Sprite3D.PerspectiveCamera</a></li><li><a href="Phaser.Curves.CubicBezier.html">Phaser.Curves.CubicBezier</a></li><li><a href="Phaser.Curves.Curve.html">Phaser.Curves.Curve</a></li><li><a href="Phaser.Curves.Ellipse.html">Phaser.Curves.Ellipse</a></li><li><a href="Phaser.Curves.Line.html">Phaser.Curves.Line</a></li><li><a href="Phaser.Curves.MoveTo.html">Phaser.Curves.MoveTo</a></li><li><a href="Phaser.Curves.Path.html">Phaser.Curves.Path</a></li><li><a href="Phaser.Curves.QuadraticBezier.html">Phaser.Curves.QuadraticBezier</a></li><li><a href="Phaser.Curves.Spline.html">Phaser.Curves.Spline</a></li><li><a href="Phaser.Data.DataManager.html">Phaser.Data.DataManager</a></li><li><a href="Phaser.Data.DataManagerPlugin.html">Phaser.Data.DataManagerPlugin</a></li><li><a href="Phaser.Display.Color.html">Phaser.Display.Color</a></li><li><a href="Phaser.Display.Masks.BitmapMask.html">Phaser.Display.Masks.BitmapMask</a></li><li><a href="Phaser.Display.Masks.GeometryMask.html">Phaser.Display.Masks.GeometryMask</a></li><li><a href="Phaser.DOM.RequestAnimationFrame.html">Phaser.DOM.RequestAnimationFrame</a></li><li><a href="Phaser.Events.EventEmitter.html">Phaser.Events.EventEmitter</a></li><li><a href="Phaser.Game.html">Phaser.Game</a></li><li><a href="Phaser.GameObjects.BitmapText.html">Phaser.GameObjects.BitmapText</a></li><li><a href="Phaser.GameObjects.Blitter.html">Phaser.GameObjects.Blitter</a></li><li><a href="Phaser.GameObjects.Blitter.Bob.html">Phaser.GameObjects.Blitter.Bob</a></li><li><a href="Phaser.GameObjects.Components.Animation.html">Phaser.GameObjects.Components.Animation</a></li><li><a href="Phaser.GameObjects.Components.TransformMatrix.html">Phaser.GameObjects.Components.TransformMatrix</a></li><li><a href="Phaser.GameObjects.Container.html">Phaser.GameObjects.Container</a></li><li><a href="Phaser.GameObjects.DisplayList.html">Phaser.GameObjects.DisplayList</a></li><li><a href="Phaser.GameObjects.DynamicBitmapText.html">Phaser.GameObjects.DynamicBitmapText</a></li><li><a href="Phaser.GameObjects.GameObject.html">Phaser.GameObjects.GameObject</a></li><li><a href="Phaser.GameObjects.GameObjectCreator.html">Phaser.GameObjects.GameObjectCreator</a></li><li><a href="Phaser.GameObjects.GameObjectFactory.html">Phaser.GameObjects.GameObjectFactory</a></li><li><a href="Phaser.GameObjects.Graphics.html">Phaser.GameObjects.Graphics</a></li><li><a href="Phaser.GameObjects.Group.html">Phaser.GameObjects.Group</a></li><li><a href="Phaser.GameObjects.Image.html">Phaser.GameObjects.Image</a></li><li><a href="Phaser.GameObjects.Light.html">Phaser.GameObjects.Light</a></li><li><a href="Phaser.GameObjects.LightsManager.html">Phaser.GameObjects.LightsManager</a></li><li><a href="Phaser.GameObjects.LightsPlugin.html">Phaser.GameObjects.LightsPlugin</a></li><li><a href="Phaser.GameObjects.Mesh.html">Phaser.GameObjects.Mesh</a></li><li><a href="Phaser.GameObjects.Particles.EmitterOp.html">Phaser.GameObjects.Particles.EmitterOp</a></li><li><a href="Phaser.GameObjects.Particles.GravityWell.html">Phaser.GameObjects.Particles.GravityWell</a></li><li><a href="Phaser.GameObjects.Particles.Particle.html">Phaser.GameObjects.Particles.Particle</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitter.html">Phaser.GameObjects.Particles.ParticleEmitter</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Phaser.GameObjects.Particles.ParticleEmitterManager</a></li><li><a href="Phaser.GameObjects.Particles.Zones.DeathZone.html">Phaser.GameObjects.Particles.Zones.DeathZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.EdgeZone.html">Phaser.GameObjects.Particles.Zones.EdgeZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.RandomZone.html">Phaser.GameObjects.Particles.Zones.RandomZone</a></li><li><a href="Phaser.GameObjects.PathFollower.html">Phaser.GameObjects.PathFollower</a></li><li><a href="Phaser.GameObjects.Quad.html">Phaser.GameObjects.Quad</a></li><li><a href="Phaser.GameObjects.RenderTexture.html">Phaser.GameObjects.RenderTexture</a></li><li><a href="Phaser.GameObjects.Sprite.html">Phaser.GameObjects.Sprite</a></li><li><a href="Phaser.GameObjects.Sprite3D.html">Phaser.GameObjects.Sprite3D</a></li><li><a href="Phaser.GameObjects.Text.html">Phaser.GameObjects.Text</a></li><li><a href="Phaser.GameObjects.Text.TextStyle.html">Phaser.GameObjects.Text.TextStyle</a></li><li><a href="Phaser.GameObjects.TileSprite.html">Phaser.GameObjects.TileSprite</a></li><li><a href="Phaser.GameObjects.UpdateList.html">Phaser.GameObjects.UpdateList</a></li><li><a href="Phaser.GameObjects.Zone.html">Phaser.GameObjects.Zone</a></li><li><a href="Phaser.Geom.Circle.html">Phaser.Geom.Circle</a></li><li><a href="Phaser.Geom.Ellipse.html">Phaser.Geom.Ellipse</a></li><li><a href="Phaser.Geom.Line.html">Phaser.Geom.Line</a></li><li><a href="Phaser.Geom.Point.html">Phaser.Geom.Point</a></li><li><a href="Phaser.Geom.Polygon.html">Phaser.Geom.Polygon</a></li><li><a href="Phaser.Geom.Rectangle.html">Phaser.Geom.Rectangle</a></li><li><a href="Phaser.Geom.Triangle.html">Phaser.Geom.Triangle</a></li><li><a href="Phaser.Input.Gamepad.Axis.html">Phaser.Input.Gamepad.Axis</a></li><li><a href="Phaser.Input.Gamepad.Button.html">Phaser.Input.Gamepad.Button</a></li><li><a href="Phaser.Input.Gamepad.Gamepad.html">Phaser.Input.Gamepad.Gamepad</a></li><li><a href="Phaser.Input.Gamepad.GamepadPlugin.html">Phaser.Input.Gamepad.GamepadPlugin</a></li><li><a href="Phaser.Input.InputManager.html">Phaser.Input.InputManager</a></li><li><a href="Phaser.Input.InputPlugin.html">Phaser.Input.InputPlugin</a></li><li><a href="Phaser.Input.Keyboard.Key.html">Phaser.Input.Keyboard.Key</a></li><li><a href="Phaser.Input.Keyboard.KeyboardPlugin.html">Phaser.Input.Keyboard.KeyboardPlugin</a></li><li><a href="Phaser.Input.Keyboard.KeyCombo.html">Phaser.Input.Keyboard.KeyCombo</a></li><li><a href="Phaser.Input.Mouse.MouseManager.html">Phaser.Input.Mouse.MouseManager</a></li><li><a href="Phaser.Input.Pointer.html">Phaser.Input.Pointer</a></li><li><a href="Phaser.Input.Touch.TouchManager.html">Phaser.Input.Touch.TouchManager</a></li><li><a href="Phaser.Loader.File.html">Phaser.Loader.File</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html">Phaser.Loader.FileTypes.AnimationJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasJSONFile.html">Phaser.Loader.FileTypes.AtlasJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasXMLFile.html">Phaser.Loader.FileTypes.AtlasXMLFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html">Phaser.Loader.FileTypes.AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioSpriteFile.html">Phaser.Loader.FileTypes.AudioSpriteFile</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html">Phaser.Loader.FileTypes.BinaryFile</a></li><li><a href="Phaser.Loader.FileTypes.BitmapFontFile.html">Phaser.Loader.FileTypes.BitmapFontFile</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html">Phaser.Loader.FileTypes.GLSLFile</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html">Phaser.Loader.FileTypes.HTML5AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html">Phaser.Loader.FileTypes.HTMLFile</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html">Phaser.Loader.FileTypes.ImageFile</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html">Phaser.Loader.FileTypes.JSONFile</a></li><li><a href="Phaser.Loader.FileTypes.MultiAtlasFile.html">Phaser.Loader.FileTypes.MultiAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html">Phaser.Loader.FileTypes.PackFile</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html">Phaser.Loader.FileTypes.PluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html">Phaser.Loader.FileTypes.ScenePluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html">Phaser.Loader.FileTypes.ScriptFile</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html">Phaser.Loader.FileTypes.SpriteSheetFile</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html">Phaser.Loader.FileTypes.SVGFile</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html">Phaser.Loader.FileTypes.TextFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html">Phaser.Loader.FileTypes.TilemapCSVFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html">Phaser.Loader.FileTypes.TilemapImpactFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html">Phaser.Loader.FileTypes.TilemapJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.UnityAtlasFile.html">Phaser.Loader.FileTypes.UnityAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html">Phaser.Loader.FileTypes.XMLFile</a></li><li><a href="Phaser.Loader.LoaderPlugin.html">Phaser.Loader.LoaderPlugin</a></li><li><a href="Phaser.Loader.MultiFile.html">Phaser.Loader.MultiFile</a></li><li><a href="Phaser.Math.Matrix3.html">Phaser.Math.Matrix3</a></li><li><a href="Phaser.Math.Matrix4.html">Phaser.Math.Matrix4</a></li><li><a href="Phaser.Math.Quaternion.html">Phaser.Math.Quaternion</a></li><li><a href="Phaser.Math.RandomDataGenerator.html">Phaser.Math.RandomDataGenerator</a></li><li><a href="Phaser.Math.Vector2.html">Phaser.Math.Vector2</a></li><li><a href="Phaser.Math.Vector3.html">Phaser.Math.Vector3</a></li><li><a href="Phaser.Math.Vector4.html">Phaser.Math.Vector4</a></li><li><a href="Phaser.Physics.Arcade.ArcadePhysics.html">Phaser.Physics.Arcade.ArcadePhysics</a></li><li><a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a></li><li><a href="Phaser.Physics.Arcade.Collider.html">Phaser.Physics.Arcade.Collider</a></li><li><a href="Phaser.Physics.Arcade.Factory.html">Phaser.Physics.Arcade.Factory</a></li><li><a href="Phaser.Physics.Arcade.Group.html">Phaser.Physics.Arcade.Group</a></li><li><a href="Phaser.Physics.Arcade.Image.html">Phaser.Physics.Arcade.Image</a></li><li><a href="Phaser.Physics.Arcade.Sprite.html">Phaser.Physics.Arcade.Sprite</a></li><li><a href="Phaser.Physics.Arcade.StaticBody.html">Phaser.Physics.Arcade.StaticBody</a></li><li><a href="Phaser.Physics.Arcade.StaticGroup.html">Phaser.Physics.Arcade.StaticGroup</a></li><li><a href="Phaser.Physics.Arcade.World.html">Phaser.Physics.Arcade.World</a></li><li><a href="Phaser.Physics.Impact.Body.html">Phaser.Physics.Impact.Body</a></li><li><a href="Phaser.Physics.Impact.CollisionMap.html">Phaser.Physics.Impact.CollisionMap</a></li><li><a href="Phaser.Physics.Impact.Factory.html">Phaser.Physics.Impact.Factory</a></li><li><a href="Phaser.Physics.Impact.ImpactBody.html">Phaser.Physics.Impact.ImpactBody</a></li><li><a href="Phaser.Physics.Impact.ImpactImage.html">Phaser.Physics.Impact.ImpactImage</a></li><li><a href="Phaser.Physics.Impact.ImpactPhysics.html">Phaser.Physics.Impact.ImpactPhysics</a></li><li><a href="Phaser.Physics.Impact.ImpactSprite.html">Phaser.Physics.Impact.ImpactSprite</a></li><li><a href="Phaser.Physics.Impact.World.html">Phaser.Physics.Impact.World</a></li><li><a href="Phaser.Physics.Matter.Factory.html">Phaser.Physics.Matter.Factory</a></li><li><a href="Phaser.Physics.Matter.Image.html">Phaser.Physics.Matter.Image</a></li><li><a href="Phaser.Physics.Matter.MatterPhysics.html">Phaser.Physics.Matter.MatterPhysics</a></li><li><a href="Phaser.Physics.Matter.PointerConstraint.html">Phaser.Physics.Matter.PointerConstraint</a></li><li><a href="Phaser.Physics.Matter.Sprite.html">Phaser.Physics.Matter.Sprite</a></li><li><a href="Phaser.Physics.Matter.TileBody.html">Phaser.Physics.Matter.TileBody</a></li><li><a href="Phaser.Physics.Matter.World.html">Phaser.Physics.Matter.World</a></li><li><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></li><li><a href="Phaser.Plugins.PluginManager.html">Phaser.Plugins.PluginManager</a></li><li><a href="Phaser.Plugins.ScenePlugin.html">Phaser.Plugins.ScenePlugin</a></li><li><a href="Phaser.Renderer.Canvas.CanvasRenderer.html">Phaser.Renderer.Canvas.CanvasRenderer</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline.html">Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline.html">Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline.html">Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline.html">Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">Phaser.Renderer.WebGL.WebGLPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLRenderer.html">Phaser.Renderer.WebGL.WebGLRenderer</a></li><li><a href="Phaser.Scene.html">Phaser.Scene</a></li><li><a href="Phaser.Scenes.SceneManager.html">Phaser.Scenes.SceneManager</a></li><li><a href="Phaser.Scenes.ScenePlugin.html">Phaser.Scenes.ScenePlugin</a></li><li><a href="Phaser.Scenes.Systems.html">Phaser.Scenes.Systems</a></li><li><a href="Phaser.Sound.BaseSound.html">Phaser.Sound.BaseSound</a></li><li><a href="Phaser.Sound.BaseSoundManager.html">Phaser.Sound.BaseSoundManager</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html">Phaser.Sound.HTML5AudioSound</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html">Phaser.Sound.HTML5AudioSoundManager</a></li><li><a href="Phaser.Sound.NoAudioSound.html">Phaser.Sound.NoAudioSound</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html">Phaser.Sound.NoAudioSoundManager</a></li><li><a href="Phaser.Sound.WebAudioSound.html">Phaser.Sound.WebAudioSound</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html">Phaser.Sound.WebAudioSoundManager</a></li><li><a href="Phaser.Structs.List.html">Phaser.Structs.List</a></li><li><a href="Phaser.Structs.Map.html">Phaser.Structs.Map</a></li><li><a href="Phaser.Structs.ProcessQueue.html">Phaser.Structs.ProcessQueue</a></li><li><a href="Phaser.Structs.RTree.html">Phaser.Structs.RTree</a></li><li><a href="Phaser.Structs.Set.html">Phaser.Structs.Set</a></li><li><a href="Phaser.Textures.CanvasTexture.html">Phaser.Textures.CanvasTexture</a></li><li><a href="Phaser.Textures.Frame.html">Phaser.Textures.Frame</a></li><li><a href="Phaser.Textures.Texture.html">Phaser.Textures.Texture</a></li><li><a href="Phaser.Textures.TextureManager.html">Phaser.Textures.TextureManager</a></li><li><a href="Phaser.Textures.TextureSource.html">Phaser.Textures.TextureSource</a></li><li><a href="Phaser.Tilemaps.DynamicTilemapLayer.html">Phaser.Tilemaps.DynamicTilemapLayer</a></li><li><a href="Phaser.Tilemaps.ImageCollection.html">Phaser.Tilemaps.ImageCollection</a></li><li><a href="Phaser.Tilemaps.LayerData.html">Phaser.Tilemaps.LayerData</a></li><li><a href="Phaser.Tilemaps.MapData.html">Phaser.Tilemaps.MapData</a></li><li><a href="Phaser.Tilemaps.ObjectLayer.html">Phaser.Tilemaps.ObjectLayer</a></li><li><a href="Phaser.Tilemaps.StaticTilemapLayer.html">Phaser.Tilemaps.StaticTilemapLayer</a></li><li><a href="Phaser.Tilemaps.Tile.html">Phaser.Tilemaps.Tile</a></li><li><a href="Phaser.Tilemaps.Tilemap.html">Phaser.Tilemaps.Tilemap</a></li><li><a href="Phaser.Tilemaps.Tileset.html">Phaser.Tilemaps.Tileset</a></li><li><a href="Phaser.Time.Clock.html">Phaser.Time.Clock</a></li><li><a href="Phaser.Time.TimerEvent.html">Phaser.Time.TimerEvent</a></li><li><a href="Phaser.Tweens.Timeline.html">Phaser.Tweens.Timeline</a></li><li><a href="Phaser.Tweens.Tween.html">Phaser.Tweens.Tween</a></li><li><a href="Phaser.Tweens.TweenManager.html">Phaser.Tweens.TweenManager</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:CameraDestroyEvent">event:CameraDestroyEvent</a></li><li><a href="global.html#event:CameraFadeInCompleteEvent">event:CameraFadeInCompleteEvent</a></li><li><a href="global.html#event:CameraFadeInStartEvent">event:CameraFadeInStartEvent</a></li><li><a href="global.html#event:CameraFadeOutCompleteEvent">event:CameraFadeOutCompleteEvent</a></li><li><a href="global.html#event:CameraFadeOutStartEvent">event:CameraFadeOutStartEvent</a></li><li><a href="global.html#event:CameraFlashCompleteEvent">event:CameraFlashCompleteEvent</a></li><li><a href="global.html#event:CameraFlashStartEvent">event:CameraFlashStartEvent</a></li><li><a href="global.html#event:CameraShakeCompleteEvent">event:CameraShakeCompleteEvent</a></li><li><a href="global.html#event:CameraShakeStartEvent">event:CameraShakeStartEvent</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:blur">Phaser.Boot.VisibilityHandler#event:blur</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:focus">Phaser.Boot.VisibilityHandler#event:focus</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:hidden">Phaser.Boot.VisibilityHandler#event:hidden</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:visible">Phaser.Boot.VisibilityHandler#event:visible</a></li><li><a href="Phaser.Cache.BaseCache.html#event:addEvent">Phaser.Cache.BaseCache#event:addEvent</a></li><li><a href="Phaser.Cache.BaseCache.html#event:removeEvent">Phaser.Cache.BaseCache#event:removeEvent</a></li><li><a href="Phaser.Game.html#event:boot">Phaser.Game#event:boot</a></li><li><a href="Phaser.Game.html#event:pauseEvent">Phaser.Game#event:pauseEvent</a></li><li><a href="Phaser.Game.html#event:postrenderEvent">Phaser.Game#event:postrenderEvent</a></li><li><a href="Phaser.Game.html#event:poststepEvent">Phaser.Game#event:poststepEvent</a></li><li><a href="Phaser.Game.html#event:prerenderEvent">Phaser.Game#event:prerenderEvent</a></li><li><a href="Phaser.Game.html#event:prestepEvent">Phaser.Game#event:prestepEvent</a></li><li><a href="Phaser.Game.html#event:resizeEvent">Phaser.Game#event:resizeEvent</a></li><li><a href="Phaser.Game.html#event:resumeEvent">Phaser.Game#event:resumeEvent</a></li><li><a href="Phaser.Game.html#event:stepEvent">Phaser.Game#event:stepEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onCompleteEvent">Phaser.GameObjects.Components.Animation#event:onCompleteEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onRepeatEvent">Phaser.GameObjects.Components.Animation#event:onRepeatEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onStartEvent">Phaser.GameObjects.Components.Animation#event:onStartEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onUpdateEvent">Phaser.GameObjects.Components.Animation#event:onUpdateEvent</a></li><li><a href="Phaser.Loader.File.html#event:fileCompleteEvent">Phaser.Loader.File#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.File.html#event:singleFileCompleteEvent">Phaser.Loader.File#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.AnimationJSONFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.AnimationJSONFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.AudioFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.AudioFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.BinaryFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.BinaryFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.GLSLFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.GLSLFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.HTML5AudioFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.HTML5AudioFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.HTMLFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.HTMLFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.ImageFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.ImageFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.JSONFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.JSONFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.PackFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.PackFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.PluginFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.PluginFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.ScenePluginFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.ScenePluginFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.ScriptFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.ScriptFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.SpriteSheetFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.SpriteSheetFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.SVGFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.SVGFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.TextFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.TextFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.TilemapCSVFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.TilemapCSVFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.TilemapImpactFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.TilemapImpactFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.TilemapJSONFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.TilemapJSONFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:fileCompleteEvent">Phaser.Loader.FileTypes.XMLFile#event:fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:singleFileCompleteEvent">Phaser.Loader.FileTypes.XMLFile#event:singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:addFileEvent">Phaser.Loader.LoaderPlugin#event:addFileEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:completeEvent">Phaser.Loader.LoaderPlugin#event:completeEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadErrorEvent">Phaser.Loader.LoaderPlugin#event:loadErrorEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadEvent">Phaser.Loader.LoaderPlugin#event:loadEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:progressEvent">Phaser.Loader.LoaderPlugin#event:progressEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:startEvent">Phaser.Loader.LoaderPlugin#event:startEvent</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:collide">Phaser.Physics.Arcade.World#event:collide</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:overlap">Phaser.Physics.Arcade.World#event:overlap</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:pause">Phaser.Physics.Arcade.World#event:pause</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:resume">Phaser.Physics.Arcade.World#event:resume</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:worldbounds">Phaser.Physics.Arcade.World#event:worldbounds</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:detune">Phaser.Sound.BaseSoundManager#event:detune</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:pauseall">Phaser.Sound.BaseSoundManager#event:pauseall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:rate">Phaser.Sound.BaseSoundManager#event:rate</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:resumeall">Phaser.Sound.BaseSoundManager#event:resumeall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:stopall">Phaser.Sound.BaseSoundManager#event:stopall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:unlocked">Phaser.Sound.BaseSoundManager#event:unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:detuneEvent">Phaser.Sound.HTML5AudioSound#event:detuneEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:endedEvent">Phaser.Sound.HTML5AudioSound#event:endedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopedEvent">Phaser.Sound.HTML5AudioSound#event:loopedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopEvent">Phaser.Sound.HTML5AudioSound#event:loopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:muteEvent">Phaser.Sound.HTML5AudioSound#event:muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:pauseEvent">Phaser.Sound.HTML5AudioSound#event:pauseEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:playEvent">Phaser.Sound.HTML5AudioSound#event:playEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:rateEvent">Phaser.Sound.HTML5AudioSound#event:rateEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:resumeEvent">Phaser.Sound.HTML5AudioSound#event:resumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:seekEvent">Phaser.Sound.HTML5AudioSound#event:seekEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:stopEvent">Phaser.Sound.HTML5AudioSound#event:stopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:volumeEvent">Phaser.Sound.HTML5AudioSound#event:volumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:detune">Phaser.Sound.HTML5AudioSoundManager#event:detune</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:muteEvent">Phaser.Sound.HTML5AudioSoundManager#event:muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:pauseall">Phaser.Sound.HTML5AudioSoundManager#event:pauseall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:rate">Phaser.Sound.HTML5AudioSoundManager#event:rate</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:resumeall">Phaser.Sound.HTML5AudioSoundManager#event:resumeall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:stopall">Phaser.Sound.HTML5AudioSoundManager#event:stopall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:unlocked">Phaser.Sound.HTML5AudioSoundManager#event:unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:volumeEvent">Phaser.Sound.HTML5AudioSoundManager#event:volumeEvent</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:detune">Phaser.Sound.NoAudioSoundManager#event:detune</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:pauseall">Phaser.Sound.NoAudioSoundManager#event:pauseall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:rate">Phaser.Sound.NoAudioSoundManager#event:rate</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:resumeall">Phaser.Sound.NoAudioSoundManager#event:resumeall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:stopall">Phaser.Sound.NoAudioSoundManager#event:stopall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:unlocked">Phaser.Sound.NoAudioSoundManager#event:unlocked</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:detuneEvent">Phaser.Sound.WebAudioSound#event:detuneEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:endedEvent">Phaser.Sound.WebAudioSound#event:endedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopedEvent">Phaser.Sound.WebAudioSound#event:loopedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopEvent">Phaser.Sound.WebAudioSound#event:loopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:muteEvent">Phaser.Sound.WebAudioSound#event:muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:pauseEvent">Phaser.Sound.WebAudioSound#event:pauseEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:playEvent">Phaser.Sound.WebAudioSound#event:playEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:rateEvent">Phaser.Sound.WebAudioSound#event:rateEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:resumeEvent">Phaser.Sound.WebAudioSound#event:resumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:seekEvent">Phaser.Sound.WebAudioSound#event:seekEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:stopEvent">Phaser.Sound.WebAudioSound#event:stopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:volumeEvent">Phaser.Sound.WebAudioSound#event:volumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:detune">Phaser.Sound.WebAudioSoundManager#event:detune</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:muteEvent">Phaser.Sound.WebAudioSoundManager#event:muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:pauseall">Phaser.Sound.WebAudioSoundManager#event:pauseall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:rate">Phaser.Sound.WebAudioSoundManager#event:rate</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:resumeall">Phaser.Sound.WebAudioSoundManager#event:resumeall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:stopall">Phaser.Sound.WebAudioSoundManager#event:stopall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:unlocked">Phaser.Sound.WebAudioSoundManager#event:unlocked</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:VolumeEvent">Phaser.Sound.WebAudioSoundManager#event:VolumeEvent</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="Phaser.GameObjects.html" class="dropdown-toggle" data-toggle="dropdown">Game Objects<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Phaser.GameObjects.GameObject.html">Base Game Object</a></li><li><a href="Phaser.GameObjects.GameObjectFactory.html">Game Object Factory</a></li><li><a href="Phaser.GameObjects.GameObjectCreator.html">Game Object Creator</a></li><li>&nbsp;</li><li><a href="Phaser.GameObjects.BitmapText.html">Bitmap Text (Static)</a></li><li><a href="Phaser.GameObjects.DynamicBitmapText.html">Bitmap Text (Dynamic)</a></li><li><a href="Phaser.GameObjects.Blitter.html">Blitter</a></li><li><a href="Phaser.GameObjects.Blitter.Bob.html">Bob (Blitter Object)</a></li><li><a href="Phaser.GameObjects.Container.html">Container</a></li><li><a href="Phaser.GameObjects.Graphics.html">Graphics</a></li><li><a href="Phaser.GameObjects.Group.html">Group</a></li><li><a href="Phaser.GameObjects.Image.html">Image</a></li><li><a href="Phaser.GameObjects.PathFollower.html">Path Follower</a></li><li><a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a></li><li><a href="Phaser.GameObjects.Sprite.html">Sprite</a></li><li><a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.GameObjects.Text.html">Text</a></li><li><a href="Phaser.GameObjects.TileSprite.html">TileSprite</a></li><li><a href="Phaser.GameObjects.Zone.html">Zone</a></li><li>&nbsp;</li><li><a href="Phaser.GameObjects.LightsPlugin.html">Lights (WebGL only)</a></li><li><a href="Phaser.GameObjects.Mesh.html">Mesh (WebGL only)</a></li><li><a href="Phaser.GameObjects.Quad.html">Quad (WebGL only)</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Class: PluginManager</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.Plugins.html">.Plugins</a>.</span>
+        
+        PluginManager
+        </h2>
+        
+            <div class="class-description"><p>The PluginManager is responsible for installing and adding plugins to Phaser.</p>
+<p>It is a global system and therefore belongs to the Game instance, not a specific Scene.</p>
+<p>It works in conjunction with the PluginCache. Core internal plugins automatically register themselves<br>with the Cache, but it's the Plugin Manager that is responsible for injecting them into the Scenes.</p>
+<p>There are two types of plugin:</p>
+<p>1) A Global Plugin<br>2) A Scene Plugin</p>
+<p>A Global Plugin is a plugin that lives within the Plugin Manager rather than a Scene. You can get<br>access to it by calling <code>PluginManager.get</code> and providing a key. Any Scene that requests a plugin in<br>this way will all get access to the same plugin instance, allowing you to use a single plugin across<br>multiple Scenes.</p>
+<p>A Scene Plugin is a plugin dedicated to running within a Scene. These are different to Global Plugins<br>in that their instances do not live within the Plugin Manager, but within the Scene Systems class instead.<br>And that every Scene created is given its own unique instance of a Scene Plugin. Examples of core Scene<br>Plugins include the Input Plugin, the Tween Plugin and the physics Plugins.</p>
+<p>You can add a plugin to Phaser in three different ways:</p>
+<p>1) Preload it<br>2) Include it in your source code and install it via the Game Config<br>3) Include it in your source code and install it within a Scene</p>
+<p>For examples of all of these approaches please see the Phaser 3 Examples Repo <code>plugins</code> folder.</p>
+<p>For information on creating your own plugin please see the Phaser 3 Plugin Template.</p></div>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<hr>
+<dt>
+    <h4 class="name" id="PluginManager"><span class="type-signature"></span>new PluginManager(game)</h4>
+    
+    
 </dt>
-<dd class="symbol-details class" style="max-height: 9999px;">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description classdesc">The PluginManager is responsible for installing and adding plugins to Phaser.It is a global system and therefore belongs to the Game instance, not a specific Scene.It works in conjunction with the PluginCache. Core internal plugins automatically register themselves with the Cache, but it's the Plugin Manager that is responsible for injecting them into the Scenes.There are two types of plugin:1) A Global Plugin2) A Scene PluginA Global Plugin is a plugin that lives within the Plugin Manager rather than a Scene. You can getaccess to it by calling `PluginManager.get` and providing a key. Any Scene that requests a plugin inthis way will all get access to the same plugin instance, allowing you to use a single plugin acrossmultiple Scenes.A Scene Plugin is a plugin dedicated to running within a Scene. These are different to Global Pluginsin that their instances do not live within the Plugin Manager, but within the Scene Systems class instead.And that every Scene created is given its own unique instance of a Scene Plugin. Examples of core ScenePlugins include the Input Plugin, the Tween Plugin and the physics Plugins.You can add a plugin to Phaser in three different ways:1) Preload it2) Include it in your source code and install it via the Game Config3) Include it in your source code and install it within a SceneFor examples of all of these approaches please see the Phaser 3 Examples Repo `plugins` folder.For information on creating your own plugin please see the Phaser 3 Plugin Template.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>game</code></td>
-							<td><span class="param-type"><a href="Phaser.Game.html">Phaser.Game</a></span></td>
-							<td class="last">
-									The game instance that owns this Plugin Manager.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-25">line 25</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>game</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Game.html">Phaser.Game</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The game instance that owns this Plugin Manager.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.0.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L25">Line 25</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-							</dl>
-							<article class="secondary">
-									<h3>Members</h3>
-									<dl class="symbol">
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="game" class="member public"><span class="name">game</span><span class="signature-type"> :<a href="Phaser.Game.html">Phaser.Game</a></span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The game instance that owns this Plugin Manager.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type"><a href="Phaser.Game.html">Phaser.Game</a></span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-76">line 76</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<hr>
+<dt class="name" id="game">
+    <h4 id="game"><span class="type-signature"></span>game<span class="type-signature"> :<a href="Phaser.Game.html">Phaser.Game</a></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The game instance that owns this Plugin Manager.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Phaser.Game.html">Phaser.Game</a></span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.0.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L76">Line 76</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="plugins" class="member public"><span class="name">plugins</span><span class="signature-type"> :Array.&lt;<a href="global.html#GlobalPlugin">GlobalPlugin</a>></span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">The global plugins currently running and managed by this Plugin Manager.A plugin must have been started at least once in order to appear in this list.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">Array.&lt;<a href="global.html#GlobalPlugin">GlobalPlugin</a>></span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-85">line 85</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt class="name" id="plugins">
+    <h4 id="plugins"><span class="type-signature"></span>plugins<span class="type-signature"> :Array.&lt;<a href="global.html#GlobalPlugin">GlobalPlugin</a>></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The global plugins currently running and managed by this Plugin Manager.<br>A plugin must have been started at least once in order to appear in this list.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Array.&lt;<a href="global.html#GlobalPlugin">GlobalPlugin</a>></span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L85">Line 85</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title member public">
-			<h4 id="scenePlugins" class="member public"><span class="name">scenePlugins</span><span class="signature-type"> :Array.&lt;string></span></h4>
-		</dt>
-<dd class="symbol-details member public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">A list of plugin keys that should be installed into Scenes as well as the Core Plugins.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-							<!-- type -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Type</label>
-								<div class="col-sm-9">
-									<div class="form-control-static type-names"><span class="param-type">Array.&lt;string></span></div>
-								</div>
-							</div>
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-95">line 95</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt class="name" id="scenePlugins">
+    <h4 id="scenePlugins"><span class="type-signature"></span>scenePlugins<span class="type-signature"> :Array.&lt;string></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>A list of plugin keys that should be installed into Scenes as well as the Core Plugins.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L95">Line 95</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
 </dd>
-									</dl>
-									<h3>Methods</h3>
-									<dl class="symbol">
-											<hr/>
-											<dt class="symbol-title function protected">
-			<h4 id="addToScene" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">addToScene</span><span class="signature-params">( <span class="signature-param">sys</span>, <span class="signature-param">globalPlugins</span>, <span class="signature-param">scenePlugins</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function protected">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called by the Scene Systems class. Tells the plugin manager to install all Scene plugins into it.First it will install global references, i.e. references from the Game systems into the Scene Systems (and Scene if mapped.)Then it will install Core Scene Plugins followed by Scene Plugins registered with the PluginManager.Finally it will install any references to Global Plugins that have a Scene mapping property into the Scene itself.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>sys</code></td>
-							<td><span class="param-type"><a href="Phaser.Scenes.Systems.html">Phaser.Scenes.Systems</a></span></td>
-							<td class="last">
-									The Scene Systems class to install all the plugins in to.
-							</td>
-						</tr>
-						<tr>
-								<td><code>globalPlugins</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of global plugins to install.
-							</td>
-						</tr>
-						<tr>
-								<td><code>scenePlugins</code></td>
-							<td><span class="param-type">array</span></td>
-							<td class="last">
-									An array of scene plugins to install.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-202">line 202</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="addToScene"><span class="type-signature">&lt;protected> </span>addToScene(sys, globalPlugins, scenePlugins)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Called by the Scene Systems class. Tells the plugin manager to install all Scene plugins into it.</p>
+<p>First it will install global references, i.e. references from the Game systems into the Scene Systems (and Scene if mapped.)<br>Then it will install Core Scene Plugins followed by Scene Plugins registered with the PluginManager.<br>Finally it will install any references to Global Plugins that have a Scene mapping property into the Scene itself.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sys</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Scenes.Systems.html">Phaser.Scenes.Systems</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Scene Systems class to install all the plugins in to.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>globalPlugins</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array of global plugins to install.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scenePlugins</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array of scene plugins to install.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L202">Line 202</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function protected">
-			<h4 id="boot" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">boot</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function protected">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Run once the game has booted and installs all of the plugins configured in the Game Config.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.0.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-134">line 134</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="boot"><span class="type-signature">&lt;protected> </span>boot()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Run once the game has booted and installs all of the plugins configured in the Game Config.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.0.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L134">Line 134</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="destroy" class="function public"><span class="name">destroy</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Destroys this Plugin Manager and all associated plugins.It will iterate all plugins found and call their `destroy` methods.Note that the PluginCache is NOT cleared by this as it doesn't hold any plugin instances.</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-806">line 806</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Destroys this Plugin Manager and all associated plugins.<br>It will iterate all plugins found and call their <code>destroy</code> methods.<br>Note that the PluginCache is NOT cleared by this as it doesn't hold any plugin instances.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L804">Line 804</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="get" class="function public"><span class="name">get</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">autoStart</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets a global plugin from the Plugin Manager based on the given key and returns it.If it cannot find an active plugin based on the key, but there is one in the Plugin Cache with the same key,then it will create a new instance of the cached plugin and return that.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The key of the plugin to get.
-							</td>
-						</tr>
-						<tr>
-								<td><code>autoStart</code></td>
-							<td><span class="param-type">boolean</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>true</td>
-							<td class="last">
-									Automatically start a new instance of the plugin if found in the cache, but not actively running.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></span> | <span class="param-type">function</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The plugin, or `null` if no plugin was found matching the key.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-613">line 613</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="get"><span class="type-signature"></span>get(key [, autoStart])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Gets a global plugin from the Plugin Manager based on the given key and returns it.</p>
+<p>If it cannot find an active plugin based on the key, but there is one in the Plugin Cache with the same key,<br>then it will create a new instance of the cached plugin and return that.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The key of the plugin to get.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>autoStart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Automatically start a new instance of the plugin if found in the cache, but not actively running.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L611">Line 611</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The plugin, or <code>null</code> if no plugin was found matching the key.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></span>
+|
+
+<span class="param-type">function</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="getClass" class="function public"><span class="name">getClass</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Returns the plugin class from the cache.Used internally by the Plugin Manager.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The key of the plugin to get.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">A Plugin object</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-656">line 656</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getClass"><span class="type-signature"></span>getClass(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns the plugin class from the cache.<br>Used internally by the Plugin Manager.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The key of the plugin to get.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L654">Line 654</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Plugin object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function protected">
-			<h4 id="getDefaultScenePlugins" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">getDefaultScenePlugins</span><span class="signature-params">()</span></h4>
-		</dt>
-<dd class="symbol-details function protected">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Called by the Scene Systems class. Returns a list of plugins to be installed.</div>
-			</div>			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">Array.&lt;string></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">A list keys of all the Scene Plugins to install.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-295">line 295</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getDefaultScenePlugins"><span class="type-signature">&lt;protected> </span>getDefaultScenePlugins()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Called by the Scene Systems class. Returns a list of plugins to be installed.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L295">Line 295</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A list keys of all the Scene Plugins to install.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function protected">
-			<h4 id="getEntry" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">getEntry</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function protected">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets a global plugin based on the given key.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The unique plugin key.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="global.html#GlobalPlugin">GlobalPlugin</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The plugin entry.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-471">line 471</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getEntry"><span class="type-signature">&lt;protected> </span>getEntry(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Gets a global plugin based on the given key.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique plugin key.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L469">Line 469</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The plugin entry.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#GlobalPlugin">GlobalPlugin</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function protected">
-			<h4 id="getIndex" class="function protected"><span class="signature-attribs">&lt;protected> </span><span class="name">getIndex</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function protected">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Gets an index of a global plugin based on the given key.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The unique plugin key.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">integer</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The index of the plugin within the plugins array.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-443">line 443</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getIndex"><span class="type-signature">&lt;protected> </span>getIndex(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Gets an index of a global plugin based on the given key.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique plugin key.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L441">Line 441</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The index of the plugin within the plugins array.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">integer</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="install" class="function public"><span class="name">install</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">plugin</span> [,&nbsp;<span class="signature-param">start</span> [,&nbsp;<span class="signature-param">mapping</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Installs a new Global Plugin into the Plugin Manager and optionally starts it running.A global plugin belongs to the Plugin Manager, rather than a specific Scene, and can be accessedand used by all Scenes in your game.The `key` property is what you use to access this plugin from the Plugin Manager.```javascriptthis.plugins.install('powerupsPlugin', pluginCode);// and from within the scene:this.plugins.get('powerupsPlugin');```This method is called automatically by Phaser if you install your plugins using either theGame Configuration object, or by preloading them via the Loader.The same plugin can be installed multiple times into the Plugin Manager by simply giving eachinstance its own unique key.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-							<th>Default</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The unique handle given to this plugin within the Plugin Manager.
-							</td>
-						</tr>
-						<tr>
-								<td><code>plugin</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-								<td></td>
-							<td class="last">
-									The plugin code. This should be the non-instantiated version.
-							</td>
-						</tr>
-						<tr>
-								<td><code>start</code></td>
-							<td><span class="param-type">boolean</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td>false</td>
-							<td class="last">
-									Automatically start the plugin running? This is always `true` if you provide a mapping value.
-							</td>
-						</tr>
-						<tr>
-								<td><code>mapping</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-								<td></td>
-							<td class="last">
-									If this plugin is injected into the Phaser.Scene class, this is the property key to use.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-375">line 375</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="install"><span class="type-signature"></span>install(key, plugin [, start] [, mapping])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Installs a new Global Plugin into the Plugin Manager and optionally starts it running.<br>A global plugin belongs to the Plugin Manager, rather than a specific Scene, and can be accessed<br>and used by all Scenes in your game.</p>
+<p>The <code>key</code> property is what you use to access this plugin from the Plugin Manager.</p>
+<pre class="prettyprint source lang-javascript"><code>this.plugins.install('powerupsPlugin', pluginCode);
+
+// and from within the scene:
+this.plugins.get('powerupsPlugin');</code></pre><p>This method is called automatically by Phaser if you install your plugins using either the<br>Game Configuration object, or by preloading them via the Loader.</p>
+<p>The same plugin can be installed multiple times into the Plugin Manager by simply giving each<br>instance its own unique key.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The unique handle given to this plugin within the Plugin Manager.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The plugin code. This should be the non-instantiated version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Automatically start the plugin running? This is always <code>true</code> if you provide a mapping value.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mapping</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>If this plugin is injected into the Phaser.Scene class, this is the property key to use.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L375">Line 375</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="installScenePlugin" class="function public"><span class="name">installScenePlugin</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">plugin</span> [,&nbsp;<span class="signature-param">mapping</span> [,&nbsp;<span class="signature-param">addToScene</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Installs a new Scene Plugin into the Plugin Manager and optionally adds itto the given Scene as well. A Scene Plugin added to the manager in this waywill be automatically installed into all new Scenes using the key and mapping given.The `key` property is what the plugin is injected into Scene.Systems as.The `mapping` property is optional, and if specified is what the plugin is installed intothe Scene as. For example:```javascriptthis.plugins.installScenePlugin('powerupsPlugin', pluginCode, 'powerups');// and from within the scene:this.sys.powerupsPlugin; // key valuethis.powerups; // mapping value```This method is called automatically by Phaser if you install your plugins using either theGame Configuration object, or by preloading them via the Loader.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									The property key that will be used to add this plugin to Scene.Systems.
-							</td>
-						</tr>
-						<tr>
-								<td><code>plugin</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									The plugin code. This should be the non-instantiated version.
-							</td>
-						</tr>
-						<tr>
-								<td><code>mapping</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									If this plugin is injected into the Phaser.Scene class, this is the property key to use.
-							</td>
-						</tr>
-						<tr>
-								<td><code>addToScene</code></td>
-							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									Optionally automatically add this plugin to the given Scene.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-314">line 314</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="installScenePlugin"><span class="type-signature"></span>installScenePlugin(key, plugin [, mapping] [, addToScene])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Installs a new Scene Plugin into the Plugin Manager and optionally adds it<br>to the given Scene as well. A Scene Plugin added to the manager in this way<br>will be automatically installed into all new Scenes using the key and mapping given.</p>
+<p>The <code>key</code> property is what the plugin is injected into Scene.Systems as.<br>The <code>mapping</code> property is optional, and if specified is what the plugin is installed into<br>the Scene as. For example:</p>
+<pre class="prettyprint source lang-javascript"><code>this.plugins.installScenePlugin('powerupsPlugin', pluginCode, 'powerups');
+
+// and from within the scene:
+this.sys.powerupsPlugin; // key value
+this.powerups; // mapping value</code></pre><p>This method is called automatically by Phaser if you install your plugins using either the<br>Game Configuration object, or by preloading them via the Loader.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The property key that will be used to add this plugin to Scene.Systems.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The plugin code. This should be the non-instantiated version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mapping</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If this plugin is injected into the Phaser.Scene class, this is the property key to use.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addToScene</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optionally automatically add this plugin to the given Scene.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L314">Line 314</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="isActive" class="function public"><span class="name">isActive</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Checks if the given global plugin, based on its key, is active or not.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The unique plugin key.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type">boolean</span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">`true` if the plugin is active, otherwise `false`.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-492">line 492</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="isActive"><span class="type-signature"></span>isActive(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Checks if the given global plugin, based on its key, is active or not.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique plugin key.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L490">Line 490</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p><code>true</code> if the plugin is active, otherwise <code>false</code>.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="registerFileType" class="function public"><span class="name">registerFileType</span><span class="signature-params">( <span class="signature-param">key</span>, <span class="signature-param">callback</span> [,&nbsp;<span class="signature-param">addToScene</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Registers a new file type with the global File Types Manager, making it available to all LoaderPlugins created after this.This is usually called from within your Plugin code and is a helpful short-cut for creatingnew loader file types.The key is the property that will be injected into the Loader Plugin and used to load thefiles. For example:```javascriptthis.plugins.registerFileType('wad', doomWadLoaderCallback);// later in your preload code:this.load.wad();```The callback is what is called when the loader tries to load a file  matching the given key.It's important to understand that the callback is invoked withinthe context of the LoaderPlugin. In this context there are several properties / methods availableto use:this.addFile - A method to add the new file to the load queue.this.scene - The Scene that owns the Loader Plugin instance.See the LoaderPlugin class for more details. Any public property or method listed is available fromyour callback under `this`.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									The key of the Game Object that the given callbacks will create, i.e. `image`, `sprite`.
-							</td>
-						</tr>
-						<tr>
-								<td><code>callback</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									The callback to invoke when the Game Object Factory is called.
-							</td>
-						</tr>
-						<tr>
-								<td><code>addToScene</code></td>
-							<td><span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									Optionally add this file type into the Loader Plugin owned by the given Scene.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-762">line 762</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="registerFileType"><span class="type-signature"></span>registerFileType(key, callback [, addToScene])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Registers a new file type with the global File Types Manager, making it available to all Loader<br>Plugins created after this.</p>
+<p>This is usually called from within your Plugin code and is a helpful short-cut for creating<br>new loader file types.</p>
+<p>The key is the property that will be injected into the Loader Plugin and used to load the<br>files. For example:</p>
+<pre class="prettyprint source lang-javascript"><code>this.plugins.registerFileType('wad', doomWadLoaderCallback);
+// later in your preload code:
+this.load.wad();</code></pre><p>The callback is what is called when the loader tries to load a file  matching the given key.<br>It's important to understand that the callback is invoked within<br>the context of the LoaderPlugin. In this context there are several properties / methods available<br>to use:</p>
+<p>this.addFile - A method to add the new file to the load queue.<br>this.scene - The Scene that owns the Loader Plugin instance.</p>
+<p>See the LoaderPlugin class for more details. Any public property or method listed is available from<br>your callback under <code>this</code>.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The key of the Game Object that the given callbacks will create, i.e. <code>image</code>, <code>sprite</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The callback to invoke when the Game Object Factory is called.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addToScene</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Scene.html">Phaser.Scene</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optionally add this file type into the Loader Plugin owned by the given Scene.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L760">Line 760</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="registerGameObject" class="function public"><span class="name">registerGameObject</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">factoryCallback</span> [,&nbsp;<span class="signature-param">creatorCallback</span>&nbsp;]&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Registers a new type of Game Object with the global Game Object Factory and / or Creator.This is usually called from within your Plugin code and is a helpful short-cut for creatingnew Game Objects.The key is the property that will be injected into the factories and used to create theGame Object. For example:```javascriptthis.plugins.registerGameObject('clown', clownFactoryCallback, clownCreatorCallback);// later in your game code:this.add.clown();this.make.clown();```The callbacks are what are called when the factories try to create a Game Objectmatching the given key. It's important to understand that the callbacks are invoked withinthe context of the GameObjectFactory. In this context there are several properties availableto use:this.scene - A reference to the Scene that owns the GameObjectFactory.this.displayList - A reference to the Display List the Scene owns.this.updateList - A reference to the Update List the Scene owns.See the GameObjectFactory and GameObjectCreator classes for more details.Any public property or method listed is available from your callbacks under `this`.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									The key of the Game Object that the given callbacks will create, i.e. `image`, `sprite`.
-							</td>
-						</tr>
-						<tr>
-								<td><code>factoryCallback</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									The callback to invoke when the Game Object Factory is called.
-							</td>
-						</tr>
-						<tr>
-								<td><code>creatorCallback</code></td>
-							<td><span class="param-type">function</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									The callback to invoke when the Game Object Creator is called.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-713">line 713</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="registerGameObject"><span class="type-signature"></span>registerGameObject(key [, factoryCallback] [, creatorCallback])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Registers a new type of Game Object with the global Game Object Factory and / or Creator.<br>This is usually called from within your Plugin code and is a helpful short-cut for creating<br>new Game Objects.</p>
+<p>The key is the property that will be injected into the factories and used to create the<br>Game Object. For example:</p>
+<pre class="prettyprint source lang-javascript"><code>this.plugins.registerGameObject('clown', clownFactoryCallback, clownCreatorCallback);
+// later in your game code:
+this.add.clown();
+this.make.clown();</code></pre><p>The callbacks are what are called when the factories try to create a Game Object<br>matching the given key. It's important to understand that the callbacks are invoked within<br>the context of the GameObjectFactory. In this context there are several properties available<br>to use:</p>
+<p>this.scene - A reference to the Scene that owns the GameObjectFactory.<br>this.displayList - A reference to the Display List the Scene owns.<br>this.updateList - A reference to the Update List the Scene owns.</p>
+<p>See the GameObjectFactory and GameObjectCreator classes for more details.<br>Any public property or method listed is available from your callbacks under <code>this</code>.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The key of the Game Object that the given callbacks will create, i.e. <code>image</code>, <code>sprite</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>factoryCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The callback to invoke when the Game Object Factory is called.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>creatorCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The callback to invoke when the Game Object Creator is called.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L711">Line 711</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="removeGlobalPlugin" class="function public"><span class="name">removeGlobalPlugin</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes a global plugin from the Plugin Manager and Plugin Cache.It is up to you to remove all references to this plugin that you may hold within your game code.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The key of the plugin to remove.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-672">line 672</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="removeGlobalPlugin"><span class="type-signature"></span>removeGlobalPlugin(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Removes a global plugin from the Plugin Manager and Plugin Cache.</p>
+<p>It is up to you to remove all references to this plugin that you may hold within your game code.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The key of the plugin to remove.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L670">Line 670</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="removeScenePlugin" class="function public"><span class="name">removeScenePlugin</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Removes a scene plugin from the Plugin Manager and Plugin Cache.This will not remove the plugin from any active Scenes that are already using it.It is up to you to remove all references to this plugin that you may hold within your game code.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The key of the plugin to remove.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-694">line 694</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="removeScenePlugin"><span class="type-signature"></span>removeScenePlugin(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Removes a scene plugin from the Plugin Manager and Plugin Cache.</p>
+<p>This will not remove the plugin from any active Scenes that are already using it.</p>
+<p>It is up to you to remove all references to this plugin that you may hold within your game code.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The key of the plugin to remove.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L692">Line 692</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="start" class="function public"><span class="name">start</span><span class="signature-params">( <span class="signature-param">key</span> [,&nbsp;<span class="signature-param">runAs</span>&nbsp;]&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Starts a global plugin running.If the plugin was previously active then calling `start` will reset it to an active state and thencall its `start` method.If the plugin has never been run before a new instance of it will be created within the Plugin Manager,its active state set and then both of its `init` and `start` methods called, in that order.If the plugin is already running under the given key then nothing happens.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-							<th>Attributes</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes"></td>
-							<td class="last">
-									The key of the plugin to start.
-							</td>
-						</tr>
-						<tr>
-								<td><code>runAs</code></td>
-							<td><span class="param-type">string</span></td>
-								<td class="attributes">&lt;optional&gt;<br/></td>
-							<td class="last">
-									Run the plugin under a new key. This allows you to run one plugin multiple times.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The plugin that was started, or `null` if invalid key given or plugin is already stopped.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-509">line 509</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="start"><span class="type-signature"></span>start(key [, runAs])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Starts a global plugin running.</p>
+<p>If the plugin was previously active then calling <code>start</code> will reset it to an active state and then<br>call its <code>start</code> method.</p>
+<p>If the plugin has never been run before a new instance of it will be created within the Plugin Manager,<br>its active state set and then both of its <code>init</code> and <code>start</code> methods called, in that order.</p>
+<p>If the plugin is already running under the given key then nothing happens.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The key of the plugin to start.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>runAs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Run the plugin under a new key. This allows you to run one plugin multiple times.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L507">Line 507</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The plugin that was started, or <code>null</code> if invalid key given or plugin is already stopped.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Phaser.Plugins.BasePlugin.html">Phaser.Plugins.BasePlugin</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-											<hr/>
-											<dt class="symbol-title function public">
-			<h4 id="stop" class="function public"><span class="name">stop</span><span class="signature-params">( <span class="signature-param">key</span>&nbsp;)</span></h4>
-		</dt>
-<dd class="symbol-details function public">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Stops a global plugin from running.If the plugin is active then its active state will be set to false and the plugins `stop` methodwill be called.If the plugin is not already running, nothing will happen.</div>
-			</div>			<div class="callout callout-info">
-				<h5>Parameters</h5>
-				<table class="params table table-striped">
-					<thead>
-					<tr>
-							<th>Name</th>
-						<th>Type</th>
-						<th class="last">Description</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-								<td><code>key</code></td>
-							<td><span class="param-type">string</span></td>
-							<td class="last">
-									The key of the plugin to stop.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
-							<div class="form-group">
-								<label class="col-sm-3 control-label returns-type"><span class="param-type"><a href="Phaser.Plugins.PluginManager.html">Phaser.Plugins.PluginManager</a></span></label>
-								<div class="col-sm-9">
-									<div class="form-control-static returns-description">The Plugin Manager.</div>
-								</div>
-							</div>
-					</form>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-							<!-- since -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Since</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">3.8.0</p>
-								</div>
-							</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="plugins_PluginManager.js.html">plugins/PluginManager.js</a>, <a href="plugins_PluginManager.js.html#line-585">line 585</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="stop"><span class="type-signature"></span>stop(key)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Stops a global plugin from running.</p>
+<p>If the plugin is active then its active state will be set to false and the plugins <code>stop</code> method<br>will be called.</p>
+<p>If the plugin is not already running, nothing will happen.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The key of the plugin to stop.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.8.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js">plugins/PluginManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.10.0/src/plugins/PluginManager.js#L583">Line 583</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The Plugin Manager.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Phaser.Plugins.PluginManager.html">Phaser.Plugins.PluginManager</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
 </dd>
-									</dl>
-							</article>
-					</section>
-			</div>
-				<div class="col-md-3 side-content">
-					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
-				</div>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
 		</div>
 	</div>
-	<footer>
-				<div class="footer-option">Spotted an error in the docs? Please open an issue!</div>
-				<div class="copyright">Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 25th May 2018 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
-	</footer>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/clipboard.min.js"></script>
-	<script src="js/prism.min.js"></script>
-	<script src="js/template.min.js"></script>
-		<!-- start:lunr-search-modal.hbs -->
-		<div class="modal fade" id="lunr-search-modal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Search results</h4>
-					</div>
-					<div class="modal-body" id="lunr-search-body">
-					</div>
-					<div class="modal-footer" id="lunr-search-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div>
-		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+
+	<div class="clearfix"></div>
+
 	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+    <div align="center" style="margin-bottom: 32px">
+
+        <img src="img/phaser3-logo.png" alt="Phaser 3 Logo" title="Phaser 3" /><br />
+
+        <p>Please <a href="https://phaser.io/community/donate">support Phaser development</a> via Patreon or PayPal.</p>
+
+        <p>Found an error in the docs? <a href="https://github.com/photonstorm/phaser/issues">Open an issue</a> and let us know where!</p>
+
+    </div>
+
+
+	<span class="copyright">
+	Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	
+		on June 13th 2018, 10:52:23 am
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+<script>
+	(function ( i, s, o, g, r, a, m ) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push( arguments )
+		}, i[r].l = 1 * new Date();
+		a = s.createElement( o ),
+			m = s.getElementsByTagName( o )[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore( a, m )
+	})( window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga' );
+
+	ga( 'create', 'UA-44006568-1', 'phaser.io' );
+	ga( 'send', 'pageview' );
+</script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
 </body>
 </html>
