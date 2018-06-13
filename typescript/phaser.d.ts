@@ -4583,7 +4583,7 @@ declare namespace Phaser {
             /**
              * [description]
              */
-            deltaHistory: any[];
+            deltaHistory: integer[];
 
             /**
              * [description]
@@ -5848,18 +5848,6 @@ declare namespace Phaser {
                 destroy(): void;
 
             }
-
-            /**
-             * This alias will be removed in a future version.
-             * Use `FixedKeyControl` instead.
-             */
-            var Fixed: any;
-
-            /**
-             * This alias will be removed in a future version.
-             * Use `SmoothedKeyControl` instead.
-             */
-            var Smoothed: any;
 
             /**
              * [description]
@@ -8710,7 +8698,7 @@ declare namespace Phaser {
              * @param s The saturation, in the range 0 - 1. Default 1.
              * @param v The value, in the range 0 - 1. Default 1.
              */
-            static HSVColorWheel(s?: number, v?: number): any[];
+            static HSVColorWheel(s?: number, v?: number): ColorObject[];
 
             /**
              * Converts an HSV (hue, saturation and value) color value to RGB.
