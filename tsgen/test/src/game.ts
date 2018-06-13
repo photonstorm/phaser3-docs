@@ -33,5 +33,3 @@ sprite.getBounds(p).extra();
 
 let container = scene.add.container(0, 0);
 container.getWorldTransformMatrix();
-
-Phaser.Cameras.Controls.Fixed;
