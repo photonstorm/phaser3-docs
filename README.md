@@ -2,7 +2,7 @@
 
 You can either:
 
-1. Go to https://photonstorm.github.io/phaser3-docs/index.html to read the docs online. You can view a [list of all Classes](https://photonstorm.github.io/phaser3-docs/list_class.html) or you may wish to browse the [Namespaces list](https://photonstorm.github.io/phaser3-docs/list_namespace.html) instead.
+1. Go to https://photonstorm.github.io/phaser3-docs/index.html to read the docs online. Use the drop-down menus at the top to navigate the name spaces, classes and Game Objects lists.
 
 2. Or, you can checkout this repository and then read the documentation by pointing your browser to the local `docs/` folder. Again using the Classes and Namespaces links at the top of the page to navigate.
 
