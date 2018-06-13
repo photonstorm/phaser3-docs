@@ -2,7 +2,7 @@
     "tags": {
         "allowUnknownTags": true
     },
-    "markdown"  : {
+    "markdown": {
         "parser"   : "gfm",
         "hardwrap" : true
     },
@@ -10,62 +10,8 @@
         "include": [
             "../phaser/src/"
         ],
-        "gos": [
-            "../phaser/src/gameobjects/index.js",
-            "../phaser/src/gameobjects/components/",
-            "../phaser/src/gameobjects/GameObject.js",
-            "../phaser/src/gameobjects/GameObjectCreator.js",
-            "../phaser/src/gameobjects/GameObjectFactory.js",
-            "../phaser/src/gameobjects/DisplayList.js",
-            "../phaser/src/gameobjects/UpdateList.js",
-            "../phaser/src/gameobjects/BuildGameObject.js",
-            "../phaser/src/gameobjects/BuildGameObjectAnimation.js",
-            "../phaser/src/gameobjects/bitmaptext/",
-            "../phaser/src/gameobjects/blitter/",
-            "../phaser/src/gameobjects/graphics/",
-            "../phaser/src/gameobjects/group/",
-            "../phaser/src/gameobjects/image/",
-            "../phaser/src/gameobjects/lights/",
-            "../phaser/src/gameobjects/mesh/",
-            "../phaser/src/gameobjects/particles/",
-            "../phaser/src/gameobjects/pathfollower/",
-            "../phaser/src/gameobjects/quad/",
-            "../phaser/src/gameobjects/sprite/",
-            "../phaser/src/gameobjects/sprite3d/",
-            "../phaser/src/gameobjects/text/",
-            "../phaser/src/gameobjects/tilesprite/",
-            "../phaser/src/gameobjects/zone/"
-        ],
-        "done": [
-            "../phaser/src/actions/",
-            "../phaser/src/animations/",
-            "../phaser/src/boot/",
-            "../phaser/src/cache/",
-            "../phaser/src/cameras/",
-            "../phaser/src/create/",
-            "../phaser/src/curves/",
-            "../phaser/src/data/",
-            "../phaser/src/device/",
-            "../phaser/src/display/",
-            "../phaser/src/dom/",
-            "../phaser/src/events/",
-            "../phaser/src/gameobjects/",
-            "../phaser/src/geom/",
-            "../phaser/src/input/",
-            "../phaser/src/loader/",
-            "../phaser/src/math/",
-            "../phaser/src/physics/",
-            "../phaser/src/renderer/",
-            "../phaser/src/scene/",
-            "../phaser/src/sound/",
-            "../phaser/src/structs/",
-            "../phaser/src/textures/",
-            "../phaser/src/tilemaps/",
-            "../phaser/src/time/",
-            "../phaser/src/tweens/",
-            "../phaser/src/utils/"
-        ],
         "exclude": [
+            "../phaser/src/physics/matter-js/poly-decomp/",
             "../phaser/src/physics/matter-js/lib",
             "../phaser/src/polyfills"
         ],
@@ -73,6 +19,7 @@
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "plugins": [
+        "plugins/markdown",
         "jsdoc-plugins/typedef",
         "jsdoc-plugins/this"
     ],
@@ -80,26 +27,28 @@
         "systemName": "Phaser",
         "systemSummary": "HTML5 Game Framework",
         "systemColor": "#0f0019",
-        "footer": "Spotted an error in the docs? Please open an issue!",
+        "footer": "<div align=\"center\">Spotted an error in the docs? Please <a href=\"https://github.com/photonstorm/phaser/issues\">open an issue</a> and let us know where!</div><br />",
         "copyright": "Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.",
+        "linenums": true,
         "inlineNav": true,
         "includeDate": true,
         "collapseSymbols": false,
         "methodHeadingReturns": false,
         "sort": "longname, version, since",
-        "theme": "cerulean"
+        "theme": "cerulean",
+        "outputSourceFiles": false,
+        "outputSourcePath": true,
+        "dateFormat": "MMMM Do YYYY, h:mm:ss a",
+        "analytics": { "ua": "UA-44006568-1", "domain": "phaser.io" }
     },
     "opts": {
         "debug": true,
         "destination": "./out/",
         "encoding": "utf8",
-        "outputSourceFiles": false,
-        "outputSourcePath": true,
         "recurse": true,
         "private": false,
         "lenient": true,
         "sourceType": "script",
-        "_template": "node_modules/ink-docstrap/template",
-        "template": "node_modules/foodoc/template"
+        "template": "template"
     }
 }
