@@ -32,6 +32,7 @@ var globalUrl = helper.getUniqueFilename('global');
 var indexUrl = helper.getUniqueFilename('index');
 
 var navOptions = {
+  version: conf.version,
   includeDate: conf.includeDate !== false,
   logoFile: conf.logoFile,
   systemName: conf.systemName || "Documentation",
@@ -469,8 +470,10 @@ function buildNav(members) {
   }
 
   var topLevelNav = [];
+
   _.each(nav, function(entry, name) {
-    if (entry.members.length > 0 && name !== "index") {
+    if (entry.members.length > 0 && name !== "index" && name !== "global") {
+
       topLevelNav.push({
         title: entry.title,
         link: entry.link,
@@ -478,6 +481,39 @@ function buildNav(members) {
       });
     }
   });
+
+  //  Inject Game Objects
+
+  topLevelNav.push({
+    title: 'Game Objects',
+    link: 'Phaser.GameObjects.html',
+    members: [
+      '<a href="Phaser.GameObjects.GameObject.html">Base Game Object</a>',
+      '<a href="Phaser.GameObjects.GameObjectFactory.html">Game Object Factory</a>',
+      '<a href="Phaser.GameObjects.GameObjectCreator.html">Game Object Creator</a>',
+      '&nbsp;',
+      '<a href="Phaser.GameObjects.BitmapText.html">Bitmap Text (Static)</a>',
+      '<a href="Phaser.GameObjects.DynamicBitmapText.html">Bitmap Text (Dynamic)</a>',
+      '<a href="Phaser.GameObjects.Blitter.html">Blitter</a>',
+      '<a href="Phaser.GameObjects.Blitter.Bob.html">Bob (Blitter Object)</a>',
+      '<a href="Phaser.GameObjects.Container.html">Container</a>',
+      '<a href="Phaser.GameObjects.Graphics.html">Graphics</a>',
+      '<a href="Phaser.GameObjects.Group.html">Group</a>',
+      '<a href="Phaser.GameObjects.Image.html">Image</a>',
+      '<a href="Phaser.GameObjects.PathFollower.html">Path Follower</a>',
+      '<a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a>',
+      '<a href="Phaser.GameObjects.Sprite.html">Sprite</a>',
+      '<a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a>',
+      '<a href="Phaser.GameObjects.Text.html">Text</a>',
+      '<a href="Phaser.GameObjects.TileSprite.html">TileSprite</a>',
+      '<a href="Phaser.GameObjects.Zone.html">Zone</a>',
+      '&nbsp;',
+      '<a href="Phaser.GameObjects.LightsPlugin.html">Lights (WebGL only)</a>',
+      '<a href="Phaser.GameObjects.Mesh.html">Mesh (WebGL only)</a>',
+      '<a href="Phaser.GameObjects.Quad.html">Quad (WebGL only)</a>'
+    ]
+  });
+
   nav.topLevelNav = topLevelNav;
 }
 

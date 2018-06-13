@@ -24,12 +24,7 @@ var self = this;
 	<?js } ?>
 
 	<?js if (data.since) {?>
-	<dt class="tag-since method-doc-label method-doc-details-label">Since:</dt>
-	<dd class="tag-since">
-		<ul class="dummy">
-			<li><?js= since ?></li>
-		</ul>
-	</dd>
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: <?js= since ?></dt>
 	<?js } ?>
 
 	<?js if (data.inherited && data.inherits) { ?>
@@ -147,10 +142,7 @@ var self = this;
 		</ul>
 	</dd>
 	<?js } else if (data.meta && this.navOptions.outputSourcePath) { ?>
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<?js= meta.shortpath ?>
-	</dd>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/<?js= this.navOptions.version ?>/src/<?js= meta.shortpath ?>"><?js= meta.shortpath ?></a> (<a href="https://github.com/photonstorm/phaser/tree/<?js= this.navOptions.version ?>/src/<?js= meta.shortpath ?>#L<?js= meta.lineno ?>">Line <?js= meta.lineno ?></a>)</dt>
 	<?js } ?>
 
 	<?js if (data.tutorials && tutorials.length) {?>

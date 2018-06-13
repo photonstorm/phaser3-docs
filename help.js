@@ -8,7 +8,7 @@ v.log('{bgYellow}{black}  |____|   |___|  (____  /____  >\\___  >__|    /______ 
 v.log('{bgYellow}{black}                \\/     \\/     \\/     \\/               \\/  ');
 v.log('{bgYellow}{black}  Available commands:                                     ');
 
-v.log('{white}* npm run {green}gen {cyan}  Build JSDocs to /out (Warning: Takes 1hr!)');
+v.log('{white}* npm run {green}gen {cyan}                 Build JSDocs to /out folder');
 v.log('{white}* npm run {green}json {cyan}          Build JSDocs to /json/phaser.json');
 v.log('{white}* npm run {green}sql {cyan}                  Parse JSDoc JSON to SQLite');
 v.log('{white}* npm run {green}types {cyan}            Dump list of unique data types');

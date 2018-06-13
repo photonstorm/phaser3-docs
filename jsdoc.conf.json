@@ -24,10 +24,11 @@
         "jsdoc-plugins/this"
     ],
     "templates": {
+        "version": "v3.10.0",
         "systemName": "Phaser",
+        "logoFile": "img/phaser3-logo-nav.png",
         "systemSummary": "HTML5 Game Framework",
         "systemColor": "#0f0019",
-        "footer": "<div align=\"center\">Spotted an error in the docs? Please <a href=\"https://github.com/photonstorm/phaser/issues\">open an issue</a> and let us know where!</div><br />",
         "copyright": "Phaser Copyright © 2018 Photon Storm Ltd and the contributors to the Phaser projects.",
         "linenums": true,
         "inlineNav": true,
@@ -42,7 +43,7 @@
         "analytics": { "ua": "UA-44006568-1", "domain": "phaser.io" }
     },
     "opts": {
-        "debug": true,
+        "debug": false,
         "destination": "./out/",
         "encoding": "utf8",
         "recurse": true,
