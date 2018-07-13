@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Phaser 3 API Documentation - Namespace: Particles</title>
+	<title>Phaser 3 API Documentation - Class: Zoom</title>
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -83,16 +83,20 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: Particles</h1>
+	<h1 class="page-title">Class: Zoom</h1>
 <section>
 
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.GameObjects.html">.GameObjects</a>.</span>
+            <span class="ancestors"><a href="Phaser.html">Phaser</a><a href="Phaser.Cameras.html">.Cameras</a><a href="Phaser.Cameras.Scene2D.html">.Scene2D</a><a href="Phaser.Cameras.Scene2D.Effects.html">.Effects</a>.</span>
         
-        Particles
+        Zoom
         </h2>
+        
+            <div class="class-description"><p>A Camera Zoom effect.</p>
+<p>This effect will zoom the Camera to the given scale, over the duration and with the ease specified.</p>
+<p>The effect will dispatch several events on the Camera itself and you can also specify an <code>onUpdate</code> callback,<br>which is invoked each frame for the duration of the effect if required.</p></div>
         
     
 </header>
@@ -102,14 +106,82 @@
     <div class="container-overview">
     
         
+<hr>
+<dt>
+    <h4 class="name" id="Zoom"><span class="type-signature"></span>new Zoom(camera)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
 
         
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>camera</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The camera this effect is acting upon.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
 <dl class="details">
     
 
 	
 
 	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
 
 	
 
@@ -134,7 +206,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/gameobjects/particles/index.js">gameobjects/particles/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/gameobjects/particles/index.js#L7">Line 7</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L11">Line 11</a>)</dt>
 	
 
 	
@@ -145,7 +217,21 @@
 </dl>
 
 
-        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
     
     </div>
 
@@ -154,39 +240,1340 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
 
         <dl>
-            <dt><a href="Phaser.GameObjects.Particles.EmitterOp.html">EmitterOp</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt class="name" id="camera">
+    <h4 id="camera"><span class="type-signature">&lt;readonly> </span>camera<span class="type-signature"> :<a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The Camera this effect belongs to.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L33">Line 33</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
         
-            <dt><a href="Phaser.GameObjects.Particles.GravityWell.html">GravityWell</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt class="name" id="destination">
+    <h4 id="destination"><span class="type-signature"></span>destination<span class="type-signature"> :number</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The destination zoom value.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L74">Line 74</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
         
-            <dt><a href="Phaser.GameObjects.Particles.Particle.html">Particle</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt class="name" id="duration">
+    <h4 id="duration"><span class="type-signature">&lt;readonly> </span>duration<span class="type-signature"> :integer</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The duration of the effect, in milliseconds.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">integer</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>0</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L54">Line 54</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
         
-            <dt><a href="Phaser.GameObjects.Particles.ParticleEmitter.html">ParticleEmitter</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt class="name" id="ease">
+    <h4 id="ease"><span class="type-signature"></span>ease<span class="type-signature"> :function</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The ease function to use during the zoom.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">function</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L83">Line 83</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
         
-            <dt><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">ParticleEmitterManager</a></dt>
-            <dd></dd>
+            
+<hr>
+<dt class="name" id="isRunning">
+    <h4 id="isRunning"><span class="type-signature">&lt;readonly> </span>isRunning<span class="type-signature"> :boolean</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Is this effect actively running?</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>false</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L43">Line 43</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="progress">
+    <h4 id="progress"><span class="type-signature"></span>progress<span class="type-signature"> :number</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>If this effect is running this holds the current percentage of the progress, a value between 0 and 1.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L92">Line 92</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="source">
+    <h4 id="source"><span class="type-signature"></span>source<span class="type-signature"> :number</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The starting zoom value;</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L65">Line 65</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
         </dl>
     
 
     
-
-    
-        <h3 class="subsection-title">Namespaces</h3>
+        <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            <dt><a href="namespaces.html#Phaser.GameObjects.Particles.Zones"><a href="Phaser.GameObjects.Particles.Zones.html">Zones</a></a></dt>
-            <dd></dd>
+            
+<hr>
+<dt>
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Destroys this effect, releasing it from the Camera.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L296">Line 296</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="effectComplete"><span class="type-signature"></span>effectComplete()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Called internally when the effect completes.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L265">Line 265</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="reset"><span class="type-signature"></span>reset()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Resets this camera effect.<br>If it was previously running, it stops instantly without calling its onComplete callback or emitting an event.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L281">Line 281</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="start"><span class="type-signature"></span>start(zoom [, duration] [, ease] [, force] [, callback] [, context])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>This effect will zoom the Camera to the given scale, over the duration and with the ease specified.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>zoom</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The target Camera zoom value.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1000
+                
+                </td>
+            
+
+            <td class="description last"><p>The duration of the effect in milliseconds.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ease</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Linear'
+                
+                </td>
+            
+
+            <td class="description last"><p>The ease to use for the Zoom. Can be any of the Phaser Easing constants or a custom function.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>force</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Force the shake effect to start immediately, even if already running.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CameraZoomCallback">CameraZoomCallback</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>This callback will be invoked every frame for the duration of the effect.<br>It is sent three arguments: A reference to the camera, a progress amount between 0 and 1 indicating how complete the effect is,<br>and the current camera zoom value.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L159">Line 159</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="global.html#event:CameraZoomStartEvent">event:CameraZoomStartEvent</a></li>
+    
+        <li><a href="global.html#event:CameraZoomCompleteEvent">event:CameraZoomCompleteEvent</a></li>
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The Camera on which the effect was started.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Phaser.Cameras.Scene2D.Camera.html">Phaser.Cameras.Scene2D.Camera</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="update"><span class="type-signature"></span>update(time, delta)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>The main update loop for this effect. Called automatically by the Camera.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current timestamp as generated by the Request Animation Frame or SetTimeout.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>delta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The delta time, in ms, elapsed since the last frame.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.11.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js">cameras/2d/effects/Zoom.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.11.0/src/cameras/2d/effects/Zoom.js#L223">Line 223</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
         </dl>
-    
-
-    
-
     
 
     
@@ -250,7 +1637,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on July 13th 2018, 12:08:01 pm
+		on July 13th 2018, 12:07:57 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
