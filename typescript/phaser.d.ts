@@ -2321,7 +2321,7 @@ declare type TextStyleWordWrapCallback = (text: string, textObject: Phaser.GameO
 /**
  * Font metrics for a Text Style object.
  */
-declare type TextMetrics = {
+declare type BitmapTextMetrics = {
     /**
      * The ascent of the font.
      */
@@ -2647,7 +2647,7 @@ declare namespace Phaser.GameObjects.Text {
         /**
          * Get the current text metrics.
          */
-        getTextMetrics(): TextMetrics;
+        getTextMetrics(): BitmapTextMetrics;
 
         /**
          * Build a JSON representation of this Text Style.
@@ -12699,7 +12699,72 @@ declare namespace Phaser {
             /**
              * Provides methods used for getting and setting the texture of a Game Object.
              */
-            var TextureCrop: any;
+            interface TextureCrop {
+                /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+            }
 
             /**
              * Provides methods used for setting the tint of a Game Object.
@@ -16497,6 +16562,76 @@ declare namespace Phaser {
             setDisplaySize(width: number, height: number): this;
 
             /**
+             * The Texture this Game Object is using to render with.
+             */
+            texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+            /**
+             * The Texture Frame this Game Object is using to render with.
+             */
+            frame: Phaser.Textures.Frame;
+
+            /**
+             * A boolean flag indicating if this Game Object is being cropped or not.
+             * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+             * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+             */
+            isCropped: boolean;
+
+            /**
+             * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+             * 
+             * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+             * 
+             * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+             * changes what is shown when rendered.
+             * 
+             * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+             * 
+             * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+             * half of it, you could call `setCrop(0, 0, 400, 600)`.
+             * 
+             * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+             * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+             * 
+             * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+             * 
+             * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+             * 
+             * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+             * the renderer to skip several internal calculations.
+             * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+             * @param y The y coordinate to start the crop from.
+             * @param width The width of the crop rectangle in pixels.
+             * @param height The height of the crop rectangle in pixels.
+             */
+            setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+            /**
+             * Sets the texture and frame this Game Object will use to render with.
+             * 
+             * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+             * @param key The key of the texture to be used, as stored in the Texture Manager.
+             * @param frame The name or index of the frame within the Texture.
+             */
+            setTexture(key: string, frame?: string | integer): this;
+
+            /**
+             * Sets the frame this Game Object will use to render with.
+             * 
+             * The Frame has to belong to the current Texture being used.
+             * 
+             * It can be either a string or an index.
+             * 
+             * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+             * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+             * @param frame The name or index of the frame within the Texture.
+             * @param updateSize Should this call adjust the size of the Game Object? Default true.
+             * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+             */
+            setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+
+            /**
              * Fill or additive?
              */
             tintFill: boolean;
@@ -19759,6 +19894,76 @@ declare namespace Phaser {
             setDisplaySize(width: number, height: number): this;
 
             /**
+             * The Texture this Game Object is using to render with.
+             */
+            texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+            /**
+             * The Texture Frame this Game Object is using to render with.
+             */
+            frame: Phaser.Textures.Frame;
+
+            /**
+             * A boolean flag indicating if this Game Object is being cropped or not.
+             * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+             * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+             */
+            isCropped: boolean;
+
+            /**
+             * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+             * 
+             * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+             * 
+             * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+             * changes what is shown when rendered.
+             * 
+             * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+             * 
+             * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+             * half of it, you could call `setCrop(0, 0, 400, 600)`.
+             * 
+             * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+             * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+             * 
+             * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+             * 
+             * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+             * 
+             * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+             * the renderer to skip several internal calculations.
+             * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+             * @param y The y coordinate to start the crop from.
+             * @param width The width of the crop rectangle in pixels.
+             * @param height The height of the crop rectangle in pixels.
+             */
+            setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+            /**
+             * Sets the texture and frame this Game Object will use to render with.
+             * 
+             * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+             * @param key The key of the texture to be used, as stored in the Texture Manager.
+             * @param frame The name or index of the frame within the Texture.
+             */
+            setTexture(key: string, frame?: string | integer): this;
+
+            /**
+             * Sets the frame this Game Object will use to render with.
+             * 
+             * The Frame has to belong to the current Texture being used.
+             * 
+             * It can be either a string or an index.
+             * 
+             * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+             * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+             * @param frame The name or index of the frame within the Texture.
+             * @param updateSize Should this call adjust the size of the Game Object? Default true.
+             * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+             */
+            setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+
+            /**
              * Fill or additive?
              */
             tintFill: boolean;
@@ -22142,6 +22347,76 @@ declare namespace Phaser {
             setDisplaySize(width: number, height: number): this;
 
             /**
+             * The Texture this Game Object is using to render with.
+             */
+            texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+            /**
+             * The Texture Frame this Game Object is using to render with.
+             */
+            frame: Phaser.Textures.Frame;
+
+            /**
+             * A boolean flag indicating if this Game Object is being cropped or not.
+             * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+             * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+             */
+            isCropped: boolean;
+
+            /**
+             * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+             * 
+             * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+             * 
+             * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+             * changes what is shown when rendered.
+             * 
+             * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+             * 
+             * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+             * half of it, you could call `setCrop(0, 0, 400, 600)`.
+             * 
+             * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+             * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+             * 
+             * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+             * 
+             * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+             * 
+             * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+             * the renderer to skip several internal calculations.
+             * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+             * @param y The y coordinate to start the crop from.
+             * @param width The width of the crop rectangle in pixels.
+             * @param height The height of the crop rectangle in pixels.
+             */
+            setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+            /**
+             * Sets the texture and frame this Game Object will use to render with.
+             * 
+             * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+             * @param key The key of the texture to be used, as stored in the Texture Manager.
+             * @param frame The name or index of the frame within the Texture.
+             */
+            setTexture(key: string, frame?: string | integer): this;
+
+            /**
+             * Sets the frame this Game Object will use to render with.
+             * 
+             * The Frame has to belong to the current Texture being used.
+             * 
+             * It can be either a string or an index.
+             * 
+             * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+             * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+             * @param frame The name or index of the frame within the Texture.
+             * @param updateSize Should this call adjust the size of the Game Object? Default true.
+             * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+             */
+            setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+
+            /**
              * Fill or additive?
              */
             tintFill: boolean;
@@ -22480,7 +22755,7 @@ declare namespace Phaser {
              * @param size The Text metrics to use when calculating the size.
              * @param lines The lines of text to calculate the size from.
              */
-            static GetTextSize(text: Phaser.GameObjects.Text, size: TextMetrics, lines: any[]): object;
+            static GetTextSize(text: Phaser.GameObjects.Text, size: BitmapTextMetrics, lines: any[]): object;
 
             /**
              * Calculates the ascent, descent and fontSize of a given font style.
@@ -35616,6 +35891,76 @@ declare namespace Phaser {
                 setDisplaySize(width: number, height: number): this;
 
                 /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+
+                /**
                  * Fill or additive?
                  */
                 tintFill: boolean;
@@ -36765,6 +37110,76 @@ declare namespace Phaser {
                  * @param height The height of this Game Object.
                  */
                 setDisplaySize(width: number, height: number): this;
+
+                /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
                 /**
                  * Fill or additive?
@@ -41118,6 +41533,76 @@ declare namespace Phaser {
                 setDisplaySize(width: number, height: number): this;
 
                 /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+
+                /**
                  * Fill or additive?
                  */
                 tintFill: boolean;
@@ -42173,6 +42658,76 @@ declare namespace Phaser {
                  * @param height The height of this Game Object.
                  */
                 setDisplaySize(width: number, height: number): this;
+
+                /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
                 /**
                  * Fill or additive?
@@ -44251,6 +44806,76 @@ declare namespace Phaser {
                 setDisplaySize(width: number, height: number): this;
 
                 /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
+
+                /**
                  * Fill or additive?
                  */
                 tintFill: boolean;
@@ -45308,6 +45933,76 @@ declare namespace Phaser {
                  * @param height The height of this Game Object.
                  */
                 setDisplaySize(width: number, height: number): this;
+
+                /**
+                 * The Texture this Game Object is using to render with.
+                 */
+                texture: Phaser.Textures.Texture | Phaser.Textures.CanvasTexture;
+
+                /**
+                 * The Texture Frame this Game Object is using to render with.
+                 */
+                frame: Phaser.Textures.Frame;
+
+                /**
+                 * A boolean flag indicating if this Game Object is being cropped or not.
+                 * You can toggle this at any time after `setCrop` has been called, to turn cropping on or off.
+                 * Equally, calling `setCrop` with no arguments will reset the crop and disable it.
+                 */
+                isCropped: boolean;
+
+                /**
+                 * Applies a crop to a texture based Game Object, such as a Sprite or Image.
+                 * 
+                 * The crop is a rectangle that limits the area of the texture frame that is visible during rendering.
+                 * 
+                 * Cropping a Game Object does not change its size, dimensions, physics body or hit area, it just
+                 * changes what is shown when rendered.
+                 * 
+                 * The crop coordinates are relative to the texture frame, not the Game Object, meaning 0 x 0 is the top-left.
+                 * 
+                 * Therefore, if you had a Game Object that had an 800x600 sized texture, and you wanted to show only the left
+                 * half of it, you could call `setCrop(0, 0, 400, 600)`.
+                 * 
+                 * It is also scaled to match the Game Object scale automatically. Therefore a crop rect of 100x50 would crop
+                 * an area of 200x100 when applied to a Game Object that had a scale factor of 2.
+                 * 
+                 * You can either pass in numeric values directly, or you can provide a single Rectangle object as the first argument.
+                 * 
+                 * Call this method with no arguments at all to reset the crop, or toggle the property `isCropped` to `false`.
+                 * 
+                 * You should do this if the crop rectangle becomes the same size as the frame itself, as it will allow
+                 * the renderer to skip several internal calculations.
+                 * @param x The x coordinate to start the crop from. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
+                 * @param y The y coordinate to start the crop from.
+                 * @param width The width of the crop rectangle in pixels.
+                 * @param height The height of the crop rectangle in pixels.
+                 */
+                setCrop(x?: number | Phaser.Geom.Rectangle, y?: number, width?: number, height?: number): this;
+
+                /**
+                 * Sets the texture and frame this Game Object will use to render with.
+                 * 
+                 * Textures are referenced by their string-based keys, as stored in the Texture Manager.
+                 * @param key The key of the texture to be used, as stored in the Texture Manager.
+                 * @param frame The name or index of the frame within the Texture.
+                 */
+                setTexture(key: string, frame?: string | integer): this;
+
+                /**
+                 * Sets the frame this Game Object will use to render with.
+                 * 
+                 * The Frame has to belong to the current Texture being used.
+                 * 
+                 * It can be either a string or an index.
+                 * 
+                 * Calling `setFrame` will modify the `width` and `height` properties of your Game Object.
+                 * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
+                 * @param frame The name or index of the frame within the Texture.
+                 * @param updateSize Should this call adjust the size of the Game Object? Default true.
+                 * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
+                 */
+                setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
                 /**
                  * Fill or additive?
