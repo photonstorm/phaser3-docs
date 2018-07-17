@@ -1,24 +1,22 @@
 window.Searcher = (function() {
     function Searcher() {
-        this._index = lunr(function () {
-            this.field('title', {boost: 10})
-            this.field('body')
-            this.ref('id')
-          }) ;
-
+        this._index = undefined;
         this._indexContent = undefined;
     }
 
     Searcher.prototype.init = function() {
         var self = this;
+        const result = self._getIndexData();
 
-        $("script[type='text/x-docstrap-searchdb']").each(function(idx, item)  {
-            self._indexContent = JSON.parse(item.innerHTML);
+        var w = new Worker('scripts/lunr-worker.js');
 
-            for (var entryId in self._indexContent) {
-                self._index.add(self._indexContent[entryId]);
-            }
-        });
+        w.postMessage(result);
+        w.onmessage = function (e)
+        {
+            self._index = lunr.Index.load(JSON.parse(e.data))
+            top.SearcherDisplay.enableSearchBox();
+            w.terminate();
+        }
     };
 
     Searcher.prototype.search = function(searchTerm) {
@@ -31,6 +29,22 @@ window.Searcher = (function() {
 
         return results;
     };
+
+    Searcher.prototype._getIndexData = function() {
+        const self = this;
+        const data = Array.from(document.querySelectorAll("script[type='text/x-docstrap-searchdb']"));
+        let result = [];
+
+        data.forEach(x => {
+            const json = JSON.parse(x.innerHTML);
+            self._indexContent = json;
+
+            for (let entry in json) {
+                result.push(json[entry]);
+            }
+        });
+        return result;
+    }
 
     return new Searcher();
 })();
