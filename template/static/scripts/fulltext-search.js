@@ -1,24 +1,23 @@
 window.Searcher = (function() {
     function Searcher() {
-        this._index = lunr(function () {
-            this.field('title', {boost: 10})
-            this.field('body')
-            this.ref('id')
-          }) ;
-
+        this._index = undefined;
         this._indexContent = undefined;
     }
 
-    Searcher.prototype.init = function() {
+    Searcher.prototype.init = function(callback) {
         var self = this;
+        const result = _getIndexData();
 
-        $("script[type='text/x-docstrap-searchdb']").each(function(idx, item)  {
-            self._indexContent = JSON.parse(item.innerHTML);
+        var w = new Worker('scripts/lunr-worker.js');
 
-            for (var entryId in self._indexContent) {
-                self._index.add(self._indexContent[entryId]);
-            }
-        });
+        w.postMessage(result);
+        w.onmessage = function (e)
+        {
+            self._index = lunr.Index.load(JSON.parse(e.data))
+            if(callback)
+                callback();
+            w.terminate();
+        }
     };
 
     Searcher.prototype.search = function(searchTerm) {
@@ -31,6 +30,30 @@ window.Searcher = (function() {
 
         return results;
     };
+
+    function _getIndexData() {
+        const self = this;
+        const data = Array.from(document.querySelectorAll("script[type='text/x-docstrap-searchdb']"));
+        let result = [];
+
+        data.forEach(x => {
+            const json = JSON.parse(x.innerHTML);
+            self._indexContent = json;
+
+            for (let entry in json) {
+                result.push(json[entry]);
+            }
+        });
+        return result;
+    }
+
+    
+		
+    function _enableSearchBox() { 
+        $('#search-input').removeClass('loading');
+        $('#search-input').removeAttr('disabled');
+        $('#search-submit').removeAttr('disabled');
+    }
 
     return new Searcher();
 })();
