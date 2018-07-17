@@ -1,6 +1,7 @@
 #search-input.loading {
-    background: url(/img/ellipse-loading.svg);
+    background: url(/img/loading.svg);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right;
+    background-size: 50px;
     background-color: #F3F3F3;
 }

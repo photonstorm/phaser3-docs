@@ -4,9 +4,9 @@ window.Searcher = (function() {
         this._indexContent = undefined;
     }
 
-    Searcher.prototype.init = function(callback) {
+    Searcher.prototype.init = function() {
         var self = this;
-        const result = _getIndexData();
+        const result = self._getIndexData();
 
         var w = new Worker('scripts/lunr-worker.js');
 
@@ -14,8 +14,7 @@ window.Searcher = (function() {
         w.onmessage = function (e)
         {
             self._index = lunr.Index.load(JSON.parse(e.data))
-            if(callback)
-                callback();
+            top.SearcherDisplay.enableSearchBox();
             w.terminate();
         }
     };
@@ -31,7 +30,7 @@ window.Searcher = (function() {
         return results;
     };
 
-    function _getIndexData() {
+    Searcher.prototype._getIndexData = function() {
         const self = this;
         const data = Array.from(document.querySelectorAll("script[type='text/x-docstrap-searchdb']"));
         let result = [];
@@ -45,14 +44,6 @@ window.Searcher = (function() {
             }
         });
         return result;
-    }
-
-    
-		
-    function _enableSearchBox() { 
-        $('#search-input').removeClass('loading');
-        $('#search-input').removeAttr('disabled');
-        $('#search-submit').removeAttr('disabled');
     }
 
     return new Searcher();
