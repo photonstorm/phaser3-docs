@@ -13,7 +13,10 @@
         "exclude": [
             "../phaser/src/physics/matter-js/poly-decomp/",
             "../phaser/src/physics/matter-js/lib",
-            "../phaser/src/polyfills"
+            "../phaser/src/polyfills",
+            "../phaser/src/boot/CreateDOMContainer.js",
+            "../phaser/src/boot/ScaleManager.js",
+            "../phaser/src/gameobjects/domelement/"
         ],
         "includePattern": ".+\\.js?$",
         "excludePattern": "(^|\\/|\\\\)_"
@@ -24,7 +27,7 @@
         "jsdoc-plugins/this"
     ],
     "templates": {
-        "version": "v3.11.0",
+        "version": "v3.12.0",
         "systemName": "Phaser",
         "logoFile": "img/phaser3-logo-nav.png",
         "systemSummary": "HTML5 Game Framework",

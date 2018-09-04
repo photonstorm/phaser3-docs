@@ -1,35 +1,31 @@
+class MyScene extends Phaser.Scene {
 
-let scene:Phaser.Scene = new Phaser.Scene("");
+    public preload ()
+    {
+        this.load.atlas('cards', 'assets/atlas/cards.png', 'assets/atlas/cards.json');
+    }
 
-let blitter = new Phaser.GameObjects.Blitter(scene, 10, 10);
+    public create ()
+    {
+        let sprite = this.add.sprite(400, 300, 'cards', 'clubs3');
 
-let conf:GameConfig = {
-    type:Phaser.AUTO,
-    width: 100,
-    height: 100,
-    zoom: 1,
-    resolution: 1
-}
+        sprite.setInteractive();
 
-let tex:Phaser.Textures.Texture = <any>null;
+        this.input.on('pointerdown', function () {
 
-tex.source[0].setFilter(Phaser.Textures.FilterMode.LINEAR);
+            sprite.setFrame('hearts4');
 
-tex.setFilter(Phaser.Textures.FilterMode.LINEAR);
-tex.setFilter(Phaser.Textures.NEAREST);
-
-let sprite = new Phaser.GameObjects.Sprite(scene, 0, 0, "test");
-
-class MyVec extends Phaser.Geom.Rectangle {
-
-    public extra() {
-
+        });
     }
 
 }
-let p = new MyVec();
 
-sprite.getBounds(p).extra();
+let config = {
+    type: Phaser.AUTO,
+    parent: 'phaser-example',
+    width: 800,
+    height: 600,
+    scene: MyScene
+};
 
-let container = scene.add.container(0, 0);
-container.getWorldTransformMatrix();
+let game = new Phaser.Game(config);
