@@ -84,6 +84,12 @@ window.SearcherDisplay = (function($) {
 
             $("#searchResults").modal({"show": true});
     };
+		
+    SearcherDisplay.prototype.enableSearchBox = function() { 
+      $('#search-input').removeClass('loading');
+      $('#search-input').removeAttr('disabled');
+      $('#search-submit').removeAttr('disabled');
+    }
 
     return new SearcherDisplay();
 })($);
