@@ -78,9 +78,11 @@ export class Parser {
                 case "Phaser.GameObjects.Components.Animation":
                 case "Phaser.GameObjects.Components.BlendMode":
                 case "Phaser.GameObjects.Components.ComputedSize":
+                case "Phaser.GameObjects.Components.Crop":
                 case "Phaser.GameObjects.Components.Depth":
                 case "Phaser.GameObjects.Components.Flip":
                 case "Phaser.GameObjects.Components.GetBounds":
+                case "Phaser.GameObjects.Components.Mask":
                 case "Phaser.GameObjects.Components.Origin":
                 case "Phaser.GameObjects.Components.Pipeline":
                 case "Phaser.GameObjects.Components.ScaleMode":
@@ -90,10 +92,9 @@ export class Parser {
                 case "Phaser.GameObjects.Components.Texture":
                 case "Phaser.GameObjects.Components.TextureCrop":
                 case "Phaser.GameObjects.Components.Tint":
+                case "Phaser.GameObjects.Components.ToJSON":
                 case "Phaser.GameObjects.Components.Transform":
                 case "Phaser.GameObjects.Components.Visible":
-                case "Phaser.GameObjects.Components.MatrixStack":
-                case "Phaser.GameObjects.Components.Mask":
                     doclet.kind = "mixin";
                     break;
             }
