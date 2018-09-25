@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: scene/SceneManager.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: scene/SceneManager.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../utils/Class');
+var CONST = require('./const');
+var GetValue = require('../utils/object/GetValue');
+var NOOP = require('../utils/NOOP');
+var Scene = require('./Scene');
+var Systems = require('./Systems');
+
+/**
+ * @classdesc
+ * The Scene Manager.
+ *
+ * The Scene Manager is a Game level system, responsible for creating, processing and updating all of the
+ * Scenes in a Game instance.
+ *
+ *
+ * @class SceneManager
+ * @memberOf Phaser.Scenes
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.Game} game - The Phaser.Game instance this Scene Manager belongs to.
+ * @param {object} sceneConfig - Scene specific configuration settings.
+ */
+var SceneManager = new Class({
+
+    initialize:
+
+    function SceneManager (game, sceneConfig)
+    {
+        /**
+         * The Game that this SceneManager belongs to.
+         *
+         * @name Phaser.Scenes.SceneManager#game
+         * @type {Phaser.Game}
+         * @since 3.0.0
+         */
+        this.game = game;
+
+        /**
+         * An object that maps the keys to the scene so we can quickly get a scene from a key without iteration.
+         *
+         * @name Phaser.Scenes.SceneManager#keys
+         * @type {object}
+         * @since 3.0.0
+         */
+        this.keys = {};
+
+        /**
+         * The array in which all of the scenes are kept.
+         *
+         * @name Phaser.Scenes.SceneManager#scenes
+         * @type {array}
+         * @since 3.0.0
+         */
+        this.scenes = [];
+
+        /**
+         * Scenes pending to be added are stored in here until the manager has time to add it.
+         *
+         * @name Phaser.Scenes.SceneManager#_pending
+         * @type {array}
+         * @private
+         * @since 3.0.0
+         */
+        this._pending = [];
+
+        /**
+         * An array of scenes waiting to be started once the game has booted.
+         *
+         * @name Phaser.Scenes.SceneManager#_start
+         * @type {array}
+         * @private
+         * @since 3.0.0
+         */
+        this._start = [];
+
+        /**
+         * An operations queue, because we don't manipulate the scenes array during processing.
+         *
+         * @name Phaser.Scenes.SceneManager#_queue
+         * @type {array}
+         * @private
+         * @since 3.0.0
+         */
+        this._queue = [];
+
+        /**
+         * Boot time data to merge.
+         *
+         * @name Phaser.Scenes.SceneManager#_data
+         * @type {object}
+         * @private
+         * @since 3.4.0
+         */
+        this._data = {};
+
+        /**
+         * Is the Scene Manager actively processing the Scenes list?
+         *
+         * @name Phaser.Scenes.SceneManager#isProcessing
+         * @type {boolean}
+         * @default false
+         * @readOnly
+         * @since 3.0.0
+         */
+        this.isProcessing = false;
+
+        /**
+         * Has the Scene Manager properly started?
+         *
+         * @name Phaser.Scenes.SceneManager#isBooted
+         * @type {boolean}
+         * @default false
+         * @readOnly
+         * @since 3.4.0
+         */
+        this.isBooted = false;
+
+        if (sceneConfig)
+        {
+            if (!Array.isArray(sceneConfig))
+            {
+                sceneConfig = [ sceneConfig ];
+            }
+
+            for (var i = 0; i &lt; sceneConfig.length; i++)
+            {
+                //  The i === 0 part just autostarts the first Scene given (unless it says otherwise in its config)
+                this._pending.push({
+                    key: 'default',
+                    scene: sceneConfig[i],
+                    autoStart: (i === 0),
+                    data: {}
+                });
+            }
+        }
+        
+        game.events.once('ready', this.bootQueue, this);
+    },
+
+    /**
+     * Internal first-time Scene boot handler.
+     *
+     * @method Phaser.Scenes.SceneManager#bootQueue
+     * @private
+     * @since 3.2.0
+     */
+    bootQueue: function ()
+    {
+        if (this.isBooted)
+        {
+            return;
+        }
+
+        var i;
+        var entry;
+        var key;
+        var sceneConfig;
+
+        for (i = 0; i &lt; this._pending.length; i++)
+        {
+            entry = this._pending[i];
+
+            key = entry.key;
+            sceneConfig = entry.scene;
+
+            var newScene;
+
+            if (sceneConfig instanceof Scene)
+            {
+                newScene = this.createSceneFromInstance(key, sceneConfig);
+            }
+            else if (typeof sceneConfig === 'object')
+            {
+                newScene = this.createSceneFromObject(key, sceneConfig);
+            }
+            else if (typeof sceneConfig === 'function')
+            {
+                newScene = this.createSceneFromFunction(key, sceneConfig);
+            }
+
+            //  Replace key in case the scene changed it
+            key = newScene.sys.settings.key;
+
+            this.keys[key] = newScene;
+
+            this.scenes.push(newScene);
+
+            //  Any data to inject?
+            if (this._data[key])
+            {
+                newScene.sys.settings.data = this._data[key].data;
+
+                if (this._data[key].autoStart)
+                {
+                    entry.autoStart = true;
+                }
+            }
+
+            if (entry.autoStart || newScene.sys.settings.active)
+            {
+                this._start.push(key);
+            }
+        }
+
+        //  Clear the pending lists
+        this._pending.length = 0;
+
+        this._data = {};
+
+        this.isBooted = true;
+
+        //  _start might have been populated by the above
+        for (i = 0; i &lt; this._start.length; i++)
+        {
+            entry = this._start[i];
+
+            this.start(entry);
+        }
+
+        this._start.length = 0;
+    },
+
+    /**
+     * Process the Scene operations queue.
+     *
+     * @method Phaser.Scenes.SceneManager#processQueue
+     * @since 3.0.0
+     */
+    processQueue: function ()
+    {
+        var pendingLength = this._pending.length;
+        var queueLength = this._queue.length;
+
+        if (pendingLength === 0 &amp;&amp; queueLength === 0)
+        {
+            return;
+        }
+
+        var i;
+        var entry;
+
+        if (pendingLength)
+        {
+            for (i = 0; i &lt; pendingLength; i++)
+            {
+                entry = this._pending[i];
+
+                this.add(entry.key, entry.scene, entry.autoStart, entry.data);
+            }
+
+            //  _start might have been populated by this.add
+            for (i = 0; i &lt; this._start.length; i++)
+            {
+                entry = this._start[i];
+
+                this.start(entry);
+            }
+
+            //  Clear the pending lists
+            this._start.length = 0;
+            this._pending.length = 0;
+
+            return;
+        }
+
+        for (i = 0; i &lt; this._queue.length; i++)
+        {
+            entry = this._queue[i];
+
+            this[entry.op](entry.keyA, entry.keyB);
+        }
+
+        this._queue.length = 0;
+    },
+
+    /**
+     * Adds a new Scene into the SceneManager.
+     * You must give each Scene a unique key by which you'll identify it.
+     *
+     * The `sceneConfig` can be:
+     *
+     * * A `Phaser.Scene` object, or an object that extends it.
+     * * A plain JavaScript object
+     * * A JavaScript ES6 Class that extends `Phaser.Scene`
+     * * A JavaScript ES5 prototype based Class
+     * * A JavaScript function
+     *
+     * If a function is given then a new Scene will be created by calling it.
+     *
+     * @method Phaser.Scenes.SceneManager#add
+     * @since 3.0.0
+     *
+     * @param {string} key - A unique key used to reference the Scene, i.e. `MainMenu` or `Level1`.
+     * @param {(Phaser.Scene|Phaser.Scenes.Settings.Config|function)} sceneConfig - The config for the Scene
+     * @param {boolean} [autoStart=false] - If `true` the Scene will be started immediately after being added.
+     * @param {object} [data] - Optional data object. This will be set as Scene.settings.data and passed to `Scene.init`.
+     *
+     * @return {?Phaser.Scene} The added Scene, if it was added immediately, otherwise `null`.
+     */
+    add: function (key, sceneConfig, autoStart, data)
+    {
+        if (autoStart === undefined) { autoStart = false; }
+        if (data === undefined) { data = {}; }
+
+        //  If processing or not booted then put scene into a holding pattern
+        if (this.isProcessing || !this.isBooted)
+        {
+            this._pending.push({
+                key: key,
+                scene: sceneConfig,
+                autoStart: autoStart,
+                data: data
+            });
+
+            if (!this.isBooted)
+            {
+                this._data[key] = { data: data };
+            }
+
+            return null;
+        }
+
+        key = this.getKey(key, sceneConfig);
+
+        var newScene;
+
+        if (sceneConfig instanceof Scene)
+        {
+            newScene = this.createSceneFromInstance(key, sceneConfig);
+        }
+        else if (typeof sceneConfig === 'object')
+        {
+            sceneConfig.key = key;
+
+            newScene = this.createSceneFromObject(key, sceneConfig);
+        }
+        else if (typeof sceneConfig === 'function')
+        {
+            newScene = this.createSceneFromFunction(key, sceneConfig);
+        }
+
+        //  Any data to inject?
+        newScene.sys.settings.data = data;
+
+        //  Replace key in case the scene changed it
+        key = newScene.sys.settings.key;
+
+        this.keys[key] = newScene;
+
+        this.scenes.push(newScene);
+
+        if (autoStart || newScene.sys.settings.active)
+        {
+            if (this._pending.length)
+            {
+                this._start.push(key);
+            }
+            else
+            {
+                this.start(key);
+            }
+        }
+
+        return newScene;
+    },
+
+    /**
+     * Removes a Scene from the SceneManager.
+     *
+     * The Scene is removed from the local scenes array, it's key is cleared from the keys
+     * cache and Scene.Systems.destroy is then called on it.
+     *
+     * If the SceneManager is processing the Scenes when this method is called it wil
+     * queue the operation for the next update sequence.
+     *
+     * @method Phaser.Scenes.SceneManager#remove
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} scene - The Scene to be removed.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    remove: function (key)
+    {
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'remove', keyA: key, keyB: null });
+        }
+        else
+        {
+            var sceneToRemove = this.getScene(key);
+
+            if (!sceneToRemove || sceneToRemove.sys.isTransitioning())
+            {
+                return this;
+            }
+
+            var index = this.scenes.indexOf(sceneToRemove);
+            var sceneKey = sceneToRemove.sys.settings.key;
+
+            if (index > -1)
+            {
+                delete this.keys[sceneKey];
+                this.scenes.splice(index, 1);
+
+                if (this._start.indexOf(sceneKey) > -1)
+                {
+                    index = this._start.indexOf(sceneKey);
+                    this._start.splice(index, 1);
+                }
+
+                sceneToRemove.sys.destroy();
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Boot the given Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#bootScene
+     * @private
+     * @since 3.0.0
+     *
+     * @param {Phaser.Scene} scene - The Scene to boot.
+     */
+    bootScene: function (scene)
+    {
+        var sys = scene.sys;
+        var settings = sys.settings;
+
+        if (scene.init)
+        {
+            scene.init.call(scene, settings.data);
+
+            if (settings.isTransition)
+            {
+                sys.events.emit('transitioninit', settings.transitionFrom, settings.transitionDuration);
+            }
+        }
+
+        var loader;
+
+        if (sys.load)
+        {
+            loader = sys.load;
+
+            loader.reset();
+        }
+
+        if (loader &amp;&amp; scene.preload)
+        {
+            scene.preload.call(scene);
+
+            //  Is the loader empty?
+            if (loader.list.size === 0)
+            {
+                this.create(scene);
+            }
+            else
+            {
+                settings.status = CONST.LOADING;
+
+                //  Start the loader going as we have something in the queue
+                loader.once('complete', this.loadComplete, this);
+
+                loader.start();
+            }
+        }
+        else
+        {
+            //  No preload? Then there was nothing to load either
+            this.create(scene);
+        }
+    },
+
+    /**
+     * Handles load completion for a Scene's Loader.
+     *
+     * Starts the Scene that the Loader belongs to.
+     *
+     * @method Phaser.Scenes.SceneManager#loadComplete
+     * @private
+     * @since 3.0.0
+     *
+     * @param {Phaser.Loader.LoaderPlugin} loader - The loader that has completed loading.
+     */
+    loadComplete: function (loader)
+    {
+        var scene = loader.scene;
+
+        // Try to unlock HTML5 sounds every time any loader completes
+        if (this.game.sound.onBlurPausedSounds)
+        {
+            this.game.sound.unlock();
+        }
+
+        this.create(scene);
+    },
+
+    /**
+     * Handle payload completion for a Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#payloadComplete
+     * @private
+     * @since 3.0.0
+     *
+     * @param {Phaser.Loader.LoaderPlugin} loader - The loader that has completed loading its Scene's payload.
+     */
+    payloadComplete: function (loader)
+    {
+        this.bootScene(loader.scene);
+    },
+
+    /**
+     * Updates the Scenes.
+     *
+     * @method Phaser.Scenes.SceneManager#update
+     * @since 3.0.0
+     *
+     * @param {number} time - Time elapsed.
+     * @param {number} delta - Delta time from the last update.
+     */
+    update: function (time, delta)
+    {
+        this.processQueue();
+
+        this.isProcessing = true;
+
+        //  Loop through the active scenes in reverse order
+        for (var i = this.scenes.length - 1; i >= 0; i--)
+        {
+            var sys = this.scenes[i].sys;
+
+            if (sys.settings.status === CONST.RUNNING)
+            {
+                sys.step(time, delta);
+            }
+        }
+    },
+
+    /**
+     * Informs the Scenes of the Game being resized.
+     *
+     * @method Phaser.Scenes.SceneManager#resize
+     * @since 3.2.0
+     *
+     * @param {number} width - The new width of the game.
+     * @param {number} height - The new height of the game.
+     */
+    resize: function (width, height)
+    {
+        //  Loop through the scenes in forward order
+        for (var i = 0; i &lt; this.scenes.length; i++)
+        {
+            var sys = this.scenes[i].sys;
+
+            sys.resize(width, height);
+        }
+    },
+
+    /**
+     * Renders the Scenes.
+     *
+     * @method Phaser.Scenes.SceneManager#render
+     * @since 3.0.0
+     *
+     * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The renderer to use.
+     */
+    render: function (renderer)
+    {
+        //  Loop through the scenes in forward order
+        for (var i = 0; i &lt; this.scenes.length; i++)
+        {
+            var sys = this.scenes[i].sys;
+
+            if (sys.settings.visible &amp;&amp; sys.settings.status >= CONST.LOADING &amp;&amp; sys.settings.status &lt; CONST.SLEEPING)
+            {
+                sys.render(renderer);
+            }
+        }
+
+        this.isProcessing = false;
+    },
+
+    /**
+     * Calls the given Scene's {@link Phaser.Scene#create} method and updates its status.
+     *
+     * @method Phaser.Scenes.SceneManager#create
+     * @private
+     * @since 3.0.0
+     *
+     * @param {Phaser.Scene} scene - The Scene to create.
+     */
+    create: function (scene)
+    {
+        var sys = scene.sys;
+        var settings = sys.settings;
+
+        if (scene.create)
+        {
+            scene.sys.settings.status = CONST.CREATING;
+
+            scene.create.call(scene, scene.sys.settings.data);
+
+            if (settings.isTransition)
+            {
+                sys.events.emit('transitionstart', settings.transitionFrom, settings.transitionDuration);
+            }
+        }
+
+        settings.status = CONST.RUNNING;
+    },
+
+    /**
+     * Creates and initializes a Scene from a function.
+     *
+     * @method Phaser.Scenes.SceneManager#createSceneFromFunction
+     * @private
+     * @since 3.0.0
+     *
+     * @param {string} key - The key of the Scene.
+     * @param {function} scene - The function to create the Scene from.
+     *
+     * @return {Phaser.Scene} The created Scene.
+     */
+    createSceneFromFunction: function (key, scene)
+    {
+        var newScene = new scene();
+
+        if (newScene instanceof Scene)
+        {
+            var configKey = newScene.sys.settings.key;
+
+            if (configKey !== '')
+            {
+                key = configKey;
+            }
+
+            if (this.keys.hasOwnProperty(key))
+            {
+                throw new Error('Cannot add a Scene with duplicate key: ' + key);
+            }
+
+            return this.createSceneFromInstance(key, newScene);
+        }
+        else
+        {
+            newScene.sys = new Systems(newScene);
+
+            newScene.sys.settings.key = key;
+
+            newScene.sys.init(this.game);
+
+            if (!newScene.update)
+            {
+                newScene.update = NOOP;
+            }
+
+            return newScene;
+        }
+    },
+
+    /**
+     * Creates and initializes a Scene instance.
+     *
+     * @method Phaser.Scenes.SceneManager#createSceneFromInstance
+     * @private
+     * @since 3.0.0
+     *
+     * @param {string} key - The key of the Scene.
+     * @param {Phaser.Scene} newScene - The Scene instance.
+     *
+     * @return {Phaser.Scene} The created Scene.
+     */
+    createSceneFromInstance: function (key, newScene)
+    {
+        var configKey = newScene.sys.settings.key;
+
+        if (configKey !== '')
+        {
+            key = configKey;
+        }
+        else
+        {
+            newScene.sys.settings.key = key;
+        }
+
+        newScene.sys.init(this.game);
+
+        return newScene;
+    },
+
+    /**
+     * Creates and initializes a Scene from an Object definition.
+     *
+     * @method Phaser.Scenes.SceneManager#createSceneFromObject
+     * @private
+     * @since 3.0.0
+     *
+     * @param {string} key - The key of the Scene.
+     * @param {(string|Phaser.Scenes.Settings.Config)} sceneConfig - The Scene config.
+     *
+     * @return {Phaser.Scene} The created Scene.
+     */
+    createSceneFromObject: function (key, sceneConfig)
+    {
+        var newScene = new Scene(sceneConfig);
+
+        var configKey = newScene.sys.settings.key;
+
+        if (configKey !== '')
+        {
+            key = configKey;
+        }
+        else
+        {
+            newScene.sys.settings.key = key;
+        }
+
+        newScene.sys.init(this.game);
+
+        //  Extract callbacks
+
+        var defaults = [ 'init', 'preload', 'create', 'update', 'render' ];
+
+        for (var i = 0; i &lt; defaults.length; i++)
+        {
+            var sceneCallback = GetValue(sceneConfig, defaults[i], null);
+
+            //  Must always have an update function, no matter what (the rest are optional)
+            if (defaults[i] === 'update' &amp;&amp; !sceneCallback)
+            {
+                sceneCallback = NOOP;
+            }
+
+            if (sceneCallback)
+            {
+                newScene[defaults[i]] = sceneCallback;
+            }
+        }
+
+        //  Now let's move across any other functions or properties that may exist in the extend object:
+
+        /*
+        scene: {
+            preload: preload,
+            create: create,
+            extend: {
+                hello: 1,
+                test: 'atari',
+                addImage: addImage
+            }
+        }
+        */
+
+        if (sceneConfig.hasOwnProperty('extend'))
+        {
+            for (var propertyKey in sceneConfig.extend)
+            {
+                var value = sceneConfig.extend[propertyKey];
+
+                if (propertyKey === 'data' &amp;&amp; newScene.hasOwnProperty('data') &amp;&amp; typeof value === 'object')
+                {
+                    //  Populate the DataManager
+                    newScene.data.merge(value);
+                }
+                else if (propertyKey !== 'sys')
+                {
+                    newScene[propertyKey] = value;
+                }
+            }
+        }
+
+        return newScene;
+    },
+
+    /**
+     * Retrieves the key of a Scene from a Scene config.
+     *
+     * @method Phaser.Scenes.SceneManager#getKey
+     * @private
+     * @since 3.0.0
+     *
+     * @param {string} key - The key to check in the Scene config.
+     * @param {(Phaser.Scene|Phaser.Scenes.Settings.Config|function)} sceneConfig - The Scene config.
+     *
+     * @return {string} The Scene key.
+     */
+    getKey: function (key, sceneConfig)
+    {
+        if (!key) { key = 'default'; }
+
+        if (typeof sceneConfig === 'function')
+        {
+            return key;
+        }
+        else if (sceneConfig instanceof Scene)
+        {
+            key = sceneConfig.sys.settings.key;
+        }
+        else if (typeof sceneConfig === 'object' &amp;&amp; sceneConfig.hasOwnProperty('key'))
+        {
+            key = sceneConfig.key;
+        }
+
+        //  By this point it's either 'default' or extracted from the Scene
+
+        if (this.keys.hasOwnProperty(key))
+        {
+            throw new Error('Cannot add a Scene with duplicate key: ' + key);
+        }
+        else
+        {
+            return key;
+        }
+    },
+
+    /**
+     * Retrieves a Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#getScene
+     * @since 3.0.0
+     *
+     * @param {string|Phaser.Scene} key - The Scene to retrieve.
+     *
+     * @return {?Phaser.Scene} The Scene.
+     */
+    getScene: function (key)
+    {
+        if (typeof key === 'string')
+        {
+            if (this.keys[key])
+            {
+                return this.keys[key];
+            }
+        }
+        else
+        {
+            for (var i = 0; i &lt; this.scenes.length; i++)
+            {
+                if (key === this.scenes[i])
+                {
+                    return key;
+                }
+            }
+        }
+
+        return null;
+    },
+
+    /**
+     * Determines whether a Scene is active.
+     *
+     * @method Phaser.Scenes.SceneManager#isActive
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to check.
+     *
+     * @return {boolean} Whether the Scene is active.
+     */
+    isActive: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            return scene.sys.isActive();
+        }
+
+        return null;
+    },
+
+    /**
+     * Determines whether a Scene is visible.
+     *
+     * @method Phaser.Scenes.SceneManager#isVisible
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to check.
+     *
+     * @return {boolean} Whether the Scene is visible.
+     */
+    isVisible: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            return scene.sys.isVisible();
+        }
+
+        return null;
+    },
+
+    /**
+     * Determines whether a Scene is sleeping.
+     *
+     * @method Phaser.Scenes.SceneManager#isSleeping
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to check.
+     *
+     * @return {boolean} Whether the Scene is sleeping.
+     */
+    isSleeping: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            return scene.sys.isSleeping();
+        }
+
+        return null;
+    },
+
+    /**
+     * Pauses the given Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#pause
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to pause.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    pause: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            scene.sys.pause();
+        }
+
+        return this;
+    },
+
+    /**
+     * Resumes the given Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#resume
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to resume.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    resume: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            scene.sys.resume();
+        }
+
+        return this;
+    },
+
+    /**
+     * Puts the given Scene to sleep.
+     *
+     * @method Phaser.Scenes.SceneManager#sleep
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to put to sleep.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    sleep: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene &amp;&amp; !scene.sys.isTransitioning())
+        {
+            scene.sys.sleep();
+        }
+
+        return this;
+    },
+
+    /**
+     * Awakens the given Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#wake
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to wake up.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    wake: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            scene.sys.wake();
+        }
+
+        return this;
+    },
+
+    /**
+     * Starts the given Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#start
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to start.
+     * @param {object} [data] - Optional data object to pass to Scene.Settings and Scene.init.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    start: function (key, data)
+    {
+        //  If the Scene Manager is not running, then put the Scene into a holding pattern
+        if (!this.isBooted)
+        {
+            this._data[key] = {
+                autoStart: true,
+                data: data
+            };
+
+            return this;
+        }
+
+        var scene = this.getScene(key);
+
+        if (scene)
+        {
+            scene.sys.start(data);
+
+            var loader;
+
+            if (scene.sys.load)
+            {
+                loader = scene.sys.load;
+            }
+
+            //  Files payload?
+            if (loader &amp;&amp; scene.sys.settings.hasOwnProperty('pack'))
+            {
+                loader.reset();
+
+                if (loader.addPack({ payload: scene.sys.settings.pack }))
+                {
+                    scene.sys.settings.status = CONST.LOADING;
+
+                    loader.once('complete', this.payloadComplete, this);
+
+                    loader.start();
+
+                    return this;
+                }
+            }
+
+            this.bootScene(scene);
+        }
+
+        return this;
+    },
+
+    /**
+     * Stops the given Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#stop
+     * @since 3.0.0
+     *
+     * @param {string} key - The Scene to stop.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    stop: function (key)
+    {
+        var scene = this.getScene(key);
+
+        if (scene &amp;&amp; !scene.sys.isTransitioning())
+        {
+            scene.sys.shutdown();
+        }
+
+        return this;
+    },
+
+    /**
+     * Sleeps one one Scene and starts the other.
+     *
+     * @method Phaser.Scenes.SceneManager#switch
+     * @since 3.0.0
+     *
+     * @param {string} from - The Scene to sleep.
+     * @param {string} to - The Scene to start.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    switch: function (from, to)
+    {
+        var sceneA = this.getScene(from);
+        var sceneB = this.getScene(to);
+
+        if (sceneA &amp;&amp; sceneB &amp;&amp; sceneA !== sceneB)
+        {
+            this.sleep(from);
+
+            if (this.isSleeping(to))
+            {
+                this.wake(to);
+            }
+            else
+            {
+                this.start(to);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Retrieves a Scene by numeric index.
+     *
+     * @method Phaser.Scenes.SceneManager#getAt
+     * @since 3.0.0
+     *
+     * @param {integer} index - The index of the Scene to retrieve.
+     *
+     * @return {(Phaser.Scene|undefined)} The Scene.
+     */
+    getAt: function (index)
+    {
+        return this.scenes[index];
+    },
+
+    /**
+     * Retrieves the numeric index of a Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#getIndex
+     * @since 3.0.0
+     *
+     * @param {(string|Phaser.Scene)} key - The key of the Scene.
+     *
+     * @return {integer} The index of the Scene.
+     */
+    getIndex: function (key)
+    {
+        var scene = this.getScene(key);
+
+        return this.scenes.indexOf(scene);
+    },
+
+    /**
+     * Brings a Scene to the top of the Scenes list.
+     *
+     * This means it will render above all other Scenes.
+     *
+     * @method Phaser.Scenes.SceneManager#bringToTop
+     * @since 3.0.0
+     *
+     * @param {(string|Phaser.Scene)} key - The Scene to move.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    bringToTop: function (key)
+    {
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'bringToTop', keyA: key, keyB: null });
+        }
+        else
+        {
+            var index = this.getIndex(key);
+
+            if (index !== -1 &amp;&amp; index &lt; this.scenes.length)
+            {
+                var scene = this.getScene(key);
+
+                this.scenes.splice(index, 1);
+                this.scenes.push(scene);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Sends a Scene to the back of the Scenes list.
+     *
+     * This means it will render below all other Scenes.
+     *
+     * @method Phaser.Scenes.SceneManager#sendToBack
+     * @since 3.0.0
+     *
+     * @param {(string|Phaser.Scene)} key - The Scene to move.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    sendToBack: function (key)
+    {
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'sendToBack', keyA: key, keyB: null });
+        }
+        else
+        {
+            var index = this.getIndex(key);
+
+            if (index !== -1 &amp;&amp; index > 0)
+            {
+                var scene = this.getScene(key);
+
+                this.scenes.splice(index, 1);
+                this.scenes.unshift(scene);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Moves a Scene down one position in the Scenes list.
+     *
+     * @method Phaser.Scenes.SceneManager#moveDown
+     * @since 3.0.0
+     *
+     * @param {(string|Phaser.Scene)} key - The Scene to move.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    moveDown: function (key)
+    {
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'moveDown', keyA: key, keyB: null });
+        }
+        else
+        {
+            var indexA = this.getIndex(key);
+
+            if (indexA > 0)
+            {
+                var indexB = indexA - 1;
+                var sceneA = this.getScene(key);
+                var sceneB = this.getAt(indexB);
+
+                this.scenes[indexA] = sceneB;
+                this.scenes[indexB] = sceneA;
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Moves a Scene up one position in the Scenes list.
+     *
+     * @method Phaser.Scenes.SceneManager#moveUp
+     * @since 3.0.0
+     *
+     * @param {(string|Phaser.Scene)} key - The Scene to move.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    moveUp: function (key)
+    {
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'moveUp', keyA: key, keyB: null });
+        }
+        else
+        {
+            var indexA = this.getIndex(key);
+
+            if (indexA &lt; this.scenes.length - 1)
+            {
+                var indexB = indexA + 1;
+                var sceneA = this.getScene(key);
+                var sceneB = this.getAt(indexB);
+
+                this.scenes[indexA] = sceneB;
+                this.scenes[indexB] = sceneA;
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Moves a Scene so it is immediately above another Scene in the Scenes list.
+     *
+     * This means it will render over the top of the other Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#moveAbove
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} keyA - The Scene that Scene B will be moved above.
+     * @param {(string|Phaser.Scene)} keyB - The Scene to be moved.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    moveAbove: function (keyA, keyB)
+    {
+        if (keyA === keyB)
+        {
+            return this;
+        }
+
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'moveAbove', keyA: keyA, keyB: keyB });
+        }
+        else
+        {
+            var indexA = this.getIndex(keyA);
+            var indexB = this.getIndex(keyB);
+
+            if (indexA !== -1 &amp;&amp; indexB !== -1)
+            {
+                var tempScene = this.getAt(indexB);
+
+                //  Remove
+                this.scenes.splice(indexB, 1);
+
+                //  Add in new location
+                this.scenes.splice(indexA + 1, 0, tempScene);
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Moves a Scene so it is immediately below another Scene in the Scenes list.
+     *
+     * This means it will render behind the other Scene.
+     *
+     * @method Phaser.Scenes.SceneManager#moveBelow
+     * @since 3.2.0
+     *
+     * @param {(string|Phaser.Scene)} keyA - The Scene that Scene B will be moved above.
+     * @param {(string|Phaser.Scene)} keyB - The Scene to be moved.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    moveBelow: function (keyA, keyB)
+    {
+        if (keyA === keyB)
+        {
+            return this;
+        }
+
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'moveBelow', keyA: keyA, keyB: keyB });
+        }
+        else
+        {
+            var indexA = this.getIndex(keyA);
+            var indexB = this.getIndex(keyB);
+
+            if (indexA !== -1 &amp;&amp; indexB !== -1)
+            {
+                var tempScene = this.getAt(indexB);
+
+                //  Remove
+                this.scenes.splice(indexB, 1);
+
+                if (indexA === 0)
+                {
+                    this.scenes.unshift(tempScene);
+                }
+                else
+                {
+                    //  Add in new location
+                    this.scenes.splice(indexA, 0, tempScene);
+                }
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Queue a Scene operation for the next update.
+     *
+     * @method Phaser.Scenes.SceneManager#queueOp
+     * @private
+     * @since 3.0.0
+     *
+     * @param {string} op - The operation to perform.
+     * @param {(string|Phaser.Scene)} keyA - Scene A.
+     * @param {(string|Phaser.Scene)} [keyB] - Scene B.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    queueOp: function (op, keyA, keyB)
+    {
+        this._queue.push({ op: op, keyA: keyA, keyB: keyB });
+
+        return this;
+    },
+
+    /**
+     * Swaps the positions of two Scenes in the Scenes list.
+     *
+     * @method Phaser.Scenes.SceneManager#swapPosition
+     * @since 3.0.0
+     *
+     * @param {(string|Phaser.Scene)} keyA - The first Scene to swap.
+     * @param {(string|Phaser.Scene)} keyB - The second Scene to swap.
+     *
+     * @return {Phaser.Scenes.SceneManager} This SceneManager.
+     */
+    swapPosition: function (keyA, keyB)
+    {
+        if (keyA === keyB)
+        {
+            return this;
+        }
+
+        if (this.isProcessing)
+        {
+            this._queue.push({ op: 'swapPosition', keyA: keyA, keyB: keyB });
+        }
+        else
+        {
+            var indexA = this.getIndex(keyA);
+            var indexB = this.getIndex(keyB);
+
+            if (indexA !== indexB &amp;&amp; indexA !== -1 &amp;&amp; indexB !== -1)
+            {
+                var tempScene = this.getAt(indexA);
+
+                this.scenes[indexA] = this.scenes[indexB];
+                this.scenes[indexB] = tempScene;
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * Dumps debug information about each Scene to the developer console.
+     *
+     * @method Phaser.Scenes.SceneManager#dump
+     * @since 3.2.0
+     */
+    dump: function ()
+    {
+        var out = [];
+        var map = [ 'pending', 'init', 'start', 'loading', 'creating', 'running', 'paused', 'sleeping', 'shutdown', 'destroyed' ];
+
+        for (var i = 0; i &lt; this.scenes.length; i++)
+        {
+            var sys = this.scenes[i].sys;
+
+            var key = (sys.settings.visible &amp;&amp; (sys.settings.status === CONST.RUNNING || sys.settings.status === CONST.PAUSED)) ? '[*] ' : '[-] ';
+            key += sys.settings.key + ' (' + map[sys.settings.status] + ')';
+
+            out.push(key);
+        }
+
+        console.log(out.join('\n'));
+    },
+
+    /**
+     * Destroy the SceneManager and all of its Scene's systems.
+     *
+     * @method Phaser.Scenes.SceneManager#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        for (var i = this.scenes.length - 1; i >= 0; i--)
+        {
+            var sys = this.scenes[i].sys;
+
+            sys.destroy();
+        }
+
+        this.update = NOOP;
+
+        this.scenes = [];
+
+        this._pending = [];
+        this._start = [];
+        this._queue = [];
+
+        this.game = null;
+    }
+
+});
+
+module.exports = SceneManager;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#Class">Class</a></li><li><a href="MatterJS.Body.html">Body</a></li><li><a href="MatterJS.Composite.html">Composite</a></li><li><a href="MatterJS.Constraint.html">Constraint</a></li><li><a href="MatterJS.Engine.html">Engine</a></li><li><a href="MatterJS.World.html">World</a></li><li><a href="Phaser.Animations.Animation.html">Animation</a></li><li><a href="Phaser.Animations.AnimationFrame.html">AnimationFrame</a></li><li><a href="Phaser.Animations.AnimationManager.html">AnimationManager</a></li><li><a href="Phaser.Boot.Config.html">Config</a></li><li><a href="Phaser.Boot.TimeStep.html">TimeStep</a></li><li><a href="Phaser.Cache.BaseCache.html">BaseCache</a></li><li><a href="Phaser.Cache.CacheManager.html">CacheManager</a></li><li><a href="Phaser.Cameras.Controls.FixedKeyControl.html">FixedKeyControl</a></li><li><a href="Phaser.Cameras.Controls.SmoothedKeyControl.html">SmoothedKeyControl</a></li><li><a href="Phaser.Cameras.Scene2D.Camera.html">Camera</a></li><li><a href="Phaser.Cameras.Scene2D.CameraManager.html">CameraManager</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Fade.html">Fade</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Flash.html">Flash</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Shake.html">Shake</a></li><li><a href="Phaser.Cameras.Sprite3D.Camera.html">Camera</a></li><li><a href="Phaser.Cameras.Sprite3D.CameraManager.html">CameraManager</a></li><li><a href="Phaser.Cameras.Sprite3D.OrthographicCamera.html">OrthographicCamera</a></li><li><a href="Phaser.Cameras.Sprite3D.PerspectiveCamera.html">PerspectiveCamera</a></li><li><a href="Phaser.Curves.CubicBezier.html">CubicBezier</a></li><li><a href="Phaser.Curves.Curve.html">Curve</a></li><li><a href="Phaser.Curves.Ellipse.html">Ellipse</a></li><li><a href="Phaser.Curves.Line.html">Line</a></li><li><a href="Phaser.Curves.MoveTo.html">MoveTo</a></li><li><a href="Phaser.Curves.Path.html">Path</a></li><li><a href="Phaser.Curves.QuadraticBezier.html">QuadraticBezier</a></li><li><a href="Phaser.Curves.Spline.html">Spline</a></li><li><a href="Phaser.Data.DataManager.html">DataManager</a></li><li><a href="Phaser.Data.DataManagerPlugin.html">DataManagerPlugin</a></li><li><a href="Phaser.Display.Color.html">Color</a></li><li><a href="Phaser.Display.Masks.BitmapMask.html">BitmapMask</a></li><li><a href="Phaser.Display.Masks.GeometryMask.html">GeometryMask</a></li><li><a href="Phaser.DOM.RequestAnimationFrame.html">RequestAnimationFrame</a></li><li><a href="Phaser.Events.EventEmitter.html">EventEmitter</a></li><li><a href="Phaser.Game.html">Game</a></li><li><a href="Phaser.GameObjects.BitmapText.html">BitmapText</a></li><li><a href="Phaser.GameObjects.Blitter.html">Blitter</a></li><li><a href="Phaser.GameObjects.Blitter.Bob.html">Bob</a></li><li><a href="Phaser.GameObjects.Components.Animation.html">Animation</a></li><li><a href="Phaser.GameObjects.Components.TransformMatrix.html">TransformMatrix</a></li><li><a href="Phaser.GameObjects.Container.html">Container</a></li><li><a href="Phaser.GameObjects.DisplayList.html">DisplayList</a></li><li><a href="Phaser.GameObjects.DynamicBitmapText.html">DynamicBitmapText</a></li><li><a href="Phaser.GameObjects.GameObject.html">GameObject</a></li><li><a href="Phaser.GameObjects.GameObjectCreator.html">GameObjectCreator</a></li><li><a href="Phaser.GameObjects.GameObjectFactory.html">GameObjectFactory</a></li><li><a href="Phaser.GameObjects.Graphics.html">Graphics</a></li><li><a href="Phaser.GameObjects.Group.html">Group</a></li><li><a href="Phaser.GameObjects.Image.html">Image</a></li><li><a href="Phaser.GameObjects.Light.html">Light</a></li><li><a href="Phaser.GameObjects.LightsManager.html">LightsManager</a></li><li><a href="Phaser.GameObjects.LightsPlugin.html">LightsPlugin</a></li><li><a href="Phaser.GameObjects.Mesh.html">Mesh</a></li><li><a href="Phaser.GameObjects.Particles.EmitterOp.html">EmitterOp</a></li><li><a href="Phaser.GameObjects.Particles.GravityWell.html">GravityWell</a></li><li><a href="Phaser.GameObjects.Particles.Particle.html">Particle</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitter.html">ParticleEmitter</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">ParticleEmitterManager</a></li><li><a href="Phaser.GameObjects.Particles.Zones.DeathZone.html">DeathZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.EdgeZone.html">EdgeZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.RandomZone.html">RandomZone</a></li><li><a href="Phaser.GameObjects.PathFollower.html">PathFollower</a></li><li><a href="Phaser.GameObjects.Quad.html">Quad</a></li><li><a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a></li><li><a href="Phaser.GameObjects.Sprite.html">Sprite</a></li><li><a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.GameObjects.Text.html">Text</a></li><li><a href="Phaser.GameObjects.Text.TextStyle.html">TextStyle</a></li><li><a href="Phaser.GameObjects.TileSprite.html">TileSprite</a></li><li><a href="Phaser.GameObjects.UpdateList.html">UpdateList</a></li><li><a href="Phaser.GameObjects.Zone.html">Zone</a></li><li><a href="Phaser.Geom.Circle.html">Circle</a></li><li><a href="Phaser.Geom.Ellipse.html">Ellipse</a></li><li><a href="Phaser.Geom.Line.html">Line</a></li><li><a href="Phaser.Geom.Point.html">Point</a></li><li><a href="Phaser.Geom.Polygon.html">Polygon</a></li><li><a href="Phaser.Geom.Rectangle.html">Rectangle</a></li><li><a href="Phaser.Geom.Triangle.html">Triangle</a></li><li><a href="Phaser.Input.Gamepad.Axis.html">Axis</a></li><li><a href="Phaser.Input.Gamepad.Button.html">Button</a></li><li><a href="Phaser.Input.Gamepad.Gamepad.html">Gamepad</a></li><li><a href="Phaser.Input.Gamepad.GamepadManager.html">GamepadManager</a></li><li><a href="Phaser.Input.InputManager.html">InputManager</a></li><li><a href="Phaser.Input.InputPlugin.html">InputPlugin</a></li><li><a href="Phaser.Input.Keyboard.Key.html">Key</a></li><li><a href="Phaser.Input.Keyboard.KeyboardManager.html">KeyboardManager</a></li><li><a href="Phaser.Input.Keyboard.KeyCombo.html">KeyCombo</a></li><li><a href="Phaser.Input.Mouse.MouseManager.html">MouseManager</a></li><li><a href="Phaser.Input.Pointer.html">Pointer</a></li><li><a href="Phaser.Input.Touch.TouchManager.html">TouchManager</a></li><li><a href="Phaser.Loader.File.html">File</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html">AnimationJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasJSONFile.html">AtlasJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasXMLFile.html">AtlasXMLFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html">AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioSpriteFile.html">AudioSpriteFile</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html">BinaryFile</a></li><li><a href="Phaser.Loader.FileTypes.BitmapFontFile.html">BitmapFontFile</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html">GLSLFile</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html">HTML5AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html">HTMLFile</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html">ImageFile</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html">JSONFile</a></li><li><a href="Phaser.Loader.FileTypes.MultiAtlasFile.html">MultiAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html">PackFile</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html">PluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html">ScenePluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html">ScriptFile</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html">SpriteSheetFile</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html">SVGFile</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html">TextFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html">TilemapCSVFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html">TilemapImpactFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html">TilemapJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.UnityAtlasFile.html">UnityAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html">XMLFile</a></li><li><a href="Phaser.Loader.LoaderPlugin.html">LoaderPlugin</a></li><li><a href="Phaser.Loader.MultiFile.html">MultiFile</a></li><li><a href="Phaser.Math.Matrix3.html">Matrix3</a></li><li><a href="Phaser.Math.Matrix4.html">Matrix4</a></li><li><a href="Phaser.Math.Quaternion.html">Quaternion</a></li><li><a href="Phaser.Math.RandomDataGenerator.html">RandomDataGenerator</a></li><li><a href="Phaser.Math.Vector2.html">Vector2</a></li><li><a href="Phaser.Math.Vector3.html">Vector3</a></li><li><a href="Phaser.Math.Vector4.html">Vector4</a></li><li><a href="Phaser.Physics.Arcade.ArcadePhysics.html">ArcadePhysics</a></li><li><a href="Phaser.Physics.Arcade.Body.html">Body</a></li><li><a href="Phaser.Physics.Arcade.Collider.html">Collider</a></li><li><a href="Phaser.Physics.Arcade.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Arcade.Group.html">Group</a></li><li><a href="Phaser.Physics.Arcade.Image.html">Image</a></li><li><a href="Phaser.Physics.Arcade.Sprite.html">Sprite</a></li><li><a href="Phaser.Physics.Arcade.StaticBody.html">StaticBody</a></li><li><a href="Phaser.Physics.Arcade.StaticGroup.html">StaticGroup</a></li><li><a href="Phaser.Physics.Arcade.World.html">World</a></li><li><a href="Phaser.Physics.Impact.Body.html">Body</a></li><li><a href="Phaser.Physics.Impact.CollisionMap.html">CollisionMap</a></li><li><a href="Phaser.Physics.Impact.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Impact.ImpactBody.html">ImpactBody</a></li><li><a href="Phaser.Physics.Impact.ImpactImage.html">ImpactImage</a></li><li><a href="Phaser.Physics.Impact.ImpactPhysics.html">ImpactPhysics</a></li><li><a href="Phaser.Physics.Impact.ImpactSprite.html">ImpactSprite</a></li><li><a href="Phaser.Physics.Impact.World.html">World</a></li><li><a href="Phaser.Physics.Matter.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Matter.Image.html">Image</a></li><li><a href="Phaser.Physics.Matter.MatterPhysics.html">MatterPhysics</a></li><li><a href="Phaser.Physics.Matter.PointerConstraint.html">PointerConstraint</a></li><li><a href="Phaser.Physics.Matter.Sprite.html">Sprite</a></li><li><a href="Phaser.Physics.Matter.TileBody.html">TileBody</a></li><li><a href="Phaser.Physics.Matter.World.html">World</a></li><li><a href="Phaser.Plugins.BasePlugin.html">BasePlugin</a></li><li><a href="Phaser.Plugins.PluginManager.html">PluginManager</a></li><li><a href="Phaser.Plugins.ScenePlugin.html">ScenePlugin</a></li><li><a href="Phaser.Renderer.Canvas.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline.html">BitmapMaskPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline.html">FlatTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline.html">ForwardDiffuseLightPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline.html">TextureTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">WebGLPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLRenderer.html">WebGLRenderer</a></li><li><a href="Phaser.Scene.html">Scene</a></li><li><a href="Phaser.Scenes.SceneManager.html">SceneManager</a></li><li><a href="Phaser.Scenes.ScenePlugin.html">ScenePlugin</a></li><li><a href="Phaser.Scenes.Systems.html">Systems</a></li><li><a href="Phaser.Sound.BaseSound.html">BaseSound</a></li><li><a href="Phaser.Sound.BaseSoundManager.html">BaseSoundManager</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html">HTML5AudioSound</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html">HTML5AudioSoundManager</a></li><li><a href="Phaser.Sound.NoAudioSound.html">NoAudioSound</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html">NoAudioSoundManager</a></li><li><a href="Phaser.Sound.WebAudioSound.html">WebAudioSound</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html">WebAudioSoundManager</a></li><li><a href="Phaser.Structs.List.html">List</a></li><li><a href="Phaser.Structs.Map.html">Map</a></li><li><a href="Phaser.Structs.ProcessQueue.html">ProcessQueue</a></li><li><a href="Phaser.Structs.RTree.html">RTree</a></li><li><a href="Phaser.Structs.Set.html">Set</a></li><li><a href="Phaser.Textures.CanvasTexture.html">CanvasTexture</a></li><li><a href="Phaser.Textures.Frame.html">Frame</a></li><li><a href="Phaser.Textures.Texture.html">Texture</a></li><li><a href="Phaser.Textures.TextureManager.html">TextureManager</a></li><li><a href="Phaser.Textures.TextureSource.html">TextureSource</a></li><li><a href="Phaser.Tilemaps.DynamicTilemapLayer.html">DynamicTilemapLayer</a></li><li><a href="Phaser.Tilemaps.ImageCollection.html">ImageCollection</a></li><li><a href="Phaser.Tilemaps.LayerData.html">LayerData</a></li><li><a href="Phaser.Tilemaps.MapData.html">MapData</a></li><li><a href="Phaser.Tilemaps.ObjectLayer.html">ObjectLayer</a></li><li><a href="Phaser.Tilemaps.StaticTilemapLayer.html">StaticTilemapLayer</a></li><li><a href="Phaser.Tilemaps.Tile.html">Tile</a></li><li><a href="Phaser.Tilemaps.Tilemap.html">Tilemap</a></li><li><a href="Phaser.Tilemaps.Tileset.html">Tileset</a></li><li><a href="Phaser.Time.Clock.html">Clock</a></li><li><a href="Phaser.Time.TimerEvent.html">TimerEvent</a></li><li><a href="Phaser.Tweens.Timeline.html">Timeline</a></li><li><a href="Phaser.Tweens.Tween.html">Tween</a></li><li><a href="Phaser.Tweens.TweenManager.html">TweenManager</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:CameraDestroyEvent">CameraDestroyEvent</a></li><li><a href="global.html#event:CameraFadeInCompleteEvent">CameraFadeInCompleteEvent</a></li><li><a href="global.html#event:CameraFadeInStartEvent">CameraFadeInStartEvent</a></li><li><a href="global.html#event:CameraFadeOutCompleteEvent">CameraFadeOutCompleteEvent</a></li><li><a href="global.html#event:CameraFadeOutStartEvent">CameraFadeOutStartEvent</a></li><li><a href="global.html#event:CameraFlashCompleteEvent">CameraFlashCompleteEvent</a></li><li><a href="global.html#event:CameraFlashStartEvent">CameraFlashStartEvent</a></li><li><a href="global.html#event:CameraShakeCompleteEvent">CameraShakeCompleteEvent</a></li><li><a href="global.html#event:CameraShakeStartEvent">CameraShakeStartEvent</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:blur">blur</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:focus">focus</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:hidden">hidden</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:visible">visible</a></li><li><a href="Phaser.Cache.BaseCache.html#event:addEvent">addEvent</a></li><li><a href="Phaser.Cache.BaseCache.html#event:removeEvent">removeEvent</a></li><li><a href="Phaser.Game.html#event:boot">boot</a></li><li><a href="Phaser.Game.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Game.html#event:postrenderEvent">postrenderEvent</a></li><li><a href="Phaser.Game.html#event:poststepEvent">poststepEvent</a></li><li><a href="Phaser.Game.html#event:prerenderEvent">prerenderEvent</a></li><li><a href="Phaser.Game.html#event:prestepEvent">prestepEvent</a></li><li><a href="Phaser.Game.html#event:resizeEvent">resizeEvent</a></li><li><a href="Phaser.Game.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Game.html#event:stepEvent">stepEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onCompleteEvent">onCompleteEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onRepeatEvent">onRepeatEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onStartEvent">onStartEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onUpdateEvent">onUpdateEvent</a></li><li><a href="Phaser.Loader.File.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.File.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:addFileEvent">addFileEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:completeEvent">completeEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadErrorEvent">loadErrorEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadEvent">loadEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:progressEvent">progressEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:startEvent">startEvent</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:collide">collide</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:overlap">overlap</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:pause">pause</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:resume">resume</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:worldbounds">worldbounds</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:detuneEvent">detuneEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:endedEvent">endedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopedEvent">loopedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopEvent">loopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:playEvent">playEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:rateEvent">rateEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:seekEvent">seekEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:stopEvent">stopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:detuneEvent">detuneEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:endedEvent">endedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopedEvent">loopedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopEvent">loopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:playEvent">playEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:rateEvent">rateEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:seekEvent">seekEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:stopEvent">stopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:VolumeEvent">VolumeEvent</a></li></ul><h3>Namespaces</h3><ul><li><a href="MatterJS.html">MatterJS</a></li><li><a href="Phaser.html">Phaser</a></li><li><a href="Phaser.Actions.html">Actions</a></li><li><a href="Phaser.Animations.html">Animations</a></li><li><a href="Phaser.Boot.html">Boot</a></li><li><a href="Phaser.Cache.html">Cache</a></li><li><a href="Phaser.Cameras.html">Cameras</a></li><li><a href="Phaser.Cameras.Controls.html">Controls</a></li><li><a href="Phaser.Cameras.Scene2D.html">Scene2D</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.html">Effects</a></li><li><a href="Phaser.Cameras.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.Create.html">Create</a></li><li><a href="Phaser.Create.Palettes.html">Palettes</a></li><li><a href="Phaser.Curves.html">Curves</a></li><li><a href="Phaser.Data.html">Data</a></li><li><a href="Phaser.Device.html">Device</a></li><li><a href="Phaser.Display.html">Display</a></li><li><a href="Phaser.Display.Align.html">Align</a></li><li><a href="Phaser.Display.Align.In.html">In</a></li><li><a href="Phaser.Display.Align.To.html">To</a></li><li><a href="Phaser.Display.Bounds.html">Bounds</a></li><li><a href="Phaser.Display.Canvas.html">Canvas</a></li><li><a href="Phaser.Display.Canvas.CanvasInterpolation.html">CanvasInterpolation</a></li><li><a href="Phaser.Display.Canvas.CanvasPool.html">CanvasPool</a></li><li><a href="Phaser.Display.Canvas.Smoothing.html">Smoothing</a></li><li><a href="Phaser.Display.Color.Interpolate.html">Interpolate</a></li><li><a href="Phaser.Display.Masks.html">Masks</a></li><li><a href="Phaser.DOM.html">DOM</a></li><li><a href="Phaser.Events.html">Events</a></li><li><a href="Phaser.GameObjects.html">GameObjects</a></li><li><a href="Phaser.GameObjects.Components.html">Components</a></li><li><a href="Phaser.GameObjects.Graphics.Commands.html">Commands</a></li><li><a href="Phaser.GameObjects.Particles.html">Particles</a></li><li><a href="Phaser.GameObjects.Particles.Zones.html">Zones</a></li><li><a href="Phaser.GameObjects.RetroFont.html">RetroFont</a></li><li><a href="Phaser.Geom.html">Geom</a></li><li><a href="Phaser.Geom.Intersects.html">Intersects</a></li><li><a href="Phaser.Input.html">Input</a></li><li><a href="Phaser.Input.Gamepad.html">Gamepad</a></li><li><a href="Phaser.Input.Gamepad.Configs.html">Configs</a></li><li><a href="Phaser.Input.Keyboard.html">Keyboard</a></li><li><a href="Phaser.Input.Mouse.html">Mouse</a></li><li><a href="Phaser.Input.Touch.html">Touch</a></li><li><a href="Phaser.Loader.html">Loader</a></li><li><a href="Phaser.Loader.FileTypes.html">FileTypes</a></li><li><a href="Phaser.Math.html">Math</a></li><li><a href="Phaser.Math.Angle.html">Angle</a></li><li><a href="Phaser.Math.Distance.html">Distance</a></li><li><a href="Phaser.Math.Easing.html">Easing</a></li><li><a href="Phaser.Math.Easing.Back.html">Back</a></li><li><a href="Phaser.Math.Easing.Bounce.html">Bounce</a></li><li><a href="Phaser.Math.Easing.Circular.html">Circular</a></li><li><a href="Phaser.Math.Easing.Cubic.html">Cubic</a></li><li><a href="Phaser.Math.Easing.Elastic.html">Elastic</a></li><li><a href="Phaser.Math.Easing.Expo.html">Expo</a></li><li><a href="Phaser.Math.Easing.Linear.html">Linear</a></li><li><a href="Phaser.Math.Easing.Quadratic.html">Quadratic</a></li><li><a href="Phaser.Math.Easing.Quartic.html">Quartic</a></li><li><a href="Phaser.Math.Easing.Quintic.html">Quintic</a></li><li><a href="Phaser.Math.Easing.Sine.html">Sine</a></li><li><a href="Phaser.Math.Easing.Stepped.html">Stepped</a></li><li><a href="Phaser.Math.Fuzzy.html">Fuzzy</a></li><li><a href="Phaser.Math.Interpolation.html">Interpolation</a></li><li><a href="Phaser.Math.Pow2.html">Pow2</a></li><li><a href="Phaser.Math.Snap.html">Snap</a></li><li><a href="Phaser.Physics.html">Physics</a></li><li><a href="Phaser.Physics.Arcade.html">Arcade</a></li><li><a href="Phaser.Physics.Arcade.Components.html">Components</a></li><li><a href="Phaser.Physics.Arcade.Tilemap.html">Tilemap</a></li><li><a href="Phaser.Physics.Impact.html">Impact</a></li><li><a href="Phaser.Physics.Impact.Components.html">Components</a></li><li><a href="Phaser.Physics.Matter.html">Matter</a></li><li><a href="Phaser.Physics.Matter.Components.html">Components</a></li><li><a href="Phaser.Plugins.html">Plugins</a></li><li><a href="Phaser.Renderer.html">Renderer</a></li><li><a href="Phaser.Renderer.Canvas.html">Canvas</a></li><li><a href="Phaser.Renderer.Snapshot.html">Snapshot</a></li><li><a href="Phaser.Renderer.WebGL.html">WebGL</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.html">Pipelines</a></li><li><a href="Phaser.Renderer.WebGL.Utils.html">Utils</a></li><li><a href="Phaser.Scenes.html">Scenes</a></li><li><a href="Phaser.Scenes.Settings.html">Settings</a></li><li><a href="Phaser.Sound.html">Sound</a></li><li><a href="Phaser.Structs.html">Structs</a></li><li><a href="Phaser.Textures.html">Textures</a></li><li><a href="Phaser.Textures.Parsers.html">Parsers</a></li><li><a href="Phaser.Tilemaps.html">Tilemaps</a></li><li><a href="Phaser.Tilemaps.Components.html">Components</a></li><li><a href="Phaser.Tilemaps.Formats.html">Formats</a></li><li><a href="Phaser.Tilemaps.Parsers.html">Parsers</a></li><li><a href="Phaser.Tilemaps.Parsers.Impact.html">Impact</a></li><li><a href="Phaser.Tilemaps.Parsers.Tiled.html">Tiled</a></li><li><a href="Phaser.Time.html">Time</a></li><li><a href="Phaser.Tweens.html">Tweens</a></li><li><a href="Phaser.Tweens.Builders.html">Builders</a></li><li><a href="Phaser.Utils.html">Utils</a></li><li><a href="Phaser.Utils.Array.html">Array</a></li><li><a href="Phaser.Utils.Array.Matrix.html">Matrix</a></li><li><a href="Phaser.Utils.Object.html">Object</a></li><li><a href="Phaser.Utils.String.html">String</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Actions">Actions</a></li><li><a href="global.html#AddToDOM">AddToDOM</a></li><li><a href="global.html#AdvanceKeyCombo">AdvanceKeyCombo</a></li><li><a href="global.html#ALIGN_CONST">ALIGN_CONST</a></li><li><a href="global.html#AlignIn">AlignIn</a></li><li><a href="global.html#Angle">Angle</a></li><li><a href="global.html#Animation">Animation</a></li><li><a href="global.html#AnimationComponent">AnimationComponent</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#ArcadeImage">ArcadeImage</a></li><li><a href="global.html#ArcadeSprite">ArcadeSprite</a></li><li><a href="global.html">area</a></li><li><a href="global.html#Arne16">Arne16</a></li><li><a href="global.html#ArrayShuffle">ArrayShuffle</a></li><li><a href="global.html#ArrayUtils">ArrayUtils</a></li><li><a href="global.html#at">at</a></li><li><a href="global.html#AudioFile">AudioFile</a></li><li><a href="global.html#Axis">Axis</a></li><li><a href="global.html#Back">Back</a></li><li><a href="global.html#Base64Decode">Base64Decode</a></li><li><a href="global.html#BaseCache">BaseCache</a></li><li><a href="global.html#BasePlugin">BasePlugin</a></li><li><a href="global.html#BaseSound">BaseSound</a></li><li><a href="global.html#BaseSoundManager">BaseSoundManager</a></li><li><a href="global.html#Bernstein">Bernstein</a></li><li><a href="global.html#Between">Between</a></li><li><a href="global.html#BitmapMask">BitmapMask</a></li><li><a href="global.html#BitmapText">BitmapText</a></li><li><a href="global.html#BlendModes">BlendModes</a></li><li><a href="global.html#BlitImage">BlitImage</a></li><li><a href="global.html#Blitter">Blitter</a></li><li><a href="global.html#BlitterRender">BlitterRender</a></li><li><a href="global.html#Bodies">Bodies</a></li><li><a href="global.html#Body">Body</a></li><li><a href="global.html#Bounds">Bounds</a></li><li><a href="global.html#Browser">Browser</a></li><li><a href="global.html#BuildGameObject">BuildGameObject</a></li><li><a href="global.html#CalculateFacesWithin">CalculateFacesWithin</a></li><li><a href="global.html#Camera">Camera</a></li><li><a href="global.html#canSee">canSee</a></li><li><a href="global.html#CanvasInterpolation">CanvasInterpolation</a></li><li><a href="global.html#CanvasPool">CanvasPool</a></li><li><a href="global.html#CatmullRom">CatmullRom</a></li><li><a href="global.html#CenterOn">CenterOn</a></li><li><a href="global.html#Centroid">Centroid</a></li><li><a href="global.html#Circle">Circle</a></li><li><a href="global.html#CircleContains">CircleContains</a></li><li><a href="global.html#Circumference">Circumference</a></li><li><a href="global.html#CircumferencePoint">CircumferencePoint</a></li><li><a href="global.html#Clamp">Clamp</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#COLLIDES">COLLIDES</a></li><li><a href="global.html#collinear">collinear</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#Commands">Commands</a></li><li><a href="global.html#Components">Components</a></li><li><a href="global.html#ComponentToHex">ComponentToHex</a></li><li><a href="global.html#CONST">CONST</a></li><li><a href="global.html#Container">Container</a></li><li><a href="global.html#Contains">Contains</a></li><li><a href="global.html#ContainsArray">ContainsArray</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#decomp">decomp</a></li><li><a href="global.html#Defaults">Defaults</a></li><li><a href="global.html#DistanceBetween">DistanceBetween</a></li><li><a href="global.html#DynamicBitmapText">DynamicBitmapText</a></li><li><a href="global.html#EarCut">EarCut</a></li><li><a href="global.html#EaseMap">EaseMap</a></li><li><a href="global.html#Ellipse">Ellipse</a></li><li><a href="global.html">eq</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#Factorial">Factorial</a></li><li><a href="global.html#FILE_CONST">FILE_CONST</a></li><li><a href="global.html#FLIPPED_HORIZONTAL">FLIPPED_HORIZONTAL</a></li><li><a href="global.html#Formats">Formats</a></li><li><a href="global.html#GameObject">GameObject</a></li><li><a href="global.html#GameObjectCreator">GameObjectCreator</a></li><li><a href="global.html#GameObjectFactory">GameObjectFactory</a></li><li><a href="global.html#Geom">Geom</a></li><li><a href="global.html#GetAdvancedValue">GetAdvancedValue</a></li><li><a href="global.html#GetAspectRatio">GetAspectRatio</a></li><li><a href="global.html#GetBottom">GetBottom</a></li><li><a href="global.html#GetCenterX">GetCenterX</a></li><li><a href="global.html#GetCenterY">GetCenterY</a></li><li><a href="global.html#GetColor">GetColor</a></li><li><a href="global.html#getCutEdges">getCutEdges</a></li><li><a href="global.html#GetFastValue">GetFastValue</a></li><li><a href="global.html#GetLeft">GetLeft</a></li><li><a href="global.html#GetMagnitude">GetMagnitude</a></li><li><a href="global.html#GetOverlapX">GetOverlapX</a></li><li><a href="global.html#GetOverlapY">GetOverlapY</a></li><li><a href="global.html#GetPoint">GetPoint</a></li><li><a href="global.html#GetPoints">GetPoints</a></li><li><a href="global.html#GetRight">GetRight</a></li><li><a href="global.html#GetTileAt">GetTileAt</a></li><li><a href="global.html#GetTilesWithin">GetTilesWithin</a></li><li><a href="global.html#GetValue">GetValue</a></li><li><a href="global.html#Graphics">Graphics</a></li><li><a href="global.html#Group">Group</a></li><li><a href="global.html#H">H</a></li><li><a href="global.html#hasGetStart">hasGetStart</a></li><li><a href="global.html#HasTileAt">HasTileAt</a></li><li><a href="global.html#HasValue">HasValue</a></li><li><a href="global.html#HexStringToColor">HexStringToColor</a></li><li><a href="global.html#HSVToRGB">HSVToRGB</a></li><li><a href="global.html#HTML5AudioSoundManager">HTML5AudioSoundManager</a></li><li><a href="global.html#Image">Image</a></li><li><a href="global.html#imageHeight">imageHeight</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#IsInLayerBounds">IsInLayerBounds</a></li><li><a href="global.html#IsPlainObject">IsPlainObject</a></li><li><a href="global.html#isReflex">isReflex</a></li><li><a href="global.html#isSimple">isSimple</a></li><li><a href="global.html#KeyCodes">KeyCodes</a></li><li><a href="global.html#LayerData">LayerData</a></li><li><a href="global.html#Length">Length</a></li><li><a href="global.html#Line">Line</a></li><li><a href="global.html#Linear">Linear</a></li><li><a href="global.html">lineInt</a></li><li><a href="global.html#LineToCircle">LineToCircle</a></li><li><a href="global.html#LineToLine">LineToLine</a></li><li><a href="global.html#makeCCW">makeCCW</a></li><li><a href="global.html#MarchingAnts">MarchingAnts</a></li><li><a href="global.html#MATH">MATH</a></li><li><a href="global.html#MATH_CONST">MATH_CONST</a></li><li><a href="global.html#MathRotateAroundDistance">MathRotateAroundDistance</a></li><li><a href="global.html#MathSmootherStep">MathSmootherStep</a></li><li><a href="global.html#MathSmoothStep">MathSmoothStep</a></li><li><a href="global.html#MathWrap">MathWrap</a></li><li><a href="global.html#Matter">Matter</a></li><li><a href="global.html#MatterEvents">MatterEvents</a></li><li><a href="global.html#MergeXHRSettings">MergeXHRSettings</a></li><li><a href="global.html#Mesh">Mesh</a></li><li><a href="global.html#ModelViewProjection">ModelViewProjection</a></li><li><a href="global.html#modes">modes</a></li><li><a href="global.html#Normalize">Normalize</a></li><li><a href="global.html#OS">OS</a></li><li><a href="global.html#P0">P0</a></li><li><a href="global.html#ParseXMLBitmapFont">ParseXMLBitmapFont</a></li><li><a href="global.html#Perimeter">Perimeter</a></li><li><a href="global.html#Pick">Pick</a></li><li><a href="global.html#Point">Point</a></li><li><a href="global.html#PointToLine">PointToLine</a></li><li><a href="global.html#Polygon">Polygon</a></li><li><a href="global.html#ProcessTileSeparationX">ProcessTileSeparationX</a></li><li><a href="global.html#ProcessTileSeparationY">ProcessTileSeparationY</a></li><li><a href="global.html#PropertyValueInc">PropertyValueInc</a></li><li><a href="global.html#PropertyValueSet">PropertyValueSet</a></li><li><a href="global.html#PutTileAt">PutTileAt</a></li><li><a href="global.html#Quad">Quad</a></li><li><a href="global.html#quickDecomp">quickDecomp</a></li><li><a href="global.html#quickselect">quickselect</a></li><li><a href="global.html#Random">Random</a></li><li><a href="global.html#Rectangle">Rectangle</a></li><li><a href="global.html#removeCollinearPoints">removeCollinearPoints</a></li><li><a href="global.html#RemoveTileAt">RemoveTileAt</a></li><li><a href="global.html#renderWebGL">renderWebGL</a></li><li><a href="global.html#RESERVED">RESERVED</a></li><li><a href="global.html#RETRO_FONT_CONST">RETRO_FONT_CONST</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#RND">RND</a></li><li><a href="global.html#RotateAroundDistance">RotateAroundDistance</a></li><li><a href="global.html#RotateAroundXY">RotateAroundXY</a></li><li><a href="global.html#RotateMatrix">RotateMatrix</a></li><li><a href="global.html#RoundAwayFromZero">RoundAwayFromZero</a></li><li><a href="global.html#roundPixels">roundPixels</a></li><li><a href="global.html#SafeRange">SafeRange</a></li><li><a href="global.html#ScaleModes">ScaleModes</a></li><li><a href="global.html#segmentsIntersect">segmentsIntersect</a></li><li><a href="global.html#SetCenterX">SetCenterX</a></li><li><a href="global.html#SetTileCollision">SetTileCollision</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#SpliceOne">SpliceOne</a></li><li><a href="global.html#Sprite3D">Sprite3D</a></li><li><a href="global.html#Text">Text</a></li><li><a href="global.html#Tile">Tile</a></li><li><a href="global.html#TileCheckX">TileCheckX</a></li><li><a href="global.html#Tileset">Tileset</a></li><li><a href="global.html#TileToWorldX">TileToWorldX</a></li><li><a href="global.html#Triangle">Triangle</a></li><li><a href="global.html#TWEEN_CONST">TWEEN_CONST</a></li><li><a href="global.html#TYPE">TYPE</a></li><li><a href="global.html#types">types</a></li><li><a href="global.html#Vector2">Vector2</a></li><li><a href="global.html#Vector3">Vector3</a></li><li><a href="global.html#WorldToTileX">WorldToTileX</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#Zone">Zone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 24 2018 01:44:13 GMT+0100 (GMT Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

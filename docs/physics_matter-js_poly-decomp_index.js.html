@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: physics/matter-js/poly-decomp/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: physics/matter-js/poly-decomp/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+module.exports = {
+    decomp: polygonDecomp,
+    quickDecomp: polygonQuickDecomp,
+    isSimple: polygonIsSimple,
+    removeCollinearPoints: polygonRemoveCollinearPoints,
+    makeCCW: polygonMakeCCW
+};
+
+/**
+ * Compute the intersection between two lines.
+ * @static
+ * @method lineInt
+ * @param  {Array}  l1          Line vector 1
+ * @param  {Array}  l2          Line vector 2
+ * @param  {Number} precision   Precision to use when checking if the lines are parallel
+ * @return {Array}              The intersection point.
+ */
+function lineInt(l1,l2,precision){
+    precision = precision || 0;
+    var i = [0,0]; // point
+    var a1, b1, c1, a2, b2, c2, det; // scalars
+    a1 = l1[1][1] - l1[0][1];
+    b1 = l1[0][0] - l1[1][0];
+    c1 = a1 * l1[0][0] + b1 * l1[0][1];
+    a2 = l2[1][1] - l2[0][1];
+    b2 = l2[0][0] - l2[1][0];
+    c2 = a2 * l2[0][0] + b2 * l2[0][1];
+    det = a1 * b2 - a2*b1;
+    if (!scalar_eq(det, 0, precision)) { // lines are not parallel
+        i[0] = (b2 * c1 - b1 * c2) / det;
+        i[1] = (a1 * c2 - a2 * c1) / det;
+    }
+    return i;
+}
+
+/**
+ * Checks if two line segments intersects.
+ * @method segmentsIntersect
+ * @param {Array} p1 The start vertex of the first line segment.
+ * @param {Array} p2 The end vertex of the first line segment.
+ * @param {Array} q1 The start vertex of the second line segment.
+ * @param {Array} q2 The end vertex of the second line segment.
+ * @return {Boolean} True if the two line segments intersect
+ */
+function lineSegmentsIntersect(p1, p2, q1, q2){
+	var dx = p2[0] - p1[0];
+	var dy = p2[1] - p1[1];
+	var da = q2[0] - q1[0];
+	var db = q2[1] - q1[1];
+
+	// segments are parallel
+	if((da*dy - db*dx) === 0){
+		return false;
+	}
+
+	var s = (dx * (q1[1] - p1[1]) + dy * (p1[0] - q1[0])) / (da * dy - db * dx);
+	var t = (da * (p1[1] - q1[1]) + db * (q1[0] - p1[0])) / (db * dx - da * dy);
+
+	return (s>=0 &amp;&amp; s&lt;=1 &amp;&amp; t>=0 &amp;&amp; t&lt;=1);
+}
+
+/**
+ * Get the area of a triangle spanned by the three given points. Note that the area will be negative if the points are not given in counter-clockwise order.
+ * @static
+ * @method area
+ * @param  {Array} a
+ * @param  {Array} b
+ * @param  {Array} c
+ * @return {Number}
+ */
+function triangleArea(a,b,c){
+    return (((b[0] - a[0])*(c[1] - a[1]))-((c[0] - a[0])*(b[1] - a[1])));
+}
+
+function isLeft(a,b,c){
+    return triangleArea(a,b,c) > 0;
+}
+
+function isLeftOn(a,b,c) {
+    return triangleArea(a, b, c) >= 0;
+}
+
+function isRight(a,b,c) {
+    return triangleArea(a, b, c) &lt; 0;
+}
+
+function isRightOn(a,b,c) {
+    return triangleArea(a, b, c) &lt;= 0;
+}
+
+var tmpPoint1 = [],
+    tmpPoint2 = [];
+
+/**
+ * Check if three points are collinear
+ * @method collinear
+ * @param  {Array} a
+ * @param  {Array} b
+ * @param  {Array} c
+ * @param  {Number} [thresholdAngle=0] Threshold angle to use when comparing the vectors. The function will return true if the angle between the resulting vectors is less than this value. Use zero for max precision.
+ * @return {Boolean}
+ */
+function collinear(a,b,c,thresholdAngle) {
+    if(!thresholdAngle){
+        return triangleArea(a, b, c) === 0;
+    } else {
+        var ab = tmpPoint1,
+            bc = tmpPoint2;
+
+        ab[0] = b[0]-a[0];
+        ab[1] = b[1]-a[1];
+        bc[0] = c[0]-b[0];
+        bc[1] = c[1]-b[1];
+
+        var dot = ab[0]*bc[0] + ab[1]*bc[1],
+            magA = Math.sqrt(ab[0]*ab[0] + ab[1]*ab[1]),
+            magB = Math.sqrt(bc[0]*bc[0] + bc[1]*bc[1]),
+            angle = Math.acos(dot/(magA*magB));
+        return angle &lt; thresholdAngle;
+    }
+}
+
+function sqdist(a,b){
+    var dx = b[0] - a[0];
+    var dy = b[1] - a[1];
+    return dx * dx + dy * dy;
+}
+
+/**
+ * Get a vertex at position i. It does not matter if i is out of bounds, this function will just cycle.
+ * @method at
+ * @param  {Number} i
+ * @return {Array}
+ */
+function polygonAt(polygon, i){
+    var s = polygon.length;
+    return polygon[i &lt; 0 ? i % s + s : i % s];
+}
+
+/**
+ * Clear the polygon data
+ * @method clear
+ * @return {Array}
+ */
+function polygonClear(polygon){
+    polygon.length = 0;
+}
+
+/**
+ * Append points "from" to "to"-1 from an other polygon "poly" onto this one.
+ * @method append
+ * @param {Polygon} poly The polygon to get points from.
+ * @param {Number}  from The vertex index in "poly".
+ * @param {Number}  to The end vertex index in "poly". Note that this vertex is NOT included when appending.
+ * @return {Array}
+ */
+function polygonAppend(polygon, poly, from, to){
+    for(var i=from; i&lt;to; i++){
+        polygon.push(poly[i]);
+    }
+}
+
+/**
+ * Make sure that the polygon vertices are ordered counter-clockwise.
+ * @method makeCCW
+ */
+function polygonMakeCCW(polygon){
+    var br = 0,
+        v = polygon;
+
+    // find bottom right point
+    for (var i = 1; i &lt; polygon.length; ++i) {
+        if (v[i][1] &lt; v[br][1] || (v[i][1] === v[br][1] &amp;&amp; v[i][0] > v[br][0])) {
+            br = i;
+        }
+    }
+
+    // reverse poly if clockwise
+    if (!isLeft(polygonAt(polygon, br - 1), polygonAt(polygon, br), polygonAt(polygon, br + 1))) {
+        polygonReverse(polygon);
+    }
+}
+
+/**
+ * Reverse the vertices in the polygon
+ * @method reverse
+ */
+function polygonReverse(polygon){
+    var tmp = [];
+    var N = polygon.length;
+    for(var i=0; i!==N; i++){
+        tmp.push(polygon.pop());
+    }
+    for(var i=0; i!==N; i++){
+		polygon[i] = tmp[i];
+    }
+}
+
+/**
+ * Check if a point in the polygon is a reflex point
+ * @method isReflex
+ * @param  {Number}  i
+ * @return {Boolean}
+ */
+function polygonIsReflex(polygon, i){
+    return isRight(polygonAt(polygon, i - 1), polygonAt(polygon, i), polygonAt(polygon, i + 1));
+}
+
+var tmpLine1=[],
+    tmpLine2=[];
+
+/**
+ * Check if two vertices in the polygon can see each other
+ * @method canSee
+ * @param  {Number} a Vertex index 1
+ * @param  {Number} b Vertex index 2
+ * @return {Boolean}
+ */
+function polygonCanSee(polygon, a,b) {
+    var p, dist, l1=tmpLine1, l2=tmpLine2;
+
+    if (isLeftOn(polygonAt(polygon, a + 1), polygonAt(polygon, a), polygonAt(polygon, b)) &amp;&amp; isRightOn(polygonAt(polygon, a - 1), polygonAt(polygon, a), polygonAt(polygon, b))) {
+        return false;
+    }
+    dist = sqdist(polygonAt(polygon, a), polygonAt(polygon, b));
+    for (var i = 0; i !== polygon.length; ++i) { // for each edge
+        if ((i + 1) % polygon.length === a || i === a){ // ignore incident edges
+            continue;
+        }
+        if (isLeftOn(polygonAt(polygon, a), polygonAt(polygon, b), polygonAt(polygon, i + 1)) &amp;&amp; isRightOn(polygonAt(polygon, a), polygonAt(polygon, b), polygonAt(polygon, i))) { // if diag intersects an edge
+            l1[0] = polygonAt(polygon, a);
+            l1[1] = polygonAt(polygon, b);
+            l2[0] = polygonAt(polygon, i);
+            l2[1] = polygonAt(polygon, i + 1);
+            p = lineInt(l1,l2);
+            if (sqdist(polygonAt(polygon, a), p) &lt; dist) { // if edge is blocking visibility to b
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+/**
+ * Copy the polygon from vertex i to vertex j.
+ * @method copy
+ * @param  {Number} i
+ * @param  {Number} j
+ * @param  {Polygon} [targetPoly]   Optional target polygon to save in.
+ * @return {Polygon}                The resulting copy.
+ */
+function polygonCopy(polygon, i,j,targetPoly){
+    var p = targetPoly || [];
+    polygonClear(p);
+    if (i &lt; j) {
+        // Insert all vertices from i to j
+        for(var k=i; k&lt;=j; k++){
+            p.push(polygon[k]);
+        }
+
+    } else {
+
+        // Insert vertices 0 to j
+        for(var k=0; k&lt;=j; k++){
+            p.push(polygon[k]);
+        }
+
+        // Insert vertices i to end
+        for(var k=i; k&lt;polygon.length; k++){
+            p.push(polygon[k]);
+        }
+    }
+
+    return p;
+}
+
+/**
+ * Decomposes the polygon into convex pieces. Returns a list of edges [[p1,p2],[p2,p3],...] that cuts the polygon.
+ * Note that this algorithm has complexity O(N^4) and will be very slow for polygons with many vertices.
+ * @method getCutEdges
+ * @return {Array}
+ */
+function polygonGetCutEdges(polygon) {
+    var min=[], tmp1=[], tmp2=[], tmpPoly = [];
+    var nDiags = Number.MAX_VALUE;
+
+    for (var i = 0; i &lt; polygon.length; ++i) {
+        if (polygonIsReflex(polygon, i)) {
+            for (var j = 0; j &lt; polygon.length; ++j) {
+                if (polygonCanSee(polygon, i, j)) {
+                    tmp1 = polygonGetCutEdges(polygonCopy(polygon, i, j, tmpPoly));
+                    tmp2 = polygonGetCutEdges(polygonCopy(polygon, j, i, tmpPoly));
+
+                    for(var k=0; k&lt;tmp2.length; k++){
+                        tmp1.push(tmp2[k]);
+                    }
+
+                    if (tmp1.length &lt; nDiags) {
+                        min = tmp1;
+                        nDiags = tmp1.length;
+                        min.push([polygonAt(polygon, i), polygonAt(polygon, j)]);
+                    }
+                }
+            }
+        }
+    }
+
+    return min;
+}
+
+/**
+ * Decomposes the polygon into one or more convex sub-Polygons.
+ * @method decomp
+ * @return {Array} An array or Polygon objects.
+ */
+function polygonDecomp(polygon){
+    var edges = polygonGetCutEdges(polygon);
+    if(edges.length > 0){
+        return polygonSlice(polygon, edges);
+    } else {
+        return [polygon];
+    }
+}
+
+/**
+ * Slices the polygon given one or more cut edges. If given one, this function will return two polygons (false on failure). If many, an array of polygons.
+ * @method slice
+ * @param {Array} cutEdges A list of edges, as returned by .getCutEdges()
+ * @return {Array}
+ */
+function polygonSlice(polygon, cutEdges){
+    if(cutEdges.length === 0){
+		return [polygon];
+    }
+    if(cutEdges instanceof Array &amp;&amp; cutEdges.length &amp;&amp; cutEdges[0] instanceof Array &amp;&amp; cutEdges[0].length===2 &amp;&amp; cutEdges[0][0] instanceof Array){
+
+        var polys = [polygon];
+
+        for(var i=0; i&lt;cutEdges.length; i++){
+            var cutEdge = cutEdges[i];
+            // Cut all polys
+            for(var j=0; j&lt;polys.length; j++){
+                var poly = polys[j];
+                var result = polygonSlice(poly, cutEdge);
+                if(result){
+                    // Found poly! Cut and quit
+                    polys.splice(j,1);
+                    polys.push(result[0],result[1]);
+                    break;
+                }
+            }
+        }
+
+        return polys;
+    } else {
+
+        // Was given one edge
+        var cutEdge = cutEdges;
+        var i = polygon.indexOf(cutEdge[0]);
+        var j = polygon.indexOf(cutEdge[1]);
+
+        if(i !== -1 &amp;&amp; j !== -1){
+            return [polygonCopy(polygon, i,j),
+                    polygonCopy(polygon, j,i)];
+        } else {
+            return false;
+        }
+    }
+}
+
+/**
+ * Checks that the line segments of this polygon do not intersect each other.
+ * @method isSimple
+ * @param  {Array} path An array of vertices e.g. [[0,0],[0,1],...]
+ * @return {Boolean}
+ * @todo Should it check all segments with all others?
+ */
+function polygonIsSimple(polygon){
+    var path = polygon, i;
+    // Check
+    for(i=0; i&lt;path.length-1; i++){
+        for(var j=0; j&lt;i-1; j++){
+            if(lineSegmentsIntersect(path[i], path[i+1], path[j], path[j+1] )){
+                return false;
+            }
+        }
+    }
+
+    // Check the segment between the last and the first point to all others
+    for(i=1; i&lt;path.length-2; i++){
+        if(lineSegmentsIntersect(path[0], path[path.length-1], path[i], path[i+1] )){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function getIntersectionPoint(p1, p2, q1, q2, delta){
+	delta = delta || 0;
+	var a1 = p2[1] - p1[1];
+	var b1 = p1[0] - p2[0];
+	var c1 = (a1 * p1[0]) + (b1 * p1[1]);
+	var a2 = q2[1] - q1[1];
+	var b2 = q1[0] - q2[0];
+	var c2 = (a2 * q1[0]) + (b2 * q1[1]);
+	var det = (a1 * b2) - (a2 * b1);
+
+	if(!scalar_eq(det,0,delta)){
+		return [((b2 * c1) - (b1 * c2)) / det, ((a1 * c2) - (a2 * c1)) / det];
+	} else {
+		return [0,0];
+    }
+}
+
+/**
+ * Quickly decompose the Polygon into convex sub-polygons.
+ * @method quickDecomp
+ * @param  {Array} result
+ * @param  {Array} [reflexVertices]
+ * @param  {Array} [steinerPoints]
+ * @param  {Number} [delta]
+ * @param  {Number} [maxlevel]
+ * @param  {Number} [level]
+ * @return {Array}
+ */
+function polygonQuickDecomp(polygon, result,reflexVertices,steinerPoints,delta,maxlevel,level){
+    maxlevel = maxlevel || 100;
+    level = level || 0;
+    delta = delta || 25;
+    result = typeof(result)!=="undefined" ? result : [];
+    reflexVertices = reflexVertices || [];
+    steinerPoints = steinerPoints || [];
+
+    var upperInt=[0,0], lowerInt=[0,0], p=[0,0]; // Points
+    var upperDist=0, lowerDist=0, d=0, closestDist=0; // scalars
+    var upperIndex=0, lowerIndex=0, closestIndex=0; // Integers
+    var lowerPoly=[], upperPoly=[]; // polygons
+    var poly = polygon,
+        v = polygon;
+
+    if(v.length &lt; 3){
+		return result;
+    }
+
+    level++;
+    if(level > maxlevel){
+        console.warn("quickDecomp: max level ("+maxlevel+") reached.");
+        return result;
+    }
+
+    for (var i = 0; i &lt; polygon.length; ++i) {
+        if (polygonIsReflex(poly, i)) {
+            reflexVertices.push(poly[i]);
+            upperDist = lowerDist = Number.MAX_VALUE;
+
+
+            for (var j = 0; j &lt; polygon.length; ++j) {
+                if (isLeft(polygonAt(poly, i - 1), polygonAt(poly, i), polygonAt(poly, j)) &amp;&amp; isRightOn(polygonAt(poly, i - 1), polygonAt(poly, i), polygonAt(poly, j - 1))) { // if line intersects with an edge
+                    p = getIntersectionPoint(polygonAt(poly, i - 1), polygonAt(poly, i), polygonAt(poly, j), polygonAt(poly, j - 1)); // find the point of intersection
+                    if (isRight(polygonAt(poly, i + 1), polygonAt(poly, i), p)) { // make sure it's inside the poly
+                        d = sqdist(poly[i], p);
+                        if (d &lt; lowerDist) { // keep only the closest intersection
+                            lowerDist = d;
+                            lowerInt = p;
+                            lowerIndex = j;
+                        }
+                    }
+                }
+                if (isLeft(polygonAt(poly, i + 1), polygonAt(poly, i), polygonAt(poly, j + 1)) &amp;&amp; isRightOn(polygonAt(poly, i + 1), polygonAt(poly, i), polygonAt(poly, j))) {
+                    p = getIntersectionPoint(polygonAt(poly, i + 1), polygonAt(poly, i), polygonAt(poly, j), polygonAt(poly, j + 1));
+                    if (isLeft(polygonAt(poly, i - 1), polygonAt(poly, i), p)) {
+                        d = sqdist(poly[i], p);
+                        if (d &lt; upperDist) {
+                            upperDist = d;
+                            upperInt = p;
+                            upperIndex = j;
+                        }
+                    }
+                }
+            }
+
+            // if there are no vertices to connect to, choose a point in the middle
+            if (lowerIndex === (upperIndex + 1) % polygon.length) {
+                //console.log("Case 1: Vertex("+i+"), lowerIndex("+lowerIndex+"), upperIndex("+upperIndex+"), poly.size("+polygon.length+")");
+                p[0] = (lowerInt[0] + upperInt[0]) / 2;
+                p[1] = (lowerInt[1] + upperInt[1]) / 2;
+                steinerPoints.push(p);
+
+                if (i &lt; upperIndex) {
+                    //lowerPoly.insert(lowerPoly.end(), poly.begin() + i, poly.begin() + upperIndex + 1);
+                    polygonAppend(lowerPoly, poly, i, upperIndex+1);
+                    lowerPoly.push(p);
+                    upperPoly.push(p);
+                    if (lowerIndex !== 0){
+                        //upperPoly.insert(upperPoly.end(), poly.begin() + lowerIndex, poly.end());
+                        polygonAppend(upperPoly, poly,lowerIndex,poly.length);
+                    }
+                    //upperPoly.insert(upperPoly.end(), poly.begin(), poly.begin() + i + 1);
+                    polygonAppend(upperPoly, poly,0,i+1);
+                } else {
+                    if (i !== 0){
+                        //lowerPoly.insert(lowerPoly.end(), poly.begin() + i, poly.end());
+                        polygonAppend(lowerPoly, poly,i,poly.length);
+                    }
+                    //lowerPoly.insert(lowerPoly.end(), poly.begin(), poly.begin() + upperIndex + 1);
+                    polygonAppend(lowerPoly, poly,0,upperIndex+1);
+                    lowerPoly.push(p);
+                    upperPoly.push(p);
+                    //upperPoly.insert(upperPoly.end(), poly.begin() + lowerIndex, poly.begin() + i + 1);
+                    polygonAppend(upperPoly, poly,lowerIndex,i+1);
+                }
+            } else {
+                // connect to the closest point within the triangle
+                //console.log("Case 2: Vertex("+i+"), closestIndex("+closestIndex+"), poly.size("+polygon.length+")\n");
+
+                if (lowerIndex > upperIndex) {
+                    upperIndex += polygon.length;
+                }
+                closestDist = Number.MAX_VALUE;
+
+                if(upperIndex &lt; lowerIndex){
+                    return result;
+                }
+
+                for (var j = lowerIndex; j &lt;= upperIndex; ++j) {
+                    if (isLeftOn(polygonAt(poly, i - 1), polygonAt(poly, i), polygonAt(poly, j)) &amp;&amp; isRightOn(polygonAt(poly, i + 1), polygonAt(poly, i), polygonAt(poly, j))) {
+                        d = sqdist(polygonAt(poly, i), polygonAt(poly, j));
+                        if (d &lt; closestDist) {
+                            closestDist = d;
+                            closestIndex = j % polygon.length;
+                        }
+                    }
+                }
+
+                if (i &lt; closestIndex) {
+                    polygonAppend(lowerPoly, poly,i,closestIndex+1);
+                    if (closestIndex !== 0){
+                        polygonAppend(upperPoly, poly,closestIndex,v.length);
+                    }
+                    polygonAppend(upperPoly, poly,0,i+1);
+                } else {
+                    if (i !== 0){
+                        polygonAppend(lowerPoly, poly,i,v.length);
+                    }
+                    polygonAppend(lowerPoly, poly,0,closestIndex+1);
+                    polygonAppend(upperPoly, poly,closestIndex,i+1);
+                }
+            }
+
+            // solve smallest poly first
+            if (lowerPoly.length &lt; upperPoly.length) {
+                polygonQuickDecomp(lowerPoly,result,reflexVertices,steinerPoints,delta,maxlevel,level);
+                polygonQuickDecomp(upperPoly,result,reflexVertices,steinerPoints,delta,maxlevel,level);
+            } else {
+                polygonQuickDecomp(upperPoly,result,reflexVertices,steinerPoints,delta,maxlevel,level);
+                polygonQuickDecomp(lowerPoly,result,reflexVertices,steinerPoints,delta,maxlevel,level);
+            }
+
+            return result;
+        }
+    }
+    result.push(polygon);
+
+    return result;
+}
+
+/**
+ * Remove collinear points in the polygon.
+ * @method removeCollinearPoints
+ * @param  {Number} [precision] The threshold angle to use when determining whether two edges are collinear. Use zero for finest precision.
+ * @return {Number}           The number of points removed
+ */
+function polygonRemoveCollinearPoints(polygon, precision){
+    var num = 0;
+    for(var i=polygon.length-1; polygon.length>3 &amp;&amp; i>=0; --i){
+        if(collinear(polygonAt(polygon, i-1),polygonAt(polygon, i),polygonAt(polygon, i+1),precision)){
+            // Remove the middle point
+            polygon.splice(i%polygon.length,1);
+            num++;
+        }
+    }
+    return num;
+}
+
+/**
+ * Check if two scalars are equal
+ * @static
+ * @method eq
+ * @param  {Number} a
+ * @param  {Number} b
+ * @param  {Number} [precision]
+ * @return {Boolean}
+ */
+function scalar_eq(a,b,precision){
+    precision = precision || 0;
+    return Math.abs(a-b) &lt; precision;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#Class">Class</a></li><li><a href="MatterJS.Body.html">Body</a></li><li><a href="MatterJS.Composite.html">Composite</a></li><li><a href="MatterJS.Constraint.html">Constraint</a></li><li><a href="MatterJS.Engine.html">Engine</a></li><li><a href="MatterJS.World.html">World</a></li><li><a href="Phaser.Animations.Animation.html">Animation</a></li><li><a href="Phaser.Animations.AnimationFrame.html">AnimationFrame</a></li><li><a href="Phaser.Animations.AnimationManager.html">AnimationManager</a></li><li><a href="Phaser.Boot.Config.html">Config</a></li><li><a href="Phaser.Boot.TimeStep.html">TimeStep</a></li><li><a href="Phaser.Cache.BaseCache.html">BaseCache</a></li><li><a href="Phaser.Cache.CacheManager.html">CacheManager</a></li><li><a href="Phaser.Cameras.Controls.FixedKeyControl.html">FixedKeyControl</a></li><li><a href="Phaser.Cameras.Controls.SmoothedKeyControl.html">SmoothedKeyControl</a></li><li><a href="Phaser.Cameras.Scene2D.Camera.html">Camera</a></li><li><a href="Phaser.Cameras.Scene2D.CameraManager.html">CameraManager</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Fade.html">Fade</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Flash.html">Flash</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Shake.html">Shake</a></li><li><a href="Phaser.Cameras.Sprite3D.Camera.html">Camera</a></li><li><a href="Phaser.Cameras.Sprite3D.CameraManager.html">CameraManager</a></li><li><a href="Phaser.Cameras.Sprite3D.OrthographicCamera.html">OrthographicCamera</a></li><li><a href="Phaser.Cameras.Sprite3D.PerspectiveCamera.html">PerspectiveCamera</a></li><li><a href="Phaser.Curves.CubicBezier.html">CubicBezier</a></li><li><a href="Phaser.Curves.Curve.html">Curve</a></li><li><a href="Phaser.Curves.Ellipse.html">Ellipse</a></li><li><a href="Phaser.Curves.Line.html">Line</a></li><li><a href="Phaser.Curves.MoveTo.html">MoveTo</a></li><li><a href="Phaser.Curves.Path.html">Path</a></li><li><a href="Phaser.Curves.QuadraticBezier.html">QuadraticBezier</a></li><li><a href="Phaser.Curves.Spline.html">Spline</a></li><li><a href="Phaser.Data.DataManager.html">DataManager</a></li><li><a href="Phaser.Data.DataManagerPlugin.html">DataManagerPlugin</a></li><li><a href="Phaser.Display.Color.html">Color</a></li><li><a href="Phaser.Display.Masks.BitmapMask.html">BitmapMask</a></li><li><a href="Phaser.Display.Masks.GeometryMask.html">GeometryMask</a></li><li><a href="Phaser.DOM.RequestAnimationFrame.html">RequestAnimationFrame</a></li><li><a href="Phaser.Events.EventEmitter.html">EventEmitter</a></li><li><a href="Phaser.Game.html">Game</a></li><li><a href="Phaser.GameObjects.BitmapText.html">BitmapText</a></li><li><a href="Phaser.GameObjects.Blitter.html">Blitter</a></li><li><a href="Phaser.GameObjects.Blitter.Bob.html">Bob</a></li><li><a href="Phaser.GameObjects.Components.Animation.html">Animation</a></li><li><a href="Phaser.GameObjects.Components.TransformMatrix.html">TransformMatrix</a></li><li><a href="Phaser.GameObjects.Container.html">Container</a></li><li><a href="Phaser.GameObjects.DisplayList.html">DisplayList</a></li><li><a href="Phaser.GameObjects.DynamicBitmapText.html">DynamicBitmapText</a></li><li><a href="Phaser.GameObjects.GameObject.html">GameObject</a></li><li><a href="Phaser.GameObjects.GameObjectCreator.html">GameObjectCreator</a></li><li><a href="Phaser.GameObjects.GameObjectFactory.html">GameObjectFactory</a></li><li><a href="Phaser.GameObjects.Graphics.html">Graphics</a></li><li><a href="Phaser.GameObjects.Group.html">Group</a></li><li><a href="Phaser.GameObjects.Image.html">Image</a></li><li><a href="Phaser.GameObjects.Light.html">Light</a></li><li><a href="Phaser.GameObjects.LightsManager.html">LightsManager</a></li><li><a href="Phaser.GameObjects.LightsPlugin.html">LightsPlugin</a></li><li><a href="Phaser.GameObjects.Mesh.html">Mesh</a></li><li><a href="Phaser.GameObjects.Particles.EmitterOp.html">EmitterOp</a></li><li><a href="Phaser.GameObjects.Particles.GravityWell.html">GravityWell</a></li><li><a href="Phaser.GameObjects.Particles.Particle.html">Particle</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitter.html">ParticleEmitter</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">ParticleEmitterManager</a></li><li><a href="Phaser.GameObjects.Particles.Zones.DeathZone.html">DeathZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.EdgeZone.html">EdgeZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.RandomZone.html">RandomZone</a></li><li><a href="Phaser.GameObjects.PathFollower.html">PathFollower</a></li><li><a href="Phaser.GameObjects.Quad.html">Quad</a></li><li><a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a></li><li><a href="Phaser.GameObjects.Sprite.html">Sprite</a></li><li><a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.GameObjects.Text.html">Text</a></li><li><a href="Phaser.GameObjects.Text.TextStyle.html">TextStyle</a></li><li><a href="Phaser.GameObjects.TileSprite.html">TileSprite</a></li><li><a href="Phaser.GameObjects.UpdateList.html">UpdateList</a></li><li><a href="Phaser.GameObjects.Zone.html">Zone</a></li><li><a href="Phaser.Geom.Circle.html">Circle</a></li><li><a href="Phaser.Geom.Ellipse.html">Ellipse</a></li><li><a href="Phaser.Geom.Line.html">Line</a></li><li><a href="Phaser.Geom.Point.html">Point</a></li><li><a href="Phaser.Geom.Polygon.html">Polygon</a></li><li><a href="Phaser.Geom.Rectangle.html">Rectangle</a></li><li><a href="Phaser.Geom.Triangle.html">Triangle</a></li><li><a href="Phaser.Input.Gamepad.Axis.html">Axis</a></li><li><a href="Phaser.Input.Gamepad.Button.html">Button</a></li><li><a href="Phaser.Input.Gamepad.Gamepad.html">Gamepad</a></li><li><a href="Phaser.Input.Gamepad.GamepadManager.html">GamepadManager</a></li><li><a href="Phaser.Input.InputManager.html">InputManager</a></li><li><a href="Phaser.Input.InputPlugin.html">InputPlugin</a></li><li><a href="Phaser.Input.Keyboard.Key.html">Key</a></li><li><a href="Phaser.Input.Keyboard.KeyboardManager.html">KeyboardManager</a></li><li><a href="Phaser.Input.Keyboard.KeyCombo.html">KeyCombo</a></li><li><a href="Phaser.Input.Mouse.MouseManager.html">MouseManager</a></li><li><a href="Phaser.Input.Pointer.html">Pointer</a></li><li><a href="Phaser.Input.Touch.TouchManager.html">TouchManager</a></li><li><a href="Phaser.Loader.File.html">File</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html">AnimationJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasJSONFile.html">AtlasJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasXMLFile.html">AtlasXMLFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html">AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioSpriteFile.html">AudioSpriteFile</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html">BinaryFile</a></li><li><a href="Phaser.Loader.FileTypes.BitmapFontFile.html">BitmapFontFile</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html">GLSLFile</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html">HTML5AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html">HTMLFile</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html">ImageFile</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html">JSONFile</a></li><li><a href="Phaser.Loader.FileTypes.MultiAtlasFile.html">MultiAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html">PackFile</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html">PluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html">ScenePluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html">ScriptFile</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html">SpriteSheetFile</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html">SVGFile</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html">TextFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html">TilemapCSVFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html">TilemapImpactFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html">TilemapJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.UnityAtlasFile.html">UnityAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html">XMLFile</a></li><li><a href="Phaser.Loader.LoaderPlugin.html">LoaderPlugin</a></li><li><a href="Phaser.Loader.MultiFile.html">MultiFile</a></li><li><a href="Phaser.Math.Matrix3.html">Matrix3</a></li><li><a href="Phaser.Math.Matrix4.html">Matrix4</a></li><li><a href="Phaser.Math.Quaternion.html">Quaternion</a></li><li><a href="Phaser.Math.RandomDataGenerator.html">RandomDataGenerator</a></li><li><a href="Phaser.Math.Vector2.html">Vector2</a></li><li><a href="Phaser.Math.Vector3.html">Vector3</a></li><li><a href="Phaser.Math.Vector4.html">Vector4</a></li><li><a href="Phaser.Physics.Arcade.ArcadePhysics.html">ArcadePhysics</a></li><li><a href="Phaser.Physics.Arcade.Body.html">Body</a></li><li><a href="Phaser.Physics.Arcade.Collider.html">Collider</a></li><li><a href="Phaser.Physics.Arcade.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Arcade.Group.html">Group</a></li><li><a href="Phaser.Physics.Arcade.Image.html">Image</a></li><li><a href="Phaser.Physics.Arcade.Sprite.html">Sprite</a></li><li><a href="Phaser.Physics.Arcade.StaticBody.html">StaticBody</a></li><li><a href="Phaser.Physics.Arcade.StaticGroup.html">StaticGroup</a></li><li><a href="Phaser.Physics.Arcade.World.html">World</a></li><li><a href="Phaser.Physics.Impact.Body.html">Body</a></li><li><a href="Phaser.Physics.Impact.CollisionMap.html">CollisionMap</a></li><li><a href="Phaser.Physics.Impact.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Impact.ImpactBody.html">ImpactBody</a></li><li><a href="Phaser.Physics.Impact.ImpactImage.html">ImpactImage</a></li><li><a href="Phaser.Physics.Impact.ImpactPhysics.html">ImpactPhysics</a></li><li><a href="Phaser.Physics.Impact.ImpactSprite.html">ImpactSprite</a></li><li><a href="Phaser.Physics.Impact.World.html">World</a></li><li><a href="Phaser.Physics.Matter.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Matter.Image.html">Image</a></li><li><a href="Phaser.Physics.Matter.MatterPhysics.html">MatterPhysics</a></li><li><a href="Phaser.Physics.Matter.PointerConstraint.html">PointerConstraint</a></li><li><a href="Phaser.Physics.Matter.Sprite.html">Sprite</a></li><li><a href="Phaser.Physics.Matter.TileBody.html">TileBody</a></li><li><a href="Phaser.Physics.Matter.World.html">World</a></li><li><a href="Phaser.Plugins.BasePlugin.html">BasePlugin</a></li><li><a href="Phaser.Plugins.PluginManager.html">PluginManager</a></li><li><a href="Phaser.Plugins.ScenePlugin.html">ScenePlugin</a></li><li><a href="Phaser.Renderer.Canvas.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline.html">BitmapMaskPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline.html">FlatTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline.html">ForwardDiffuseLightPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline.html">TextureTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">WebGLPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLRenderer.html">WebGLRenderer</a></li><li><a href="Phaser.Scene.html">Scene</a></li><li><a href="Phaser.Scenes.SceneManager.html">SceneManager</a></li><li><a href="Phaser.Scenes.ScenePlugin.html">ScenePlugin</a></li><li><a href="Phaser.Scenes.Systems.html">Systems</a></li><li><a href="Phaser.Sound.BaseSound.html">BaseSound</a></li><li><a href="Phaser.Sound.BaseSoundManager.html">BaseSoundManager</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html">HTML5AudioSound</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html">HTML5AudioSoundManager</a></li><li><a href="Phaser.Sound.NoAudioSound.html">NoAudioSound</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html">NoAudioSoundManager</a></li><li><a href="Phaser.Sound.WebAudioSound.html">WebAudioSound</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html">WebAudioSoundManager</a></li><li><a href="Phaser.Structs.List.html">List</a></li><li><a href="Phaser.Structs.Map.html">Map</a></li><li><a href="Phaser.Structs.ProcessQueue.html">ProcessQueue</a></li><li><a href="Phaser.Structs.RTree.html">RTree</a></li><li><a href="Phaser.Structs.Set.html">Set</a></li><li><a href="Phaser.Textures.CanvasTexture.html">CanvasTexture</a></li><li><a href="Phaser.Textures.Frame.html">Frame</a></li><li><a href="Phaser.Textures.Texture.html">Texture</a></li><li><a href="Phaser.Textures.TextureManager.html">TextureManager</a></li><li><a href="Phaser.Textures.TextureSource.html">TextureSource</a></li><li><a href="Phaser.Tilemaps.DynamicTilemapLayer.html">DynamicTilemapLayer</a></li><li><a href="Phaser.Tilemaps.ImageCollection.html">ImageCollection</a></li><li><a href="Phaser.Tilemaps.LayerData.html">LayerData</a></li><li><a href="Phaser.Tilemaps.MapData.html">MapData</a></li><li><a href="Phaser.Tilemaps.ObjectLayer.html">ObjectLayer</a></li><li><a href="Phaser.Tilemaps.StaticTilemapLayer.html">StaticTilemapLayer</a></li><li><a href="Phaser.Tilemaps.Tile.html">Tile</a></li><li><a href="Phaser.Tilemaps.Tilemap.html">Tilemap</a></li><li><a href="Phaser.Tilemaps.Tileset.html">Tileset</a></li><li><a href="Phaser.Time.Clock.html">Clock</a></li><li><a href="Phaser.Time.TimerEvent.html">TimerEvent</a></li><li><a href="Phaser.Tweens.Timeline.html">Timeline</a></li><li><a href="Phaser.Tweens.Tween.html">Tween</a></li><li><a href="Phaser.Tweens.TweenManager.html">TweenManager</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:CameraDestroyEvent">CameraDestroyEvent</a></li><li><a href="global.html#event:CameraFadeInCompleteEvent">CameraFadeInCompleteEvent</a></li><li><a href="global.html#event:CameraFadeInStartEvent">CameraFadeInStartEvent</a></li><li><a href="global.html#event:CameraFadeOutCompleteEvent">CameraFadeOutCompleteEvent</a></li><li><a href="global.html#event:CameraFadeOutStartEvent">CameraFadeOutStartEvent</a></li><li><a href="global.html#event:CameraFlashCompleteEvent">CameraFlashCompleteEvent</a></li><li><a href="global.html#event:CameraFlashStartEvent">CameraFlashStartEvent</a></li><li><a href="global.html#event:CameraShakeCompleteEvent">CameraShakeCompleteEvent</a></li><li><a href="global.html#event:CameraShakeStartEvent">CameraShakeStartEvent</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:blur">blur</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:focus">focus</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:hidden">hidden</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:visible">visible</a></li><li><a href="Phaser.Cache.BaseCache.html#event:addEvent">addEvent</a></li><li><a href="Phaser.Cache.BaseCache.html#event:removeEvent">removeEvent</a></li><li><a href="Phaser.Game.html#event:boot">boot</a></li><li><a href="Phaser.Game.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Game.html#event:postrenderEvent">postrenderEvent</a></li><li><a href="Phaser.Game.html#event:poststepEvent">poststepEvent</a></li><li><a href="Phaser.Game.html#event:prerenderEvent">prerenderEvent</a></li><li><a href="Phaser.Game.html#event:prestepEvent">prestepEvent</a></li><li><a href="Phaser.Game.html#event:resizeEvent">resizeEvent</a></li><li><a href="Phaser.Game.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Game.html#event:stepEvent">stepEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onCompleteEvent">onCompleteEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onRepeatEvent">onRepeatEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onStartEvent">onStartEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onUpdateEvent">onUpdateEvent</a></li><li><a href="Phaser.Loader.File.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.File.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:addFileEvent">addFileEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:completeEvent">completeEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadErrorEvent">loadErrorEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadEvent">loadEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:progressEvent">progressEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:startEvent">startEvent</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:collide">collide</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:overlap">overlap</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:pause">pause</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:resume">resume</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:worldbounds">worldbounds</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:detuneEvent">detuneEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:endedEvent">endedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopedEvent">loopedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopEvent">loopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:playEvent">playEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:rateEvent">rateEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:seekEvent">seekEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:stopEvent">stopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:detuneEvent">detuneEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:endedEvent">endedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopedEvent">loopedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopEvent">loopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:playEvent">playEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:rateEvent">rateEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:seekEvent">seekEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:stopEvent">stopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:VolumeEvent">VolumeEvent</a></li></ul><h3>Namespaces</h3><ul><li><a href="MatterJS.html">MatterJS</a></li><li><a href="Phaser.html">Phaser</a></li><li><a href="Phaser.Actions.html">Actions</a></li><li><a href="Phaser.Animations.html">Animations</a></li><li><a href="Phaser.Boot.html">Boot</a></li><li><a href="Phaser.Cache.html">Cache</a></li><li><a href="Phaser.Cameras.html">Cameras</a></li><li><a href="Phaser.Cameras.Controls.html">Controls</a></li><li><a href="Phaser.Cameras.Scene2D.html">Scene2D</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.html">Effects</a></li><li><a href="Phaser.Cameras.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.Create.html">Create</a></li><li><a href="Phaser.Create.Palettes.html">Palettes</a></li><li><a href="Phaser.Curves.html">Curves</a></li><li><a href="Phaser.Data.html">Data</a></li><li><a href="Phaser.Device.html">Device</a></li><li><a href="Phaser.Display.html">Display</a></li><li><a href="Phaser.Display.Align.html">Align</a></li><li><a href="Phaser.Display.Align.In.html">In</a></li><li><a href="Phaser.Display.Align.To.html">To</a></li><li><a href="Phaser.Display.Bounds.html">Bounds</a></li><li><a href="Phaser.Display.Canvas.html">Canvas</a></li><li><a href="Phaser.Display.Canvas.CanvasInterpolation.html">CanvasInterpolation</a></li><li><a href="Phaser.Display.Canvas.CanvasPool.html">CanvasPool</a></li><li><a href="Phaser.Display.Canvas.Smoothing.html">Smoothing</a></li><li><a href="Phaser.Display.Color.Interpolate.html">Interpolate</a></li><li><a href="Phaser.Display.Masks.html">Masks</a></li><li><a href="Phaser.DOM.html">DOM</a></li><li><a href="Phaser.Events.html">Events</a></li><li><a href="Phaser.GameObjects.html">GameObjects</a></li><li><a href="Phaser.GameObjects.Components.html">Components</a></li><li><a href="Phaser.GameObjects.Graphics.Commands.html">Commands</a></li><li><a href="Phaser.GameObjects.Particles.html">Particles</a></li><li><a href="Phaser.GameObjects.Particles.Zones.html">Zones</a></li><li><a href="Phaser.GameObjects.RetroFont.html">RetroFont</a></li><li><a href="Phaser.Geom.html">Geom</a></li><li><a href="Phaser.Geom.Intersects.html">Intersects</a></li><li><a href="Phaser.Input.html">Input</a></li><li><a href="Phaser.Input.Gamepad.html">Gamepad</a></li><li><a href="Phaser.Input.Gamepad.Configs.html">Configs</a></li><li><a href="Phaser.Input.Keyboard.html">Keyboard</a></li><li><a href="Phaser.Input.Mouse.html">Mouse</a></li><li><a href="Phaser.Input.Touch.html">Touch</a></li><li><a href="Phaser.Loader.html">Loader</a></li><li><a href="Phaser.Loader.FileTypes.html">FileTypes</a></li><li><a href="Phaser.Math.html">Math</a></li><li><a href="Phaser.Math.Angle.html">Angle</a></li><li><a href="Phaser.Math.Distance.html">Distance</a></li><li><a href="Phaser.Math.Easing.html">Easing</a></li><li><a href="Phaser.Math.Easing.Back.html">Back</a></li><li><a href="Phaser.Math.Easing.Bounce.html">Bounce</a></li><li><a href="Phaser.Math.Easing.Circular.html">Circular</a></li><li><a href="Phaser.Math.Easing.Cubic.html">Cubic</a></li><li><a href="Phaser.Math.Easing.Elastic.html">Elastic</a></li><li><a href="Phaser.Math.Easing.Expo.html">Expo</a></li><li><a href="Phaser.Math.Easing.Linear.html">Linear</a></li><li><a href="Phaser.Math.Easing.Quadratic.html">Quadratic</a></li><li><a href="Phaser.Math.Easing.Quartic.html">Quartic</a></li><li><a href="Phaser.Math.Easing.Quintic.html">Quintic</a></li><li><a href="Phaser.Math.Easing.Sine.html">Sine</a></li><li><a href="Phaser.Math.Easing.Stepped.html">Stepped</a></li><li><a href="Phaser.Math.Fuzzy.html">Fuzzy</a></li><li><a href="Phaser.Math.Interpolation.html">Interpolation</a></li><li><a href="Phaser.Math.Pow2.html">Pow2</a></li><li><a href="Phaser.Math.Snap.html">Snap</a></li><li><a href="Phaser.Physics.html">Physics</a></li><li><a href="Phaser.Physics.Arcade.html">Arcade</a></li><li><a href="Phaser.Physics.Arcade.Components.html">Components</a></li><li><a href="Phaser.Physics.Arcade.Tilemap.html">Tilemap</a></li><li><a href="Phaser.Physics.Impact.html">Impact</a></li><li><a href="Phaser.Physics.Impact.Components.html">Components</a></li><li><a href="Phaser.Physics.Matter.html">Matter</a></li><li><a href="Phaser.Physics.Matter.Components.html">Components</a></li><li><a href="Phaser.Plugins.html">Plugins</a></li><li><a href="Phaser.Renderer.html">Renderer</a></li><li><a href="Phaser.Renderer.Canvas.html">Canvas</a></li><li><a href="Phaser.Renderer.Snapshot.html">Snapshot</a></li><li><a href="Phaser.Renderer.WebGL.html">WebGL</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.html">Pipelines</a></li><li><a href="Phaser.Renderer.WebGL.Utils.html">Utils</a></li><li><a href="Phaser.Scenes.html">Scenes</a></li><li><a href="Phaser.Scenes.Settings.html">Settings</a></li><li><a href="Phaser.Sound.html">Sound</a></li><li><a href="Phaser.Structs.html">Structs</a></li><li><a href="Phaser.Textures.html">Textures</a></li><li><a href="Phaser.Textures.Parsers.html">Parsers</a></li><li><a href="Phaser.Tilemaps.html">Tilemaps</a></li><li><a href="Phaser.Tilemaps.Components.html">Components</a></li><li><a href="Phaser.Tilemaps.Formats.html">Formats</a></li><li><a href="Phaser.Tilemaps.Parsers.html">Parsers</a></li><li><a href="Phaser.Tilemaps.Parsers.Impact.html">Impact</a></li><li><a href="Phaser.Tilemaps.Parsers.Tiled.html">Tiled</a></li><li><a href="Phaser.Time.html">Time</a></li><li><a href="Phaser.Tweens.html">Tweens</a></li><li><a href="Phaser.Tweens.Builders.html">Builders</a></li><li><a href="Phaser.Utils.html">Utils</a></li><li><a href="Phaser.Utils.Array.html">Array</a></li><li><a href="Phaser.Utils.Array.Matrix.html">Matrix</a></li><li><a href="Phaser.Utils.Object.html">Object</a></li><li><a href="Phaser.Utils.String.html">String</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Actions">Actions</a></li><li><a href="global.html#AddToDOM">AddToDOM</a></li><li><a href="global.html#AdvanceKeyCombo">AdvanceKeyCombo</a></li><li><a href="global.html#ALIGN_CONST">ALIGN_CONST</a></li><li><a href="global.html#AlignIn">AlignIn</a></li><li><a href="global.html#Angle">Angle</a></li><li><a href="global.html#Animation">Animation</a></li><li><a href="global.html#AnimationComponent">AnimationComponent</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#ArcadeImage">ArcadeImage</a></li><li><a href="global.html#ArcadeSprite">ArcadeSprite</a></li><li><a href="global.html">area</a></li><li><a href="global.html#Arne16">Arne16</a></li><li><a href="global.html#ArrayShuffle">ArrayShuffle</a></li><li><a href="global.html#ArrayUtils">ArrayUtils</a></li><li><a href="global.html#at">at</a></li><li><a href="global.html#AudioFile">AudioFile</a></li><li><a href="global.html#Axis">Axis</a></li><li><a href="global.html#Back">Back</a></li><li><a href="global.html#Base64Decode">Base64Decode</a></li><li><a href="global.html#BaseCache">BaseCache</a></li><li><a href="global.html#BasePlugin">BasePlugin</a></li><li><a href="global.html#BaseSound">BaseSound</a></li><li><a href="global.html#BaseSoundManager">BaseSoundManager</a></li><li><a href="global.html#Bernstein">Bernstein</a></li><li><a href="global.html#Between">Between</a></li><li><a href="global.html#BitmapMask">BitmapMask</a></li><li><a href="global.html#BitmapText">BitmapText</a></li><li><a href="global.html#BlendModes">BlendModes</a></li><li><a href="global.html#BlitImage">BlitImage</a></li><li><a href="global.html#Blitter">Blitter</a></li><li><a href="global.html#BlitterRender">BlitterRender</a></li><li><a href="global.html#Bodies">Bodies</a></li><li><a href="global.html#Body">Body</a></li><li><a href="global.html#Bounds">Bounds</a></li><li><a href="global.html#Browser">Browser</a></li><li><a href="global.html#BuildGameObject">BuildGameObject</a></li><li><a href="global.html#CalculateFacesWithin">CalculateFacesWithin</a></li><li><a href="global.html#Camera">Camera</a></li><li><a href="global.html#canSee">canSee</a></li><li><a href="global.html#CanvasInterpolation">CanvasInterpolation</a></li><li><a href="global.html#CanvasPool">CanvasPool</a></li><li><a href="global.html#CatmullRom">CatmullRom</a></li><li><a href="global.html#CenterOn">CenterOn</a></li><li><a href="global.html#Centroid">Centroid</a></li><li><a href="global.html#Circle">Circle</a></li><li><a href="global.html#CircleContains">CircleContains</a></li><li><a href="global.html#Circumference">Circumference</a></li><li><a href="global.html#CircumferencePoint">CircumferencePoint</a></li><li><a href="global.html#Clamp">Clamp</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#COLLIDES">COLLIDES</a></li><li><a href="global.html#collinear">collinear</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#Commands">Commands</a></li><li><a href="global.html#Components">Components</a></li><li><a href="global.html#ComponentToHex">ComponentToHex</a></li><li><a href="global.html#CONST">CONST</a></li><li><a href="global.html#Container">Container</a></li><li><a href="global.html#Contains">Contains</a></li><li><a href="global.html#ContainsArray">ContainsArray</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#decomp">decomp</a></li><li><a href="global.html#Defaults">Defaults</a></li><li><a href="global.html#DistanceBetween">DistanceBetween</a></li><li><a href="global.html#DynamicBitmapText">DynamicBitmapText</a></li><li><a href="global.html#EarCut">EarCut</a></li><li><a href="global.html#EaseMap">EaseMap</a></li><li><a href="global.html#Ellipse">Ellipse</a></li><li><a href="global.html">eq</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#Factorial">Factorial</a></li><li><a href="global.html#FILE_CONST">FILE_CONST</a></li><li><a href="global.html#FLIPPED_HORIZONTAL">FLIPPED_HORIZONTAL</a></li><li><a href="global.html#Formats">Formats</a></li><li><a href="global.html#GameObject">GameObject</a></li><li><a href="global.html#GameObjectCreator">GameObjectCreator</a></li><li><a href="global.html#GameObjectFactory">GameObjectFactory</a></li><li><a href="global.html#Geom">Geom</a></li><li><a href="global.html#GetAdvancedValue">GetAdvancedValue</a></li><li><a href="global.html#GetAspectRatio">GetAspectRatio</a></li><li><a href="global.html#GetBottom">GetBottom</a></li><li><a href="global.html#GetCenterX">GetCenterX</a></li><li><a href="global.html#GetCenterY">GetCenterY</a></li><li><a href="global.html#GetColor">GetColor</a></li><li><a href="global.html#getCutEdges">getCutEdges</a></li><li><a href="global.html#GetFastValue">GetFastValue</a></li><li><a href="global.html#GetLeft">GetLeft</a></li><li><a href="global.html#GetMagnitude">GetMagnitude</a></li><li><a href="global.html#GetOverlapX">GetOverlapX</a></li><li><a href="global.html#GetOverlapY">GetOverlapY</a></li><li><a href="global.html#GetPoint">GetPoint</a></li><li><a href="global.html#GetPoints">GetPoints</a></li><li><a href="global.html#GetRight">GetRight</a></li><li><a href="global.html#GetTileAt">GetTileAt</a></li><li><a href="global.html#GetTilesWithin">GetTilesWithin</a></li><li><a href="global.html#GetValue">GetValue</a></li><li><a href="global.html#Graphics">Graphics</a></li><li><a href="global.html#Group">Group</a></li><li><a href="global.html#H">H</a></li><li><a href="global.html#hasGetStart">hasGetStart</a></li><li><a href="global.html#HasTileAt">HasTileAt</a></li><li><a href="global.html#HasValue">HasValue</a></li><li><a href="global.html#HexStringToColor">HexStringToColor</a></li><li><a href="global.html#HSVToRGB">HSVToRGB</a></li><li><a href="global.html#HTML5AudioSoundManager">HTML5AudioSoundManager</a></li><li><a href="global.html#Image">Image</a></li><li><a href="global.html#imageHeight">imageHeight</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#IsInLayerBounds">IsInLayerBounds</a></li><li><a href="global.html#IsPlainObject">IsPlainObject</a></li><li><a href="global.html#isReflex">isReflex</a></li><li><a href="global.html#isSimple">isSimple</a></li><li><a href="global.html#KeyCodes">KeyCodes</a></li><li><a href="global.html#LayerData">LayerData</a></li><li><a href="global.html#Length">Length</a></li><li><a href="global.html#Line">Line</a></li><li><a href="global.html#Linear">Linear</a></li><li><a href="global.html">lineInt</a></li><li><a href="global.html#LineToCircle">LineToCircle</a></li><li><a href="global.html#LineToLine">LineToLine</a></li><li><a href="global.html#makeCCW">makeCCW</a></li><li><a href="global.html#MarchingAnts">MarchingAnts</a></li><li><a href="global.html#MATH">MATH</a></li><li><a href="global.html#MATH_CONST">MATH_CONST</a></li><li><a href="global.html#MathRotateAroundDistance">MathRotateAroundDistance</a></li><li><a href="global.html#MathSmootherStep">MathSmootherStep</a></li><li><a href="global.html#MathSmoothStep">MathSmoothStep</a></li><li><a href="global.html#MathWrap">MathWrap</a></li><li><a href="global.html#Matter">Matter</a></li><li><a href="global.html#MatterEvents">MatterEvents</a></li><li><a href="global.html#MergeXHRSettings">MergeXHRSettings</a></li><li><a href="global.html#Mesh">Mesh</a></li><li><a href="global.html#ModelViewProjection">ModelViewProjection</a></li><li><a href="global.html#modes">modes</a></li><li><a href="global.html#Normalize">Normalize</a></li><li><a href="global.html#OS">OS</a></li><li><a href="global.html#P0">P0</a></li><li><a href="global.html#ParseXMLBitmapFont">ParseXMLBitmapFont</a></li><li><a href="global.html#Perimeter">Perimeter</a></li><li><a href="global.html#Pick">Pick</a></li><li><a href="global.html#Point">Point</a></li><li><a href="global.html#PointToLine">PointToLine</a></li><li><a href="global.html#Polygon">Polygon</a></li><li><a href="global.html#ProcessTileSeparationX">ProcessTileSeparationX</a></li><li><a href="global.html#ProcessTileSeparationY">ProcessTileSeparationY</a></li><li><a href="global.html#PropertyValueInc">PropertyValueInc</a></li><li><a href="global.html#PropertyValueSet">PropertyValueSet</a></li><li><a href="global.html#PutTileAt">PutTileAt</a></li><li><a href="global.html#Quad">Quad</a></li><li><a href="global.html#quickDecomp">quickDecomp</a></li><li><a href="global.html#quickselect">quickselect</a></li><li><a href="global.html#Random">Random</a></li><li><a href="global.html#Rectangle">Rectangle</a></li><li><a href="global.html#removeCollinearPoints">removeCollinearPoints</a></li><li><a href="global.html#RemoveTileAt">RemoveTileAt</a></li><li><a href="global.html#renderWebGL">renderWebGL</a></li><li><a href="global.html#RESERVED">RESERVED</a></li><li><a href="global.html#RETRO_FONT_CONST">RETRO_FONT_CONST</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#RND">RND</a></li><li><a href="global.html#RotateAroundDistance">RotateAroundDistance</a></li><li><a href="global.html#RotateAroundXY">RotateAroundXY</a></li><li><a href="global.html#RotateMatrix">RotateMatrix</a></li><li><a href="global.html#RoundAwayFromZero">RoundAwayFromZero</a></li><li><a href="global.html#roundPixels">roundPixels</a></li><li><a href="global.html#SafeRange">SafeRange</a></li><li><a href="global.html#ScaleModes">ScaleModes</a></li><li><a href="global.html#segmentsIntersect">segmentsIntersect</a></li><li><a href="global.html#SetCenterX">SetCenterX</a></li><li><a href="global.html#SetTileCollision">SetTileCollision</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#SpliceOne">SpliceOne</a></li><li><a href="global.html#Sprite3D">Sprite3D</a></li><li><a href="global.html#Text">Text</a></li><li><a href="global.html#Tile">Tile</a></li><li><a href="global.html#TileCheckX">TileCheckX</a></li><li><a href="global.html#Tileset">Tileset</a></li><li><a href="global.html#TileToWorldX">TileToWorldX</a></li><li><a href="global.html#Triangle">Triangle</a></li><li><a href="global.html#TWEEN_CONST">TWEEN_CONST</a></li><li><a href="global.html#TYPE">TYPE</a></li><li><a href="global.html#types">types</a></li><li><a href="global.html#Vector2">Vector2</a></li><li><a href="global.html#Vector3">Vector3</a></li><li><a href="global.html#WorldToTileX">WorldToTileX</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#Zone">Zone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 24 2018 01:44:13 GMT+0100 (GMT Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
