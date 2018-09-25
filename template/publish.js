@@ -540,6 +540,7 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.DisplayList.html">children</a>',
       '<a href="Phaser.Data.DataManager.html">data</a>',
       '<a href="Phaser.Events.EventEmitter.html">events</a>',
+      '<a href="Phaser.FacebookInstantGamesPlugin.html">facebook</a>',
       '<a href="Phaser.Game.html">game</a>',
       '<a href="Phaser.Physics.Impact.ImpactPhysics.html">impact</a>',
       '<a href="Phaser.Input.InputPlugin.html">input</a>',
