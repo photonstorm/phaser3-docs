@@ -502,15 +502,60 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Image.html">Image</a>',
       '<a href="Phaser.GameObjects.PathFollower.html">Path Follower</a>',
       '<a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a>',
+      '<a href="Phaser.GameObjects.Shape.html">Shape</a>',
       '<a href="Phaser.GameObjects.Sprite.html">Sprite</a>',
       '<a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a>',
       '<a href="Phaser.GameObjects.Text.html">Text</a>',
       '<a href="Phaser.GameObjects.TileSprite.html">TileSprite</a>',
       '<a href="Phaser.GameObjects.Zone.html">Zone</a>',
       '&nbsp;',
+      '<a href="Phaser.GameObjects.Arc.html">Arc</a>',
+      '<a href="Phaser.GameObjects.Curve.html">Curve</a>',
+      '<a href="Phaser.GameObjects.Ellipse.html">Ellipse</a>',
+      '<a href="Phaser.GameObjects.Grid.html">Grid</a>',
+      '<a href="Phaser.GameObjects.IsoBox.html">IsoBox</a>',
+      '<a href="Phaser.GameObjects.IsoTriangle.html">IsoTriangle</a>',
+      '<a href="Phaser.GameObjects.Line.html">Line</a>',
+      '<a href="Phaser.GameObjects.Polygon.html">Polygon</a>',
+      '<a href="Phaser.GameObjects.Rectangle.html">Rectangle</a>',
+      '<a href="Phaser.GameObjects.Star.html">Star</a>',
+      '<a href="Phaser.GameObjects.Triangle.html">Triangle</a>',
+      '&nbsp;',
       '<a href="Phaser.GameObjects.LightsPlugin.html">Lights (WebGL only)</a>',
       '<a href="Phaser.GameObjects.Mesh.html">Mesh (WebGL only)</a>',
       '<a href="Phaser.GameObjects.Quad.html">Quad (WebGL only)</a>'
+    ]
+  });
+
+  //  Inject Scene Helper
+
+  topLevelNav.push({
+    title: 'Scene',
+    link: 'Phaser.Scene.html',
+    members: [
+      '<a href="Phaser.GameObjects.GameObjectFactory.html">add</a>',
+      '<a href="Phaser.Animations.AnimationManager.html">anims</a>',
+      '<a href="Phaser.Cache.CacheManager.html">cache</a>',
+      '<a href="Phaser.Cameras.Scene2D.CameraManager.html">cameras</a>',
+      '<a href="Phaser.GameObjects.DisplayList.html">children</a>',
+      '<a href="Phaser.Data.DataManager.html">data</a>',
+      '<a href="Phaser.Events.EventEmitter.html">events</a>',
+      '<a href="Phaser.Game.html">game</a>',
+      '<a href="Phaser.Physics.Impact.ImpactPhysics.html">impact</a>',
+      '<a href="Phaser.Input.InputPlugin.html">input</a>',
+      '<a href="Phaser.GameObjects.LightsManager.html">lights</a>',
+      '<a href="Phaser.Loader.LoaderPlugin.html">load</a>',
+      '<a href="Phaser.GameObjects.GameObjectCreator.html">make</a>',
+      '<a href="Phaser.Physics.Matter.MatterPhysics.html">matter</a>',
+      '<a href="Phaser.Physics.Arcade.ArcadePhysics.html">physics</a>',
+      '<a href="Phaser.Plugins.PluginManager.html">plugins</a>',
+      '<a href="Phaser.Data.DataManager.html">registry</a>',
+      '<a href="Phaser.Scenes.ScenePlugin.html">scene</a>',
+      '<a href="Phaser.Sound.BaseSoundManager.html">sound</a>',
+      '<a href="Phaser.Scenes.Systems.html">sys</a>',
+      '<a href="Phaser.Textures.TextureManager.html">textures</a>',
+      '<a href="Phaser.Time.Clock.html">time</a>',
+      '<a href="Phaser.Tweens.TweenManager.html">tweens</a>'
     ]
   });
 
