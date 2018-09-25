@@ -1,5 +1,0 @@
-C:\Users\rich\AppData\Roaming\npm-cache\_npx\29688\node_modules\tsc\bin\tsc
-error TS5023: Unknown compiler option 'strictNullChecks'.
-error TS5023: Unknown compiler option 'noImplicitThis'.
-error TS5023: Unknown compiler option 'noImplicitReturns'.
-error TS5023: Unknown compiler option 'outFile'.
