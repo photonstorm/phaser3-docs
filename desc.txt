@@ -1,7 +1,6 @@
 actions\Call = 1
 actions\PlaceOnCircle = 4
 actions\PlaceOnEllipse = 4
-actions\PlaceOnLine = 2
 actions\PlaceOnRectangle = 3
 actions\PlaceOnTriangle = 3
 actions\RandomCircle = 2
@@ -10,15 +9,13 @@ actions\RandomLine = 2
 actions\RandomRectangle = 2
 actions\RandomTriangle = 2
 actions\RotateAroundDistance = 1
-actions\SetHitArea = 3
-actions\SetTint = 5
 actions\ShiftPosition = 4
 actions\SmootherStep = 5
 actions\SmoothStep = 5
 actions\Spread = 5
 actions\ToggleVisible = 1
 
-actions total = 56
+actions total = 46
 
 animations\Animation = 36
 animations\AnimationManager = 27
@@ -36,9 +33,9 @@ cameras\controls\SmoothedKeyControl = 6
 
 cameras total = 10
 
-create\GenerateTexture = 14
+create\GenerateTexture = 12
 
-create total = 14
+create total = 12
 
 curves\Curve = 41
 curves\EllipseCurve = 3
@@ -53,9 +50,8 @@ curves total = 173
 display\canvas\CanvasPool = 7
 display\canvas\Smoothing = 8
 display\mask\BitmapMask = 19
-display\mask\GeometryMask = 18
 
-display total = 52
+display total = 34
 
 gameobjects\domelement\DOMElement = 1
 gameobjects\graphics\Graphics = 10
@@ -65,19 +61,14 @@ gameobjects\pathfollower\PathFollower = 4
 
 gameobjects total = 22
 
-geom\intersects\CircleToCircle = 4
 geom\intersects\CircleToRectangle = 4
-geom\intersects\GetRectangleIntersection = 5
 geom\intersects\LineToCircle = 5
-geom\intersects\LineToLine = 5
 geom\intersects\LineToRectangle = 3
 geom\intersects\PointToLine = 4
 geom\intersects\PointToLineSegment = 4
 geom\intersects\RectangleToRectangle = 4
-geom\intersects\RectangleToTriangle = 4
 geom\intersects\RectangleToValues = 8
 geom\intersects\TriangleToCircle = 4
-geom\intersects\TriangleToLine = 4
 geom\intersects\TriangleToTriangle = 4
 geom\line\NormalX = 2
 geom\line\NormalY = 3
@@ -85,53 +76,36 @@ geom\point\GetCentroid = 4
 geom\point\GetMagnitude = 3
 geom\point\GetMagnitudeSq = 3
 geom\point\GetRectangleFromPoints = 3
-geom\point\Interpolate = 6
-geom\point\Invert = 3
+geom\point\Interpolate = 5
 geom\point\Negative = 4
 geom\point\Project = 5
 geom\point\ProjectUnit = 5
 geom\point\SetMagnitude = 4
 geom\polygon\Clone = 3
-geom\polygon\Contains = 5
 geom\polygon\ContainsPoint = 4
 geom\polygon\GetAABB = 4
-geom\polygon\GetNumberArray = 4
 geom\polygon\Polygon = 3
 geom\polygon\Reverse = 3
 geom\rectangle\Area = 3
-geom\rectangle\Ceil = 3
 geom\rectangle\CeilAll = 3
-geom\rectangle\CenterOn = 5
-geom\rectangle\Clone = 3
 geom\rectangle\Contains = 5
 geom\rectangle\ContainsRect = 4
 geom\rectangle\Equals = 4
 geom\rectangle\FitInside = 4
 geom\rectangle\FitOutside = 4
 geom\rectangle\Floor = 3
-geom\rectangle\FloorAll = 3
-geom\rectangle\FromPoints = 4
 geom\rectangle\GetAspectRatio = 3
-geom\rectangle\GetCenter = 4
 geom\rectangle\GetPoint = 4
 geom\rectangle\GetPoints = 2
 geom\rectangle\GetSize = 4
 geom\rectangle\Inflate = 5
 geom\rectangle\MarchingAnts = 6
-geom\rectangle\MergePoints = 4
-geom\rectangle\MergeXY = 5
-geom\rectangle\Offset = 5
-geom\rectangle\OffsetPoint = 4
 geom\rectangle\Overlaps = 4
 geom\rectangle\Perimeter = 3
 geom\rectangle\PerimeterPoint = 5
-geom\rectangle\Random = 4
-geom\rectangle\Rectangle = 33
 geom\rectangle\Scale = 5
-geom\rectangle\Union = 5
 geom\triangle\Area = 3
 geom\triangle\BuildFromPolygon = 5
-geom\triangle\BuildRight = 6
 geom\triangle\CenterOn = 2
 geom\triangle\Centroid = 4
 geom\triangle\CircumCenter = 3
@@ -140,9 +114,7 @@ geom\triangle\Clone = 3
 geom\triangle\Contains = 5
 geom\triangle\ContainsPoint = 4
 geom\triangle\Decompose = 4
-geom\triangle\Equals = 4
 geom\triangle\GetPoint = 5
-geom\triangle\GetPoints = 6
 geom\triangle\InCenter = 4
 geom\triangle\Offset = 5
 geom\triangle\Perimeter = 2
@@ -151,7 +123,7 @@ geom\triangle\Rotate = 4
 geom\triangle\RotateAroundPoint = 5
 geom\triangle\RotateAroundXY = 6
 
-geom total = 374
+geom total = 241
 
 math\Bernstein = 4
 math\CatmullRom = 5
@@ -163,9 +135,9 @@ math\Matrix4 = 5
 math\Quaternion = 3
 math\RotateAroundDistance = 2
 math\Vector2 = 3
-math\Vector3 = 7
+math\Vector3 = 1
 
-math total = 34
+math total = 28
 
 physics\arcade\Collider = 17
 physics\arcade\components\Angular = 7
@@ -188,7 +160,7 @@ physics\arcade\tilemap\SeparateTile = 3
 physics\arcade\tilemap\TileCheckX = 3
 physics\arcade\tilemap\TileCheckY = 3
 physics\arcade\tilemap\TileIntersectsBody = 4
-physics\arcade\World = 61
+physics\arcade\World = 54
 physics\impact\Body = 69
 physics\impact\CollisionMap = 40
 physics\impact\components\BodyType = 5
@@ -228,22 +200,21 @@ physics\matter-js\MatterTileBody = 1
 physics\matter-js\PointerConstraint = 19
 physics\matter-js\World = 39
 
-physics total = 734
+physics total = 727
 
 renderer\canvas\CanvasRenderer = 39
 renderer\canvas\utils\GetBlendModes = 2
 renderer\index = 6
 renderer\snapshot\CanvasSnapshot = 5
 renderer\snapshot\index = 1
-renderer\snapshot\WebGLSnapshot = 5
 renderer\webgl\pipelines\BitmapMaskPipeline = 5
 renderer\webgl\pipelines\ForwardDiffuseLightPipeline = 8
 renderer\webgl\pipelines\TextureTintPipeline = 1
 renderer\webgl\Utils = 3
 renderer\webgl\WebGLPipeline = 32
-renderer\webgl\WebGLRenderer = 53
+renderer\webgl\WebGLRenderer = 22
 
-renderer total = 160
+renderer total = 124
 
 scene\GetScenePlugins = 2
 scene\Scene = 1
@@ -251,12 +222,12 @@ scene\Settings = 26
 
 scene total = 29
 
-structs\List = 69
+structs\List = 1
 structs\Map = 3
 structs\ProcessQueue = 14
 structs\Set = 3
 
-structs total = 89
+structs total = 21
 
 textures\parsers\SpriteSheet = 6
 textures\parsers\SpriteSheetFromAtlas = 2
@@ -270,14 +241,11 @@ tilemaps\mapdata\ObjectLayer = 8
 tilemaps\parsers\impact\ParseTileLayers = 4
 tilemaps\parsers\impact\ParseTilesets = 3
 tilemaps\parsers\impact\ParseWeltmeister = 1
-tilemaps\parsers\Parse = 1
 tilemaps\parsers\Parse2DArray = 1
-tilemaps\parsers\ParseCSV = 1
 tilemaps\parsers\tiled\AssignTileProperties = 1
 tilemaps\parsers\tiled\BuildTilesetIndex = 2
 tilemaps\parsers\tiled\ParseGID = 2
 tilemaps\parsers\tiled\ParseImageLayers = 3
-tilemaps\parsers\tiled\ParseJSONTiled = 1
 tilemaps\parsers\tiled\ParseObject = 5
 tilemaps\parsers\tiled\ParseObjectLayers = 3
 tilemaps\parsers\tiled\ParseTileLayers = 4
@@ -286,14 +254,13 @@ tilemaps\parsers\tiled\Pick = 4
 tilemaps\staticlayer\StaticTilemapLayer = 52
 tilemaps\Tile = 1
 
-tilemaps total = 140
+tilemaps total = 137
 
 time\Clock = 25
 time\TimerEvent = 27
 
 time total = 52
 
-tweens\builders\GetBoolean = 5
 tweens\builders\GetEaseFunction = 4
 tweens\builders\GetNewValue = 5
 tweens\builders\GetProps = 1
@@ -304,11 +271,11 @@ tweens\builders\NumberTweenBuilder = 5
 tweens\builders\TimelineBuilder = 4
 tweens\builders\TweenBuilder = 5
 tweens\Timeline = 38
-tweens\tween\Tween = 50
+tweens\tween\Tween = 45
 tweens\tween\TweenData = 20
 tweens\TweenManager = 51
 
-tweens total = 198
+tweens total = 188
 
 utils\array\FindClosestInSorted = 1
 utils\array\matrix\CheckMatrix = 3
@@ -324,11 +291,9 @@ utils\array\Range = 5
 utils\array\SpliceOne = 3
 utils\object\Extend = 1
 utils\object\GetAdvancedValue = 5
-utils\object\GetMinMaxValue = 7
-utils\object\GetValue = 5
 utils\object\HasValue = 4
 utils\object\Merge = 3
 utils\object\MergeRight = 3
-utils total = 61
+utils total = 49
 
-Total: 2343
+Total: 2038
