@@ -203,30 +203,11 @@
 <li>Easily preload a set of interstitial ads, in both banner and video form, then display the ad at any point in your game, with in-built tracking of ads displayed and inventory available.</li>
 <li>Plus other features, such as logging to FB Analytics, creating short cuts, switching games, etc.</li>
 </ul>
+<p>The plugin is fully documented and official tutorials and project templates will follow shortly.</p>
 <p>A special build of Phaser with the Facebook Instant Games Plugin ready-enabled is <a href="https://www.jsdelivr.com/projects/phaser">available on jsDelivr</a>. Include the following in your html:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.14/dist/phaser-facebook-instant-games.js&quot;>&lt;/script></code></pre><p>or the minified version:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.14/dist/phaser-facebook-instant-games.min.js&quot;>&lt;/script></code></pre><p>The build files are in the git repository in the <code>dist</code> folder, and you can also include the plugin in custom builds.</p>
 <h3>Source Code Examples</h3><p>During our development of Phaser 3, we created hundreds of examples with the full source code and assets ready available. Until these examples are fully integrated into the Phaser website, you can browse them on <a href="https://labs.phaser.io">Phaser 3 Labs</a>, or clone the <a href="https://github.com/photonstorm/phaser3-examples">examples repo</a>. We are constantly adding to and refining these examples.</p>
-<h3>Facebook Instant Games</h3><p>Phaser 3.13 introduced the new Facebook Instant Games Plugin. The plugin provides a seamless bridge between Phaser and version 6.2 of the Facebook Instant Games SDK. Every single SDK function is available via the plugin and we will keep track of the official SDK to make sure they stay in sync.</p>
-<p>The plugin offers the following features:</p>
-<ul>
-<li>Easy integration with the Phaser Loader so load events update the Facebook progress circle.</li>
-<li>Events for every plugin method, allowing the async calls of the SDK to be correctly inserted into the Phaser game flow. When SDK calls resolve they will surface naturally as a Phaser event and you'll know you can safely act upon them without potentially doing something mid-way through the game step.</li>
-<li>All Plugin methods check if the call is part of the supported APIs available in the SDK, without needing to launch an async request first.</li>
-<li>Instant access to platform, player and locale data.</li>
-<li>Easily load player photos directly into the Texture Manager, ready for use with a Game Object.</li>
-<li>Subscribe to game bots.</li>
-<li>The plugin has a built-in Data Manager which makes dealing with data stored on Facebook seamless. Just create whatever data properties you need and they are automatically synced.</li>
-<li>Support for FB stats, to retrieve, store and increment stats into cloud storage.</li>
-<li>Save Session data with built-in session length validation.</li>
-<li>Easy context switching, to swap between game instances and session data retrieval.</li>
-<li>Easily open a Facebook share, invite, request or game challenge window and populate the text and image content using any image stored in the Texture cache.</li>
-<li>Full Leaderboard support. Retrieve, scan and update leaderboard entries, as well as player matching.</li>
-<li>Support for in-app purchases, with product catalogs, the ability to handle purchases, get past purchases and consume previously unlocked purchases.</li>
-<li>Easily preload a set of interstitial ads, in both banner and video form, then display the ad at any point in your game, with in-built tracking of ads displayed and inventory available.</li>
-<li>Plus other features, such as logging to FB Analytics, creating short cuts, switching games, etc.</li>
-</ul>
-<p>The plugin is fully documented and official tutorials and project templates will follow shortly.</p>
 <h3>Create Your First Phaser 3 Example</h3><p>Create an <code>index.html</code> page locally and paste the following code into it:</p>
 <pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
 &lt;html>
