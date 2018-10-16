@@ -1967,7 +1967,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove(camera)</h4>
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove(camera [, runDestroy])</h4>
     
     
 </dt>
@@ -1977,7 +1977,7 @@
     <div class="description">
         <p>Removes the given Camera, or an array of Cameras, from this Camera Manager.</p>
 <p>If found in the Camera Manager it will be immediately removed from the local cameras array.<br>If also currently the 'main' camera, 'main' will be reset to be camera 0.</p>
-<p>The removed Camera is not destroyed. If you also wish to destroy the Camera, you should call<br><code>Camera.destroy</code> on it, so that it clears all references to the Camera Manager.</p>
+<p>The removed Cameras are automatically destroyed if the <code>runDestroy</code> argument is <code>true</code>, which is the default.<br>If you wish to re-use the cameras then set this to <code>false</code>, but know that they will retain their references<br>and internal data until destroyed or re-added to a Camera Manager.</p>
     </div>
     
 
@@ -2000,7 +2000,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -2029,10 +2033,62 @@
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>The Camera, or an array of Cameras, to be removed from this Camera Manager.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>runDestroy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Automatically call <code>Camera.destroy</code> on each Camera removed from this Camera Manager.</p></td>
         </tr>
 
     
@@ -2282,7 +2338,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L573">Line 573</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L583">Line 583</a>)</dt>
 	
 
 	
@@ -2365,7 +2421,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L607">Line 607</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L617">Line 617</a>)</dt>
 	
 
 	
@@ -2545,7 +2601,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L650">Line 650</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L660">Line 660</a>)</dt>
 	
 
 	
@@ -2701,7 +2757,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L632">Line 632</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.14.0/src/cameras/2d/CameraManager.js#L642">Line 642</a>)</dt>
 	
 
 	
@@ -2791,7 +2847,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on October 1st 2018, 3:00:15 pm
+		on October 16th 2018, 3:43:59 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
