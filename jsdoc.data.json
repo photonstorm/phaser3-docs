@@ -4,7 +4,7 @@
     },
     "markdown"  : {
         "parser"   : "gfm",
-        "hardwrap" : true
+        "hardwrap" : false
     },
     "source": {
         "include": [
@@ -12,13 +12,17 @@
             "../phaser/plugins/fbinstant"
         ],
         "exclude": [
+            "../phaser/src/physics/matter-js/poly-decomp/",
             "../phaser/src/physics/matter-js/lib",
-            "../phaser/src/polyfills"
+            "../phaser/src/polyfills",
+            "../phaser/src/core/CreateDOMContainer.js",
+            "../phaser/src/gameobjects/domelement/"
         ],
         "includePattern": ".+\\.js?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "plugins": [
+        "plugins/markdown",
         "jsdoc-plugins/typedef",
         "jsdoc-plugins/this"
     ],

@@ -12,11 +12,12 @@
             "../phaser/plugins/fbinstant"
         ],
         "exclude": [
+            "../phaser/src/phaser-arcade-physics.js",
+            "../phaser/src/phaser-core.js",
             "../phaser/src/physics/matter-js/poly-decomp/",
             "../phaser/src/physics/matter-js/lib",
             "../phaser/src/polyfills",
-            "../phaser/src/boot/CreateDOMContainer.js",
-            "../phaser/src/boot/ScaleManager.js",
+            "../phaser/src/core/CreateDOMContainer.js",
             "../phaser/src/gameobjects/domelement/"
         ],
         "includePattern": ".+\\.js?$",

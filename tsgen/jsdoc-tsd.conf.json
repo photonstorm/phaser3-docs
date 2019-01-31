@@ -2,19 +2,19 @@
     "tags": {
         "allowUnknownTags": true
     },
-    "markdown"  : {
-        "parser"   : "gfm",
-        "hardwrap" : true
-    },
     "source": {
         "include": [
             "../../phaser/src/",
             "../../phaser/plugins/fbinstant"
         ],
         "exclude": [
+            "../../phaser/src/phaser-arcade-physics.js",
+            "../../phaser/src/phaser-core.js",
+            "../../phaser/src/physics/matter-js/poly-decomp/",
             "../../phaser/src/physics/matter-js/lib",
-            "../../phaser/src/physics/matter-js/poly-decomp",
-            "../../phaser/src/polyfills"
+            "../../phaser/src/polyfills",
+            "../../phaser/src/core/CreateDOMContainer.js",
+            "../../phaser/src/gameobjects/domelement/"
         ],
         "includePattern": ".+\\.js?$",
         "excludePattern": "(^|\\/|\\\\)_"

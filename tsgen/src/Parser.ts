@@ -134,6 +134,9 @@ export class Parser {
                 case 'typedef':
                     obj = this.createTypedef(doclet);
                     break;
+                case 'event':
+                    obj = this.createEvent(doclet);
+                    break;
                 default:
                     console.log("Ignored doclet kind: " + doclet.kind);
                     break;
@@ -303,6 +306,18 @@ export class Parser {
     }
 
     private createMember(doclet:any):dom.PropertyDeclaration {
+        let type = this.parseType(doclet);
+
+        let obj = dom.create.property(doclet.name, type);
+
+        this.processGeneric(doclet, obj, null);
+
+        this.processFlags(doclet, obj);
+
+        return obj;
+    }
+
+    private createEvent(doclet:any):dom.PropertyDeclaration {
         let type = this.parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);

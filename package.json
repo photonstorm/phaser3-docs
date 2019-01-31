@@ -14,6 +14,7 @@
     "tsgen": "cd tsgen && jsdoc -c jsdoc-tsd.conf.json",
     "test-ts": "cd tsgen/test && tsc > output.txt",
     "ts": "npm run tsgen && npm run test-ts",
+    "tsdev": "cd tsgen && tsc && jsdoc -c jsdoc-tsd.conf.json",
     "total": "node total.js"
   },
   "repository": {
