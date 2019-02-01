@@ -163,7 +163,10 @@ export class Parser {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
             if(!obj) {
+
+                //  TODO
                 console.log(`Warning: Didn't find object for ${doclet.longname}`);
+
                 continue;
             }
 
@@ -226,7 +229,10 @@ export class Parser {
         for(let doclet of docs) {
             let obj = doclet.kind === "namespace" ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
             if(!obj) {
+
+                //  TODO
                 console.log(`Didn't find type ${doclet.longname} ???`);
+
                 continue;
             }
             if(!(<any>obj)._parent) continue;
@@ -275,6 +281,26 @@ export class Parser {
     }
 
     private createNamespace(doclet:any):dom.NamespaceDeclaration {
+
+        /**
+        namespace: { comment: '',
+        meta:
+         { filename: 'index.js',
+           lineno: 10,
+           columnno: 0,
+           path: '/Users/rich/Documents/GitHub/phaser/src/tweens',
+           code: {} },
+        kind: 'namespace',
+        name: 'Tweens',
+        memberof: 'Phaser',
+        longname: 'Phaser.Tweens',
+        scope: 'static',
+        ___id: 'T000002R034468',
+        ___s: true }
+        */
+
+        // console.log('namespace:', doclet.longname);
+
         let obj = dom.create.namespace(doclet.name);
 
         return obj;
@@ -318,15 +344,18 @@ export class Parser {
     }
 
     private createEvent(doclet:any):dom.PropertyDeclaration {
-        let type = this.parseType(doclet);
 
-        let obj = dom.create.property(doclet.name, type);
+        return;
 
-        this.processGeneric(doclet, obj, null);
+        // let type = this.parseType(doclet);
 
-        this.processFlags(doclet, obj);
+        // let obj = dom.create.property(doclet.name, type);
 
-        return obj;
+        // this.processGeneric(doclet, obj, null);
+
+        // this.processFlags(doclet, obj);
+
+        // return obj;
     }
 
     private createEnum(doclet:any):dom.EnumDeclaration {
