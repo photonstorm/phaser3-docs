@@ -343,19 +343,15 @@ export class Parser {
         return obj;
     }
 
-    private createEvent(doclet:any):dom.PropertyDeclaration {
+    private createEvent(doclet:any):dom.ConstDeclaration {
 
-        return;
+        let type = this.parseType(doclet);
 
-        // let type = this.parseType(doclet);
+        let obj = dom.create.const(doclet.name, type);
 
-        // let obj = dom.create.property(doclet.name, type);
+        this.processFlags(doclet, obj);
 
-        // this.processGeneric(doclet, obj, null);
-
-        // this.processFlags(doclet, obj);
-
-        // return obj;
+        return obj;
     }
 
     private createEnum(doclet:any):dom.EnumDeclaration {

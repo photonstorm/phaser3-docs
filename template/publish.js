@@ -551,6 +551,7 @@ function buildNav(members) {
       '<a href="Phaser.Physics.Arcade.ArcadePhysics.html">physics</a>',
       '<a href="Phaser.Plugins.PluginManager.html">plugins</a>',
       '<a href="Phaser.Data.DataManager.html">registry</a>',
+      '<a href="Phaser.Scale.ScaleManager.html">scale</a>',
       '<a href="Phaser.Scenes.ScenePlugin.html">scene</a>',
       '<a href="Phaser.Sound.BaseSoundManager.html">sound</a>',
       '<a href="Phaser.Scenes.Systems.html">sys</a>',
