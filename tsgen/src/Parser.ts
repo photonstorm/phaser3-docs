@@ -109,6 +109,22 @@ export class Parser {
 
             let obj:dom.DeclarationBase;
             let container = this.objects;
+
+            // if (doclet.memberof === 'Phaser.Scale.Center')
+            // {
+                // console.log(doclet);
+            // }
+
+            // if (doclet.longname === 'Phaser.Scale.NO_CENTER')
+            // {
+            //     console.log(doclet);
+            // }
+
+            // if (doclet.longname === 'Phaser.Scale.Center')
+            // {
+            //     console.log(doclet);
+            // }
+
             switch(doclet.kind) {
                 case 'namespace':
                     obj = this.createNamespace(doclet);
