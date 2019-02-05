@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: gameobjects/components/Animation.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: gameobjects/components/Animation.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @author       Richard Davey &lt;rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+var Class = require('../../utils/Class');
+
+/**
+ * This event is dispatched when an animation starts playing.
+ *
+ * @event Phaser.GameObjects.Components.Animation#onStartEvent
+ * @param {Phaser.Animations.Animation} animation - Reference to the currently playing animation.
+ * @param {Phaser.Animations.AnimationFrame} frame - Reference to the current Animation Frame.
+ */
+
+/**
+ * This event is dispatched when an animation repeats.
+ *
+ * @event Phaser.GameObjects.Components.Animation#onRepeatEvent
+ * @param {Phaser.Animations.Animation} animation - Reference to the currently playing animation.
+ * @param {Phaser.Animations.AnimationFrame} frame - Reference to the current Animation Frame.
+ * @param {integer} repeatCount - The number of times this animation has repeated.
+ */
+
+/**
+ * This event is dispatched when an animation updates. This happens when the animation frame changes,
+ * based on the animation frame rate and other factors like timeScale and delay.
+ *
+ * @event Phaser.GameObjects.Components.Animation#onUpdateEvent
+ * @param {Phaser.Animations.Animation} animation - Reference to the currently playing animation.
+ * @param {Phaser.Animations.AnimationFrame} frame - Reference to the current Animation Frame.
+ */
+
+/**
+ * This event is dispatched when an animation completes playing, either naturally or via Animation.stop.
+ *
+ * @event Phaser.GameObjects.Components.Animation#onCompleteEvent
+ * @param {Phaser.Animations.Animation} animation - Reference to the currently playing animation.
+ * @param {Phaser.Animations.AnimationFrame} frame - Reference to the current Animation Frame.
+ */
+
+/**
+ * @classdesc
+ * A Game Object Animation Controller.
+ *
+ * This controller lives as an instance within a Game Object, accessible as `sprite.anims`.
+ *
+ * @class Animation
+ * @memberOf Phaser.GameObjects.Components
+ * @constructor
+ * @since 3.0.0
+ *
+ * @param {Phaser.GameObjects.GameObject} parent - The Game Object to which this animation controller belongs.
+ */
+var Animation = new Class({
+
+    initialize:
+
+    function Animation (parent)
+    {
+        /**
+         * The Game Object to which this animation controller belongs.
+         *
+         * @name Phaser.GameObjects.Components.Animation#parent
+         * @type {Phaser.GameObjects.GameObject}
+         * @since 3.0.0
+         */
+        this.parent = parent;
+
+        /**
+         * A reference to the global Animation Manager.
+         *
+         * @name Phaser.GameObjects.Components.Animation#animationManager
+         * @type {Phaser.Animations.AnimationManager}
+         * @since 3.0.0
+         */
+        this.animationManager = parent.scene.sys.anims;
+
+        this.animationManager.once('remove', this.remove, this);
+
+        /**
+         * Is an animation currently playing or not?
+         *
+         * @name Phaser.GameObjects.Components.Animation#isPlaying
+         * @type {boolean}
+         * @default false
+         * @since 3.0.0
+         */
+        this.isPlaying = false;
+
+        /**
+         * The current Animation loaded into this Animation Controller.
+         *
+         * @name Phaser.GameObjects.Components.Animation#currentAnim
+         * @type {?Phaser.Animations.Animation}
+         * @default null
+         * @since 3.0.0
+         */
+        this.currentAnim = null;
+
+        /**
+         * The current AnimationFrame being displayed by this Animation Controller.
+         *
+         * @name Phaser.GameObjects.Components.Animation#currentFrame
+         * @type {?Phaser.Animations.AnimationFrame}
+         * @default null
+         * @since 3.0.0
+         */
+        this.currentFrame = null;
+
+        /**
+         * Time scale factor.
+         *
+         * @name Phaser.GameObjects.Components.Animation#_timeScale
+         * @type {number}
+         * @private
+         * @default 1
+         * @since 3.0.0
+         */
+        this._timeScale = 1;
+
+        /**
+         * The frame rate of playback in frames per second.
+         * The default is 24 if the `duration` property is `null`.
+         *
+         * @name Phaser.GameObjects.Components.Animation#frameRate
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.frameRate = 0;
+
+        /**
+         * How long the animation should play for, in milliseconds.
+         * If the `frameRate` property has been set then it overrides this value,
+         * otherwise the `frameRate` is derived from `duration`.
+         *
+         * @name Phaser.GameObjects.Components.Animation#duration
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.duration = 0;
+
+        /**
+         * ms per frame, not including frame specific modifiers that may be present in the Animation data.
+         *
+         * @name Phaser.GameObjects.Components.Animation#msPerFrame
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.msPerFrame = 0;
+
+        /**
+         * Skip frames if the time lags, or always advanced anyway?
+         *
+         * @name Phaser.GameObjects.Components.Animation#skipMissedFrames
+         * @type {boolean}
+         * @default true
+         * @since 3.0.0
+         */
+        this.skipMissedFrames = true;
+
+        /**
+         * A delay before starting playback, in milliseconds.
+         *
+         * @name Phaser.GameObjects.Components.Animation#_delay
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this._delay = 0;
+
+        /**
+         * Number of times to repeat the animation (-1 for infinity)
+         *
+         * @name Phaser.GameObjects.Components.Animation#_repeat
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this._repeat = 0;
+
+        /**
+         * Delay before the repeat starts, in milliseconds.
+         *
+         * @name Phaser.GameObjects.Components.Animation#_repeatDelay
+         * @type {number}
+         * @private
+         * @default 0
+         * @since 3.0.0
+         */
+        this._repeatDelay = 0;
+
+        /**
+         * Should the animation yoyo? (reverse back down to the start) before repeating?
+         *
+         * @name Phaser.GameObjects.Components.Animation#_yoyo
+         * @type {boolean}
+         * @private
+         * @default false
+         * @since 3.0.0
+         */
+        this._yoyo = false;
+
+        /**
+         * Will the playhead move forwards (`true`) or in reverse (`false`)
+         *
+         * @name Phaser.GameObjects.Components.Animation#forward
+         * @type {boolean}
+         * @default true
+         * @since 3.0.0
+         */
+        this.forward = true;
+
+        /**
+         * Internal time overflow accumulator.
+         *
+         * @name Phaser.GameObjects.Components.Animation#accumulator
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.accumulator = 0;
+
+        /**
+         * The time point at which the next animation frame will change.
+         *
+         * @name Phaser.GameObjects.Components.Animation#nextTick
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.nextTick = 0;
+
+        /**
+         * An internal counter keeping track of how many repeats are left to play.
+         *
+         * @name Phaser.GameObjects.Components.Animation#repeatCounter
+         * @type {number}
+         * @default 0
+         * @since 3.0.0
+         */
+        this.repeatCounter = 0;
+
+        /**
+         * An internal flag keeping track of pending repeats.
+         *
+         * @name Phaser.GameObjects.Components.Animation#pendingRepeat
+         * @type {boolean}
+         * @default false
+         * @since 3.0.0
+         */
+        this.pendingRepeat = false;
+
+        /**
+         * Is the Animation paused?
+         *
+         * @name Phaser.GameObjects.Components.Animation#_paused
+         * @type {boolean}
+         * @private
+         * @default false
+         * @since 3.0.0
+         */
+        this._paused = false;
+
+        /**
+         * Was the animation previously playing before being paused?
+         *
+         * @name Phaser.GameObjects.Components.Animation#_wasPlaying
+         * @type {boolean}
+         * @private
+         * @default false
+         * @since 3.0.0
+         */
+        this._wasPlaying = false;
+
+        /**
+         * Internal property tracking if this Animation is waiting to stop.
+         *
+         * 0 = No
+         * 1 = Waiting for ms to pass
+         * 2 = Waiting for repeat
+         * 3 = Waiting for specific frame
+         *
+         * @name Phaser.GameObjects.Components.Animation#_pendingStop
+         * @type {integer}
+         * @private
+         * @since 3.4.0
+         */
+        this._pendingStop = 0;
+
+        /**
+         * Internal property used by _pendingStop.
+         *
+         * @name Phaser.GameObjects.Components.Animation#_pendingStopValue
+         * @type {any}
+         * @private
+         * @since 3.4.0
+         */
+        this._pendingStopValue;
+    },
+
+    /**
+     * Sets the amount of time, in milliseconds, that the animation will be delayed before starting playback.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setDelay
+     * @since 3.4.0
+     *
+     * @param {integer} [value=0] - The amount of time, in milliseconds, to wait before starting playback.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    setDelay: function (value)
+    {
+        if (value === undefined) { value = 0; }
+
+        this._delay = value;
+
+        return this.parent;
+    },
+
+    /**
+     * Gets the amount of time, in milliseconds that the animation will be delayed before starting playback.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getDelay
+     * @since 3.4.0
+     *
+     * @return {integer} The amount of time, in milliseconds, the Animation will wait before starting playback.
+     */
+    getDelay: function ()
+    {
+        return this._delay;
+    },
+
+    /**
+     * Waits for the specified delay, in milliseconds, then starts playback of the requested animation.
+     *
+     * @method Phaser.GameObjects.Components.Animation#delayedPlay
+     * @since 3.0.0
+     *
+     * @param {integer} delay - The delay, in milliseconds, to wait before starting the animation playing.
+     * @param {string} key - The key of the animation to play.
+     * @param {integer} [startFrame=0] - The frame of the animation to start from.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    delayedPlay: function (delay, key, startFrame)
+    {
+        this.play(key, true, startFrame);
+
+        this.nextTick += delay;
+
+        return this.parent;
+    },
+
+    /**
+     * Returns the key of the animation currently loaded into this component.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getCurrentKey
+     * @since 3.0.0
+     *
+     * @return {string} The key of the Animation loaded into this component.
+     */
+    getCurrentKey: function ()
+    {
+        if (this.currentAnim)
+        {
+            return this.currentAnim.key;
+        }
+    },
+
+    /**
+     * Internal method used to load an animation into this component.
+     *
+     * @method Phaser.GameObjects.Components.Animation#load
+     * @protected
+     * @since 3.0.0
+     *
+     * @param {string} key - [description]
+     * @param {integer} [startFrame=0] - [description]
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    load: function (key, startFrame)
+    {
+        if (startFrame === undefined) { startFrame = 0; }
+
+        if (this.isPlaying)
+        {
+            this.stop();
+        }
+
+        //  Load the new animation in
+        this.animationManager.load(this, key, startFrame);
+
+        return this.parent;
+    },
+
+    /**
+     * Pause the current animation and set the `isPlaying` property to `false`.
+     * You can optionally pause it at a specific frame.
+     *
+     * @method Phaser.GameObjects.Components.Animation#pause
+     * @since 3.0.0
+     *
+     * @param {Phaser.Animations.AnimationFrame} [atFrame] - An optional frame to set after pausing the animation.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    pause: function (atFrame)
+    {
+        if (!this._paused)
+        {
+            this._paused = true;
+            this._wasPlaying = this.isPlaying;
+            this.isPlaying = false;
+        }
+
+        if (atFrame !== undefined)
+        {
+            this.updateFrame(atFrame);
+        }
+
+        return this.parent;
+    },
+
+    /**
+     * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
+     * You can optionally tell it to start playback from a specific frame.
+     *
+     * @method Phaser.GameObjects.Components.Animation#resume
+     * @since 3.0.0
+     *
+     * @param {Phaser.Animations.AnimationFrame} [fromFrame] - An optional frame to set before restarting playback.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    resume: function (fromFrame)
+    {
+        if (this._paused)
+        {
+            this._paused = false;
+            this.isPlaying = this._wasPlaying;
+        }
+
+        if (fromFrame !== undefined)
+        {
+            this.updateFrame(fromFrame);
+        }
+
+        return this.parent;
+    },
+
+    /**
+     * `true` if the current animation is paused, otherwise `false`.
+     *
+     * @name Phaser.GameObjects.Components.Animation#isPaused
+     * @readOnly
+     * @type {boolean}
+     * @since 3.4.0
+     */
+    isPaused: {
+
+        get: function ()
+        {
+            return this._paused;
+        }
+
+    },
+
+    /**
+     * Plays an Animation on the Game Object that owns this Animation Component.
+     *
+     * @method Phaser.GameObjects.Components.Animation#play
+     * @fires Phaser.GameObjects.Components.Animation#onStartEvent
+     * @since 3.0.0
+     *
+     * @param {string} key - The string-based key of the animation to play, as defined previously in the Animation Manager.
+     * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
+     * @param {integer} [startFrame=0] - Optionally start the animation playing from this frame index.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    play: function (key, ignoreIfPlaying, startFrame)
+    {
+        if (ignoreIfPlaying === undefined) { ignoreIfPlaying = false; }
+        if (startFrame === undefined) { startFrame = 0; }
+
+        if (ignoreIfPlaying &amp;&amp; this.isPlaying &amp;&amp; this.currentAnim.key === key)
+        {
+            return this.parent;
+        }
+
+        this.load(key, startFrame);
+
+        var anim = this.currentAnim;
+        var gameObject = this.parent;
+
+        //  Should give us 9,007,199,254,740,991 safe repeats
+        this.repeatCounter = (this._repeat === -1) ? Number.MAX_VALUE : this._repeat;
+
+        anim.getFirstTick(this);
+
+        this.forward = true;
+        this.isPlaying = true;
+        this.pendingRepeat = false;
+
+        if (anim.showOnStart)
+        {
+            gameObject.visible = true;
+        }
+
+        gameObject.emit('animationstart', this.currentAnim, this.currentFrame);
+
+        return gameObject;
+    },
+
+    /**
+     * Returns a value between 0 and 1 indicating how far this animation is through, ignoring repeats and yoyos.
+     * If the animation has a non-zero repeat defined, `getProgress` and `getTotalProgress` will be different
+     * because `getProgress` doesn't include any repeats or repeat delays, whereas `getTotalProgress` does.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getProgress
+     * @since 3.4.0
+     *
+     * @return {float} The progress of the current animation, between 0 and 1.
+     */
+    getProgress: function ()
+    {
+        var p = this.currentFrame.progress;
+
+        if (!this.forward)
+        {
+            p = 1 - p;
+        }
+
+        return p;
+    },
+
+    /**
+     * Takes a value between 0 and 1 and uses it to set how far this animation is through playback.
+     * Does not factor in repeats or yoyos, but does handle playing forwards or backwards.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setProgress
+     * @since 3.4.0
+     *
+     * @param {float} [value=0] - [description]
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    setProgress: function (value)
+    {
+        if (!this.forward)
+        {
+            value = 1 - value;
+        }
+
+        this.setCurrentFrame(this.currentAnim.getFrameByProgress(value));
+
+        return this.parent;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.GameObjects.Components.Animation#remove
+     * @since 3.0.0
+     *
+     * @param {Phaser.Animations.Animation} [event] - [description]
+     */
+    remove: function (event)
+    {
+        if (event === undefined) { event = this.currentAnim; }
+
+        if (this.isPlaying &amp;&amp; event.key === this.currentAnim.key)
+        {
+            this.stop();
+
+            this.setCurrentFrame(this.currentAnim.frames[0]);
+        }
+    },
+
+    /**
+     * Gets the number of times that the animation will repeat
+     * after its first iteration. For example, if returns 1, the animation will
+     * play a total of twice (the initial play plus 1 repeat).
+     * A value of -1 means the animation will repeat indefinitely.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getRepeat
+     * @since 3.4.0
+     *
+     * @return {integer} The number of times that the animation will repeat.
+     */
+    getRepeat: function ()
+    {
+        return this._repeat;
+    },
+
+    /**
+     * Sets the number of times that the animation should repeat
+     * after its first iteration. For example, if repeat is 1, the animation will
+     * play a total of twice (the initial play plus 1 repeat).
+     * To repeat indefinitely, use -1. repeat should always be an integer.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setRepeat
+     * @since 3.4.0
+     *
+     * @param {integer} value - [description]
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    setRepeat: function (value)
+    {
+        this._repeat = value;
+
+        this.repeatCounter = 0;
+
+        return this.parent;
+    },
+
+    /**
+     * Gets the amount of delay between repeats, if any.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getRepeatDelay
+     * @since 3.4.0
+     *
+     * @return {number} The delay between repeats.
+     */
+    getRepeatDelay: function ()
+    {
+        return this._repeatDelay;
+    },
+
+    /**
+     * Sets the amount of time in seconds between repeats.
+     * For example, if `repeat` is 2 and `repeatDelay` is 10, the animation will play initially,
+     * then wait for 10 seconds before repeating, then play again, then wait another 10 seconds
+     * before doing its final repeat.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setRepeatDelay
+     * @since 3.4.0
+     *
+     * @param {number} value - The delay to wait between repeats, in seconds.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    setRepeatDelay: function (value)
+    {
+        this._repeatDelay = value;
+
+        return this.parent;
+    },
+
+    /**
+     * Restarts the current animation from its beginning, optionally including its delay value.
+     *
+     * @method Phaser.GameObjects.Components.Animation#restart
+     * @since 3.0.0
+     *
+     * @param {boolean} [includeDelay=false] - [description]
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    restart: function (includeDelay)
+    {
+        if (includeDelay === undefined) { includeDelay = false; }
+
+        this.currentAnim.getFirstTick(this, includeDelay);
+
+        this.forward = true;
+        this.isPlaying = true;
+        this.pendingRepeat = false;
+        this._paused = false;
+
+        //  Set frame
+        this.updateFrame(this.currentAnim.frames[0]);
+
+        return this.parent;
+    },
+
+    /**
+     * Immediately stops the current animation from playing and dispatches the `animationcomplete` event.
+     *
+     * @method Phaser.GameObjects.Components.Animation#stop
+     * @fires Phaser.GameObjects.Components.Animation#onCompleteEvent
+     * @since 3.0.0
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    stop: function ()
+    {
+        this._pendingStop = 0;
+
+        this.isPlaying = false;
+
+        var gameObject = this.parent;
+
+        gameObject.emit('animationcomplete', this.currentAnim, this.currentFrame);
+
+        return gameObject;
+    },
+
+    /**
+     * Stops the current animation from playing after the specified time delay, given in milliseconds.
+     *
+     * @method Phaser.GameObjects.Components.Animation#stopAfterDelay
+     * @fires Phaser.GameObjects.Components.Animation#onCompleteEvent
+     * @since 3.4.0
+     *
+     * @param {integer} delay - The number of milliseconds to wait before stopping this animation.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    stopAfterDelay: function (delay)
+    {
+        this._pendingStop = 1;
+        this._pendingStopValue = delay;
+
+        return this.parent;
+    },
+
+    /**
+     * Stops the current animation from playing when it next repeats.
+     *
+     * @method Phaser.GameObjects.Components.Animation#stopOnRepeat
+     * @fires Phaser.GameObjects.Components.Animation#onCompleteEvent
+     * @since 3.4.0
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    stopOnRepeat: function ()
+    {
+        this._pendingStop = 2;
+
+        return this.parent;
+    },
+
+    /**
+     * Stops the current animation from playing when it next sets the given frame.
+     * If this frame doesn't exist within the animation it will not stop it from playing.
+     *
+     * @method Phaser.GameObjects.Components.Animation#stopOnFrame
+     * @fires Phaser.GameObjects.Components.Animation#onCompleteEvent
+     * @since 3.4.0
+     *
+     * @param {Phaser.Animations.AnimationFrame} delay - The frame to check before stopping this animation.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    stopOnFrame: function (frame)
+    {
+        this._pendingStop = 3;
+        this._pendingStopValue = frame;
+
+        return this.parent;
+    },
+
+    /**
+     * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
+     * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setTimeScale
+     * @since 3.4.0
+     *
+     * @param {number} [value=1] - The time scale factor, where 1 is no change, 0.5 is half speed, etc.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
+     */
+    setTimeScale: function (value)
+    {
+        if (value === undefined) { value = 1; }
+
+        this._timeScale = value;
+
+        return this.parent;
+    },
+
+    /**
+     * Gets the Time Scale factor.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getTimeScale
+     * @since 3.4.0
+     *
+     * @return {number} The Time Scale value.
+     */
+    getTimeScale: function ()
+    {
+        return this._timeScale;
+    },
+
+    /**
+     * Returns the total number of frames in this animation.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getTotalFrames
+     * @since 3.4.0
+     *
+     * @return {integer} The total number of frames in this animation.
+     */
+    getTotalFrames: function ()
+    {
+        return this.currentAnim.frames.length;
+    },
+
+    /**
+     * The internal update loop for the Animation Component.
+     *
+     * @method Phaser.GameObjects.Components.Animation#update
+     * @since 3.0.0
+     *
+     * @param {number} timestamp - [description]
+     * @param {number} delta - The delta time, in ms, elapsed since the last frame.
+     */
+    update: function (timestamp, delta)
+    {
+        if (!this.currentAnim || !this.isPlaying || this.currentAnim.paused)
+        {
+            return;
+        }
+
+        this.accumulator += delta * this._timeScale;
+
+        if (this._pendingStop === 1)
+        {
+            this._pendingStopValue -= delta;
+
+            if (this._pendingStopValue &lt;= 0)
+            {
+                return this.currentAnim.completeAnimation(this);
+            }
+        }
+
+        if (this.accumulator >= this.nextTick)
+        {
+            this.currentAnim.setFrame(this);
+        }
+    },
+
+    /**
+     * Sets the given Animation Frame as being the current frame
+     * and applies it to the parent Game Object, adjusting its size and origin as needed.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setCurrentFrame
+     * @since 3.4.0
+     *
+     * @param {Phaser.Animations.AnimationFrame} animationFrame - The Animation Frame to set as being current.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
+     */
+    setCurrentFrame: function (animationFrame)
+    {
+        var gameObject = this.parent;
+
+        this.currentFrame = animationFrame;
+
+        gameObject.texture = animationFrame.frame.texture;
+        gameObject.frame = animationFrame.frame;
+
+        gameObject.setSizeToFrame();
+
+        if (animationFrame.frame.customPivot)
+        {
+            gameObject.setOrigin(animationFrame.frame.pivotX, animationFrame.frame.pivotY);
+        }
+        else
+        {
+            gameObject.updateDisplayOrigin();
+        }
+
+        return gameObject;
+    },
+
+    /**
+     * Internal frame change handler.
+     *
+     * @method Phaser.GameObjects.Components.Animation#updateFrame
+     * @fires Phaser.GameObjects.Components.Animation#onUpdateEvent
+     * @private
+     * @since 3.0.0
+     *
+     * @param {Phaser.Animations.AnimationFrame} animationFrame - [description]
+     */
+    updateFrame: function (animationFrame)
+    {
+        var gameObject = this.setCurrentFrame(animationFrame);
+
+        if (this.isPlaying)
+        {
+            if (animationFrame.setAlpha)
+            {
+                gameObject.alpha = animationFrame.alpha;
+            }
+
+            var anim = this.currentAnim;
+
+            gameObject.emit('animationupdate', anim, animationFrame);
+
+            if (this._pendingStop === 3 &amp;&amp; this._pendingStopValue === animationFrame)
+            {
+                this.currentAnim.completeAnimation(this);
+            }
+        }
+    },
+
+    /**
+     * Sets if the current Animation will yoyo when it reaches the end.
+     * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+     *
+     * @method Phaser.GameObjects.Components.Animation#setYoyo
+     * @since 3.4.0
+     *
+     * @param {boolean} [value=false] - `true` if the animation should yoyo, `false` to not.
+     *
+     * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
+     */
+    setYoyo: function (value)
+    {
+        if (value === undefined) { value = false; }
+
+        this._yoyo = value;
+
+        return this.parent;
+    },
+
+    /**
+     * Gets if the current Animation will yoyo when it reaches the end.
+     * A yoyo'ing animation will play through consecutively, and then reverse-play back to the start again.
+     *
+     * @method Phaser.GameObjects.Components.Animation#getYoyo
+     * @since 3.4.0
+     *
+     * @return {boolean} `true` if the animation is set to yoyo, `false` if not.
+     */
+    getYoyo: function ()
+    {
+        return this._yoyo;
+    },
+
+    /**
+     * [description]
+     *
+     * @method Phaser.GameObjects.Components.Animation#destroy
+     * @since 3.0.0
+     */
+    destroy: function ()
+    {
+        this.animationManager.off('remove', this.remove, this);
+
+        this.animationManager = null;
+        this.parent = null;
+
+        this.currentAnim = null;
+        this.currentFrame = null;
+    }
+
+});
+
+module.exports = Animation;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#Class">Class</a></li><li><a href="MatterJS.Body.html">Body</a></li><li><a href="MatterJS.Composite.html">Composite</a></li><li><a href="MatterJS.Constraint.html">Constraint</a></li><li><a href="MatterJS.Engine.html">Engine</a></li><li><a href="MatterJS.World.html">World</a></li><li><a href="Phaser.Animations.Animation.html">Animation</a></li><li><a href="Phaser.Animations.AnimationFrame.html">AnimationFrame</a></li><li><a href="Phaser.Animations.AnimationManager.html">AnimationManager</a></li><li><a href="Phaser.Boot.Config.html">Config</a></li><li><a href="Phaser.Boot.TimeStep.html">TimeStep</a></li><li><a href="Phaser.Cache.BaseCache.html">BaseCache</a></li><li><a href="Phaser.Cache.CacheManager.html">CacheManager</a></li><li><a href="Phaser.Cameras.Controls.FixedKeyControl.html">FixedKeyControl</a></li><li><a href="Phaser.Cameras.Controls.SmoothedKeyControl.html">SmoothedKeyControl</a></li><li><a href="Phaser.Cameras.Scene2D.Camera.html">Camera</a></li><li><a href="Phaser.Cameras.Scene2D.CameraManager.html">CameraManager</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Fade.html">Fade</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Flash.html">Flash</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.Shake.html">Shake</a></li><li><a href="Phaser.Cameras.Sprite3D.Camera.html">Camera</a></li><li><a href="Phaser.Cameras.Sprite3D.CameraManager.html">CameraManager</a></li><li><a href="Phaser.Cameras.Sprite3D.OrthographicCamera.html">OrthographicCamera</a></li><li><a href="Phaser.Cameras.Sprite3D.PerspectiveCamera.html">PerspectiveCamera</a></li><li><a href="Phaser.Curves.CubicBezier.html">CubicBezier</a></li><li><a href="Phaser.Curves.Curve.html">Curve</a></li><li><a href="Phaser.Curves.Ellipse.html">Ellipse</a></li><li><a href="Phaser.Curves.Line.html">Line</a></li><li><a href="Phaser.Curves.MoveTo.html">MoveTo</a></li><li><a href="Phaser.Curves.Path.html">Path</a></li><li><a href="Phaser.Curves.QuadraticBezier.html">QuadraticBezier</a></li><li><a href="Phaser.Curves.Spline.html">Spline</a></li><li><a href="Phaser.Data.DataManager.html">DataManager</a></li><li><a href="Phaser.Data.DataManagerPlugin.html">DataManagerPlugin</a></li><li><a href="Phaser.Display.Color.html">Color</a></li><li><a href="Phaser.Display.Masks.BitmapMask.html">BitmapMask</a></li><li><a href="Phaser.Display.Masks.GeometryMask.html">GeometryMask</a></li><li><a href="Phaser.DOM.RequestAnimationFrame.html">RequestAnimationFrame</a></li><li><a href="Phaser.Events.EventEmitter.html">EventEmitter</a></li><li><a href="Phaser.Game.html">Game</a></li><li><a href="Phaser.GameObjects.BitmapText.html">BitmapText</a></li><li><a href="Phaser.GameObjects.Blitter.html">Blitter</a></li><li><a href="Phaser.GameObjects.Blitter.Bob.html">Bob</a></li><li><a href="Phaser.GameObjects.Components.Animation.html">Animation</a></li><li><a href="Phaser.GameObjects.Components.TransformMatrix.html">TransformMatrix</a></li><li><a href="Phaser.GameObjects.Container.html">Container</a></li><li><a href="Phaser.GameObjects.DisplayList.html">DisplayList</a></li><li><a href="Phaser.GameObjects.DynamicBitmapText.html">DynamicBitmapText</a></li><li><a href="Phaser.GameObjects.GameObject.html">GameObject</a></li><li><a href="Phaser.GameObjects.GameObjectCreator.html">GameObjectCreator</a></li><li><a href="Phaser.GameObjects.GameObjectFactory.html">GameObjectFactory</a></li><li><a href="Phaser.GameObjects.Graphics.html">Graphics</a></li><li><a href="Phaser.GameObjects.Group.html">Group</a></li><li><a href="Phaser.GameObjects.Image.html">Image</a></li><li><a href="Phaser.GameObjects.Light.html">Light</a></li><li><a href="Phaser.GameObjects.LightsManager.html">LightsManager</a></li><li><a href="Phaser.GameObjects.LightsPlugin.html">LightsPlugin</a></li><li><a href="Phaser.GameObjects.Mesh.html">Mesh</a></li><li><a href="Phaser.GameObjects.Particles.EmitterOp.html">EmitterOp</a></li><li><a href="Phaser.GameObjects.Particles.GravityWell.html">GravityWell</a></li><li><a href="Phaser.GameObjects.Particles.Particle.html">Particle</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitter.html">ParticleEmitter</a></li><li><a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">ParticleEmitterManager</a></li><li><a href="Phaser.GameObjects.Particles.Zones.DeathZone.html">DeathZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.EdgeZone.html">EdgeZone</a></li><li><a href="Phaser.GameObjects.Particles.Zones.RandomZone.html">RandomZone</a></li><li><a href="Phaser.GameObjects.PathFollower.html">PathFollower</a></li><li><a href="Phaser.GameObjects.Quad.html">Quad</a></li><li><a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a></li><li><a href="Phaser.GameObjects.Sprite.html">Sprite</a></li><li><a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.GameObjects.Text.html">Text</a></li><li><a href="Phaser.GameObjects.Text.TextStyle.html">TextStyle</a></li><li><a href="Phaser.GameObjects.TileSprite.html">TileSprite</a></li><li><a href="Phaser.GameObjects.UpdateList.html">UpdateList</a></li><li><a href="Phaser.GameObjects.Zone.html">Zone</a></li><li><a href="Phaser.Geom.Circle.html">Circle</a></li><li><a href="Phaser.Geom.Ellipse.html">Ellipse</a></li><li><a href="Phaser.Geom.Line.html">Line</a></li><li><a href="Phaser.Geom.Point.html">Point</a></li><li><a href="Phaser.Geom.Polygon.html">Polygon</a></li><li><a href="Phaser.Geom.Rectangle.html">Rectangle</a></li><li><a href="Phaser.Geom.Triangle.html">Triangle</a></li><li><a href="Phaser.Input.Gamepad.Axis.html">Axis</a></li><li><a href="Phaser.Input.Gamepad.Button.html">Button</a></li><li><a href="Phaser.Input.Gamepad.Gamepad.html">Gamepad</a></li><li><a href="Phaser.Input.Gamepad.GamepadManager.html">GamepadManager</a></li><li><a href="Phaser.Input.InputManager.html">InputManager</a></li><li><a href="Phaser.Input.InputPlugin.html">InputPlugin</a></li><li><a href="Phaser.Input.Keyboard.Key.html">Key</a></li><li><a href="Phaser.Input.Keyboard.KeyboardManager.html">KeyboardManager</a></li><li><a href="Phaser.Input.Keyboard.KeyCombo.html">KeyCombo</a></li><li><a href="Phaser.Input.Mouse.MouseManager.html">MouseManager</a></li><li><a href="Phaser.Input.Pointer.html">Pointer</a></li><li><a href="Phaser.Input.Touch.TouchManager.html">TouchManager</a></li><li><a href="Phaser.Loader.File.html">File</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html">AnimationJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasJSONFile.html">AtlasJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.AtlasXMLFile.html">AtlasXMLFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html">AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.AudioSpriteFile.html">AudioSpriteFile</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html">BinaryFile</a></li><li><a href="Phaser.Loader.FileTypes.BitmapFontFile.html">BitmapFontFile</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html">GLSLFile</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html">HTML5AudioFile</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html">HTMLFile</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html">ImageFile</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html">JSONFile</a></li><li><a href="Phaser.Loader.FileTypes.MultiAtlasFile.html">MultiAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html">PackFile</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html">PluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html">ScenePluginFile</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html">ScriptFile</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html">SpriteSheetFile</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html">SVGFile</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html">TextFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html">TilemapCSVFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html">TilemapImpactFile</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html">TilemapJSONFile</a></li><li><a href="Phaser.Loader.FileTypes.UnityAtlasFile.html">UnityAtlasFile</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html">XMLFile</a></li><li><a href="Phaser.Loader.LoaderPlugin.html">LoaderPlugin</a></li><li><a href="Phaser.Loader.MultiFile.html">MultiFile</a></li><li><a href="Phaser.Math.Matrix3.html">Matrix3</a></li><li><a href="Phaser.Math.Matrix4.html">Matrix4</a></li><li><a href="Phaser.Math.Quaternion.html">Quaternion</a></li><li><a href="Phaser.Math.RandomDataGenerator.html">RandomDataGenerator</a></li><li><a href="Phaser.Math.Vector2.html">Vector2</a></li><li><a href="Phaser.Math.Vector3.html">Vector3</a></li><li><a href="Phaser.Math.Vector4.html">Vector4</a></li><li><a href="Phaser.Physics.Arcade.ArcadePhysics.html">ArcadePhysics</a></li><li><a href="Phaser.Physics.Arcade.Body.html">Body</a></li><li><a href="Phaser.Physics.Arcade.Collider.html">Collider</a></li><li><a href="Phaser.Physics.Arcade.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Arcade.Group.html">Group</a></li><li><a href="Phaser.Physics.Arcade.Image.html">Image</a></li><li><a href="Phaser.Physics.Arcade.Sprite.html">Sprite</a></li><li><a href="Phaser.Physics.Arcade.StaticBody.html">StaticBody</a></li><li><a href="Phaser.Physics.Arcade.StaticGroup.html">StaticGroup</a></li><li><a href="Phaser.Physics.Arcade.World.html">World</a></li><li><a href="Phaser.Physics.Impact.Body.html">Body</a></li><li><a href="Phaser.Physics.Impact.CollisionMap.html">CollisionMap</a></li><li><a href="Phaser.Physics.Impact.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Impact.ImpactBody.html">ImpactBody</a></li><li><a href="Phaser.Physics.Impact.ImpactImage.html">ImpactImage</a></li><li><a href="Phaser.Physics.Impact.ImpactPhysics.html">ImpactPhysics</a></li><li><a href="Phaser.Physics.Impact.ImpactSprite.html">ImpactSprite</a></li><li><a href="Phaser.Physics.Impact.World.html">World</a></li><li><a href="Phaser.Physics.Matter.Factory.html">Factory</a></li><li><a href="Phaser.Physics.Matter.Image.html">Image</a></li><li><a href="Phaser.Physics.Matter.MatterPhysics.html">MatterPhysics</a></li><li><a href="Phaser.Physics.Matter.PointerConstraint.html">PointerConstraint</a></li><li><a href="Phaser.Physics.Matter.Sprite.html">Sprite</a></li><li><a href="Phaser.Physics.Matter.TileBody.html">TileBody</a></li><li><a href="Phaser.Physics.Matter.World.html">World</a></li><li><a href="Phaser.Plugins.BasePlugin.html">BasePlugin</a></li><li><a href="Phaser.Plugins.PluginManager.html">PluginManager</a></li><li><a href="Phaser.Plugins.ScenePlugin.html">ScenePlugin</a></li><li><a href="Phaser.Renderer.Canvas.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline.html">BitmapMaskPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.FlatTintPipeline.html">FlatTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.ForwardDiffuseLightPipeline.html">ForwardDiffuseLightPipeline</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline.html">TextureTintPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLPipeline.html">WebGLPipeline</a></li><li><a href="Phaser.Renderer.WebGL.WebGLRenderer.html">WebGLRenderer</a></li><li><a href="Phaser.Scene.html">Scene</a></li><li><a href="Phaser.Scenes.SceneManager.html">SceneManager</a></li><li><a href="Phaser.Scenes.ScenePlugin.html">ScenePlugin</a></li><li><a href="Phaser.Scenes.Systems.html">Systems</a></li><li><a href="Phaser.Sound.BaseSound.html">BaseSound</a></li><li><a href="Phaser.Sound.BaseSoundManager.html">BaseSoundManager</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html">HTML5AudioSound</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html">HTML5AudioSoundManager</a></li><li><a href="Phaser.Sound.NoAudioSound.html">NoAudioSound</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html">NoAudioSoundManager</a></li><li><a href="Phaser.Sound.WebAudioSound.html">WebAudioSound</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html">WebAudioSoundManager</a></li><li><a href="Phaser.Structs.List.html">List</a></li><li><a href="Phaser.Structs.Map.html">Map</a></li><li><a href="Phaser.Structs.ProcessQueue.html">ProcessQueue</a></li><li><a href="Phaser.Structs.RTree.html">RTree</a></li><li><a href="Phaser.Structs.Set.html">Set</a></li><li><a href="Phaser.Textures.CanvasTexture.html">CanvasTexture</a></li><li><a href="Phaser.Textures.Frame.html">Frame</a></li><li><a href="Phaser.Textures.Texture.html">Texture</a></li><li><a href="Phaser.Textures.TextureManager.html">TextureManager</a></li><li><a href="Phaser.Textures.TextureSource.html">TextureSource</a></li><li><a href="Phaser.Tilemaps.DynamicTilemapLayer.html">DynamicTilemapLayer</a></li><li><a href="Phaser.Tilemaps.ImageCollection.html">ImageCollection</a></li><li><a href="Phaser.Tilemaps.LayerData.html">LayerData</a></li><li><a href="Phaser.Tilemaps.MapData.html">MapData</a></li><li><a href="Phaser.Tilemaps.ObjectLayer.html">ObjectLayer</a></li><li><a href="Phaser.Tilemaps.StaticTilemapLayer.html">StaticTilemapLayer</a></li><li><a href="Phaser.Tilemaps.Tile.html">Tile</a></li><li><a href="Phaser.Tilemaps.Tilemap.html">Tilemap</a></li><li><a href="Phaser.Tilemaps.Tileset.html">Tileset</a></li><li><a href="Phaser.Time.Clock.html">Clock</a></li><li><a href="Phaser.Time.TimerEvent.html">TimerEvent</a></li><li><a href="Phaser.Tweens.Timeline.html">Timeline</a></li><li><a href="Phaser.Tweens.Tween.html">Tween</a></li><li><a href="Phaser.Tweens.TweenManager.html">TweenManager</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:CameraDestroyEvent">CameraDestroyEvent</a></li><li><a href="global.html#event:CameraFadeInCompleteEvent">CameraFadeInCompleteEvent</a></li><li><a href="global.html#event:CameraFadeInStartEvent">CameraFadeInStartEvent</a></li><li><a href="global.html#event:CameraFadeOutCompleteEvent">CameraFadeOutCompleteEvent</a></li><li><a href="global.html#event:CameraFadeOutStartEvent">CameraFadeOutStartEvent</a></li><li><a href="global.html#event:CameraFlashCompleteEvent">CameraFlashCompleteEvent</a></li><li><a href="global.html#event:CameraFlashStartEvent">CameraFlashStartEvent</a></li><li><a href="global.html#event:CameraShakeCompleteEvent">CameraShakeCompleteEvent</a></li><li><a href="global.html#event:CameraShakeStartEvent">CameraShakeStartEvent</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:blur">blur</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:focus">focus</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:hidden">hidden</a></li><li><a href="Phaser.Boot.html#.VisibilityHandler#event:visible">visible</a></li><li><a href="Phaser.Cache.BaseCache.html#event:addEvent">addEvent</a></li><li><a href="Phaser.Cache.BaseCache.html#event:removeEvent">removeEvent</a></li><li><a href="Phaser.Game.html#event:boot">boot</a></li><li><a href="Phaser.Game.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Game.html#event:postrenderEvent">postrenderEvent</a></li><li><a href="Phaser.Game.html#event:poststepEvent">poststepEvent</a></li><li><a href="Phaser.Game.html#event:prerenderEvent">prerenderEvent</a></li><li><a href="Phaser.Game.html#event:prestepEvent">prestepEvent</a></li><li><a href="Phaser.Game.html#event:resizeEvent">resizeEvent</a></li><li><a href="Phaser.Game.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Game.html#event:stepEvent">stepEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onCompleteEvent">onCompleteEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onRepeatEvent">onRepeatEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onStartEvent">onStartEvent</a></li><li><a href="Phaser.GameObjects.Components.Animation.html#event:onUpdateEvent">onUpdateEvent</a></li><li><a href="Phaser.Loader.File.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.File.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AnimationJSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.AudioFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.BinaryFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.GLSLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTML5AudioFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.HTMLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ImageFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.JSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PackFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.PluginFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScenePluginFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.ScriptFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SpriteSheetFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.SVGFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TextFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapCSVFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapImpactFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.TilemapJSONFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:fileCompleteEvent">fileCompleteEvent</a></li><li><a href="Phaser.Loader.FileTypes.XMLFile.html#event:singleFileCompleteEvent">singleFileCompleteEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:addFileEvent">addFileEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:completeEvent">completeEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadErrorEvent">loadErrorEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:loadEvent">loadEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:progressEvent">progressEvent</a></li><li><a href="Phaser.Loader.LoaderPlugin.html#event:startEvent">startEvent</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:collide">collide</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:overlap">overlap</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:pause">pause</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:resume">resume</a></li><li><a href="Phaser.Physics.Arcade.World.html#event:worldbounds">worldbounds</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.BaseSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:detuneEvent">detuneEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:endedEvent">endedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopedEvent">loopedEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:loopEvent">loopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:playEvent">playEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:rateEvent">rateEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:seekEvent">seekEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:stopEvent">stopEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSound.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.HTML5AudioSoundManager.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.NoAudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:detuneEvent">detuneEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:endedEvent">endedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopedEvent">loopedEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:loopEvent">loopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:pauseEvent">pauseEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:playEvent">playEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:rateEvent">rateEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:resumeEvent">resumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:seekEvent">seekEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:stopEvent">stopEvent</a></li><li><a href="Phaser.Sound.WebAudioSound.html#event:volumeEvent">volumeEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:detune">detune</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:muteEvent">muteEvent</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:pauseall">pauseall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:rate">rate</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:resumeall">resumeall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:stopall">stopall</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:unlocked">unlocked</a></li><li><a href="Phaser.Sound.WebAudioSoundManager.html#event:VolumeEvent">VolumeEvent</a></li></ul><h3>Namespaces</h3><ul><li><a href="MatterJS.html">MatterJS</a></li><li><a href="Phaser.html">Phaser</a></li><li><a href="Phaser.Actions.html">Actions</a></li><li><a href="Phaser.Animations.html">Animations</a></li><li><a href="Phaser.Boot.html">Boot</a></li><li><a href="Phaser.Cache.html">Cache</a></li><li><a href="Phaser.Cameras.html">Cameras</a></li><li><a href="Phaser.Cameras.Controls.html">Controls</a></li><li><a href="Phaser.Cameras.Scene2D.html">Scene2D</a></li><li><a href="Phaser.Cameras.Scene2D.Effects.html">Effects</a></li><li><a href="Phaser.Cameras.Sprite3D.html">Sprite3D</a></li><li><a href="Phaser.Create.html">Create</a></li><li><a href="Phaser.Create.Palettes.html">Palettes</a></li><li><a href="Phaser.Curves.html">Curves</a></li><li><a href="Phaser.Data.html">Data</a></li><li><a href="Phaser.Device.html">Device</a></li><li><a href="Phaser.Display.html">Display</a></li><li><a href="Phaser.Display.Align.html">Align</a></li><li><a href="Phaser.Display.Align.In.html">In</a></li><li><a href="Phaser.Display.Align.To.html">To</a></li><li><a href="Phaser.Display.Bounds.html">Bounds</a></li><li><a href="Phaser.Display.Canvas.html">Canvas</a></li><li><a href="Phaser.Display.Canvas.CanvasInterpolation.html">CanvasInterpolation</a></li><li><a href="Phaser.Display.Canvas.CanvasPool.html">CanvasPool</a></li><li><a href="Phaser.Display.Canvas.Smoothing.html">Smoothing</a></li><li><a href="Phaser.Display.Color.Interpolate.html">Interpolate</a></li><li><a href="Phaser.Display.Masks.html">Masks</a></li><li><a href="Phaser.DOM.html">DOM</a></li><li><a href="Phaser.Events.html">Events</a></li><li><a href="Phaser.GameObjects.html">GameObjects</a></li><li><a href="Phaser.GameObjects.Components.html">Components</a></li><li><a href="Phaser.GameObjects.Graphics.Commands.html">Commands</a></li><li><a href="Phaser.GameObjects.Particles.html">Particles</a></li><li><a href="Phaser.GameObjects.Particles.Zones.html">Zones</a></li><li><a href="Phaser.GameObjects.RetroFont.html">RetroFont</a></li><li><a href="Phaser.Geom.html">Geom</a></li><li><a href="Phaser.Geom.Intersects.html">Intersects</a></li><li><a href="Phaser.Input.html">Input</a></li><li><a href="Phaser.Input.Gamepad.html">Gamepad</a></li><li><a href="Phaser.Input.Gamepad.Configs.html">Configs</a></li><li><a href="Phaser.Input.Keyboard.html">Keyboard</a></li><li><a href="Phaser.Input.Mouse.html">Mouse</a></li><li><a href="Phaser.Input.Touch.html">Touch</a></li><li><a href="Phaser.Loader.html">Loader</a></li><li><a href="Phaser.Loader.FileTypes.html">FileTypes</a></li><li><a href="Phaser.Math.html">Math</a></li><li><a href="Phaser.Math.Angle.html">Angle</a></li><li><a href="Phaser.Math.Distance.html">Distance</a></li><li><a href="Phaser.Math.Easing.html">Easing</a></li><li><a href="Phaser.Math.Easing.Back.html">Back</a></li><li><a href="Phaser.Math.Easing.Bounce.html">Bounce</a></li><li><a href="Phaser.Math.Easing.Circular.html">Circular</a></li><li><a href="Phaser.Math.Easing.Cubic.html">Cubic</a></li><li><a href="Phaser.Math.Easing.Elastic.html">Elastic</a></li><li><a href="Phaser.Math.Easing.Expo.html">Expo</a></li><li><a href="Phaser.Math.Easing.Linear.html">Linear</a></li><li><a href="Phaser.Math.Easing.Quadratic.html">Quadratic</a></li><li><a href="Phaser.Math.Easing.Quartic.html">Quartic</a></li><li><a href="Phaser.Math.Easing.Quintic.html">Quintic</a></li><li><a href="Phaser.Math.Easing.Sine.html">Sine</a></li><li><a href="Phaser.Math.Easing.Stepped.html">Stepped</a></li><li><a href="Phaser.Math.Fuzzy.html">Fuzzy</a></li><li><a href="Phaser.Math.Interpolation.html">Interpolation</a></li><li><a href="Phaser.Math.Pow2.html">Pow2</a></li><li><a href="Phaser.Math.Snap.html">Snap</a></li><li><a href="Phaser.Physics.html">Physics</a></li><li><a href="Phaser.Physics.Arcade.html">Arcade</a></li><li><a href="Phaser.Physics.Arcade.Components.html">Components</a></li><li><a href="Phaser.Physics.Arcade.Tilemap.html">Tilemap</a></li><li><a href="Phaser.Physics.Impact.html">Impact</a></li><li><a href="Phaser.Physics.Impact.Components.html">Components</a></li><li><a href="Phaser.Physics.Matter.html">Matter</a></li><li><a href="Phaser.Physics.Matter.Components.html">Components</a></li><li><a href="Phaser.Plugins.html">Plugins</a></li><li><a href="Phaser.Renderer.html">Renderer</a></li><li><a href="Phaser.Renderer.Canvas.html">Canvas</a></li><li><a href="Phaser.Renderer.Snapshot.html">Snapshot</a></li><li><a href="Phaser.Renderer.WebGL.html">WebGL</a></li><li><a href="Phaser.Renderer.WebGL.Pipelines.html">Pipelines</a></li><li><a href="Phaser.Renderer.WebGL.Utils.html">Utils</a></li><li><a href="Phaser.Scenes.html">Scenes</a></li><li><a href="Phaser.Scenes.Settings.html">Settings</a></li><li><a href="Phaser.Sound.html">Sound</a></li><li><a href="Phaser.Structs.html">Structs</a></li><li><a href="Phaser.Textures.html">Textures</a></li><li><a href="Phaser.Textures.Parsers.html">Parsers</a></li><li><a href="Phaser.Tilemaps.html">Tilemaps</a></li><li><a href="Phaser.Tilemaps.Components.html">Components</a></li><li><a href="Phaser.Tilemaps.Formats.html">Formats</a></li><li><a href="Phaser.Tilemaps.Parsers.html">Parsers</a></li><li><a href="Phaser.Tilemaps.Parsers.Impact.html">Impact</a></li><li><a href="Phaser.Tilemaps.Parsers.Tiled.html">Tiled</a></li><li><a href="Phaser.Time.html">Time</a></li><li><a href="Phaser.Tweens.html">Tweens</a></li><li><a href="Phaser.Tweens.Builders.html">Builders</a></li><li><a href="Phaser.Utils.html">Utils</a></li><li><a href="Phaser.Utils.Array.html">Array</a></li><li><a href="Phaser.Utils.Array.Matrix.html">Matrix</a></li><li><a href="Phaser.Utils.Object.html">Object</a></li><li><a href="Phaser.Utils.String.html">String</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Actions">Actions</a></li><li><a href="global.html#AddToDOM">AddToDOM</a></li><li><a href="global.html#AdvanceKeyCombo">AdvanceKeyCombo</a></li><li><a href="global.html#ALIGN_CONST">ALIGN_CONST</a></li><li><a href="global.html#AlignIn">AlignIn</a></li><li><a href="global.html#Angle">Angle</a></li><li><a href="global.html#Animation">Animation</a></li><li><a href="global.html#AnimationComponent">AnimationComponent</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#ArcadeImage">ArcadeImage</a></li><li><a href="global.html#ArcadeSprite">ArcadeSprite</a></li><li><a href="global.html">area</a></li><li><a href="global.html#Arne16">Arne16</a></li><li><a href="global.html#ArrayShuffle">ArrayShuffle</a></li><li><a href="global.html#ArrayUtils">ArrayUtils</a></li><li><a href="global.html#at">at</a></li><li><a href="global.html#AudioFile">AudioFile</a></li><li><a href="global.html#Axis">Axis</a></li><li><a href="global.html#Back">Back</a></li><li><a href="global.html#Base64Decode">Base64Decode</a></li><li><a href="global.html#BaseCache">BaseCache</a></li><li><a href="global.html#BasePlugin">BasePlugin</a></li><li><a href="global.html#BaseSound">BaseSound</a></li><li><a href="global.html#BaseSoundManager">BaseSoundManager</a></li><li><a href="global.html#Bernstein">Bernstein</a></li><li><a href="global.html#Between">Between</a></li><li><a href="global.html#BitmapMask">BitmapMask</a></li><li><a href="global.html#BitmapText">BitmapText</a></li><li><a href="global.html#BlendModes">BlendModes</a></li><li><a href="global.html#BlitImage">BlitImage</a></li><li><a href="global.html#Blitter">Blitter</a></li><li><a href="global.html#BlitterRender">BlitterRender</a></li><li><a href="global.html#Bodies">Bodies</a></li><li><a href="global.html#Body">Body</a></li><li><a href="global.html#Bounds">Bounds</a></li><li><a href="global.html#Browser">Browser</a></li><li><a href="global.html#BuildGameObject">BuildGameObject</a></li><li><a href="global.html#CalculateFacesWithin">CalculateFacesWithin</a></li><li><a href="global.html#Camera">Camera</a></li><li><a href="global.html#canSee">canSee</a></li><li><a href="global.html#CanvasInterpolation">CanvasInterpolation</a></li><li><a href="global.html#CanvasPool">CanvasPool</a></li><li><a href="global.html#CatmullRom">CatmullRom</a></li><li><a href="global.html#CenterOn">CenterOn</a></li><li><a href="global.html#Centroid">Centroid</a></li><li><a href="global.html#Circle">Circle</a></li><li><a href="global.html#CircleContains">CircleContains</a></li><li><a href="global.html#Circumference">Circumference</a></li><li><a href="global.html#CircumferencePoint">CircumferencePoint</a></li><li><a href="global.html#Clamp">Clamp</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#COLLIDES">COLLIDES</a></li><li><a href="global.html#collinear">collinear</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#Commands">Commands</a></li><li><a href="global.html#Components">Components</a></li><li><a href="global.html#ComponentToHex">ComponentToHex</a></li><li><a href="global.html#CONST">CONST</a></li><li><a href="global.html#Container">Container</a></li><li><a href="global.html#Contains">Contains</a></li><li><a href="global.html#ContainsArray">ContainsArray</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#decomp">decomp</a></li><li><a href="global.html#Defaults">Defaults</a></li><li><a href="global.html#DistanceBetween">DistanceBetween</a></li><li><a href="global.html#DynamicBitmapText">DynamicBitmapText</a></li><li><a href="global.html#EarCut">EarCut</a></li><li><a href="global.html#EaseMap">EaseMap</a></li><li><a href="global.html#Ellipse">Ellipse</a></li><li><a href="global.html">eq</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#Factorial">Factorial</a></li><li><a href="global.html#FILE_CONST">FILE_CONST</a></li><li><a href="global.html#FLIPPED_HORIZONTAL">FLIPPED_HORIZONTAL</a></li><li><a href="global.html#Formats">Formats</a></li><li><a href="global.html#GameObject">GameObject</a></li><li><a href="global.html#GameObjectCreator">GameObjectCreator</a></li><li><a href="global.html#GameObjectFactory">GameObjectFactory</a></li><li><a href="global.html#Geom">Geom</a></li><li><a href="global.html#GetAdvancedValue">GetAdvancedValue</a></li><li><a href="global.html#GetAspectRatio">GetAspectRatio</a></li><li><a href="global.html#GetBottom">GetBottom</a></li><li><a href="global.html#GetCenterX">GetCenterX</a></li><li><a href="global.html#GetCenterY">GetCenterY</a></li><li><a href="global.html#GetColor">GetColor</a></li><li><a href="global.html#getCutEdges">getCutEdges</a></li><li><a href="global.html#GetFastValue">GetFastValue</a></li><li><a href="global.html#GetLeft">GetLeft</a></li><li><a href="global.html#GetMagnitude">GetMagnitude</a></li><li><a href="global.html#GetOverlapX">GetOverlapX</a></li><li><a href="global.html#GetOverlapY">GetOverlapY</a></li><li><a href="global.html#GetPoint">GetPoint</a></li><li><a href="global.html#GetPoints">GetPoints</a></li><li><a href="global.html#GetRight">GetRight</a></li><li><a href="global.html#GetTileAt">GetTileAt</a></li><li><a href="global.html#GetTilesWithin">GetTilesWithin</a></li><li><a href="global.html#GetValue">GetValue</a></li><li><a href="global.html#Graphics">Graphics</a></li><li><a href="global.html#Group">Group</a></li><li><a href="global.html#H">H</a></li><li><a href="global.html#hasGetStart">hasGetStart</a></li><li><a href="global.html#HasTileAt">HasTileAt</a></li><li><a href="global.html#HasValue">HasValue</a></li><li><a href="global.html#HexStringToColor">HexStringToColor</a></li><li><a href="global.html#HSVToRGB">HSVToRGB</a></li><li><a href="global.html#HTML5AudioSoundManager">HTML5AudioSoundManager</a></li><li><a href="global.html#Image">Image</a></li><li><a href="global.html#imageHeight">imageHeight</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#IsInLayerBounds">IsInLayerBounds</a></li><li><a href="global.html#IsPlainObject">IsPlainObject</a></li><li><a href="global.html#isReflex">isReflex</a></li><li><a href="global.html#isSimple">isSimple</a></li><li><a href="global.html#KeyCodes">KeyCodes</a></li><li><a href="global.html#LayerData">LayerData</a></li><li><a href="global.html#Length">Length</a></li><li><a href="global.html#Line">Line</a></li><li><a href="global.html#Linear">Linear</a></li><li><a href="global.html">lineInt</a></li><li><a href="global.html#LineToCircle">LineToCircle</a></li><li><a href="global.html#LineToLine">LineToLine</a></li><li><a href="global.html#makeCCW">makeCCW</a></li><li><a href="global.html#MarchingAnts">MarchingAnts</a></li><li><a href="global.html#MATH">MATH</a></li><li><a href="global.html#MATH_CONST">MATH_CONST</a></li><li><a href="global.html#MathRotateAroundDistance">MathRotateAroundDistance</a></li><li><a href="global.html#MathSmootherStep">MathSmootherStep</a></li><li><a href="global.html#MathSmoothStep">MathSmoothStep</a></li><li><a href="global.html#MathWrap">MathWrap</a></li><li><a href="global.html#Matter">Matter</a></li><li><a href="global.html#MatterEvents">MatterEvents</a></li><li><a href="global.html#MergeXHRSettings">MergeXHRSettings</a></li><li><a href="global.html#Mesh">Mesh</a></li><li><a href="global.html#ModelViewProjection">ModelViewProjection</a></li><li><a href="global.html#modes">modes</a></li><li><a href="global.html#Normalize">Normalize</a></li><li><a href="global.html#OS">OS</a></li><li><a href="global.html#P0">P0</a></li><li><a href="global.html#ParseXMLBitmapFont">ParseXMLBitmapFont</a></li><li><a href="global.html#Perimeter">Perimeter</a></li><li><a href="global.html#Pick">Pick</a></li><li><a href="global.html#Point">Point</a></li><li><a href="global.html#PointToLine">PointToLine</a></li><li><a href="global.html#Polygon">Polygon</a></li><li><a href="global.html#ProcessTileSeparationX">ProcessTileSeparationX</a></li><li><a href="global.html#ProcessTileSeparationY">ProcessTileSeparationY</a></li><li><a href="global.html#PropertyValueInc">PropertyValueInc</a></li><li><a href="global.html#PropertyValueSet">PropertyValueSet</a></li><li><a href="global.html#PutTileAt">PutTileAt</a></li><li><a href="global.html#Quad">Quad</a></li><li><a href="global.html#quickDecomp">quickDecomp</a></li><li><a href="global.html#quickselect">quickselect</a></li><li><a href="global.html#Random">Random</a></li><li><a href="global.html#Rectangle">Rectangle</a></li><li><a href="global.html#removeCollinearPoints">removeCollinearPoints</a></li><li><a href="global.html#RemoveTileAt">RemoveTileAt</a></li><li><a href="global.html#renderWebGL">renderWebGL</a></li><li><a href="global.html#RESERVED">RESERVED</a></li><li><a href="global.html#RETRO_FONT_CONST">RETRO_FONT_CONST</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#RND">RND</a></li><li><a href="global.html#RotateAroundDistance">RotateAroundDistance</a></li><li><a href="global.html#RotateAroundXY">RotateAroundXY</a></li><li><a href="global.html#RotateMatrix">RotateMatrix</a></li><li><a href="global.html#RoundAwayFromZero">RoundAwayFromZero</a></li><li><a href="global.html#roundPixels">roundPixels</a></li><li><a href="global.html#SafeRange">SafeRange</a></li><li><a href="global.html#ScaleModes">ScaleModes</a></li><li><a href="global.html#segmentsIntersect">segmentsIntersect</a></li><li><a href="global.html#SetCenterX">SetCenterX</a></li><li><a href="global.html#SetTileCollision">SetTileCollision</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#SpliceOne">SpliceOne</a></li><li><a href="global.html#Sprite3D">Sprite3D</a></li><li><a href="global.html#Text">Text</a></li><li><a href="global.html#Tile">Tile</a></li><li><a href="global.html#TileCheckX">TileCheckX</a></li><li><a href="global.html#Tileset">Tileset</a></li><li><a href="global.html#TileToWorldX">TileToWorldX</a></li><li><a href="global.html#Triangle">Triangle</a></li><li><a href="global.html#TWEEN_CONST">TWEEN_CONST</a></li><li><a href="global.html#TYPE">TYPE</a></li><li><a href="global.html#types">types</a></li><li><a href="global.html#Vector2">Vector2</a></li><li><a href="global.html#Vector3">Vector3</a></li><li><a href="global.html#WorldToTileX">WorldToTileX</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#Zone">Zone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 24 2018 01:44:13 GMT+0100 (GMT Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
