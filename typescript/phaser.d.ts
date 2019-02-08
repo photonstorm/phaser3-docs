@@ -761,14 +761,6 @@ declare type GameConfig = {
     scale?: ScaleConfig;
 };
 
-declare namespace module {
-    /**
-     * "Computers are good at following instructions, but not at reading your mind." - Donald Knuth
-     */
-    var exports: any;
-
-}
-
 declare type TimeStepCallback = (time: number, average: number, interpolation: number)=>void;
 
 declare type GenerateTextureRendererCallback = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D)=>void;
@@ -19416,6 +19408,12 @@ declare namespace Phaser {
             tintFill: boolean;
 
             /**
+             * This method is left intentionally empty and does not do anything.
+             * It is retained to allow a Mesh or Quad to be added to a Container.
+             */
+            setAlpha(): void;
+
+            /**
              * Sets the Blend Mode being used by this Game Object.
              * 
              * This can be a const, such as `Phaser.BlendModes.SCREEN`, or an integer, such as 4 (for Overlay)
@@ -34720,8 +34718,8 @@ declare namespace Phaser {
 
             /**
              * Sets {@link Phaser.GameObjects.TileSprite#tileScaleX} and {@link Phaser.GameObjects.TileSprite#tileScaleY}.
-             * @param x The horizontal scale of the tiling texture.
-             * @param y The vertical scale of the tiling texture.
+             * @param x The horizontal scale of the tiling texture. If not given it will use the current `tileScaleX` value.
+             * @param y The vertical scale of the tiling texture. If not given it will use the `x` value. Default x.
              */
             setTileScale(x?: number, y?: number): this;
 
@@ -41047,7 +41045,7 @@ declare namespace Phaser {
 
                 /**
                  * Resets all Key objects created by _this_ Keyboard Plugin back to their default un-pressed states.
-                 * This can only reset keys created via the `addKey`, `addKeys` or `createCursors` methods.
+                 * This can only reset keys created via the `addKey`, `addKeys` or `createCursorKeys` methods.
                  * If you have created a Key object directly you'll need to reset it yourself.
                  * 
                  * This method is called automatically when the Keyboard Plugin shuts down, but can be
