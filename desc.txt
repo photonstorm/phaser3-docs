@@ -1,9 +1,9 @@
-animations\Animation = 30
+animations\Animation = 26
 animations\AnimationManager = 4
 animations\typedefs\AnimationFrame = 3
 animations\typedefs\JSONAnimation = 1
 
-animations total = 38
+animations total = 34
 
 core\TimeStep = 16
 
@@ -20,10 +20,6 @@ curves\QuadraticBezierCurve = 8
 curves\SplineCurve = 15
 
 curves total = 88
-
-dom\ScaleManager = 18
-
-dom total = 18
 
 gameobjects\domelement\DOMElement = 1
 
@@ -102,7 +98,7 @@ textures\TextureManager = 2
 textures total = 8
 
 tilemaps\mapdata\LayerData = 10
-tilemaps\mapdata\MapData = 5
+tilemaps\mapdata\MapData = 4
 tilemaps\parsers\impact\ParseTileLayers = 4
 tilemaps\parsers\impact\ParseTilesets = 3
 tilemaps\parsers\impact\ParseWeltmeister = 1
@@ -115,7 +111,7 @@ tilemaps\parsers\tiled\ParseTileLayers = 4
 tilemaps\parsers\tiled\ParseTilesets = 2
 tilemaps\Tile = 1
 
-tilemaps total = 39
+tilemaps total = 38
 
 tweens\builders\GetEaseFunction = 4
 tweens\builders\GetNewValue = 5
@@ -127,4 +123,4 @@ tweens\Timeline = 9
 tweens\tween\Tween = 1
 tweens total = 31
 
-Total: 771
+Total: 748

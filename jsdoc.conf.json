@@ -29,7 +29,7 @@
         "jsdoc-plugins/this"
     ],
     "templates": {
-        "version": "v3.16.0",
+        "version": "v3.16.2",
         "systemName": "Phaser",
         "logoFile": "img/phaser3-logo-nav.png",
         "systemSummary": "HTML5 Game Framework",

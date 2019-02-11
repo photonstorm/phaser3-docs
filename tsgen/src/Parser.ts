@@ -72,6 +72,11 @@ export class Parser {
 
             let doclet = docs[i];
 
+            // if (doclet.kind === 'namespace')
+            // {
+            //     console.log('module: ', doclet.name);
+            // }
+
             // TODO: Custom temporary rules
             switch(doclet.longname) {
                 case "Phaser.GameObjects.Components.Alpha":
@@ -109,21 +114,6 @@ export class Parser {
 
             let obj:dom.DeclarationBase;
             let container = this.objects;
-
-            // if (doclet.memberof === 'Phaser.Scale.Center')
-            // {
-                // console.log(doclet);
-            // }
-
-            // if (doclet.longname === 'Phaser.Scale.NO_CENTER')
-            // {
-            //     console.log(doclet);
-            // }
-
-            // if (doclet.longname === 'Phaser.Scale.Center')
-            // {
-            //     console.log(doclet);
-            // }
 
             switch(doclet.kind) {
                 case 'namespace':
