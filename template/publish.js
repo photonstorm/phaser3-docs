@@ -527,12 +527,42 @@ function buildNav(members) {
     ]
   });
 
+  //  Inject Physics Helper
+
+  topLevelNav.push({
+    title: 'Physics',
+    link: 'Phaser.Physics.html',
+    members: [
+      '<a href="Phaser.Physics.Arcade.html"><strong>Arcade Physics</strong></a>',
+      '<a href="Phaser.Physics.Arcade.Factory.html">Arcade Physics Factory</a>',
+      '<a href="Phaser.Physics.Arcade.World.html">Arcade Physics World</a>',
+      '<a href="Phaser.Physics.Arcade.Image.html">Arcade Physics Image</a>',
+      '<a href="Phaser.Physics.Arcade.Sprite.html">Arcade Physics Sprite</a>',
+      '<a href="Phaser.Physics.Arcade.Group.html">Arcade Physics Group</a>',
+      '&nbsp;',
+      '<a href="Phaser.Physics.Matter.html"><strong>Matter Physics</strong></a>',
+      '<a href="Phaser.Physics.Matter.World.html">Matter Physics World</a>',
+      '<a href="Phaser.Physics.Matter.Image.html">Matter Physics Image</a>',
+      '<a href="Phaser.Physics.Matter.Sprite.html">Matter Physics Sprite</a>',
+      '<a href="Phaser.Physics.Matter.PointerConstraint.html">Matter Physics Pointer Constraint</a>',
+      '&nbsp;',
+      '<a href="Phaser.Physics.Impact.html"><strong>Impact Physics</strong></a>',
+      '<a href="Phaser.Physics.Impact.Factory.html">Impact Physics Factory</a>',
+      '<a href="Phaser.Physics.Impact.World.html">Impact Physics World</a>',
+      '<a href="Phaser.Physics.Impact.Image.html">Impact Physics Image</a>',
+      '<a href="Phaser.Physics.Impact.Sprite.html">Impact Physics Sprite</a>'
+    ]
+  });
+
   //  Inject Scene Helper
 
   topLevelNav.push({
     title: 'Scene',
     link: 'Phaser.Scene.html',
     members: [
+      '<a href="Phaser.Scenes.ScenePlugin.html">Scene Plugin</a>',
+      '<a href="Phaser.Scenes.Systems.html">Scene Systems</a>',
+      '&nbsp;',
       '<a href="Phaser.GameObjects.GameObjectFactory.html">add</a>',
       '<a href="Phaser.Animations.AnimationManager.html">anims</a>',
       '<a href="Phaser.Cache.CacheManager.html">cache</a>',

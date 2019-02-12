@@ -9,6 +9,7 @@
     "gen": "node --max_old_space_size=8192 node_modules/jsdoc/jsdoc.js -c jsdoc.conf.json -R ../phaser/README.md",
     "json": "jsdoc -c jsdoc.data.json",
     "sql": "node src/jsdoc-to-sqlite.js",
+    "sqldev": "npm run json && npm run sql",
     "types": "node src/types.js",
     "build-tsgen": "cd tsgen && tsc",
     "tsgen": "cd tsgen && jsdoc -c jsdoc-tsd.conf.json",

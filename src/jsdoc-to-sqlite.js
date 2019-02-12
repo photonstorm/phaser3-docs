@@ -48,6 +48,11 @@ var insertTypeDef = function (block, queries)
     //  TODO
 };
 
+var insertConstant = function (block, queries)
+{
+    //  TODO
+};
+
 var insertMember = function (block, queries)
 {
     //  Quick bail-out check where it picks-up the copyright header by mistake
@@ -259,6 +264,12 @@ var insertClass = function (block, queries)
         return;
     }
 
+    //  Don't need this either
+    if (className === 'Class' || block.name === 'Class')
+    {
+        return;
+    }
+
     var className = escape(block.longname);
 
     var query = 'INSERT INTO class VALUES (';
@@ -400,6 +411,11 @@ var eventQueries = [];
 for (var i = 0; i < data.docs.length; i++)
 {
     var block = data.docs[i];
+
+    if (block.ignore)
+    {
+        continue;
+    }
 
     switch (block.kind)
     {
