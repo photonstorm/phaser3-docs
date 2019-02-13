@@ -50,7 +50,44 @@ var insertTypeDef = function (block, queries)
 
 var insertConstant = function (block, queries)
 {
-    //  TODO
+    //  Quick bail-out check where it picks-up the copyright header by mistake
+    if (
+        (block.longname === 'module.exports') ||
+        (block.scope === 'global' && block.longname === block.name) ||
+        (block.hasOwnProperty('access') && block.access === 'private')
+        )
+    {
+        return;
+    }
+
+    var memberName = block.longname;
+
+    var query = 'INSERT INTO constants VALUES (';
+
+    query = query.concat('"' + memberName + '",');
+
+    //  since
+    var since = (block.hasOwnProperty('since')) ? block.since : '3.0.0';
+
+    query = query.concat('"' + since + '",');
+    query = query.concat('"' + block.name + '",');
+    query = query.concat('"' + block.memberof + '",');
+    query = query.concat('"' + escape(block.description) + '",');
+
+    var types = (block.hasOwnProperty('type')) ? block.type.names.join('|') : '';
+
+    query = query.concat('"' + types + '",');
+
+    query = query.concat('"' + block.scope + '",');
+
+    //  Meta
+    query = query.concat('"' + block.meta.filename + '",');
+    query = query.concat(block.meta.lineno + ',');
+    query = query.concat('"' + escape(getPath(block.meta.path)) + '"');
+
+    query = query.concat(')');
+
+    queries.push(query);
 };
 
 var insertMember = function (block, queries)
@@ -404,6 +441,7 @@ var insertEvent = function (block, queries)
 };
 
 var classQueries = [];
+var constantQueries = [];
 var functionQueries = [];
 var memberQueries = [];
 var eventQueries = [];
@@ -421,6 +459,10 @@ for (var i = 0; i < data.docs.length; i++)
     {
         case 'class':
             insertClass(block, classQueries);
+            break;
+
+        case 'constant':
+            insertConstant(block, constantQueries);
             break;
 
         case 'function':
@@ -442,6 +484,10 @@ for (var i = 0; i < data.docs.length; i++)
 console.log('Processing Class Queries: ', classQueries.length);
 
 db.transaction(classQueries).run();
+
+console.log('Processing Constant Queries: ', constantQueries.length);
+
+db.transaction(constantQueries).run();
 
 console.log('Processing Function Queries: ', functionQueries.length);
 
