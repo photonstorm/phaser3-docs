@@ -11,6 +11,8 @@ var db = new SQLite3('./db/phaser-working.db');
 //  Open the JSON file to parse
 var data = fs.readJsonSync('./json/phaser.json');
 
+//  <p>[description]</p>
+
 var hasTag = function (block, tag)
 {
     if (Array.isArray(block.tags))
@@ -42,6 +44,12 @@ var getPath = function (path)
 
     return section.replace(/\\/g, '/');
 };
+
+var cleanEventName = function (eventName)
+{
+    //  jsdoc format: Phaser.Scenes.Events#event:BOOT
+    return eventName.replace('#event:', '.');
+}
 
 var insertTypeDef = function (block, queries)
 {
@@ -245,6 +253,11 @@ var insertFunction = function (block, queries)
     //  Fires
     if (Array.isArray(block.fires) && block.fires.length > 0)
     {
+        for (var e = 0; e < block.fires.length; e++)
+        {
+            block.fires[e] = cleanEventName(block.fires[e]);
+        }
+
         var events = block.fires.join(',');
 
         query = query.concat('"' + events + '",');
@@ -384,7 +397,7 @@ var insertEvent = function (block, queries)
         return;
     }
 
-    var eventName = escape(block.longname);
+    var eventName = escape(cleanEventName(block.longname));
 
     var query = 'INSERT INTO event VALUES (';
 
