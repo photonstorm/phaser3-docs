@@ -2,16 +2,9 @@ var fs = require('fs-extra');
 var dirTree = require('directory-tree');
 var SQLite3 = require('better-sqlite3');
 
-//  Copy the Structure DB to one we can populate
-fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
-
-//  Open the copy to work on
-var db = new SQLite3('./db/phaser-working.db');
-
-//  Open the JSON file to parse
-var data = fs.readJsonSync('./json/phaser.json');
-
 //  <p>[description]</p>
+
+//  Do a SQL content validator (check return types, check event names exist, etc)
 
 var hasTag = function (block, tag)
 {
@@ -297,6 +290,20 @@ var insertFunction = function (block, queries)
     query = query.concat('"' + block.meta.filename + '",');
     query = query.concat(block.meta.lineno + ',');
     query = query.concat('"' + escape(getPath(block.meta.path)) + '",');
+
+    //  Inherited
+    var inherited = 0;
+    var inherits = '';
+
+    if (block.hasOwnProperty('inherited') && block.inherited)
+    {
+        inherited = 1;
+        inherits = block.inherits;
+    }
+
+    query = query.concat(inherited + ',');
+    query = query.concat('"' + inherits + '",');
+
     query = query.concat(hasTag(block, 'webglOnly'));
 
     query = query.concat(')');
@@ -453,72 +460,85 @@ var insertEvent = function (block, queries)
     return query;
 };
 
-var classQueries = [];
-var constantQueries = [];
-var functionQueries = [];
-var memberQueries = [];
-var eventQueries = [];
-
-for (var i = 0; i < data.docs.length; i++)
+var processDocs = function (data, db)
 {
-    var block = data.docs[i];
-
-    if (block.ignore)
+    var classQueries = [];
+    var constantQueries = [];
+    var functionQueries = [];
+    var memberQueries = [];
+    var eventQueries = [];
+    for (var i = 0; i < data.docs.length; i++)
     {
-        continue;
+        var block = data.docs[i];
+    
+        if (block.ignore)
+        {
+            continue;
+        }
+    
+        switch (block.kind)
+        {
+            case 'class':
+                insertClass(block, classQueries);
+                break;
+    
+            case 'constant':
+                insertConstant(block, constantQueries);
+                break;
+    
+            case 'function':
+                insertFunction(block, functionQueries);
+                break;
+    
+            case 'member':
+                insertMember(block, memberQueries);
+                break;
+    
+            case 'event':
+                insertEvent(block, eventQueries);
+                break;
+        }
     }
 
-    switch (block.kind)
-    {
-        case 'class':
-            insertClass(block, classQueries);
-            break;
+    //  Transactional insert
 
-        case 'constant':
-            insertConstant(block, constantQueries);
-            break;
+    console.log('Processing Class Queries: ', classQueries.length);
 
-        case 'function':
-            insertFunction(block, functionQueries);
-            break;
+    db.transaction(classQueries).run();
 
-        case 'member':
-            insertMember(block, memberQueries);
-            break;
+    console.log('Processing Constant Queries: ', constantQueries.length);
 
-        case 'event':
-            insertEvent(block, eventQueries);
-            break;
-    }
-}
+    db.transaction(constantQueries).run();
 
-//  Transactional insert
+    console.log('Processing Function Queries: ', functionQueries.length);
 
-console.log('Processing Class Queries: ', classQueries.length);
+    db.transaction(functionQueries).run();
 
-db.transaction(classQueries).run();
+    console.log('Processing Member Queries: ', memberQueries.length);
 
-console.log('Processing Constant Queries: ', constantQueries.length);
+    db.transaction(memberQueries).run();
 
-db.transaction(constantQueries).run();
+    console.log('Processing Event Queries: ', eventQueries.length);
 
-console.log('Processing Function Queries: ', functionQueries.length);
+    db.transaction(eventQueries).run();
 
-db.transaction(functionQueries).run();
+    console.log('Complete');
 
-console.log('Processing Member Queries: ', memberQueries.length);
+    db.close();
 
-db.transaction(memberQueries).run();
+    fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
+};
 
-console.log('Processing Event Queries: ', eventQueries.length);
+//  Copy the Structure DB to one we can populate
+fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
 
-db.transaction(eventQueries).run();
+//  Open the copy to work on
+var db = new SQLite3('./db/phaser-working.db');
 
-console.log('Complete');
+//  Open the JSON file to parse
+var data = fs.readJsonSync('./json/phaser.json');
 
-db.close();
-
-fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
+processDocs(data, db);
 
 //  Debug insert
 // for (var i = 0; i < memberQueries.length; i++)
