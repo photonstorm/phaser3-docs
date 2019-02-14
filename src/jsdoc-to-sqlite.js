@@ -206,6 +206,9 @@ var insertFunction = function (block, queries)
     var query = '';
     var params = [];
     var funcName = block.longname;
+    var hashPos = funcName.indexOf('#');
+    var cleanFuncParent = (hashPos === -1) ? funcName : funcName.substring(0, hashPos);
+    var cleanFuncName = (hashPos === -1) ? '' : funcName.substring(hashPos + 1);
 
     //  Insert parameters first
 
@@ -235,7 +238,8 @@ var insertFunction = function (block, queries)
 
             query = 'INSERT INTO params VALUES (';
 
-            query = query.concat('"' + funcName + '",');
+            query = query.concat('"' + cleanFuncParent + '",');
+            query = query.concat('"' + cleanFuncName + '",');
             query = query.concat('"' + param.name + '",');
             query = query.concat(i + ',');
             query = query.concat('"' + escape(param.description) + '",');
@@ -406,6 +410,7 @@ var insertClass = function (block, queries)
             query = 'INSERT INTO params VALUES (';
 
             query = query.concat('"' + className + '",');
+            query = query.concat('"",');
             query = query.concat('"' + param.name + '",');
             query = query.concat(i + ',');
             query = query.concat('"' + escape(param.description) + '",');
@@ -469,7 +474,8 @@ var insertEvent = function (block, queries)
 
             query = 'INSERT INTO params VALUES (';
 
-            query = query.concat('"' + eventName+ '",');
+            query = query.concat('"' + eventName + '",');
+            query = query.concat('"",');
             query = query.concat('"' + param.name + '",');
             query = query.concat(i + ',');
             query = query.concat('"' + escape(param.description) + '",');
