@@ -91,6 +91,34 @@ var insertConstant = function (block, queries)
     queries.push(query);
 };
 
+var insertNamespace = function (block, queries)
+{
+    //  Quick bail-out check where it picks-up the copyright header by mistake
+    if (
+        (block.longname === 'module.exports') ||
+        (block.scope === 'global' && block.longname === block.name) ||
+        (block.hasOwnProperty('access') && block.access === 'private')
+        )
+    {
+        return;
+    }
+
+    var query = 'INSERT INTO namespace VALUES (';
+
+    query = query.concat('"' + block.longname + '",');
+    query = query.concat('"' + block.name + '",');
+    query = query.concat('"' + block.memberof + '",');
+
+    //  Meta
+    query = query.concat('"' + block.meta.filename + '",');
+    query = query.concat(block.meta.lineno + ',');
+    query = query.concat('"' + escape(getPath(block.meta.path)) + '"');
+
+    query = query.concat(')');
+
+    queries.push(query);
+};
+
 var insertMember = function (block, queries)
 {
     //  Quick bail-out check where it picks-up the copyright header by mistake
@@ -467,6 +495,8 @@ var processDocs = function (data, db)
     var functionQueries = [];
     var memberQueries = [];
     var eventQueries = [];
+    var namespaceQueries = [];
+
     for (var i = 0; i < data.docs.length; i++)
     {
         var block = data.docs[i];
@@ -497,6 +527,10 @@ var processDocs = function (data, db)
             case 'event':
                 insertEvent(block, eventQueries);
                 break;
+    
+            case 'namespace':
+                insertNamespace(block, namespaceQueries);
+                break;
         }
     }
 
@@ -521,6 +555,10 @@ var processDocs = function (data, db)
     console.log('Processing Event Queries: ', eventQueries.length);
 
     db.transaction(eventQueries).run();
+
+    console.log('Processing Namespace Queries: ', namespaceQueries.length);
+
+    db.transaction(namespaceQueries).run();
 
     console.log('Complete');
 
