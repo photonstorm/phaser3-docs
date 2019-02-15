@@ -1,10 +1,10 @@
+const CleanEventName = require('./CleanEventName');
 const GetPath = require('./GetPath');
-const HasTag = require('./HasTag');
 const SkipBlock = require('./SkipBlock');
 
-let InsertClass = function (db, data)
+let InsertEvent = function (db, data)
 {
-    const classTransaction = db.prepare(`INSERT INTO class (
+    const eventTransaction = db.prepare(`INSERT INTO event (
         longname,
         since,
         name,
@@ -12,8 +12,7 @@ let InsertClass = function (db, data)
         description,
         metafilename,
         metalineno,
-        metapath,
-        webgl
+        metapath
     ) VALUES (
         @longname,
         @since,
@@ -22,16 +21,7 @@ let InsertClass = function (db, data)
         @description,
         @metafilename,
         @metalineno,
-        @metapath,
-        @webgl
-    )`);
-
-    const extendTransaction = db.prepare(`INSERT INTO extends (
-        class,
-        object
-    ) VALUES (
-        @class,
-        @object
+        @metapath
     )`);
 
     const paramsTransaction = db.prepare(`INSERT INTO params (
@@ -61,45 +51,32 @@ let InsertClass = function (db, data)
         }
     });
 
-    let classQueries = [];
-    let extendsQueries = [];
+    let eventQueries = [];
     let paramsQueries = [];
 
     for (let i = 0; i < data.docs.length; i++)
     {
         let block = data.docs[i];
 
-        if (SkipBlock('class', block))
+        if (SkipBlock('event', block))
         {
             continue;
         }
 
-        classQueries.push({
-            longname: block.longname,
+        let eventName = CleanEventName(block.longname);
+
+        eventQueries.push({
+            longname: eventName,
             since: block.since,
             name: block.name,
             memberof: block.memberof,
-            description: block.classdesc,
+            description: block.description,
             metafilename: block.meta.filename,
             metalineno: block.meta.lineno,
-            metapath: GetPath(block.meta.path),
-            webgl: HasTag(block, 'webglOnly')
+            metapath: GetPath(block.meta.path)
         });
 
-        //  Augments
-
-        if (Array.isArray(block.augments) && block.augments.length > 0)
-        {
-            for (let i = 0; i < block.augments.length; i++)
-            {
-                extendsQueries.push({
-                    class: block.longname,
-                    object: block.augments[i]
-                });
-            }
-        }
-
-        //  Constructor Params
+        //  Event Params
 
         if (Array.isArray(block.params) && block.params.length > 0)
         {
@@ -118,7 +95,7 @@ let InsertClass = function (db, data)
                 let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
 
                 paramsQueries.push({
-                    parentClass: block.longname,
+                    parentClass: eventName,
                     parentFunction: '',
                     name: param.name,
                     position: i,
@@ -131,14 +108,9 @@ let InsertClass = function (db, data)
         }
     }
 
-    if (classQueries.length)
+    if (eventQueries.length)
     {
-        insertMany(classTransaction, classQueries);
-    }
-
-    if (extendsQueries.length)
-    {
-        insertMany(extendTransaction, extendsQueries);
+        insertMany(eventTransaction, eventQueries);
     }
 
     if (paramsQueries.length)
@@ -147,4 +119,4 @@ let InsertClass = function (db, data)
     }
 };
 
-module.exports = InsertClass;
+module.exports = InsertEvent;
