@@ -361,13 +361,13 @@ var insertClass = function (block, queries)
 
     var className = escape(block.longname);
 
-    var query = 'INSERT INTO class VALUES (';
+    var query = 'INSERT INTO class (longname, since, name, memberof, description, metafilename, metalineno, metapath, webgl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
     query = query.concat('"' + className + '",');
     query = query.concat('"' + block.since + '",');
     query = query.concat('"' + block.name + '",');
     query = query.concat('"' + block.memberof + '",');
-    query = query.concat('"' + escape(block.classdesc) + '",');
+    query = query.concat('"' + addslashes(block.classdesc) + '",');
     query = query.concat('"' + block.meta.filename + '",');
     query = query.concat(block.meta.lineno + ',');
     query = query.concat('"' + escape(getPath(block.meta.path)) + '",');

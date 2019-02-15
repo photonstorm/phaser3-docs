@@ -2,10 +2,6 @@
     "tags": {
         "allowUnknownTags": true
     },
-    "markdown": {
-        "parser"   : "gfm",
-        "hardwrap" : false
-    },
     "source": {
         "include": [
             "../phaser/src/",
@@ -24,7 +20,6 @@
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "plugins": [
-        "plugins/markdown",
         "jsdoc-plugins/typedef",
         "jsdoc-plugins/this"
     ],
