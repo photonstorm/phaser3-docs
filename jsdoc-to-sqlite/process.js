@@ -1,7 +1,9 @@
 const fs = require('fs-extra');
 const SQLite3 = require('better-sqlite3');
 const InsertClass = require('./InsertClass');
+const InsertConstant = require('./InsertConstant');
 const InsertEvent = require('./InsertEvent');
+const InsertNamespace = require('./InsertNamespace');
 
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
@@ -14,6 +16,8 @@ const data = fs.readJsonSync('./json/phaser.json');
 
 InsertClass(db, data);
 InsertEvent(db, data);
+InsertConstant(db, data);
+InsertNamespace(db, data);
 
 console.log('Complete');
 

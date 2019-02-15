@@ -1,6 +1,6 @@
 let SkipBlock = function (type, block)
 {
-    if (block.kind !== type || block.ignore || block.name === 'Class' || block.longname === 'Class')
+    if (block.kind !== type || block.ignore || block.name === 'Class' || block.longname === 'Class' || block.longname === 'module.exports')
     {
         return true;
     }
