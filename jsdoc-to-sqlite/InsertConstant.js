@@ -3,7 +3,7 @@ const SkipBlock = require('./SkipBlock');
 
 let InsertConstant = function (db, data)
 {
-    const eventTransaction = db.prepare(`INSERT INTO constants (
+    const constantTransaction = db.prepare(`INSERT INTO constants (
         longname,
         since,
         name,
@@ -61,7 +61,7 @@ let InsertConstant = function (db, data)
 
     if (constantQueries.length)
     {
-        insertMany(eventTransaction, constantQueries);
+        insertMany(constantTransaction, constantQueries);
     }
 };
 

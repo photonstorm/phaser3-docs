@@ -4,6 +4,7 @@ const InsertClass = require('./InsertClass');
 const InsertConstant = require('./InsertConstant');
 const InsertEvent = require('./InsertEvent');
 const InsertNamespace = require('./InsertNamespace');
+const InsertMember = require('./InsertMember');
 
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
@@ -18,6 +19,7 @@ InsertClass(db, data);
 InsertEvent(db, data);
 InsertConstant(db, data);
 InsertNamespace(db, data);
+InsertMember(db, data);
 
 console.log('Complete');
 
