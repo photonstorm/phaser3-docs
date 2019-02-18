@@ -8,8 +8,7 @@ export class Parser {
     objects: { [key: string]: dom.DeclarationBase };
     namespaces: { [key: string]: dom.NamespaceDeclaration };
 
-    constructor(docs: any[]) {
-
+    constructor(docs: Array<TDoclet>) {
         // TODO remove once stable
         for (let i = 0; i < docs.length; i++) {
             let doclet = docs[i];
