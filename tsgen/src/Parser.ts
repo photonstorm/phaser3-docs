@@ -357,16 +357,14 @@ export class Parser {
 
         let obj = dom.create.property(doclet.name, type);
 
-        this.processGeneric(doclet, obj, null);
-
         this.processFlags(doclet, obj);
 
         return obj;
     }
 
     private createEvent(doclet: IEventDoclet): dom.ConstDeclaration {
-      // this could all be "somewhat wrong", and subject to change
-      // TODO: this should return an "event" function
+        // this could all be "somewhat wrong", and subject to change
+        // TODO: this should return an "event" function
         let type = dom.type.any;
 
         let obj = dom.create.const(doclet.name, type);
@@ -439,15 +437,15 @@ export class Parser {
     }
 
     private setParams(
-      doclet:
-        | ITypedefDoclet
-        | IFunctionDoclet
-        | IClassDoclet,
-      obj:
-        | dom.FunctionDeclaration
-        | dom.ConstructorDeclaration
+        doclet:
+            | ITypedefDoclet
+            | IFunctionDoclet
+            | IClassDoclet,
+        obj:
+            | dom.FunctionDeclaration
+            | dom.ConstructorDeclaration
     ): void {
-        let parameters:dom.Parameter[] = [];
+        let parameters: dom.Parameter[] = [];
 
         if (doclet.params) {
 
@@ -495,12 +493,12 @@ export class Parser {
     }
 
     private parseType(
-      typeDoc?:
-        | IMemberDoclet
-        | IDocletProp
-        | IDocletReturn
-    ):dom.Type {
-        if(!typeDoc || !typeDoc.type) {
+        typeDoc?:
+            | IMemberDoclet
+            | IDocletProp
+            | IDocletReturn
+    ): dom.Type {
+        if (!typeDoc || !typeDoc.type) {
             return dom.type.any;
         } else {
             let types = [];
@@ -580,7 +578,15 @@ export class Parser {
         if (doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
     }
 
-    private processGeneric(doclet: any, obj: dom.ClassDeclaration | dom.FunctionDeclaration | dom.PropertyDeclaration | dom.TypeAliasDeclaration, params: dom.Parameter[]) {
+    private processGeneric(
+        doclet: IDocletBase,
+        obj:
+            | dom.ClassDeclaration
+            | dom.FunctionDeclaration
+            | dom.PropertyDeclaration
+            | dom.TypeAliasDeclaration,
+        params: dom.Parameter[]
+    ): void {
         if (doclet.tags)
             for (let tag of doclet.tags) {
                 if (tag.originalTitle === 'generic') {
