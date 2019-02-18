@@ -67,7 +67,7 @@ export class Parser {
         return result;
     }
 
-    private parseObjects(docs: any[]) {
+    private parseObjects(docs: Array<TDoclet>) {
         for (let i = 0; i < docs.length; i++) {
 
             let doclet = docs[i];
