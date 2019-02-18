@@ -553,19 +553,25 @@ export class Parser {
         return name;
     }
 
+    /**
+     * Processes the flags on the given `doclet`, ensuring those flags are properly applied to the `domObj`.
+     *
+     * @param {IDocletProp | IDocletBase | IMemberDoclet} doclet
+     * @param {DeclarationBase | Parameter} domObj
+     */
     private processFlags(
         doclet:
             | IDocletProp
             | IDocletBase
             | IMemberDoclet,
-        obj: dom.DeclarationBase | dom.Parameter
+        domObj: dom.DeclarationBase | dom.Parameter
     ): void {
         // TODO: break this method up, so that it works better with typings
-        obj.flags = dom.DeclarationFlags.None;
+        domObj.flags = dom.DeclarationFlags.None;
         if ('variable' in doclet || 'optional' in doclet) {
             if (doclet.variable === true) {
-                obj.flags |= dom.ParameterFlags.Rest;
-                let type: any = (<dom.Parameter>obj).type;
+                domObj.flags |= dom.ParameterFlags.Rest;
+                let type: any = (<dom.Parameter>domObj).type;
                 if (!type.name.endsWith('[]')) {
                     if (type.name != 'any')
                     // @ts-ignore TODO: IDocletProp doesn't have a longname property - find an alternative
@@ -573,25 +579,25 @@ export class Parser {
                     type.name = type.name + '[]'; // Must be an array
                 }
             } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
-                if (obj['kind'] === 'parameter') obj.flags |= dom.ParameterFlags.Optional;
-                else obj.flags |= dom.DeclarationFlags.Optional;
+                if (domObj['kind'] === 'parameter') domObj.flags |= dom.ParameterFlags.Optional;
+                else domObj.flags |= dom.DeclarationFlags.Optional;
             }
         }
         if ('access' in doclet || 'scope' in doclet) {
             switch (doclet.access) {
                 case 'protected':
-                    obj.flags |= dom.DeclarationFlags.Protected;
+                    domObj.flags |= dom.DeclarationFlags.Protected;
                     break;
                 case 'private':
-                    obj.flags |= dom.DeclarationFlags.Private;
+                    domObj.flags |= dom.DeclarationFlags.Private;
                     break;
             }
 
-            if (doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
+            if (doclet.scope === 'static') domObj.flags |= dom.DeclarationFlags.Static;
         }
 
         if ('readonly' in doclet || 'kind' in doclet) {
-            if (doclet.readonly || doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
+            if (doclet.readonly || doclet.kind === 'constant') domObj.flags |= dom.DeclarationFlags.ReadOnly;
         }
     }
 
