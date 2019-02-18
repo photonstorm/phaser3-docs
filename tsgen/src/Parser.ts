@@ -403,6 +403,7 @@ export class Parser {
         const typeName = doclet.type.names[0];
         let type = null;
 
+        // TODO: this doesn't support 'Object', which is typically what should be used.
         if (doclet.type.names[0] === 'object') {
             let properties = [];
 
@@ -552,30 +553,46 @@ export class Parser {
         return name;
     }
 
-    private processFlags(doclet: any, obj: dom.DeclarationBase | dom.Parameter) {
+    private processFlags(
+        doclet:
+            | IDocletProp
+            | IDocletBase
+            | IMemberDoclet,
+        obj: dom.DeclarationBase | dom.Parameter
+    ): void {
+        // TODO: break this method up, so that it works better with typings
         obj.flags = dom.DeclarationFlags.None;
-        if (doclet.variable === true) {
-            obj.flags |= dom.ParameterFlags.Rest;
-            let type: any = (<dom.Parameter>obj).type;
-            if (!type.name.endsWith('[]')) {
-                if (type.name != 'any')
-                    console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
-                type.name = type.name + '[]'; // Must be an array
+        if ('variable' in doclet || 'optional' in doclet) {
+            if (doclet.variable === true) {
+                obj.flags |= dom.ParameterFlags.Rest;
+                let type: any = (<dom.Parameter>obj).type;
+                if (!type.name.endsWith('[]')) {
+                    if (type.name != 'any')
+                    // @ts-ignore TODO: IDocletProp doesn't have a longname property - find an alternative
+                        console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
+                    type.name = type.name + '[]'; // Must be an array
+                }
+            } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
+                if (obj['kind'] === 'parameter') obj.flags |= dom.ParameterFlags.Optional;
+                else obj.flags |= dom.DeclarationFlags.Optional;
             }
-        } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
-            if (obj['kind'] === 'parameter') obj.flags |= dom.ParameterFlags.Optional;
-            else obj.flags |= dom.DeclarationFlags.Optional;
         }
-        switch (doclet.access) {
-            case 'protected':
-                obj.flags |= dom.DeclarationFlags.Protected;
-                break;
-            case 'private':
-                obj.flags |= dom.DeclarationFlags.Private;
-                break;
+        if ('access' in doclet || 'scope' in doclet) {
+            switch (doclet.access) {
+                case 'protected':
+                    obj.flags |= dom.DeclarationFlags.Protected;
+                    break;
+                case 'private':
+                    obj.flags |= dom.DeclarationFlags.Private;
+                    break;
+            }
+
+            if (doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
         }
-        if (doclet.readonly || doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
-        if (doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
+
+        if ('readonly' in doclet || 'kind' in doclet) {
+            if (doclet.readonly || doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
+        }
     }
 
     private processGeneric(
