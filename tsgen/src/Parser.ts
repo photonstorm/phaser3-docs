@@ -282,7 +282,7 @@ export class Parser {
         }
     }
 
-    private createNamespace(doclet: any): dom.NamespaceDeclaration {
+    private createNamespace(doclet: INamespaceDoclet): dom.NamespaceDeclaration {
 
         /**
          namespace: { comment: '',
@@ -308,7 +308,7 @@ export class Parser {
         return obj;
     }
 
-    private createClass(doclet: any): dom.ClassDeclaration {
+    private createClass(doclet: IClassDoclet): dom.ClassDeclaration {
         let obj = dom.create.class(doclet.name);
 
         let params = null;
@@ -329,11 +329,11 @@ export class Parser {
         return obj;
     }
 
-    private createInterface(doclet: any): dom.InterfaceDeclaration {
+    private createInterface(doclet: IClassDoclet): dom.InterfaceDeclaration {
         return dom.create.interface(doclet.name);
     }
 
-    private createMember(doclet: any): dom.PropertyDeclaration {
+    private createMember(doclet: IMemberDoclet): dom.PropertyDeclaration {
         let type = this.parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
@@ -345,7 +345,7 @@ export class Parser {
         return obj;
     }
 
-    private createEvent(doclet: any): dom.ConstDeclaration {
+    private createEvent(doclet: IEventDoclet): dom.ConstDeclaration {
 
         let type = this.parseType(doclet);
 
@@ -356,7 +356,7 @@ export class Parser {
         return obj;
     }
 
-    private createEnum(doclet: any): dom.EnumDeclaration {
+    private createEnum(doclet: IMemberDoclet): dom.EnumDeclaration {
         let obj = dom.create.enum(doclet.name, false);
 
         this.processFlags(doclet, obj);
@@ -364,7 +364,7 @@ export class Parser {
         return obj;
     }
 
-    private createFunction(doclet: any): dom.FunctionDeclaration {
+    private createFunction(doclet: IFunctionDoclet): dom.FunctionDeclaration {
         let returnType: dom.Type = dom.type.void;
 
         if (doclet.returns) {
