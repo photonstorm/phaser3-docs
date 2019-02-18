@@ -607,12 +607,16 @@ export class Parser {
         if (doclet.tags)
             for (let tag of doclet.tags) {
                 if (tag.originalTitle === 'generic') {
-                    let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                    let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                     let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
-                    (<dom.ClassDeclaration | dom.FunctionDeclaration | dom.TypeAliasDeclaration>obj).typeParameters.push(typeParam);
+
+                    if (obj.kind !== 'property') {
+                        obj.typeParameters.push(typeParam);
+                    }
+
                     handleOverrides(matches[3], matches[2]);
                 } else if (tag.originalTitle === 'genericUse') {
-                    let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                    let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                     let overrideType: string = this.prepareTypeName(matches[1]);
 
                     handleOverrides(matches[2], this.processTypeName(overrideType));
@@ -629,11 +633,12 @@ export class Parser {
                         }
                     }
                 }
-                if (overrides.indexOf('$return') != -1) {// has $return, must be a function
-                    (<dom.FunctionDeclaration>obj).returnType = dom.create.namedTypeReference(overrideType);
+                if (obj.kind === 'function' && overrides.indexOf('$return') != -1) {// has $return, must be a function
+                    obj.returnType = dom.create.namedTypeReference(overrideType);
                 }
-                if (overrides.indexOf('$type') != -1) {// has $type, must be a property
-                    (<dom.PropertyDeclaration>obj).type = dom.create.namedTypeReference(overrideType);
+
+                if (obj.kind === 'property' && overrides.indexOf('$type') != -1) {// has $type, must be a property
+                    obj.type = dom.create.namedTypeReference(overrideType);
                 }
             }
         }
