@@ -437,8 +437,16 @@ export class Parser {
         return alias;
     }
 
-    private setParams(doclet: any, obj: dom.FunctionDeclaration | dom.ConstructorDeclaration): void {
-        let parameters: dom.Parameter[] = [];
+    private setParams(
+      doclet:
+        | ITypedefDoclet
+        | IFunctionDoclet
+        | IClassDoclet,
+      obj:
+        | dom.FunctionDeclaration
+        | dom.ConstructorDeclaration
+    ): void {
+        let parameters:dom.Parameter[] = [];
 
         if (doclet.params) {
 
