@@ -16,8 +16,6 @@ export default class Guard {
             return typeof doclet === 'object'
                    && 'type' in doclet
                    && 'name' in doclet
-                   && 'description' in doclet
-                   && 'comment' in doclet
                    && typeof doclet.type === 'object';
         }
     };
