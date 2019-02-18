@@ -345,6 +345,25 @@ export class Parser {
         return obj;
     }
 
+    /**
+     * Create a new `Prop` based off a `IDocletProp`.
+     *
+     * @param {IDocletProp} doclet
+     *
+     * @return {PropertyDeclaration}
+     */
+    private createProp(doclet: IDocletProp): dom.PropertyDeclaration {
+        let type = this.parseType(doclet);
+
+        let obj = dom.create.property(doclet.name, type);
+
+        this.processGeneric(doclet, obj, null);
+
+        this.processFlags(doclet, obj);
+
+        return obj;
+    }
+
     private createEvent(doclet: IEventDoclet): dom.ConstDeclaration {
 
         let type = this.parseType(doclet);
@@ -381,7 +400,7 @@ export class Parser {
         return obj;
     }
 
-    private createTypedef(doclet: any): dom.TypeAliasDeclaration {
+    private createTypedef(doclet: ITypedefDoclet): dom.TypeAliasDeclaration {
         const typeName = doclet.type.names[0];
         let type = null;
 
@@ -389,7 +408,7 @@ export class Parser {
             let properties = [];
 
             for (let propDoc of doclet.properties) {
-                let prop = this.createMember(propDoc);
+                let prop = this.createProp(propDoc);
                 properties.push(prop);
                 if (propDoc.description)
                     prop.jsDocComment = propDoc.description.replace(regexEndLine, '$1\n');
