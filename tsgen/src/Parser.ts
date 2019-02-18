@@ -162,7 +162,7 @@ export class Parser {
         }
     }
 
-    private resolveObjects(docs: any[]) {
+    private resolveObjects(docs: TDoclet[]) {
         let allTypes = new Set<string>();
         for (let doclet of docs) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
@@ -178,7 +178,7 @@ export class Parser {
             if (!doclet.memberof) {
                 this.topLevel.push(obj as dom.TopLevelDeclaration);
             } else {
-                let isNamespaceMember = doclet.kind === 'class' || doclet.kind === 'typedef' || doclet.kind == 'namespace' || doclet.isEnum;
+                let isNamespaceMember = doclet.kind === 'class' || doclet.kind === 'typedef' || doclet.kind == 'namespace' || ('isEnum' in doclet && doclet.isEnum);
                 let parent = isNamespaceMember ? this.namespaces[doclet.memberof] : (this.objects[doclet.memberof] || this.namespaces[doclet.memberof]);
 
                 //TODO: this whole section should be removed once stable
@@ -227,7 +227,7 @@ export class Parser {
         }
     }
 
-    private resolveInheritance(docs: any[]) {
+    private resolveInheritance(docs: TDoclet[]) {
         for (let doclet of docs) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
             if (!obj) {
@@ -252,7 +252,7 @@ export class Parser {
         }
     }
 
-    private resolveParents(docs: any[]) {
+    private resolveParents(docs: Array<TDoclet>) {
         for (let doclet of docs) {
             let obj = this.objects[doclet.longname];
             if (!obj || doclet.kind !== 'class') continue;
