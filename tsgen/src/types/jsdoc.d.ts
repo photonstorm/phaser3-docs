@@ -131,6 +131,11 @@ declare interface INamespaceDoclet extends IDocletBase {
 declare interface ITypedefDoclet extends IDocletBase {
     kind: 'typedef';
     type: IDocletType;
+    /*
+        Apparently @extends doesn't work for typedef, but here we are...
+        https://github.com/jsdoc3/jsdoc/issues/1199
+     */
+    augments?: string[];
 
     // function typedef
     this?: string;
