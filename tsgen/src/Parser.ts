@@ -365,8 +365,9 @@ export class Parser {
     }
 
     private createEvent(doclet: IEventDoclet): dom.ConstDeclaration {
-
-        let type = this.parseType(doclet);
+      // this could all be "somewhat wrong", and subject to change
+      // TODO: this should return an "event" function
+        let type = dom.type.any;
 
         let obj = dom.create.const(doclet.name, type);
 
@@ -493,8 +494,13 @@ export class Parser {
         obj.parameters = parameters;
     }
 
-    private parseType(typeDoc: any): dom.Type {
-        if (!typeDoc || !typeDoc.type) {
+    private parseType(
+      typeDoc?:
+        | IMemberDoclet
+        | IDocletProp
+        | IDocletReturn
+    ):dom.Type {
+        if(!typeDoc || !typeDoc.type) {
             return dom.type.any;
         } else {
             let types = [];
