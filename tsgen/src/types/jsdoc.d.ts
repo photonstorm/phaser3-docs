@@ -33,7 +33,6 @@ declare interface IDocletProp {
     type: IDocletType;
     name: string;
     description: string;
-    comment: string;
     defaultvalue?: string;
     meta?: any;
     optional?: boolean;
