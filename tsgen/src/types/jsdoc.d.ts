@@ -32,7 +32,7 @@ declare interface IDocletType {
 declare interface IDocletProp {
     type: IDocletType;
     name: string;
-    description: string;
+    description?: string;
     defaultvalue?: string;
     meta?: any;
     optional?: boolean;
