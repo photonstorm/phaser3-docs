@@ -1,6 +1,6 @@
-import * as dom from "dts-dom"
+import * as dom from 'dts-dom';
 
-const regexEndLine = /^(.*)\r\n|\n|\r/gm
+const regexEndLine = /^(.*)\r\n|\n|\r/gm;
 
 export class Parser {
 
@@ -8,17 +8,17 @@ export class Parser {
     objects: { [key: string]: dom.DeclarationBase };
     namespaces: { [key: string]: dom.NamespaceDeclaration };
 
-    constructor(docs:any[]) {
+    constructor(docs: any[]) {
 
         // TODO remove once stable
-        for(let i = 0; i < docs.length; i++) {
+        for (let i = 0; i < docs.length; i++) {
             let doclet = docs[i];
 
-            if(doclet.longname && doclet.longname.indexOf('{') === 0) {
+            if (doclet.longname && doclet.longname.indexOf('{') === 0) {
                 doclet.longname = doclet.longname.substr(1);
                 console.log(`Warning: had to fix wrong name for ${doclet.longname} in ${doclet.meta.filename}@${doclet.meta.lineno}`);
             }
-            if(doclet.memberof && doclet.memberof.indexOf('{') === 0) {
+            if (doclet.memberof && doclet.memberof.indexOf('{') === 0) {
                 doclet.memberof = doclet.memberof.substr(1);
                 console.log(`Warning: had to fix wrong name for ${doclet.longname} in ${doclet.meta.filename}@${doclet.meta.lineno}`);
             }
@@ -35,7 +35,8 @@ export class Parser {
         this.resolveObjects(docs);
 
         // removes members inherited from classes
-        // possibly could be avoided if mixins were defined as such before JSDoc parses them and then we could globally remove all inherited (not overriden) members globally from the parsed DB
+        // possibly could be avoided if mixins were defined as such before JSDoc parses them and then we could globally remove all inherited (not
+        // overriden) members globally from the parsed DB
         this.resolveInheritance(docs);
 
         this.resolveParents(docs);
@@ -51,14 +52,14 @@ export class Parser {
 
     emit() {
         let ignored = [];
-        let result = this.topLevel.reduce((out:string, obj:dom.TopLevelDeclaration) => {
+        let result = this.topLevel.reduce((out: string, obj: dom.TopLevelDeclaration) => {
             // TODO: remove once stable
-            if(<string>obj.kind === 'property') {
+            if (<string>obj.kind === 'property') {
                 ignored.push((<any>obj).name);
                 return out;
             }
             //////////////////////////
-            return out + dom.emit(obj)
+            return out + dom.emit(obj);
         }, '');
 
         console.log('ignored top level properties:');
@@ -67,8 +68,8 @@ export class Parser {
         return result;
     }
 
-    private parseObjects(docs:any[]) {
-        for(let i = 0; i < docs.length; i++) {
+    private parseObjects(docs: any[]) {
+        for (let i = 0; i < docs.length; i++) {
 
             let doclet = docs[i];
 
@@ -78,44 +79,43 @@ export class Parser {
             // }
 
             // TODO: Custom temporary rules
-            switch(doclet.longname) {
-                case "Phaser.GameObjects.Components.Alpha":
-                case "Phaser.GameObjects.Components.Animation":
-                case "Phaser.GameObjects.Components.BlendMode":
-                case "Phaser.GameObjects.Components.ComputedSize":
-                case "Phaser.GameObjects.Components.Crop":
-                case "Phaser.GameObjects.Components.Depth":
-                case "Phaser.GameObjects.Components.Flip":
-                case "Phaser.GameObjects.Components.GetBounds":
-                case "Phaser.GameObjects.Components.Mask":
-                case "Phaser.GameObjects.Components.Origin":
-                case "Phaser.GameObjects.Components.Pipeline":
-                case "Phaser.GameObjects.Components.ScaleMode":
-                case "Phaser.GameObjects.Components.ScrollFactor":
-                case "Phaser.GameObjects.Components.ScaleFactor":
-                case "Phaser.GameObjects.Components.Size":
-                case "Phaser.GameObjects.Components.Texture":
-                case "Phaser.GameObjects.Components.TextureCrop":
-                case "Phaser.GameObjects.Components.Tint":
-                case "Phaser.GameObjects.Components.ToJSON":
-                case "Phaser.GameObjects.Components.Transform":
-                case "Phaser.GameObjects.Components.Visible":
-                    doclet.kind = "mixin";
+            switch (doclet.longname) {
+                case 'Phaser.GameObjects.Components.Alpha':
+                case 'Phaser.GameObjects.Components.Animation':
+                case 'Phaser.GameObjects.Components.BlendMode':
+                case 'Phaser.GameObjects.Components.ComputedSize':
+                case 'Phaser.GameObjects.Components.Crop':
+                case 'Phaser.GameObjects.Components.Depth':
+                case 'Phaser.GameObjects.Components.Flip':
+                case 'Phaser.GameObjects.Components.GetBounds':
+                case 'Phaser.GameObjects.Components.Mask':
+                case 'Phaser.GameObjects.Components.Origin':
+                case 'Phaser.GameObjects.Components.Pipeline':
+                case 'Phaser.GameObjects.Components.ScaleMode':
+                case 'Phaser.GameObjects.Components.ScrollFactor':
+                case 'Phaser.GameObjects.Components.ScaleFactor':
+                case 'Phaser.GameObjects.Components.Size':
+                case 'Phaser.GameObjects.Components.Texture':
+                case 'Phaser.GameObjects.Components.TextureCrop':
+                case 'Phaser.GameObjects.Components.Tint':
+                case 'Phaser.GameObjects.Components.ToJSON':
+                case 'Phaser.GameObjects.Components.Transform':
+                case 'Phaser.GameObjects.Components.Visible':
+                    doclet.kind = 'mixin';
                     break;
             }
-            if(doclet.longname == "ModelViewProjection") doclet.kind = "mixin";
-            if((doclet.longname.indexOf("Phaser.Physics.Arcade.Components.") == 0
-                || doclet.longname.indexOf("Phaser.Physics.Impact.Components.") == 0
-                || doclet.longname.indexOf("Phaser.Physics.Matter.Components.") == 0)
+            if (doclet.longname == 'ModelViewProjection') doclet.kind = 'mixin';
+            if ((doclet.longname.indexOf('Phaser.Physics.Arcade.Components.') == 0
+                 || doclet.longname.indexOf('Phaser.Physics.Impact.Components.') == 0
+                 || doclet.longname.indexOf('Phaser.Physics.Matter.Components.') == 0)
                 && doclet.longname.indexOf('#') == -1)
-                doclet.kind = "mixin";
+                doclet.kind = 'mixin';
             /////////////////////////
 
-
-            let obj:dom.DeclarationBase;
+            let obj: dom.DeclarationBase;
             let container = this.objects;
 
-            switch(doclet.kind) {
+            switch (doclet.kind) {
                 case 'namespace':
                     obj = this.createNamespace(doclet);
                     container = this.namespaces;
@@ -127,7 +127,7 @@ export class Parser {
                     obj = this.createInterface(doclet);
                     break;
                 case 'member':
-                    if(doclet.isEnum === true) {
+                    if (doclet.isEnum === true) {
                         obj = this.createEnum(doclet);
                         break;
                     }
@@ -144,31 +144,31 @@ export class Parser {
                     obj = this.createEvent(doclet);
                     break;
                 default:
-                    console.log("Ignored doclet kind: " + doclet.kind);
+                    console.log('Ignored doclet kind: ' + doclet.kind);
                     break;
             }
 
-            if(obj) {
+            if (obj) {
                 if (container[doclet.longname]) {
-                    console.log('Warning: ignoring duplicate doc name: '+doclet.longname);
+                    console.log('Warning: ignoring duplicate doc name: ' + doclet.longname);
                     docs.splice(i--, 1);
                     continue;
                 }
                 container[doclet.longname] = obj;
-                if(doclet.description) {
-                    let otherDocs = obj.jsDocComment || "";
+                if (doclet.description) {
+                    let otherDocs = obj.jsDocComment || '';
                     obj.jsDocComment = doclet.description.replace(regexEndLine, '$1\n') + otherDocs;
                 }
             }
         }
     }
 
-    private resolveObjects(docs:any[]) {
+    private resolveObjects(docs: any[]) {
         let allTypes = new Set<string>();
-        for(let doclet of docs) {
+        for (let doclet of docs) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
-            if(!obj) {
+            if (!obj) {
 
                 //  TODO
                 console.log(`Warning: Didn't find object for ${doclet.longname}`);
@@ -176,25 +176,25 @@ export class Parser {
                 continue;
             }
 
-            if(!doclet.memberof) {
+            if (!doclet.memberof) {
                 this.topLevel.push(obj as dom.TopLevelDeclaration);
             } else {
                 let isNamespaceMember = doclet.kind === 'class' || doclet.kind === 'typedef' || doclet.kind == 'namespace' || doclet.isEnum;
                 let parent = isNamespaceMember ? this.namespaces[doclet.memberof] : (this.objects[doclet.memberof] || this.namespaces[doclet.memberof]);
 
                 //TODO: this whole section should be removed once stable
-                if(!parent) {
+                if (!parent) {
                     console.log(`${doclet.longname} in ${doclet.meta.filename}@${doclet.meta.lineno} has parent '${doclet.memberof}' that is not defined.`);
-                    let parts:string[] = doclet.memberof.split('.');
+                    let parts: string[] = doclet.memberof.split('.');
                     let newParts = [parts.pop()];
-                    while(parts.length > 0 && this.objects[parts.join('.')] == null) newParts.unshift(parts.pop());
+                    while (parts.length > 0 && this.objects[parts.join('.')] == null) newParts.unshift(parts.pop());
                     parent = this.objects[parts.join('.')] as dom.NamespaceDeclaration;
-                    if(parent == null) {
+                    if (parent == null) {
                         parent = dom.create.namespace(doclet.memberof);
                         this.namespaces[doclet.memberof] = <dom.NamespaceDeclaration>parent;
                         this.topLevel.push(<dom.NamespaceDeclaration>parent);
                     } else {
-                        while(newParts.length > 0) {
+                        while (newParts.length > 0) {
                             let oldParent = <dom.NamespaceDeclaration>parent;
                             parent = dom.create.namespace(newParts.shift());
                             parts.push((<dom.NamespaceDeclaration>parent).name);
@@ -206,12 +206,9 @@ export class Parser {
                 }
                 ///////////////////////////////////////////////////////
 
-                if ((<any>parent).members)
-                {
+                if ((<any>parent).members) {
                     (<any>parent).members.push(obj);
-                }
-                else
-                {
+                } else {
                     console.log('Cannot find members array for:');
                     console.log(parent);
                 }
@@ -224,31 +221,31 @@ export class Parser {
                     (obj as any).kind = 'method';
                 // namespace members are vars or consts, not properties
                 if ((parent as any).kind === 'namespace' && (obj as any).kind === 'property') {
-                    if(doclet.kind == 'constant') (obj as any).kind = 'const';
+                    if (doclet.kind == 'constant') (obj as any).kind = 'const';
                     else (obj as any).kind = 'var';
                 }
             }
         }
     }
 
-    private resolveInheritance(docs:any[]) {
-        for(let doclet of docs) {
-            let obj = doclet.kind === "namespace" ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
-            if(!obj) {
+    private resolveInheritance(docs: any[]) {
+        for (let doclet of docs) {
+            let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
+            if (!obj) {
 
                 //  TODO
                 console.log(`Didn't find type ${doclet.longname} ???`);
 
                 continue;
             }
-            if(!(<any>obj)._parent) continue;
+            if (!(<any>obj)._parent) continue;
 
-            if(doclet.inherited) {// remove inherited members if they aren't from an interface
+            if (doclet.inherited) {// remove inherited members if they aren't from an interface
                 let from = this.objects[doclet.inherits];
-                if(!from || !(<any>from)._parent)
+                if (!from || !(<any>from)._parent)
                     throw `'${doclet.longname}' should inherit from '${doclet.inherits}', which is not defined.`;
 
-                if((<any>from)._parent.kind != 'interface') {
+                if ((<any>from)._parent.kind != 'interface') {
                     (<any>obj)._parent.members.splice((<any>obj)._parent.members.indexOf(obj), 1);
                     (<any>obj)._parent = null;
                 }
@@ -256,17 +253,17 @@ export class Parser {
         }
     }
 
-    private resolveParents(docs:any[]) {
-        for(let doclet of docs) {
+    private resolveParents(docs: any[]) {
+        for (let doclet of docs) {
             let obj = this.objects[doclet.longname];
-            if(!obj || doclet.kind !== 'class') continue;
+            if (!obj || doclet.kind !== 'class') continue;
 
             let o = obj as dom.ClassDeclaration;
 
             // resolve augments
             if (doclet.augments && doclet.augments.length) {
-                for(let augment of doclet.augments) {
-                    let name:string = this.prepareTypeName(augment);
+                for (let augment of doclet.augments) {
+                    let name: string = this.prepareTypeName(augment);
 
                     let wrappingName = name.match(/[^<]+/s)[0];//gets everything up to a first < (to handle augments with type parameters)
 
@@ -275,7 +272,7 @@ export class Parser {
                     if (!baseType) {
                         console.log(`ERROR: Did not find base type: ${augment} for ${doclet.longname}`);
                     } else {
-                        if(baseType.kind == 'class') {
+                        if (baseType.kind == 'class') {
                             o.baseType = dom.create.class(name);
                         } else {
                             o.implements.push(dom.create.interface(name));
@@ -286,10 +283,10 @@ export class Parser {
         }
     }
 
-    private createNamespace(doclet:any):dom.NamespaceDeclaration {
+    private createNamespace(doclet: any): dom.NamespaceDeclaration {
 
         /**
-        namespace: { comment: '',
+         namespace: { comment: '',
         meta:
          { filename: 'index.js',
            lineno: 10,
@@ -303,16 +300,16 @@ export class Parser {
         scope: 'static',
         ___id: 'T000002R034468',
         ___s: true }
-        */
+         */
 
-        // console.log('namespace:', doclet.longname);
+            // console.log('namespace:', doclet.longname);
 
         let obj = dom.create.namespace(doclet.name);
 
         return obj;
     }
 
-    private createClass(doclet:any):dom.ClassDeclaration {
+    private createClass(doclet: any): dom.ClassDeclaration {
         let obj = dom.create.class(doclet.name);
 
         let params = null;
@@ -327,17 +324,17 @@ export class Parser {
 
         this.processGeneric(doclet, obj, params);
 
-        if(doclet.classdesc)
+        if (doclet.classdesc)
             doclet.description = doclet.classdesc.replace(regexEndLine, '$1\n'); // make sure docs will be added
 
         return obj;
     }
 
-    private createInterface(doclet:any):dom.InterfaceDeclaration {
+    private createInterface(doclet: any): dom.InterfaceDeclaration {
         return dom.create.interface(doclet.name);
     }
 
-    private createMember(doclet:any):dom.PropertyDeclaration {
+    private createMember(doclet: any): dom.PropertyDeclaration {
         let type = this.parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
@@ -349,7 +346,7 @@ export class Parser {
         return obj;
     }
 
-    private createEvent(doclet:any):dom.ConstDeclaration {
+    private createEvent(doclet: any): dom.ConstDeclaration {
 
         let type = this.parseType(doclet);
 
@@ -360,7 +357,7 @@ export class Parser {
         return obj;
     }
 
-    private createEnum(doclet:any):dom.EnumDeclaration {
+    private createEnum(doclet: any): dom.EnumDeclaration {
         let obj = dom.create.enum(doclet.name, false);
 
         this.processFlags(doclet, obj);
@@ -368,10 +365,10 @@ export class Parser {
         return obj;
     }
 
-    private createFunction(doclet:any):dom.FunctionDeclaration {
-        let returnType:dom.Type = dom.type.void;
+    private createFunction(doclet: any): dom.FunctionDeclaration {
+        let returnType: dom.Type = dom.type.void;
 
-        if(doclet.returns) {
+        if (doclet.returns) {
             returnType = this.parseType(doclet.returns[0]);
         }
 
@@ -385,17 +382,17 @@ export class Parser {
         return obj;
     }
 
-    private createTypedef(doclet:any):dom.TypeAliasDeclaration {
+    private createTypedef(doclet: any): dom.TypeAliasDeclaration {
         const typeName = doclet.type.names[0];
         let type = null;
 
-        if(doclet.type.names[0] === 'object') {
+        if (doclet.type.names[0] === 'object') {
             let properties = [];
 
-            for(let propDoc of doclet.properties) {
+            for (let propDoc of doclet.properties) {
                 let prop = this.createMember(propDoc);
                 properties.push(prop);
-                if(propDoc.description)
+                if (propDoc.description)
                     prop.jsDocComment = propDoc.description.replace(regexEndLine, '$1\n');
             }
 
@@ -403,7 +400,7 @@ export class Parser {
 
             if (doclet.augments && doclet.augments.length) {
                 let intersectionTypes = [];
-                for(let i = 0; i < doclet.augments.length; i++) {
+                for (let i = 0; i < doclet.augments.length; i++) {
                     intersectionTypes.push(dom.create.namedTypeReference(doclet.augments[i]));
                 }
                 intersectionTypes.push(type);
@@ -422,25 +419,25 @@ export class Parser {
         return alias;
     }
 
-    private setParams(doclet:any, obj:dom.FunctionDeclaration|dom.ConstructorDeclaration):void {
-        let parameters:dom.Parameter[] = [];
+    private setParams(doclet: any, obj: dom.FunctionDeclaration | dom.ConstructorDeclaration): void {
+        let parameters: dom.Parameter[] = [];
 
-        if(doclet.params) {
+        if (doclet.params) {
 
             let optional = false;
 
-            obj.jsDocComment = "";
+            obj.jsDocComment = '';
 
-            for(let paramDoc of doclet.params) {
+            for (let paramDoc of doclet.params) {
 
                 // TODO REMOVE TEMP FIX
-                if(paramDoc.name.indexOf('.') != -1) {
+                if (paramDoc.name.indexOf('.') != -1) {
                     console.log(`Warning: ignoring param with '.' for '${doclet.longname}' in ${doclet.meta.filename}@${doclet.meta.lineno}`);
 
                     let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
-                    if(paramDoc.description)
+                    if (paramDoc.description)
                         obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.replace(regexEndLine, '$1\n')}` + defaultVal;
-                    else if(defaultVal.length)
+                    else if (defaultVal.length)
                         obj.jsDocComment += `\n@param ${paramDoc.name} ` + defaultVal;
                     continue;
                 }
@@ -449,7 +446,7 @@ export class Parser {
                 let param = dom.create.parameter(paramDoc.name, this.parseType(paramDoc));
                 parameters.push(param);
 
-                if(optional && paramDoc.optional != true) {
+                if (optional && paramDoc.optional != true) {
                     console.log(`Warning: correcting to optional: parameter '${paramDoc.name}' for '${doclet.longname}' in ${doclet.meta.filename}@${doclet.meta.lineno}`);
                     paramDoc.optional = true;
                 }
@@ -458,12 +455,11 @@ export class Parser {
 
                 optional = optional || paramDoc.optional === true;
 
-
                 let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
 
-                if(paramDoc.description)
+                if (paramDoc.description)
                     obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.replace(regexEndLine, '$1\n')}` + defaultVal;
-                else if(defaultVal.length)
+                else if (defaultVal.length)
                     obj.jsDocComment += `\n@param ${paramDoc.name} ` + defaultVal;
             }
         }
@@ -471,12 +467,12 @@ export class Parser {
         obj.parameters = parameters;
     }
 
-    private parseType(typeDoc:any):dom.Type {
-        if(!typeDoc || !typeDoc.type) {
+    private parseType(typeDoc: any): dom.Type {
+        if (!typeDoc || !typeDoc.type) {
             return dom.type.any;
         } else {
             let types = [];
-            for(let name of typeDoc.type.names) {
+            for (let name of typeDoc.type.names) {
 
                 name = this.prepareTypeName(name);
 
@@ -484,37 +480,37 @@ export class Parser {
 
                 types.push(type);
             }
-            if(types.length == 1) return types[0];
+            if (types.length == 1) return types[0];
             else return dom.create.union(types);
         }
     }
 
-    private prepareTypeName(name:string):string {
-        if(name.indexOf('*') != -1) {
+    private prepareTypeName(name: string): string {
+        if (name.indexOf('*') != -1) {
             name = (<string>name).split('*').join('any');
         }
-        if(name.indexOf('.<') != -1) {
+        if (name.indexOf('.<') != -1) {
             name = (<string>name).split('.<').join('<');
         }
         return name;
     }
 
-    private processTypeName(name:string):string {
-        if(name === 'float') return 'number';
-        if(name === 'function') return 'Function';
-        if(name === 'array') return 'any[]';
+    private processTypeName(name: string): string {
+        if (name === 'float') return 'number';
+        if (name === 'function') return 'Function';
+        if (name === 'array') return 'any[]';
 
         if (name.startsWith('Array<')) {
             let matches = name.match(/^Array<(.*)>$/);
 
             if (matches && matches[1]) {
-                return this.processTypeName(matches[1])+'[]';
+                return this.processTypeName(matches[1]) + '[]';
             }
-        } else if(name.startsWith('Object<')) {
+        } else if (name.startsWith('Object<')) {
             let matches = name.match(/^Object<(.*)>$/);
 
             if (matches && matches[1]) {
-                if(matches[1].indexOf(',') != -1) {
+                if (matches[1].indexOf(',') != -1) {
                     let parts = matches[1].split(',');
                     return `{[key: ${this.processTypeName(parts[0])}]: ${this.processTypeName(parts[1])}}`;
                 } else {
@@ -526,58 +522,63 @@ export class Parser {
         return name;
     }
 
-    private processFlags(doclet:any, obj:dom.DeclarationBase|dom.Parameter) {
+    private processFlags(doclet: any, obj: dom.DeclarationBase | dom.Parameter) {
         obj.flags = dom.DeclarationFlags.None;
-        if(doclet.variable === true) {
+        if (doclet.variable === true) {
             obj.flags |= dom.ParameterFlags.Rest;
-            let type:any = (<dom.Parameter>obj).type;
-            if(!type.name.endsWith('[]')) {
-                if(type.name != 'any')
+            let type: any = (<dom.Parameter>obj).type;
+            if (!type.name.endsWith('[]')) {
+                if (type.name != 'any')
                     console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
                 type.name = type.name + '[]'; // Must be an array
             }
         } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
-            if (obj["kind"] === "parameter") obj.flags |= dom.ParameterFlags.Optional;
+            if (obj['kind'] === 'parameter') obj.flags |= dom.ParameterFlags.Optional;
             else obj.flags |= dom.DeclarationFlags.Optional;
         }
-        switch(doclet.access) {
-            case "protected": obj.flags |= dom.DeclarationFlags.Protected; break;
-            case "private": obj.flags |= dom.DeclarationFlags.Private; break;
+        switch (doclet.access) {
+            case 'protected':
+                obj.flags |= dom.DeclarationFlags.Protected;
+                break;
+            case 'private':
+                obj.flags |= dom.DeclarationFlags.Private;
+                break;
         }
-        if(doclet.readonly || doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
-        if(doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
+        if (doclet.readonly || doclet.kind === 'constant') obj.flags |= dom.DeclarationFlags.ReadOnly;
+        if (doclet.scope === 'static') obj.flags |= dom.DeclarationFlags.Static;
     }
 
-    private processGeneric(doclet:any, obj:dom.ClassDeclaration|dom.FunctionDeclaration|dom.PropertyDeclaration|dom.TypeAliasDeclaration, params:dom.Parameter[]) {
-        if(doclet.tags)
-        for(let tag of doclet.tags) {
-            if(tag.originalTitle === 'generic') {
-                let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
-                (<dom.ClassDeclaration|dom.FunctionDeclaration|dom.TypeAliasDeclaration>obj).typeParameters.push(typeParam);
-                handleOverrides(matches[3], matches[2]);
-            } else if(tag.originalTitle === 'genericUse') {
-                let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                let overrideType:string = this.prepareTypeName(matches[1]);
+    private processGeneric(doclet: any, obj: dom.ClassDeclaration | dom.FunctionDeclaration | dom.PropertyDeclaration | dom.TypeAliasDeclaration, params: dom.Parameter[]) {
+        if (doclet.tags)
+            for (let tag of doclet.tags) {
+                if (tag.originalTitle === 'generic') {
+                    let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                    let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
+                    (<dom.ClassDeclaration | dom.FunctionDeclaration | dom.TypeAliasDeclaration>obj).typeParameters.push(typeParam);
+                    handleOverrides(matches[3], matches[2]);
+                } else if (tag.originalTitle === 'genericUse') {
+                    let matches = (<string>tag.value).match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                    let overrideType: string = this.prepareTypeName(matches[1]);
 
-                handleOverrides(matches[2], this.processTypeName(overrideType));
+                    handleOverrides(matches[2], this.processTypeName(overrideType));
+                }
             }
-        }
-        function handleOverrides(matchedString:string, overrideType:string) {
-            if(matchedString != null) {
+
+        function handleOverrides(matchedString: string, overrideType: string) {
+            if (matchedString != null) {
                 let overrides = matchedString.split(',');
-                if(params != null) {
-                    for(let param of params)  {
-                        if(overrides.indexOf(param.name) != -1) {
+                if (params != null) {
+                    for (let param of params) {
+                        if (overrides.indexOf(param.name) != -1) {
                             param.type = dom.create.namedTypeReference(overrideType);
                         }
                     }
                 }
-                if(overrides.indexOf('$return') != -1) {// has $return, must be a function
+                if (overrides.indexOf('$return') != -1) {// has $return, must be a function
                     (<dom.FunctionDeclaration>obj).returnType = dom.create.namedTypeReference(overrideType);
                 }
-                if(overrides.indexOf('$type') != -1) {// has $type, must be a property
-                    (<dom.PropertyDeclaration>obj).type =  dom.create.namedTypeReference(overrideType);
+                if (overrides.indexOf('$type') != -1) {// has $type, must be a property
+                    (<dom.PropertyDeclaration>obj).type = dom.create.namedTypeReference(overrideType);
                 }
             }
         }
