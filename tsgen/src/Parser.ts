@@ -263,7 +263,7 @@ export class Parser {
             // resolve augments
             if (doclet.augments && doclet.augments.length) {
                 for (let augment of doclet.augments) {
-                    let name: string = this.prepareTypeName(augment);
+                    let name: string = this._prepareTypeName(augment);
 
                     let wrappingName = name.match(/[^<]+/s)[0];//gets everything up to a first < (to handle augments with type parameters)
 
@@ -506,7 +506,7 @@ export class Parser {
             let types = [];
             for (let name of typeDoc.type.names) {
 
-                name = this.prepareTypeName(name);
+                name = this._prepareTypeName(name);
 
                 let type = dom.create.namedTypeReference(this.processTypeName(name));
 
@@ -517,7 +517,7 @@ export class Parser {
         }
     }
 
-    private prepareTypeName(name: string): string {
+    private _prepareTypeName(name: string): string {
         if (name.indexOf('*') != -1) {
             name = (<string>name).split('*').join('any');
         }
@@ -725,7 +725,7 @@ export class Parser {
                     handleOverrides(matches[3], matches[2]);
                 } else if (tag.originalTitle === 'genericUse') {
                     let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                    let overrideType: string = this.prepareTypeName(matches[1]);
+                    let overrideType: string = this._prepareTypeName(matches[1]);
 
                     handleOverrides(matches[2], this.processTypeName(overrideType));
                 }
