@@ -554,72 +554,143 @@ export class Parser {
         return name;
     }
 
+    // region processFlags
     /**
      * Processes the flags on the given `doclet`, ensuring those flags are properly applied to the `domObj`.
      *
-     * @param {IDocletProp | IDocletBase | IMemberDoclet} doclet
+     * @todo `@abstract` isn't supported on methods or classes
+     * @todo we could check for `description` property here, to build a report of what's missing descriptions
+     *
+     * @param {Readonly<IDocletProp> | Readonly<TDoclet>} doclet
      * @param {DeclarationBase | Parameter} domObj
+     *
+     * @instance
+     * @private
      */
     private processFlags(
-        doclet:
-            | IDocletProp
-            | IDocletBase
-            | IMemberDoclet,
+        doclet: Readonly<IDocletProp> | Readonly<TDoclet>,
         domObj: dom.DeclarationBase | dom.Parameter
     ): void {
         domObj.flags = dom.DeclarationFlags.None;
 
         if (Guard.doclet.isIDocletProp(doclet)) {
-            if (doclet.variable === true) {
-                if (!Guard.dom.isParameter(domObj)) {
-                    throw new Error('doclet marked as variable doesn\'t have "parameter" kind dom element');
-                } // ensure that it's a type that actually has a 'type' property.
+            this._processFlagsForPropDoclet(doclet, domObj);
+        }
 
-                domObj.flags |= dom.ParameterFlags.Rest;
+        if (Guard.doclet.isTDoclet(doclet)) {
+            this._processFlagsForTDoclet(doclet, domObj);
+        }
 
-                const type = domObj.type;
-                if (!Guard.dom.type.isNamedTypeReference(type) && !Guard.dom.type.isTypeParameter(type)) {
-                    throw new Error('"variable" doclet dom.Parameter.type isn\'t of the correct kind');
-                } // ensure that it's a type that actually has a 'name' property
+        if (Guard.doclet.isIMemberDoclet(doclet)) {
+            this._processFlagsForIMemberDoclet(doclet, domObj);
+        }
+    }
 
+    /**
+     * Processes the flags for a `IMemberDoclet`-type `doclet`, ensuring those flags are properly applied to the `domObj`.
+     *
+     * @param {Readonly<IMemberDoclet>} doclet
+     * @param {DeclarationBase | Parameter} domObj
+     *
+     * @instance
+     * @private
+     */
+    private _processFlagsForIMemberDoclet(
+        doclet: Readonly<IMemberDoclet>,
+        domObj: dom.DeclarationBase | dom.Parameter
+    ): void {
+        if (doclet.readonly || doclet.kind === 'constant') domObj.flags |= dom.DeclarationFlags.ReadOnly;
+    }
+
+    /**
+     * Processes the flags for a `TDoclet`-type `doclet`, ensuring those flags are properly applied to the `domObj`.
+     *
+     * @param {Readonly<TDoclet>} doclet
+     * @param {DeclarationBase | Parameter} domObj
+     *
+     * @instance
+     * @private
+     */
+    private _processFlagsForTDoclet(
+        doclet: Readonly<TDoclet>,
+        domObj: dom.DeclarationBase | dom.Parameter
+    ): void {
+        switch (doclet.access) {
+            case 'protected':
+                domObj.flags |= dom.DeclarationFlags.Protected;
+                break;
+            case 'private':
+                domObj.flags |= dom.DeclarationFlags.Private;
+                break;
+        }
+
+        if (doclet.scope === 'static') domObj.flags |= dom.DeclarationFlags.Static;
+    }
+
+    /**
+     * Processes the flags for a `IDocletProp`-type `doclet`, ensuring those flags are properly applied to the `domObj`.
+     *
+     * @param {Readonly<IDocletProp>} doclet
+     * @param domObj
+     *
+     * @instance
+     * @private
+     */
+    private _processFlagsForPropDoclet(
+        doclet: Readonly<IDocletProp>,
+        domObj: dom.DeclarationBase | dom.Parameter
+    ): void {
+        if (doclet.variable === true) {
+            if (!Guard.dom.isParameter(domObj)) {
+                throw new Error('doclet marked as variable doesn\'t have "parameter" kind dom element');
+            } // ensure that it's a type that actually has a 'type' property.
+
+            domObj.flags |= dom.ParameterFlags.Rest;
+
+            const type = domObj.type;
+            if (!Guard.dom.type.isNamedTypeReference(type) && !Guard.dom.type.isTypeParameter(type)) {
+                throw new Error('"variable" doclet dom.Parameter.type isn\'t of the correct kind');
+            } // ensure that it's a type that actually has a 'name' property
+
+            /*
+                TODO: what if you want a 2+d array?
+                    Currently, if you do "...T[]", that'll become "...T[]" in the typings.
+
+                I can't find anywhere in jsdoc about adding `[]` to rest parameters,
+                leading me to believe the above should actually become "...T[][]".
+
+                Note this happens even if you use `...Array<T>`, b/c `Array<T>` is
+                transformed elsewhere into `...T[]`.
+
+                Ideally, this should be written up as a 'parser rule' somewhere.
+             */
+            if (!type.name.endsWith('[]')) {
                 /*
-                    TODO: what if you want a 2+d array?
-                        Currently, if you do "...T[]", that'll become "...T[]" in the typings.
+                    TODO: is this still needed?
+                        Types seem to be generated correctly even if not '...*'. maybe it was for object properties?
 
-                    I can't find anywhere in jsdoc about adding `[]` to rest parameters,
-                    leading me to believe the above should actually become "...T[][]".
+                    I can't seem to create a jsdoc where this actually has problems.
 
-                    Note this happens even if you use `...Array<T>`, b/c `Array<T>` is
-                    transformed elsewhere into `...T[]`.
-
-                    Ideally, this should be written up as a 'parser rule' somewhere.
+                    Asked @antriel about it:
+                        > I remember there was a reason for that. Just not sure what.
+                        > I think the jsdocs then parsed the type wrongly or something.
+                        > Ah right. Yes, if you did rest param but the jsdoc was defined as non array, you couldn't put in more stuff... Or something like that.
                  */
-                if (!type.name.endsWith('[]')) {
-                    /*
-                        TODO: is this still needed?
-                            Types seem to be generated correctly even if not '...*'. maybe it was for object properties?
-
-                        I can't seem to create a jsdoc where this actually has problems.
-
-                            Asked @antriel about it:
-                                > I remember there was a reason for that. Just not sure what.
-                                > I think the jsdocs then parsed the type wrongly or something.
-                                > Ah right. Yes, if you did rest param but the jsdoc was defined as non array, you couldn't put in more stuff... Or something like that.
-                         */
-                    if (type.name != 'any')
-                    // @ts-ignore TODO: IDocletProp doesn't have a longname property - find an alternative
-                        console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
-                    type.name = type.name + '[]'; // Must be an array
-                }
-            } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
-                if (Guard.dom.isParameter(domObj)) {
-                    domObj.flags |= dom.ParameterFlags.Optional;
-                } else {
-                    domObj.flags |= dom.DeclarationFlags.Optional;
-                }
+                if (type.name != 'any')
+                // @ts-ignore TODO: IDocletProp doesn't have a longname property - find an alternative
+                    console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
+                type.name = type.name + '[]'; // Must be an array
+            }
+        } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
+            if (Guard.dom.isParameter(domObj)) {
+                domObj.flags |= dom.ParameterFlags.Optional;
+            } else {
+                domObj.flags |= dom.DeclarationFlags.Optional;
             }
         }
     }
+
+    // endregion
 
     private processGeneric(
         doclet: IDocletBase,
