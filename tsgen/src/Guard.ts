@@ -6,6 +6,17 @@ export default class Guard {
      */
     static doclet = class {
         /**
+         * Guards that the given `doclet` is of type `TDoclet`.
+         *
+         * @param {Object} doclet
+         *
+         * @return {doclet is TDoclet}
+         */
+        static isTDoclet(doclet: object): doclet is TDoclet {
+            return typeof doclet === 'object' && 'kind' in doclet;
+        }
+
+        /**
          * Guards that the given `doclet` is of type `IDocletProp`.
          *
          * @param {any | IDocletProp} doclet
