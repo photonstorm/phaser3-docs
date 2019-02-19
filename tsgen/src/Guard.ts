@@ -25,6 +25,33 @@ export default class Guard {
      */
     static dom = class {
         /**
+         * Guards for `Type`s.
+         */
+        static type = class {
+            /**
+             * Guards that the given `type` is of type `dom.NamedTypeReference`.
+             *
+             * @param {any | Type} type
+             *
+             * @return {type is NamedTypeReference}
+             */
+            static isNamedTypeReference(type: dom.Type): type is dom.NamedTypeReference {
+                return typeof type === 'object' && type.kind === 'name';
+            }
+
+            /**
+             * Guards that the given `type` is of type `dom.TypeParameter`.
+             *
+             * @param {any | Type} type
+             *
+             * @return {type is TypeParameter}
+             */
+            static isTypeParameter(type: dom.Type): type is dom.TypeParameter {
+                return typeof type === 'object' && type.kind === 'type-parameter';
+            }
+        };
+
+        /**
          * Guards that the given `element` is of type `dom.Parameter`.
          *
          * @param {any | Parameter} element
