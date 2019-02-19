@@ -3,6 +3,7 @@ const SQLite3 = require('better-sqlite3');
 const InsertClass = require('./InsertClass');
 const InsertConstant = require('./InsertConstant');
 const InsertEvent = require('./InsertEvent');
+const InsertFunction = require('./InsertFunction');
 const InsertNamespace = require('./InsertNamespace');
 const InsertMember = require('./InsertMember');
 
@@ -20,6 +21,7 @@ InsertEvent(db, data);
 InsertConstant(db, data);
 InsertNamespace(db, data);
 InsertMember(db, data);
+InsertFunction(db, data);
 
 console.log('Complete');
 
