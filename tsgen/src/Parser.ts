@@ -587,7 +587,8 @@ export class Parser {
     }
 
     /**
-     * Processes the flags for a `IMemberDoclet`-type `doclet`, ensuring those flags are properly applied to the `domObj`.
+     * Processes the flags for a {@link IMemberDoclet `IMemberDoclet`}-type `doclet`,
+     * ensuring those flags are properly applied to the `domObj`.
      *
      * @param {Readonly<IMemberDoclet>} doclet
      * @param {DeclarationBase | Parameter} domObj
@@ -599,11 +600,14 @@ export class Parser {
         doclet: Readonly<IMemberDoclet>,
         domObj: dom.DeclarationBase | dom.Parameter
     ): void {
-        if (doclet.readonly || doclet.kind === 'constant') domObj.flags |= dom.DeclarationFlags.ReadOnly;
+        if (doclet.readonly || doclet.kind === 'constant') {
+            domObj.flags |= dom.DeclarationFlags.ReadOnly;
+        }
     }
 
     /**
-     * Processes the flags for a `TDoclet`-type `doclet`, ensuring those flags are properly applied to the `domObj`.
+     * Processes the flags for a {@link TDoclet `TDoclet`}-type `doclet`,
+     * ensuring those flags are properly applied to the `domObj`.
      *
      * @param {Readonly<TDoclet>} doclet
      * @param {DeclarationBase | Parameter} domObj
@@ -624,11 +628,14 @@ export class Parser {
                 break;
         }
 
-        if (doclet.scope === 'static') domObj.flags |= dom.DeclarationFlags.Static;
+        if (doclet.scope === 'static') {
+            domObj.flags |= dom.DeclarationFlags.Static;
+        }
     }
 
     /**
-     * Processes the flags for a `IDocletProp`-type `doclet`, ensuring those flags are properly applied to the `domObj`.
+     * Processes the flags for a {@link IDocletProp `IDocletProp`}-type `doclet`,
+     * ensuring those flags are properly applied to the `domObj`.
      *
      * @param {Readonly<IDocletProp>} doclet
      * @param domObj
@@ -640,17 +647,17 @@ export class Parser {
         doclet: Readonly<IDocletProp>,
         domObj: dom.DeclarationBase | dom.Parameter
     ): void {
-        if (doclet.variable === true) {
+        if (doclet.variable) {
             if (!Guard.dom.isParameter(domObj)) {
                 throw new Error('doclet marked as variable doesn\'t have "parameter" kind dom element');
-            } // ensure that it's a type that actually has a 'type' property.
+            } // ensures that it's a type that actually has a 'type' property.
 
             domObj.flags |= dom.ParameterFlags.Rest;
 
             const type = domObj.type;
             if (!Guard.dom.type.isNamedTypeReference(type) && !Guard.dom.type.isTypeParameter(type)) {
                 throw new Error('"variable" doclet dom.Parameter.type isn\'t of the correct kind');
-            } // ensure that it's a type that actually has a 'name' property
+            } // ensures that it's a type that actually has a 'name' property
 
             /*
                 TODO: what if you want a 2+d array?
@@ -676,17 +683,21 @@ export class Parser {
                         > I think the jsdocs then parsed the type wrongly or something.
                         > Ah right. Yes, if you did rest param but the jsdoc was defined as non array, you couldn't put in more stuff... Or something like that.
                  */
-                if (type.name != 'any')
-                // @ts-ignore TODO: IDocletProp doesn't have a longname property - find an alternative
+                if (type.name != 'any') {
+                    // @ts-ignore TODO: IDocletProp doesn't have a longname property - find an alternative
                     console.log(`Warning: rest parameter should be an array type for ${doclet.longname}`);
-                type.name = type.name + '[]'; // Must be an array
+                }
+
+                type.name += '[]'; // Must be an array
             }
-        } else if (doclet.optional === true) {// Rest implies Optional – no need to flag it as such
-            if (Guard.dom.isParameter(domObj)) {
-                domObj.flags |= dom.ParameterFlags.Optional;
-            } else {
-                domObj.flags |= dom.DeclarationFlags.Optional;
-            }
+
+            return;
+        } // Rest implies Optional, & it's illegal in TS to mark both.
+
+        if (doclet.optional) {
+            domObj.flags |= Guard.dom.isParameter(domObj)
+                ? dom.ParameterFlags.Optional
+                : dom.DeclarationFlags.Optional;
         }
     }
 
