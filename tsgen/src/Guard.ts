@@ -18,6 +18,19 @@ export default class Guard {
                    && 'name' in doclet
                    && typeof doclet.type === 'object';
         }
+
+        /**
+         * Guards that the given `doclet` is of type `IMemberDoclet`.
+         *
+         * @param {any | TDoclet} doclet
+         *
+         * @return {doclet is IMemberDoclet}
+         */
+        static isIMemberDoclet(doclet: object | TDoclet): doclet is IMemberDoclet {
+            return typeof doclet === 'object'
+                   && 'kind' in doclet
+                   && (doclet.kind === 'constant' || doclet.kind === 'member');
+        }
     };
 
     /**
