@@ -335,7 +335,7 @@ export class Parser {
     }
 
     private createMember(doclet: IMemberDoclet): dom.PropertyDeclaration {
-        let type = this.parseType(doclet);
+        let type = this._parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
@@ -354,7 +354,7 @@ export class Parser {
      * @return {PropertyDeclaration}
      */
     private createProp(doclet: IDocletProp): dom.PropertyDeclaration {
-        let type = this.parseType(doclet);
+        let type = this._parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
@@ -387,7 +387,7 @@ export class Parser {
         let returnType: dom.Type = dom.type.void;
 
         if (doclet.returns) {
-            returnType = this.parseType(doclet.returns[0]);
+            returnType = this._parseType(doclet.returns[0]);
         }
 
         let obj = dom.create.function(doclet.name, null, returnType);
@@ -470,7 +470,7 @@ export class Parser {
                 }
                 ///////////////////////
 
-                let param = dom.create.parameter(paramDoc.name, this.parseType(paramDoc));
+                let param = dom.create.parameter(paramDoc.name, this._parseType(paramDoc));
                 parameters.push(param);
 
                 if (optional && paramDoc.optional != true) {
@@ -501,7 +501,7 @@ export class Parser {
      *
      * @return {Type}
      */
-    private parseType(
+    private _parseType(
         typeDoc:
             | IMemberDoclet
             | IDocletProp
