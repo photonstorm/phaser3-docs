@@ -503,9 +503,9 @@ export class Parser {
      */
     private _parseType(
         typeDoc:
-            | IMemberDoclet
-            | IDocletProp
-            | IDocletReturn
+            | Readonly<IMemberDoclet>
+            | Readonly<IDocletProp>
+            | Readonly<IDocletReturn>
     ): dom.Type {
         if (!typeDoc.type) {
             return dom.type.any;
