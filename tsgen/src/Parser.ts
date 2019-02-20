@@ -543,8 +543,8 @@ export class Parser {
      */
     private _prepareTypeName(name: string): string {
         return name
-            .split('*').join('any')
-            .split('.<').join('<');
+            .replace(/\*/g, 'any')
+            .replace(/\.</g, '<');
     }
 
     private processTypeName(name: string): string {
