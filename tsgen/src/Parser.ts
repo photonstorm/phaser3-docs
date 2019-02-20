@@ -335,7 +335,7 @@ export class Parser {
     }
 
     private createMember(doclet: IMemberDoclet): dom.PropertyDeclaration {
-        let type = this.parseType(doclet);
+        let type = this._parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
@@ -354,7 +354,7 @@ export class Parser {
      * @return {PropertyDeclaration}
      */
     private createProp(doclet: IDocletProp): dom.PropertyDeclaration {
-        let type = this.parseType(doclet);
+        let type = this._parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
@@ -387,7 +387,7 @@ export class Parser {
         let returnType: dom.Type = dom.type.void;
 
         if (doclet.returns) {
-            returnType = this.parseType(doclet.returns[0]);
+            returnType = this._parseType(doclet.returns[0]);
         }
 
         let obj = dom.create.function(doclet.name, null, returnType);
@@ -470,7 +470,7 @@ export class Parser {
                 }
                 ///////////////////////
 
-                let param = dom.create.parameter(paramDoc.name, this.parseType(paramDoc));
+                let param = dom.create.parameter(paramDoc.name, this._parseType(paramDoc));
                 parameters.push(param);
 
                 if (optional && paramDoc.optional != true) {
@@ -494,27 +494,34 @@ export class Parser {
         obj.parameters = parameters;
     }
 
-    private parseType(
-        typeDoc?:
-            | IMemberDoclet
-            | IDocletProp
-            | IDocletReturn
+    /**
+     * Parses the given `typeDoc`, returning the correct `Type` to use for TypeScript.
+     *
+     * @param {IMemberDoclet | IDocletProp | IDocletReturn} typeDoc
+     *
+     * @return {Type}
+     * @private
+     */
+    private _parseType(
+        typeDoc:
+            | Readonly<IMemberDoclet>
+            | Readonly<IDocletProp>
+            | Readonly<IDocletReturn>
     ): dom.Type {
-        if (!typeDoc || !typeDoc.type) {
+        if (!typeDoc.type) {
             return dom.type.any;
-        } else {
-            let types = [];
-            for (let name of typeDoc.type.names) {
-
-                name = this._prepareTypeName(name);
-
-                let type = dom.create.namedTypeReference(this.processTypeName(name));
-
-                types.push(type);
-            }
-            if (types.length == 1) return types[0];
-            else return dom.create.union(types);
         }
+
+        const types = typeDoc.type.names
+                             .map(name => this._prepareTypeName(name))
+                             .map(name => this.processTypeName(name))
+                             .map(dom.create.namedTypeReference);
+
+        if (types.length === 1) {
+            return types[0];
+        }
+
+        return dom.create.union(types);
     }
 
     /**

@@ -120,7 +120,7 @@ declare interface IMemberDoclet extends IDocletBase {
     kind: 'member' | 'constant';
     readonly: boolean;
     isEnum: boolean;
-    type: IDocletType;
+    type?: IDocletType;
 }
 
 declare interface INamespaceDoclet extends IDocletBase {
