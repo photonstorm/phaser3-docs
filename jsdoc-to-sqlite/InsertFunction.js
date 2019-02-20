@@ -86,6 +86,7 @@ let InsertFunction = function (db, data)
 
         //  Function parameters
         let params = [];
+        let signatureParams = [];
 
         if (Array.isArray(block.params) && block.params.length > 0)
         {
@@ -124,7 +125,16 @@ let InsertFunction = function (db, data)
 
                 //  Add to the params array (for injection to the functions table)
 
-                let paramStr = param.name + ':' + types;
+                let paramStr = param.name;
+                
+                if (optional === 1)
+                {
+                    paramStr += '?';
+                }
+                
+                paramStr += ':' + types;
+
+                signatureParams.push(paramStr);
 
                 if (defaultValue !== '')
                 {
@@ -149,7 +159,7 @@ let InsertFunction = function (db, data)
         }
 
         //  Function signature
-        let signature = params.join(',');
+        let signature = signatureParams.join(',');
 
         //  Returns
         let returns = 0;
