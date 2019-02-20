@@ -511,12 +511,11 @@ export class Parser {
             return dom.type.any;
         }
 
-        let types = [];
+        const types = [];
         for (let name of typeDoc.type.names) {
-
             name = this._prepareTypeName(name);
 
-            let type = dom.create.namedTypeReference(this.processTypeName(name));
+            const type = dom.create.namedTypeReference(this.processTypeName(name));
 
             types.push(type);
         }
