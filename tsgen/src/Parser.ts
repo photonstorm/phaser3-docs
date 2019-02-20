@@ -519,7 +519,8 @@ export class Parser {
 
             types.push(type);
         }
-        if (types.length == 1) {
+
+        if (types.length === 1) {
             return types[0];
         }
 
