@@ -263,7 +263,7 @@ export class Parser {
             // resolve augments
             if (doclet.augments && doclet.augments.length) {
                 for (let augment of doclet.augments) {
-                    let name: string = this.prepareTypeName(augment);
+                    let name: string = this._prepareTypeName(augment);
 
                     let wrappingName = name.match(/[^<]+/s)[0];//gets everything up to a first < (to handle augments with type parameters)
 
@@ -506,7 +506,7 @@ export class Parser {
             let types = [];
             for (let name of typeDoc.type.names) {
 
-                name = this.prepareTypeName(name);
+                name = this._prepareTypeName(name);
 
                 let type = dom.create.namedTypeReference(this.processTypeName(name));
 
@@ -517,14 +517,34 @@ export class Parser {
         }
     }
 
-    private prepareTypeName(name: string): string {
-        if (name.indexOf('*') != -1) {
-            name = (<string>name).split('*').join('any');
-        }
-        if (name.indexOf('.<') != -1) {
-            name = (<string>name).split('.<').join('<');
-        }
-        return name;
+    /**
+     * Prepares the `name` of a type so that it can be used to create a {@link NamedTypeReference}.
+     *
+     * Preparing involves replacing '*' with 'any', and removing '.' from generics.
+     *
+     * The return of this method is expected to be used with the {@link create#namedTypeReference} method.
+     *
+     * @examples
+     *  "*" => "any"
+     *  "Array.<*>" => "Array<any>"
+     *  "Array.<string>" => "Array<string>"
+     *  "Object.<string, *>" => "Object<string, any>"
+     *  "Array.<Array.<integer>>" => "Array<Array<integer>>"
+     *  "Array.<Array.<Phaser.Tilemaps.Tile>>" => "Array<Array<Phaser.Tilemaps.Tile>>"
+     *  "Phaser.Structs.Set.<T>" => "Phaser.Structs.Set<T>"
+     *  "Phaser.Structs.Map.<K, V>" => "Phaser.Structs.Map<K, V>"
+     *
+     * @param {string} name
+     *
+     * @return {string}
+     * @private
+     *
+     * @instance
+     */
+    private _prepareTypeName(name: string): string {
+        return name
+            .replace(/\*/g, 'any')
+            .replace(/\.</g, '<');
     }
 
     private processTypeName(name: string): string {
@@ -725,7 +745,7 @@ export class Parser {
                     handleOverrides(matches[3], matches[2]);
                 } else if (tag.originalTitle === 'genericUse') {
                     let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                    let overrideType: string = this.prepareTypeName(matches[1]);
+                    let overrideType: string = this._prepareTypeName(matches[1]);
 
                     handleOverrides(matches[2], this.processTypeName(overrideType));
                 }
