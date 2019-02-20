@@ -542,13 +542,9 @@ export class Parser {
      * @instance
      */
     private _prepareTypeName(name: string): string {
-        if (name.indexOf('*') != -1) {
-            name = (<string>name).split('*').join('any');
-        }
-        if (name.indexOf('.<') != -1) {
-            name = (<string>name).split('.<').join('<');
-        }
-        return name;
+        return name
+            .split('*').join('any')
+            .split('.<').join('<');
     }
 
     private processTypeName(name: string): string {
