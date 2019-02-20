@@ -502,12 +502,12 @@ export class Parser {
      * @return {Type}
      */
     private parseType(
-        typeDoc?:
+        typeDoc:
             | IMemberDoclet
             | IDocletProp
             | IDocletReturn
     ): dom.Type {
-        if (!typeDoc || !typeDoc.type) {
+        if (!typeDoc.type) {
             return dom.type.any;
         } else {
             let types = [];
