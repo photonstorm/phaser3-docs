@@ -509,19 +509,19 @@ export class Parser {
     ): dom.Type {
         if (!typeDoc.type) {
             return dom.type.any;
-        } else {
-            let types = [];
-            for (let name of typeDoc.type.names) {
-
-                name = this._prepareTypeName(name);
-
-                let type = dom.create.namedTypeReference(this.processTypeName(name));
-
-                types.push(type);
-            }
-            if (types.length == 1) return types[0];
-            else return dom.create.union(types);
         }
+
+        let types = [];
+        for (let name of typeDoc.type.names) {
+
+            name = this._prepareTypeName(name);
+
+            let type = dom.create.namedTypeReference(this.processTypeName(name));
+
+            types.push(type);
+        }
+        if (types.length == 1) return types[0];
+        else return dom.create.union(types);
     }
 
     /**
