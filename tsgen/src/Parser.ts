@@ -500,6 +500,7 @@ export class Parser {
      * @param {IMemberDoclet | IDocletProp | IDocletReturn} typeDoc
      *
      * @return {Type}
+     * @private
      */
     private _parseType(
         typeDoc:
