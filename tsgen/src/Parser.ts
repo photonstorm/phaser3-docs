@@ -517,6 +517,30 @@ export class Parser {
         }
     }
 
+    /**
+     * Prepares the `name` of a type so that it can be used to create a {@link NamedTypeReference}.
+     *
+     * Preparing involves replacing '*' with 'any', and removing '.' from generics.
+     *
+     * The return of this method is expected to be used with the {@link create#namedTypeReference} method.
+     *
+     * @examples
+     *  "*" => "any"
+     *  "Array.<*>" => "Array<any>"
+     *  "Array.<string>" => "Array<string>"
+     *  "Object.<string, *>" => "Object<string, any>"
+     *  "Array.<Array.<integer>>" => "Array<Array<integer>>"
+     *  "Array.<Array.<Phaser.Tilemaps.Tile>>" => "Array<Array<Phaser.Tilemaps.Tile>>"
+     *  "Phaser.Structs.Set.<T>" => "Phaser.Structs.Set<T>"
+     *  "Phaser.Structs.Map.<K, V>" => "Phaser.Structs.Map<K, V>"
+     *
+     * @param {string} name
+     *
+     * @return {string}
+     * @private
+     *
+     * @instance
+     */
     private _prepareTypeName(name: string): string {
         if (name.indexOf('*') != -1) {
             name = (<string>name).split('*').join('any');
