@@ -494,6 +494,13 @@ export class Parser {
         obj.parameters = parameters;
     }
 
+    /**
+     * Parses the given `typeDoc`, returning the correct `Type` to use for TypeScript.
+     *
+     * @param {IMemberDoclet | IDocletProp | IDocletReturn} typeDoc
+     *
+     * @return {Type}
+     */
     private parseType(
         typeDoc?:
             | IMemberDoclet
