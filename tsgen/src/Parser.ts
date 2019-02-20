@@ -520,8 +520,11 @@ export class Parser {
 
             types.push(type);
         }
-        if (types.length == 1) return types[0];
-        else return dom.create.union(types);
+        if (types.length == 1) {
+            return types[0];
+        }
+
+        return dom.create.union(types);
     }
 
     /**
