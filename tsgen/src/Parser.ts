@@ -255,19 +255,19 @@ export class Parser {
 
     private _resolveParents(doclets: Array<TDoclet>): void {
         for (let doclet of doclets) {
-            let obj = this.objects[doclet.longname];
+            const obj = this.objects[doclet.longname];
             if (!obj || doclet.kind !== 'class') continue;
 
-            let o = obj as dom.ClassDeclaration;
+            const o = obj as dom.ClassDeclaration;
 
             // resolve augments
             if (doclet.augments && doclet.augments.length) {
-                for (let augment of doclet.augments) {
-                    let name: string = this._prepareTypeName(augment);
+                for (const augment of doclet.augments) {
+                    const name: string = this._prepareTypeName(augment);
 
-                    let wrappingName = name.match(/[^<]+/s)[0];//gets everything up to a first < (to handle augments with type parameters)
+                    const wrappingName = name.match(/[^<]+/s)[0];//gets everything up to a first < (to handle augments with type parameters)
 
-                    let baseType = this.objects[wrappingName] as dom.ClassDeclaration | dom.InterfaceDeclaration;
+                    const baseType = this.objects[wrappingName] as dom.ClassDeclaration | dom.InterfaceDeclaration;
 
                     if (!baseType) {
                         console.log(`ERROR: Did not find base type: ${augment} for ${doclet.longname}`);
