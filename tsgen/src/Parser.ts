@@ -124,7 +124,7 @@ export class Parser {
                     obj = this._createClassDeclaration(doclet);
                     break;
                 case 'mixin':
-                    obj = this.createInterface(doclet);
+                    obj = this._createInterfaceDeclaration(doclet);
                     break;
                 case 'member':
                     if (doclet.isEnum === true) {
@@ -330,7 +330,7 @@ export class Parser {
         return obj;
     }
 
-    private createInterface(doclet: IClassDoclet): dom.InterfaceDeclaration {
+    private _createInterfaceDeclaration(doclet: IClassDoclet): dom.InterfaceDeclaration {
         return dom.create.interface(doclet.name);
     }
 
