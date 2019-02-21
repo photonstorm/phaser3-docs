@@ -132,7 +132,7 @@ export class Parser {
                         break;
                     }
                 case 'constant':
-                    obj = this.createMember(doclet);
+                    obj = this._createMemberDeclaration(doclet);
                     break;
                 case 'function':
                     obj = this.createFunction(doclet);
@@ -334,7 +334,7 @@ export class Parser {
         return dom.create.interface(doclet.name);
     }
 
-    private createMember(doclet: IMemberDoclet): dom.PropertyDeclaration {
+    private _createMemberDeclaration(doclet: IMemberDoclet): dom.PropertyDeclaration {
         let type = this._parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
