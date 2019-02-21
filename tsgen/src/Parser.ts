@@ -70,8 +70,7 @@ export class Parser {
 
     private _parseDoclets(doclets: Array<TDoclet>): void {
         for (let i = 0; i < doclets.length; i++) {
-
-            let doclet = doclets[i];
+            const doclet = doclets[i];
 
             // if (doclet.kind === 'namespace')
             // {
@@ -156,7 +155,7 @@ export class Parser {
                 }
                 container[doclet.longname] = obj;
                 if (doclet.description) {
-                    let otherDocs = obj.jsDocComment || '';
+                    const otherDocs = obj.jsDocComment || '';
                     obj.jsDocComment = doclet.description.replace(regexEndLine, '$1\n') + otherDocs;
                 }
             }
