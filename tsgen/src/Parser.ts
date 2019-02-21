@@ -354,9 +354,9 @@ export class Parser {
      * @return {PropertyDeclaration}
      */
     private _createPropertyDeclaration(doclet: IDocletProp): dom.PropertyDeclaration {
-        let type = this._determineDOMType(doclet);
+        const type = this._determineDOMType(doclet);
 
-        let obj = dom.create.property(doclet.name, type);
+        const obj = dom.create.property(doclet.name, type);
 
         this._processFlags(doclet, obj);
 
