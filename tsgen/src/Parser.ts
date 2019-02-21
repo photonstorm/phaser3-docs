@@ -304,7 +304,7 @@ export class Parser {
 
             // console.log('namespace:', doclet.longname);
 
-        let obj = dom.create.namespace(doclet.name);
+        const obj = dom.create.namespace(doclet.name);
 
         return obj;
     }
