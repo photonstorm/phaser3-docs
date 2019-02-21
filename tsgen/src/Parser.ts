@@ -335,12 +335,11 @@ export class Parser {
     }
 
     private _createMemberDeclaration(doclet: IMemberDoclet): dom.PropertyDeclaration {
-        let type = this._determineDOMType(doclet);
+        const type = this._determineDOMType(doclet);
 
-        let obj = dom.create.property(doclet.name, type);
+        const obj = dom.create.property(doclet.name, type);
 
         this._processGeneric(doclet, obj, null);
-
         this._processFlags(doclet, obj);
 
         return obj;
