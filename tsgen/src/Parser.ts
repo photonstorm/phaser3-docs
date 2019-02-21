@@ -447,7 +447,7 @@ export class Parser {
             | dom.FunctionDeclaration
             | dom.ConstructorDeclaration
     ): void {
-        let parameters: dom.Parameter[] = [];
+        const parameters: dom.Parameter[] = [];
 
         if (doclet.params) {
 
@@ -455,13 +455,13 @@ export class Parser {
 
             obj.jsDocComment = '';
 
-            for (let paramDoc of doclet.params) {
+            for (const paramDoc of doclet.params) {
 
                 // TODO REMOVE TEMP FIX
                 if (paramDoc.name.indexOf('.') != -1) {
                     console.log(`Warning: ignoring param with '.' for '${doclet.longname}' in ${doclet.meta.filename}@${doclet.meta.lineno}`);
 
-                    let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
+                    const defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
                     if (paramDoc.description)
                         obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.replace(regexEndLine, '$1\n')}` + defaultVal;
                     else if (defaultVal.length)
@@ -470,7 +470,7 @@ export class Parser {
                 }
                 ///////////////////////
 
-                let param = dom.create.parameter(paramDoc.name, this._determineDOMType(paramDoc));
+                const param = dom.create.parameter(paramDoc.name, this._determineDOMType(paramDoc));
                 parameters.push(param);
 
                 if (optional && paramDoc.optional != true) {
@@ -482,7 +482,7 @@ export class Parser {
 
                 optional = optional || paramDoc.optional === true;
 
-                let defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
+                const defaultVal = paramDoc.defaultvalue !== undefined ? ` Default ${String(paramDoc.defaultvalue)}.` : '';
 
                 if (paramDoc.description)
                     obj.jsDocComment += `\n@param ${paramDoc.name} ${paramDoc.description.replace(regexEndLine, '$1\n')}` + defaultVal;
