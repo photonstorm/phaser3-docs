@@ -165,8 +165,8 @@ export class Parser {
 
     private _resolveDoclets(doclets: Array<TDoclet>): void {
         let allTypes = new Set<string>();
-        for (let doclet of doclets) {
-            let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
+        for (const doclet of doclets) {
+            const obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
             if (!obj) {
 
@@ -179,14 +179,14 @@ export class Parser {
             if (!doclet.memberof) {
                 this.topLevel.push(obj as dom.TopLevelDeclaration);
             } else {
-                let isNamespaceMember = doclet.kind === 'class' || doclet.kind === 'typedef' || doclet.kind == 'namespace' || ('isEnum' in doclet && doclet.isEnum);
+                const isNamespaceMember = doclet.kind === 'class' || doclet.kind === 'typedef' || doclet.kind == 'namespace' || ('isEnum' in doclet && doclet.isEnum);
                 let parent = isNamespaceMember ? this.namespaces[doclet.memberof] : (this.objects[doclet.memberof] || this.namespaces[doclet.memberof]);
 
                 //TODO: this whole section should be removed once stable
                 if (!parent) {
                     console.log(`${doclet.longname} in ${doclet.meta.filename}@${doclet.meta.lineno} has parent '${doclet.memberof}' that is not defined.`);
-                    let parts: string[] = doclet.memberof.split('.');
-                    let newParts = [parts.pop()];
+                    const parts: string[] = doclet.memberof.split('.');
+                    const newParts = [parts.pop()];
                     while (parts.length > 0 && this.objects[parts.join('.')] == null) newParts.unshift(parts.pop());
                     parent = this.objects[parts.join('.')] as dom.NamespaceDeclaration;
                     if (parent == null) {
@@ -195,7 +195,7 @@ export class Parser {
                         this.topLevel.push(<dom.NamespaceDeclaration>parent);
                     } else {
                         while (newParts.length > 0) {
-                            let oldParent = <dom.NamespaceDeclaration>parent;
+                            const oldParent = <dom.NamespaceDeclaration>parent;
                             parent = dom.create.namespace(newParts.shift());
                             parts.push((<dom.NamespaceDeclaration>parent).name);
                             this.namespaces[parts.join('.')] = <dom.NamespaceDeclaration>parent;
