@@ -229,8 +229,8 @@ export class Parser {
     }
 
     private _resolveInheritance(doclets: Array<TDoclet>): void {
-        for (let doclet of doclets) {
-            let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
+        for (const doclet of doclets) {
+            const obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
             if (!obj) {
 
                 //  TODO
@@ -241,7 +241,7 @@ export class Parser {
             if (!(<any>obj)._parent) continue;
 
             if (doclet.inherited) {// remove inherited members if they aren't from an interface
-                let from = this.objects[doclet.inherits];
+                const from = this.objects[doclet.inherits];
                 if (!from || !(<any>from)._parent)
                     throw `'${doclet.longname}' should inherit from '${doclet.inherits}', which is not defined.`;
 
