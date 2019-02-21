@@ -9,10 +9,10 @@ export class Parser {
     objects: { [key: string]: dom.DeclarationBase };
     namespaces: { [key: string]: dom.NamespaceDeclaration };
 
-    constructor(docs: Array<TDoclet>) {
+    constructor(doclets: Array<TDoclet>) {
         // TODO remove once stable
-        for (let i = 0; i < docs.length; i++) {
-            let doclet = docs[i];
+        for (let i = 0; i < doclets.length; i++) {
+            let doclet = doclets[i];
 
             if (doclet.longname && doclet.longname.indexOf('{') === 0) {
                 doclet.longname = doclet.longname.substr(1);
@@ -30,16 +30,16 @@ export class Parser {
         this.namespaces = {};
 
         // parse doclets and create corresponding dom objects
-        this.parseObjects(docs);
+        this.parseObjects(doclets);
 
-        this.resolveObjects(docs);
+        this.resolveObjects(doclets);
 
         // removes members inherited from classes
         // possibly could be avoided if mixins were defined as such before JSDoc parses them and then we could globally remove all inherited (not
         // overriden) members globally from the parsed DB
-        this.resolveInheritance(docs);
+        this.resolveInheritance(doclets);
 
-        this.resolveParents(docs);
+        this.resolveParents(doclets);
 
         // add integer alias
         this.topLevel.push(dom.create.alias('integer', dom.type.number));
