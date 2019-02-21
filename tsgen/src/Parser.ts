@@ -341,7 +341,7 @@ export class Parser {
 
         this.processGeneric(doclet, obj, null);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
@@ -358,7 +358,7 @@ export class Parser {
 
         let obj = dom.create.property(doclet.name, type);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
@@ -370,7 +370,7 @@ export class Parser {
 
         let obj = dom.create.const(doclet.name, type);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
@@ -378,7 +378,7 @@ export class Parser {
     private _createEnumDeclaration(doclet: IMemberDoclet): dom.EnumDeclaration {
         let obj = dom.create.enum(doclet.name, false);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
@@ -395,7 +395,7 @@ export class Parser {
 
         this.processGeneric(doclet, obj, obj.parameters);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
@@ -478,7 +478,7 @@ export class Parser {
                     paramDoc.optional = true;
                 }
 
-                this.processFlags(paramDoc, param);
+                this._processFlags(paramDoc, param);
 
                 optional = optional || paramDoc.optional === true;
 
@@ -594,7 +594,7 @@ export class Parser {
      * @instance
      * @private
      */
-    private processFlags(
+    private _processFlags(
         doclet: Readonly<IDocletProp> | Readonly<TDoclet>,
         domObj: dom.DeclarationBase | dom.Parameter
     ): void {
