@@ -366,9 +366,9 @@ export class Parser {
     private _createEventDeclaration(doclet: IEventDoclet): dom.ConstDeclaration {
         // this could all be "somewhat wrong", and subject to change
         // TODO: this should return an "event" function
-        let type = dom.type.any;
+        const type = dom.type.any;
 
-        let obj = dom.create.const(doclet.name, type);
+        const obj = dom.create.const(doclet.name, type);
 
         this._processFlags(doclet, obj);
 
