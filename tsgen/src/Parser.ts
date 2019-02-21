@@ -513,9 +513,9 @@ export class Parser {
         }
 
         const types = doclet.type.names
-                             .map(name => this._prepareTypeName(name))
-                             .map(name => this._processTypeName(name))
-                             .map(dom.create.namedTypeReference);
+                            .map(name => this._prepareTypeName(name))
+                            .map(name => this._processTypeName(name))
+                            .map(dom.create.namedTypeReference);
 
         if (types.length === 1) {
             return types[0];
