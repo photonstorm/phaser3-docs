@@ -30,7 +30,7 @@ export class Parser {
         this.namespaces = {};
 
         // parse doclets and create corresponding dom objects
-        this.parseObjects(doclets);
+        this._parseDoclets(doclets);
 
         this.resolveObjects(doclets);
 
@@ -68,10 +68,10 @@ export class Parser {
         return result;
     }
 
-    private parseObjects(docs: Array<TDoclet>) {
-        for (let i = 0; i < docs.length; i++) {
+    private _parseDoclets(doclets: Array<TDoclet>): void {
+        for (let i = 0; i < doclets.length; i++) {
 
-            let doclet = docs[i];
+            let doclet = doclets[i];
 
             // if (doclet.kind === 'namespace')
             // {
@@ -151,7 +151,7 @@ export class Parser {
             if (obj) {
                 if (container[doclet.longname]) {
                     console.log('Warning: ignoring duplicate doc name: ' + doclet.longname);
-                    docs.splice(i--, 1);
+                    doclets.splice(i--, 1);
                     continue;
                 }
                 container[doclet.longname] = obj;
