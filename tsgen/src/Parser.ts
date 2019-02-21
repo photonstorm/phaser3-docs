@@ -12,7 +12,7 @@ export class Parser {
     constructor(doclets: Array<TDoclet>) {
         // TODO remove once stable
         for (let i = 0; i < doclets.length; i++) {
-            let doclet = doclets[i];
+            const doclet = doclets[i];
 
             if (doclet.longname && doclet.longname.indexOf('{') === 0) {
                 doclet.longname = doclet.longname.substr(1);
@@ -163,7 +163,7 @@ export class Parser {
     }
 
     private _resolveDoclets(doclets: Array<TDoclet>): void {
-        let allTypes = new Set<string>();
+        const allTypes = new Set<string>();
         for (const doclet of doclets) {
             const obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
@@ -253,7 +253,7 @@ export class Parser {
     }
 
     private _resolveParents(doclets: Array<TDoclet>): void {
-        for (let doclet of doclets) {
+        for (const doclet of doclets) {
             const obj = this.objects[doclet.longname];
             if (!obj || doclet.kind !== 'class') continue;
 
@@ -756,7 +756,7 @@ export class Parser {
 
         function handleOverrides(matchedString: string, overrideType: string) {
             if (matchedString != null) {
-                let overrides = matchedString.split(',');
+                const overrides = matchedString.split(',');
                 if (parameters != null) {
                     for (const parameter of parameters) {
                         if (overrides.indexOf(parameter.name) != -1) {
