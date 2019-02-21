@@ -376,7 +376,7 @@ export class Parser {
     }
 
     private _createEnumDeclaration(doclet: IMemberDoclet): dom.EnumDeclaration {
-        let obj = dom.create.enum(doclet.name, false);
+        const obj = dom.create.enum(doclet.name, false);
 
         this._processFlags(doclet, obj);
 
