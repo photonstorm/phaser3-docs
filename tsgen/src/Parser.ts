@@ -39,7 +39,7 @@ export class Parser {
         // overriden) members globally from the parsed DB
         this._resolveInheritance(doclets);
 
-        this.resolveParents(doclets);
+        this._resolveParents(doclets);
 
         // add integer alias
         this.topLevel.push(dom.create.alias('integer', dom.type.number));
@@ -253,8 +253,8 @@ export class Parser {
         }
     }
 
-    private resolveParents(docs: Array<TDoclet>) {
-        for (let doclet of docs) {
+    private _resolveParents(doclets: Array<TDoclet>): void {
+        for (let doclet of doclets) {
             let obj = this.objects[doclet.longname];
             if (!obj || doclet.kind !== 'class') continue;
 
