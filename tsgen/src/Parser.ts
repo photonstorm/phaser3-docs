@@ -740,10 +740,10 @@ export class Parser {
         parameters: dom.Parameter[]
     ): void {
         if (doclet.tags)
-            for (let tag of doclet.tags) {
+            for (const tag of doclet.tags) {
                 if (tag.originalTitle === 'generic') {
-                    let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                    let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
+                    const matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                    const typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
 
                     if (declaration.kind !== 'property') {
                         declaration.typeParameters.push(typeParam);
@@ -751,8 +751,8 @@ export class Parser {
 
                     handleOverrides(matches[3], matches[2]);
                 } else if (tag.originalTitle === 'genericUse') {
-                    let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
-                    let overrideType: string = this._prepareTypeName(matches[1]);
+                    const matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
+                    const overrideType: string = this._prepareTypeName(matches[1]);
 
                     handleOverrides(matches[2], this._processTypeName(overrideType));
                 }
@@ -762,7 +762,7 @@ export class Parser {
             if (matchedString != null) {
                 let overrides = matchedString.split(',');
                 if (parameters != null) {
-                    for (let parameter of parameters) {
+                    for (const parameter of parameters) {
                         if (overrides.indexOf(parameter.name) != -1) {
                             parameter.type = dom.create.namedTypeReference(overrideType);
                         }
