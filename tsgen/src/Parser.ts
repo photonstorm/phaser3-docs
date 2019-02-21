@@ -406,10 +406,10 @@ export class Parser {
 
         // TODO: this doesn't support 'Object', which is typically what should be used.
         if (doclet.type.names[0] === 'object') {
-            let properties = [];
+            const properties = [];
 
-            for (let propDoc of doclet.properties) {
-                let prop = this._createPropertyDeclaration(propDoc);
+            for (const propDoc of doclet.properties) {
+                const prop = this._createPropertyDeclaration(propDoc);
                 properties.push(prop);
                 if (propDoc.description)
                     prop.jsDocComment = propDoc.description.replace(regexEndLine, '$1\n');
@@ -418,7 +418,7 @@ export class Parser {
             type = dom.create.objectType(properties);
 
             if (doclet.augments && doclet.augments.length) {
-                let intersectionTypes = [];
+                const intersectionTypes = [];
                 for (let i = 0; i < doclet.augments.length; i++) {
                     intersectionTypes.push(dom.create.namedTypeReference(doclet.augments[i]));
                 }
@@ -431,7 +431,7 @@ export class Parser {
             this._parseFunctionParameters(doclet, type);
         }
 
-        let alias = dom.create.alias(doclet.name, type);
+        const alias = dom.create.alias(doclet.name, type);
 
         this._processGeneric(doclet, alias, null);
 
