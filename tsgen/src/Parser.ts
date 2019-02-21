@@ -32,7 +32,7 @@ export class Parser {
         // parse doclets and create corresponding dom objects
         this._parseDoclets(doclets);
 
-        this.resolveObjects(doclets);
+        this._resolveDoclets(doclets);
 
         // removes members inherited from classes
         // possibly could be avoided if mixins were defined as such before JSDoc parses them and then we could globally remove all inherited (not
@@ -163,9 +163,9 @@ export class Parser {
         }
     }
 
-    private resolveObjects(docs: TDoclet[]) {
+    private _resolveDoclets(doclets: Array<TDoclet>): void {
         let allTypes = new Set<string>();
-        for (let doclet of docs) {
+        for (let doclet of doclets) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
             if (!obj) {
