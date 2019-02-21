@@ -9,10 +9,10 @@ export class Parser {
     objects: { [key: string]: dom.DeclarationBase };
     namespaces: { [key: string]: dom.NamespaceDeclaration };
 
-    constructor(docs: Array<TDoclet>) {
+    constructor(doclets: Array<TDoclet>) {
         // TODO remove once stable
-        for (let i = 0; i < docs.length; i++) {
-            let doclet = docs[i];
+        for (let i = 0; i < doclets.length; i++) {
+            let doclet = doclets[i];
 
             if (doclet.longname && doclet.longname.indexOf('{') === 0) {
                 doclet.longname = doclet.longname.substr(1);
@@ -30,16 +30,16 @@ export class Parser {
         this.namespaces = {};
 
         // parse doclets and create corresponding dom objects
-        this.parseObjects(docs);
+        this._parseDoclets(doclets);
 
-        this.resolveObjects(docs);
+        this._resolveDoclets(doclets);
 
         // removes members inherited from classes
         // possibly could be avoided if mixins were defined as such before JSDoc parses them and then we could globally remove all inherited (not
         // overriden) members globally from the parsed DB
-        this.resolveInheritance(docs);
+        this._resolveInheritance(doclets);
 
-        this.resolveParents(docs);
+        this._resolveParents(doclets);
 
         // add integer alias
         this.topLevel.push(dom.create.alias('integer', dom.type.number));
@@ -68,10 +68,10 @@ export class Parser {
         return result;
     }
 
-    private parseObjects(docs: Array<TDoclet>) {
-        for (let i = 0; i < docs.length; i++) {
+    private _parseDoclets(doclets: Array<TDoclet>): void {
+        for (let i = 0; i < doclets.length; i++) {
 
-            let doclet = docs[i];
+            let doclet = doclets[i];
 
             // if (doclet.kind === 'namespace')
             // {
@@ -117,31 +117,31 @@ export class Parser {
 
             switch (doclet.kind) {
                 case 'namespace':
-                    obj = this.createNamespace(doclet);
+                    obj = this._createNamespaceDeclaration(doclet);
                     container = this.namespaces;
                     break;
                 case 'class':
-                    obj = this.createClass(doclet);
+                    obj = this._createClassDeclaration(doclet);
                     break;
                 case 'mixin':
-                    obj = this.createInterface(doclet);
+                    obj = this._createInterfaceDeclaration(doclet);
                     break;
                 case 'member':
                     if (doclet.isEnum === true) {
-                        obj = this.createEnum(doclet);
+                        obj = this._createEnumDeclaration(doclet);
                         break;
                     }
                 case 'constant':
-                    obj = this.createMember(doclet);
+                    obj = this._createMemberDeclaration(doclet);
                     break;
                 case 'function':
-                    obj = this.createFunction(doclet);
+                    obj = this._createFunctionDeclaration(doclet);
                     break;
                 case 'typedef':
-                    obj = this.createTypedef(doclet);
+                    obj = this._createTypedefDeclaration(doclet);
                     break;
                 case 'event':
-                    obj = this.createEvent(doclet);
+                    obj = this._createEventDeclaration(doclet);
                     break;
                 default:
                     console.log('Ignored doclet kind: ' + doclet.kind);
@@ -151,7 +151,7 @@ export class Parser {
             if (obj) {
                 if (container[doclet.longname]) {
                     console.log('Warning: ignoring duplicate doc name: ' + doclet.longname);
-                    docs.splice(i--, 1);
+                    doclets.splice(i--, 1);
                     continue;
                 }
                 container[doclet.longname] = obj;
@@ -163,9 +163,9 @@ export class Parser {
         }
     }
 
-    private resolveObjects(docs: TDoclet[]) {
+    private _resolveDoclets(doclets: Array<TDoclet>): void {
         let allTypes = new Set<string>();
-        for (let doclet of docs) {
+        for (let doclet of doclets) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
 
             if (!obj) {
@@ -228,8 +228,8 @@ export class Parser {
         }
     }
 
-    private resolveInheritance(docs: TDoclet[]) {
-        for (let doclet of docs) {
+    private _resolveInheritance(doclets: Array<TDoclet>): void {
+        for (let doclet of doclets) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
             if (!obj) {
 
@@ -253,8 +253,8 @@ export class Parser {
         }
     }
 
-    private resolveParents(docs: Array<TDoclet>) {
-        for (let doclet of docs) {
+    private _resolveParents(doclets: Array<TDoclet>): void {
+        for (let doclet of doclets) {
             let obj = this.objects[doclet.longname];
             if (!obj || doclet.kind !== 'class') continue;
 
@@ -283,7 +283,7 @@ export class Parser {
         }
     }
 
-    private createNamespace(doclet: INamespaceDoclet): dom.NamespaceDeclaration {
+    private _createNamespaceDeclaration(doclet: INamespaceDoclet): dom.NamespaceDeclaration {
 
         /**
          namespace: { comment: '',
@@ -309,20 +309,20 @@ export class Parser {
         return obj;
     }
 
-    private createClass(doclet: IClassDoclet): dom.ClassDeclaration {
+    private _createClassDeclaration(doclet: IClassDoclet): dom.ClassDeclaration {
         let obj = dom.create.class(doclet.name);
 
         let params = null;
         if (doclet.params) {
             let ctor = dom.create.constructor(null);
-            this.setParams(doclet, ctor);
+            this._parseFunctionParameters(doclet, ctor);
             params = ctor.parameters;
 
             obj.members.push(ctor);
             (<any>ctor)._parent = obj;
         }
 
-        this.processGeneric(doclet, obj, params);
+        this._processGeneric(doclet, obj, params);
 
         if (doclet.classdesc)
             doclet.description = doclet.classdesc.replace(regexEndLine, '$1\n'); // make sure docs will be added
@@ -330,18 +330,18 @@ export class Parser {
         return obj;
     }
 
-    private createInterface(doclet: IClassDoclet): dom.InterfaceDeclaration {
+    private _createInterfaceDeclaration(doclet: IClassDoclet): dom.InterfaceDeclaration {
         return dom.create.interface(doclet.name);
     }
 
-    private createMember(doclet: IMemberDoclet): dom.PropertyDeclaration {
-        let type = this._parseType(doclet);
+    private _createMemberDeclaration(doclet: IMemberDoclet): dom.PropertyDeclaration {
+        let type = this._determineDOMType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
-        this.processGeneric(doclet, obj, null);
+        this._processGeneric(doclet, obj, null);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
@@ -353,54 +353,54 @@ export class Parser {
      *
      * @return {PropertyDeclaration}
      */
-    private createProp(doclet: IDocletProp): dom.PropertyDeclaration {
-        let type = this._parseType(doclet);
+    private _createPropertyDeclaration(doclet: IDocletProp): dom.PropertyDeclaration {
+        let type = this._determineDOMType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
 
-    private createEvent(doclet: IEventDoclet): dom.ConstDeclaration {
+    private _createEventDeclaration(doclet: IEventDoclet): dom.ConstDeclaration {
         // this could all be "somewhat wrong", and subject to change
         // TODO: this should return an "event" function
         let type = dom.type.any;
 
         let obj = dom.create.const(doclet.name, type);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
 
-    private createEnum(doclet: IMemberDoclet): dom.EnumDeclaration {
+    private _createEnumDeclaration(doclet: IMemberDoclet): dom.EnumDeclaration {
         let obj = dom.create.enum(doclet.name, false);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
 
-    private createFunction(doclet: IFunctionDoclet): dom.FunctionDeclaration {
+    private _createFunctionDeclaration(doclet: IFunctionDoclet): dom.FunctionDeclaration {
         let returnType: dom.Type = dom.type.void;
 
         if (doclet.returns) {
-            returnType = this._parseType(doclet.returns[0]);
+            returnType = this._determineDOMType(doclet.returns[0]);
         }
 
         let obj = dom.create.function(doclet.name, null, returnType);
-        this.setParams(doclet, obj);
+        this._parseFunctionParameters(doclet, obj);
 
-        this.processGeneric(doclet, obj, obj.parameters);
+        this._processGeneric(doclet, obj, obj.parameters);
 
-        this.processFlags(doclet, obj);
+        this._processFlags(doclet, obj);
 
         return obj;
     }
 
-    private createTypedef(doclet: ITypedefDoclet): dom.TypeAliasDeclaration {
+    private _createTypedefDeclaration(doclet: ITypedefDoclet): dom.TypeAliasDeclaration {
         const typeName = doclet.type.names[0];
         let type = null;
 
@@ -409,7 +409,7 @@ export class Parser {
             let properties = [];
 
             for (let propDoc of doclet.properties) {
-                let prop = this.createProp(propDoc);
+                let prop = this._createPropertyDeclaration(propDoc);
                 properties.push(prop);
                 if (propDoc.description)
                     prop.jsDocComment = propDoc.description.replace(regexEndLine, '$1\n');
@@ -428,17 +428,17 @@ export class Parser {
 
         } else {
             type = dom.create.functionType(null, dom.type.void);
-            this.setParams(doclet, type);
+            this._parseFunctionParameters(doclet, type);
         }
 
         let alias = dom.create.alias(doclet.name, type);
 
-        this.processGeneric(doclet, alias, null);
+        this._processGeneric(doclet, alias, null);
 
         return alias;
     }
 
-    private setParams(
+    private _parseFunctionParameters(
         doclet:
             | ITypedefDoclet
             | IFunctionDoclet
@@ -470,7 +470,7 @@ export class Parser {
                 }
                 ///////////////////////
 
-                let param = dom.create.parameter(paramDoc.name, this._parseType(paramDoc));
+                let param = dom.create.parameter(paramDoc.name, this._determineDOMType(paramDoc));
                 parameters.push(param);
 
                 if (optional && paramDoc.optional != true) {
@@ -478,7 +478,7 @@ export class Parser {
                     paramDoc.optional = true;
                 }
 
-                this.processFlags(paramDoc, param);
+                this._processFlags(paramDoc, param);
 
                 optional = optional || paramDoc.optional === true;
 
@@ -495,27 +495,27 @@ export class Parser {
     }
 
     /**
-     * Parses the given `typeDoc`, returning the correct `Type` to use for TypeScript.
+     * Determines the `TypeScript` CodeDOM `Type` to use for the given `doclet`.
      *
-     * @param {IMemberDoclet | IDocletProp | IDocletReturn} typeDoc
+     * @param {IMemberDoclet | IDocletProp | IDocletReturn} doclet
      *
      * @return {Type}
      * @private
      */
-    private _parseType(
-        typeDoc:
+    private _determineDOMType(
+        doclet:
             | Readonly<IMemberDoclet>
             | Readonly<IDocletProp>
             | Readonly<IDocletReturn>
     ): dom.Type {
-        if (!typeDoc.type) {
+        if (!doclet.type) {
             return dom.type.any;
         }
 
-        const types = typeDoc.type.names
-                             .map(name => this._prepareTypeName(name))
-                             .map(name => this.processTypeName(name))
-                             .map(dom.create.namedTypeReference);
+        const types = doclet.type.names
+                            .map(name => this._prepareTypeName(name))
+                            .map(name => this._processTypeName(name))
+                            .map(dom.create.namedTypeReference);
 
         if (types.length === 1) {
             return types[0];
@@ -554,7 +554,7 @@ export class Parser {
             .replace(/\.</g, '<');
     }
 
-    private processTypeName(name: string): string {
+    private _processTypeName(name: string): string {
         if (name === 'float') return 'number';
         if (name === 'function') return 'Function';
         if (name === 'array') return 'any[]';
@@ -563,7 +563,7 @@ export class Parser {
             let matches = name.match(/^Array<(.*)>$/);
 
             if (matches && matches[1]) {
-                return this.processTypeName(matches[1]) + '[]';
+                return this._processTypeName(matches[1]) + '[]';
             }
         } else if (name.startsWith('Object<')) {
             let matches = name.match(/^Object<(.*)>$/);
@@ -571,9 +571,9 @@ export class Parser {
             if (matches && matches[1]) {
                 if (matches[1].indexOf(',') != -1) {
                     let parts = matches[1].split(',');
-                    return `{[key: ${this.processTypeName(parts[0])}]: ${this.processTypeName(parts[1])}}`;
+                    return `{[key: ${this._processTypeName(parts[0])}]: ${this._processTypeName(parts[1])}}`;
                 } else {
-                    return `{[key: string]: ${this.processTypeName(matches[1])}}`;
+                    return `{[key: string]: ${this._processTypeName(matches[1])}}`;
                 }
             }
         }
@@ -594,7 +594,7 @@ export class Parser {
      * @instance
      * @private
      */
-    private processFlags(
+    private _processFlags(
         doclet: Readonly<IDocletProp> | Readonly<TDoclet>,
         domObj: dom.DeclarationBase | dom.Parameter
     ): void {
@@ -730,14 +730,14 @@ export class Parser {
 
     // endregion
 
-    private processGeneric(
+    private _processGeneric(
         doclet: IDocletBase,
-        obj:
+        declaration:
             | dom.ClassDeclaration
             | dom.FunctionDeclaration
             | dom.PropertyDeclaration
             | dom.TypeAliasDeclaration,
-        params: dom.Parameter[]
+        parameters: dom.Parameter[]
     ): void {
         if (doclet.tags)
             for (let tag of doclet.tags) {
@@ -745,8 +745,8 @@ export class Parser {
                     let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                     let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
 
-                    if (obj.kind !== 'property') {
-                        obj.typeParameters.push(typeParam);
+                    if (declaration.kind !== 'property') {
+                        declaration.typeParameters.push(typeParam);
                     }
 
                     handleOverrides(matches[3], matches[2]);
@@ -754,26 +754,26 @@ export class Parser {
                     let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                     let overrideType: string = this._prepareTypeName(matches[1]);
 
-                    handleOverrides(matches[2], this.processTypeName(overrideType));
+                    handleOverrides(matches[2], this._processTypeName(overrideType));
                 }
             }
 
         function handleOverrides(matchedString: string, overrideType: string) {
             if (matchedString != null) {
                 let overrides = matchedString.split(',');
-                if (params != null) {
-                    for (let param of params) {
-                        if (overrides.indexOf(param.name) != -1) {
-                            param.type = dom.create.namedTypeReference(overrideType);
+                if (parameters != null) {
+                    for (let parameter of parameters) {
+                        if (overrides.indexOf(parameter.name) != -1) {
+                            parameter.type = dom.create.namedTypeReference(overrideType);
                         }
                     }
                 }
-                if (obj.kind === 'function' && overrides.indexOf('$return') != -1) {// has $return, must be a function
-                    obj.returnType = dom.create.namedTypeReference(overrideType);
+                if (declaration.kind === 'function' && overrides.indexOf('$return') != -1) {// has $return, must be a function
+                    declaration.returnType = dom.create.namedTypeReference(overrideType);
                 }
 
-                if (obj.kind === 'property' && overrides.indexOf('$type') != -1) {// has $type, must be a property
-                    obj.type = dom.create.namedTypeReference(overrideType);
+                if (declaration.kind === 'property' && overrides.indexOf('$type') != -1) {// has $type, must be a property
+                    declaration.type = dom.create.namedTypeReference(overrideType);
                 }
             }
         }
