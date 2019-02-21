@@ -135,7 +135,7 @@ export class Parser {
                     obj = this._createMemberDeclaration(doclet);
                     break;
                 case 'function':
-                    obj = this.createFunction(doclet);
+                    obj = this._createFunctionDeclaration(doclet);
                     break;
                 case 'typedef':
                     obj = this.createTypedef(doclet);
@@ -383,7 +383,7 @@ export class Parser {
         return obj;
     }
 
-    private createFunction(doclet: IFunctionDoclet): dom.FunctionDeclaration {
+    private _createFunctionDeclaration(doclet: IFunctionDoclet): dom.FunctionDeclaration {
         let returnType: dom.Type = dom.type.void;
 
         if (doclet.returns) {
