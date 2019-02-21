@@ -322,7 +322,7 @@ export class Parser {
             (<any>ctor)._parent = obj;
         }
 
-        this.processGeneric(doclet, obj, params);
+        this._processGeneric(doclet, obj, params);
 
         if (doclet.classdesc)
             doclet.description = doclet.classdesc.replace(regexEndLine, '$1\n'); // make sure docs will be added
@@ -339,7 +339,7 @@ export class Parser {
 
         let obj = dom.create.property(doclet.name, type);
 
-        this.processGeneric(doclet, obj, null);
+        this._processGeneric(doclet, obj, null);
 
         this._processFlags(doclet, obj);
 
@@ -393,7 +393,7 @@ export class Parser {
         let obj = dom.create.function(doclet.name, null, returnType);
         this._parseFunctionParameters(doclet, obj);
 
-        this.processGeneric(doclet, obj, obj.parameters);
+        this._processGeneric(doclet, obj, obj.parameters);
 
         this._processFlags(doclet, obj);
 
@@ -433,7 +433,7 @@ export class Parser {
 
         let alias = dom.create.alias(doclet.name, type);
 
-        this.processGeneric(doclet, alias, null);
+        this._processGeneric(doclet, alias, null);
 
         return alias;
     }
@@ -730,14 +730,14 @@ export class Parser {
 
     // endregion
 
-    private processGeneric(
+    private _processGeneric(
         doclet: IDocletBase,
-        obj:
+        declaration:
             | dom.ClassDeclaration
             | dom.FunctionDeclaration
             | dom.PropertyDeclaration
             | dom.TypeAliasDeclaration,
-        params: dom.Parameter[]
+        parameters: dom.Parameter[]
     ): void {
         if (doclet.tags)
             for (let tag of doclet.tags) {
@@ -745,8 +745,8 @@ export class Parser {
                     let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))?\s?([^\s]+)(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                     let typeParam = dom.create.typeParameter(matches[2], matches[1] == null ? null : dom.create.typeParameter(matches[1]));
 
-                    if (obj.kind !== 'property') {
-                        obj.typeParameters.push(typeParam);
+                    if (declaration.kind !== 'property') {
+                        declaration.typeParameters.push(typeParam);
                     }
 
                     handleOverrides(matches[3], matches[2]);
@@ -761,19 +761,19 @@ export class Parser {
         function handleOverrides(matchedString: string, overrideType: string) {
             if (matchedString != null) {
                 let overrides = matchedString.split(',');
-                if (params != null) {
-                    for (let param of params) {
-                        if (overrides.indexOf(param.name) != -1) {
-                            param.type = dom.create.namedTypeReference(overrideType);
+                if (parameters != null) {
+                    for (let parameter of parameters) {
+                        if (overrides.indexOf(parameter.name) != -1) {
+                            parameter.type = dom.create.namedTypeReference(overrideType);
                         }
                     }
                 }
-                if (obj.kind === 'function' && overrides.indexOf('$return') != -1) {// has $return, must be a function
-                    obj.returnType = dom.create.namedTypeReference(overrideType);
+                if (declaration.kind === 'function' && overrides.indexOf('$return') != -1) {// has $return, must be a function
+                    declaration.returnType = dom.create.namedTypeReference(overrideType);
                 }
 
-                if (obj.kind === 'property' && overrides.indexOf('$type') != -1) {// has $type, must be a property
-                    obj.type = dom.create.namedTypeReference(overrideType);
+                if (declaration.kind === 'property' && overrides.indexOf('$type') != -1) {// has $type, must be a property
+                    declaration.type = dom.create.namedTypeReference(overrideType);
                 }
             }
         }
