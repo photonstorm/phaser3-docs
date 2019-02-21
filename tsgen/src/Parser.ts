@@ -128,7 +128,7 @@ export class Parser {
                     break;
                 case 'member':
                     if (doclet.isEnum === true) {
-                        obj = this.createEnum(doclet);
+                        obj = this._createEnumDeclaration(doclet);
                         break;
                     }
                 case 'constant':
@@ -375,7 +375,7 @@ export class Parser {
         return obj;
     }
 
-    private createEnum(doclet: IMemberDoclet): dom.EnumDeclaration {
+    private _createEnumDeclaration(doclet: IMemberDoclet): dom.EnumDeclaration {
         let obj = dom.create.enum(doclet.name, false);
 
         this.processFlags(doclet, obj);
