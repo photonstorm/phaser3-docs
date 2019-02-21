@@ -51,8 +51,8 @@ export class Parser {
     }
 
     emit() {
-        let ignored = [];
-        let result = this.topLevel.reduce((out: string, obj: dom.TopLevelDeclaration) => {
+        const ignored = [];
+        const result = this.topLevel.reduce((out: string, obj: dom.TopLevelDeclaration) => {
             // TODO: remove once stable
             if (<string>obj.kind === 'property') {
                 ignored.push((<any>obj).name);
