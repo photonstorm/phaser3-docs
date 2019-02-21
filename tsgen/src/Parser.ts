@@ -335,7 +335,7 @@ export class Parser {
     }
 
     private _createMemberDeclaration(doclet: IMemberDoclet): dom.PropertyDeclaration {
-        let type = this._parseType(doclet);
+        let type = this._determineDOMType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
@@ -354,7 +354,7 @@ export class Parser {
      * @return {PropertyDeclaration}
      */
     private _createPropertyDeclaration(doclet: IDocletProp): dom.PropertyDeclaration {
-        let type = this._parseType(doclet);
+        let type = this._determineDOMType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
 
@@ -387,7 +387,7 @@ export class Parser {
         let returnType: dom.Type = dom.type.void;
 
         if (doclet.returns) {
-            returnType = this._parseType(doclet.returns[0]);
+            returnType = this._determineDOMType(doclet.returns[0]);
         }
 
         let obj = dom.create.function(doclet.name, null, returnType);
@@ -470,7 +470,7 @@ export class Parser {
                 }
                 ///////////////////////
 
-                let param = dom.create.parameter(paramDoc.name, this._parseType(paramDoc));
+                let param = dom.create.parameter(paramDoc.name, this._determineDOMType(paramDoc));
                 parameters.push(param);
 
                 if (optional && paramDoc.optional != true) {
@@ -495,24 +495,24 @@ export class Parser {
     }
 
     /**
-     * Parses the given `typeDoc`, returning the correct `Type` to use for TypeScript.
+     * Determines the `TypeScript` CodeDOM `Type` to use for the given `doclet`.
      *
-     * @param {IMemberDoclet | IDocletProp | IDocletReturn} typeDoc
+     * @param {IMemberDoclet | IDocletProp | IDocletReturn} doclet
      *
      * @return {Type}
      * @private
      */
-    private _parseType(
-        typeDoc:
+    private _determineDOMType(
+        doclet:
             | Readonly<IMemberDoclet>
             | Readonly<IDocletProp>
             | Readonly<IDocletReturn>
     ): dom.Type {
-        if (!typeDoc.type) {
+        if (!doclet.type) {
             return dom.type.any;
         }
 
-        const types = typeDoc.type.names
+        const types = doclet.type.names
                              .map(name => this._prepareTypeName(name))
                              .map(name => this.processTypeName(name))
                              .map(dom.create.namedTypeReference);
