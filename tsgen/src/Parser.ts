@@ -514,7 +514,7 @@ export class Parser {
 
         const types = doclet.type.names
                              .map(name => this._prepareTypeName(name))
-                             .map(name => this.processTypeName(name))
+                             .map(name => this._processTypeName(name))
                              .map(dom.create.namedTypeReference);
 
         if (types.length === 1) {
@@ -554,7 +554,7 @@ export class Parser {
             .replace(/\.</g, '<');
     }
 
-    private processTypeName(name: string): string {
+    private _processTypeName(name: string): string {
         if (name === 'float') return 'number';
         if (name === 'function') return 'Function';
         if (name === 'array') return 'any[]';
@@ -563,7 +563,7 @@ export class Parser {
             let matches = name.match(/^Array<(.*)>$/);
 
             if (matches && matches[1]) {
-                return this.processTypeName(matches[1]) + '[]';
+                return this._processTypeName(matches[1]) + '[]';
             }
         } else if (name.startsWith('Object<')) {
             let matches = name.match(/^Object<(.*)>$/);
@@ -571,9 +571,9 @@ export class Parser {
             if (matches && matches[1]) {
                 if (matches[1].indexOf(',') != -1) {
                     let parts = matches[1].split(',');
-                    return `{[key: ${this.processTypeName(parts[0])}]: ${this.processTypeName(parts[1])}}`;
+                    return `{[key: ${this._processTypeName(parts[0])}]: ${this._processTypeName(parts[1])}}`;
                 } else {
-                    return `{[key: string]: ${this.processTypeName(matches[1])}}`;
+                    return `{[key: string]: ${this._processTypeName(matches[1])}}`;
                 }
             }
         }
@@ -754,7 +754,7 @@ export class Parser {
                     let matches = tag.value.match(/(?:(?:{)([^}]+)(?:}))(?:\s?-\s?(?:\[)(.+)(?:\]))?/);
                     let overrideType: string = this._prepareTypeName(matches[1]);
 
-                    handleOverrides(matches[2], this.processTypeName(overrideType));
+                    handleOverrides(matches[2], this._processTypeName(overrideType));
                 }
             }
 
