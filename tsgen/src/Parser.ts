@@ -37,7 +37,7 @@ export class Parser {
         // removes members inherited from classes
         // possibly could be avoided if mixins were defined as such before JSDoc parses them and then we could globally remove all inherited (not
         // overriden) members globally from the parsed DB
-        this.resolveInheritance(doclets);
+        this._resolveInheritance(doclets);
 
         this.resolveParents(doclets);
 
@@ -228,8 +228,8 @@ export class Parser {
         }
     }
 
-    private resolveInheritance(docs: TDoclet[]) {
-        for (let doclet of docs) {
+    private _resolveInheritance(doclets: Array<TDoclet>): void {
+        for (let doclet of doclets) {
             let obj = doclet.kind === 'namespace' ? this.namespaces[doclet.longname] : this.objects[doclet.longname];
             if (!obj) {
 
