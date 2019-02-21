@@ -315,7 +315,7 @@ export class Parser {
         let params = null;
         if (doclet.params) {
             let ctor = dom.create.constructor(null);
-            this.setParams(doclet, ctor);
+            this._parseFunctionParameters(doclet, ctor);
             params = ctor.parameters;
 
             obj.members.push(ctor);
@@ -391,7 +391,7 @@ export class Parser {
         }
 
         let obj = dom.create.function(doclet.name, null, returnType);
-        this.setParams(doclet, obj);
+        this._parseFunctionParameters(doclet, obj);
 
         this.processGeneric(doclet, obj, obj.parameters);
 
@@ -428,7 +428,7 @@ export class Parser {
 
         } else {
             type = dom.create.functionType(null, dom.type.void);
-            this.setParams(doclet, type);
+            this._parseFunctionParameters(doclet, type);
         }
 
         let alias = dom.create.alias(doclet.name, type);
@@ -438,7 +438,7 @@ export class Parser {
         return alias;
     }
 
-    private setParams(
+    private _parseFunctionParameters(
         doclet:
             | ITypedefDoclet
             | IFunctionDoclet
