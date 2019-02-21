@@ -310,11 +310,11 @@ export class Parser {
     }
 
     private _createClassDeclaration(doclet: IClassDoclet): dom.ClassDeclaration {
-        let obj = dom.create.class(doclet.name);
+        const obj = dom.create.class(doclet.name);
 
         let params = null;
         if (doclet.params) {
-            let ctor = dom.create.constructor(null);
+            const ctor = dom.create.constructor(null);
             this._parseFunctionParameters(doclet, ctor);
             params = ctor.parameters;
 
