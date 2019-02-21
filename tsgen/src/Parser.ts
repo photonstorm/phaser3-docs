@@ -121,7 +121,7 @@ export class Parser {
                     container = this.namespaces;
                     break;
                 case 'class':
-                    obj = this.createClass(doclet);
+                    obj = this._createClassDeclaration(doclet);
                     break;
                 case 'mixin':
                     obj = this.createInterface(doclet);
@@ -309,7 +309,7 @@ export class Parser {
         return obj;
     }
 
-    private createClass(doclet: IClassDoclet): dom.ClassDeclaration {
+    private _createClassDeclaration(doclet: IClassDoclet): dom.ClassDeclaration {
         let obj = dom.create.class(doclet.name);
 
         let params = null;
