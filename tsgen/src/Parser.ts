@@ -138,7 +138,7 @@ export class Parser {
                     obj = this._createFunctionDeclaration(doclet);
                     break;
                 case 'typedef':
-                    obj = this.createTypedef(doclet);
+                    obj = this._createTypedefDeclaration(doclet);
                     break;
                 case 'event':
                     obj = this._createEventDeclaration(doclet);
@@ -400,7 +400,7 @@ export class Parser {
         return obj;
     }
 
-    private createTypedef(doclet: ITypedefDoclet): dom.TypeAliasDeclaration {
+    private _createTypedefDeclaration(doclet: ITypedefDoclet): dom.TypeAliasDeclaration {
         const typeName = doclet.type.names[0];
         let type = null;
 
