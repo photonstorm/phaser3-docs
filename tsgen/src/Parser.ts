@@ -560,17 +560,17 @@ export class Parser {
         if (name === 'array') return 'any[]';
 
         if (name.startsWith('Array<')) {
-            let matches = name.match(/^Array<(.*)>$/);
+            const matches = name.match(/^Array<(.*)>$/);
 
             if (matches && matches[1]) {
                 return this._processTypeName(matches[1]) + '[]';
             }
         } else if (name.startsWith('Object<')) {
-            let matches = name.match(/^Object<(.*)>$/);
+            const matches = name.match(/^Object<(.*)>$/);
 
             if (matches && matches[1]) {
                 if (matches[1].indexOf(',') != -1) {
-                    let parts = matches[1].split(',');
+                    const parts = matches[1].split(',');
                     return `{[key: ${this._processTypeName(parts[0])}]: ${this._processTypeName(parts[1])}}`;
                 } else {
                     return `{[key: string]: ${this._processTypeName(matches[1])}}`;
