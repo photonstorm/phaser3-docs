@@ -117,7 +117,7 @@ export class Parser {
 
             switch (doclet.kind) {
                 case 'namespace':
-                    obj = this.createNamespace(doclet);
+                    obj = this._createNamespaceDeclaration(doclet);
                     container = this.namespaces;
                     break;
                 case 'class':
@@ -283,7 +283,7 @@ export class Parser {
         }
     }
 
-    private createNamespace(doclet: INamespaceDoclet): dom.NamespaceDeclaration {
+    private _createNamespaceDeclaration(doclet: INamespaceDoclet): dom.NamespaceDeclaration {
 
         /**
          namespace: { comment: '',
