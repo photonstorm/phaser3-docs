@@ -141,7 +141,7 @@ export class Parser {
                     obj = this.createTypedef(doclet);
                     break;
                 case 'event':
-                    obj = this.createEvent(doclet);
+                    obj = this._createEventDeclaration(doclet);
                     break;
                 default:
                     console.log('Ignored doclet kind: ' + doclet.kind);
@@ -363,7 +363,7 @@ export class Parser {
         return obj;
     }
 
-    private createEvent(doclet: IEventDoclet): dom.ConstDeclaration {
+    private _createEventDeclaration(doclet: IEventDoclet): dom.ConstDeclaration {
         // this could all be "somewhat wrong", and subject to change
         // TODO: this should return an "event" function
         let type = dom.type.any;
