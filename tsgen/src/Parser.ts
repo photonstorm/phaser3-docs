@@ -353,7 +353,7 @@ export class Parser {
      *
      * @return {PropertyDeclaration}
      */
-    private createProp(doclet: IDocletProp): dom.PropertyDeclaration {
+    private _createPropertyDeclaration(doclet: IDocletProp): dom.PropertyDeclaration {
         let type = this._parseType(doclet);
 
         let obj = dom.create.property(doclet.name, type);
@@ -409,7 +409,7 @@ export class Parser {
             let properties = [];
 
             for (let propDoc of doclet.properties) {
-                let prop = this.createProp(propDoc);
+                let prop = this._createPropertyDeclaration(propDoc);
                 properties.push(prop);
                 if (propDoc.description)
                     prop.jsDocComment = propDoc.description.replace(regexEndLine, '$1\n');
