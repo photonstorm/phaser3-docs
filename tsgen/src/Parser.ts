@@ -384,17 +384,15 @@ export class Parser {
     }
 
     private _createFunctionDeclaration(doclet: IFunctionDoclet): dom.FunctionDeclaration {
-        let returnType: dom.Type = dom.type.void;
+        const returnType: dom.Type = doclet.returns
+            ? this._determineDOMType(doclet.returns[0])
+            : dom.type.void;
 
-        if (doclet.returns) {
-            returnType = this._determineDOMType(doclet.returns[0]);
-        }
+        const obj = dom.create.function(doclet.name, null, returnType);
 
-        let obj = dom.create.function(doclet.name, null, returnType);
         this._parseFunctionParameters(doclet, obj);
 
         this._processGeneric(doclet, obj, obj.parameters);
-
         this._processFlags(doclet, obj);
 
         return obj;
