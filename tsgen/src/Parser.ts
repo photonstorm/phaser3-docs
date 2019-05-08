@@ -408,8 +408,12 @@ export class Parser {
             }
 
         } else {
-            type = dom.create.functionType(null, dom.type.void);
-            this.setParams(doclet, type);
+            if (doclet.type.names[0] == "function") {
+                type = dom.create.functionType(null, dom.type.void);
+                this.setParams(doclet, type);
+            } else {
+                type = this.parseType(doclet);
+            }
         }
 
         let alias = dom.create.alias(doclet.name, type);
