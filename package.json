@@ -17,7 +17,8 @@
     "test-ts": "cd tsgen/test && tsc > output.txt",
     "ts": "npm run tsgen && npm run test-ts",
     "tsdev": "cd tsgen && tsc && jsdoc -c jsdoc-tsd.conf.json",
-    "total": "node total.js"
+    "total": "node total.js",
+    "build-docset": "dashing build phaser"
   },
   "repository": {
     "type": "git",
