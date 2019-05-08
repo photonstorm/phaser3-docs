@@ -9,7 +9,8 @@
     "source": {
         "include": [
             "../phaser/src/",
-            "../phaser/plugins/fbinstant"
+            "../phaser/plugins/fbinstant",
+            "../phaser/plugins/camera3d"
         ],
         "exclude": [
             "../phaser/src/phaser-arcade-physics.js",
