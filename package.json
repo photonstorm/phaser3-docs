@@ -1,6 +1,6 @@
 {
   "name": "phaser3-docs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Phaser 3 Documentation Generators",
   "main": "src/index.js",
   "scripts": {
@@ -12,11 +12,6 @@
     "sql": "node jsdoc-to-sqlite/process.js",
     "sqldev": "npm run json && npm run sql",
     "types": "node src/types.js",
-    "build-tsgen": "cd tsgen && tsc",
-    "tsgen": "cd tsgen && jsdoc -c jsdoc-tsd.conf.json",
-    "test-ts": "cd tsgen/test && tsc > output.txt",
-    "ts": "npm run tsgen && npm run test-ts",
-    "tsdev": "cd tsgen && tsc && jsdoc -c jsdoc-tsd.conf.json",
     "total": "node total.js",
     "build-docset": "dashing build phaser"
   },
@@ -54,7 +49,6 @@
     "vivid-cli": "^1.1.2"
   },
   "dependencies": {
-    "prepend-file": "^1.3.1",
-    "typescript": "^2.9.2"
+    "prepend-file": "^1.3.1"
   }
 }

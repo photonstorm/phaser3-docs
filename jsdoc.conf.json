@@ -9,17 +9,15 @@
     "source": {
         "include": [
             "../phaser/src/",
-            "../phaser/plugins/fbinstant",
-            "../phaser/plugins/camera3d"
+            "../phaser/plugins/fbinstant/src",
+            "../phaser/plugins/camera3d/src"
         ],
         "exclude": [
             "../phaser/src/phaser-arcade-physics.js",
             "../phaser/src/phaser-core.js",
             "../phaser/src/physics/matter-js/poly-decomp/",
             "../phaser/src/physics/matter-js/lib",
-            "../phaser/src/polyfills",
-            "../phaser/src/core/CreateDOMContainer.js",
-            "../phaser/src/gameobjects/domelement/"
+            "../phaser/src/polyfills"
         ],
         "includePattern": ".+\\.js?$",
         "excludePattern": "(^|\\/|\\\\)_"
@@ -30,7 +28,7 @@
         "jsdoc-plugins/this"
     ],
     "templates": {
-        "version": "v3.16.2",
+        "version": "v3.17.0",
         "systemName": "Phaser",
         "logoFile": "img/phaser3-logo-nav.png",
         "systemSummary": "HTML5 Game Framework",

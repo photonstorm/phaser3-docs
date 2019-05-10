@@ -13,8 +13,5 @@ v.log('{white}* npm run {green}json {cyan}          Build JSDocs to /json/phaser
 v.log('{white}* npm run {green}sql {cyan}                  Parse JSDoc JSON to SQLite');
 v.log('{white}* npm run {green}types {cyan}            Dump list of unique data types');
 v.log('{white}* npm run {green}total {cyan}  Dump list of remaining areas to document');
-v.log('{white}* npm run {green}build-tsgen {cyan}    Build the TypeScript Defs parser');
-v.log('{white}* npm run {green}tsgen {cyan}              Generate the TypeScript Defs');
-v.log('{white}* npm run {green}test-ts {cyan}                Test the TypeScript Defs');
 
 v.log('{bgYellow}{black}  https://phaser.io               https://labs.phaser.io  ');

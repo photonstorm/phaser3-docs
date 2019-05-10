@@ -497,6 +497,7 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Blitter.html">Blitter</a>',
       '<a href="Phaser.GameObjects.Blitter.Bob.html">Bob (Blitter Object)</a>',
       '<a href="Phaser.GameObjects.Container.html">Container</a>',
+      '<a href="Phaser.GameObjects.DOMElement.html">DOM Element</a>',
       '<a href="Phaser.GameObjects.Graphics.html">Graphics</a>',
       '<a href="Phaser.GameObjects.Group.html">Group</a>',
       '<a href="Phaser.GameObjects.Image.html">Image</a>',
@@ -521,6 +522,7 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Star.html">Star</a>',
       '<a href="Phaser.GameObjects.Triangle.html">Triangle</a>',
       '&nbsp;',
+      '<a href="Phaser.GameObjects.Shader.html">Shader (WebGL only)</a>',
       '<a href="Phaser.GameObjects.LightsPlugin.html">Lights (WebGL only)</a>',
       '<a href="Phaser.GameObjects.Mesh.html">Mesh (WebGL only)</a>',
       '<a href="Phaser.GameObjects.Quad.html">Quad (WebGL only)</a>'
