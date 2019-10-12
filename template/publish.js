@@ -508,6 +508,7 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a>',
       '<a href="Phaser.GameObjects.Text.html">Text</a>',
       '<a href="Phaser.GameObjects.TileSprite.html">TileSprite</a>',
+      '<a href="Phaser.GameObjects.Video.html">Video</a>',
       '<a href="Phaser.GameObjects.Zone.html">Zone</a>',
       '&nbsp;',
       '<a href="Phaser.GameObjects.Arc.html">Arc</a>',
