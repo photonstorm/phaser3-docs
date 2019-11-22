@@ -118,20 +118,25 @@ or playing a video based on a given URL. Videos can be either local, or streamed
 
 create () {
   this.add.video(400, 300, 'pixar');
-}</code></pre><p>To all intents and purposes, a video is a standard Game Object, just like a Sprite. And as such, you can do
+}
+</code></pre>
+<p>To all intents and purposes, a video is a standard Game Object, just like a Sprite. And as such, you can do
 all the usual things to it, such as scaling, rotating, cropping, tinting, making interactive, giving a
 physics body, etc.</p>
 <p>Transparent videos are also possible via the WebM file format. Providing the video file has was encoded with
-an alpha channel, and providing the browser supports WebM playback (not all of them do), then it willl render
+an alpha channel, and providing the browser supports WebM playback (not all of them do), then it will render
 in-game with full transparency.</p>
-<h3>Autoplaying Videos</h3><p>Videos can only autoplay if the browser has been unlocked with an interaction, or satisfies the MEI settings.
+<h3>Autoplaying Videos</h3>
+<p>Videos can only autoplay if the browser has been unlocked with an interaction, or satisfies the MEI settings.
 The policies that control autoplaying are vast and vary between browser.
 You can, ahd should, read more about it here: https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide</p>
 <p>If your video doesn't contain any audio, then set the <code>noAudio</code> parameter to <code>true</code> when the video is <em>loaded</em>,
 and it will often allow the video to play immediately:</p>
 <pre class="prettyprint source lang-javascript"><code>preload () {
   this.load.video('pixar', 'nemo.mp4', 'loadeddata', false, true);
-}</code></pre><p>The 5th parameter in the load call tells Phaser that the video doesn't contain any audio tracks. Video without
+}
+</code></pre>
+<p>The 5th parameter in the load call tells Phaser that the video doesn't contain any audio tracks. Video without
 audio can autoplay without requiring a user interaction. Video with audio cannot do this unless it satisfies
 the browsers MEI settings. See the MDN Autoplay Guide for further details.</p>
 <p>Note that due to a bug in IE11 you cannot play a video texture to a Sprite in WebGL. For IE11 force Canvas mode.</p>
@@ -355,7 +360,7 @@ https://developer.mozilla.org/en-US/docs/Web/Media/Formats</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L17">Line 17</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L18">Line 18</a>)</dt>
 	
 
 	
@@ -515,7 +520,7 @@ An active object is one which is having its logic and internal systems updated.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L95">Line 95</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L95">Line 95</a>)</dt>
 	
 
 	
@@ -600,7 +605,7 @@ An active object is one which is having its logic and internal systems updated.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L129">Line 129</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L129">Line 129</a>)</dt>
 	
 
 	
@@ -685,7 +690,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L227">Line 227</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L227">Line 227</a>)</dt>
 	
 
 	
@@ -770,7 +775,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L257">Line 257</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L257">Line 257</a>)</dt>
 	
 
 	
@@ -855,7 +860,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L167">Line 167</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L167">Line 167</a>)</dt>
 	
 
 	
@@ -940,7 +945,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L197">Line 197</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L197">Line 197</a>)</dt>
 	
 
 	
@@ -1034,7 +1039,7 @@ and -90 is up.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L196">Line 196</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L196">Line 196</a>)</dt>
 	
 
 	
@@ -1135,7 +1140,7 @@ are used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/BlendMode.js">src/gameobjects/components/BlendMode.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/BlendMode.js#L30">Line 30</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/BlendMode.js">src/gameobjects/components/BlendMode.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/BlendMode.js#L30">Line 30</a>)</dt>
 	
 
 	
@@ -1232,7 +1237,7 @@ are used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L168">Line 168</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L168">Line 168</a>)</dt>
 	
 
 	
@@ -1325,7 +1330,7 @@ set this property directly using the Camera.id property:</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L142">Line 142</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L142">Line 142</a>)</dt>
 	
 
 	
@@ -1424,7 +1429,7 @@ It allows you to store, query and get key/value paired information specific to t
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L118">Line 118</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L118">Line 118</a>)</dt>
 	
 
 	
@@ -1515,7 +1520,7 @@ It allows you to store, query and get key/value paired information specific to t
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js#L17">Line 17</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js#L17">Line 17</a>)</dt>
 	
 
 	
@@ -1604,7 +1609,7 @@ value will always render in front of one with a lower value.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Depth.js">src/gameobjects/components/Depth.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Depth.js#L28">Line 28</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Depth.js">src/gameobjects/components/Depth.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Depth.js#L28">Line 28</a>)</dt>
 	
 
 	
@@ -1690,7 +1695,7 @@ value will always render in front of one with a lower value.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L78">Line 78</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L78">Line 78</a>)</dt>
 	
 
 	
@@ -1776,7 +1781,7 @@ The displayOrigin is a pixel value, based on the size of the Game Object combine
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L60">Line 60</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L60">Line 60</a>)</dt>
 	
 
 	
@@ -1862,7 +1867,7 @@ The displayOrigin is a pixel value, based on the size of the Game Object combine
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L84">Line 84</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L84">Line 84</a>)</dt>
 	
 
 	
@@ -1948,7 +1953,7 @@ The displayOrigin is a pixel value, based on the size of the Game Object combine
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L53">Line 53</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L53">Line 53</a>)</dt>
 	
 
 	
@@ -2042,7 +2047,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L17">Line 17</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L17">Line 17</a>)</dt>
 	
 
 	
@@ -2125,7 +2130,7 @@ custom pipeline, flip this property.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L162">Line 162</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L163">Line 163</a>)</dt>
 	
 
 	
@@ -2209,7 +2214,7 @@ custom pipeline, flip this property.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js#L28">Line 28</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js#L28">Line 28</a>)</dt>
 	
 
 	
@@ -2296,7 +2301,7 @@ the <code>displayHeight</code> property.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L40">Line 40</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L40">Line 40</a>)</dt>
 	
 
 	
@@ -2390,7 +2395,7 @@ responsible for managing references to and from this Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L178">Line 178</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L178">Line 178</a>)</dt>
 	
 
 	
@@ -2482,7 +2487,7 @@ Not usually set directly. Instead call <code>GameObject.setInteractive()</code>.
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L157">Line 157</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L157">Line 157</a>)</dt>
 	
 
 	
@@ -2568,7 +2573,7 @@ Equally, calling <code>setCrop</code> with no arguments will reset the crop and 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js#L37">Line 37</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js#L37">Line 37</a>)</dt>
 	
 
 	
@@ -2652,7 +2657,7 @@ Equally, calling <code>setCrop</code> with no arguments will reset the crop and 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L314">Line 314</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L314">Line 314</a>)</dt>
 	
 
 	
@@ -2727,7 +2732,7 @@ Equally, calling <code>setCrop</code> with no arguments will reset the crop and 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L309">Line 309</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L310">Line 310</a>)</dt>
 	
 
 	
@@ -2814,7 +2819,7 @@ Equally, calling <code>setCrop</code> with no arguments will reset the crop and 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js#L19">Line 19</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js#L19">Line 19</a>)</dt>
 	
 
 	
@@ -2906,7 +2911,7 @@ Empty by default and never populated by Phaser, this is left for developers to u
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L84">Line 84</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L84">Line 84</a>)</dt>
 	
 
 	
@@ -3000,7 +3005,7 @@ Setting the value to 0 means the position now relates to the left of the Game Ob
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L30">Line 30</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L30">Line 30</a>)</dt>
 	
 
 	
@@ -3094,7 +3099,7 @@ Setting the value to 0 means the position now relates to the top of the Game Obj
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L43">Line 43</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L43">Line 43</a>)</dt>
 	
 
 	
@@ -3178,7 +3183,7 @@ Setting the value to 0 means the position now relates to the top of the Game Obj
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L75">Line 75</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L75">Line 75</a>)</dt>
 	
 
 	
@@ -3269,7 +3274,7 @@ Setting the value to 0 means the position now relates to the top of the Game Obj
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js#L28">Line 28</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js#L28">Line 28</a>)</dt>
 	
 
 	
@@ -3344,7 +3349,83 @@ Setting the value to 0 means the position now relates to the top of the Game Obj
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L194">Line 194</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L195">Line 195</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="removeVideoElementOnDestroy">
+    <h4 id="removeVideoElementOnDestroy"><span class="type-signature"></span>removeVideoElementOnDestroy<span class="type-signature"> :boolean</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Should the Video element that this Video is using, be removed from the DOM
+when this Video is destroyed?</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.21.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L369">Line 369</a>)</dt>
 	
 
 	
@@ -3437,7 +3518,7 @@ If those components are not used by your custom class then you can use this bitm
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L130">Line 130</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L130">Line 130</a>)</dt>
 	
 
 	
@@ -3512,7 +3593,7 @@ If those components are not used by your custom class then you can use this bitm
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L214">Line 214</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L215">Line 215</a>)</dt>
 	
 
 	
@@ -3587,7 +3668,7 @@ If those components are not used by your custom class then you can use this bitm
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L223">Line 223</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L224">Line 224</a>)</dt>
 	
 
 	
@@ -3664,7 +3745,7 @@ state in this manner until the <code>retryLimit</code> is reached and then abort
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L203">Line 203</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L204">Line 204</a>)</dt>
 	
 
 	
@@ -3758,7 +3839,7 @@ and -90 is up.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L223">Line 223</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L223">Line 223</a>)</dt>
 	
 
 	
@@ -3852,7 +3933,7 @@ isn't the case, use the <code>scaleX</code> or <code>scaleY</code> properties in
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L98">Line 98</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L98">Line 98</a>)</dt>
 	
 
 	
@@ -3943,7 +4024,7 @@ isn't the case, use the <code>scaleX</code> or <code>scaleY</code> properties in
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L134">Line 134</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L134">Line 134</a>)</dt>
 	
 
 	
@@ -4034,7 +4115,7 @@ isn't the case, use the <code>scaleX</code> or <code>scaleY</code> properties in
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L165">Line 165</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L165">Line 165</a>)</dt>
 	
 
 	
@@ -4119,7 +4200,7 @@ Game Objects can only belong to one Scene.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L38">Line 38</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L38">Line 38</a>)</dt>
 	
 
 	
@@ -4220,7 +4301,7 @@ them from physics bodies if not accounted for in your code.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/ScrollFactor.js">src/gameobjects/components/ScrollFactor.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/ScrollFactor.js#L16">Line 16</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/ScrollFactor.js">src/gameobjects/components/ScrollFactor.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/ScrollFactor.js#L16">Line 16</a>)</dt>
 	
 
 	
@@ -4321,7 +4402,7 @@ them from physics bodies if not accounted for in your code.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/ScrollFactor.js">src/gameobjects/components/ScrollFactor.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/ScrollFactor.js#L40">Line 40</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/ScrollFactor.js">src/gameobjects/components/ScrollFactor.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/ScrollFactor.js#L40">Line 40</a>)</dt>
 	
 
 	
@@ -4397,7 +4478,7 @@ This will only be set if <code>snapshot</code> or <code>snapshotArea</code> have
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L152">Line 152</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L153">Line 153</a>)</dt>
 	
 
 	
@@ -4489,7 +4570,7 @@ If you need to store complex data about your Game Object, look at using the Data
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L59">Line 59</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L59">Line 59</a>)</dt>
 	
 
 	
@@ -4581,7 +4662,7 @@ Reserved for future use by plugins and the Input Manager.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L107">Line 107</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L107">Line 107</a>)</dt>
 	
 
 	
@@ -4668,7 +4749,7 @@ Reserved for future use by plugins and the Input Manager.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js#L19">Line 19</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js#L19">Line 19</a>)</dt>
 	
 
 	
@@ -4753,7 +4834,7 @@ This property is a setter-only. Use the properties <code>tintTopLeft</code> etc 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L297">Line 297</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L297">Line 297</a>)</dt>
 	
 
 	
@@ -4838,7 +4919,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L249">Line 249</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L249">Line 249</a>)</dt>
 	
 
 	
@@ -4923,7 +5004,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L273">Line 273</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L273">Line 273</a>)</dt>
 	
 
 	
@@ -5014,7 +5095,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L83">Line 83</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L83">Line 83</a>)</dt>
 	
 
 	
@@ -5099,7 +5180,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L201">Line 201</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L201">Line 201</a>)</dt>
 	
 
 	
@@ -5184,7 +5265,7 @@ This value is interpolated from the corner to the center of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L225">Line 225</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L225">Line 225</a>)</dt>
 	
 
 	
@@ -5260,7 +5341,7 @@ before playback can begin.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L184">Line 184</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L185">Line 185</a>)</dt>
 	
 
 	
@@ -5345,7 +5426,7 @@ Used internally by Phaser but is available for your own custom classes to popula
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L49">Line 49</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L49">Line 49</a>)</dt>
 	
 
 	
@@ -5421,7 +5502,7 @@ Will be <code>null</code> until a video is loaded for playback.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L122">Line 122</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L123">Line 123</a>)</dt>
 	
 
 	
@@ -5497,7 +5578,7 @@ Will be <code>null</code> until a video is loaded for playback.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L132">Line 132</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L133">Line 133</a>)</dt>
 	
 
 	
@@ -5573,7 +5654,7 @@ Will be <code>null</code> until a video is loaded for playback.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L142">Line 142</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L143">Line 143</a>)</dt>
 	
 
 	
@@ -5658,7 +5739,7 @@ Will be <code>null</code> until a video is loaded for playback.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Visible.js">src/gameobjects/components/Visible.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Visible.js#L31">Line 31</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Visible.js">src/gameobjects/components/Visible.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Visible.js#L31">Line 31</a>)</dt>
 	
 
 	
@@ -5749,7 +5830,7 @@ Will be <code>null</code> until a video is loaded for playback.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L88">Line 88</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L88">Line 88</a>)</dt>
 	
 
 	
@@ -5836,7 +5917,7 @@ the <code>displayWidth</code> property.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L27">Line 27</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L27">Line 27</a>)</dt>
 	
 
 	
@@ -5927,7 +6008,7 @@ the <code>displayWidth</code> property.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L57">Line 57</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L57">Line 57</a>)</dt>
 	
 
 	
@@ -6018,7 +6099,7 @@ the <code>displayWidth</code> property.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L67">Line 67</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L67">Line 67</a>)</dt>
 	
 
 	
@@ -6110,7 +6191,7 @@ Note: Do not use this value to set the z-index, instead see the <code>depth</cod
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L77">Line 77</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L77">Line 77</a>)</dt>
 	
 
 	
@@ -6340,7 +6421,7 @@ Note: Do not use this value to set the z-index, instead see the <code>depth</cod
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L111">Line 111</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L111">Line 111</a>)</dt>
 	
 
 	
@@ -6406,7 +6487,7 @@ Note: Do not use this value to set the z-index, instead see the <code>depth</cod
 <p>Markers allow you to split a video up into sequences, delineated by a start and end time, given in seconds.</p>
 <p>You can then play back specific markers via the <code>playMarker</code> method.</p>
 <p>Note that marker timing is <em>not</em> frame-perfect. You should construct your videos in such a way that you allow for
-plenty of extra padding before and after each sequence to allow for discrepencies in browser seek and currentTime accuracy.</p>
+plenty of extra padding before and after each sequence to allow for discrepancies in browser seek and currentTime accuracy.</p>
 <p>See https://github.com/w3c/media-and-entertainment/issues/4 for more details about this issue.</p>
     </div>
     
@@ -6549,7 +6630,7 @@ plenty of extra padding before and after each sequence to allow for discrepencie
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L570">Line 570</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L581">Line 581</a>)</dt>
 	
 
 	
@@ -6882,7 +6963,7 @@ go through the unlock process again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L492">Line 492</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L503">Line 503</a>)</dt>
 	
 
 	
@@ -6998,7 +7079,7 @@ go through the unlock process again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L77">Line 77</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L77">Line 77</a>)</dt>
 	
 
 	
@@ -7183,7 +7264,7 @@ go through the unlock process again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js#L56">Line 56</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js#L56">Line 56</a>)</dt>
 	
 
 	
@@ -7300,7 +7381,7 @@ which results in no visible change to the texture.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L93">Line 93</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L93">Line 93</a>)</dt>
 	
 
 	
@@ -7407,7 +7488,7 @@ which results in no visible change to the texture.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L938">Line 938</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L949">Line 949</a>)</dt>
 	
 
 	
@@ -7572,7 +7653,7 @@ a Bitmap Mask from any renderable Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js#L80">Line 80</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js#L80">Line 80</a>)</dt>
 	
 
 	
@@ -7754,7 +7835,7 @@ of a Graphics object, then it will use itself to create the mask.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js#L110">Line 110</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js#L110">Line 110</a>)</dt>
 	
 
 	
@@ -7808,7 +7889,7 @@ of a Graphics object, then it will use itself to create the mask.</p>
             
 <hr>
 <dt>
-    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy( [removeVideoElement])</h4>
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy( [fromScene])</h4>
     
     
 </dt>
@@ -7816,8 +7897,14 @@ of a Graphics object, then it will use itself to create the mask.</p>
 
     
     <div class="description">
-        <p>Destroys the Video object. This calls <code>Video.stop</code> and optionally <code>Video.removeVideoElement</code>.</p>
-<p>If any Sprites are using this Video as their texture it is up to you to manage those.</p>
+        <p>Destroys this Game Object removing it from the Display List and Update List and
+severing all ties to parent resources.</p>
+<p>Also removes itself from the Input Manager and Physics Manager if previously enabled.</p>
+<p>Use this to remove a Game Object from your game if you don't ever plan to use it again.
+As long as no reference to it exists within your own code it should become free for
+garbage collection by the browser.</p>
+<p>If you just want to temporarily disable an object then look at using the
+Game Object Pool instead of destroying it, as destroyed objects cannot be resurrected.</p>
     </div>
     
 
@@ -7856,7 +7943,7 @@ of a Graphics object, then it will use itself to create the mask.</p>
 
         <tr>
             
-                <td class="name"><code>removeVideoElement</code></td>
+                <td class="name"><code>fromScene</code></td>
             
 
             <td class="type">
@@ -7889,7 +7976,7 @@ of a Graphics object, then it will use itself to create the mask.</p>
                 </td>
             
 
-            <td class="description last"><p>Should the video element be removed from the DOM?</p></td>
+            <td class="description last"><p>Is this Game Object being destroyed as the result of a Scene shutdown?</p></td>
         </tr>
 
     
@@ -7905,17 +7992,21 @@ of a Graphics object, then it will use itself to create the mask.</p>
 	
 
 	
-	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.20.0</dt>
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.0.0</dt>
 	
 
+	
+	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
+	<dd class="inherited-from">
+		<ul class="dummy">
+			<li>
+				<a href="Phaser.GameObjects.GameObject.html#destroy">Phaser.GameObjects.GameObject#destroy</a>
+			</li>
+		</ul>
+	</dd>
 	
 
     
-    <dt class="tag-overrides">Overrides:</dt>
-    <dd class="tag-overrides"><ul class="dummy"><li>
-        <a href="Phaser.GameObjects.GameObject.html#destroy">Phaser.GameObjects.GameObject#destroy</a>
-    </li></ul></dd>
-    
 
     
 
@@ -7936,7 +8027,7 @@ of a Graphics object, then it will use itself to create the mask.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1712">Line 1712</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L545">Line 545</a>)</dt>
 	
 
 	
@@ -7949,6 +8040,11 @@ of a Graphics object, then it will use itself to create the mask.</p>
 
     
 
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phaser.GameObjects.Events.html#event:DESTROY">Phaser.GameObjects.Events#event:DESTROY</a></li>
+    </ul>
     
 
     
@@ -8031,7 +8127,7 @@ input events, but can be turned back on again at any time by simply calling
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L402">Line 402</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L402">Line 402</a>)</dt>
 	
 
 	
@@ -8245,7 +8341,7 @@ input events, but can be turned back on again at any time by simply calling
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L86">Line 86</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L86">Line 86</a>)</dt>
 	
 
 	
@@ -8360,7 +8456,7 @@ input events, but can be turned back on again at any time by simply calling
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L55">Line 55</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L55">Line 55</a>)</dt>
 	
 
 	
@@ -8583,7 +8679,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L221">Line 221</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L221">Line 221</a>)</dt>
 	
 
 	
@@ -8813,7 +8909,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L197">Line 197</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L197">Line 197</a>)</dt>
 	
 
 	
@@ -9043,7 +9139,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L245">Line 245</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L245">Line 245</a>)</dt>
 	
 
 	
@@ -9227,7 +9323,7 @@ The values are stored and returned in a Rectangle, or Rectangle-like, object.</p
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L269">Line 269</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L269">Line 269</a>)</dt>
 	
 
 	
@@ -9411,7 +9507,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L54">Line 54</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L54">Line 54</a>)</dt>
 	
 
 	
@@ -9521,7 +9617,7 @@ If the media has not started to play and has not been seeked, this value is the 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1140">Line 1140</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1151">Line 1151</a>)</dt>
 	
 
 	
@@ -9585,9 +9681,15 @@ If the media has not started to play and has not been seeked, this value is the 
     <div class="description">
         <p>Retrieves the value for the given key in this Game Objects Data Manager, or undefined if it doesn't exist.</p>
 <p>You can also access values via the <code>values</code> object. For example, if you had a key called <code>gold</code> you can do either:</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.getData('gold');</code></pre><p>Or access the value directly:</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.data.values.gold;</code></pre><p>You can also pass in an array of keys, in which case an array of values will be returned:</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.getData([ 'gold', 'armor', 'health' ]);</code></pre><p>This approach is useful for destructuring arrays in ES6.</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.getData('gold');
+</code></pre>
+<p>Or access the value directly:</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.data.values.gold;
+</code></pre>
+<p>You can also pass in an array of keys, in which case an array of values will be returned:</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.getData([ 'gold', 'armor', 'health' ]);
+</code></pre>
+<p>This approach is useful for destructuring arrays in ES6.</p>
     </div>
     
 
@@ -9693,7 +9795,7 @@ If the media has not started to play and has not been seeked, this value is the 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L333">Line 333</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L333">Line 333</a>)</dt>
 	
 
 	
@@ -9802,7 +9904,7 @@ and so forth), this value is +Infinity.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1282">Line 1282</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1293">Line 1293</a>)</dt>
 	
 
 	
@@ -9921,7 +10023,7 @@ this Game Object and all of its ancestors.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L501">Line 501</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L501">Line 501</a>)</dt>
 	
 
 	
@@ -10148,7 +10250,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L149">Line 149</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L149">Line 149</a>)</dt>
 	
 
 	
@@ -10328,7 +10430,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L446">Line 446</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L446">Line 446</a>)</dt>
 	
 
 	
@@ -10434,7 +10536,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1510">Line 1510</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1521">Line 1521</a>)</dt>
 	
 
 	
@@ -10550,7 +10652,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L500">Line 500</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L500">Line 500</a>)</dt>
 	
 
 	
@@ -10665,7 +10767,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js#L107">Line 107</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js#L107">Line 107</a>)</dt>
 	
 
 	
@@ -10771,7 +10873,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1475">Line 1475</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1486">Line 1486</a>)</dt>
 	
 
 	
@@ -10879,7 +10981,7 @@ and 1 (the end).</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1253">Line 1253</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1264">Line 1264</a>)</dt>
 	
 
 	
@@ -11106,7 +11208,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L173">Line 173</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L173">Line 173</a>)</dt>
 	
 
 	
@@ -11336,7 +11438,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L101">Line 101</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L101">Line 101</a>)</dt>
 	
 
 	
@@ -11566,7 +11668,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L77">Line 77</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L77">Line 77</a>)</dt>
 	
 
 	
@@ -11796,7 +11898,7 @@ The returned point is calculated in local space and does not factor in any paren
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/GetBounds.js#L125">Line 125</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js">src/gameobjects/components/GetBounds.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/GetBounds.js#L125">Line 125</a>)</dt>
 	
 
 	
@@ -11906,7 +12008,7 @@ If the video did not come from the cache this will return an empty string.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1089">Line 1089</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1100">Line 1100</a>)</dt>
 	
 
 	
@@ -12012,7 +12114,7 @@ If the video did not come from the cache this will return an empty string.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1438">Line 1438</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1449">Line 1449</a>)</dt>
 	
 
 	
@@ -12223,7 +12325,7 @@ If the video did not come from the cache this will return an empty string.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L463">Line 463</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L463">Line 463</a>)</dt>
 	
 
 	
@@ -12409,7 +12511,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js#L39">Line 39</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js#L39">Line 39</a>)</dt>
 	
 
 	
@@ -12515,7 +12617,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1325">Line 1325</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1336">Line 1336</a>)</dt>
 	
 
 	
@@ -12621,7 +12723,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1564">Line 1564</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1575">Line 1575</a>)</dt>
 	
 
 	
@@ -12727,7 +12829,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1551">Line 1551</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1562">Line 1562</a>)</dt>
 	
 
 	
@@ -12833,7 +12935,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1203">Line 1203</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1214">Line 1214</a>)</dt>
 	
 
 	
@@ -13001,7 +13103,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L75">Line 75</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L75">Line 75</a>)</dt>
 	
 
 	
@@ -13169,7 +13271,7 @@ This should only be called during the instantiation of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L64">Line 64</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L64">Line 64</a>)</dt>
 	
 
 	
@@ -13424,7 +13526,7 @@ for more details.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L777">Line 777</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L788">Line 788</a>)</dt>
 	
 
 	
@@ -13704,7 +13806,7 @@ for more details.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L151">Line 151</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L151">Line 151</a>)</dt>
 	
 
 	
@@ -13964,7 +14066,7 @@ for more details.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L98">Line 98</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L98">Line 98</a>)</dt>
 	
 
 	
@@ -14224,7 +14326,7 @@ for more details.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L124">Line 124</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L124">Line 124</a>)</dt>
 	
 
 	
@@ -14295,7 +14397,9 @@ vary between browser. You can read more here: https://developer.mozilla.org/en-U
 and it will often allow the video to play immediately:</p>
 <pre class="prettyprint source lang-javascript"><code>preload () {
   this.load.video('pixar', 'nemo.mp4', 'loadeddata', false, true);
-}</code></pre><p>The 5th parameter in the load call tells Phaser that the video doesn't contain any audio tracks. Video without
+}
+</code></pre>
+<p>The 5th parameter in the load call tells Phaser that the video doesn't contain any audio tracks. Video without
 audio can autoplay without requiring a user interaction. Video with audio cannot do this unless it satisfies
 the browsers MEI settings. See the MDN Autoplay Guide for details.</p>
 <p>If you need audio in your videos, then you'll have to consider the fact that the video cannot start playing until the
@@ -14489,7 +14593,7 @@ user has interacted with the browser, into your game flow.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L389">Line 389</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L400">Line 400</a>)</dt>
 	
 
 	
@@ -14596,7 +14700,7 @@ user has interacted with the browser, into your game flow.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L874">Line 874</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L885">Line 885</a>)</dt>
 	
 
 	
@@ -14643,7 +14747,7 @@ user has interacted with the browser, into your game flow.</p>
 <p>Markers allow you to split a video up into sequences, delineated by a start and end time, given in seconds and
 specified via the <code>addMarker</code> method.</p>
 <p>Note that marker timing is <em>not</em> frame-perfect. You should construct your videos in such a way that you allow for
-plenty of extra padding before and after each sequence to allow for discrepencies in browser seek and currentTime accuracy.</p>
+plenty of extra padding before and after each sequence to allow for discrepancies in browser seek and currentTime accuracy.</p>
 <p>See https://github.com/w3c/media-and-entertainment/issues/4 for more details about this issue.</p>
     </div>
     
@@ -14794,7 +14898,7 @@ plenty of extra padding before and after each sequence to allow for discrepencie
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L601">Line 601</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L612">Line 612</a>)</dt>
 	
 
 	
@@ -14974,7 +15078,7 @@ plenty of extra padding before and after each sequence to allow for discrepencie
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L165">Line 165</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L165">Line 165</a>)</dt>
 	
 
 	
@@ -15102,7 +15206,7 @@ shape is a Rectangle, which it is by default.)</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L426">Line 426</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L426">Line 426</a>)</dt>
 	
 
 	
@@ -15382,7 +15486,7 @@ shape is a Rectangle, which it is by default.)</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L137">Line 137</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L137">Line 137</a>)</dt>
 	
 
 	
@@ -15539,7 +15643,7 @@ shape is a Rectangle, which it is by default.)</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L632">Line 632</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L643">Line 643</a>)</dt>
 	
 
 	
@@ -15651,7 +15755,7 @@ to clear up once you are done with the instance.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1672">Line 1672</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1683">Line 1683</a>)</dt>
 	
 
 	
@@ -15742,7 +15846,7 @@ to clear up once you are done with the instance.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L140">Line 140</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L140">Line 140</a>)</dt>
 	
 
 	
@@ -15857,7 +15961,7 @@ to clear up once you are done with the instance.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js#L91">Line 91</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js#L91">Line 91</a>)</dt>
 	
 
 	
@@ -15929,7 +16033,9 @@ vid.snapshot();
 
 vid.saveSnapshotTexture('doodle');
 
-this.add.image(400, 300, 'doodle');</code></pre><p>Updating the contents of the <code>snapshotTexture</code>, for example by calling <code>snapshot</code> again,
+this.add.image(400, 300, 'doodle');
+</code></pre>
+<p>Updating the contents of the <code>snapshotTexture</code>, for example by calling <code>snapshot</code> again,
 will automatically update <em>any</em> Game Object that is using it as a texture.
 Calling <code>saveSnapshotTexture</code> again will not save another copy of the same texture,
 it will just rename the existing one.</p>
@@ -16029,7 +16135,7 @@ to use a specific frame.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L729">Line 729</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L740">Line 740</a>)</dt>
 	
 
 	
@@ -16091,7 +16197,7 @@ to use a specific frame.</p>
 
     
     <div class="description">
-        <p>Stores this Video in the Texture Manager using the given key as a dyanmic texture,
+        <p>Stores this Video in the Texture Manager using the given key as a dynamic texture,
 which any texture-based Game Object, such as a Sprite, can use as its texture:</p>
 <pre class="prettyprint source lang-javascript"><code>var vid = this.add.video(0, 0, 'intro');
 
@@ -16099,7 +16205,9 @@ vid.play();
 
 vid.saveTexture('doodle');
 
-this.add.image(400, 300, 'doodle');</code></pre><p>The saved texture is automatically updated as the video plays. If you pause this video,
+this.add.image(400, 300, 'doodle');
+</code></pre>
+<p>The saved texture is automatically updated as the video plays. If you pause this video,
 or change its source, then the saved texture updates instantly.</p>
 <p>Calling <code>saveTexture</code> again will not save another copy of the same texture, it will just rename the existing one.</p>
 <p>By default it will create a single base texture. You can add frames to the texture
@@ -16256,7 +16364,7 @@ to use a specific frame.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1577">Line 1577</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1588">Line 1588</a>)</dt>
 	
 
 	
@@ -16417,7 +16525,7 @@ seeking (i.e. reaches its designated timestamp) it will emit a <code>seeked</cod
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1103">Line 1103</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1114">Line 1114</a>)</dt>
 	
 
 	
@@ -16583,7 +16691,7 @@ A Game Object with its <code>active</code> property set to <code>true</code> wil
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L195">Line 195</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L195">Line 195</a>)</dt>
 	
 
 	
@@ -16885,7 +16993,7 @@ correspond to the four corners of the Game Object. Under Canvas only the <code>t
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Alpha.js#L92">Line 92</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js">src/gameobjects/components/Alpha.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Alpha.js#L92">Line 92</a>)</dt>
 	
 
 	
@@ -17070,7 +17178,7 @@ correspond to the four corners of the Game Object. Under Canvas only the <code>t
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L329">Line 329</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L329">Line 329</a>)</dt>
 	
 
 	
@@ -17252,7 +17360,7 @@ are used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/BlendMode.js">src/gameobjects/components/BlendMode.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/BlendMode.js#L79">Line 79</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/BlendMode.js">src/gameobjects/components/BlendMode.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/BlendMode.js#L79">Line 79</a>)</dt>
 	
 
 	
@@ -17546,7 +17654,7 @@ the renderer to skip several internal calculations.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js#L48">Line 48</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js#L48">Line 48</a>)</dt>
 	
 
 	
@@ -17711,7 +17819,7 @@ In this case it will seek to +/- the value given, relative to the <em>current ti
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1154">Line 1154</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1165">Line 1165</a>)</dt>
 	
 
 	
@@ -17777,10 +17885,18 @@ In this case it will seek to +/- the value given, relative to the <em>current ti
 <p>If the Game Object has not been enabled for data (via <code>setDataEnabled</code>) then it will be enabled
 before setting the value.</p>
 <p>If the key doesn't already exist in the Data Manager then it is created.</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.setData('name', 'Red Gem Stone');</code></pre><p>You can also pass in an object of key value pairs as the first argument:</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.setData({ name: 'Red Gem Stone', level: 2, owner: 'Link', gold: 50 });</code></pre><p>To get a value back again you can call <code>getData</code>:</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.getData('gold');</code></pre><p>Or you can access the value directly via the <code>values</code> property, where it works like any other variable:</p>
-<pre class="prettyprint source lang-javascript"><code>sprite.data.values.gold += 50;</code></pre><p>When the value is first set, a <code>setdata</code> event is emitted from this Game Object.</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.setData('name', 'Red Gem Stone');
+</code></pre>
+<p>You can also pass in an object of key value pairs as the first argument:</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.setData({ name: 'Red Gem Stone', level: 2, owner: 'Link', gold: 50 });
+</code></pre>
+<p>To get a value back again you can call <code>getData</code>:</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.getData('gold');
+</code></pre>
+<p>Or you can access the value directly via the <code>values</code> property, where it works like any other variable:</p>
+<pre class="prettyprint source lang-javascript"><code>sprite.data.values.gold += 50;
+</code></pre>
+<p>When the value is first set, a <code>setdata</code> event is emitted from this Game Object.</p>
 <p>If the key already exists, a <code>changedata</code> event is emitted instead, along an event named after the key.
 For example, if you updated an existing key called <code>PlayerLives</code> then it would emit the event <code>changedata-PlayerLives</code>.
 These events will be emitted regardless if you use this method to set the value, or the direct <code>values</code> setter.</p>
@@ -17935,7 +18051,7 @@ This means the keys <code>gold</code> and <code>Gold</code> are treated as two u
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L274">Line 274</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L274">Line 274</a>)</dt>
 	
 
 	
@@ -18050,7 +18166,7 @@ This means the keys <code>gold</code> and <code>Gold</code> are treated as two u
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L255">Line 255</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L255">Line 255</a>)</dt>
 	
 
 	
@@ -18227,7 +18343,7 @@ value will always render in front of one with a lower value.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Depth.js">src/gameobjects/components/Depth.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Depth.js#L58">Line 58</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Depth.js">src/gameobjects/components/Depth.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Depth.js#L58">Line 58</a>)</dt>
 	
 
 	
@@ -18453,7 +18569,7 @@ The difference between this and setting the origin is that you can use pixel val
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L155">Line 155</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L155">Line 155</a>)</dt>
 	
 
 	
@@ -18643,7 +18759,7 @@ The difference between this and setting the origin is that you can use pixel val
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L158">Line 158</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L158">Line 158</a>)</dt>
 	
 
 	
@@ -18835,7 +18951,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L117">Line 117</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L117">Line 117</a>)</dt>
 	
 
 	
@@ -19003,7 +19119,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L79">Line 79</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L79">Line 79</a>)</dt>
 	
 
 	
@@ -19168,7 +19284,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L100">Line 100</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L100">Line 100</a>)</dt>
 	
 
 	
@@ -19436,7 +19552,7 @@ It will also change the <code>origin</code> if the Frame has a custom pivot poin
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js#L126">Line 126</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js#L126">Line 126</a>)</dt>
 	
 
 	
@@ -19707,7 +19823,7 @@ shape for it to use.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L373">Line 373</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L373">Line 373</a>)</dt>
 	
 
 	
@@ -19886,7 +20002,7 @@ shape for it to use.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1523">Line 1523</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1534">Line 1534</a>)</dt>
 	
 
 	
@@ -20061,7 +20177,7 @@ that allows you to limit what is visible during the render pass.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Mask.js#L28">Line 28</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js">src/gameobjects/components/Mask.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Mask.js#L28">Line 28</a>)</dt>
 	
 
 	
@@ -20237,7 +20353,7 @@ that allows you to limit what is visible during the render pass.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1299">Line 1299</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1310">Line 1310</a>)</dt>
 	
 
 	
@@ -20403,7 +20519,7 @@ The <code>name</code> property is not populated by Phaser and is presented for y
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L213">Line 213</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L213">Line 213</a>)</dt>
 	
 
 	
@@ -20629,7 +20745,7 @@ The <code>name</code> property is not populated by Phaser and is presented for y
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L108">Line 108</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L108">Line 108</a>)</dt>
 	
 
 	
@@ -20744,7 +20860,7 @@ The <code>name</code> property is not populated by Phaser and is presented for y
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L132">Line 132</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L132">Line 132</a>)</dt>
 	
 
 	
@@ -20923,7 +21039,7 @@ If the video is paused, calling this method with <code>false</code> will resume 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1394">Line 1394</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1405">Line 1405</a>)</dt>
 	
 
 	
@@ -21088,7 +21204,7 @@ If the video is paused, calling this method with <code>false</code> will resume 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Pipeline.js#L68">Line 68</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js">src/gameobjects/components/Pipeline.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Pipeline.js#L68">Line 68</a>)</dt>
 	
 
 	
@@ -21257,7 +21373,7 @@ If the video is paused, calling this method with <code>false</code> will resume 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1488">Line 1488</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1499">Line 1499</a>)</dt>
 	
 
 	
@@ -21562,7 +21678,7 @@ If the video is paused, calling this method with <code>false</code> will resume 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L250">Line 250</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L250">Line 250</a>)</dt>
 	
 
 	
@@ -21867,7 +21983,7 @@ guaranteed to be within the area.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L278">Line 278</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L278">Line 278</a>)</dt>
 	
 
 	
@@ -22052,7 +22168,7 @@ guaranteed to be within the area.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L310">Line 310</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L310">Line 310</a>)</dt>
 	
 
 	
@@ -22273,7 +22389,7 @@ guaranteed to be within the area.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L348">Line 348</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L348">Line 348</a>)</dt>
 	
 
 	
@@ -22504,7 +22620,7 @@ them from physics bodies if not accounted for in your code.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/ScrollFactor.js">src/gameobjects/components/ScrollFactor.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/ScrollFactor.js#L64">Line 64</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/ScrollFactor.js">src/gameobjects/components/ScrollFactor.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/ScrollFactor.js#L64">Line 64</a>)</dt>
 	
 
 	
@@ -22699,7 +22815,7 @@ size of the hit area. To do this you should adjust the <code>input.hitArea</code
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L131">Line 131</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L131">Line 131</a>)</dt>
 	
 
 	
@@ -22870,7 +22986,7 @@ size of the hit area. To do this you should adjust the <code>input.hitArea</code
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Size.js#L103">Line 103</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js">src/gameobjects/components/Size.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Size.js#L103">Line 103</a>)</dt>
 	
 
 	
@@ -23043,7 +23159,7 @@ If you need to store complex data about your Game Object, look at using the Data
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L231">Line 231</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L231">Line 231</a>)</dt>
 	
 
 	
@@ -23256,7 +23372,7 @@ If you need to store complex data about your Game Object, look at using the Data
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/TextureCrop.js#L106">Line 106</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js">src/gameobjects/components/TextureCrop.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/TextureCrop.js#L106">Line 106</a>)</dt>
 	
 
 	
@@ -23563,7 +23679,7 @@ per corner. The colors are blended together across the extent of the Game Object
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L114">Line 114</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L114">Line 114</a>)</dt>
 	
 
 	
@@ -23871,7 +23987,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Tint.js#L164">Line 164</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js">src/gameobjects/components/Tint.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Tint.js#L164">Line 164</a>)</dt>
 	
 
 	
@@ -24037,7 +24153,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Visible.js">src/gameobjects/components/Visible.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Visible.js#L63">Line 63</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Visible.js">src/gameobjects/components/Visible.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Visible.js#L63">Line 63</a>)</dt>
 	
 
 	
@@ -24214,7 +24330,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1451">Line 1451</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1462">Line 1462</a>)</dt>
 	
 
 	
@@ -24399,7 +24515,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L427">Line 427</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L427">Line 427</a>)</dt>
 	
 
 	
@@ -24584,7 +24700,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L370">Line 370</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L370">Line 370</a>)</dt>
 	
 
 	
@@ -24769,7 +24885,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L389">Line 389</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L389">Line 389</a>)</dt>
 	
 
 	
@@ -24954,7 +25070,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Transform.js#L408">Line 408</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js">src/gameobjects/components/Transform.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Transform.js#L408">Line 408</a>)</dt>
 	
 
 	
@@ -25069,7 +25185,7 @@ are blended together across the extent of the Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L31">Line 31</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L31">Line 31</a>)</dt>
 	
 
 	
@@ -25250,7 +25366,7 @@ multiple times will overwrite the previous snapshot with the most recent one.</p
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L651">Line 651</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L662">Line 662</a>)</dt>
 	
 
 	
@@ -25617,7 +25733,7 @@ multiple times will overwrite the previous snapshot with the most recent one.</p
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L674">Line 674</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L685">Line 685</a>)</dt>
 	
 
 	
@@ -25722,7 +25838,7 @@ call <code>destroy</code> instead.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1632">Line 1632</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1643">Line 1643</a>)</dt>
 	
 
 	
@@ -25835,7 +25951,7 @@ but we can use it to determine if a video has looped.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L952">Line 952</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L963">Line 963</a>)</dt>
 	
 
 	
@@ -25934,7 +26050,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L45">Line 45</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L45">Line 45</a>)</dt>
 	
 
 	
@@ -26049,7 +26165,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Flip.js#L64">Line 64</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js">src/gameobjects/components/Flip.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Flip.js#L64">Line 64</a>)</dt>
 	
 
 	
@@ -26164,7 +26280,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L472">Line 472</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L472">Line 472</a>)</dt>
 	
 
 	
@@ -26343,7 +26459,7 @@ If this Game Object has a physics body, it will not change the body. This is a r
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L460">Line 460</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L460">Line 460</a>)</dt>
 	
 
 	
@@ -26435,7 +26551,7 @@ You don't usually call this directly, but it is exposed for edge-cases where you
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/components/Origin.js#L178">Line 178</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js">src/gameobjects/components/Origin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/components/Origin.js#L178">Line 178</a>)</dt>
 	
 
 	
@@ -26543,7 +26659,7 @@ encompases the whole video size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/video/Video.js#L1047">Line 1047</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js">src/gameobjects/video/Video.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/video/Video.js#L1058">Line 1058</a>)</dt>
 	
 
 	
@@ -26685,7 +26801,7 @@ Also checks the Game Object against the given Cameras exclusion list.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/GameObject.js#L485">Line 485</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js">src/gameobjects/GameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/GameObject.js#L485">Line 485</a>)</dt>
 	
 
 	
@@ -26797,9 +26913,9 @@ Also checks the Game Object against the given Cameras exclusion list.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:04 am
+		on November 22nd 2019, 5:43:02 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

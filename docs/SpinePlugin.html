@@ -109,16 +109,22 @@
         
             <div class="class-description"><p>The Spine Plugin is a Scene based plugin that handles the creation and rendering of Spine Game Objects.</p>
 <p>All rendering and object creation is handled via the official Spine Runtimes. This version of the plugin
-uses the Spine 3.8 runtimes. Files created in a different version of Spine may not work as a result.</p>
+uses the Spine 3.8.72 runtimes. Please note that due to the way the Spine runtimes use semver, you will
+get breaking changes in point-releases. Therefore, files created in a different version of Spine may not
+work as a result, without you first updating the runtimes and rebuilding the plugin.</p>
 <p>You can find more details about Spine at http://esotericsoftware.com/.</p>
 <p>Please note that you require a Spine license in order to use Spine Runtimes in your games.</p>
 <p>You can install this plugin into your Phaser game by either importing it, if you're using ES6:</p>
-<pre class="prettyprint source lang-javascript"><code>import * as SpinePlugin from './SpinePlugin.js';</code></pre><p>and then adding it to your Phaser Game configuration:</p>
+<pre class="prettyprint source lang-javascript"><code>import * as SpinePlugin from './SpinePlugin.js';
+</code></pre>
+<p>and then adding it to your Phaser Game configuration:</p>
 <pre class="prettyprint source lang-javascript"><code>plugins: {
     scene: [
         { key: 'SpinePlugin', plugin: window.SpinePlugin, mapping: 'spine' }
     ]
-}</code></pre><p>If you're using ES5 then you can load the Spine Plugin in a Scene files payload, <em>within</em> your
+}
+</code></pre>
+<p>If you're using ES5 then you can load the Spine Plugin in a Scene files payload, <em>within</em> your
 Game Configuration object, like this:</p>
 <pre class="prettyprint source lang-javascript"><code>scene: {
     preload: preload,
@@ -128,20 +134,26 @@ Game Configuration object, like this:</p>
             { type: 'scenePlugin', key: 'SpinePlugin', url: 'plugins/SpinePlugin.js', sceneKey: 'spine' }
         ]
     }
-}</code></pre><p>Loading it like this allows you to then use commands such as <code>this.load.spine</code> from within the
+}
+</code></pre>
+<p>Loading it like this allows you to then use commands such as <code>this.load.spine</code> from within the
 same Scene. Alternatively, you can use the method <code>this.load.plugin</code> to load the plugin via the normal
 Phaser Loader. However, doing so will not add it to the current Scene. It will be available from any
 subsequent Scenes.</p>
 <p>Assuming a default environment you access it from within a Scene by using the <code>this.spine</code> reference.</p>
 <p>When this plugin is installed into a Scene it will add a Loader File Type, allowing you to load
 Spine files directly, i.e.:</p>
-<pre class="prettyprint source lang-javascript"><code>this.load.spine('stretchyman', 'stretchyman-pro.json', [ 'stretchyman-pma.atlas' ], true);</code></pre><p>It also installs a Game Object Factory method, allowin you to create Spine Game Objects:</p>
-<pre class="prettyprint source lang-javascript"><code>this.add.spine(512, 650, 'stretchyman')</code></pre><p>The first argument is the key which you used when importing the Spine data. There are lots of
+<pre class="prettyprint source lang-javascript"><code>this.load.spine('stretchyman', 'stretchyman-pro.json', [ 'stretchyman-pma.atlas' ], true);
+</code></pre>
+<p>It also installs a Game Object Factory method, allowing you to create Spine Game Objects:</p>
+<pre class="prettyprint source lang-javascript"><code>this.add.spine(512, 650, 'stretchyman')
+</code></pre>
+<p>The first argument is the key which you used when importing the Spine data. There are lots of
 things you can specify, such as the animation name, skeleton, slot attachments and more. Please
 see the respective documentation and examples for further details.</p>
 <p>Phaser expects the Spine data to be exported from the Spine application in a JSON format, not binary.
 The associated atlas files are scanned for any texture files present in them, which are then loaded.
-If you have exported your Spine data with preMultipiedAlpha set, then you should enable this in the
+If you have exported your Spine data with preMultipliedAlpha set, then you should enable this in the
 load arguments, or you may see black outlines around skeleton textures.</p>
 <p>The Spine plugin is local to the Scene in which it is installed. This means a change to something,
 such as the Skeleton Debug Renderer, in this Scene, will not impact the renderer in any other Scene.
@@ -282,7 +294,7 @@ game, regardless if the Scene loaded the Spine data or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L16">Line 16</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L16">Line 16</a>)</dt>
 	
 
 	
@@ -398,7 +410,7 @@ no matter which Scene you are in.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L125">Line 125</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L127">Line 127</a>)</dt>
 	
 
 	
@@ -474,7 +486,7 @@ of the skeleton or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L167">Line 167</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L169">Line 169</a>)</dt>
 	
 
 	
@@ -558,7 +570,7 @@ of the skeleton or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js#L38">Line 38</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js#L38">Line 38</a>)</dt>
 	
 
 	
@@ -634,7 +646,7 @@ of the skeleton or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L177">Line 177</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L179">Line 179</a>)</dt>
 	
 
 	
@@ -709,7 +721,7 @@ of the skeleton or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L115">Line 115</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L117">Line 117</a>)</dt>
 	
 
 	
@@ -784,7 +796,7 @@ of the skeleton or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L149">Line 149</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L151">Line 151</a>)</dt>
 	
 
 	
@@ -860,7 +872,7 @@ This is the runtime created by Esoteric Software</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L228">Line 228</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L230">Line 230</a>)</dt>
 	
 
 	
@@ -945,7 +957,7 @@ Can be used as a route to gain access to game systems and  events.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js#L27">Line 27</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js#L27">Line 27</a>)</dt>
 	
 
 	
@@ -1023,7 +1035,7 @@ Can be used as a route to gain access to game systems and  events.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L188">Line 188</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L190">Line 190</a>)</dt>
 	
 
 	
@@ -1110,7 +1122,7 @@ You can use it during the <code>boot</code> method.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/ScenePlugin.js">src/plugins/ScenePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/ScenePlugin.js#L36">Line 36</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/ScenePlugin.js">src/plugins/ScenePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/ScenePlugin.js#L36">Line 36</a>)</dt>
 	
 
 	
@@ -1186,7 +1198,7 @@ You can use it during the <code>boot</code> method.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L197">Line 197</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L199">Line 199</a>)</dt>
 	
 
 	
@@ -1262,7 +1274,7 @@ You can use it during the <code>boot</code> method.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L217">Line 217</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L219">Line 219</a>)</dt>
 	
 
 	
@@ -1340,7 +1352,7 @@ You can use it during the <code>boot</code> method.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L208">Line 208</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L210">Line 210</a>)</dt>
 	
 
 	
@@ -1417,7 +1429,7 @@ no matter which Scene you are in.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L137">Line 137</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L139">Line 139</a>)</dt>
 	
 
 	
@@ -1504,7 +1516,7 @@ You can use it during the <code>boot</code> method.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/ScenePlugin.js">src/plugins/ScenePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/ScenePlugin.js#L49">Line 49</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/ScenePlugin.js">src/plugins/ScenePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/ScenePlugin.js#L49">Line 49</a>)</dt>
 	
 
 	
@@ -1579,7 +1591,7 @@ You can use it during the <code>boot</code> method.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L158">Line 158</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L160">Line 160</a>)</dt>
 	
 
 	
@@ -1619,7 +1631,9 @@ do not have a Phaser origin.</p>
 character in the key. For example, if you loaded a Spine JSON using the key <code>monsters</code> and it contains
 multiple Skeletons, including one called <code>goblin</code> then you would use the key <code>monsters.goblin</code> to reference
 that.</p>
-<pre class="prettyprint source lang-javascript"><code>let jelly = this.add.spine(512, 550, 'jelly', 'jelly-think', true);</code></pre><p>The key is optional. If not passed here, you need to call <code>SpineGameObject.setSkeleton()</code> to use it.</p>
+<pre class="prettyprint source lang-javascript"><code>let jelly = this.add.spine(512, 550, 'jelly', 'jelly-think', true);
+</code></pre>
+<p>The key is optional. If not passed here, you need to call <code>SpineGameObject.setSkeleton()</code> to use it.</p>
 <p>The animation name is also optional and can be set later via <code>SpineGameObject.setAnimation</code>.</p>
 <p>Should you wish for more control over the object creation, such as setting a slot attachment or skin
 name, then use <code>SpinePlugin.make</code> instead.</p>
@@ -1884,7 +1898,7 @@ name, then use <code>SpinePlugin.make</code> instead.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L1054">Line 1054</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L1061">Line 1061</a>)</dt>
 	
 
 	
@@ -2041,7 +2055,7 @@ name, then use <code>SpinePlugin.make</code> instead.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L933">Line 933</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L935">Line 935</a>)</dt>
 	
 
 	
@@ -2242,7 +2256,7 @@ name, then use <code>SpinePlugin.make</code> instead.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L860">Line 860</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L862">Line 862</a>)</dt>
 	
 
 	
@@ -2402,7 +2416,7 @@ then returns it. You do not normally need to invoke this method directly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L406">Line 406</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L408">Line 408</a>)</dt>
 	
 
 	
@@ -2559,7 +2573,7 @@ then returns it. You do not normally need to invoke this method directly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L447">Line 447</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L449">Line 449</a>)</dt>
 	
 
 	
@@ -2718,7 +2732,7 @@ then returns it. You do not normally need to invoke this method directly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L954">Line 954</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L956">Line 956</a>)</dt>
 	
 
 	
@@ -2898,7 +2912,7 @@ then returns it. You do not normally need to invoke this method directly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L638">Line 638</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L640">Line 640</a>)</dt>
 	
 
 	
@@ -3103,7 +3117,7 @@ then returns it. You do not normally need to invoke this method directly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L654">Line 654</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L656">Line 656</a>)</dt>
 	
 
 	
@@ -3286,7 +3300,7 @@ On a Scene Plugin, this method is never called. Use <a href="Phaser.Plugins.Scen
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js#L49">Line 49</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js#L49">Line 49</a>)</dt>
 	
 
 	
@@ -3338,7 +3352,8 @@ that.</p>
     skinName: 'square_Green',
     animationName: 'jelly-idle', loop: true,
     slotName: 'hat', attachmentName: 'images/La_14'
-});</code></pre>
+});
+</code></pre>
     </div>
     
 
@@ -3476,7 +3491,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L1089">Line 1089</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L1096">Line 1096</a>)</dt>
 	
 
 	
@@ -3583,7 +3598,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L979">Line 979</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L981">Line 981</a>)</dt>
 	
 
 	
@@ -3736,7 +3751,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L673">Line 673</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L675">Line 675</a>)</dt>
 	
 
 	
@@ -3913,7 +3928,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L715">Line 715</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L717">Line 717</a>)</dt>
 	
 
 	
@@ -4090,7 +4105,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L820">Line 820</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L822">Line 822</a>)</dt>
 	
 
 	
@@ -4267,7 +4282,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L736">Line 736</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L738">Line 738</a>)</dt>
 	
 
 	
@@ -4444,7 +4459,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L757">Line 757</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L759">Line 759</a>)</dt>
 	
 
 	
@@ -4621,7 +4636,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L778">Line 778</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L780">Line 780</a>)</dt>
 	
 
 	
@@ -4798,7 +4813,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L694">Line 694</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L696">Line 696</a>)</dt>
 	
 
 	
@@ -4975,7 +4990,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L799">Line 799</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L801">Line 801</a>)</dt>
 	
 
 	
@@ -5144,7 +5159,7 @@ that.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L841">Line 841</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L843">Line 843</a>)</dt>
 	
 
 	
@@ -5262,7 +5277,7 @@ On a Scene Plugin, this method is never called.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js#L65">Line 65</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js#L65">Line 65</a>)</dt>
 	
 
 	
@@ -5358,7 +5373,7 @@ On a Scene Plugin, this method is never called.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/plugins/BasePlugin.js#L92">Line 92</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js">src/plugins/BasePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/plugins/BasePlugin.js#L92">Line 92</a>)</dt>
 	
 
 	
@@ -5599,7 +5614,7 @@ On a Scene Plugin, this method is never called.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/SpinePlugin.js#L594">Line 594</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js">plugins/spine/src/SpinePlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/SpinePlugin.js#L596">Line 596</a>)</dt>
 	
 
 	
@@ -5711,9 +5726,9 @@ On a Scene Plugin, this method is never called.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:23 am
+		on November 22nd 2019, 5:43:24 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

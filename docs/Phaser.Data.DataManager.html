@@ -245,7 +245,7 @@ or have a property called <code>events</code> that is an instance of it.</p></di
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L19">Line 19</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L19">Line 19</a>)</dt>
 	
 
 	
@@ -348,7 +348,7 @@ or have a property called <code>events</code> that is an instance of it.</p></di
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L607">Line 607</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L607">Line 607</a>)</dt>
 	
 
 	
@@ -423,7 +423,7 @@ or have a property called <code>events</code> that is an instance of it.</p></di
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L48">Line 48</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L48">Line 48</a>)</dt>
 	
 
 	
@@ -499,7 +499,7 @@ A frozen Data Manager will block all attempts to create new values or update exi
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L585">Line 585</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L585">Line 585</a>)</dt>
 	
 
 	
@@ -581,7 +581,7 @@ A frozen Data Manager will block all attempts to create new values or update exi
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L62">Line 62</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L62">Line 62</a>)</dt>
 	
 
 	
@@ -656,7 +656,7 @@ A frozen Data Manager will block all attempts to create new values or update exi
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L39">Line 39</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L39">Line 39</a>)</dt>
 	
 
 	
@@ -684,8 +684,12 @@ A frozen Data Manager will block all attempts to create new values or update exi
         <p>The public values list. You can use this to access anything you have stored
 in this Data Manager. For example, if you set a value called <code>gold</code> you can
 access it via:</p>
-<pre class="prettyprint source lang-javascript"><code>this.data.values.gold;</code></pre><p>You can also modify it directly:</p>
-<pre class="prettyprint source lang-javascript"><code>this.data.values.gold += 1000;</code></pre><p>Doing so will emit a <code>setdata</code> event from the parent of this Data Manager.</p>
+<pre class="prettyprint source lang-javascript"><code>this.data.values.gold;
+</code></pre>
+<p>You can also modify it directly:</p>
+<pre class="prettyprint source lang-javascript"><code>this.data.values.gold += 1000;
+</code></pre>
+<p>Doing so will emit a <code>setdata</code> event from the parent of this Data Manager.</p>
 <p>Do not modify this object directly. Adding properties directly to this object will not
 emit any events. Always use <code>DataManager.set</code> to create new items the first time around.</p>
     </div>
@@ -744,7 +748,7 @@ emit any events. Always use <code>DataManager.set</code> to create new items the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L72">Line 72</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L72">Line 72</a>)</dt>
 	
 
 	
@@ -820,7 +824,7 @@ emit any events. Always use <code>DataManager.set</code> to create new items the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L568">Line 568</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L568">Line 568</a>)</dt>
 	
 
 	
@@ -1032,7 +1036,7 @@ emit any events. Always use <code>DataManager.set</code> to create new items the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L349">Line 349</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L349">Line 349</a>)</dt>
 	
 
 	
@@ -1096,9 +1100,15 @@ emit any events. Always use <code>DataManager.set</code> to create new items the
     <div class="description">
         <p>Retrieves the value for the given key, or undefined if it doesn't exist.</p>
 <p>You can also access values via the <code>values</code> object. For example, if you had a key called <code>gold</code> you can do either:</p>
-<pre class="prettyprint source lang-javascript"><code>this.data.get('gold');</code></pre><p>Or access the value directly:</p>
-<pre class="prettyprint source lang-javascript"><code>this.data.values.gold;</code></pre><p>You can also pass in an array of keys, in which case an array of values will be returned:</p>
-<pre class="prettyprint source lang-javascript"><code>this.data.get([ 'gold', 'armor', 'health' ]);</code></pre><p>This approach is useful for destructuring arrays in ES6.</p>
+<pre class="prettyprint source lang-javascript"><code>this.data.get('gold');
+</code></pre>
+<p>Or access the value directly:</p>
+<pre class="prettyprint source lang-javascript"><code>this.data.values.gold;
+</code></pre>
+<p>You can also pass in an array of keys, in which case an array of values will be returned:</p>
+<pre class="prettyprint source lang-javascript"><code>this.data.get([ 'gold', 'armor', 'health' ]);
+</code></pre>
+<p>This approach is useful for destructuring arrays in ES6.</p>
     </div>
     
 
@@ -1195,7 +1205,7 @@ emit any events. Always use <code>DataManager.set</code> to create new items the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L116">Line 116</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L116">Line 116</a>)</dt>
 	
 
 	
@@ -1301,7 +1311,7 @@ emit any events. Always use <code>DataManager.set</code> to create new items the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L167">Line 167</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L167">Line 167</a>)</dt>
 	
 
 	
@@ -1459,7 +1469,7 @@ This means the keys <code>gold</code> and <code>Gold</code> are treated as two u
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L511">Line 511</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L511">Line 511</a>)</dt>
 	
 
 	
@@ -1673,7 +1683,7 @@ will emit a <code>changedata</code> event.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L381">Line 381</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L381">Line 381</a>)</dt>
 	
 
 	
@@ -1838,7 +1848,7 @@ will emit a <code>changedata</code> event.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L483">Line 483</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L483">Line 483</a>)</dt>
 	
 
 	
@@ -1999,7 +2009,7 @@ will emit a <code>changedata</code> event.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L190">Line 190</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L190">Line 190</a>)</dt>
 	
 
 	
@@ -2065,7 +2075,8 @@ will emit a <code>changedata</code> event.</p>
 <p>If the key is found in this Data Manager it is removed from the internal lists and a
 <code>removedata</code> event is emitted.</p>
 <p>You can also pass in an array of keys, in which case all keys in the array will be removed:</p>
-<pre class="prettyprint source lang-javascript"><code>this.data.remove([ 'gold', 'armor', 'health' ]);</code></pre>
+<pre class="prettyprint source lang-javascript"><code>this.data.remove([ 'gold', 'armor', 'health' ]);
+</code></pre>
     </div>
     
 
@@ -2162,7 +2173,7 @@ will emit a <code>changedata</code> event.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L414">Line 414</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L414">Line 414</a>)</dt>
 	
 
 	
@@ -2273,7 +2284,7 @@ will emit a <code>changedata</code> event.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L547">Line 547</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L547">Line 547</a>)</dt>
 	
 
 	
@@ -2336,10 +2347,18 @@ will emit a <code>changedata</code> event.</p>
     
     <div class="description">
         <p>Sets a value for the given key. If the key doesn't already exist in the Data Manager then it is created.</p>
-<pre class="prettyprint source lang-javascript"><code>data.set('name', 'Red Gem Stone');</code></pre><p>You can also pass in an object of key value pairs as the first argument:</p>
-<pre class="prettyprint source lang-javascript"><code>data.set({ name: 'Red Gem Stone', level: 2, owner: 'Link', gold: 50 });</code></pre><p>To get a value back again you can call <code>get</code>:</p>
-<pre class="prettyprint source lang-javascript"><code>data.get('gold');</code></pre><p>Or you can access the value directly via the <code>values</code> property, where it works like any other variable:</p>
-<pre class="prettyprint source lang-javascript"><code>data.values.gold += 50;</code></pre><p>When the value is first set, a <code>setdata</code> event is emitted.</p>
+<pre class="prettyprint source lang-javascript"><code>data.set('name', 'Red Gem Stone');
+</code></pre>
+<p>You can also pass in an object of key value pairs as the first argument:</p>
+<pre class="prettyprint source lang-javascript"><code>data.set({ name: 'Red Gem Stone', level: 2, owner: 'Link', gold: 50 });
+</code></pre>
+<p>To get a value back again you can call <code>get</code>:</p>
+<pre class="prettyprint source lang-javascript"><code>data.get('gold');
+</code></pre>
+<p>Or you can access the value directly via the <code>values</code> property, where it works like any other variable:</p>
+<pre class="prettyprint source lang-javascript"><code>data.values.gold += 50;
+</code></pre>
+<p>When the value is first set, a <code>setdata</code> event is emitted.</p>
 <p>If the key already exists, a <code>changedata</code> event is emitted instead, along an event named after the key.
 For example, if you updated an existing key called <code>PlayerLives</code> then it would emit the event <code>changedata-PlayerLives</code>.
 These events will be emitted regardless if you use this method to set the value, or the direct <code>values</code> setter.</p>
@@ -2465,7 +2484,7 @@ This means the keys <code>gold</code> and <code>Gold</code> are treated as two u
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L215">Line 215</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L215">Line 215</a>)</dt>
 	
 
 	
@@ -2631,7 +2650,7 @@ to create new values or update existing ones.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/data/DataManager.js#L529">Line 529</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js">src/data/DataManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/data/DataManager.js#L529">Line 529</a>)</dt>
 	
 
 	
@@ -2743,9 +2762,9 @@ to create new values or update existing ones.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:56:57 am
+		on November 22nd 2019, 5:42:52 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

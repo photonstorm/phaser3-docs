@@ -123,21 +123,27 @@ dimensions of the canvas's parent. The CSS rules of the parent element play an i
 operation of the Scale Manager. For example, if the parent has no defined width or height, then actions
 like auto-centering will fail to achieve the required result. The Scale Manager works in tandem with the
 CSS you set-up on the page hosting your game, rather than taking control of it.</p>
-<h4>Parent and Display canvas containment guidelines:</h4><ul>
-<li><p>Style the Parent element (of the game canvas) to control the Parent size and thus the games size and layout.</p>
+<h4>Parent and Display canvas containment guidelines:</h4>
+<ul>
+<li>
+<p>Style the Parent element (of the game canvas) to control the Parent size and thus the games size and layout.</p>
 </li>
-<li><p>The Parent element's CSS styles should <em>effectively</em> apply maximum (and minimum) bounding behavior.</p>
+<li>
+<p>The Parent element's CSS styles should <em>effectively</em> apply maximum (and minimum) bounding behavior.</p>
 </li>
-<li><p>The Parent element should <em>not</em> apply a padding as this is not accounted for.
+<li>
+<p>The Parent element should <em>not</em> apply a padding as this is not accounted for.
 If a padding is required apply it to the Parent's parent or apply a margin to the Parent.
 If you need to add a border, margin or any other CSS around your game container, then use a parent element and
 apply the CSS to this instead, otherwise you'll be constantly resizing the shape of the game container.</p>
 </li>
-<li><p>The Display canvas layout CSS styles (i.e. margins, size) should not be altered / specified as
+<li>
+<p>The Display canvas layout CSS styles (i.e. margins, size) should not be altered / specified as
 they may be updated by the Scale Manager.</p>
 </li>
 </ul>
-<h4>Scale Modes</h4><p>The way the scaling is handled is determined by the <code>scaleMode</code> property. The default is <code>NONE</code>,
+<h4>Scale Modes</h4>
+<p>The way the scaling is handled is determined by the <code>scaleMode</code> property. The default is <code>NONE</code>,
 which prevents Phaser from scaling or touching the canvas, or its parent, at all. In this mode, you are
 responsible for all scaling. The other scaling modes afford you automatic scaling.</p>
 <p>If you wish to scale your game so that it always fits into the available space within the parent, you
@@ -148,7 +154,9 @@ available. Here is a basic config showing how to set this scale mode:</p>
     mode: Phaser.Scale.FIT,
     width: 800,
     height: 600
-}</code></pre><p>Place the <code>scale</code> config object within your game config.</p>
+}
+</code></pre>
+<p>Place the <code>scale</code> config object within your game config.</p>
 <p>If you wish for the canvas to be resized directly, so that the canvas itself fills the available space
 (i.e. it isn't scaled, it's resized) then use the <code>RESIZE</code> scale mode. This will give you a 1:1 mapping
 of canvas pixels to game size. In this mode CSS isn't used to scale the canvas, it's literally adjusted
@@ -163,7 +171,8 @@ as best it can, based on what it can infer from its surrounding area. There are 
 where it's up to you to guide and help the canvas position itself, especially when built into rendering
 frameworks like React and Vue. If your page requires meta tags to prevent user scaling gestures, or such
 like, then it's up to you to ensure they are present in the html.</p>
-<h4>Centering</h4><p>You can also have the game canvas automatically centered. Again, this relies heavily on the parent being
+<h4>Centering</h4>
+<p>You can also have the game canvas automatically centered. Again, this relies heavily on the parent being
 properly configured and styled, as the centering offsets are based entirely on the available space
 within the parent element. Centering is disabled by default, or can be applied horizontally, vertically,
 or both. Here's an example:</p>
@@ -172,7 +181,10 @@ or both. Here's an example:</p>
     autoCenter: Phaser.Scale.CENTER_BOTH,
     width: 800,
     height: 600
-}</code></pre><h4>Fullscreen API</h4><p>If the browser supports it, you can send your game into fullscreen mode. In this mode, the game will fill
+}
+</code></pre>
+<h4>Fullscreen API</h4>
+<p>If the browser supports it, you can send your game into fullscreen mode. In this mode, the game will fill
 the entire display, removing all browser UI and anything else present on the screen. It will remain in this
 mode until your game either disables it, or until the user tabs out or presses ESCape if on desktop. It's a
 great way to achieve a desktop-game like experience from the browser, but it does require a modern browser
@@ -286,7 +298,7 @@ to handle it. Some mobile browsers also support this.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L21">Line 21</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L21">Line 21</a>)</dt>
 	
 
 	
@@ -400,7 +412,7 @@ to handle it. Some mobile browsers also support this.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L263">Line 263</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L263">Line 263</a>)</dt>
 	
 
 	
@@ -483,7 +495,7 @@ that has a size set, or the canvas parent is the document.body.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L293">Line 293</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L293">Line 293</a>)</dt>
 	
 
 	
@@ -560,7 +572,7 @@ and low powered devices, but at the cost of not achieving a 'perfect' fit in som
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L282">Line 282</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L282">Line 282</a>)</dt>
 	
 
 	
@@ -637,7 +649,7 @@ and low powered devices, but at the cost of not achieving a 'perfect' fit in som
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L204">Line 204</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L204">Line 204</a>)</dt>
 	
 
 	
@@ -712,7 +724,7 @@ and low powered devices, but at the cost of not achieving a 'perfect' fit in som
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L144">Line 144</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L144">Line 144</a>)</dt>
 	
 
 	
@@ -787,7 +799,7 @@ and low powered devices, but at the cost of not achieving a 'perfect' fit in som
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L153">Line 153</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L153">Line 153</a>)</dt>
 	
 
 	
@@ -863,7 +875,7 @@ Set if there is a change between the parent size and the current size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L359">Line 359</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L359">Line 359</a>)</dt>
 	
 
 	
@@ -938,7 +950,7 @@ Set if there is a change between the parent size and the current size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L273">Line 273</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L273">Line 273</a>)</dt>
 	
 
 	
@@ -1014,7 +1026,7 @@ Set if there is a change between the parent size and the current size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L216">Line 216</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L216">Line 216</a>)</dt>
 	
 
 	
@@ -1089,7 +1101,7 @@ Set if there is a change between the parent size and the current size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L321">Line 321</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L321">Line 321</a>)</dt>
 	
 
 	
@@ -1164,7 +1176,7 @@ Set if there is a change between the parent size and the current size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L330">Line 330</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L330">Line 330</a>)</dt>
 	
 
 	
@@ -1239,7 +1251,7 @@ Set if there is a change between the parent size and the current size.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L134">Line 134</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L134">Line 134</a>)</dt>
 	
 
 	
@@ -1316,7 +1328,7 @@ as used for world bounds, cameras, etc</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L192">Line 192</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L192">Line 192</a>)</dt>
 	
 
 	
@@ -1392,7 +1404,7 @@ as used for world bounds, cameras, etc</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1631">Line 1631</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1631">Line 1631</a>)</dt>
 	
 
 	
@@ -1467,7 +1479,7 @@ as used for world bounds, cameras, etc</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1595">Line 1595</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1595">Line 1595</a>)</dt>
 	
 
 	
@@ -1543,7 +1555,7 @@ as used for world bounds, cameras, etc</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1705">Line 1705</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1705">Line 1705</a>)</dt>
 	
 
 	
@@ -1619,7 +1631,7 @@ as used for world bounds, cameras, etc</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1686">Line 1686</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1686">Line 1686</a>)</dt>
 	
 
 	
@@ -1695,7 +1707,7 @@ This value is usually only available on mobile devices.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1668">Line 1668</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1668">Line 1668</a>)</dt>
 	
 
 	
@@ -1771,7 +1783,7 @@ This value is usually only available on mobile devices.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1650">Line 1650</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1650">Line 1650</a>)</dt>
 	
 
 	
@@ -1847,7 +1859,7 @@ This value is usually only available on mobile devices.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L310">Line 310</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L310">Line 310</a>)</dt>
 	
 
 	
@@ -1924,7 +1936,7 @@ to use the document body. If specifically set to <code>null</code> Phaser will i
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L162">Line 162</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L162">Line 162</a>)</dt>
 	
 
 	
@@ -1999,7 +2011,7 @@ to use the document body. If specifically set to <code>null</code> Phaser will i
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L174">Line 174</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L174">Line 174</a>)</dt>
 	
 
 	
@@ -2074,7 +2086,7 @@ to use the document body. If specifically set to <code>null</code> Phaser will i
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L183">Line 183</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L183">Line 183</a>)</dt>
 	
 
 	
@@ -2153,7 +2165,7 @@ checked here.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L369">Line 369</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L369">Line 369</a>)</dt>
 	
 
 	
@@ -2229,7 +2241,7 @@ checked here.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L236">Line 236</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L236">Line 236</a>)</dt>
 	
 
 	
@@ -2304,7 +2316,7 @@ checked here.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L227">Line 227</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L227">Line 227</a>)</dt>
 	
 
 	
@@ -2380,7 +2392,7 @@ checked here.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1612">Line 1612</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1612">Line 1612</a>)</dt>
 	
 
 	
@@ -2460,7 +2472,7 @@ on the game size and available space within the parent.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L247">Line 247</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L247">Line 247</a>)</dt>
 	
 
 	
@@ -2690,7 +2702,7 @@ on the game size and available space within the parent.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L111">Line 111</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L111">Line 111</a>)</dt>
 	
 
 	
@@ -2797,7 +2809,7 @@ The renderer is available by now and the canvas has been added to the DOM.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L437">Line 437</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L437">Line 437</a>)</dt>
 	
 
 	
@@ -2890,7 +2902,7 @@ Once destroyed, the Scale Manager cannot be used again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1570">Line 1570</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1570">Line 1570</a>)</dt>
 	
 
 	
@@ -3080,7 +3092,7 @@ Once destroyed, the Scale Manager cannot be used again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L86">Line 86</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L86">Line 86</a>)</dt>
 	
 
 	
@@ -3195,7 +3207,7 @@ Once destroyed, the Scale Manager cannot be used again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L55">Line 55</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L55">Line 55</a>)</dt>
 	
 
 	
@@ -3297,7 +3309,7 @@ Once destroyed, the Scale Manager cannot be used again.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1305">Line 1305</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1305">Line 1305</a>)</dt>
 	
 
 	
@@ -3405,7 +3417,7 @@ or is smaller than the un-zoomed game, then this will return a value of 1 (no zo
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1072">Line 1072</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1072">Line 1072</a>)</dt>
 	
 
 	
@@ -3561,7 +3573,7 @@ or is smaller than the un-zoomed game, then this will return a value of 1 (no zo
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L598">Line 598</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L598">Line 598</a>)</dt>
 	
 
 	
@@ -3643,7 +3655,7 @@ or is smaller than the un-zoomed game, then this will return a value of 1 (no zo
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L648">Line 648</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L648">Line 648</a>)</dt>
 	
 
 	
@@ -3811,7 +3823,7 @@ or is smaller than the un-zoomed game, then this will return a value of 1 (no zo
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L75">Line 75</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L75">Line 75</a>)</dt>
 	
 
 	
@@ -3969,7 +3981,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L690">Line 690</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L690">Line 690</a>)</dt>
 	
 
 	
@@ -4249,7 +4261,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L151">Line 151</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L151">Line 151</a>)</dt>
 	
 
 	
@@ -4509,7 +4521,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L98">Line 98</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L98">Line 98</a>)</dt>
 	
 
 	
@@ -4769,7 +4781,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L124">Line 124</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L124">Line 124</a>)</dt>
 	
 
 	
@@ -4875,7 +4887,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1484">Line 1484</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1484">Line 1484</a>)</dt>
 	
 
 	
@@ -4957,7 +4969,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1501">Line 1501</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1501">Line 1501</a>)</dt>
 	
 
 	
@@ -5089,7 +5101,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L481">Line 481</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L481">Line 481</a>)</dt>
 	
 
 	
@@ -5171,7 +5183,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation for 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L421">Line 421</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L421">Line 421</a>)</dt>
 	
 
 	
@@ -5357,7 +5369,7 @@ as long as it is using a Scale Mode other than 'NONE'.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L908">Line 908</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L908">Line 908</a>)</dt>
 	
 
 	
@@ -5542,7 +5554,7 @@ as long as it is using a Scale Mode other than 'NONE'.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L165">Line 165</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L165">Line 165</a>)</dt>
 	
 
 	
@@ -5648,7 +5660,7 @@ as long as it is using a Scale Mode other than 'NONE'.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1341">Line 1341</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1341">Line 1341</a>)</dt>
 	
 
 	
@@ -5904,7 +5916,7 @@ as long as it is using a Scale Mode other than 'NONE'.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L137">Line 137</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L137">Line 137</a>)</dt>
 	
 
 	
@@ -6097,7 +6109,7 @@ alone. Finally, the <code>displayScale</code> is adjusted and the RESIZE event d
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L789">Line 789</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L789">Line 789</a>)</dt>
 	
 
 	
@@ -6285,7 +6297,7 @@ change the game and canvas size directly, then please use the <code>resize</code
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L737">Line 737</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L737">Line 737</a>)</dt>
 	
 
 	
@@ -6396,7 +6408,7 @@ change the game and canvas size directly, then please use the <code>resize</code
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L891">Line 891</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L891">Line 891</a>)</dt>
 	
 
 	
@@ -6584,7 +6596,7 @@ other Scale Manager features.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L715">Line 715</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L715">Line 715</a>)</dt>
 	
 
 	
@@ -6745,7 +6757,7 @@ other Scale Manager features.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L872">Line 872</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L872">Line 872</a>)</dt>
 	
 
 	
@@ -6865,7 +6877,7 @@ other Scale Manager features.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L31">Line 31</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L31">Line 31</a>)</dt>
 	
 
 	
@@ -7025,7 +7037,7 @@ When it leaves fullscreen, the div will be removed.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1191">Line 1191</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1191">Line 1191</a>)</dt>
 	
 
 	
@@ -7118,7 +7130,7 @@ When it leaves fullscreen, the div will be removed.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1431">Line 1431</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1431">Line 1431</a>)</dt>
 	
 
 	
@@ -7275,7 +7287,7 @@ Monitors the elapsed time and resize interval to see if a parent bounds check ne
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1512">Line 1512</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1512">Line 1512</a>)</dt>
 	
 
 	
@@ -7357,7 +7369,7 @@ Monitors the elapsed time and resize interval to see if a parent bounds check ne
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1364">Line 1364</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1364">Line 1364</a>)</dt>
 	
 
 	
@@ -7446,7 +7458,7 @@ Monitors the elapsed time and resize interval to see if a parent bounds check ne
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1544">Line 1544</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1544">Line 1544</a>)</dt>
 	
 
 	
@@ -7595,7 +7607,7 @@ from fullscreen unless the iframe has the <code>allowfullscreen</code> attribute
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1400">Line 1400</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1400">Line 1400</a>)</dt>
 	
 
 	
@@ -7738,7 +7750,7 @@ from fullscreen unless the iframe has the <code>allowfullscreen</code> attribute
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1161">Line 1161</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1161">Line 1161</a>)</dt>
 	
 
 	
@@ -7894,7 +7906,7 @@ from fullscreen unless the iframe has the <code>allowfullscreen</code> attribute
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1176">Line 1176</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1176">Line 1176</a>)</dt>
 	
 
 	
@@ -8001,7 +8013,7 @@ canvas element being used to track input events.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1143">Line 1143</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1143">Line 1143</a>)</dt>
 	
 
 	
@@ -8090,7 +8102,7 @@ game config then this method will likely give incorrect results unless you have 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L1090">Line 1090</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L1090">Line 1090</a>)</dt>
 	
 
 	
@@ -8173,7 +8185,7 @@ game config then this method will likely give incorrect results unless you have 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L956">Line 956</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L956">Line 956</a>)</dt>
 	
 
 	
@@ -8260,7 +8272,7 @@ game config then this method will likely give incorrect results unless you have 
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/scale/ScaleManager.js#L982">Line 982</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js">src/scale/ScaleManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/scale/ScaleManager.js#L982">Line 982</a>)</dt>
 	
 
 	
@@ -8348,9 +8360,9 @@ game config then this method will likely give incorrect results unless you have 
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:17 am
+		on November 22nd 2019, 5:43:16 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

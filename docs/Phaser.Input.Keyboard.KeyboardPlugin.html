@@ -113,9 +113,15 @@
 <p>Its role is to listen for native DOM Keyboard Events and then process them.</p>
 <p>You do not need to create this class directly, the Input system will create an instance of it automatically.</p>
 <p>You can access it from within a Scene using <code>this.input.keyboard</code>. For example, you can do:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.on('keydown', callback, context);</code></pre><p>Or, to listen for a specific key:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.on('keydown-A', callback, context);</code></pre><p>You can also create Key objects, which you can then poll in your game loop:</p>
-<pre class="prettyprint source lang-javascript"><code>var spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);</code></pre><p>If you have multiple parallel Scenes, each trying to get keyboard input, be sure to disable capture on them to stop them from
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.on('keydown', callback, context);
+</code></pre>
+<p>Or, to listen for a specific key:</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.on('keydown-A', callback, context);
+</code></pre>
+<p>You can also create Key objects, which you can then poll in your game loop:</p>
+<pre class="prettyprint source lang-javascript"><code>var spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+</code></pre>
+<p>If you have multiple parallel Scenes, each trying to get keyboard input, be sure to disable capture on them to stop them from
 stealing input from another Scene in the list. You can do this with <code>this.input.keyboard.enabled = false</code> within the
 Scene to stop all input, or <code>this.input.keyboard.preventDefault = false</code> to stop a Scene halting input on another Scene.</p>
 <p><em>Note</em>: Many keyboards are unable to process certain combinations of keys due to hardware limitations known as ghosting.
@@ -232,7 +238,7 @@ And there are others. So, please check your extensions before opening Phaser iss
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L20">Line 20</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L20">Line 20</a>)</dt>
 	
 
 	
@@ -346,7 +352,7 @@ And there are others. So, please check your extensions before opening Phaser iss
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L140">Line 140</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L140">Line 140</a>)</dt>
 	
 
 	
@@ -429,7 +435,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L120">Line 120</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L120">Line 120</a>)</dt>
 	
 
 	
@@ -504,7 +510,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L75">Line 75</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L75">Line 75</a>)</dt>
 	
 
 	
@@ -579,7 +585,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L131">Line 131</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L131">Line 131</a>)</dt>
 	
 
 	
@@ -654,7 +660,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L111">Line 111</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L111">Line 111</a>)</dt>
 	
 
 	
@@ -729,7 +735,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L84">Line 84</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L84">Line 84</a>)</dt>
 	
 
 	
@@ -804,7 +810,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L102">Line 102</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L102">Line 102</a>)</dt>
 	
 
 	
@@ -879,7 +885,7 @@ Can be toggled on the fly.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L93">Line 93</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L93">Line 93</a>)</dt>
 	
 
 	
@@ -918,9 +924,15 @@ and cause the default behaviors.</p>
 <p>Please note that keyboard captures are global. This means that if you call this method from within a Scene, to say prevent
 the SPACE BAR from triggering a page scroll, then it will prevent it for any Scene in your game, not just the calling one.</p>
 <p>You can pass a single key code value:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addCapture(62);</code></pre><p>An array of key codes:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addCapture([ 62, 63, 64 ]);</code></pre><p>Or, a comma-delimited string:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addCapture('W,S,A,D');</code></pre><p>To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addCapture(62);
+</code></pre>
+<p>An array of key codes:</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addCapture([ 62, 63, 64 ]);
+</code></pre>
+<p>Or, a comma-delimited string:</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addCapture('W,S,A,D');
+</code></pre>
+<p>To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.</p>
 <p>You can also provide an array mixing both strings and key code integers.</p>
     </div>
     
@@ -1024,7 +1036,7 @@ the SPACE BAR from triggering a page scroll, then it will prevent it for any Sce
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L215">Line 215</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L215">Line 215</a>)</dt>
 	
 
 	
@@ -1284,7 +1296,7 @@ the SPACE BAR from triggering a page scroll, then it will prevent it for any Sce
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L447">Line 447</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L447">Line 447</a>)</dt>
 	
 
 	
@@ -1348,9 +1360,13 @@ the SPACE BAR from triggering a page scroll, then it will prevent it for any Sce
     <div class="description">
         <p>A practical way to create an object containing user selected hotkeys.</p>
 <p>For example:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addKeys({ 'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S });</code></pre><p>would return an object containing the properties (<code>up</code> and <code>down</code>) mapped to W and S <a href="Phaser.Input.Keyboard.Key.html">Phaser.Input.Keyboard.Key</a> objects.</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addKeys({ 'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S });
+</code></pre>
+<p>would return an object containing the properties (<code>up</code> and <code>down</code>) mapped to W and S <a href="Phaser.Input.Keyboard.Key.html">Phaser.Input.Keyboard.Key</a> objects.</p>
 <p>You can also pass in a comma-separated string:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addKeys('W,S,A,D');</code></pre><p>Which will return an object with the properties W, S, A and D mapped to the relevant Key objects.</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.addKeys('W,S,A,D');
+</code></pre>
+<p>Which will return an object with the properties W, S, A and D mapped to the relevant Key objects.</p>
 <p>To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.</p>
     </div>
     
@@ -1544,7 +1560,7 @@ the SPACE BAR from triggering a page scroll, then it will prevent it for any Sce
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L385">Line 385</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L385">Line 385</a>)</dt>
 	
 
 	
@@ -1804,7 +1820,7 @@ the SPACE BAR from triggering a page scroll, then it will prevent it for any Sce
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L111">Line 111</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L111">Line 111</a>)</dt>
 	
 
 	
@@ -2021,7 +2037,7 @@ will only return <code>true</code> every 100ms.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L611">Line 611</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L611">Line 611</a>)</dt>
 	
 
 	
@@ -2128,7 +2144,7 @@ will only return <code>true</code> every 100ms.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L348">Line 348</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L348">Line 348</a>)</dt>
 	
 
 	
@@ -2203,8 +2219,11 @@ you could pass the following array of key codes:</p>
 
 this.input.keyboard.on('keycombomatch', function (event) {
     console.log('Konami Code entered!');
-});</code></pre><p>Or, to listen for the user entering the word PHASER:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.createCombo('PHASER');</code></pre>
+});
+</code></pre>
+<p>Or, to listen for the user entering the word PHASER:</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.createCombo('PHASER');
+</code></pre>
     </div>
     
 
@@ -2348,7 +2367,7 @@ this.input.keyboard.on('keycombomatch', function (event) {
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L569">Line 569</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L569">Line 569</a>)</dt>
 	
 
 	
@@ -2454,7 +2473,7 @@ this.input.keyboard.on('keycombomatch', function (event) {
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L365">Line 365</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L365">Line 365</a>)</dt>
 	
 
 	
@@ -2561,7 +2580,7 @@ You can use this to temporarily disable event capturing if, for example, you swa
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L332">Line 332</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L332">Line 332</a>)</dt>
 	
 
 	
@@ -2775,7 +2794,7 @@ You can use this to temporarily disable event capturing if, for example, you swa
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L86">Line 86</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L86">Line 86</a>)</dt>
 	
 
 	
@@ -2882,7 +2901,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L316">Line 316</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L316">Line 316</a>)</dt>
 	
 
 	
@@ -2997,7 +3016,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L55">Line 55</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L55">Line 55</a>)</dt>
 	
 
 	
@@ -3099,7 +3118,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L303">Line 303</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L303">Line 303</a>)</dt>
 	
 
 	
@@ -3205,7 +3224,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L202">Line 202</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L202">Line 202</a>)</dt>
 	
 
 	
@@ -3373,7 +3392,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L75">Line 75</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L75">Line 75</a>)</dt>
 	
 
 	
@@ -3541,7 +3560,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L64">Line 64</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L64">Line 64</a>)</dt>
 	
 
 	
@@ -3821,7 +3840,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L151">Line 151</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L151">Line 151</a>)</dt>
 	
 
 	
@@ -4081,7 +4100,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L98">Line 98</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L98">Line 98</a>)</dt>
 	
 
 	
@@ -4341,7 +4360,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L124">Line 124</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L124">Line 124</a>)</dt>
 	
 
 	
@@ -4521,7 +4540,7 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L165">Line 165</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L165">Line 165</a>)</dt>
 	
 
 	
@@ -4587,9 +4606,15 @@ You can use this to re-enable event capturing if you had paused it via <code>dis
 <p>Please note that keyboard captures are global. This means that if you call this method from within a Scene, to remove
 the capture of a key, then it will remove it for any Scene in your game, not just the calling one.</p>
 <p>You can pass a single key code value:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.removeCapture(62);</code></pre><p>An array of key codes:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.removeCapture([ 62, 63, 64 ]);</code></pre><p>Or, a comma-delimited string:</p>
-<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.removeCapture('W,S,A,D');</code></pre><p>To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.removeCapture(62);
+</code></pre>
+<p>An array of key codes:</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.removeCapture([ 62, 63, 64 ]);
+</code></pre>
+<p>Or, a comma-delimited string:</p>
+<pre class="prettyprint source lang-javascript"><code>this.input.keyboard.removeCapture('W,S,A,D');
+</code></pre>
+<p>To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.</p>
 <p>You can also provide an array mixing both strings and key code integers.</p>
     </div>
     
@@ -4693,7 +4718,7 @@ the capture of a key, then it will remove it for any Scene in your game, not jus
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L261">Line 261</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L261">Line 261</a>)</dt>
 	
 
 	
@@ -4912,7 +4937,7 @@ the capture of a key, then it will remove it for any Scene in your game, not jus
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L513">Line 513</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L513">Line 513</a>)</dt>
 	
 
 	
@@ -5192,7 +5217,7 @@ the capture of a key, then it will remove it for any Scene in your game, not jus
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/events/EventEmitter.js#L137">Line 137</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js">src/events/EventEmitter.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/events/EventEmitter.js#L137">Line 137</a>)</dt>
 	
 
 	
@@ -5302,7 +5327,7 @@ invoked directly at any time you require.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/input/keyboard/KeyboardPlugin.js#L759">Line 759</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js">src/input/keyboard/KeyboardPlugin.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/input/keyboard/KeyboardPlugin.js#L759">Line 759</a>)</dt>
 	
 
 	
@@ -5414,9 +5439,9 @@ invoked directly at any time you require.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:06 am
+		on November 22nd 2019, 5:43:04 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

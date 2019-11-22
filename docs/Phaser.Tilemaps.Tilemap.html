@@ -120,7 +120,20 @@ http://www.mapeditor.org</p>
 use the methods that change tiles (e.g. removeTileAt) on a DynamicTilemapLayer.</p>
 <p>Note that all Tilemaps use a base tile size to calculate dimensions from, but that a
 StaticTilemapLayer or DynamicTilemapLayer may have its own unique tile size that overrides
-it.</p></div>
+it.</p>
+<p>As of Phaser 3.21.0, if your tilemap includes layer groups (a feature of Tiled 1.2.0+) these
+will be traversed and the following properties will affect children:</p>
+<ul>
+<li>opacity (blended with parent) and visibility (parent overrides child)</li>
+<li>Vertical and horizontal offset
+The grouping hierarchy is not preserved and all layers will be flattened into a single array.
+Group layers are parsed during Tilemap construction but are discarded after parsing so dynamic
+layers will NOT continue to be affected by a parent.</li>
+</ul>
+<p>To avoid duplicate layer names, a layer that is a child of a group layer will have its parent
+group name prepended with a '/'.  For example, consider a group called 'ParentGroup' with a
+child called 'Layer 1'. In the Tilemap object, 'Layer 1' will have the name
+'ParentGroup/Layer 1'.</p></div>
         
     
 </header>
@@ -254,7 +267,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L40">Line 40</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L40">Line 40</a>)</dt>
 	
 
 	
@@ -357,7 +370,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L233">Line 233</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L246">Line 246</a>)</dt>
 	
 
 	
@@ -432,7 +445,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L144">Line 144</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L157">Line 157</a>)</dt>
 	
 
 	
@@ -507,7 +520,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L108">Line 108</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L121">Line 121</a>)</dt>
 	
 
 	
@@ -582,7 +595,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L180">Line 180</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L193">Line 193</a>)</dt>
 	
 
 	
@@ -653,7 +666,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L189">Line 189</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L202">Line 202</a>)</dt>
 	
 
 	
@@ -728,7 +741,7 @@ it.</p></div>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L197">Line 197</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L210">Line 210</a>)</dt>
 	
 
 	
@@ -804,7 +817,7 @@ any type supported by setLayer.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1339">Line 1339</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1431">Line 1431</a>)</dt>
 	
 
 	
@@ -879,7 +892,7 @@ any type supported by setLayer.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L206">Line 206</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L219">Line 219</a>)</dt>
 	
 
 	
@@ -954,7 +967,7 @@ any type supported by setLayer.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L224">Line 224</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L237">Line 237</a>)</dt>
 	
 
 	
@@ -1029,7 +1042,7 @@ any type supported by setLayer.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L117">Line 117</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L130">Line 130</a>)</dt>
 	
 
 	
@@ -1104,7 +1117,7 @@ any type supported by setLayer.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L162">Line 162</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L175">Line 175</a>)</dt>
 	
 
 	
@@ -1185,7 +1198,7 @@ left-up</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L126">Line 126</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L139">Line 139</a>)</dt>
 	
 
 	
@@ -1256,7 +1269,7 @@ left-up</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L72">Line 72</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L85">Line 85</a>)</dt>
 	
 
 	
@@ -1332,7 +1345,7 @@ tile height.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L89">Line 89</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L102">Line 102</a>)</dt>
 	
 
 	
@@ -1407,7 +1420,7 @@ tile height.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L215">Line 215</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L228">Line 228</a>)</dt>
 	
 
 	
@@ -1483,7 +1496,7 @@ width.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L79">Line 79</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L92">Line 92</a>)</dt>
 	
 
 	
@@ -1558,7 +1571,7 @@ width.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L153">Line 153</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L166">Line 166</a>)</dt>
 	
 
 	
@@ -1633,7 +1646,7 @@ width.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L99">Line 99</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L112">Line 112</a>)</dt>
 	
 
 	
@@ -1708,7 +1721,7 @@ width.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L171">Line 171</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L184">Line 184</a>)</dt>
 	
 
 	
@@ -2090,7 +2103,7 @@ GID this set will use here.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L289">Line 289</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L302">Line 302</a>)</dt>
 	
 
 	
@@ -2335,7 +2348,7 @@ internally to optimize recalculating faces when only one tile has been changed.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1492">Line 1492</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1584">Line 1584</a>)</dt>
 	
 
 	
@@ -2681,7 +2694,7 @@ is mostly used internally.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1519">Line 1519</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1611">Line 1611</a>)</dt>
 	
 
 	
@@ -2860,7 +2873,7 @@ index of the layer in the map, or a DynamicTilemapLayer.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L363">Line 363</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L376">Line 376</a>)</dt>
 	
 
 	
@@ -3303,7 +3316,7 @@ information in the destination region.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L408">Line 408</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L421">Line 421</a>)</dt>
 	
 
 	
@@ -3752,7 +3765,7 @@ information in the destination region.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L452">Line 452</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L465">Line 465</a>)</dt>
 	
 
 	
@@ -4058,7 +4071,7 @@ information.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L521">Line 521</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L534">Line 534</a>)</dt>
 	
 
 	
@@ -4353,7 +4366,7 @@ scene.make.sprite).</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L584">Line 584</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L603">Line 603</a>)</dt>
 	
 
 	
@@ -4735,7 +4748,7 @@ one-to-one mapping with the indexes array.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L689">Line 689</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L714">Line 714</a>)</dt>
 	
 
 	
@@ -5041,7 +5054,7 @@ more information.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L718">Line 718</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L743">Line 743</a>)</dt>
 	
 
 	
@@ -5148,7 +5161,7 @@ StaticTilemapLayers or DynamicTilemapLayers that have been linked to LayerData.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L773">Line 773</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L802">Line 802</a>)</dt>
 	
 
 	
@@ -5302,7 +5315,7 @@ StaticTilemapLayers or DynamicTilemapLayers that have been linked to LayerData.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1581">Line 1581</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1680">Line 1680</a>)</dt>
 	
 
 	
@@ -5725,7 +5738,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L788">Line 788</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L817">Line 817</a>)</dt>
 	
 
 	
@@ -5962,7 +5975,7 @@ new array. Similar to Array.prototype.Filter in vanilla JS.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L822">Line 822</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L851">Line 851</a>)</dt>
 	
 
 	
@@ -6422,7 +6435,7 @@ filter.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L854">Line 854</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L883">Line 883</a>)</dt>
 	
 
 	
@@ -6726,7 +6739,7 @@ If no layer specified, the map's current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L885">Line 885</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L914">Line 914</a>)</dt>
 	
 
 	
@@ -6963,7 +6976,7 @@ Array.prototype.find in vanilla JS.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L912">Line 912</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L941">Line 941</a>)</dt>
 	
 
 	
@@ -7421,7 +7434,7 @@ If no layer specified, the maps current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L944">Line 944</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L973">Line 973</a>)</dt>
 	
 
 	
@@ -7878,7 +7891,7 @@ callback. Similar to Array.prototype.forEach in vanilla JS.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L973">Line 973</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1002">Line 1002</a>)</dt>
 	
 
 	
@@ -8034,7 +8047,7 @@ callback. Similar to Array.prototype.forEach in vanilla JS.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1004">Line 1004</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1033">Line 1033</a>)</dt>
 	
 
 	
@@ -8072,6 +8085,112 @@ callback. Similar to Array.prototype.forEach in vanilla JS.</p>
     <dd>
         
 <span class="param-type">integer</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getImageLayerNames"><span class="type-signature"></span>getImageLayerNames()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Return a list of all valid imagelayer names loaded in this Tilemap.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.21.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1048">Line 1048</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of valid imagelayer names / IDs loaded into this Tilemap.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
 
 
 
@@ -8215,7 +8334,7 @@ property matches the given <code>name</code>.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1019">Line 1019</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1069">Line 1069</a>)</dt>
 	
 
 	
@@ -8395,7 +8514,7 @@ StaticTilemapLayer. If not given will default to the maps current layer index.</
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1044">Line 1044</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1094">Line 1094</a>)</dt>
 	
 
 	
@@ -8575,7 +8694,7 @@ StaticTilemapLayer. If not given will default to the map's current layer index.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1082">Line 1082</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1153">Line 1153</a>)</dt>
 	
 
 	
@@ -8732,7 +8851,7 @@ invalid <code>name</code> is given.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1119">Line 1119</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1190">Line 1190</a>)</dt>
 	
 
 	
@@ -8901,7 +9020,7 @@ is found with that name.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1064">Line 1064</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1114">Line 1114</a>)</dt>
 	
 
 	
@@ -8939,6 +9058,112 @@ is found with that name.</p>
     <dd>
         
 <span class="param-type"><a href="Phaser.Tilemaps.ObjectLayer.html">Phaser.Tilemaps.ObjectLayer</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getObjectLayerNames"><span class="type-signature"></span>getObjectLayerNames()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Return a list of all valid objectgroup names loaded in this Tilemap.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.21.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1132">Line 1132</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of valid objectgroup names / IDs loaded into this Tilemap.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
 
 
 
@@ -9197,7 +9422,7 @@ If no layer specified, the map's current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1135">Line 1135</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1206">Line 1206</a>)</dt>
 	
 
 	
@@ -9533,7 +9758,7 @@ If no layer specified, the map's current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1158">Line 1158</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1229">Line 1229</a>)</dt>
 	
 
 	
@@ -9571,6 +9796,112 @@ If no layer specified, the map's current layer is used.</p>
     <dd>
         
 <span class="param-type"><a href="Phaser.Tilemaps.Tile.html">Phaser.Tilemaps.Tile</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getTileLayerNames"><span class="type-signature"></span>getTileLayerNames()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Return a list of all valid tilelayer names loaded in this Tilemap.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.21.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1253">Line 1253</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of valid tilelayer names / IDs loaded into this Tilemap.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
 
 
 
@@ -9689,7 +10020,7 @@ If no layer specified, the map's current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1257">Line 1257</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1349">Line 1349</a>)</dt>
 	
 
 	
@@ -9846,7 +10177,7 @@ invalid <code>name</code> is given.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1274">Line 1274</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1366">Line 1366</a>)</dt>
 	
 
 	
@@ -10228,7 +10559,7 @@ If no layer specified, the maps current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1182">Line 1182</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1274">Line 1274</a>)</dt>
 	
 
 	
@@ -10536,7 +10867,7 @@ If no layer specified, the maps current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1207">Line 1207</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1299">Line 1299</a>)</dt>
 	
 
 	
@@ -10942,7 +11273,7 @@ If no layer specified, the maps current layer is used.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1231">Line 1231</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1323">Line 1323</a>)</dt>
 	
 
 	
@@ -11185,7 +11516,7 @@ false if there is no tile or if the tile at that location has an index of -1.</p
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1290">Line 1290</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1382">Line 1382</a>)</dt>
 	
 
 	
@@ -11482,7 +11813,7 @@ false if there is no tile or if the tile at that location has an index of -1.</p
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1314">Line 1314</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1406">Line 1406</a>)</dt>
 	
 
 	
@@ -11821,7 +12152,7 @@ Collision information will be recalculated at the specified location.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1359">Line 1359</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1451">Line 1451</a>)</dt>
 	
 
 	
@@ -12200,7 +12531,7 @@ cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1391">Line 1391</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1483">Line 1483</a>)</dt>
 	
 
 	
@@ -12546,7 +12877,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1423">Line 1423</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1515">Line 1515</a>)</dt>
 	
 
 	
@@ -12933,7 +13264,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1457">Line 1457</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1549">Line 1549</a>)</dt>
 	
 
 	
@@ -13040,7 +13371,7 @@ DynamicTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1618">Line 1618</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1717">Line 1717</a>)</dt>
 	
 
 	
@@ -13218,7 +13549,7 @@ DynamicTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1548">Line 1548</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1640">Line 1640</a>)</dt>
 	
 
 	
@@ -13475,7 +13806,7 @@ and optionally recalculates the collision information.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1647">Line 1647</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1746">Line 1746</a>)</dt>
 	
 
 	
@@ -13813,7 +14144,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1689">Line 1689</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1788">Line 1788</a>)</dt>
 	
 
 	
@@ -14191,7 +14522,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1718">Line 1718</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1817">Line 1817</a>)</dt>
 	
 
 	
@@ -14436,7 +14767,7 @@ wherever you want on the screen.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1748">Line 1748</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1847">Line 1847</a>)</dt>
 	
 
 	
@@ -14680,7 +15011,7 @@ place the debug representation wherever you want on the screen.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1776">Line 1776</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1875">Line 1875</a>)</dt>
 	
 
 	
@@ -15099,7 +15430,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1805">Line 1805</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1904">Line 1904</a>)</dt>
 	
 
 	
@@ -15280,7 +15611,7 @@ tileHeight for all layers. This also updates the base size on all tiles across a
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2070">Line 2070</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2169">Line 2169</a>)</dt>
 	
 
 	
@@ -15625,7 +15956,7 @@ collision will be enabled (true) or disabled (false).</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1839">Line 1839</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1938">Line 1938</a>)</dt>
 	
 
 	
@@ -15964,7 +16295,7 @@ enabled (true) or disabled (false).</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1868">Line 1868</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1967">Line 1967</a>)</dt>
 	
 
 	
@@ -16266,7 +16597,7 @@ disabled (false).</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1930">Line 1930</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2029">Line 2029</a>)</dt>
 	
 
 	
@@ -16572,7 +16903,7 @@ also use an array of values, e.g. <code>{ types: [&quot;stone&quot;, &quot;lava&
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1898">Line 1898</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L1997">Line 1997</a>)</dt>
 	
 
 	
@@ -16839,7 +17170,7 @@ controls if collision will be enabled (true) or disabled (false).</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1958">Line 1958</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2057">Line 2057</a>)</dt>
 	
 
 	
@@ -17018,7 +17349,7 @@ StaticTilemapLayer. If not given will default to the map's current layer index.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2046">Line 2046</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2145">Line 2145</a>)</dt>
 	
 
 	
@@ -17263,7 +17594,7 @@ StaticTilemapLayer. If not given will default to the map's current layer index.<
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2116">Line 2116</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2215">Line 2215</a>)</dt>
 	
 
 	
@@ -17435,7 +17766,7 @@ own <code>setRenderOrder</code> methods to change them as needed.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L243">Line 243</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L256">Line 256</a>)</dt>
 	
 
 	
@@ -17715,7 +18046,7 @@ at a specific location on the map then see setTileLocationCallback.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L1986">Line 1986</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2085">Line 2085</a>)</dt>
 	
 
 	
@@ -17777,7 +18108,7 @@ at a specific location on the map then see setTileLocationCallback.</p>
 
     
     <div class="description">
-        <p>Sets a collision callback for the given rectangular area (in tile coordindates) within the layer.
+        <p>Sets a collision callback for the given rectangular area (in tile coordinates) within the layer.
 If a callback is already set for the tile index it will be replaced. Set the callback to null to
 remove it.</p>
 <p>If no layer specified, the map's current layer is used.</p>
@@ -18089,7 +18420,7 @@ remove it.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2015">Line 2015</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2114">Line 2114</a>)</dt>
 	
 
 	
@@ -18437,7 +18768,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2161">Line 2161</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2260">Line 2260</a>)</dt>
 	
 
 	
@@ -18856,7 +19187,7 @@ This cannot be applied to StaticTilemapLayers.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2194">Line 2194</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2293">Line 2293</a>)</dt>
 	
 
 	
@@ -19117,7 +19448,7 @@ layers position, scale and scroll.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2228">Line 2228</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2327">Line 2327</a>)</dt>
 	
 
 	
@@ -19453,7 +19784,7 @@ layers position, scale and scroll. This will return a new Vector2 object or upda
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2277">Line 2277</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2376">Line 2376</a>)</dt>
 	
 
 	
@@ -19715,7 +20046,7 @@ to use. If not given the current layer is used.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2252">Line 2252</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2351">Line 2351</a>)</dt>
 	
 
 	
@@ -19781,10 +20112,10 @@ to use. If not given the current layer is used.</p></td>
 specified layer. Each tile will receive a new index. New indexes are drawn from the given
 weightedIndexes array. An example weighted array:</p>
 <p>[
- { index: 6, weight: 4 },    // Probability of index 6 is 4 / 8
- { index: 7, weight: 2 },    // Probability of index 7 would be 2 / 8
- { index: 8, weight: 1.5 },  // Probability of index 8 would be 1.5 / 8
- { index: 26, weight: 0.5 }  // Probability of index 27 would be 0.5 / 8
+{ index: 6, weight: 4 },    // Probability of index 6 is 4 / 8
+{ index: 7, weight: 2 },    // Probability of index 7 would be 2 / 8
+{ index: 8, weight: 1.5 },  // Probability of index 8 would be 1.5 / 8
+{ index: 26, weight: 0.5 }  // Probability of index 27 would be 0.5 / 8
 ]</p>
 <p>The probability of any index being choose is (the index's weight) / (sum of all weights). This
 method only modifies tile indexes and does not change collision information.</p>
@@ -20110,7 +20441,7 @@ randomization. They should be in the form: { index: 0, weight: 4 } or
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2304">Line 2304</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2403">Line 2403</a>)</dt>
 	
 
 	
@@ -20412,7 +20743,7 @@ to use. If not given the current layer is used.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2349">Line 2349</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2448">Line 2448</a>)</dt>
 	
 
 	
@@ -20788,7 +21119,7 @@ layers position, scale and scroll. This will return a new Vector2 object or upda
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2400">Line 2400</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2499">Line 2499</a>)</dt>
 	
 
 	
@@ -21089,7 +21420,7 @@ layers position, scale and scroll.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/Tilemap.js#L2375">Line 2375</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js">src/tilemaps/Tilemap.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/Tilemap.js#L2474">Line 2474</a>)</dt>
 	
 
 	
@@ -21201,9 +21532,9 @@ layers position, scale and scroll.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:20 am
+		on November 22nd 2019, 5:43:20 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

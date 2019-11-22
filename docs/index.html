@@ -119,7 +119,8 @@
 
 
     <section class="readme-section">
-        <article><h1>Phaser - HTML5 Game Framework</h1><p><img src="https://phaser.io/images/github/300/phaser-header.png" alt="Phaser Header" title="Phaser 3 Header Banner"></p>
+        <article><h1>Phaser - HTML5 Game Framework</h1>
+<p><img src="https://phaser.io/images/github/300/phaser-header.png" alt="Phaser Header" title="Phaser 3 Header Banner"></p>
 <p>Phaser is a fast, free, and fun open source HTML5 game framework that offers WebGL and Canvas rendering across desktop and mobile web browsers. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.</p>
 <p>Along with the fantastic open source community, Phaser is actively developed and maintained by <a href="http://www.photonstorm.com">Photon Storm</a>. As a result of rapid support, and a developer friendly API, Phaser is currently one of the <a href="https://github.com/collections/javascript-game-engines">most starred</a> game frameworks on GitHub.</p>
 <p>Thousands of developers from indie and multi-national digital agencies, and universities worldwide use Phaser. You can take a look at their incredible <a href="https://phaser.io/games/">games</a>.</p>
@@ -133,16 +134,15 @@
 <p>Grab the source and join the fun!</p>
 <p><img src="https://phaser.io/images/github/div-whats-new.png" alt="What's New" title="What's New"></p>
 <div align="center"><img src="https://phaser.io/images/github/news.jpg"></div>
-
 <blockquote>
-<p>11th October 2019</p>
+<p>22nd November 2019</p>
 </blockquote>
-<p>It's with great pleasure that I'm announcing the release of Phaser 3.20. You may remember that 3.19 introduced native support for Spine animations via the new Spine Plugin. 3.20 updates this plugin, bringing it in-line with the latest Spine runtimes and features. I've also fixed a few issues that crept in, so the plugin is now more solid than ever. As before, it's fully documented and exports both debug and minified files, suitable for ES6 'importing' or ES5 plugin inclusion. The whole plugin is just 68KB in size (min+gz), or a paltry 57KB if you only need the Canvas renderer! That's a really tiny payload for such a massive feature-set. You can find out more about Spine from the <a href="http://esotericsoftware.com/">Esoteric Software website</a>.</p>
-<p>3.20 also introduces the brand new Video Game Object. This is a new Game Object is capable of handling playback of a previously loaded video from the Phaser Video Cache, or playing a video based on a given URL. Videos can be either local, or streamed. To all intents and purposes, a video is a standard Game Object, just like a Sprite. And as such, you can do all the usual things to it, such as scaling, rotating, cropping, tinting, making interactive, giving a physics body, etc.</p>
-<p>Transparent videos are also possible via the WebM file format. Providing the video file has was encoded with an alpha channel, and providing the browser supports WebM playback (not all of them do), then it willl render in-game with full transparency. You can also save a video to the Texture Manager, allowing other Game Objects to use it as their texture, including using it as a sampler2D input for a shader. See the Video Game Object class for more details. Other Video related changes are as follows:</p>
-<p>There are also updates to Arcade Physics, from the team at GameFroot, helping to fix issues on low, or super-high FPS systems. The Facebook Instant Games Plugin has also been updated, fixing a few issues with showing ads and in the docs. I've also spent a good while addressing <code>pixelArt</code> mode in WebGL, so now <em>all</em> native Game Objects should respect the setting, meaning your games can be crispier than ever before!</p>
+<p>Welcome to the release of Phaser 3.21. This version continues our efforts to keep Phaser 3 updated and enhanced, including lots of great new features, updates and bug fixes. New in 3.21 is the ability for you to directly set the mipmap filter levels the WebGL Renderer uses when creating textures. Any valid WebGL1 filter is allowed and you can set the filter in your game config, or at runtime, as needed. This gives you far more control over the quality of highly scaled textures.</p>
+<p>Also new in 3.21 is the ability to soft-wrap BitmapText objects, based on a fixed pixel width. You can also define the wrapping character to be used. Arcade Physics has updates including <code>overlapCirc</code> which allows you to return all bodies (both dynamic and static) that intersect the given circular region. The Tilemap system has been updated  to support Group Layers, which were introduced in a recent update of the Tiled Map Editor. These, along with Infinite Tilemaps, are now parsed correctly.</p>
+<p>As usual, there's more: Including lots of new Group features, several new Actions for setting scroll factors, the ability to run at a fixed frame rate under setTimeout, a new method that lets you rebind the Web Audio Context (handy for PWA environments), fixes for drag distances and we even fixed a few IE9 (yes, really!) compatibility issues.</p>
 <p>As usual, it doesn't end here. There are plenty more fixes, features and updates across the API. You'll find loads more great new features, updates and fixes. So, as usual, please do spend some time digging through the <a href="#changelog">Change Log</a>. I assure you, it's worth while :)</p>
-<p>A massive thank-you to everyone who supports Phaser on Patreon and PayPal. Your continued backing has allowed me to work on Phaser all year, and this great new releases is the very real result of that. If you've ever considered becoming a backer, now is the perfect time!</p>
+<p>It was really great to receive a bunch of quality Pull Requests from the Phaser community, many of which found their way into 3.21. The past few versions have seen a lot of significant improvements, from comprehensive Spine support, to full Video playback, it's been an exciting few months. Things traditionally get a little more quiet around this time of the year but we're planning out 3.22 already and continuing to work through the issues list. During this time, we're also working hard on Phaser 4. You can follow development progress of both on the Phaser Patreon.</p>
+<p>As usual, I'd like to send a massive thank-you to everyone who supports Phaser on Patreon (and now even GitHub Sponsors, too!) Your continued backing keeps allowing me to work on Phaser full-time and this great new releases is the very real result of that. If you've ever considered becoming a backer, now is the perfect time!</p>
 <p>If you'd like to stay abreast of developments then I publish my <a href="https://phaser.io/phaser3/devlog">Developer Logs</a> in the <a href="https://phaser.io/community/newsletter">Phaser World</a> newsletter. Subscribe to stay in touch and get all the latest news from the core team and the wider community.</p>
 <p>You can also follow Phaser on <a href="https://twitter.com/phaser_">Twitter</a> and chat with fellow Phaser devs in our <a href="https://phaser.io/community/slack">Slack</a> and <a href="https://phaser.io/community/discord">Discord</a> channels.</p>
 <p>Phaser 3 wouldn't have been possible without the fantastic support of the community and Patreon. Thank you to everyone who supports our work, who shares our belief in the future of HTML5 gaming, and Phaser's role in that.</p>
@@ -173,37 +173,51 @@
 <p><img src="https://phaser.io/images/github/sponsors-2019-08.png" alt="Sponsors" title="Awesome  Sponsors"></p>
 <p><img src="https://phaser.io/images/github/div-newsletter.png" alt="Phaser Newsletter" title="Phaser Newsletter"></p>
 <div align="center"><img src="https://phaser.io/images/github/phaser-world.png"></div>
-
 <p>We publish the <a href="https://phaser.io/community/newsletter">Phaser World</a> newsletter. It's packed full of the latest Phaser games, tutorials, videos, meet-ups, talks, and more. The newsletter also contains our weekly Development Progress updates which let you know about the new features we're working on.</p>
 <p>Over 140 previous editions can be found on our <a href="https://phaser.io/community/backissues">Back Issues</a> page.</p>
 <p><img src="https://phaser.io/images/github/div-download.png" alt="Download Phaser" title="Download Phaser">
 <a name="download"></a></p>
 <p>Phaser 3 is available via GitHub, npm and CDNs:</p>
 <ul>
-<li>Clone the git repository via <a href="https://github.com/photonstorm/phaser.git">https</a>, <a href="git@github.com:photonstorm/phaser.git">ssh</a> or with the Github <a href="github-windows://openRepo/https://github.com/photonstorm/phaser">Windows</a> or <a href="github-mac://openRepo/https://github.com/photonstorm/phaser">Mac</a> clients.</li>
+<li>Clone the git repository via <a href="https://github.com/photonstorm/phaser.git">https</a>, <a href="git@github.com:photonstorm/phaser.git">ssh</a> or with the GitHub <a href="github-windows://openRepo/https://github.com/photonstorm/phaser">Windows</a> or <a href="github-mac://openRepo/https://github.com/photonstorm/phaser">Mac</a> clients.</li>
 <li>Download as <a href="https://github.com/photonstorm/phaser/archive/master.zip">zip</a></li>
-<li>Download the build files: <a href="https://github.com/photonstorm/phaser/releases/download/v3.20.0/phaser.js">phaser.js</a> and <a href="https://github.com/photonstorm/phaser/releases/download/v3.20.0/phaser.min.js">phaser.min.js</a></li>
+<li>Download the build files: <a href="https://github.com/photonstorm/phaser/releases/download/v3.21.0/phaser.js">phaser.js</a> and <a href="https://github.com/photonstorm/phaser/releases/download/v3.21.0/phaser.min.js">phaser.min.js</a></li>
 </ul>
-<h3>NPM</h3><p>Install via <a href="https://www.npmjs.com">npm</a>:</p>
-<pre class="prettyprint source lang-bash"><code>npm install phaser</code></pre><h3>CDN</h3><p><a href="https://www.jsdelivr.com/package/gh/photonstorm/phaser"><img src="https://data.jsdelivr.com/v1/package/gh/photonstorm/phaser/badge" alt=""></a></p>
+<h3>NPM</h3>
+<p>Install via <a href="https://www.npmjs.com">npm</a>:</p>
+<pre class="prettyprint source lang-bash"><code>npm install phaser
+</code></pre>
+<h3>CDN</h3>
+<p><a href="https://www.jsdelivr.com/package/gh/photonstorm/phaser"><img src="https://data.jsdelivr.com/v1/package/gh/photonstorm/phaser/badge" alt=""></a></p>
 <p><a href="https://www.jsdelivr.com/projects/phaser">Phaser is on jsDelivr</a> which is a &quot;super-fast CDN for developers&quot;. Include the following in your html:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser.js&quot;>&lt;/script></code></pre><p>or the minified version:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser.min.js&quot;>&lt;/script></code></pre><h3>API Documentation</h3><p>Go to https://photonstorm.github.io/phaser3-docs/index.html to read the docs online. Use the drop-down menus at the top to navigate the namespaces, classes and Game Objects lists.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.js&quot;>&lt;/script>
+</code></pre>
+<p>or the minified version:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.min.js&quot;>&lt;/script>
+</code></pre>
+<h3>API Documentation</h3>
+<p>Go to https://photonstorm.github.io/phaser3-docs/index.html to read the docs online. Use the drop-down menus at the top to navigate the namespaces, classes and Game Objects lists.</p>
 <p>Or, if you wish to run the docs locally you can checkout the <a href="https://github.com/photonstorm/phaser3-docs">phaser3-docs</a> repository and then read the documentation by pointing your browser to the <code>docs/</code> folder.</p>
 <p>The documentation for Phaser 3 is an on-going project. Please help us by searching the Phaser code for any instance of the string <code>[description]</code> and then replacing it with some documentation.</p>
-<h3>TypeScript Definitions</h3><p>The <a href="https://github.com/photonstorm/phaser/tree/master/types">TypeScript definitions</a> can be found inside the <code>types</code> folder. They are also referenced in the types entry in <code>package.json</code>.</p>
+<h3>TypeScript Definitions</h3>
+<p>The <a href="https://github.com/photonstorm/phaser/tree/master/types">TypeScript definitions</a> can be found inside the <code>types</code> folder. They are also referenced in the types entry in <code>package.json</code>.</p>
 <p>Depending on your project, you may need to add the following to your <code>tsconfig.json</code> file:</p>
 <pre class="prettyprint source lang-json"><code>&quot;typeRoots&quot;: [
     &quot;./node_modules/phaser/types&quot;
 ],
 &quot;types&quot;: [
     &quot;Phaser&quot;
-]</code></pre><p>The defs are automatically generated from the JSDoc comments found in the Phaser source code. If you wish to help refine them then you must edit the Phaser JSDoc blocks directly, not the defs file. You can find more details about the parser we built in the <code>scripts/tsgen</code> folder.</p>
-<h3>Webpack</h3><p>We use Webpack to build Phaser and we take advantage of its conditional build flag feature to handle renderer swapping. If you wish to use Webpack with Phaser then please use our <a href="https://github.com/photonstorm/phaser3-project-template">Phaser 3 Project Template</a> as it's already set-up to handle the build conditions Phaser needs. Recent changes to our build steps mean you should now be able to use any other packager, like Parcel, without any config changes.</p>
-<h3>License</h3><p>Phaser is released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+]
+</code></pre>
+<p>We recently published a new <a href="https://github.com/photonstorm/phaser3-typescript-project-template">Phaser 3 TypeScript Project Template</a>, which you can use to get started with if you like.</p>
+<p>The TS defs are automatically generated from the JSDoc comments found in the Phaser source code. If you wish to help refine them then you must edit the Phaser JSDoc blocks directly, not the defs file. You can find more details about the parser we built in the <code>scripts/tsgen</code> folder.</p>
+<h3>Webpack</h3>
+<p>We use Webpack to build Phaser and we take advantage of its conditional build flag feature to handle renderer swapping. If you wish to use Webpack with Phaser then please use our <a href="https://github.com/photonstorm/phaser3-project-template">Phaser 3 Project Template</a> as it's already set-up to handle the build conditions Phaser needs. Recent changes to our build steps mean you should now be able to use any other packager, like Parcel, without any config changes.</p>
+<h3>License</h3>
+<p>Phaser is released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
 <p><img src="https://phaser.io/images/github/div-getting-started.png" alt="Getting Started" title="Getting Started">
 <a name="getting-started"></a></p>
-<p><img src="https://phaser.io/images/github/learn.jpg" align="right"></p>
+<img src="https://phaser.io/images/github/learn.jpg" align="right">
 <p>Tutorials and guides on Phaser 3 development are being published every week.</p>
 <ul>
 <li><a href="https://phaser.io/tutorials/getting-started-phaser3">Getting Started with Phaser 3</a> (useful if you are completely new to Phaser)</li>
@@ -212,7 +226,8 @@
 <li>Plus, there are <a href="http://phaser.io/learn">over 700 Phaser tutorials</a> listed on the official website.</li>
 </ul>
 <p>Also, please subscribe to the <a href="https://phaser.io/community/newsletter">Phaser World</a> newsletter for details about new tutorials as they are published.</p>
-<h3>Facebook Instant Games</h3><p>Phaser 3.13 introduced the new <a href="http://phaser.io/news/2018/10/facebook-instant-games-phaser-tutorial">Facebook Instant Games</a> Plugin. The plugin provides a seamless bridge between Phaser and version 6.2 of the Facebook Instant Games SDK. Every single SDK function is available via the plugin and we will keep track of the official SDK to make sure they stay in sync.</p>
+<h3>Facebook Instant Games</h3>
+<p>Phaser 3.13 introduced the new <a href="http://phaser.io/news/2018/10/facebook-instant-games-phaser-tutorial">Facebook Instant Games</a> Plugin. The plugin provides a seamless bridge between Phaser and version 6.2 of the Facebook Instant Games SDK. Every single SDK function is available via the plugin and we will keep track of the official SDK to make sure they stay in sync.</p>
 <p>The plugin offers the following features:</p>
 <ul>
 <li>Easy integration with the Phaser Loader so load events update the Facebook progress circle.</li>
@@ -238,21 +253,29 @@
 <li><a href="http://phaser.io/news/2018/12/facebook-instant-games-ads-tutorial">Displaying Ads in your Instant Games</a></li>
 </ul>
 <p>A special build of Phaser with the Facebook Instant Games Plugin ready-enabled is <a href="https://www.jsdelivr.com/projects/phaser">available on jsDelivr</a>. Include the following in your html:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser-facebook-instant-games.js&quot;>&lt;/script></code></pre><p>or the minified version:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser-facebook-instant-games.min.js&quot;>&lt;/script></code></pre><p>The build files are in the git repository in the <code>dist</code> folder, and you can also include the plugin in custom builds.</p>
-<h3>Source Code Examples</h3><p>During our development of Phaser 3, we created hundreds of examples with the full source code and assets ready available. These examples are now fully integrated into the <a href="https://phaser.io/examples">Phaser website</a>. You can also browse them on <a href="https://labs.phaser.io">Phaser 3 Labs</a> via a more advanced interface, or clone the <a href="https://github.com/photonstorm/phaser3-examples">examples repo</a>. We are constantly adding to and refining these examples.</p>
-<h3>Create Your First Phaser 3 Example</h3><p>Create an <code>index.html</code> page locally and paste the following code into it:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser-facebook-instant-games.js&quot;>&lt;/script>
+</code></pre>
+<p>or the minified version:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser-facebook-instant-games.min.js&quot;>&lt;/script>
+</code></pre>
+<p>The build files are in the git repository in the <code>dist</code> folder, and you can also include the plugin in custom builds.</p>
+<h3>Source Code Examples</h3>
+<p>During our development of Phaser 3, we created hundreds of examples with the full source code and assets ready available. These examples are now fully integrated into the <a href="https://phaser.io/examples">Phaser website</a>. You can also browse them on <a href="https://labs.phaser.io">Phaser 3 Labs</a> via a more advanced interface, or clone the <a href="https://github.com/photonstorm/phaser3-examples">examples repo</a>. We are constantly adding to and refining these examples.</p>
+<h3>Create Your First Phaser 3 Example</h3>
+<p>Create an <code>index.html</code> page locally and paste the following code into it:</p>
 <pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
 &lt;html>
 &lt;head>
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser-arcade-physics.min.js&quot;>&lt;/script> 
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser-arcade-physics.min.js&quot;>&lt;/script> 
 &lt;/head>
 &lt;body>
 
     &lt;script>&lt;/script>
 
 &lt;/body>
-&lt;/html></code></pre><p>This is a standard empty webpage. You'll notice there's a script tag that is pulling in a build of Phaser 3, but otherwise this webpage doesn't do anything yet. Now let's set-up the game config. Paste the following between the <code>&lt;script&gt;&lt;/script&gt;</code> tags:</p>
+&lt;/html>
+</code></pre>
+<p>This is a standard empty webpage. You'll notice there's a script tag that is pulling in a build of Phaser 3, but otherwise this webpage doesn't do anything yet. Now let's set-up the game config. Paste the following between the <code>&lt;script&gt;&lt;/script&gt;</code> tags:</p>
 <pre class="prettyprint source lang-javascript"><code>var config = {
     type: Phaser.AUTO,
     width: 800,
@@ -267,7 +290,9 @@
         preload: preload,
         create: create
     }
-};</code></pre><p><code>config</code> is a pretty standard Phaser 3 Game Configuration object. We tell <code>config</code> to use the WebGL renderer if it can, set the canvas to a size of 800x600 pixels, enable Arcade Physics, and finally call the <code>preload</code> and <code>create</code> functions. <code>preload</code> and <code>create</code> have not been implemented yet, so if you run this JavaScript code, you will have an error. Add the following after <code>config</code>:</p>
+};
+</code></pre>
+<p><code>config</code> is a pretty standard Phaser 3 Game Configuration object. We tell <code>config</code> to use the WebGL renderer if it can, set the canvas to a size of 800x600 pixels, enable Arcade Physics, and finally call the <code>preload</code> and <code>create</code> functions. <code>preload</code> and <code>create</code> have not been implemented yet, so if you run this JavaScript code, you will have an error. Add the following after <code>config</code>:</p>
 <pre class="prettyprint source lang-javascript"><code>var game = new Phaser.Game(config);
 
 function preload ()
@@ -281,7 +306,9 @@ function preload ()
 
 function create ()
 {
-}</code></pre><p><code>game</code> is a Phaser Game instance that uses our configuration object <code>config</code>. We also add function definitions for <code>preload</code> and <code>create</code>. The <code>preload</code> function helps you easily load assets into your game. In <code>preload</code>, we set the Base URL to be the Phaser server and load 3 PNG files.</p>
+}
+</code></pre>
+<p><code>game</code> is a Phaser Game instance that uses our configuration object <code>config</code>. We also add function definitions for <code>preload</code> and <code>create</code>. The <code>preload</code> function helps you easily load assets into your game. In <code>preload</code>, we set the Base URL to be the Phaser server and load 3 PNG files.</p>
 <p>The <code>create</code> function is empty, so it's time to fill it in:</p>
 <pre class="prettyprint source lang-javascript"><code>function create ()
 {
@@ -302,7 +329,9 @@ function create ()
     logo.setCollideWorldBounds(true);
 
     emitter.startFollow(logo);
-}</code></pre><p>Here we add a sky image into the game and create a Particle Emitter. The <code>scale</code> value means that the particles will initially be large and will shrink to nothing as their lifespan progresses.</p>
+}
+</code></pre>
+<p>Here we add a sky image into the game and create a Particle Emitter. The <code>scale</code> value means that the particles will initially be large and will shrink to nothing as their lifespan progresses.</p>
 <p>After creating the <code>emitter</code>, we add a logo image called <code>logo</code>. Since <code>logo</code> is a Physics Image, <code>logo</code> is given a physics body by default. We set some properties for <code>logo</code>: velocity, bounce (or restitution), and collision with the world bounds. These properties will make our logo bounce around the screen. Finally, we tell the particle emitter to follow the logo - so as the logo moves, the particles will flow from it.</p>
 <p>Run it in your browser and you'll see the following:</p>
 <p><img src="https://phaser.io/images/github/300/sample1.png" alt="Phaser 3 Demo" title="Phaser 3 Demo"></p>
@@ -311,170 +340,115 @@ function create ()
 <p>Subscribe to our newsletter for further tutorials and examples.</p>
 <p><img src="https://phaser.io/images/github/div-building-phaser.png" alt="Building Phaser" title="Building Phaser"></p>
 <p>There are both plain and minified compiled versions of Phaser in the <code>dist</code> folder of the repository. The plain version is for use during development, and the minified version is for production use. You can also create your own builds.</p>
-<h3>Custom Builds</h3><p>Phaser 3 is built using Webpack and we take advantage of the Webpack definePlugin feature to allow for conditional building of the Canvas and WebGL renderers and extra plugins. You can custom the build process to only include the features you require. Doing so can cut the main build file size down to just 70KB.</p>
+<h3>Custom Builds</h3>
+<p>Phaser 3 is built using Webpack and we take advantage of the Webpack definePlugin feature to allow for conditional building of the Canvas and WebGL renderers and extra plugins. You can custom the build process to only include the features you require. Doing so can cut the main build file size down to just 70KB.</p>
 <p>Read our <a href="https://phaser.io/phaser3/devlog/127">comprehensive guide</a> on creating Custom Builds of Phaser 3 for full details.</p>
-<h3>Building from Source</h3><p>If you wish to build Phaser 3 from source, ensure you have the required packages by cloning the repository and then running <code>npm install</code> on your source directory.</p>
+<h3>Building from Source</h3>
+<p>If you wish to build Phaser 3 from source, ensure you have the required packages by cloning the repository and then running <code>npm install</code> on your source directory.</p>
 <p>You can then run <code>webpack</code> to create a development build in the <code>build</code> folder which includes source maps for local testing. You can also <code>npm run dist</code> to create a minified packaged build in the <code>dist</code> folder. For a list of all commands available use <code>npm run help</code>.</p>
 <p><img src="https://phaser.io/images/github/div-change-log.png" alt="Change Log" title="Change Log">
 <a name="changelog"></a></p>
-<h1>Change Log</h1><h2>Version 3.20.0 - Fitoria - 11th October 2019</h2><h3>Video Game Object</h3><p>This is a new Game Object is capable of handling playback of a previously loaded video from the Phaser Video Cache,
-or playing a video based on a given URL. Videos can be either local, or streamed:</p>
-<pre class="prettyprint source lang-javascript"><code>preload () {
-  this.load.video('pixar', 'nemo.mp4');
-}
-
-create () {
-  this.add.video(400, 300, 'pixar');
-}</code></pre><p>To all intents and purposes, a video is a standard Game Object, just like a Sprite. And as such, you can do
-all the usual things to it, such as scaling, rotating, cropping, tinting, making interactive, giving a
-physics body, etc.</p>
-<p>Transparent videos are also possible via the WebM file format. Providing the video file has was encoded with
-an alpha channel, and providing the browser supports WebM playback (not all of them do), then it willl render
-in-game with full transparency.</p>
-<p>You can also save a video to the Texture Manager, allowing other Game Objects to use it as their texture,
-including using it as a sampler2D input for a shader.</p>
-<p>See the Video Game Object class for more details. Other Video related changes are as follows:</p>
+<h1>Change Log</h1>
+<h2>Version 3.21.0 - Senku - 22nd November 2019</h2>
+<h3>New Features</h3>
 <ul>
-<li><code>Loader.FileTypes.VideoFile</code> is a new Video File Loader File Type, used for preloading videos as streams or blobs.</li>
-<li><code>WebGLRenderer.createVideoTexture</code> is a new method that will create a WebGL Texture from the given Video Element.</li>
-<li><code>WebGLRenderer.updateVideoTexture</code> is a new method that will update a WebGL Texture from the given Video Element.</li>
-<li><code>TextureSource.isVideo</code> is a new boolean property that is set when the Texture Source is backed by an HTML Video Element.</li>
-<li><code>Cache.video</code> is a new global cache that store loaded Video content.</li>
-<li><code>Device.Video.h264Video</code> has been renamed to <code>Device.Video.h264</code> to keep it in-line with the Audio Device names.</li>
-<li><code>Device.Video.hlsVideo</code> has been renamed to <code>Device.Video.hls</code> to keep it in-line with the Audio Device names.</li>
-<li><code>Device.Video.mp4Video</code> has been renamed to <code>Device.Video.mp4</code> to keep it in-line with the Audio Device names.</li>
-<li><code>Device.Video.oggVideo</code> has been renamed to <code>Device.Video.ogg</code> to keep it in-line with the Audio Device names.</li>
-<li><code>Device.Video.vp9Video</code> has been renamed to <code>Device.Video.vp9</code> to keep it in-line with the Audio Device names.</li>
-<li><code>Device.Video.webmVideo</code> has been renamed to <code>Device.Video.webm</code> to keep it in-line with the Audio Device names.</li>
+<li>You can now specify the mipmap filter level to be used when creating WebGL textures. This can be set in the Game Config using the new <code>mipmapFilter</code> property, which is a string, such as 'NEAREST_MIPMAP_NEAREST'. Or, you can set the new <code>WebGLRenderer.mipmapFilter</code> property to a valid GLenum. If you set it on the renderer, it will only impact any textures loaded <em>after</em> it has been set, so do so in your Scene <code>init</code> method if you want it to be used for textures you're about to load. By changing the mipmap level you can drastically improve the quality when reducing large textures. Please note, due to WebGL1 limitations, this only works on power-of-two sized textures. It also works on textures created from Canvas, Videos or RenderTextures.</li>
+<li><code>BitmapText.setMaxWidth</code> is a new method that allows you to set a maximum width (in pixels) for the BitmapText to take up when rendering. Lines of text longer than <code>maxWidth</code> will be wrapped, based on whitespace, to the next line. This allows you to do word-wrapping on BitmapText objects, something only previously possible on Text objects.</li>
+<li><code>BitmapText.wordWrapCharCode</code> is a new property that works with <code>setMaxWidth</code> that allows you to control which character code causes a line-wrap. By default it is 32 (a space character).</li>
+<li><code>ArcadePhysics.closest</code> now has an optional <code>targets</code> argument. The targets can be any Arcade Physics Game Object, Body or Static Body and it will return only the closet target from those given (thanks @samme)</li>
+<li><code>ArcadePhysics.furthest</code> now has an optional <code>targets</code> argument. The targets can be any Arcade Physics Game Object, Body or Static Body and it will return only the furthest target from those given (thanks @samme)</li>
+<li><code>Tilemaps.Parsers.Tiled.CreateGroupLayer</code> is a new function that parses a Tiled group layer and adds in support for Tiled layer groups (introduced in Tiled 1.2.0). Feature #4099 (thanks @Babeetlebum @Olliebrown)</li>
+<li>The Tilemap system now supports infinite Tilemaps from the Tiled map editor (thanks @Olliebrown)</li>
+<li><code>Tilemap.getImageLayerNames</code> is a new method that returns a list of all valid imagelayer names loaded in the Tilemap (thanks @Olliebrown)</li>
+<li><code>Tilemap.getObjectLayerNames</code> is a new method that returns a list of all valid objectgroup names loaded in the Tilemap (thanks @Olliebrown)</li>
+<li><code>Tilemap.getTileLayerNames</code> is a new method that returns a list of all valid tilelayer names loaded in the Tilemap (thanks @Olliebrown)</li>
+<li>When <code>forceSetTimeOut</code> is set to <code>true</code> in the Game Config, you can now set the target frame rate by setting the <code>fps.target</code> value (thanks @pavels)</li>
+<li>Videos can now be loaded from a data URI, allowing for base64 encoded videos to be used in the Loader instead of file based ones. Although, as with all base64 encoded data, we strongly recommend against this (thanks @apasov)</li>
+<li><code>Math.MIN_SAFE_INTEGER</code> is a new math const that stores the minimum safe integer for browsers that don't provide this, such as IE (thanks @jronn)</li>
+<li><code>Math.MAX_SAFE_INTEGER</code> is a new math const that stores the maximum safe integer for browsers that don't provide this, such as IE (thanks @jronn)</li>
+<li><code>KeyCodes.NUMPAD_ADD</code> has been added to the keycodes list (thanks @Martin-Antonov)</li>
+<li><code>KeyCodes.NUMPAD_SUBTRACT</code> has been added to the keycodes list (thanks @Martin-Antonov)</li>
+<li><code>Video.removeVideoElementOnDestroy</code> is a new boolean property that allows you to control if the Video element is removed from the DOM when the Video Game Object is destroyed.</li>
+<li><code>Actions.SetScrollFactor</code> is a new Action that will set the scroll factor on an array of Game Objects, including stepped incremental changes per item (thanks @rexrainbow)</li>
+<li><code>Actions.SetScrollFactorX</code> is a new Action that will set the horizontal scroll factor on an array of Game Objects, including stepped incremental changes per item (thanks @rexrainbow)</li>
+<li><code>Actions.SetScrollFactorY</code> is a new Action that will set the horizontal scroll factor on an array of Game Objects, including stepped incremental changes per item (thanks @rexrainbow)</li>
+<li>The <code>Group</code> config object now supports use of the <code>setScrollFactor</code> property to set the value on each child of the Group (thanks @rexrainbow)</li>
+<li><code>Group.propertyValueSet</code> is a new method that sets a given property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.propertyValueInc</code> is a new method that adds an amount to a given property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setX</code> is a new method that sets the x coordinate on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setY</code> is a new method that sets the y coordinate on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setXY</code> is a new method that sets the x and y coordinate on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.incX</code> is a new method that increments the x coordinate on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.incY</code> is a new method that increments the y coordinate on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.incXY</code> is a new method that increments the x and y coordinate on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.shiftPosition</code> is a new method that iterates the Group members and shifts the position of each to the previous members position (thanks @rexrainbow)</li>
+<li><code>Group.angle</code> is a new method that sets the angle property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.rotate</code> is a new method that sets the rotation property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.rotateAround</code> is a new method that rotates each Group member around the given point, by the given angle (thanks @rexrainbow)</li>
+<li><code>Group.rotateAroundDistance</code> is a new method that rotates each Group member around the given point, by the given angle and distance (thanks @rexrainbow)</li>
+<li><code>Group.setAlpha</code> is a new method that sets the alpha property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setTint</code> is a new method that sets the tint property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setOrigin</code> is a new method that sets the origin property on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.scaleX</code> is a new method that sets the x scale on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.scaleY</code> is a new method that sets the y scale on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.scaleXY</code> is a new method that sets the x and y scale on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setBlendMode</code> is a new method that sets the blend mode on each Group member (thanks @rexrainbow)</li>
+<li><code>Group.setHitArea</code> is a new method that passes all Group members to the Input Plugin to enable them for input (thanks @rexrainbow)</li>
+<li><code>Group.shuffle</code> is a new method that shuffles all of the Group members in place (thanks @rexrainbow)</li>
+<li><code>Group.setVisible</code> is a new method that sets the visible state on each Group member (thanks @rexrainbow)</li>
+<li><code>WebAudioSoundManager.setAudioContext</code> is a new method that allows you to set the Sound Manager Audio Context to a different context instance. It will also disconnect and re-create the gain nodes on the new context.</li>
+<li><code>Group.type</code> is a new property that holds a string-based name of the Game Object type, as with other GO's (thanks @samme)</li>
+<li><code>Arade.Group.type</code> is a new property that holds a string-based name of the Game Object type, as with other GO's (thanks @samme)</li>
+<li><code>Arcade.StaticGroup.type</code> is a new property that holds a string-based name of the Game Object type, as with other GO's (thanks @samme)</li>
+<li><code>ArcadePhysics.overlapCirc</code> is a new method that allows you to return an array of all Arcade Physics bodies that overlap with the given circular area of the world. It can return either dynamic or static bodies, or a mixture of both (thanks @samme)</li>
 </ul>
-<h3>Spine Plugin</h3><ul>
-<li>The Spine runtimes have been updated to 3.8. Please note that Spine runtimes are <em>not</em> backwards compatible. Animations exported with Spine 3.7 (or earlier) will need re-exporting with 3.8 in order to work with the new runtimes.</li>
-<li>Fixed a bug with the binding of the Spine Plugin causing the GameObjectFactory to remain bound to the first instance of the plugin, causing Scene changes to result in blank Spine Game Objects. Fix #4716 (thanks @olilanz)</li>
-<li>Fixed a bug with the caching of the Spine Texture Atlases, causing shader errors when returning from one Scene to another with a cached Texture Atlas.</li>
-<li>The WebGL Scene Renderer is now only disposed if the Scene is destroyed, not just shut-down.</li>
-<li>The Spine Game Object will no longer set the default skin name to be 'default', it will leave the name empty. Fix #4764 (thanks @Jonchun @badlogic)</li>
-<li>Thanks to a fix inside the Container WebGLRenderer, a bug was crushed which involved multiple Containers in a Scene, with Spine objects, from causing run-time errors. Fix #4710 (thanks @nalgorry)</li>
-<li>Using <code>Loader.setPath</code> to define the Spine assets locations could error if trying to load multiple files from different folders. It will now retain the path state at the time of invocation, rather than during the load.</li>
-<li>When loading Spine files that used the same internal image file names, only the first file would successfully load. Now, all files load correctly.</li>
-</ul>
-<h3>Facebook Instant Games Plugin</h3><ul>
-<li>Calling <code>showAd</code> or <code>showVideoAd</code> will now check to see if the ad has already been displayed, and skip it when iterating the ads array, allowing you to display an ad with the same Placement ID without preloading it again. Fix #4728 (thanks @NokFrt)</li>
-<li>Calling <code>gameStarted</code> in a game that doesn't load any assets would cause the error <code>{code: &quot;INVALID_OPERATION&quot;, message: &quot;Can not perform this operation before game start.&quot;}</code>. The plugin will now has a new internal method <code>gameStartedHandler</code> and will redirect the flow accordingly based on asset loading. Fix #4550 (thanks @bchee)</li>
-<li>The documentation for the <code>chooseContext</code> method has been fixed. Fix #4425 (thanks @krzysztof-grzybek)</li>
-<li><code>Leaderboard.getConnectedScores</code> incorrectly specified two parameters, neither of which were used. Fix #4702 (thanks @NokFrt)</li>
-<li><code>Leaderboard</code> extends Event Emitter, which was missing in the TypeScript defs. Fix #4703 (thanks @NokFrt)</li>
-</ul>
-<h3>Arcade Physics Updates</h3><p>@BenjaminDRichards and the GameFroot team contributed the following updates to Arcade Physics, which fixes 3 issues encountered when the framerate drops below 60 (technically, any time when multiple physics steps run per frame, so if physics FPS is above 60 this will also occur.)</p>
-<p>Issue 1: Friction starts to flip out. Objects on moving platforms get pushed ahead of the platform and &quot;catch&quot; on the leading edge.
-Issue 2: Physics objects start to dip into the floor. In the &quot;Before&quot; demo, the camera is locked to the player, so this appears as the entire world starting to shake up and down.
-Issue 3: When objects dip into the floor, their &quot;rest velocity&quot; is non-zero. This can affect debug and other logic.</p>
+<h3>Updates</h3>
 <ul>
-<li><code>Body.prevFrame</code> is a new vector allowing a Body to distinguish between frame-length changes and step-length changes. Several steps may run for every frame, particularly when fps is low.</li>
-<li><code>Body._reset</code> flag was removed and replaced it with a check of <code>Body.moves</code>. The flag only turned on when <code>moves</code> was true, and never turned off.</li>
-<li>Added a reset of <code>prev</code> in Arcade.Body#step. This fixes the friction issue.</li>
-<li>Stopped the <code>Body.postUpdate</code> method from setting <code>_dx</code>, <code>_dy</code>, and <code>prev</code>. They remain in the state they were at the end of the last physics step. This will affect the delta methods, which are documented to provide step-based data (not frame-based data); they now do so. However, because several steps may run per frame, you can't interrogate every step unless you're running functions based on physics events like collisions. You'll just see the latest step. This should partially balance out the extra load of resetting prev.</li>
-<li>Added a zero-out of stepsLastFrame in Arcade.World#postUpdate, which would otherwise never zero out and keep running at least one pass per frame. This should improve performance when frames can be skipped.</li>
-<li>Removed <code>blocked</code> checks from <code>TileCheckX</code> and <code>TileCheckY</code>. Originally, this prevented multiple checks when an object had come to rest on a floor. However, when multiple steps run per frame, the object will accelerate again, the floor won't stop it on steps 2+, and it will end the frame a short distance into the floor. Removing the blocked checks will fix the floor dip issue and the rest velocity issue. Although this opens up multiple checks, this is probably very rare: how many times does an object hit two different floors in a single frame?</li>
+<li><code>Curve.getPoints</code> can now take an optional array as the 3rd parameter in which to store the points results (thanks @rexrainbow)</li>
+<li><code>Line.arcLengthDivisions</code> now overrides the default Curve value and is set to 1 to optimize the amount of points returned for a Line curve (thanks @rexrainbow)</li>
+<li><code>ArcadePhysics.closest</code> will now no longer ever return the source in the target results (thanks @samme)</li>
+<li><code>ArcadePhysics.furthest</code> will now no longer ever return the source in the target results (thanks @samme)</li>
+<li><code>RequestAnimationFrame.target</code> is a new property that controls the fps rate (in ms) when setTimeout is used (thanks @pavels)</li>
+<li>The <code>WebAudioSoundManager.unlock</code> method will now listen for <code>keydown</code> events in order to unlock the Audio Context, as well as touch and pointer events, making it more accessible (thanks Nick Tipping)</li>
+<li>The <code>requestAnimationFrame</code> polyfill no longer expects a Browserify environment and uses <code>window</code> through-out, it also no longer adds in the same as performance.now does.</li>
+<li><code>BitmapText.getTextBounds</code> didn't reset the dirty flag, causing the <code>GetBitmapTextSize</code> function to be called every time the Bitmap Text was rendered. With enough text objects on-screen this could negatively impact performance. The flag is now reset every time the bounds are recalculated.</li>
 </ul>
-<p>In combination these updates fix issues #4732 and #4672. My thanks to @BenjaminDRichards and @falifm.</p>
-<h3>New Features</h3><ul>
-<li><code>GameConfig.antialiasGL</code> is a new boolean that allows you to set the <code>antialias</code> property of the WebGL context during creation, without impacting any subsequent textures or the canvas CSS.</li>
-<li><code>InteractiveObject.alwaysEnabled</code> is a new boolean that allows an interactive Game Object to always receive input events, even if it's invisible or won't render.</li>
-<li><code>Bob.setTint</code> is  a new method that allows you to set the tint of a Bob object within a Blitter. This is then used by the Blitter WebGL Renderer (thanks @rexrainbow)</li>
-<li>The <code>UpdateList</code> now emits two new events: 'add' and 'remove' when children are added and removed from it. Fix #3487 (thanks @hexus)</li>
-<li>The <code>Tilemap.setCollision</code> method has a new optional boolean parameter <code>updateLayer</code>. If set to <code>true</code>, it will update all of the collision settings of all tiles on the layer. If <code>false</code> it will skip doing this, which can be a huge performance boost in situations where the layer tiles haven't been modified and you're just changing collision flags. This is especially suitable for maps using procedural generated tilemaps, infinite tilemaps, multiplayer tilemaps, particularly large tilemaps (especially those dyanmic in nature) or who otherwise intend to index collisions before the tiles are loaded. This update also added the new parameter to the <code>SetCollision</code>, <code>SetCollisionBetween</code> and <code>DynamicTilemapLayer.setCollision</code> methods (thanks @tarsupin)</li>
-<li><code>ArcadePhysics.Body.setBoundsRectangle</code> is a new method that allows you to set a custom bounds rectangle for any Body to use, rather than the World bounds, which is the default (thanks @francois-n-dream)</li>
-<li><code>ArcadePhysics.Body.customBoundsRectangle</code> is a new property used for custom bounds collision (thanks @francois-n-dream)</li>
-<li>The Arcade Physics Group has a new config object property <code>customBoundsRectangle</code> which, if set, will set the custom world bounds for all Bodies that Group creates (thanks @francois-n-dream)</li>
-<li><code>WebGLRenderer.createTexture2D</code> has a new optional parameter <code>flipY</code> which sets the <code>UNPACK_FLIP_Y_WEBGL</code> flag of the uploaded texture.</li>
-<li><code>WebGLRenderer.canvasToTexture</code> has a new optional parameter <code>flipY</code> which sets the <code>UNPACK_FLIP_Y_WEBGL</code> flag of the uploaded texture.</li>
-<li><code>WebGLRenderer.createCanvasTexture</code> is a new method that will create a WebGL Texture based on the given Canvas Element.</li>
-<li><code>WebGLRenderer.updateCanvasTexture</code> is a new method that will update an existing WebGL Texture based on the given Canvas Element.</li>
-<li><code>WebGLRenderer.createVideoTexture</code> is a new method that will create a WebGL Texture based on the given Video Element.</li>
-<li><code>WebGLRenderer.updateVideoTexture</code> is a new method that will update an existing WebGL Texture based on the given Video Element.</li>
-<li><code>TextureSource.flipY</code> is a new boolean that controls if the <code>UNPACK_FLIP_Y_WEBGL</code> flag is set when a WebGL Texture is uploaded.</li>
-<li><code>TextureSource.setFlipY</code> is a new method that toggles the <code>TextureSource.flipY</code> property.</li>
+<h3>Bug Fixes</h3>
+<ul>
+<li>The Spine Plugin was not clearing down the resize event listener in WebGL, causing it to still fire even if the Scene was closed. Fix #4808 (thanks @RollinSafary)</li>
+<li>When a game is created with the HEADLESS renderer, <code>Game.destroy()</code> had no effect and the game kept on running. Now it destroys itself properly. Fix #4804 (thanks @samme)</li>
+<li><code>DOM.GetScreenOrientation</code> was returning the wrong consts from the Scale Manager (thanks @jcyuan)</li>
+<li>When using <code>Input.enableDebug</code> on Game Objects it would not render the debug graphic correctly if the hit area had been offset. It now adjusts the debug correctly for all common hit-area geometry types. Fix #4722 (thanks @HaoboZ @Olliebrown)</li>
+<li>Light2D was not properly working for DynamicTilemapLayers due to a change in the way tilesets were stored, throwing an Uncaught TypeError at runtime. This is now handled correctly. Fix #4167 #4079 (thanks @koljakutschera @blackjack26 @kainage)</li>
+<li><code>Input.dragDistanceThreshold</code> was not working correctly since 3.18, snapping to the wrong drag state unless the time threshold was also set. Fix #4667 (thanks @muliawanw @Olliebrown)</li>
+<li><code>Tilemap.convertLayerToStatic</code> would throw an error when used multiple times, due to an error with the layer index count. Fix #4737 (thanks @Olliebrown @Vegita2)</li>
+<li>The <code>Tween</code> class now uses a cached MAX_SAFE_INTEGER making it compatible with Internet Explorer (thanks @jronn)</li>
+<li>The <code>StaggerBuilder</code> class now uses a cached MAX_SAFE_INTEGER making it compatible with Internet Explorer (thanks @jronn)</li>
+<li>The <code>Rectangle.FromPoints</code> function now uses a cached MIN_SAFE_INTEGER making it compatible with Internet Explorer (thanks @jronn)</li>
+<li>The <code>Video</code> class now uses a cached MIN_SAFE_INTEGER making it compatible with Internet Explorer (thanks @jronn)</li>
+<li>The <code>Path</code> class now uses a cached MIN_SAFE_INTEGER making it compatible with Internet Explorer (thanks @jronn)</li>
+<li><code>Video.destroy</code> has been renamed to <code>Video.preDestroy</code>, so that it now destroys properly like all other Game Objects. Fix #4821 (thanks @rexrainbow)</li>
+<li>The Video Game Object will now check to see if the browser supports the <code>HTMLVideoElement</code> before creating one (thanks @jcyuan)</li>
+<li>The <code>DOM.GetScreenOrientation</code> functions would return out-dated consts (thanks @jcyuan)</li>
+<li>When calling <code>TileSprite.setTexture</code> or <code>setFrame</code>, if the new frame size didn't match the old one, the new fill pattern would become distorted and the <code>potWidth</code> and <code>potHeight</code> values would be incorrect.</li>
+<li>Timeline callbacks with extra parameters like <code>onStart</code>  would miss the first parameter when the callback was invoked. Fix #4810 (thanks @samme)</li>
 </ul>
-<h3>Updates</h3><ul>
-<li>When calling <code>Shader.setRenderToTexture()</code> it will now draw the shader just once, immediately to the texture, to avoid the texture being blank for a single frame (thanks Kyle)</li>
-<li>The private <code>Shader._savedKey</code> property has been removed as it wasn't used anywhere internally.</li>
-<li>A <code>hasOwnProperty</code> check has been applied to the <code>SceneManager.createSceneFromObject</code> method when parsing additional properties in the <code>extend</code> object (thanks @halilcakar)</li>
-<li>The <code>Blitter.dirty</code> flag is no longer set if the render state of a Bob is changed to make it invisible (thanks @rexrainbow)</li>
-<li><code>WebGLPipeline.addAttribute</code> will now automatically update the vertextComponentCount for you, without you having to do it manually any more (thanks @yhwh)</li>
-<li><code>MultiFile</code> has three new internal properties: <code>baseURL</code>, <code>path</code> and <code>prefix</code> which allow them to retain the state of the loader at the time of creation, to be passed on to all child-files. Fix #4679.</li>
-<li><code>LoaderPlugin</code> and <code>MultiFile</code> have a new private property <code>multiKeyIndex</code> which multi-files use and increment when batching sub-file loads.</li>
-<li>TileSprites will now throw a console warning if you try to use a RenderTexture or GLTexture as their frame source. Fix #4719 (thanks @pavel-shirobok)</li>
-<li><code>TextureSource.isGLTexture</code> now checks if the browser supports <code>WebGLTexture</code> before checking to see if source is an instance of one. This should fix issues with Phaser in HEADLESS mode running under node / jsdom, or where WebGLTexture isn't present. Fix #4711 (thanks @tsphillips)</li>
-<li><code>GameObject.ToJSON</code> will no longer output the <code>scaleMode</code> in the json because it's not a valid Game Object property.</li>
-<li><code>TextureSource.setFilter</code> will now set the <code>scaleMode</code> to the given filter.</li>
-<li><code>CanvasInterpolation</code> has updated the order of the CSS properties so that <code>crisp-edges</code> comes after the browser prefix versions.</li>
-<li>The <code>CanvasRenderer.scaleMode</code> property has been removed as it was never set or used internally.</li>
-<li>The <code>CanvasRenderer.currentScaleMode</code> property has been removed as it was never set or used internally.</li>
-<li>The <code>BuildGameObject</code> function will no longer set <code>scaleMode</code> because it's not a valid Game Object property.</li>
-<li><code>CanvasRenderer.antialias</code> is a new property, populated by the game config property of the same name (or via the <code>pixelArt</code> property) that will tell the canvas renderer what to set image interpolation to during rendering of Sprites.</li>
-<li><code>SetTransform</code> will now set the imageSmoothingEnabled context value based on the renderer and texture source scale mode.</li>
-<li>The Blitter Canvas Renderer will now respect the game config anti-alias / pixel art settings and render accordingly.</li>
-<li>The Particle Emitter Canvas Renderer will now respect the game config anti-alias / pixel art settings and render accordingly.</li>
-<li>The Static Tilemap Canvas Renderer will now respect the game config anti-alias / pixel art settings and render accordingly.</li>
-<li>The Dynamic Tilemap Canvas Renderer will now respect the game config anti-alias / pixel art settings and render accordingly.</li>
-<li>All Game Objects that use the Canvas Set Transform function (which is most of them) will aos now respect the game config anti-alias / pixel art settings and render accordingly. This means you can now have properly scaled Bitmap Text, Text, Sprites, Render Textures, etc when pixel art is enabled in your game. Fix #4701 (thanks @agar3s)</li>
-<li>Containers are now able to set the alpha quadrant values (topLeft, topRight, bottomLeft and bottomRight) and have these passed onto children which are capable of supporting them, such as Sprites. Fix #4714 (thanks @MrcSnm)</li>
-<li>The <code>ProcessQueue</code> struct now extends Event Emitter and will emit <code>PROCESS_QUEUE_ADD_EVENT</code> when a new item is added to it.</li>
-<li>The <code>ProcessQueue</code> struct now extends Event Emitter and will emit <code>PROCESS_QUEUE_REMOVE_EVENT</code> when an item is removed from it.</li>
-<li><code>ProcessQueue.removeAll</code> is a new method that will remove all active entries from the queue.</li>
-<li><code>ProcessQueue.length</code> is a new property that returns the size of the active list.</li>
-<li><code>UpdateList</code> now extends the <code>ProcessQueue</code> struct and uses all of its methods for list management, instead of doing it directly. This means private properties such as <code>UpdateList._list</code> no longer exist. It also fixes an issue re: memory management where list items would remain until the end of a Scene. Fix #4721 (thanks @darkgod6)</li>
-<li><code>BaseSoundManager.forEachActiveSound</code> will now only invoke the callback if the sound actually exists and isn't pending removal. Fix #3383 (thanks @DouglasLapsley)</li>
-<li><code>MouseManager.target</code> can now be defined as either a string or by passing an HTMLElement directly. Fix #4353 (thanks @BigZaphod)</li>
-<li>The <code>BasePlugin.boot</code> method has been removed and moved to <code>ScenePlugin.boot</code> as it's a Scene-level method only (thanks @samme)</li>
-<li>The <code>BasePlugin.scene</code> and <code>BasePlugin.systems</code> properties have been removed and are defined in <code>ScenePlugin</code>, as they are Scene-level properties only (thanks @samme)</li>
-<li>The <code>Tween.getValue</code> method has been updated so you can specify the index of the Tween Data to get the value of. Previously, it only returned the first TweenData from the data array, ignoring any subsequent properties or targets. Fix #4717 (thanks @chepe263)</li>
-<li><code>WebGLRenderer.createTexture2D</code> has a new optional parameter <code>forceSize</code>, which will force the gl texture creation to use the dimensions passed to the method, instead of extracting them from the pixels object, if provided.</li>
-<li>The <code>GameObject.setTexture</code> method can now accept either a string, in which case it looks for the texture in the Texture Manager, or a Texture instance, in which case that instance is set as the Game Object's texture.</li>
-<li><code>TextureManager.get</code> can now accept either a string-based key, or a Texture instance, as its parameter.</li>
-<li><code>SceneManager.stop</code> and the matching <code>ScenePlugin.stop</code> now have an optional <code>data</code> parameter, which is passed to the Scene shutdown method. Fix #4510 (thanks @Olliebrown @GetsukenStudios)</li>
-<li><code>Cameras.BaseCamera</code> is now exposed in the namespace, allowing you to access them directly (thanks @rexrainbow)</li>
-<li>Shaders have a new optional constructor parameter <code>textureData</code> which allows you to specify additional texture data, especially for NPOT textures (thanks @cristlee)</li>
-<li><code>TouchManager.disableContextMenu</code> is a new method that will try to disable the context menu on touch devices, if the Game Config <code>disableContextMenu</code> is set. Previously, it only tried to do it for the Mouse Manager, but now does it for touch as well. Fix #4778 (thanks @simplewei)</li>
-</ul>
-<h3>Bug Fixes</h3><ul>
-<li><code>SpineCanvasPlugin.shutdown</code> would try to dispose of the <code>sceneRenderer</code>, but the property isn't set for Canvas.</li>
-<li><code>ArcadePhysics.Body.checkWorldBounds</code> would incorrectly report as being on the World bounds if the <code>blocked.none</code> flag had been toggled elsewhere in the Body. It now only sets if it toggles a new internal flag (thanks Pablo)</li>
-<li><code>RenderTexture.resize</code> wouldn't update the CanvasTexture width and height, causing the cal to draw or drawFrame to potentially distort the texture (thanks @yhwh)</li>
-<li><code>InputPlugin.processDragMove</code> has been updated so that the resulting <code>dragX</code> and <code>dragY</code> values, sent to the event handler, now compensate for the scale of the Game Objects parent container, if inside of one. This means dragging a child of a scale Container will now still drag at 'full' speed.</li>
-<li>The RenderTextures <code>displayOrigin</code> values are now automatically updated if you call <code>setSize</code> on the Render Texture. Fix #4757 (thanks @rexrainbow)</li>
-<li><code>onTouchStart</code>, <code>onTouchEnd</code> and <code>onTouchMove</code> will now check for <code>event.cancelable</code> before calling preventDefault on the touch event, fixing issues with &quot;Ignored attempt to cancel a touchstart event with cancelable=false, for example because scrolling is in progress and cannot be interrupted.&quot; errors in some situations. Fix #4706 (thanks @MatthewAlner)</li>
-<li><code>MatterPhysics.shutdown</code> could try to access properties that may have been previously removed during the Game.destroy process, causing a console error. It now checks properties before removing events from them (thanks @nagyv)</li>
-<li><code>ArcadePhysics.Body.hitTest</code> would use CircleContains to do a hit test, which assumex x/y was the Circle center, but for a Body it's the top-left, causing the hit test to be off. Fix #4748 (thanks @funnisimo)</li>
-<li><code>ArcadePhysics.World.separateCircle</code> has had the velocity scaling moved to after the angle is calculated, fixing a weird collision issue when <code>Body.bounce=0</code>. Also, if both bodies are movable, they now only offset by half the offset and use the center of the body for angle calculation, allowing for any offsets to be included. Fix #4751 (thanks @funnisimo @hizzd)</li>
-<li><code>Tween.updateTo</code> would break out of the TweenData iteration as soon as it adjusted the first matching key, causing tweens acting on multiple targets to only update the first target. It now updates them all. Fix #4763 (thanks @RBrNx)</li>
-<li>The Container WebGLRenderer will now handle child mask batching properly, based on the renderers current mask.</li>
-<li>The Container WebGLRenderer will now handle child new type switching, allowing you to carry on with a batch of same-type Game Objects even if they're nested within Containers. Fix #4710 (thanks @nalgorry)</li>
-<li><code>MultiAtlasFiles</code> that loaded their own external images would obtain incorrect path and URL values if the path had been changed by another file in the queue. They now retain the loader state and apply it to all child files during load.</li>
-<li>If more than one <code>MultiAtlasFile</code> used the same internal file name for its images, subsequent multi-atlases would fail to load. Fix #4330 (thanks @giviz)</li>
-<li><code>MultiAtlasFiles</code> would incorrectly add the atlas JSON into the JSON cache, causing you to not be able to destroy and reload the texture using the same atlas key as before. Fix #4720 (thanks @giviz)</li>
-<li><code>RenderTexture.fill</code> wasn't setting the camera up before drawing the fill rect, causing it to appear in the wrong place and the wrong size. Fix #4390 (thanks @Jerenaux)</li>
-<li><code>DynamicBitmapText.setOrigin</code> wouldn't change the origin when using the Canvas Renderer, only in WebGL. It now sets the origin regardless of renderer. Fix #4108 (thanks @garethwhittaker)</li>
-<li><code>DynamicBitmapText</code> wouldn't respect the multi-line alignment values when using the Canvas Renderer. It now uses them in the line calculations.</li>
-<li><code>DynamicBitmapText</code> and <code>BitmapText</code> wouldn't render at the correct position when using scaled BitmapText and an origin. Fix #4054 (thanks @Aveyder)</li>
-<li>Incorrect lighting on batched Sprites. The lighting was not correct when batching several sprites with different rotations. Each sprite now uses its own <code>uInverseRotationMatrix</code> to compute the lighting correctly (thanks @gogoprog)</li>
-<li>Matter.js Body wasn't setting the part angles correctly in <code>Body.update</code> (thanks @Frozzy6)</li>
-<li><code>ScaleManager.startFullscreen</code> now checks to see if the call returns a Promise, rather than checking if the browser supports them, before waiting for promise resolution. This fixes a runtime console warning in Microsoft Edge. Fix #4795 (thanks @maksdk)</li>
-</ul>
-<h3>Examples, Documentation and TypeScript</h3><p>My thanks to the following for helping with the Phaser 3 Examples, Docs and TypeScript definitions, either by reporting errors, fixing them or helping author the docs:</p>
-<p>@krzysztof-grzybek @NokFrt @r-onodera @colorcube @neon-dev @SavedByZero @arnekeller </p>
-<h3>Thanks</h3><p>Thank you to the following people for contributing ideas for new features to be added to Phaser 3. Because we've now started Phaser 4 development, I am closing off old feature requests that I personally will not work on for Phaser 3 itself. They may be considered for v4 and, of course, if someone from the community wishes to submit a PR to add them, I will be only too happy to look at that. So, if you want to get involved, filter the GitHub issues by the <a href="https://github.com/photonstorm/phaser/issues?q=is%3Aissue+is%3Aopen+label%3A%22%F0%9F%92%96+Feature+Request%22">Feature Request tag</a> and dig in. In the meantime, thank you to the following people for suggesting features, even if they didn't make it this time around:</p>
-<p>@njt1982 @TheTrope @allanbreyes @alexandernst @Secretmapper @murteira @oktayacikalin @TadejZupancic @SBCGames @hadikcz @jcyuan @pinkkis @Aedalus @jestarray @BigZaphod @Secretmapper @francois-n-dream @G-Rath </p>
+<h3>Examples, Documentation and TypeScript</h3>
+<p>My thanks to the following for helping with the Phaser 3 Examples, Docs and TypeScript definitions, either by reporting errors, fixing them or helping author the docs:</p>
+<p>@samme (for contributing loads of new Arcade Physics examples) @dranitski @jcyuan @RollinSafary @ilyaryabchinski @jsoref @jcyuan @ghclark2</p>
 <p>Please see the complete <a href="https://github.com/photonstorm/phaser/blob/master/CHANGELOG.md">Change Log</a> for previous releases.</p>
 <p><img src="https://phaser.io/images/github/div-contributing.png" alt="Contributing" title="Contributing">
 <a name="contributing"></a></p>
 <p>The <a href="https://github.com/photonstorm/phaser/blob/master/.github/CONTRIBUTING.md">Contributors Guide</a> contains full details on how to help with Phaser development. The main points are:</p>
 <ul>
-<li><p>Found a bug? Report it on <a href="https://github.com/photonstorm/phaser/issues">GitHub Issues</a> and include a code sample. Please state which version of Phaser you are using! This is vitally important.</p>
+<li>
+<p>Found a bug? Report it on <a href="https://github.com/photonstorm/phaser/issues">GitHub Issues</a> and include a code sample. Please state which version of Phaser you are using! This is vitally important.</p>
 </li>
-<li><p>Before submitting a Pull Request run your code through <a href="https://eslint.org/">ES Lint</a> using our <a href="https://github.com/photonstorm/phaser/blob/master/.eslintrc.json">config</a> and respect our <a href="https://github.com/photonstorm/phaser/blob/master/.editorconfig">Editor Config</a>.</p>
+<li>
+<p>Before submitting a Pull Request run your code through <a href="https://eslint.org/">ES Lint</a> using our <a href="https://github.com/photonstorm/phaser/blob/master/.eslintrc.json">config</a> and respect our <a href="https://github.com/photonstorm/phaser/blob/master/.editorconfig">Editor Config</a>.</p>
 </li>
-<li><p>Before contributing read the <a href="https://github.com/photonstorm/phaser/blob/master/.github/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
+<li>
+<p>Before contributing read the <a href="https://github.com/photonstorm/phaser/blob/master/.github/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
 </li>
 </ul>
 <p>Written something cool in Phaser? Please tell us about it in the <a href="https://phaser.discourse.group/">forum</a>, or email support@phaser.io</p>
@@ -482,7 +456,7 @@ Issue 3: When objects dip into the floor, their &quot;rest velocity&quot; is non
 <p>Phaser is a <a href="http://www.photonstorm.com">Photon Storm</a> production.</p>
 <p><img src="https://www.phaser.io/images/github/photonstorm-x2.png" alt="storm"></p>
 <p>Created by <a href="mailto:rich@photonstorm.com">Richard Davey</a>. Powered by coffee, anime, pixels and love.</p>
-<p>The Phaser logo and characters are &copy; 2019 Photon Storm Limited.</p>
+<p>The Phaser logo and characters are © 2019 Photon Storm Limited.</p>
 <p>All rights reserved.</p>
 <p>&quot;Above all, video games are meant to be just one thing: fun. Fun for everyone.&quot; - Satoru Iwata</p></article>
     </section>
@@ -542,9 +516,9 @@ Issue 3: When objects dip into the floor, their &quot;rest velocity&quot; is non
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:56:53 am
+		on November 22nd 2019, 5:42:48 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

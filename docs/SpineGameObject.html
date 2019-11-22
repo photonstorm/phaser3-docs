@@ -113,7 +113,9 @@ easily change the skin, slot attachment, bone positions and more.</p>
 <p>Spine Game Objects can be created via the Game Object Factory, Game Object Creator, or directly.
 You can only create them if the Spine plugin has been loaded into Phaser.</p>
 <p>The quickest way is the Game Object Factory:</p>
-<pre class="prettyprint source lang-javascript"><code>let jelly = this.add.spine(512, 550, 'jelly', 'jelly-think', true);</code></pre><p>Here we are creating a new Spine Game Object positioned at 512 x 550. It's using the <code>jelly</code>
+<pre class="prettyprint source lang-javascript"><code>let jelly = this.add.spine(512, 550, 'jelly', 'jelly-think', true);
+</code></pre>
+<p>Here we are creating a new Spine Game Object positioned at 512 x 550. It's using the <code>jelly</code>
 Spine data, which has previously been loaded into your Scene. The <code>jelly-think</code> argument is
 an optional animation to start playing on the skeleton. The final argument <code>true</code> sets the
 animation to loop. Look at the documentation for further details on each of these options.</p>
@@ -125,13 +127,17 @@ Configuration object:</p>
     skinName: 'square_Green',
     animationName: 'jelly-think', loop: true,
     slotName: 'hat', attachmentName: 'images/La_14'
-});</code></pre><p>Here, you've got the ability to specify extra details, such as the slot name, attachments or
+});
+</code></pre>
+<p>Here, you've got the ability to specify extra details, such as the slot name, attachments or
 overall scale.</p>
 <p>If you wish to instantiate a Spine Game Object directly you can do so, but in order for it to
 update and render, it must be added to the display and update lists of your Scene:</p>
 <pre class="prettyprint source lang-javascript"><code>let jelly = new SpineGameObject(this, this.spine, 512, 550, 'jelly', 'jelly-think', true);
 this.sys.displayList.add(jelly);
-this.sys.updateList.add(jelly);</code></pre><p>It's possible to enable Spine Game Objects for input, but you should be aware that it will use
+this.sys.updateList.add(jelly);
+</code></pre>
+<p>It's possible to enable Spine Game Objects for input, but you should be aware that it will use
 the bounds of the skeletons current pose to create the hit area from. Sometimes this is ok, but
 often not. Make use of the <code>InputPlugin.enableDebug</code> method to view the input shape being created.
 If it's not suitable, provide your own shape to the <code>setInteractive</code> method.</p>
@@ -490,7 +496,7 @@ forgotten to set that flag when loading the Spine data. Please see the loader do
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L23">Line 23</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L23">Line 23</a>)</dt>
 	
 
 	
@@ -595,7 +601,7 @@ forgotten to set that flag when loading the Spine data. Please see the loader do
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L293">Line 293</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L293">Line 293</a>)</dt>
 	
 
 	
@@ -671,7 +677,7 @@ Spine Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L225">Line 225</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L225">Line 225</a>)</dt>
 	
 
 	
@@ -748,7 +754,7 @@ Spine Game Object.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L392">Line 392</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L392">Line 392</a>)</dt>
 	
 
 	
@@ -824,7 +830,7 @@ pose, as set when a new Skeleton is applied.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L167">Line 167</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L167">Line 167</a>)</dt>
 	
 
 	
@@ -899,7 +905,7 @@ pose, as set when a new Skeleton is applied.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L196">Line 196</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L196">Line 196</a>)</dt>
 	
 
 	
@@ -974,7 +980,7 @@ pose, as set when a new Skeleton is applied.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L205">Line 205</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L205">Line 205</a>)</dt>
 	
 
 	
@@ -1050,7 +1056,7 @@ to the Skeleton Debug Renderer by toggling it.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L177">Line 177</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L177">Line 177</a>)</dt>
 	
 
 	
@@ -1127,7 +1133,7 @@ to the Skeleton Debug Renderer by toggling it.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L362">Line 362</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L362">Line 362</a>)</dt>
 	
 
 	
@@ -1202,7 +1208,7 @@ to the Skeleton Debug Renderer by toggling it.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L113">Line 113</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L113">Line 113</a>)</dt>
 	
 
 	
@@ -1279,7 +1285,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L214">Line 214</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L214">Line 214</a>)</dt>
 	
 
 	
@@ -1356,7 +1362,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L332">Line 332</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L332">Line 332</a>)</dt>
 	
 
 	
@@ -1431,7 +1437,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L158">Line 158</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L158">Line 158</a>)</dt>
 	
 
 	
@@ -1513,7 +1519,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L789">Line 789</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L789">Line 789</a>)</dt>
 	
 
 	
@@ -1595,7 +1601,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L813">Line 813</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L813">Line 813</a>)</dt>
 	
 
 	
@@ -1670,7 +1676,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L122">Line 122</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L122">Line 122</a>)</dt>
 	
 
 	
@@ -1745,7 +1751,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L131">Line 131</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L131">Line 131</a>)</dt>
 	
 
 	
@@ -1820,7 +1826,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L140">Line 140</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L140">Line 140</a>)</dt>
 	
 
 	
@@ -1895,7 +1901,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L149">Line 149</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L149">Line 149</a>)</dt>
 	
 
 	
@@ -1970,7 +1976,7 @@ into it, or not.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L187">Line 187</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L187">Line 187</a>)</dt>
 	
 
 	
@@ -2234,7 +2240,7 @@ If the previous entry is looping, its next loop completion is used instead of it
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1017">Line 1017</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1017">Line 1017</a>)</dt>
 	
 
 	
@@ -2600,7 +2606,7 @@ designed at a specific angle already. You can also set a minimum and maximum ran
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1314">Line 1314</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1314">Line 1314</a>)</dt>
 	
 
 	
@@ -2758,7 +2764,7 @@ rather than leaving them in their current pose.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1072">Line 1072</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1072">Line 1072</a>)</dt>
 	
 
 	
@@ -2866,7 +2872,7 @@ rather than leaving them in their current pose.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1092">Line 1092</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1092">Line 1092</a>)</dt>
 	
 
 	
@@ -3023,7 +3029,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1443">Line 1443</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1443">Line 1443</a>)</dt>
 	
 
 	
@@ -3180,7 +3186,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1347">Line 1347</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1347">Line 1347</a>)</dt>
 	
 
 	
@@ -3337,7 +3343,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1363">Line 1363</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1363">Line 1363</a>)</dt>
 	
 
 	
@@ -3494,7 +3500,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1427">Line 1427</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1427">Line 1427</a>)</dt>
 	
 
 	
@@ -3651,7 +3657,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1459">Line 1459</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1459">Line 1459</a>)</dt>
 	
 
 	
@@ -3808,7 +3814,7 @@ It is more efficient to cache the results of this method than to call it multipl
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1491">Line 1491</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1491">Line 1491</a>)</dt>
 	
 
 	
@@ -3965,7 +3971,7 @@ It is more efficient to cache the results of this method than to call it multipl
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1507">Line 1507</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1507">Line 1507</a>)</dt>
 	
 
 	
@@ -4122,7 +4128,7 @@ this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1411">Line 1411</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1411">Line 1411</a>)</dt>
 	
 
 	
@@ -4279,7 +4285,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1379">Line 1379</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1379">Line 1379</a>)</dt>
 	
 
 	
@@ -4436,7 +4442,7 @@ of this method than to call it multiple times.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1395">Line 1395</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1395">Line 1395</a>)</dt>
 	
 
 	
@@ -4593,7 +4599,7 @@ It is more efficient to cache the results of this method than to call it multipl
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1475">Line 1475</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1475">Line 1475</a>)</dt>
 	
 
 	
@@ -4699,7 +4705,7 @@ It is more efficient to cache the results of this method than to call it multipl
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L909">Line 909</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L909">Line 909</a>)</dt>
 	
 
 	
@@ -4881,7 +4887,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1193">Line 1193</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1193">Line 1193</a>)</dt>
 	
 
 	
@@ -5061,7 +5067,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1211">Line 1211</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1211">Line 1211</a>)</dt>
 	
 
 	
@@ -5167,7 +5173,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L837">Line 837</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L837">Line 837</a>)</dt>
 	
 
 	
@@ -5276,7 +5282,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1523">Line 1523</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1523">Line 1523</a>)</dt>
 	
 
 	
@@ -5452,7 +5458,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L934">Line 934</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L934">Line 934</a>)</dt>
 	
 
 	
@@ -5558,7 +5564,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1301">Line 1301</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1301">Line 1301</a>)</dt>
 	
 
 	
@@ -5664,7 +5670,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L862">Line 862</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L862">Line 862</a>)</dt>
 	
 
 	
@@ -5770,7 +5776,7 @@ the default skin is checked.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L887">Line 887</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L887">Line 887</a>)</dt>
 	
 
 	
@@ -6024,7 +6030,7 @@ If the formerly current track entry was never applied to a skeleton, it is repla
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L956">Line 956</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L956">Line 956</a>)</dt>
 	
 
 	
@@ -6135,7 +6141,7 @@ If the formerly current track entry was never applied to a skeleton, it is repla
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1560">Line 1560</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1560">Line 1560</a>)</dt>
 	
 
 	
@@ -6291,7 +6297,7 @@ If the formerly current track entry was never applied to a skeleton, it is repla
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1541">Line 1541</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1541">Line 1541</a>)</dt>
 	
 
 	
@@ -6376,7 +6382,7 @@ recently.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L654">Line 654</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L654">Line 654</a>)</dt>
 	
 
 	
@@ -6554,7 +6560,7 @@ recently.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L258">Line 258</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L258">Line 258</a>)</dt>
 	
 
 	
@@ -6844,7 +6850,7 @@ If the formerly current track entry was never applied to a skeleton, it is repla
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L979">Line 979</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L979">Line 979</a>)</dt>
 	
 
 	
@@ -7030,7 +7036,7 @@ finding the attachment with getAttachment, then setting the slot's attachment.</
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1227">Line 1227</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1227">Line 1227</a>)</dt>
 	
 
 	
@@ -7136,7 +7142,7 @@ finding the attachment with getAttachment, then setting the slot's attachment.</
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1286">Line 1286</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1286">Line 1286</a>)</dt>
 	
 
 	
@@ -7350,7 +7356,7 @@ finding the attachment with getAttachment, then setting the slot's attachment.</
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L422">Line 422</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L422">Line 422</a>)</dt>
 	
 
 	
@@ -7561,7 +7567,7 @@ property to the value keyed in the new animation.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1043">Line 1043</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1043">Line 1043</a>)</dt>
 	
 
 	
@@ -7793,7 +7799,7 @@ property to the value keyed in the new animation.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1174">Line 1174</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1174">Line 1174</a>)</dt>
 	
 
 	
@@ -8010,7 +8016,7 @@ property to the value keyed in the new animation.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L718">Line 718</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L718">Line 718</a>)</dt>
 	
 
 	
@@ -8305,7 +8311,7 @@ when the skeleton data doesn't match what is required in-game.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L682">Line 682</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L682">Line 682</a>)</dt>
 	
 
 	
@@ -8593,7 +8599,7 @@ or slot attachment, or any other property to adjust it.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L485">Line 485</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L485">Line 485</a>)</dt>
 	
 
 	
@@ -8880,7 +8886,7 @@ that contains the Skeleton data.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L466">Line 466</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L466">Line 466</a>)</dt>
 	
 
 	
@@ -9055,7 +9061,7 @@ or show attachments from the new skin.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1142">Line 1142</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1142">Line 1142</a>)</dt>
 	
 
 	
@@ -9218,7 +9224,7 @@ or show attachments from the new skin.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1110">Line 1110</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1110">Line 1110</a>)</dt>
 	
 
 	
@@ -9324,7 +9330,7 @@ or show attachments from the new skin.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1271">Line 1271</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1271">Line 1271</a>)</dt>
 	
 
 	
@@ -9430,7 +9436,7 @@ or show attachments from the new skin.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L1256">Line 1256</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L1256">Line 1256</a>)</dt>
 	
 
 	
@@ -9539,7 +9545,7 @@ you require overriding the size settings.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L744">Line 744</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L744">Line 744</a>)</dt>
 	
 
 	
@@ -9646,7 +9652,7 @@ Rendering is decided in the renderer functions.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/plugins/spine/src/gameobject/SpineGameObject.js#L244">Line 244</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js">plugins/spine/src/gameobject/SpineGameObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/plugins/spine/src/gameobject/SpineGameObject.js#L244">Line 244</a>)</dt>
 	
 
 	
@@ -9758,9 +9764,9 @@ Rendering is decided in the renderer functions.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:23 am
+		on November 22nd 2019, 5:43:24 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

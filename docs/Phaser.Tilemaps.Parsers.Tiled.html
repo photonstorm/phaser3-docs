@@ -149,7 +149,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/index.js">src/tilemaps/parsers/tiled/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/index.js#L7">Line 7</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/index.js">src/tilemaps/parsers/tiled/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/index.js#L7">Line 7</a>)</dt>
 	
 
 	
@@ -285,7 +285,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/AssignTileProperties.js">src/tilemaps/parsers/tiled/AssignTileProperties.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/AssignTileProperties.js#L9">Line 9</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/AssignTileProperties.js">src/tilemaps/parsers/tiled/AssignTileProperties.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/AssignTileProperties.js#L9">Line 9</a>)</dt>
 	
 
 	
@@ -417,7 +417,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/Base64Decode.js">src/tilemaps/parsers/tiled/Base64Decode.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/Base64Decode.js#L7">Line 7</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/Base64Decode.js">src/tilemaps/parsers/tiled/Base64Decode.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/Base64Decode.js#L7">Line 7</a>)</dt>
 	
 
 	
@@ -573,7 +573,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/BuildTilesetIndex.js">src/tilemaps/parsers/tiled/BuildTilesetIndex.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/BuildTilesetIndex.js#L7">Line 7</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/BuildTilesetIndex.js">src/tilemaps/parsers/tiled/BuildTilesetIndex.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/BuildTilesetIndex.js#L7">Line 7</a>)</dt>
 	
 
 	
@@ -611,6 +611,240 @@
     <dd>
         
 <span class="param-type">array</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".CreateGroupLayer"><span class="type-signature">&lt;static> </span>CreateGroupLayer(json [, currentl] [, parentstate])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Parse a Tiled group layer and create a state object for inheriting.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>json</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The Tiled JSON object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>currentl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The current group layer from the Tiled JSON file.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parentstate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The state of the parent group (if any).</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.21.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/CreateGroupLayer.js">src/tilemaps/parsers/tiled/CreateGroupLayer.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/CreateGroupLayer.js#L9">Line 9</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A group state object with proper values for updating children layers.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
 
 
 
@@ -730,7 +964,7 @@ http://docs.mapeditor.org/en/latest/reference/tmx-map-format/</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseGID.js">src/tilemaps/parsers/tiled/ParseGID.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseGID.js#L11">Line 11</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseGID.js">src/tilemaps/parsers/tiled/ParseGID.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseGID.js#L11">Line 11</a>)</dt>
 	
 
 	
@@ -792,7 +1026,7 @@ http://docs.mapeditor.org/en/latest/reference/tmx-map-format/</p>
 
     
     <div class="description">
-        <p>[description]</p>
+        <p>Parses a Tiled JSON object into an array of objects with details about the image layers.</p>
     </div>
     
 
@@ -844,7 +1078,7 @@ http://docs.mapeditor.org/en/latest/reference/tmx-map-format/</p>
 
             
 
-            <td class="description last"><p>[description]</p></td>
+            <td class="description last"><p>The Tiled JSON object.</p></td>
         </tr>
 
     
@@ -886,7 +1120,7 @@ http://docs.mapeditor.org/en/latest/reference/tmx-map-format/</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseImageLayers.js">src/tilemaps/parsers/tiled/ParseImageLayers.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseImageLayers.js#L9">Line 9</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseImageLayers.js">src/tilemaps/parsers/tiled/ParseImageLayers.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseImageLayers.js#L10">Line 10</a>)</dt>
 	
 
 	
@@ -912,7 +1146,7 @@ http://docs.mapeditor.org/en/latest/reference/tmx-map-format/</p>
     
             
 <div class="param-desc">
-    <p>[description]</p>
+    <p>Array of objects that include critical info about the map's image layers</p>
 </div>
 
 
@@ -1095,7 +1329,7 @@ the default value set.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseJSONTiled.js">src/tilemaps/parsers/tiled/ParseJSONTiled.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseJSONTiled.js#L16">Line 16</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseJSONTiled.js">src/tilemaps/parsers/tiled/ParseJSONTiled.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseJSONTiled.js#L16">Line 16</a>)</dt>
 	
 
 	
@@ -1347,7 +1581,7 @@ the default value set.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseObject.js">src/tilemaps/parsers/tiled/ParseObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseObject.js#L14">Line 14</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseObject.js">src/tilemaps/parsers/tiled/ParseObject.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseObject.js#L14">Line 14</a>)</dt>
 	
 
 	
@@ -1503,7 +1737,7 @@ the default value set.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseObjectLayers.js">src/tilemaps/parsers/tiled/ParseObjectLayers.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseObjectLayers.js#L11">Line 11</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseObjectLayers.js">src/tilemaps/parsers/tiled/ParseObjectLayers.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseObjectLayers.js#L12">Line 12</a>)</dt>
 	
 
 	
@@ -1565,7 +1799,7 @@ the default value set.</p></td>
 
     
     <div class="description">
-        <p>[description]</p>
+        <p>Parses all tilemap layers in a Tiled JSON object into new LayerData objects.</p>
     </div>
     
 
@@ -1617,7 +1851,7 @@ the default value set.</p></td>
 
             
 
-            <td class="description last"><p>[description]</p></td>
+            <td class="description last"><p>The Tiled JSON object.</p></td>
         </tr>
 
     
@@ -1641,7 +1875,8 @@ the default value set.</p></td>
 
             
 
-            <td class="description last"><p>[description]</p></td>
+            <td class="description last"><p>Controls how empty tiles, tiles with an index of -1, in the map
+data are handled (see <a href="Phaser.Tilemaps.Parsers.Tiled.html#.ParseJSONTiled">Phaser.Tilemaps.Parsers.Tiled.ParseJSONTiled</a>).</p></td>
         </tr>
 
     
@@ -1683,7 +1918,7 @@ the default value set.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseTileLayers.js">src/tilemaps/parsers/tiled/ParseTileLayers.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseTileLayers.js#L13">Line 13</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseTileLayers.js">src/tilemaps/parsers/tiled/ParseTileLayers.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseTileLayers.js#L14">Line 14</a>)</dt>
 	
 
 	
@@ -1709,7 +1944,10 @@ the default value set.</p></td>
     
             
 <div class="param-desc">
-    <p>[description]</p>
+    <ul>
+<li>An array of LayerData objects, one for each entry in
+json.layers with the type 'tilelayer'.</li>
+</ul>
 </div>
 
 
@@ -1720,7 +1958,7 @@ the default value set.</p></td>
     </dt>
     <dd>
         
-<span class="param-type">array</span>
+<span class="param-type">Array.&lt;<a href="Phaser.Tilemaps.LayerData.html">Phaser.Tilemaps.LayerData</a>></span>
 
 
 
@@ -1839,7 +2077,7 @@ the default value set.</p></td>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseTilesets.js">src/tilemaps/parsers/tiled/ParseTilesets.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/tilemaps/parsers/tiled/ParseTilesets.js#L11">Line 11</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseTilesets.js">src/tilemaps/parsers/tiled/ParseTilesets.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/tilemaps/parsers/tiled/ParseTilesets.js#L11">Line 11</a>)</dt>
 	
 
 	
@@ -1951,9 +2189,9 @@ the default value set.</p></td>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:19 am
+		on November 22nd 2019, 5:43:20 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -149,7 +149,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/index.js">src/gameobjects/group/typedefs/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/index.js#L7">Line 7</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/index.js">src/gameobjects/group/typedefs/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/index.js#L7">Line 7</a>)</dt>
 	
 
 	
@@ -283,7 +283,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupCallback.js">src/gameobjects/group/typedefs/GroupCallback.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupCallback.js#L1">Line 1</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupCallback.js">src/gameobjects/group/typedefs/GroupCallback.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupCallback.js#L1">Line 1</a>)</dt>
 	
 
 	
@@ -802,7 +802,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupConfig.js">src/gameobjects/group/typedefs/GroupConfig.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupConfig.js#L1">Line 1</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupConfig.js">src/gameobjects/group/typedefs/GroupConfig.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupConfig.js#L1">Line 1</a>)</dt>
 	
 
 	
@@ -828,7 +828,9 @@
     
     <div class="description">
         <p>The total number of objects created will be</p>
-<pre class="prettyprint source"><code>key.length * frame.length * frameQuantity * (yoyo ? 2 : 1) * (1 + repeat)</code></pre><p>If <code>max</code> is nonzero, then the total created will not exceed <code>max</code>.</p>
+<pre><code>key.length * frame.length * frameQuantity * (yoyo ? 2 : 1) * (1 + repeat)
+</code></pre>
+<p>If <code>max</code> is nonzero, then the total created will not exceed <code>max</code>.</p>
 <p><code>key</code> is required. <a href="Phaser.GameObjects.Group.html#defaultKey">Phaser.GameObjects.Group#defaultKey</a> is not used.</p>
     </div>
     
@@ -2114,6 +2116,380 @@
 
         <tr>
             
+                <td class="name"><code>setDepth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>The depth value of each new Game Object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>step</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Increment each Game Object's depth from the previous by this amount, starting from <code>setDepth.value</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setScrollFactor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>The horizontal scroll factor of each new Game Object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>The vertical scroll factor of each new Game Object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>stepX</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Increment each Game Object's horizontal scroll factor from the previous by this amount, starting from <code>setScrollFactor.x</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>stepY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Increment each Game object's vertical scroll factor from the previous by this amount, starting from <code>setScrollFactor.y</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>hitArea</code></td>
             
 
@@ -2265,7 +2641,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupCreateConfig.js">src/gameobjects/group/typedefs/GroupCreateConfig.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupCreateConfig.js#L1">Line 1</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupCreateConfig.js">src/gameobjects/group/typedefs/GroupCreateConfig.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupCreateConfig.js#L1">Line 1</a>)</dt>
 	
 
 	
@@ -2285,6 +2661,10 @@
 			<li><a href="Phaser.Actions.html#.SetScale">Phaser.Actions.SetScale</a></li>
 			
 			<li><a href="Phaser.Actions.html#.SetXY">Phaser.Actions.SetXY</a></li>
+			
+			<li><a href="Phaser.Actions.html#.SetDepth">Phaser.Actions.SetDepth</a></li>
+			
+			<li><a href="Phaser.Actions.html#.SetScrollFactor">Phaser.Actions.SetScrollFactor</a></li>
 			
 			<li><a href="Phaser.GameObjects.Group.html#createFromConfig">Phaser.GameObjects.Group#createFromConfig</a></li>
 			
@@ -2402,7 +2782,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupMultipleCreateCallback.js">src/gameobjects/group/typedefs/GroupMultipleCreateCallback.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/gameobjects/group/typedefs/GroupMultipleCreateCallback.js#L1">Line 1</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupMultipleCreateCallback.js">src/gameobjects/group/typedefs/GroupMultipleCreateCallback.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/gameobjects/group/typedefs/GroupMultipleCreateCallback.js#L1">Line 1</a>)</dt>
 	
 
 	
@@ -2488,9 +2868,9 @@
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:21 am
+		on November 22nd 2019, 5:43:22 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -124,7 +124,7 @@ you'd adjust the viewport to do that (using methods like <code>setViewport</code
 via the properties <code>scrollX</code> and <code>scrollY</code> or the method <code>setScroll</code>. Scrolling has no impact on the
 viewport, and changing the viewport has no impact on the scrolling.</p>
 <p>By default a Camera will render all Game Objects it can see. You can change this using the <code>ignore</code> method,
-allowing you to filter Game Objects out on a per-Camera basis. The Camera Manager can manage up to 31 unique 
+allowing you to filter Game Objects out on a per-Camera basis. The Camera Manager can manage up to 31 unique
 'Game Object ignore capable' Cameras. Any Cameras beyond 31 that you create will all be given a Camera ID of
 zero, meaning that they cannot be used for Game Object exclusion. This means if you need your Camera to ignore
 Game Objects, make sure it's one of the first 31 created.</p>
@@ -238,7 +238,7 @@ Game Objects, make sure it's one of the first 31 created.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L15">Line 15</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L15">Line 15</a>)</dt>
 	
 
 	
@@ -344,7 +344,7 @@ around the array should you wish to adjust the display order.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L89">Line 89</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L89">Line 89</a>)</dt>
 	
 
 	
@@ -422,7 +422,7 @@ camera instance from which to calculate a view matrix.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L118">Line 118</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L118">Line 118</a>)</dt>
 	
 
 	
@@ -450,7 +450,9 @@ camera instance from which to calculate a view matrix.</p>
         <p>A handy reference to the 'main' camera. By default this is the first Camera the
 Camera Manager creates. You can also set it directly, or use the <code>makeMain</code> argument
 in the <code>add</code> and <code>addExisting</code> methods. It allows you to access it from your game:</p>
-<pre class="prettyprint source lang-javascript"><code>var cam = this.cameras.main;</code></pre><p>Also see the properties <code>camera1</code>, <code>camera2</code> and so on.</p>
+<pre class="prettyprint source lang-javascript"><code>var cam = this.cameras.main;
+</code></pre>
+<p>Also see the properties <code>camera1</code>, <code>camera2</code> and so on.</p>
     </div>
     
 
@@ -500,7 +502,7 @@ in the <code>add</code> and <code>addExisting</code> methods. It allows you to a
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L101">Line 101</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L101">Line 101</a>)</dt>
 	
 
 	
@@ -578,7 +580,7 @@ also be changed as needed.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L77">Line 77</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L77">Line 77</a>)</dt>
 	
 
 	
@@ -653,7 +655,7 @@ also be changed as needed.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L59">Line 59</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L59">Line 59</a>)</dt>
 	
 
 	
@@ -728,7 +730,7 @@ also be changed as needed.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L68">Line 68</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L68">Line 68</a>)</dt>
 	
 
 	
@@ -1079,7 +1081,7 @@ it after creation if required.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L205">Line 205</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L205">Line 205</a>)</dt>
 	
 
 	
@@ -1297,7 +1299,7 @@ manager. As long as it doesn't already exist in the manager it will be added the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L261">Line 261</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L261">Line 261</a>)</dt>
 	
 
 	
@@ -1457,7 +1459,7 @@ manager. As long as it doesn't already exist in the manager it will be added the
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L388">Line 388</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L388">Line 388</a>)</dt>
 	
 
 	
@@ -1615,7 +1617,7 @@ have given your Cameras unique names.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L457">Line 457</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L457">Line 457</a>)</dt>
 	
 
 	
@@ -1772,7 +1774,7 @@ have given your Cameras unique names.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L485">Line 485</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L485">Line 485</a>)</dt>
 	
 
 	
@@ -1949,7 +1951,7 @@ have given your Cameras unique names.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L355">Line 355</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L355">Line 355</a>)</dt>
 	
 
 	
@@ -2129,7 +2131,7 @@ have given your Cameras unique names.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L651">Line 651</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L651">Line 651</a>)</dt>
 	
 
 	
@@ -2325,7 +2327,7 @@ and internal data until destroyed or re-added to a Camera Manager.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L520">Line 520</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L520">Line 520</a>)</dt>
 	
 
 	
@@ -2534,7 +2536,7 @@ an alpha level &gt; 0.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L575">Line 575</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L575">Line 575</a>)</dt>
 	
 
 	
@@ -2618,7 +2620,7 @@ cameras array, reset the ID counter and create 1 new single camera using the def
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L608">Line 608</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L608">Line 608</a>)</dt>
 	
 
 	
@@ -2798,7 +2800,7 @@ cameras array, reset the ID counter and create 1 new single camera using the def
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L676">Line 676</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L676">Line 676</a>)</dt>
 	
 
 	
@@ -2954,7 +2956,7 @@ cameras array, reset the ID counter and create 1 new single camera using the def
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/cameras/2d/CameraManager.js#L633">Line 633</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js">src/cameras/2d/CameraManager.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/cameras/2d/CameraManager.js#L633">Line 633</a>)</dt>
 	
 
 	
@@ -3042,9 +3044,9 @@ cameras array, reset the ID counter and create 1 new single camera using the def
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:56:55 am
+		on November 22nd 2019, 5:42:50 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

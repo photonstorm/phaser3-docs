@@ -149,7 +149,7 @@
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/physics/arcade/components/index.js">src/physics/arcade/components/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/physics/arcade/components/index.js#L7">Line 7</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/physics/arcade/components/index.js">src/physics/arcade/components/index.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/physics/arcade/components/index.js#L7">Line 7</a>)</dt>
 	
 
 	
@@ -220,6 +220,338 @@
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id=".OverlapCirc"><span class="type-signature">&lt;static> </span>OverlapCirc(x, y, radius [, includeDynamic] [, includeStatic])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>This method will search the given circular area and return an array of all physics bodies that
+overlap with it. It can return either Dynamic, Static bodies or a mixture of both.</p>
+<p>A body only has to intersect with the search area to be considered, it doesn't have to be fully
+contained within it.</p>
+<p>If Arcade Physics is set to use the RTree (which it is by default) then the search is rather fast,
+otherwise the search is O(N) for Dynamic Bodies.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The x coordinate of the center of the area to search within.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The y coordinate of the center of the area to search within.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>radius</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The radius of the area to search within.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>includeDynamic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Should the search include Dynamic Bodies?</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>includeStatic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Should the search include Static Bodies?</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+	<dt class="tag-since method-doc-label method-doc-details-label">Since: 3.21.0</dt>
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/physics/arcade/components/OverlapCirc.js">src/physics/arcade/components/OverlapCirc.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/physics/arcade/components/OverlapCirc.js#L6">Line 6</a>)</dt>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>An array of bodies that overlap with the given area.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;<a href="Phaser.Physics.Arcade.Body.html">Phaser.Physics.Arcade.Body</a>></span>
+|
+
+<span class="param-type">Array.&lt;<a href="Phaser.Physics.Arcade.StaticBody.html">Phaser.Physics.Arcade.StaticBody</a>></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
             
 <hr>
 <dt>
@@ -534,7 +866,7 @@ otherwise the search is O(N) for Dynamic Bodies.</p>
 
 
 	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/physics/arcade/components/OverlapRect.js">src/physics/arcade/components/OverlapRect.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.20.0/src/physics/arcade/components/OverlapRect.js#L1">Line 1</a>)</dt>
+	<dt class="tag-source method-doc-label method-doc-details-label">Source: <a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/physics/arcade/components/OverlapRect.js">src/physics/arcade/components/OverlapRect.js</a> (<a href="https://github.com/photonstorm/phaser/tree/v3.21.0/src/physics/arcade/components/OverlapRect.js#L1">Line 1</a>)</dt>
 	
 
 	
@@ -649,9 +981,9 @@ otherwise the search is O(N) for Dynamic Bodies.</p>
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on October 12th 2019, 9:57:11 am
+		on November 22nd 2019, 5:43:09 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
