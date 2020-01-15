@@ -5,25 +5,18 @@ animations\typedefs\JSONAnimation = 1
 
 animations total = 34
 
-core\TimeStep = 16
-
-core total = 16
-
-create\GenerateTexture = 12
+create\GenerateTexture = 3
+create\typedefs\GenerateTextureConfig = 9
 
 create total = 12
 
-curves\Curve = 41
+curves\Curve = 9
 curves\EllipseCurve = 3
-curves\path\Path = 21
+curves\LineCurve = 5
 curves\QuadraticBezierCurve = 8
-curves\SplineCurve = 15
+curves\SplineCurve = 3
 
-curves total = 88
-
-gameobjects\domelement\DOMElement = 1
-
-gameobjects total = 1
+curves total = 28
 
 geom\line\NormalX = 2
 geom\point\GetCentroid = 3
@@ -33,15 +26,15 @@ geom\point\Project = 5
 geom\point\ProjectUnit = 5
 geom\polygon\ContainsPoint = 4
 geom\rectangle\GetPoint = 4
-geom\rectangle\GetSize = 4
-geom\rectangle\MarchingAnts = 6
+geom\rectangle\GetSize = 3
+geom\rectangle\MarchingAnts = 5
 geom\rectangle\PerimeterPoint = 5
 geom\triangle\BuildFromPolygon = 5
 geom\triangle\CircumCenter = 3
 geom\triangle\Perimeter = 2
 geom\triangle\Random = 4
 
-geom total = 56
+geom total = 54
 
 math\Bernstein = 4
 math\CatmullRom = 5
@@ -51,7 +44,7 @@ math\Quaternion = 3
 
 math total = 19
 
-physics\impact\Body = 61
+physics\impact\Body = 53
 physics\impact\CollisionMap = 40
 physics\impact\components\BodyType = 5
 physics\impact\components\CheckAgainst = 6
@@ -67,24 +60,12 @@ physics\impact\ImpactPhysics = 11
 physics\impact\ImpactSprite = 8
 physics\impact\SeparateX = 5
 physics\impact\SeparateY = 5
+physics\impact\typedefs\JSONImpactBody = 8
+physics\impact\typedefs\WorldConfig = 1
 physics\impact\UpdateMotion = 2
-physics\impact\World = 53
-physics\matter-js\components\Sensor = 5
-physics\matter-js\components\SetBody = 11
-physics\matter-js\components\Sleep = 10
-physics\matter-js\components\Static = 5
-physics\matter-js\components\Transform = 5
-physics\matter-js\components\Velocity = 3
-physics\matter-js\Factory = 62
-physics\matter-js\MatterGameObject = 1
-physics\matter-js\MatterImage = 3
-physics\matter-js\MatterPhysics = 15
-physics\matter-js\MatterSprite = 3
-physics\matter-js\MatterTileBody = 1
-physics\matter-js\PointerConstraint = 19
-physics\matter-js\World = 31
+physics\impact\World = 52
 
-physics total = 426
+physics total = 252
 
 renderer\webgl\pipelines\BitmapMaskPipeline = 5
 renderer\webgl\Utils = 1
@@ -98,7 +79,7 @@ textures\TextureManager = 2
 textures total = 8
 
 tilemaps\mapdata\LayerData = 10
-tilemaps\mapdata\MapData = 4
+tilemaps\mapdata\MapData = 2
 tilemaps\parsers\impact\ParseTileLayers = 4
 tilemaps\parsers\impact\ParseTilesets = 3
 tilemaps\parsers\impact\ParseWeltmeister = 1
@@ -106,21 +87,9 @@ tilemaps\parsers\Parse2DArray = 1
 tilemaps\parsers\tiled\AssignTileProperties = 1
 tilemaps\parsers\tiled\BuildTilesetIndex = 2
 tilemaps\parsers\tiled\ParseGID = 2
-tilemaps\parsers\tiled\ParseImageLayers = 3
-tilemaps\parsers\tiled\ParseTileLayers = 4
 tilemaps\parsers\tiled\ParseTilesets = 2
 tilemaps\Tile = 1
+tilemaps\typedefs\MapDataConfig = 1
+tilemaps total = 30
 
-tilemaps total = 38
-
-tweens\builders\GetEaseFunction = 4
-tweens\builders\GetNewValue = 5
-tweens\builders\GetProps = 1
-tweens\builders\GetTweens = 2
-tweens\builders\NumberTweenBuilder = 5
-tweens\builders\TweenBuilder = 4
-tweens\Timeline = 9
-tweens\tween\Tween = 1
-tweens total = 31
-
-Total: 748
+Total: 456

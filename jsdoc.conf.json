@@ -30,12 +30,12 @@
         "jsdoc-plugins/this"
     ],
     "templates": {
-        "version": "v3.21.0",
+        "version": "v3.22.0",
         "systemName": "Phaser",
         "logoFile": "img/phaser3-logo-nav.png",
         "systemSummary": "HTML5 Game Framework",
         "systemColor": "#0f0019",
-        "copyright": "Phaser Copyright © 2019 Photon Storm Ltd and the contributors to the Phaser projects.",
+        "copyright": "Phaser Copyright © 2020 Photon Storm Ltd and the contributors to the Phaser projects.",
         "linenums": true,
         "inlineNav": true,
         "includeDate": true,
