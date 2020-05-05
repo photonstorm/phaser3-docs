@@ -498,6 +498,7 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Blitter.Bob.html">Bob (Blitter Object)</a>',
       '<a href="Phaser.GameObjects.Container.html">Container</a>',
       '<a href="Phaser.GameObjects.DOMElement.html">DOM Element</a>',
+      '<a href="Phaser.GameObjects.Extern.html">Extern</a>',
       '<a href="Phaser.GameObjects.Graphics.html">Graphics</a>',
       '<a href="Phaser.GameObjects.Group.html">Group</a>',
       '<a href="Phaser.GameObjects.Image.html">Image</a>',
@@ -559,8 +560,10 @@ function buildNav(members) {
     title: 'Scene',
     link: 'Phaser.Scene.html',
     members: [
+      '<a href="Phaser.Scene.html">Scene</a>',
       '<a href="Phaser.Scenes.ScenePlugin.html">Scene Plugin</a>',
       '<a href="Phaser.Scenes.Systems.html">Scene Systems</a>',
+      '<a href="Phaser.Types.Scenes.html#.SettingsConfig">Scene Configuration</a>',
       '&nbsp;',
       '<a href="Phaser.GameObjects.GameObjectFactory.html">add</a>',
       '<a href="Phaser.Animations.AnimationManager.html">anims</a>',
