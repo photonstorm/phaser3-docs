@@ -502,6 +502,8 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Graphics.html">Graphics</a>',
       '<a href="Phaser.GameObjects.Group.html">Group</a>',
       '<a href="Phaser.GameObjects.Image.html">Image</a>',
+      '<a href="Phaser.GameObjects.Particles.ParticleEmitter.html">Particle Emitter</a>',
+      '<a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Particle Emitter Manager</a>',
       '<a href="Phaser.GameObjects.PathFollower.html">Path Follower</a>',
       '<a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a>',
       '<a href="Phaser.GameObjects.Shape.html">Shape</a>',
