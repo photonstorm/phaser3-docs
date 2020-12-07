@@ -29,7 +29,7 @@ console.log('Complete');
 
 db.close();
 if (os.userInfo().username === 'frank') {
-    fs.copySync('./db/phaser-working.db', '../phaser350-docs/sqlite-db/docs_v3.sqlite');
+    fs.copySync('./db/phaser-working.db', '../phaser350-docs/database/database.sqlite');
 } else {
     fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
 }
