@@ -3,6 +3,8 @@ const SkipBlock = require('./SkipBlock');
 const HasTag = require('./HasTag');
 const { clear } = require('jsdoc-to-markdown');
 
+let id_generator = 0;
+
 let InsertMember = function (db, data)
 {
     const memberTransaction = db.prepare(`INSERT INTO members (
@@ -63,6 +65,13 @@ let InsertMember = function (db, data)
         {
             //  Global function skip
             continue;
+        }
+
+        for(let x = 0; x < data.docs.length; x++) {
+            if(block.longname == data.docs[x].longname && x !== i) {
+                block.longname = block.longname + `[${id_generator++}]`;
+                console.log(block.longname)
+            }
         }
         
         memberQueries.push({
