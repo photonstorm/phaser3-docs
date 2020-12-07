@@ -194,7 +194,7 @@ let InsertFunction = function (db, data)
     
         functionQueries.push({
             longname: block.longname,
-            since: block.since,
+            since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
             name: block.name,
             memberof: block.memberof,
             description: block.description,

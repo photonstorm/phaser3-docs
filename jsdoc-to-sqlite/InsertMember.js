@@ -1,6 +1,7 @@
 const GetPath = require('./GetPath');
 const SkipBlock = require('./SkipBlock');
 const HasTag = require('./HasTag');
+const { clear } = require('jsdoc-to-markdown');
 
 let InsertMember = function (db, data)
 {
@@ -52,18 +53,18 @@ let InsertMember = function (db, data)
     for (let i = 0; i < data.docs.length; i++)
     {
         let block = data.docs[i];
-
+        
         if (SkipBlock('member', block))
         {
             continue;
         }
-
+        
         if (block.scope === 'global' && block.longname === block.name)
         {
             //  Global function skip
             continue;
         }
-
+        
         memberQueries.push({
             longname: block.longname,
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
