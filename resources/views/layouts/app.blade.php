@@ -12,7 +12,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="antialiased">
-
+    @include('layouts.menu')
     @yield('content')
 
 </body>
