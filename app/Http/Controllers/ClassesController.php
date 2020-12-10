@@ -15,23 +15,22 @@ class ClassesController extends Controller
         $class = Classes::whereLongname($longname)->first();
         $params = $class->params->where('parentFunction', '')->all();
         $extends = $class->extends;
-        $members = $class->members;
+        $members = $class->members->sortBy("longname");
+        $methods = $class->functions->sortBy("longname");
 
-        $classConstructor = '';
-        // Get the constructor format: (option1, option1, [option3])
-        foreach($params as $key => $value) {
-            if($key !== 0) {
-                $classConstructor .= ($value['optional'] == 1) ? ' [, ' : ', ';
-            }
-            $classConstructor .= ($value['optional'] == 1) ? $value['name'].']' : $value['name'];
-        }
+
+        $classConstructor = resolve('get_params_format')($params);
+        $methodConstructor = '';
+
 
         return view('classes.class', [
             "class" => $class,
             "params" => $params,
             "classConstructor" => $classConstructor,
             "extends" => $extends,
-            "members" => $members
+            "members" => $members,
+            "methods" => $methods,
+            "methodConstructor" => $methodConstructor
         ]);
     }
 }

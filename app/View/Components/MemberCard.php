@@ -6,16 +6,26 @@ use Illuminate\View\Component;
 
 class MemberCard extends Component
 {
-    public $title;
+    public $method;
+    public $params;
+    public $since;
+    public $metaFileRoute;
+    public $metalineno;
+    public $returnsdescription;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title)
+    public function __construct($method, Array $params = [], $since, $metaFileRoute, $metalineno, $returnsdescription = "")
     {
         //
-        $this->title = $title;
+        $this->method = $method;
+        $this->params = $params;
+        $this->since = $since;
+        $this->metaFileRoute = $metaFileRoute;
+        $this->metalineno = $metalineno;
+        $this->returnsdescription = $returnsdescription;
     }
 
     /**

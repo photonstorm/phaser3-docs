@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div>
+<div class="container">
     Classes Section.
     <ul>
         @foreach ($classes as $class)
