@@ -8,23 +8,25 @@ class MemberCard extends Component
 {
     public $method;
     public $params;
+    public $description;
+    public $type;
     public $since;
     public $metaFileRoute;
     public $metalineno;
+    public $defaultValue;
     public $returnsdescription;
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct($method, Array $params = [], $since, $metaFileRoute, $metalineno, $returnsdescription = "")
+
+    public function __construct($method = "", $description = "", $type = "", Array $params = [], $since, $metaFileRoute, $metalineno, $defaultValue = "", $returnsdescription = "")
     {
         //
         $this->method = $method;
+        $this->description = $description;
+        $this->type = $type;
         $this->params = $params;
         $this->since = $since;
         $this->metaFileRoute = $metaFileRoute;
         $this->metalineno = $metalineno;
+        $this->defaultValue = $defaultValue;
         $this->returnsdescription = $returnsdescription;
     }
 

@@ -379,6 +379,30 @@ video {
   }
 }
 
+.debug {
+  outline: 1px solid red;
+}
+
+.debug-white {
+  outline: 1px solid white;
+}
+
+.debug-orange {
+  outline: 1px solid orange;
+}
+
+.debug-red {
+  outline: 1px solid red;
+}
+
+.debug-blue {
+  outline: 1px solid blue;
+}
+
+.debug-green {
+  outline: 1px solid green;
+}
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -11280,5 +11304,73 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e74c3c;
+  border: 1px solid #802113;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f90000;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #a3392e;
+}
+
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html,
+body {
+  scrollbar-width: 11px !important;
+  scrollbar-color: #e74c3c #666666 !important;
+}
+
+.menu {
+  width: 100%;
+  height: 50px;
+  background-color: #331053;
+}
+
+.menu-item {
+  min-width: 100px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1rem;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+  background-color: #9561e2;
+}
+
+.menu-item-version {
+  width: 150px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 

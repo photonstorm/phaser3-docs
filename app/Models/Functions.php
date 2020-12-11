@@ -10,6 +10,7 @@ class Functions extends Model
     use HasFactory;
 
     public function params() {
+        // TODO: Create a best way for this relation
         return $this->hasMany(Param::class, 'parentFunction', 'name')->where('parentClass', $this->memberof);
     }
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ApiPhaser;
 use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\NamespacesController;
+use App\Http\Middleware\SelectRouter;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,10 @@ Route::get('/', function() {
     return view('welcome');
 });
 
-Route::get('/namespaces', [NamespacesController::class, 'show']);
-Route::get('/namespace/{namespace}', [NamespacesController::class, 'showNamespace']);
+Route::get('/namespaces', [NamespacesController::class, 'index']);
+Route::get('/namespace/{namespace}', [NamespacesController::class, 'show']);
 
-Route::get('/classes', [ClassesController::class, 'show']);
-Route::get('/class/{longname}', [ClassesController::class, 'showClass']);
-// Route::get('/class/{class}');
+Route::get('/classes', [ClassesController::class, 'index']);
+Route::get('/class/{longname}', [ClassesController::class, 'show']);
+
+Route::get('/{version}/{api_word}', [ApiPhaser::class, 'show'])->middleware(SelectRouter::class);

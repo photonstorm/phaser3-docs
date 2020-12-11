@@ -8,17 +8,25 @@ use Illuminate\Http\Request;
 
 class NamespacesController extends Controller
 {
-    public function show() {
-        return view('namespaces.namespaces', ['namespaces' => Namespaces::all()]);
+    public function index() {
+        return view('namespaces.namespaces', ['namespaces' => Namespaces::all()->sortBy("longname")]);
     }
 
-    public function showNamespace($namespace) {
-        // dd(Classes::where('memberof', $namespace)->first());
-        $classes = Classes::whereMemberof($namespace)->get();
-        // dd( Namespaces::where('memberof', $namespace)->get()->namespaces()->get());
+    public function show($longname) {
+
+        $namespace = Namespaces::whereLongname($longname)->first();
+        $classes = $namespace->classes;
+        $namespaces = $namespace->namespaces;
+        $methods = $namespace->functions;
+
+        $methodConstructor = "";
+
         return view('namespaces.namespace', [
-            'classes' => $classes,
-            'namespaces' => Namespaces::where('memberof', $namespace)->get()
+            "namespace" => $namespace,
+            "classes" => $classes,
+            "namespaces" => $namespaces,
+            "methods" => $methods,
+            "methodConstructo" => $methodConstructor
             ]
         );
     }

@@ -7,21 +7,18 @@ use Illuminate\Http\Request;
 
 class ClassesController extends Controller
 {
-    public function show() {
+    public function index() {
         return view('classes.classes', ["classes" => Classes::all()]);
     }
 
-    public function showClass($longname) {
-        $class = Classes::whereLongname($longname)->first();
+    public function show($longname) {
+        $class = Classes::whereLongname($longname)->firstOrFail();
         $params = $class->params->where('parentFunction', '')->all();
         $extends = $class->extends;
         $members = $class->members->sortBy("longname");
         $methods = $class->functions->sortBy("longname");
 
-
         $classConstructor = resolve('get_params_format')($params);
-        $methodConstructor = '';
-
 
         return view('classes.class', [
             "class" => $class,
@@ -30,7 +27,7 @@ class ClassesController extends Controller
             "extends" => $extends,
             "members" => $members,
             "methods" => $methods,
-            "methodConstructor" => $methodConstructor
+            "methodConstructor" => ''
         ]);
     }
 }

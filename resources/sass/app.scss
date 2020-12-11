@@ -2,6 +2,9 @@
 // Normalize
 @import 'normalize';
 
+// TODO: Remove debug file
+@import 'debug';
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
@@ -10,3 +13,14 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'scrollbar';
+
+// Components
+@import 'menu';
+
+
+// Global classes
+.cursor-pointer {
+    cursor: pointer;
+}

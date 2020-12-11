@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Classes;
+use App\Models\Namespaces;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +28,19 @@ class AppServiceProvider extends ServiceProvider
                 return $constructor;
             };
 
+        });
+
+        $this->app->bind('get_namespace_class_link', function($app) {
+            return function($param) {
+                // Exists the namespace?
+                if (count(Namespaces::all()->where('longname', $param))) {
+                    return 'namespace';
+                } elseif ( count( Classes::all()->where('longname', $param) ) ) {
+                    return 'class';
+                } else {
+                    return '';
+                }
+            };
         });
     }
 

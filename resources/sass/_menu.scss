@@ -1,0 +1,21 @@
+$heigh-menu: 50px;
+
+.menu {
+    width: 100%;
+    height: $heigh-menu;
+    background-color: $bg;
+    &-item {
+        min-width: 100px;
+        height: $heigh-menu;
+        line-height: $heigh-menu;
+        font-size: 1rem;
+        // outline: 1px solid red;
+        &:hover {
+            cursor: pointer;
+            background-color: $purple;
+        }
+        &-version {
+            width: 150px;
+        }
+    }
+}
