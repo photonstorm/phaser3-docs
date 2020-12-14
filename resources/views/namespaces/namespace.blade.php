@@ -12,17 +12,19 @@
             <h3 mt-4>Methods</h3>
             @foreach ($methods as $method)
                 @php
-                    $methodConstructor = resolve('get_params_format')($method->params->all())
+                    $methodConstructor = resolve('get_params_format')($method->paramsNamespace);
                 @endphp
             <x-member-card
                     class="border-bottom border-danger mt-2 pt-2 pb-4"
-                    method="{{$method->name}}({{$method->params->first()}})"
+                    scope="{{$method->scope}}"
+                    method="{{$method->name}}({{$methodConstructor}})"
                     :description="$method->description"
                     :type="$method->type"
                     since="{{$method->since}}"
+                    :params="$method->paramsNamespace->all()"
                     metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
                     metalineno="{{$method->metalineno}}"
-                    {{-- defaultValue="{{$method->defaultValue}}" --}}
+                    :returnstype="$method->returnstype"
                     returnsdescription="{{$method->returnsdescription}}"
                 />
             @endforeach

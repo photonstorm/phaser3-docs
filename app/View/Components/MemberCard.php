@@ -8,6 +8,7 @@ class MemberCard extends Component
 {
     public $method;
     public $params;
+    public $scope; // If is static or not
     public $description;
     public $type;
     public $since;
@@ -15,12 +16,14 @@ class MemberCard extends Component
     public $metalineno;
     public $defaultValue;
     public $returnsdescription;
+    public $returnstype;
 
-    public function __construct($method = "", $description = "", $type = "", Array $params = [], $since, $metaFileRoute, $metalineno, $defaultValue = "", $returnsdescription = "")
+    public function __construct($method = "", $description = "", $scope = "", $type = "", Array $params = [], $since, $metaFileRoute, $metalineno, $defaultValue = "", $returnsdescription = "", $returnstype = "")
     {
         //
         $this->method = $method;
         $this->description = $description;
+        $this->scope = $scope;
         $this->type = $type;
         $this->params = $params;
         $this->since = $since;
@@ -28,6 +31,7 @@ class MemberCard extends Component
         $this->metalineno = $metalineno;
         $this->defaultValue = $defaultValue;
         $this->returnsdescription = $returnsdescription;
+        $this->returnstype = $returnstype;
     }
 
     /**

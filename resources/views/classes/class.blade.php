@@ -50,13 +50,13 @@
 
                 @foreach ($methods as $method)
                 @php
-                    $methodConstructor = resolve('get_params_format')($method->params->all())
+                    $methodConstructor = resolve('get_params_format')($method->paramsClass->all())
                 @endphp
                 <x-member-card
                     class="border-bottom border-danger mt-1 pt-2 pb-4"
                     method="{{$method->name}}({{$methodConstructor}})"
                     :description="$method->description"
-                    :params="$method->params->all()"
+                    :params="$method->paramsClass->all()"
                     since="{{$method->since}}"
                     metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
                     metalineno="{{$method->metalineno}}"

@@ -1,7 +1,7 @@
 <div {{ $attributes }}>
     <ul class="h4">
         <li>
-            <span class="text-danger">{{ htmlspecialchars_decode($method) }}</span>
+            <span class="text-danger">{{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($method) }}</span>
         </li>
     </ul>
     @if (!empty($description))
@@ -24,13 +24,16 @@
                     <th scope="col">Name</th>
                     <th scope="col">Type</th>
                     <th scope="col">Arguments</th>
+                    <th scope="col">Default</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($params as $param)
                 <tr>
+                    {{-- Name --}}
                     <th scope="row">{{ $param->name }}</th>
+                    {{-- Type --}}
                     <td>
                         @if (resolve('get_namespace_class_link')($param->type) === 'class')
                             <a class="text-info" href="/namespace/{{$param->type}}">{{$param->type}}</a>
@@ -40,11 +43,15 @@
                             {{$param->type}}
                         @endif
                     </td>
+                    {{-- Arguments --}}
                     <td>
                         @if ($param->optional == 1)
                         {{"<optional>"}}
                         @endif
                     </td>
+                    {{-- Default --}}
+                    <td>{{$param->defaultValue}}</td>
+                    {{-- Descriptióo --}}
                     <td>{{$param->description}}</td>
                 </tr>
                 @endforeach
@@ -55,6 +62,12 @@
     <div class="pl-3">
         <div class="text-info">Returns:</div>
         <div class="pl-4">{{$returnsdescription}}</div>
+    </div>
+    @endif
+    @if(!empty($returnstype))
+    <div class="pl-3">
+        <div class="text-info">Type:</div>
+        <div class="pl-4">{{$returnstype}}</div>
     </div>
     @endif
     @if (!empty($defaultValue))

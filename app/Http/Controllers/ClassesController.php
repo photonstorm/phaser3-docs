@@ -13,7 +13,7 @@ class ClassesController extends Controller
 
     public function show($longname) {
         $class = Classes::whereLongname($longname)->firstOrFail();
-        $params = $class->params->where('parentFunction', '')->all();
+        $params = $class->params->all();
         $extends = $class->extends;
         $members = $class->members->sortBy("longname");
         $methods = $class->functions->sortBy("longname");

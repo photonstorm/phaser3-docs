@@ -9,8 +9,11 @@ class Functions extends Model
 {
     use HasFactory;
 
-    public function params() {
-        // TODO: Create a best way for this relation
+    public function paramsClass() {
         return $this->hasMany(Param::class, 'parentFunction', 'name')->where('parentClass', $this->memberof);
+    }
+
+    public function paramsNamespace() {
+        return $this->hasMany(Param::class, 'parentClass', 'longname');
     }
 }

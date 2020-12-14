@@ -22,7 +22,7 @@ class Classes extends Model
         // }
     // Get all parameters from a class
     public function params() {
-        return $this->hasMany(Param::class, "parentClass", "longname");
+        return $this->hasMany(Param::class, "parentClass", "longname")->where('parentFunction', '');
     }
 
     public function extends() {
