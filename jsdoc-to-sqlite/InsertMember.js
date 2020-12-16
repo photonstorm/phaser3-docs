@@ -23,7 +23,8 @@ let InsertMember = function (db, data)
         webgl,
         inherited,
         inherits,
-        nullable
+        nullable,
+        overrides
     ) VALUES (
         @longname,
         @since,
@@ -40,7 +41,8 @@ let InsertMember = function (db, data)
         @webgl,
         @inherited,
         @inherits,
-        @nullable
+        @nullable,
+        @overrides
     )`);
 
     const insertMany = db.transaction((transaction, queries) => {
@@ -70,7 +72,7 @@ let InsertMember = function (db, data)
         for(let x = 0; x < data.docs.length; x++) {
             if(block.longname == data.docs[x].longname && x !== i) {
                 block.longname = block.longname + `[${id_generator++}]`;
-                console.log(block.longname)
+                console.log(block.longname);
             }
         }
         
@@ -89,8 +91,9 @@ let InsertMember = function (db, data)
             metapath: GetPath(block.meta.path),
             webgl: HasTag(block, 'webglOnly'),
             inherited: (block.hasOwnProperty('inherited') && block.inherited) ? 1 : 0,
-            inherits: (block.hasOwnProperty('inherited') && block.inherited) ? block.inherits : '',
-            nullable: (block.hasOwnProperty('nullable') && block.nullable) ? 1 : 0
+            inherits: (block.hasOwnProperty('inherits') && block.inherited) ? block.inherits : '',
+            nullable: (block.hasOwnProperty('nullable') && block.nullable) ? 1 : 0,
+            overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : ''
         });
     }
 

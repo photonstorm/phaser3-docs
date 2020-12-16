@@ -24,7 +24,8 @@ let InsertFunction = function (db, data)
         metapath,
         inherited,
         inherits,
-        webgl
+        webgl,
+        overrides
     ) VALUES (
         @longname,
         @since,
@@ -42,7 +43,8 @@ let InsertFunction = function (db, data)
         @metapath,
         @inherited,
         @inherits,
-        @webgl
+        @webgl,
+        @overrides
     )`);
 
     const paramsTransaction = db.prepare(`INSERT INTO params (
@@ -208,8 +210,9 @@ let InsertFunction = function (db, data)
             metalineno: block.meta.lineno,
             metapath: GetPath(block.meta.path),
             inherited: inherited,
-            inherits: inherits,
-            webgl: HasTag(block, 'webglOnly')
+            inherits: (block.hasOwnProperty('inherits') && block.inherits) ? block.inherits : '',
+            webgl: HasTag(block, 'webglOnly'),
+            overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : ''
         });
     }
 
