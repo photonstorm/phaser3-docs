@@ -1,12 +1,13 @@
-const CleanEventName = require('./CleanEventName');
+const CleanFunctionName = require('./CleanFunctionName');
+const CleanFunctionParent = require('./CleanFunctionParent');
 const GetPath = require('./GetPath');
 const SkipBlock = require('./SkipBlock');
 
 let id = 0;
 
-let InsertTypedef = function (db, data)
+let InsertTypedefs = function (db, data)
 {
-    const typeTransaction = db.prepare(`INSERT INTO typedef (
+    const typedefsTransaction = db.prepare(`INSERT INTO typedefs (
         id,
         longname,
         memberof,
@@ -50,6 +51,26 @@ let InsertTypedef = function (db, data)
         @defaultValue
     )`);
 
+    const paramsTransaction = db.prepare(`INSERT INTO params (
+        parentClass,
+        parentFunction,
+        name,
+        position,
+        description,
+        type,
+        optional,
+        defaultValue
+    ) VALUES (
+        @parentClass,
+        @parentFunction,
+        @name,
+        @position,
+        @description,
+        @type,
+        @optional,
+        @defaultValue
+    )`);
+
     const insertMany = db.transaction((transaction, queries) => {
         for (const query of queries)
         {
@@ -59,6 +80,7 @@ let InsertTypedef = function (db, data)
 
     let typedefQueries = [];
     let propertiesQueries = [];
+    let paramsQueries = [];
 
     for (let i = 0; i < data.docs.length; i++)
     {
@@ -72,6 +94,10 @@ let InsertTypedef = function (db, data)
         if (block.scope === 'global') {
             continue;
         }
+
+        // if (block.longname === 'Phaser.Types.Actions.CallCallback') {
+        //     console.log(block);
+        // }
 
         let typedefName = block.longname;
         typedefQueries.push({
@@ -94,6 +120,7 @@ let InsertTypedef = function (db, data)
             for (let i = 0; i < block.properties.length; i++)
             {
                 let property = block.properties[i];
+              
                 let types = property.type.names.join(' | ');
                 let optional = -1;
 
@@ -115,17 +142,52 @@ let InsertTypedef = function (db, data)
                 });
             }
         }
+
+        // Typedef Params: 
+        if (Array.isArray(block.params) && block.params.length > 0)
+        {
+            for (let i = 0; i < block.params.length; i++)
+            {
+                let param = block.params[i];
+              
+                let types = param.type.names.join(' | ');
+                let optional = -1;
+
+                if (param.hasOwnProperty('optional'))
+                {
+                    optional = (param.optional) ? 1 : 0;
+                }
+
+                let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
+
+                paramsQueries.push({
+                    parentClass: (block.type.names.join(' | ').toLowerCase() == 'class') ? typedefName : '',
+                    parentFunction: (block.type.names.join(' | ').toLowerCase() == 'function') ? typedefName : '',
+                    name: param.name,
+                    position: i,
+                    description: param.description,
+                    type: types,
+                    optional: optional,
+                    defaultValue: defaultValue
+                });                
+            }
+        }
     }
 
     if (typedefQueries.length)
     {
-        insertMany(typeTransaction, typedefQueries);
+        insertMany(typedefsTransaction, typedefQueries);
     }
 
     if (propertiesQueries.length)
     {
         insertMany(propertiesTransaction, propertiesQueries);
     }
+
+    if (paramsQueries.length)
+    {
+        insertMany(paramsTransaction, paramsQueries);
+    }
 };
 
-module.exports = InsertTypedef;
+module.exports = InsertTypedefs;

@@ -6,7 +6,7 @@ const InsertEvent = require('./InsertEvent');
 const InsertFunction = require('./InsertFunction');
 const InsertNamespace = require('./InsertNamespace');
 const InsertMember = require('./InsertMember');
-const InsertTypedef = require('./InsertTypedef');
+const InsertTypedefs = require('./InsertTypedefs');
 const os = require('os');
 
 //  Copy the Structure DB to one we can populate
@@ -25,7 +25,7 @@ InsertConstant(db, data);
 InsertNamespace(db, data);
 InsertMember(db, data);
 InsertFunction(db, data);
-InsertTypedef(db, data);
+InsertTypedefs(db, data);
 
 console.log('Complete');
 
