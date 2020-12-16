@@ -502,21 +502,20 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Graphics.html">Graphics</a>',
       '<a href="Phaser.GameObjects.Group.html">Group</a>',
       '<a href="Phaser.GameObjects.Image.html">Image</a>',
+      '<a href="Phaser.GameObjects.Layer.html">Layer</a>',
       '<a href="Phaser.GameObjects.Particles.ParticleEmitter.html">Particle Emitter</a>',
       '<a href="Phaser.GameObjects.Particles.ParticleEmitterManager.html">Particle Emitter Manager</a>',
       '<a href="Phaser.GameObjects.PathFollower.html">Path Follower</a>',
-      '<a href="Phaser.GameObjects.RenderTexture.html">RenderTexture</a>',
+      '<a href="Phaser.GameObjects.PointLight.html">Point Light</a>',
+      '<a href="Phaser.GameObjects.RenderTexture.html">Render Texture</a>',
       '<a href="Phaser.GameObjects.Shape.html">Shape</a>',
       '<a href="Phaser.GameObjects.Sprite.html">Sprite</a>',
-      '<a href="Phaser.GameObjects.Sprite3D.html">Sprite3D</a>',
       '<a href="Phaser.GameObjects.Text.html">Text</a>',
+      '<a href="Phaser.Tilemaps.Tilemap.html">Tilemap</a>',
+      '<a href="Phaser.Tilemaps.TilemapLayer.html">Tilemap Layer</a>',
       '<a href="Phaser.GameObjects.TileSprite.html">TileSprite</a>',
       '<a href="Phaser.GameObjects.Video.html">Video</a>',
       '<a href="Phaser.GameObjects.Zone.html">Zone</a>',
-      '&nbsp;',
-      '<a href="Phaser.Tilemaps.Tilemap.html">Tilemap</a>',
-      '<a href="Phaser.Tilemaps.DynamicTilemapLayer.html">Tilemap Layer (Dynamic)</a>',
-      '<a href="Phaser.Tilemaps.StaticTilemapLayer.html">Tilemap Layer (Static)</a>',
       '&nbsp;',
       '<a href="Phaser.GameObjects.Arc.html">Arc</a>',
       '<a href="Phaser.GameObjects.Curve.html">Curve</a>',
@@ -533,8 +532,7 @@ function buildNav(members) {
       '<a href="Phaser.GameObjects.Rope.html">Rope (WebGL only)</a>',
       '<a href="Phaser.GameObjects.Shader.html">Shader (WebGL only)</a>',
       '<a href="Phaser.GameObjects.LightsPlugin.html">Lights (WebGL only)</a>',
-      '<a href="Phaser.GameObjects.Mesh.html">Mesh (WebGL only)</a>',
-      '<a href="Phaser.GameObjects.Quad.html">Quad (WebGL only)</a>'
+      '<a href="Phaser.GameObjects.Mesh.html">Mesh (WebGL only)</a>'
     ]
   });
 
