@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiPhaser;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\EventsController;
 use Illuminate\Support\Facades\Route;
 
 // Controllers
@@ -26,6 +27,9 @@ Route::get('/namespaces', [NamespacesController::class, 'index']);
 Route::get('/namespace/{namespace}', [NamespacesController::class, 'show']);
 
 Route::get('/classes', [ClassesController::class, 'index']);
+Route::get('/class/{longname}', [ClassesController::class, 'show']);
+
+Route::get('/events', [EventsController::class, 'index']);
 Route::get('/class/{longname}', [ClassesController::class, 'show']);
 
 Route::get('/{version}/{api_word}', [ApiPhaser::class, 'show'])->middleware(SelectRouter::class);

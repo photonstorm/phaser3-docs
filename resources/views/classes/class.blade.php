@@ -7,7 +7,7 @@
             <div class="h2 text-danger">{{ ucfirst($class->getTable()) }}: {{ $class->name }}</div>
             <div class="h3 text-info">{{$class->longname }}</div>
             <p>
-                {{$class->description}}
+                {{htmlspecialchars ($class->description)}}
             </p>
             <hr>
             <h3>Constructor:</h3>
@@ -21,7 +21,7 @@
             />
 
             @if (!empty($extends) AND count($extends))
-            <h3>Extends</h3>
+            <h3 class="mt-4">Extends</h3>
             <ul>
                 @foreach ($extends as $extend)
                 <li><a href="/class/{{$extend->object}}">{{$extend->object}}</a></li>
@@ -34,14 +34,20 @@
                 @foreach ($members as $member)
                 <x-member-card
                     class="border-bottom border-danger mt-2 pt-2 pb-4"
-                    method="{{$member->name}}: {{$member->type}}"
+                    name="{{$member->name}}"
                     :description="$member->description"
+                    kind="member"
                     :type="$member->type"
                     since="{{$member->since}}"
                     metaFileRoute="{{$member->metapath}}/{{$member->metafilename}}"
                     metalineno="{{$member->metalineno}}"
                     defaultValue="{{$member->defaultValue}}"
                     returnsdescription="{{$member->returnsdescription}}"
+                    overrides="{{$member->overrides}}"
+                    inherits="{{$member->inherits}}"
+                    readOnly="{{$member->readOnly}}"
+                    nullable="{{$member->nullable}}"
+
                 />
                 @endforeach
             <hr>
@@ -54,19 +60,25 @@
                 @endphp
                 <x-member-card
                     class="border-bottom border-danger mt-1 pt-2 pb-4"
-                    method="{{$method->name}}({{$methodConstructor}})"
+                    name="{{$method->name}}({{$methodConstructor}})"
+                    scope="{{$method->scope}}"
                     :description="$method->description"
                     :params="$method->paramsClass->all()"
                     since="{{$method->since}}"
                     metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
                     metalineno="{{$method->metalineno}}"
+                    fires="{{$method->fires}}"
+                    inherits="{{$method->inherits}}"
+                    returnstype="{{$method->returnstype}}"
                     returnsdescription="{{$method->returnsdescription}}"
                 />
 
                 @endforeach
             <hr>
         </div>
-        <div class="col-3">Aside</div>
+        <div class="col-3">
+            {{-- Aside --}}
+        </div>
     </div>
 </div>
 @endsection

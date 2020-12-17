@@ -7,6 +7,8 @@ use App\Models\Functions;
 use App\Models\Param;
 
 use App\Http\Controllers\ClassesController;
+use App\Models\Event;
+use App\Models\Typedefs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -20,6 +22,8 @@ class ApiPhaser extends Controller
         $class = Classes::whereLongname($longname)->first();
         $function = Functions::whereLongname($longname)->first();
         $param = Param::whereLongname($longname)->first();
+        $event = Event::whereLongname($longname)->first();
+        $typedef = Typedefs::whereLongname($longname)->first();
 
         if(!empty($namespace)) {
             $controller = new NamespacesController();
@@ -29,13 +33,22 @@ class ApiPhaser extends Controller
             $controller = new ClassesController();
         }
 
-        if(!empty($function)) {
-            $request['petition'] = $function;
+        if(!empty($event)) {
+            $controller  = new EventsController();
         }
 
-        if(!empty($param)) {
-            $request['petition'] = $param;
+        if(!empty($typedef)) {
+            $controller  = new TypedefsController();
         }
+
+        // if(!empty($function)) {
+        //     $controller  = $function;
+        // }
+
+        // if(!empty($param)) {
+        //     $controller  = $param;
+        // }
+
 
         return (!empty($controller)) ? $controller->show($longname) : view('welcome');
 

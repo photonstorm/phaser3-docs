@@ -12,15 +12,25 @@ class Namespaces extends Model
     protected $table = 'namespace';
     // protected $primaryKey = 'longname';
 
-    public function classes() {
-        return $this->hasMany(Classes::class, 'memberof', 'longname');
-    }
 
     public function namespaces() {
         return $this->hasMany(Namespaces::class, 'memberof', 'longname');
     }
 
+    // Members
+    public function membersConstants() {
+        return $this->hasMany(Constant::class, 'memberof', 'longname');
+    }
+
+    public function classes() {
+        return $this->hasMany(Classes::class, 'memberof', 'longname');
+    }
+
     public function functions() {
         return $this->hasMany(Functions::class, 'memberof', 'longname');
+    }
+
+    public function typedefs() {
+        return $this->hasMany(Typedefs::class, 'memberof', 'longname');
     }
 }
