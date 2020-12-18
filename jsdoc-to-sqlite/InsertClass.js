@@ -107,7 +107,7 @@ let InsertClass = function (db, data)
             {
                 let param = block.params[i];
 
-                let types = param.type.names.join('|');
+                let types = param.type.names.join(' | ');
                 let optional = -1;
 
                 if (param.hasOwnProperty('optional'))

@@ -82,7 +82,7 @@ let InsertMember = function (db, data)
             name: block.name,
             memberof: block.memberof,
             description: block.description,
-            type: (block.hasOwnProperty('type')) ? block.type.names.join('|') : '',
+            type: (block.hasOwnProperty('type')) ? block.type.names.join(' | ') : '',
             defaultValue: (block.hasOwnProperty('defaultvalue')) ? block.defaultvalue : '',
             readOnly: (block.hasOwnProperty('readonly') && block.readonly) ? 1 : 0,
             scope: block.scope,
