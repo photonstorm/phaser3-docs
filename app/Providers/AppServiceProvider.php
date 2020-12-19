@@ -38,13 +38,15 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('get_api_link', function($app) {
-            return function($longname) {
-                $namespace = Namespaces::whereLongname($longname)->first();
-                $class = Classes::whereLongname($longname)->first();
-                $function = Functions::whereLongname($longname)->first();
-                $param = Param::whereLongname($longname)->first();
-                $event = Event::whereLongname($longname)->first();
-                $type_def = Typedefs::whereLongname($longname)->first();
+
+            return function($type, $longname = "") {
+
+                $namespace = Namespaces::whereLongname($type)->first();
+                $class = Classes::whereLongname($type)->first();
+                $function = Functions::whereLongname($type)->first();
+                $param = Param::whereLongname($type)->first();
+                $event = Event::whereLongname($type)->first();
+                $type_def = Typedefs::whereLongname($type)->first();
 
                 $return = FALSE;
 

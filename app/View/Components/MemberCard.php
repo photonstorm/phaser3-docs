@@ -23,6 +23,7 @@ class MemberCard extends Component
     public $nullable;
     public $inherits;
     public $fires;
+    public $longname;
 
     public function __construct(
         $kind = "",
@@ -41,7 +42,8 @@ class MemberCard extends Component
         $overrides = "",
         $nullable = "",
         $inherits = "",
-        $fires = ""
+        $fires = "",
+        $longname = ""
     )
     {
         $this->kind = $kind;
@@ -61,6 +63,7 @@ class MemberCard extends Component
         $this->nullable = $nullable;
         $this->inherits = $inherits;
         $this->fires = $fires;
+        $this->longname = $longname;
     }
 
     /**

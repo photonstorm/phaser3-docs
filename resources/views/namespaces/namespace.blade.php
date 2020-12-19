@@ -80,6 +80,7 @@
                 @foreach ($typedefs as $typedef)
                 <x-member-card
                     class="border-bottom border-danger mt-2 pt-2 pb-4"
+                    longname="{{$typedef->longname}}"
                     kind="typedef"
                     name="{{$typedef->name}}"
                     description="{{$typedef->description}}"

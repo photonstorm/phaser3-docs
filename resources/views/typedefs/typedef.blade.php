@@ -2,6 +2,12 @@
 @section('content')
 <div class="container">
     <div class="row">
+        {{-- TODO: continue here, create a system to separate the types --}}
+        @php
+            $test = "Phaser.Scene | Array.<{{remplace}}> | Phaser.Types.Scenes.SettingsConfig | Array.<Phaser.Types.Scenes.SettingsConfig> | Phaser.Types.Scenes.CreateSceneFromObjectConfig | Array.<Phaser.Types.Scenes.CreateSceneFromObjectConfig> | function | Array.<function()>";
+            $var = "Phaser.Scene";
+        @endphp
+        {{$test}}
         {{-- Show namespace properties Name, methods--}}
         <div class="col-9">
             <div class="h2">Type Definition</div>
@@ -17,8 +23,6 @@
                 :properties="$typedef->properties->all()"
                 metaFileRoute="{{$typedef->metafilename}}"
                 metalineno="{{$typedef->metalineno}}"
-                {{-- :returnstype="$method->returnstype" --}}
-                {{-- returnsdescription="{{$method->returnsdescription}}" --}}
             />
         </div>
         <div class="col-3">
