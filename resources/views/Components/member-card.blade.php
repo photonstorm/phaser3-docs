@@ -121,11 +121,11 @@
                     @if ($create_table_params_properties()['type'])
                         {{-- Type --}}
                         <td>
-                            @if (resolve('get_api_link')($param->type))
-                                <a class="text-info" href="/{{Config::get('app.phaser_version')}}/{{$param->type}}">{{$param->type}}</a>
-                            @else
-                                {{$param->type}}
-                            @endif
+                            {!!  resolve('get_types')($param)  !!}
+                            {{-- @if (resolve('get_api_link')($param->type)) --}}
+                                {{-- <a class="text-info" href="/{{Config::get('app.phaser_version')}}/{{$param->type}}">{{$param->type}}</a> --}}
+                            {{-- @else --}}
+                            {{-- @endif --}}
                         </td>
                     @endif
                     @if ($create_table_params_properties()['arguments'])

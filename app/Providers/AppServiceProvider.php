@@ -37,6 +37,58 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+        $this->app->bind('get_types', function($app) {
+            return function($param_or_property) {
+                $globals = $param_or_property->getGlobalTypes()->get();
+                $phaser_types = $param_or_property->getPhaserTypes()->get();
+                $phaser_typedef = $param_or_property->getTypedeftTypes()->get();
+
+                $str_output = '';
+
+                for($i = 0; $i < count($globals); $i++) {
+                    if(!empty($globals[$i]->name)) {
+                        if ($i === 0) {
+                            $str_output .= $globals[$i]->name;
+                        } else {
+                            $str_output .= ' | ' . $globals[$i]->name;
+                        }
+                        if(count($phaser_types) OR count($phaser_typedef)) {
+                            $str_output .= ' | ';
+                        }
+                    }
+
+                }
+
+                for($i = 0; $i < count($phaser_types); $i++) {
+                    $link = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $phaser_types[$i]->name .'">' . $phaser_types[$i]->name . '</a>';
+                    if(!empty($phaser_types[$i]->name)) {
+                        if ($i === 0) {
+                            $str_output .= $link;
+                        } else {
+                            $str_output .= ' | ' . $link;
+                        }
+                        if(count($phaser_typedef)) {
+                            $str_output .= ' | ';
+                        }
+                    }
+                }
+
+                for($i = 0; $i < count($phaser_typedef); $i++) {
+                    if(!empty($phaser_typedef[$i]->name)) {
+
+                        $link = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $phaser_typedef[$i]->name .'">' . $phaser_typedef[$i]->name . '</a>';
+                        if ($i === 0) {
+                            $str_output .= $link;
+                        } else {
+                            $str_output .= ' | ' . $link;
+                        }
+                    }
+                }
+
+                return $str_output;
+            };
+        });
+
         $this->app->bind('get_api_link', function($app) {
 
             return function($type, $longname = "") {
