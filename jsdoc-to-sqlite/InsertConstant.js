@@ -1,4 +1,5 @@
 const GetPath = require('./GetPath');
+const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 
 let InsertConstant = function (db, data)
@@ -57,6 +58,13 @@ let InsertConstant = function (db, data)
             metalineno: block.meta.lineno,
             metapath: GetPath(block.meta.path)
         });
+        // Insert parameters types 
+        const dataTypes = {
+            fk_id: block.longname,
+            types: block.type.names
+        };
+        // Prepare to insert types
+        InsertTypes(dataTypes);
     }
 
     if (constantQueries.length)

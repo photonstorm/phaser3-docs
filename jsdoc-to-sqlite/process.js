@@ -8,6 +8,7 @@ const InsertNamespace = require('./InsertNamespace');
 const InsertMember = require('./InsertMember');
 const InsertTypedefs = require('./InsertTypedefs');
 const os = require('os');
+const InsertTypes = require('./InsertTypes');
 
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
@@ -17,7 +18,7 @@ const db = new SQLite3('./db/phaser-working.db');
 
 //  Open the JSON file to parse
 const data = fs.readJsonSync('./json/phaser.json');
-console.log('Start');
+console.log('** Start **');
 
 InsertClass(db, data);
 InsertEvent(db, data);
@@ -27,7 +28,10 @@ InsertMember(db, data);
 InsertFunction(db, data);
 InsertTypedefs(db, data);
 
-console.log('Complete');
+console.log('* Inserting Types *');
+InsertTypes().save(db);
+
+console.log('** Complete **');
 
 db.close();
 if (os.userInfo().username === 'frank') {
@@ -35,4 +39,3 @@ if (os.userInfo().username === 'frank') {
 } else {
     fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
 }
-

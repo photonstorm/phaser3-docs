@@ -1,5 +1,7 @@
 const CleanEventName = require('./CleanEventName');
 const GetPath = require('./GetPath');
+const IdGenerator = require('./IdGenerator');
+const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 
 let InsertEvent = function (db, data)
@@ -25,6 +27,7 @@ let InsertEvent = function (db, data)
     )`);
 
     const paramsTransaction = db.prepare(`INSERT INTO params (
+        id,
         parentClass,
         parentFunction,
         name,
@@ -34,6 +37,7 @@ let InsertEvent = function (db, data)
         optional,
         defaultValue
     ) VALUES (
+        @id,
         @parentClass,
         @parentFunction,
         @name,
@@ -77,7 +81,6 @@ let InsertEvent = function (db, data)
         });
 
         //  Event Params
-
         if (Array.isArray(block.params) && block.params.length > 0)
         {
             for (let i = 0; i < block.params.length; i++)
@@ -93,8 +96,9 @@ let InsertEvent = function (db, data)
                 }
 
                 let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
-
+                let idParams = IdGenerator('param_event');
                 paramsQueries.push({
+                    id: idParams,
                     parentClass: eventName,
                     parentFunction: '',
                     name: param.name,
@@ -104,6 +108,14 @@ let InsertEvent = function (db, data)
                     optional: optional,
                     defaultValue: defaultValue
                 });
+                // Insert parameters types 
+                const dataTypes = {
+                    fk_id: idParams,
+                    types: param.type.names
+                };
+                // Prepare to insert types
+                InsertTypes(dataTypes);
+
             }
         }
     }

@@ -1,14 +1,11 @@
-const CleanFunctionName = require('./CleanFunctionName');
-const CleanFunctionParent = require('./CleanFunctionParent');
 const GetPath = require('./GetPath');
+const IdGenerator = require('./IdGenerator');
+const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
-
-let id = 0;
 
 let InsertTypedefs = function (db, data)
 {
     const typedefsTransaction = db.prepare(`INSERT INTO typedefs (
-        id,
         longname,
         memberof,
         name,
@@ -20,7 +17,6 @@ let InsertTypedefs = function (db, data)
         metapath,
         since
     ) VALUES (
-        @id,
         @longname,
         @memberof,
         @name,
@@ -34,6 +30,7 @@ let InsertTypedefs = function (db, data)
     )`);
 
     const propertiesTransaction = db.prepare(`INSERT INTO properties (
+        id,
         parentType,
         name,
         position,
@@ -42,6 +39,7 @@ let InsertTypedefs = function (db, data)
         optional,
         defaultValue
     ) VALUES (
+        @id,
         @parentType,
         @name,
         @position,
@@ -52,6 +50,7 @@ let InsertTypedefs = function (db, data)
     )`);
 
     const paramsTransaction = db.prepare(`INSERT INTO params (
+        id,
         parentClass,
         parentFunction,
         name,
@@ -61,6 +60,7 @@ let InsertTypedefs = function (db, data)
         optional,
         defaultValue
     ) VALUES (
+        @id,
         @parentClass,
         @parentFunction,
         @name,
@@ -100,8 +100,8 @@ let InsertTypedefs = function (db, data)
         // }
 
         let typedefName = block.longname;
+
         typedefQueries.push({
-            id: ++id,
             longname: typedefName,
             memberof: block.memberof,
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
@@ -113,6 +113,14 @@ let InsertTypedefs = function (db, data)
             metalineno: block.meta.lineno,
             metapath: GetPath(block.meta.path)
         });
+
+        // Insert parameters types 
+        const dataTypes = {
+            fk_id: typedefName,
+            types: block.type.names
+        };
+        // Prepare to insert types
+        InsertTypes(dataTypes);
 
         //  Typedef Properties
         if (Array.isArray(block.properties) && block.properties.length > 0)
@@ -130,8 +138,9 @@ let InsertTypedefs = function (db, data)
                 }
 
                 let defaultValue = (property.hasOwnProperty('defaultvalue')) ? String(property.defaultvalue) : '';
-
+                let idProperty = IdGenerator('property');
                 propertiesQueries.push({
+                    id: idProperty,
                     parentType: typedefName,
                     name: property.name,
                     position: i,
@@ -140,6 +149,13 @@ let InsertTypedefs = function (db, data)
                     optional: optional,
                     defaultValue: defaultValue
                 });
+                // Insert types
+                const dataTypes = {
+                    fk_id: idProperty,
+                    types: property.type.names
+                };
+                // Prepare to insert types
+                // InsertTypes(dataTypes);
             }
         }
 
@@ -160,7 +176,9 @@ let InsertTypedefs = function (db, data)
 
                 let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
 
+                let idParams = IdGenerator('param');
                 paramsQueries.push({
+                    id: idParams,
                     parentClass: (block.type.names.join(' | ').toLowerCase() == 'class') ? typedefName : '',
                     parentFunction: (block.type.names.join(' | ').toLowerCase() == 'function') ? typedefName : '',
                     name: param.name,
@@ -169,7 +187,14 @@ let InsertTypedefs = function (db, data)
                     type: types,
                     optional: optional,
                     defaultValue: defaultValue
-                });                
+                });
+                // Insert types
+                const dataTypes = {
+                    fk_id: idParams,
+                    types: param.type.names
+                };
+                // Prepare to insert types
+                // InsertTypes(dataTypes);
             }
         }
     }

@@ -3,6 +3,8 @@ const CleanFunctionName = require('./CleanFunctionName');
 const CleanFunctionParent = require('./CleanFunctionParent');
 const GetPath = require('./GetPath');
 const HasTag = require('./HasTag');
+const IdGenerator = require('./IdGenerator');
+const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 
 let InsertFunction = function (db, data)
@@ -48,6 +50,7 @@ let InsertFunction = function (db, data)
     )`);
 
     const paramsTransaction = db.prepare(`INSERT INTO params (
+        id,
         parentClass,
         parentFunction,
         name,
@@ -57,6 +60,7 @@ let InsertFunction = function (db, data)
         optional,
         defaultValue
     ) VALUES (
+        @id,
         @parentClass,
         @parentFunction,
         @name,
@@ -113,8 +117,9 @@ let InsertFunction = function (db, data)
                 }
 
                 let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
-
+                let idParams = IdGenerator('param');
                 paramsQueries.push({
+                    id: idParams,
                     parentClass: CleanFunctionParent(block.longname),
                     parentFunction: CleanFunctionName(block.longname),
                     name: param.name,
@@ -124,6 +129,14 @@ let InsertFunction = function (db, data)
                     optional: optional,
                     defaultValue: defaultValue
                 });
+                
+                // Insert parameters types 
+                const dataTypes = {
+                    fk_id: idParams,
+                    types: param.type.names
+                };
+                // Prepare to insert types
+                InsertTypes(dataTypes);
 
                 //  Add to the params array (for injection to the functions table)
 
