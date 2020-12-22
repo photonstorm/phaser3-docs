@@ -2,6 +2,7 @@ const GetPath = require('./GetPath');
 const SkipBlock = require('./SkipBlock');
 const HasTag = require('./HasTag');
 const { clear } = require('jsdoc-to-markdown');
+const InsertTypes = require('./InsertTypes');
 
 let id_generator = 0;
 
@@ -95,6 +96,16 @@ let InsertMember = function (db, data)
             nullable: (block.hasOwnProperty('nullable') && block.nullable) ? 1 : 0,
             overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : ''
         });
+
+        if(block.hasOwnProperty('type')) {
+            // Insert parameters types 
+            const dataTypes = {
+                fk_id: block.longname,
+                types: block.type.names
+            };
+            // Prepare to insert types
+            InsertTypes(dataTypes);
+        }
     }
 
     if (memberQueries.length)

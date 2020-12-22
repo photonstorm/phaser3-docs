@@ -155,7 +155,7 @@ let InsertTypedefs = function (db, data)
                     types: property.type.names
                 };
                 // Prepare to insert types
-                // InsertTypes(dataTypes);
+                InsertTypes(dataTypes);
             }
         }
 

@@ -31,11 +31,12 @@ InsertTypedefs(db, data);
 console.log('* Inserting Types *');
 InsertTypes().save(db);
 
-console.log('** Complete **');
 
 db.close();
 if (os.userInfo().username === 'frank') {
     fs.copySync('./db/phaser-working.db', '../phaser350-docs/database/database.sqlite');
+    console.log("** Copy database.sqlite done! **")
 } else {
     fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
 }
+console.log('** Complete **');

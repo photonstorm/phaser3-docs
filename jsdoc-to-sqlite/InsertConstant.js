@@ -14,7 +14,8 @@ let InsertConstant = function (db, data)
         scope,
         metafilename,
         metalineno,
-        metapath
+        metapath,
+        nullable
     ) VALUES (
         @longname,
         @since,
@@ -25,7 +26,8 @@ let InsertConstant = function (db, data)
         @scope,
         @metafilename,
         @metalineno,
-        @metapath
+        @metapath,
+        @nullable
     )`);
 
     const insertMany = db.transaction((transaction, queries) => {
@@ -56,7 +58,8 @@ let InsertConstant = function (db, data)
             scope: block.scope,
             metafilename: block.meta.filename,
             metalineno: block.meta.lineno,
-            metapath: GetPath(block.meta.path)
+            metapath: GetPath(block.meta.path),
+            nullable: (block.hasOwnProperty('nullable') && block.nullable) ? 1 : 0
         });
         // Insert parameters types 
         const dataTypes = {
