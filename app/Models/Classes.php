@@ -29,6 +29,11 @@ class Classes extends Model
         return $this->hasMany(Extend::class, "class", "longname");
     }
 
+    // Members
+    public function membersConstants() {
+        return $this->hasMany(Constant::class, 'memberof', 'longname');
+    }
+
     public function members() {
         return $this->hasMany(Member::class, "memberOf", "longname");
     }

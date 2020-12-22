@@ -22,6 +22,10 @@ class Namespaces extends Model
         return $this->hasMany(Constant::class, 'memberof', 'longname');
     }
 
+    public function members() {
+        return $this->hasMany(Member::class, 'memberof', 'longname');
+    }
+
     public function classes() {
         return $this->hasMany(Classes::class, 'memberof', 'longname');
     }

@@ -6,11 +6,44 @@
     <ul class="h4">
         <li>
             <span class="text-danger">
-                @if ($scope == "static" || $scope == "protected" || $scope == "readonly")
-                    {{"<".$scope. ", " . (($kind == "constant") ? $kind : "") . ">"}}
-                @elseif ($nullable == "1")
-                    {{"<nullable>"}}
+                @if ($scope == "static" || $scope == "protected" || $scope == "readonly" || $kind == "constant" || $nullable == "1" )
+                    @php
+                        $scope_out = '';
+                        if ($scope == 'static') {
+                            $scope_out .= 'static';
+                        }
+
+                        if ($scope == 'protected') {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'protected';
+                        }
+
+                        if ($scope == 'readonly') {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'readonly';
+                        }
+
+                        if ($kind == 'constant') {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'constant';
+                        }
+
+                        if ($nullable == "1" ) {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'nullable';
+                        }
+                    @endphp
+                    {{"<".$scope_out.">"}}
                 @endif
+
                 @if ($kind === "typedef")
                     @if (strtolower($type) == 'function')
                         {{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($name) }}({{$param_join}})
@@ -21,7 +54,7 @@
                     {{ htmlspecialchars_decode($name) }}
                 @endif
                 @if ($kind === "constant" || $kind === "member")
-                    :{{$type}}
+                    :{!! resolve('get_types')($types) !!}
                 @endif
             </span>
         </li>
@@ -65,11 +98,7 @@
                 @if ($create_table_params_properties()['type'])
                 {{-- Type --}}
                 <td>
-                    @if (resolve('get_api_link')($property->type))
-                        <a class="text-info" href="/{{Config::get('app.phaser_version')}}/{{$property->type}}">{{$property->type}}</a>
-                    @else
-                        {{$property->type}}
-                    @endif
+                    {!!  resolve('get_types')($property)  !!}
                 </td>
                 @endif
                 @if ($create_table_params_properties()['arguments'])
@@ -122,10 +151,6 @@
                         {{-- Type --}}
                         <td>
                             {!!  resolve('get_types')($param)  !!}
-                            {{-- @if (resolve('get_api_link')($param->type)) --}}
-                                {{-- <a class="text-info" href="/{{Config::get('app.phaser_version')}}/{{$param->type}}">{{$param->type}}</a> --}}
-                            {{-- @else --}}
-                            {{-- @endif --}}
                         </td>
                     @endif
                     @if ($create_table_params_properties()['arguments'])

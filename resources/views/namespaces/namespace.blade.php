@@ -8,8 +8,43 @@
             <div class="h3 text-info">{{$namespace->longname }}</div>
             <x-source-links class="mb-3" metaFileRoute="{{$namespace->metapath}}/{{$namespace->metafilename}}" metalineno="{{$namespace->metalineno}}" />
 
+            {{-- Members --}}
+            @if ((count($membersConstants) AND !empty($membersConstants)) || (count($members) AND !empty($members)))
+            <h3>Members</h3>
+            @if (count($membersConstants))
+                @foreach ($membersConstants as $memberConstant)
+                    <x-member-card
+                        class="border-bottom border-danger mt-2 pt-2 pb-4"
+                        name="{{$memberConstant->name}}"
+                        scope="{{$memberConstant->scope}}"
+                        description="{!! $memberConstant->description !!}"
+                        kind="constant"
+                        :types="$memberConstant"
+                        since="{{$memberConstant->since}}"
+                        metaFileRoute="{{$memberConstant->metafilename}}"
+                        metalineno="{{$memberConstant->metalineno}}"
+                    />
+                @endforeach
+            @elseif (count($members))
+                @foreach ($members as $member)
+                <x-member-card
+                    class="border-bottom border-danger mt-2 pt-2 pb-4"
+                    name="{{$member->name}}"
+                    scope="{{$member->scope}}"
+                    description="{!! $member->description !!}"
+                    kind="member"
+                    :types="$member"
+                    since="{{$member->since}}"
+                    metaFileRoute="{{$member->metapath}}/{{$member->metafilename}}"
+                    metalineno="{{$member->metalineno}}"
+                />
+                @endforeach
+            @endif
+            @endif
+
+            {{-- methods --}}
             @if (!empty($methods) AND count($methods))
-            <h3 mt-4>Methods</h3>
+            <h3 class="mt-4">Methods</h3>
             @foreach ($methods as $method)
                 @php
                     $methodConstructor = resolve('get_params_format')($method->paramsNamespace);
@@ -55,23 +90,6 @@
                 </li>
                 @endforeach
             </ul>
-            @endif
-
-            {{-- Members --}}
-            @if (count($membersConstants) AND !empty($membersConstants))
-                <h3>Members</h3>
-                @foreach ($membersConstants as $memberConstant)
-                    <x-member-card
-                        class="border-bottom border-danger mt-2 pt-2 pb-4"
-                        name="{{$memberConstant->name}}"
-                        scope="{{$memberConstant->scope}}"
-                        kind="constant"
-                        type="{{$memberConstant->type}}"
-                        since="{{$memberConstant->since}}"
-                        metaFileRoute="{{$memberConstant->metafilename}}"
-                        metalineno="{{$memberConstant->metalineno}}"
-                    />
-                @endforeach
             @endif
 
             {{-- Type definitions --}}

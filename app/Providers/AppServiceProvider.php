@@ -48,11 +48,11 @@ class AppServiceProvider extends ServiceProvider
                 for($i = 0; $i < count($globals); $i++) {
                     if(!empty($globals[$i]->name)) {
                         if ($i === 0) {
-                            $str_output .= $globals[$i]->name;
+                            $str_output .= htmlentities($globals[$i]->name);
                         } else {
-                            $str_output .= ' | ' . $globals[$i]->name;
+                            $str_output .= ' | '. htmlentities($globals[$i]->name);
                         }
-                        if(count($phaser_types) OR count($phaser_typedef)) {
+                        if((count($phaser_types) OR count($phaser_typedef)) AND ($i === count($globals) - 1)) {
                             $str_output .= ' | ';
                         }
                     }
@@ -60,14 +60,14 @@ class AppServiceProvider extends ServiceProvider
                 }
 
                 for($i = 0; $i < count($phaser_types); $i++) {
-                    $link = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $phaser_types[$i]->name .'">' . $phaser_types[$i]->name . '</a>';
+                    $link = resolve('get_api_link')($phaser_types[$i]->name);
                     if(!empty($phaser_types[$i]->name)) {
                         if ($i === 0) {
                             $str_output .= $link;
                         } else {
                             $str_output .= ' | ' . $link;
                         }
-                        if(count($phaser_typedef)) {
+                        if(count($phaser_typedef) AND ($i === count($phaser_types) - 1)) {
                             $str_output .= ' | ';
                         }
                     }
@@ -75,8 +75,7 @@ class AppServiceProvider extends ServiceProvider
 
                 for($i = 0; $i < count($phaser_typedef); $i++) {
                     if(!empty($phaser_typedef[$i]->name)) {
-
-                        $link = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $phaser_typedef[$i]->name .'">' . $phaser_typedef[$i]->name . '</a>';
+                        $link = resolve('get_api_link')($phaser_typedef[$i]->name);
                         if ($i === 0) {
                             $str_output .= $link;
                         } else {
@@ -90,35 +89,22 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('get_api_link', function($app) {
+            return function($type) {
 
-            return function($type, $longname = "") {
+                $pattern = '/Phaser.[\w]*.*[\w]/i';
 
-                $namespace = Namespaces::whereLongname($type)->first();
-                $class = Classes::whereLongname($type)->first();
-                $function = Functions::whereLongname($type)->first();
-                $param = Param::whereLongname($type)->first();
-                $event = Event::whereLongname($type)->first();
-                $type_def = Typedefs::whereLongname($type)->first();
+                $api_link_output = '';
 
-                $return = FALSE;
-
-                if(!empty($namespace)) {
-                    $return = TRUE;
+                if(preg_match($pattern, $type, $found_type)) {
+                    $find_type = "$found_type[0]";
+                    $replace_str ='<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $find_type.'">' . $find_type . '</a>';
+                    $str = htmlentities(preg_replace($pattern, "--replace--", $type));
+                    $api_link_output = str_replace("--replace--", $replace_str, $str);
+                } else {
+                    $api_link_output = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $type.'">' . $type . '</a>';
                 }
 
-                if(!empty($class)) {
-                    $return = TRUE;
-                }
-
-                if(!empty($event)) {
-                    $return = TRUE;
-                }
-
-                if(!empty($type_def)) {
-                    $return = TRUE;
-                }
-
-                return $return;
+                return $api_link_output;
             };
         });
     }

@@ -15,7 +15,7 @@
                 since="{{$typedef->since}}"
                 :params="$typedef->params->all()"
                 :properties="$typedef->properties->all()"
-                metaFileRoute="{{$typedef->metafilename}}"
+                metaFileRoute="{{$typedef->metapath}}/{{$typedef->metafilename}}"
                 metalineno="{{$typedef->metalineno}}"
             />
         </div>

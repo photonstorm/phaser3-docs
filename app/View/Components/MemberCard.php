@@ -6,13 +6,22 @@ use Illuminate\View\Component;
 
 class MemberCard extends Component
 {
+    // The kind of card, IE: typedef, constant, member, class, etc..
     public $kind;
+    // Name of element
     public $name;
+    // parameters. Is a array [] ? Use: :params
     public $params;
+    // Properties. Is a array [] ?.  Use: :properties
     public $properties;
-    public $scope; // If is static or not
+    // The scope, IE: If is static, protected, etc..
+    public $scope;
+    // Description of element
     public $description;
-    public $type;
+    // Type (some cards like member)
+    public  $type;
+    // Types is used for create the types IE: number | Array.<Phaser.GameObjects..>. use: :types
+    public $types;
     public $since;
     public $metaFileRoute;
     public $metalineno;
@@ -31,6 +40,7 @@ class MemberCard extends Component
         $description = "",
         $scope = "",
         $type = "",
+        $types = "",
         Array $params = [],
         Array $properties = [],
         $since = "3.0.0",
@@ -40,7 +50,7 @@ class MemberCard extends Component
         $returnsdescription = "",
         $returnstype = "",
         $overrides = "",
-        $nullable = "",
+        $nullable = "0",
         $inherits = "",
         $fires = "",
         $longname = ""
@@ -51,6 +61,7 @@ class MemberCard extends Component
         $this->description = $description;
         $this->scope = $scope;
         $this->type = $type;
+        $this->types = $types;
         $this->params = $params;
         $this->properties = $properties;
         $this->since = $since;

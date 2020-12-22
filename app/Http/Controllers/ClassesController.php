@@ -15,7 +15,11 @@ class ClassesController extends Controller
         $class = Classes::whereLongname($longname)->firstOrFail();
         $params = $class->params->all();
         $extends = $class->extends;
-        $members = $class->members->sortBy("longname");
+        $members = $class->members->sortByDesc([
+            ['scope', 'desc'],
+            ['longname', 'asc'],
+        ]);
+        $membersConstants = $class->membersConstants->sortBy("longname");
         $methods = $class->functions->sortBy("longname");
 
         $classConstructor = resolve('get_params_format')($params);
@@ -26,6 +30,7 @@ class ClassesController extends Controller
             "classConstructor" => $classConstructor,
             "extends" => $extends,
             "members" => $members,
+            "membersConstants" => $membersConstants,
             "methods" => $methods,
             "methodConstructor" => ''
         ]);

@@ -21,7 +21,8 @@ class NamespacesController extends Controller
         $namespaces = $namespace->namespaces;
         $methods = $namespace->functions;
         $typedefs = $namespace->typedefs;
-        $membersConstants = $namespace->membersConstants;
+        $members = $namespace->members->sortBy("longname");
+        $membersConstants = $namespace->membersConstants->sortBy("longname");
         $methodConstructor = "";
 
         return view('namespaces.namespace', [
@@ -31,6 +32,7 @@ class NamespacesController extends Controller
             "methods" => $methods,
             "methodConstructo" => $methodConstructor,
             "typedefs" => $typedefs,
+            "members" => $members,
             "membersConstants" => $membersConstants
         ]);
     }
