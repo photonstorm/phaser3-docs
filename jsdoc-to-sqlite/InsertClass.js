@@ -3,6 +3,7 @@ const HasTag = require('./HasTag');
 const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
+const GetMarkdownLink = require('./GetMarkdownLink');
 
 let InsertClass = function (db, data)
 {
@@ -78,12 +79,13 @@ let InsertClass = function (db, data)
             continue;
         }
 
+        const description = GetMarkdownLink(block.classdesc);
         classQueries.push({
             longname: block.longname,
             since: block.since,
             name: block.name,
             memberof: block.memberof,
-            description: block.classdesc,
+            description,
             metafilename: block.meta.filename,
             metalineno: block.meta.lineno,
             metapath: GetPath(block.meta.path),
