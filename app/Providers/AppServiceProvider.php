@@ -91,13 +91,15 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('get_api_link', function($app) {
             return function($type) {
 
-                $pattern = '/Phaser.[\w]*.*[\w]/i';
+                $pattern = '/Phaser.[a-zA-Z0-9.]*/i';
 
                 $api_link_output = '';
 
                 if(preg_match($pattern, $type, $found_type)) {
                     $find_type = "$found_type[0]";
-                    $replace_str ='<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $find_type.'">' . $find_type . '</a>';
+
+                    $replace_str ='<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. rtrim($find_type, '.') .'">' . $find_type . '</a>';
+
                     $str = htmlentities(preg_replace($pattern, "--replace--", $type));
                     $api_link_output = str_replace("--replace--", $replace_str, $str);
                 } else {
