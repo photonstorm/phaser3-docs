@@ -6,9 +6,9 @@
         <div class="col-9">
             <div class="h2 text-danger">{{ ucfirst($class->getTable()) }}: {{ $class->name }}</div>
             <div class="h3 text-info">{{$class->longname }}</div>
-            <p>
-                {{htmlspecialchars ($class->description)}}
-            </p>
+@markdown
+{!! $class->description !!}
+@endmarkdown
             <hr>
             <h3>Constructor:</h3>
             @php

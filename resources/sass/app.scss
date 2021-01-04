@@ -20,7 +20,12 @@
 @import 'menu';
 
 
+// syntax highlight theme
+@import "./../../node_modules/prismjs/themes/prism-tomorrow.css";
+
 // Global classes
-.cursor-pointer {
-    cursor: pointer;
+.cursor {
+    &-pointer {
+        cursor: pointer;
+    }
 }

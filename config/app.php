@@ -229,6 +229,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /**
+         * third party packages
+         */
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+
     ],
 
 ];
