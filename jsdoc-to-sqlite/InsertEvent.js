@@ -3,6 +3,7 @@ const GetPath = require('./GetPath');
 const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
+const GetMarkdownLink = require('./GetMarkdownLink');
 
 let InsertEvent = function (db, data)
 {
@@ -74,7 +75,7 @@ let InsertEvent = function (db, data)
             since: block.since,
             name: block.name,
             memberof: block.memberof,
-            description: block.description,
+            description: GetMarkdownLink(block.description),
             metafilename: block.meta.filename,
             metalineno: block.meta.lineno,
             metapath: GetPath(block.meta.path)

@@ -1,3 +1,4 @@
+const GetMarkDownLink = require('./GetMarkdownLink');
 const GetPath = require('./GetPath');
 const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
@@ -106,7 +107,7 @@ let InsertTypedefs = function (db, data)
             memberof: block.memberof,
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
             name: block.name,
-            description: (block.hasOwnProperty('description')) ? block.description : '',
+            description: (block.hasOwnProperty('description')) ? GetMarkDownLink(block.description) : '',
             type: (block.hasOwnProperty('type')) ? block.type.names.join(' | ') : '',
             defaultValue: (block.hasOwnProperty('defaultvalue')) ? String(block.defaultvalue) : '',
             metafilename: block.meta.filename,

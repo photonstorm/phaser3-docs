@@ -85,7 +85,7 @@ let InsertClass = function (db, data)
             since: block.since,
             name: block.name,
             memberof: block.memberof,
-            description,
+            description: description,
             metafilename: block.meta.filename,
             metalineno: block.meta.lineno,
             metapath: GetPath(block.meta.path),
