@@ -88,22 +88,28 @@ class AppServiceProvider extends ServiceProvider
             };
         });
 
+        // Resolve the link from a string
         $this->app->bind('get_api_link', function($app) {
             return function($type) {
 
-                $pattern = '/Phaser.[a-zA-Z0-9.]*/i';
+                $pattern = '/Phaser.[a-zA-Z0-9._]*/i';
 
                 $api_link_output = '';
 
-                if(preg_match($pattern, $type, $found_type)) {
-                    $find_type = "$found_type[0]";
+                $clean_html_entities_type = str_replace('>' , '&gt;', $type);
+                $clean_html_entities_type = str_replace('<' , '&lt;', $clean_html_entities_type);
+
+                if(preg_match($pattern, $clean_html_entities_type, $found_type)) {
+                    $find_type = $found_type[0];
 
                     $replace_str ='<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. rtrim($find_type, '.') .'">' . $find_type . '</a>';
 
-                    $str = htmlentities(preg_replace($pattern, "--replace--", $type));
-                    $api_link_output = str_replace("--replace--", $replace_str, $str);
+                    // $str = htmlentities(preg_replace($pattern, "-replace-", $clean_html_entities_type));
+                    $str = preg_replace($pattern, "-replace-", $clean_html_entities_type);
+                    $api_link_output = str_replace("-replace-", $replace_str, $str);
                 } else {
-                    $api_link_output = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $type.'">' . $type . '</a>';
+                    // $api_link_output = '<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. $type.'">' . $type . '</a>';
+                    $api_link_output = $type;
                 }
 
                 return $api_link_output;

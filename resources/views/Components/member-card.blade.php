@@ -62,12 +62,12 @@
     @endif
     @if (!empty($description))
     <div class="pl-3">
-        <span class="font-weight-bold">Description:</span> {{$description}}
+        <span class="font-weight-bold">Description:</span> @markdown {!! $description !!} @endmarkdown
     </div>
     @endif
     @if (!empty($type))
     <div class="pl-3">
-        Type: {{$type}}
+        Type: {!! resolve('get_api_link')($type) !!}
     </div>
     @endif
     @if (count($properties) > 0)
@@ -183,7 +183,15 @@
     @if(!empty($returnstype))
     <div class="pl-3">
         <div class="text-info">Type:</div>
-        <div class="pl-4">{{$returnstype}}</div>
+        <div class="pl-4">
+            <ul>
+                @foreach (explode('|', $returnstype) as $returntype)
+                    <li>
+                        {!! resolve('get_api_link')($returntype) !!}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     @endif
     @if (!empty($defaultValue))
@@ -198,7 +206,16 @@
     <div>Overrides: {{$overrides}}</div>
     @endif
     @if(!empty($fires))
-    <div>Fires: {{$fires}}</div>
+    <div>
+        Fires:
+        <ul>
+
+            @foreach (explode(',', $fires) as $fire)
+                <li>{!! resolve('get_api_link')($fire) !!}</li>
+            @endforeach
+        </ul>
+    </div>
+    {{-- <div>Fires: {!! '<br />-'. implode('<br />-', explode(',', resolve('get_api_link')($fires))) !!}</div> --}}
     @endif
     <div class="text-danger">Since: {{$since}}</div>
     <x-source-links metaFileRoute={{$metaFileRoute}} metalineno={{$metalineno}}/>
