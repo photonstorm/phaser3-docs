@@ -21,6 +21,9 @@
                 <option value="1">3.24.0</option>
             </select>
         </div>
+        <div class="d-flex align-items-center">
+            <div id="react-searchbar"></div>
+        </div>
     </div>
     <div>
         <a href="/">
