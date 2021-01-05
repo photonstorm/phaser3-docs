@@ -97,7 +97,7 @@
                     />
 
                     @endforeach
-                <hr>
+                {{-- <hr> --}}
             @endif
         </div>
         <div class="col-3">

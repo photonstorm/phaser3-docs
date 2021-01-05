@@ -177,7 +177,11 @@
     @if(!empty($returnsdescription))
     <div class="pl-3">
         <div class="text-info">Returns:</div>
-        <div class="pl-4">{{$returnsdescription}}</div>
+        <div class="pl-4">
+            @markdown
+{!! $returnsdescription !!}
+            @endmarkdown
+        </div>
     </div>
     @endif
     @if(!empty($returnstype))

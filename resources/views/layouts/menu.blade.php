@@ -19,8 +19,6 @@
             <select class="custom-select cursor-pointer" onchange='this.form.submit()'>
                 <option selected>{{Config::get('app.phaser_version')}}</option>
                 <option value="1">3.24.0</option>
-                <option value="2">3.50.0-beta.11</option>
-                <option value="3">3.50.0-beta.12</option>
             </select>
         </div>
     </div>

@@ -21,6 +21,13 @@
 
 
 // syntax highlight theme
+pre {
+    background-color: #2d2d2d;
+    padding: 14px;
+}
+pre>code {
+    color: white;
+}
 @import "./../../node_modules/prismjs/themes/prism-tomorrow.css";
 
 // Global classes

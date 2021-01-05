@@ -11491,6 +11491,15 @@ body {
   width: 150px;
 }
 
+pre {
+  background-color: #2d2d2d;
+  padding: 14px;
+}
+
+pre > code {
+  color: white;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

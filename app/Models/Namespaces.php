@@ -37,4 +37,9 @@ class Namespaces extends Model
     public function typedefs() {
         return $this->hasMany(Typedefs::class, 'memberof', 'longname');
     }
+
+    // Events
+    public function events() {
+        return $this->hasMany(Event::class, 'memberof', 'longname');
+    }
 }

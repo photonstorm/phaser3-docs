@@ -8,6 +8,53 @@
             <div class="h3 text-info">{{$namespace->longname }}</div>
             <x-source-links class="mb-3" metaFileRoute="{{$namespace->metapath}}/{{$namespace->metafilename}}" metalineno="{{$namespace->metalineno}}" />
 
+            {{-- Show clases --}}
+            @if (!empty($classes) AND count($classes))
+                <h3>Classes</h3>
+                <ul>
+                    @foreach ($classes as $class)
+                    <li>
+                        <a href="/{{Config::get('app.phaser_version')}}/{{$class->longname}}">
+                            {{  $class->name }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            @endif
+
+            {{-- Show anothers namespace --}}
+            @if (!empty($namespaces) AND count($namespaces))
+                <h3>Namespace</h3>
+                <ul>
+                    @foreach ($namespaces as $namespace)
+                    <li>
+                        <a href="/{{Config::get('app.phaser_version')}}/{{$namespace->longname}}">
+                            {{ $namespace->name }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            @endif
+
+            {{-- Show anothers namespace --}}
+            @if (!empty($events) AND count($events))
+                <h3>Events</h3>
+                <ul>
+                    @foreach ($events as $event)
+                    <x-member-card
+                        class="border-bottom border-danger mt-2 pt-2 pb-4"
+                        name="{{$event->name}}"
+                        description="{!! $event->description !!}"
+                        :params="$event->params->all()"
+                        :types="$event"
+                        since="{{$event->since}}"
+                        metaFileRoute="{{$event->metapath}}/{{$event->metafilename}}"
+                        metalineno="{{$event->metalineno}}"
+                    />
+                    @endforeach
+                </ul>
+            @endif
+
             {{-- Members --}}
             @if ((count($membersConstants) AND !empty($membersConstants)) || (count($members) AND !empty($members)))
             <h3>Members</h3>
@@ -44,52 +91,26 @@
 
             {{-- methods --}}
             @if (!empty($methods) AND count($methods))
-            <h3 class="mt-4">Methods</h3>
-            @foreach ($methods as $method)
-                @php
-                    $methodConstructor = resolve('get_params_format')($method->paramsNamespace);
-                @endphp
-            <x-member-card
-                    class="border-bottom border-danger mt-2 pt-2 pb-4"
-                    scope="{{$method->scope}}"
-                    name="{{$method->name}}({{$methodConstructor}})"
-                    :description="$method->description"
-                    :type="$method->type"
-                    since="{{$method->since}}"
-                    scope="{{$method->scope}}"
-                    :params="$method->paramsNamespace->all()"
-                    metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
-                    metalineno="{{$method->metalineno}}"
-                    :returnstype="$method->returnstype"
-                    returnsdescription="{{$method->returnsdescription}}"
-                />
-            @endforeach
-            @endif
-
-            {{-- Show clases and namespace list --}}
-            @if (!empty($classes) AND count($classes))
-            <h3>Classes</h3>
-            <ul>
-                @foreach ($classes as $class)
-                <li>
-                    <a href="/{{Config::get('app.phaser_version')}}/{{$class->longname}}">
-                        {{  $class->name }}
-                    </a>
-                </li>
+                <h3 class="mt-4">Methods</h3>
+                @foreach ($methods as $method)
+                    @php
+                        $methodConstructor = resolve('get_params_format')($method->paramsNamespace);
+                    @endphp
+                <x-member-card
+                        class="border-bottom border-danger mt-2 pt-2 pb-4"
+                        scope="{{$method->scope}}"
+                        name="{{$method->name}}({{$methodConstructor}})"
+                        :description="$method->description"
+                        :type="$method->type"
+                        since="{{$method->since}}"
+                        scope="{{$method->scope}}"
+                        :params="$method->paramsNamespace->all()"
+                        metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
+                        metalineno="{{$method->metalineno}}"
+                        :returnstype="$method->returnstype"
+                        returnsdescription="{{$method->returnsdescription}}"
+                    />
                 @endforeach
-            </ul>
-            @endif
-            @if (!empty($namespaces) AND count($namespaces))
-            <h3>Namespace</h3>
-            <ul>
-                @foreach ($namespaces as $namespace)
-                <li>
-                    <a href="/{{Config::get('app.phaser_version')}}/{{$namespace->longname}}">
-                        {{ $namespace->name }}
-                    </a>
-                </li>
-                @endforeach
-            </ul>
             @endif
 
             {{-- Type definitions --}}
