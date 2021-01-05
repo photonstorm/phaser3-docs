@@ -92,7 +92,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('get_api_link', function($app) {
             return function($type) {
 
-                $pattern = '/Phaser.[a-zA-Z0-9._]*/i';
+                $pattern = '/Phaser.[a-zA-Z0-9._#]*/i';
 
                 $api_link_output = '';
 

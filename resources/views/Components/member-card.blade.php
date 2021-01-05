@@ -207,7 +207,7 @@
     <div>Inherited from: {{$inherits}}</div>
     @endif
     @if(!empty($overrides))
-    <div>Overrides: {{$overrides}}</div>
+    <div>Overrides:  {!! resolve('get_api_link')($overrides) !!}</div>
     @endif
     @if(!empty($fires))
     <div>

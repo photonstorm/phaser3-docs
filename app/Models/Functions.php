@@ -9,11 +9,20 @@ class Functions extends Model
 {
     use HasFactory;
 
-    public function paramsClass() {
-        return $this->hasMany(Param::class, 'parentFunction', 'name')->where('parentClass', $this->memberof);
+    public function params() {
+        $paramsClass = $this->hasMany(Param::class, 'parentFunction', 'name')->where('parentClass', $this->memberof);
+        $paramsNamespace = $this->hasMany(Param::class, 'parentClass', 'longname');
+        $params = [];
+        if(!empty($paramsClass)) {
+            $params = $paramsClass;
+        }
+        if(!empty($paramsNamespace)) {
+            $params = $paramsNamespace;
+        }
+        return $params;
     }
-
-    public function paramsNamespace() {
-        return $this->hasMany(Param::class, 'parentClass', 'longname');
-    }
+    // TODO: Remove if params function work fine for params namespace and params classes
+    // public function paramsNamespace() {
+    //     return $this->hasMany(Param::class, 'parentClass', 'longname');
+    // }
 }

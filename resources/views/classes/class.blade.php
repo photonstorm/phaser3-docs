@@ -79,14 +79,18 @@
                 <h3>Methods</h3>
                     @foreach ($methods as $method)
                     @php
-                        $methodConstructor = resolve('get_params_format')($method->paramsClass->all())
+                    echo $method->longname;
+                    // if($method->longname == 'Phaser.Loader.File.createObjectURL') {
+                    //     dd($method->paramsNamespace->all());
+                    // }
+                        $methodConstructor = resolve('get_params_format')($method->params->all())
                     @endphp
                     <x-member-card
                         class="border-bottom border-danger mt-1 pt-2 pb-4"
                         name="{{$method->name}}({{$methodConstructor}})"
                         scope="{{$method->scope}}"
                         :description="$method->description"
-                        :params="$method->paramsClass->all()"
+                        :params="$method->params->all()"
                         since="{{$method->since}}"
                         metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
                         metalineno="{{$method->metalineno}}"

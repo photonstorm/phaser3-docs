@@ -94,7 +94,7 @@
                 <h3 class="mt-4">Methods</h3>
                 @foreach ($methods as $method)
                     @php
-                        $methodConstructor = resolve('get_params_format')($method->paramsNamespace);
+                        $methodConstructor = resolve('get_params_format')($method->params);
                     @endphp
                 <x-member-card
                         class="border-bottom border-danger mt-2 pt-2 pb-4"
@@ -104,7 +104,7 @@
                         :type="$method->type"
                         since="{{$method->since}}"
                         scope="{{$method->scope}}"
-                        :params="$method->paramsNamespace->all()"
+                        :params="$method->params->all()"
                         metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
                         metalineno="{{$method->metalineno}}"
                         :returnstype="$method->returnstype"
