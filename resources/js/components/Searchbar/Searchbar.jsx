@@ -19,7 +19,7 @@ const Searchbar = () => {
     //     if (searchTerm.length === 0) {
     //         closeSearchbar();
     //     }
-    // }, [searchTerm]);
+    // });
 
     const changeTermValue = (e) => {
         debouncedSearch(e.target.value);
@@ -114,9 +114,15 @@ const Searchbar = () => {
                                 <div className="body">
                                     <ul>
                                         {
-                                            result.data.map((res, index) => (
-                                                <li key={res.longname + index}><a href={ `${res.longname}` }> { res.longname }</a></li>
-                                            ))
+                                            result.data.map((res, index) =>
+                                                {
+                                                    if (result.type.toLowerCase() === 'scene') {
+                                                        return <li key={res.longname + index}><a href={ `${res.longname}` }> this.{ res.name }</a></li>
+                                                    } else {
+                                                        return <li key={res.longname + index}><a href={ `${res.longname}` }> { res.longname }</a></li>
+                                                    }
+                                                }
+                                            )
                                         }
                                     </ul>
                                 </div>

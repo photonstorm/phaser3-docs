@@ -6356,7 +6356,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: 100vh;\n  position: absolute;\n  left: 0;\n  z-index: 1;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
+exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: 100vh;\n  position: absolute;\n  left: 0;\n  z-index: 1;\n  display: none;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -68323,7 +68323,7 @@ var Searchbar = function Searchbar() {
   //     if (searchTerm.length === 0) {
   //         closeSearchbar();
   //     }
-  // }, [searchTerm]);
+  // });
 
 
   var changeTermValue = function changeTermValue(e) {
@@ -68410,11 +68410,19 @@ var Searchbar = function Searchbar() {
     }, result.type, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, result.data.map(function (res, index) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        key: res.longname + index
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "".concat(res.longname)
-      }, " ", res.longname));
+      if (result.type.toLowerCase() === 'scene') {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: res.longname + index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "".concat(res.longname)
+        }, " this.", res.name));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: res.longname + index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "".concat(res.longname)
+        }, " ", res.longname));
+      }
     }))));
   })));
 };

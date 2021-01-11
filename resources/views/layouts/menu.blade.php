@@ -1,17 +1,17 @@
 <nav class="menu d-flex justify-content-between align-items-center px-5 mb-4">
     <div class="d-flex">
         <div class="menu-item text-center px-3">
-            <a href="/namespaces" class="text-white">
+            <a href="./namespaces" class="text-white">
                 Namespaces
             </a>
         </div>
         <div class="menu-item text-center px-3">
-            <a href="/classes" class="text-white">
+            <a href="./classes" class="text-white">
                 Classes
             </a>
         </div>
         <div class="menu-item text-center px-3">
-            <a href="/events" class="text-white">
+            <a href="./events" class="text-white">
                 Events
             </a>
         </div>

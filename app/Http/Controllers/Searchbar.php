@@ -46,11 +46,35 @@ class Searchbar extends Controller
         $search_array = [];
     } else {
         // search by this.add or add.
-            if( str_starts_with($keyword, "this.add") ) {
+            if( str_starts_with($keyword, "this.") ) {
                 $keys = explode('.', $keyword);
-                $members_class = Classes::where("longname", "Phaser.Scene")->first()->members;
 
-                dd($members_class->where('longname', 'like', '%ad%'));
+                $scene_members_class = Member::where("memberof", "Phaser.Scene")->where("name", "like", "%$keys[1]%");
+
+                $scene_collection = [];
+
+                if( count($keys) <= 2) {
+
+                    $scene_collection = new SearchbarResource($scene_members_class->get());
+
+                    array_push($search_array, [
+                        "type" => "scene",
+                        "data" => $scene_collection
+                    ]);
+                    // dd($members_class->get);
+                }
+
+                else if( count($keys) < 4 ) {
+                    $type = $scene_members_class->first()->type;
+                    dd($type);
+                    // $scene_collection = new SearchbarResource($scene_members_class->get());
+
+                    // array_push($search_array, [
+                    //     "type" => "scene",
+                    //     "data" => $scene_collection
+                    // ]);
+                }
+
             }
 
             if ( !$namespace_collection->isEmpty() ) {

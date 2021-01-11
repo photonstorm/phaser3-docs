@@ -81,10 +81,12 @@
                     @foreach ($methods as $method)
                     @php
                     echo $method->longname;
-                    // if($method->longname == 'Phaser.Loader.File.createObjectURL') {
-                    //     dd($method->paramsNamespace->all());
+
+                    // if($method->longname == "Phaser.GameObjects.GameObjectFactory#image") {
+                    //     dd($method);
                     // }
-                        $methodConstructor = resolve('get_params_format')($method->params->all())
+
+                    $methodConstructor = resolve('get_params_format')($method->params->all())
                     @endphp
                     <x-member-card
                         class="border-bottom border-danger mt-1 pt-2 pb-4"

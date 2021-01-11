@@ -13,12 +13,19 @@ class Functions extends Model
         $paramsClass = $this->hasMany(Param::class, 'parentFunction', 'name')->where('parentClass', $this->memberof);
         $paramsNamespace = $this->hasMany(Param::class, 'parentClass', 'longname');
         $params = [];
-        if(!empty($paramsClass)) {
+        if( !$paramsClass->get()->isEmpty() ) {
             $params = $paramsClass;
         }
-        if(!empty($paramsNamespace)) {
+        if( !$paramsNamespace->get()->isEmpty() ) {
             $params = $paramsNamespace;
+            // if($this->longname == "Phaser.GameObjects.GameObjectFactory#image") {
+                // dd($paramsNamespace->get()->isEmpty());
+            // }
         }
+        if(empty($params)) {
+            return $params = $paramsClass;;
+        }
+            // dd($paramsClass->get());
         return $params;
     }
     // TODO: Remove if params function work fine for params namespace and params classes

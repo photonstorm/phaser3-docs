@@ -6,7 +6,7 @@
     <ul>
         @foreach ($events as $event)
         <li>
-            <a href="{{Config::get('app.phaser_version')}}/{{$event->longname}}">{{$event->longname}}</a>
+            <a href="{{$event->longname}}">{{$event->longname}}</a>
         </li>
         @endforeach
     </ul>
