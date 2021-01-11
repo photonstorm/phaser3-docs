@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './Searchbar.scss';
 import useEventListener from '@use-it/event-listener';
-import { rest } from 'lodash';
+import { debounce } from 'lodash';
+
+let count = 0;
 
 const Searchbar = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -10,32 +12,47 @@ const Searchbar = () => {
     const overlaySearchbar = useRef(null);
     const results = useRef(null);
 
-    useEffect(() => {
-        if(searchTerm.trim() === '') {
-            closeSearchbar();
-        }
-        const delayDebounceFn = setTimeout(() => {
-            if (searchTerm.trim() !== '') {
-                axios.get(`https://jsonplaceholder.typicode.com/users`)
-                    .then(res => {
-                        const persons = res.data;
-                        console.log(persons)
-                        console.log(searchTerm)
-                        if(rest.length > 0) {
-                            openSearchbar();
-                        }
-                    })
-            }
-        }, 500)
+    const [search_result, setSearchResult] = useState([]);
 
-        return () => clearTimeout(delayDebounceFn)
-    }, [searchTerm])
+    // useEffect(() => {
+    //     if (searchTerm.length === 0) {
+    //         closeSearchbar();
+    //     }
+    // }, [searchTerm]);
+
+    const changeTermValue = (e) => {
+        debouncedSearch(e.target.value);
+    }
+
+    const debouncedSearch = debounce((query) => {
+        console.log('Server petition');
+        if (query.trim() !== '') {
+
+            console.log('Search this: ', query);
+            axios.get(`/api/search-bar?search=${query}`)
+
+            .then(res => {
+                console.log("Result", res.data , count);
+                count++;
+
+                setSearchResult(res.data);
+
+                if(res.data.length > 0) {
+                    openSearchbar();
+                }
+            });
+
+        }
+    }, 1000);
 
     const openSearchbar = () => {
-        results.current.style.display = 'block';
-        overlaySearchbar.current.style.display = 'block';
+        // if(searchTerm.trim() !== '') {
 
-        console.log('Open sarchBar ')
+            results.current.style.display = 'block';
+            overlaySearchbar.current.style.display = 'block';
+
+            console.log('Open sarchBar ')
+        // }
     }
 
     const closeSearchbar = () => {
@@ -44,7 +61,6 @@ const Searchbar = () => {
         results.current.style.display = 'none';
         overlaySearchbar.current.style.display = 'none';
 
-        console.log('Close sarchBar ');
     }
 
     const scrollHandler = (e) => {
@@ -66,10 +82,11 @@ const Searchbar = () => {
                     type="search"
                     placeholder="Search..."
                     aria-label="Search"
-                    value={searchTerm}
+                    defaultValue={searchTerm}
                     onChange={(e) => {
-                        setSearchTerm(e.target.value)
+                        changeTermValue(e);
                     }}
+                    onFocus={openSearchbar}
                 />
             </form>
 
@@ -77,42 +94,26 @@ const Searchbar = () => {
             </div>
 
             <div className="search-result p-2" ref={results}>
-                <div className="search-card">
-                    <div className="title ">
-                        Namespace:
-                    </div>
-                    <div className="body">
-                        <ul>
-                            <li><a href="#">Phaser.Scene</a></li>
-                            <li><a href="#">Phaser.Events.Blah</a></li>
-                            <li><a href="#">Events</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="search-card">
-                    <div className="title ">
-                        Scene:
-                    </div>
-                    <div className="body">
-                        <ul>
-                            <li><a href="#">Phaser.Scene</a></li>
-                            <li><a href="#">Phaser.Events.Blah</a></li>
-                            <li><a href="#">Events</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="search-card">
-                    <div className="title ">
-                        Event:
-                    </div>
-                    <div className="body">
-                        <ul>
-                            <li><a href="#">Uno</a></li>
-                            <li><a href="#">Dos</a></li>
-                            <li><a href="#">Tres</a></li>
-                        </ul>
-                    </div>
-                </div>
+                {
+                    search_result.map((result, index) => {
+                        return (
+                            <div className="search-card" key={result.type + index}>
+                                <div className="title ">
+                                    {result.type}:
+                                </div>
+                                <div className="body">
+                                    <ul>
+                                        {
+                                            result.data.map((res, index) => (
+                                                <li key={res.longname + index}><a href="#"> { res.longname }</a></li>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        );
+                    })
+                }
             </div>
         </React.Fragment>
     );

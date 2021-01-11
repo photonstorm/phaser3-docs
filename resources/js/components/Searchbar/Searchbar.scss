@@ -6,13 +6,16 @@
     z-index: 1;
 }
 .search-result {
+    display: none;
     background-color: white;
     border-radius: 3px;
     position: absolute;
     min-width: 400px;
     min-height: 200px;
+    max-height: calc(100vh - 200px);
     z-index: 2;
     box-shadow: 2px 5px 5px 0px black;
+    overflow-y: scroll;
     .search-card {
         border-bottom: 1px solid black;
     }

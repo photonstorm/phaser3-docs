@@ -6356,7 +6356,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: 100vh;\n  position: absolute;\n  left: 0;\n  z-index: 1;\n}\n\n.search-result {\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  min-width: 400px;\n  min-height: 200px;\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
+exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: 100vh;\n  position: absolute;\n  left: 0;\n  z-index: 1;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -68304,6 +68304,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+var count = 0;
 
 var Searchbar = function Searchbar() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
@@ -68313,40 +68314,49 @@ var Searchbar = function Searchbar() {
 
   var overlaySearchbar = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var results = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (searchTerm.trim() === '') {
-      closeSearchbar();
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      search_result = _useState4[0],
+      setSearchResult = _useState4[1]; // useEffect(() => {
+  //     if (searchTerm.length === 0) {
+  //         closeSearchbar();
+  //     }
+  // }, [searchTerm]);
+
+
+  var changeTermValue = function changeTermValue(e) {
+    debouncedSearch(e.target.value);
+  };
+
+  var debouncedSearch = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["debounce"])(function (query) {
+    console.log('Server petition');
+
+    if (query.trim() !== '') {
+      console.log('Search this: ', query);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query)).then(function (res) {
+        console.log("Result", res.data, count);
+        count++;
+        setSearchResult(res.data);
+
+        if (res.data.length > 0) {
+          openSearchbar();
+        }
+      });
     }
-
-    var delayDebounceFn = setTimeout(function () {
-      if (searchTerm.trim() !== '') {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://jsonplaceholder.typicode.com/users").then(function (res) {
-          var persons = res.data;
-          console.log(persons);
-          console.log(searchTerm);
-
-          if (lodash__WEBPACK_IMPORTED_MODULE_4__["rest"].length > 0) {
-            openSearchbar();
-          }
-        });
-      }
-    }, 500);
-    return function () {
-      return clearTimeout(delayDebounceFn);
-    };
-  }, [searchTerm]);
+  }, 1000);
 
   var openSearchbar = function openSearchbar() {
+    // if(searchTerm.trim() !== '') {
     results.current.style.display = 'block';
     overlaySearchbar.current.style.display = 'block';
-    console.log('Open sarchBar ');
+    console.log('Open sarchBar '); // }
   };
 
   var closeSearchbar = function closeSearchbar() {
     setSearchTerm('');
     results.current.style.display = 'none';
     overlaySearchbar.current.style.display = 'none';
-    console.log('Close sarchBar ');
   };
 
   var scrollHandler = function scrollHandler(e) {
@@ -68369,10 +68379,11 @@ var Searchbar = function Searchbar() {
     type: "search",
     placeholder: "Search...",
     "aria-label": "Search",
-    value: searchTerm,
+    defaultValue: searchTerm,
     onChange: function onChange(e) {
-      setSearchTerm(e.target.value);
-    }
+      changeTermValue(e);
+    },
+    onFocus: openSearchbar
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-bar-overlay",
     onClick: closeSearchbar,
@@ -68380,43 +68391,22 @@ var Searchbar = function Searchbar() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-result p-2",
     ref: results
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "title "
-  }, "Namespace:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Phaser.Scene")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Phaser.Events.Blah")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Events"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "title "
-  }, "Scene:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Phaser.Scene")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Phaser.Events.Blah")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Events"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "title "
-  }, "Event:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Uno")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Dos")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Tres")))))));
+  }, search_result.map(function (result, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "search-card",
+      key: result.type + index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "title "
+    }, result.type, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "body"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, result.data.map(function (res, index) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: res.longname + index
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, " ", res.longname));
+    }))));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Searchbar);
