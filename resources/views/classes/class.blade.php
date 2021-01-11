@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $class->longname)
 @section('content')
 <div class="container">
     <div class="row">

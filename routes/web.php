@@ -20,7 +20,7 @@ use App\Http\Middleware\SelectRouter;
 |
 */
 Route::get('/', function() {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::get('/namespaces', [NamespacesController::class, 'index']);
