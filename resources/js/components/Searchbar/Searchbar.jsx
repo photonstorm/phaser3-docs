@@ -7,11 +7,12 @@ import { debounce } from 'lodash';
 let count = 0;
 
 const Searchbar = () => {
-    const [searchTerm, setSearchTerm] = useState('');
 
     const overlaySearchbar = useRef(null);
     const results = useRef(null);
+    const inputRef = useRef(null);
 
+    const [searchTerm, setSearchTerm] = useState('');
     const [search_result, setSearchResult] = useState([]);
 
     // useEffect(() => {
@@ -22,37 +23,31 @@ const Searchbar = () => {
 
     const changeTermValue = (e) => {
         debouncedSearch(e.target.value);
+
+        if(e.target.value.trim() == '') {
+            closeSearchbar();
+        }
     }
 
     const debouncedSearch = debounce((query) => {
         console.log('Server petition');
         if (query.trim() !== '') {
 
-            console.log('Search this: ', query);
             axios.get(`/api/search-bar?search=${query}`)
 
             .then(res => {
-                console.log("Result", res.data , count);
-                count++;
-
                 setSearchResult(res.data);
+                openSearchbar();
 
-                if(res.data.length > 0) {
-                    openSearchbar();
-                }
             });
 
         }
     }, 1000);
 
     const openSearchbar = () => {
-        // if(searchTerm.trim() !== '') {
-
             results.current.style.display = 'block';
             overlaySearchbar.current.style.display = 'block';
 
-            console.log('Open sarchBar ')
-        // }
     }
 
     const closeSearchbar = () => {
@@ -65,10 +60,18 @@ const Searchbar = () => {
 
     const scrollHandler = (e) => {
         // Check scroll only if searchTerm is not empty
-        if(searchTerm.trim() !== '') {
+        if(inputRef.current.value.trim() !== '') {
             if(globalThis.scrollY > 100) {
                 closeSearchbar()
             }
+        }
+    }
+
+    const focusHandler = (e) => {
+        if(e.target.value.trim() !== '') {
+            openSearchbar();
+        } else {
+            closeSearchbar();
         }
     }
 
@@ -82,11 +85,12 @@ const Searchbar = () => {
                     type="search"
                     placeholder="Search..."
                     aria-label="Search"
+                    ref={inputRef}
                     defaultValue={searchTerm}
                     onChange={(e) => {
                         changeTermValue(e);
                     }}
-                    onFocus={openSearchbar}
+                    onFocus={(e) => focusHandler(e) }
                 />
             </form>
 
@@ -95,6 +99,12 @@ const Searchbar = () => {
 
             <div className="search-result p-2" ref={results}>
                 {
+                    (search_result.length === 0)
+                    ?
+                        <div className="search-card">
+                            Not found
+                        </div>
+                    :
                     search_result.map((result, index) => {
                         return (
                             <div className="search-card" key={result.type + index}>

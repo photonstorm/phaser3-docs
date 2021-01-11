@@ -68307,13 +68307,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var count = 0;
 
 var Searchbar = function Searchbar() {
+  var overlaySearchbar = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  var results = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  var inputRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       searchTerm = _useState2[0],
       setSearchTerm = _useState2[1];
-
-  var overlaySearchbar = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
-  var results = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -68327,30 +68328,26 @@ var Searchbar = function Searchbar() {
 
   var changeTermValue = function changeTermValue(e) {
     debouncedSearch(e.target.value);
+
+    if (e.target.value.trim() == '') {
+      closeSearchbar();
+    }
   };
 
   var debouncedSearch = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["debounce"])(function (query) {
     console.log('Server petition');
 
     if (query.trim() !== '') {
-      console.log('Search this: ', query);
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query)).then(function (res) {
-        console.log("Result", res.data, count);
-        count++;
         setSearchResult(res.data);
-
-        if (res.data.length > 0) {
-          openSearchbar();
-        }
+        openSearchbar();
       });
     }
   }, 1000);
 
   var openSearchbar = function openSearchbar() {
-    // if(searchTerm.trim() !== '') {
     results.current.style.display = 'block';
     overlaySearchbar.current.style.display = 'block';
-    console.log('Open sarchBar '); // }
   };
 
   var closeSearchbar = function closeSearchbar() {
@@ -68361,10 +68358,18 @@ var Searchbar = function Searchbar() {
 
   var scrollHandler = function scrollHandler(e) {
     // Check scroll only if searchTerm is not empty
-    if (searchTerm.trim() !== '') {
+    if (inputRef.current.value.trim() !== '') {
       if (globalThis.scrollY > 100) {
         closeSearchbar();
       }
+    }
+  };
+
+  var focusHandler = function focusHandler(e) {
+    if (e.target.value.trim() !== '') {
+      openSearchbar();
+    } else {
+      closeSearchbar();
     }
   };
 
@@ -68379,11 +68384,14 @@ var Searchbar = function Searchbar() {
     type: "search",
     placeholder: "Search...",
     "aria-label": "Search",
+    ref: inputRef,
     defaultValue: searchTerm,
     onChange: function onChange(e) {
       changeTermValue(e);
     },
-    onFocus: openSearchbar
+    onFocus: function onFocus(e) {
+      return focusHandler(e);
+    }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-bar-overlay",
     onClick: closeSearchbar,
@@ -68391,7 +68399,9 @@ var Searchbar = function Searchbar() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-result p-2",
     ref: results
-  }, search_result.map(function (result, index) {
+  }, search_result.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-card"
+  }, "Not found") : search_result.map(function (result, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "search-card",
       key: result.type + index
