@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', Phaser 3 API Documentation - $namespace->longname)
+@section('title', $namespace->longname)
 @section('content')
 <div class="container">
     <div class="row">

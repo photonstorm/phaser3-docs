@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', Phaser 3 API Documentation - Namespaces)
+@section('title', "Namespaces")
 @section('content')
 <div class="container">
     <h3>Namespaces</h3>

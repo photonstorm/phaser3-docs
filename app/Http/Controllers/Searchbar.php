@@ -41,9 +41,17 @@ class Searchbar extends Controller
         $typedef = Typedefs::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
         $typedef_collection = new SearchbarResource($typedef);
 
-        if (empty($keyword)) {
-            $search_array = [];
-        } else {
+
+    if (empty($keyword)) {
+        $search_array = [];
+    } else {
+        // search by this.add or add.
+            if( str_starts_with($keyword, "this.add") ) {
+                $keys = explode('.', $keyword);
+                $members_class = Classes::where("longname", "Phaser.Scene")->first()->members;
+
+                dd($members_class->where('longname', 'like', '%ad%'));
+            }
 
             if ( !$namespace_collection->isEmpty() ) {
                 array_push($search_array, [
