@@ -34,9 +34,9 @@ InsertTypes().save(db);
 
 db.close();
 if (os.userInfo().username === 'frank') {
-    fs.copySync('./db/phaser-working.db', '../phaser350-docs/database/database.sqlite');
+    fs.copySync('./db/phaser-working.db', '../phaser350-docs/database/3.50.db');
     console.log("** Copy database.sqlite done! **")
 } else {
-    fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/docs_v3.sqlite');
+    fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/3.50.db');
 }
 console.log('** Complete **');
