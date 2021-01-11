@@ -68413,7 +68413,7 @@ var Searchbar = function Searchbar() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: res.longname + index
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
+        href: "".concat(res.longname)
       }, " ", res.longname));
     }))));
   })));

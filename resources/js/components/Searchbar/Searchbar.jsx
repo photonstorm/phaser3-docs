@@ -115,7 +115,7 @@ const Searchbar = () => {
                                     <ul>
                                         {
                                             result.data.map((res, index) => (
-                                                <li key={res.longname + index}><a href="#"> { res.longname }</a></li>
+                                                <li key={res.longname + index}><a href={ `${res.longname}` }> { res.longname }</a></li>
                                             ))
                                         }
                                     </ul>
