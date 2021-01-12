@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 
 class Searchbar extends Controller
 {
-    //
     public function search(Request $request)
     {
         $keyword = $request->search;
@@ -42,96 +41,108 @@ class Searchbar extends Controller
         $typedef_collection = new SearchbarResource($typedef);
 
 
-    if (empty($keyword)) {
-        $search_array = [];
-    } else {
-        // search by this.add or add.
-            if( str_starts_with($keyword, "this.") ) {
+        if (empty($keyword)) {
+            $search_array = [];
+        } else {
+            // search by this.add
+            if (str_starts_with($keyword, "this.")) {
                 $keys = explode('.', $keyword);
 
                 $scene_members_class = Member::where("memberof", "Phaser.Scene")->where("name", "like", "%$keys[1]%");
 
                 $scene_collection = [];
 
-                if( count($keys) <= 2) {
+                if (!$scene_members_class->get()->isEmpty()) {
 
-                    $scene_collection = new SearchbarResource($scene_members_class->get());
+                    if (count($keys) <= 2) {
 
-                    array_push($search_array, [
-                        "type" => "scene",
-                        "data" => $scene_collection
-                    ]);
-                    // dd($members_class->get);
+                        $scene_collection = new SearchbarResource($scene_members_class->get());
+
+                        array_push($search_array, [
+                            "type" => "scene",
+                            "data" => $scene_collection
+                        ]);
+                        // dd($members_class->get);
+                    } else if (count($keys) < 4) {
+                        $type = $scene_members_class->first()->type;
+                        $members = Functions::where("memberof", $type)->where("name", "like", "%$keys[2]%");
+                        $member_collection = new SearchbarResource($members->get());
+
+                        array_push($search_array, [
+                            "type" => "scene",
+                            "data" => $member_collection
+                        ]);
+                    }
                 }
-
-                else if( count($keys) < 4 ) {
-                    $type = $scene_members_class->first()->type;
-                    dd($type);
-                    // $scene_collection = new SearchbarResource($scene_members_class->get());
-
-                    // array_push($search_array, [
-                    //     "type" => "scene",
-                    //     "data" => $scene_collection
-                    // ]);
-                }
-
             }
 
-            if ( !$namespace_collection->isEmpty() ) {
+            // Normal search
+            if (!$namespace_collection->isEmpty()) {
                 array_push($search_array, [
                     "type" => "namespaces",
                     "data" => $namespace_collection
                 ]);
             }
 
-            if ( !$classes_collection->isEmpty() ) {
-                array_push($search_array,
-                [
-                    "type" => "classes",
-                    "data" => $classes_collection
-                ]);
+            if (!$classes_collection->isEmpty()) {
+                array_push(
+                    $search_array,
+                    [
+                        "type" => "classes",
+                        "data" => $classes_collection
+                    ]
+                );
             }
 
-            if ( !$members_collection->isEmpty() ) {
-                array_push($search_array,
-                [
-                    "type" => "members",
-                    "data" => $members_collection
-                ]);
+            if (!$members_collection->isEmpty()) {
+                array_push(
+                    $search_array,
+                    [
+                        "type" => "members",
+                        "data" => $members_collection
+                    ]
+                );
             }
 
-            if ( !$functions_collection->isEmpty() ) {
-                array_push($search_array,
-                [
-                    "type" => "function",
-                    "data" => $functions_collection
-                ]);
+            if (!$functions_collection->isEmpty()) {
+                array_push(
+                    $search_array,
+                    [
+                        "type" => "function",
+                        "data" => $functions_collection
+                    ]
+                );
             }
 
-            if( !$events_collection->isEmpty() ) {
-                array_push($search_array,
-                [
-                    "type" => "events",
-                    "data" => $events_collection
-                ]);
+            if (!$events_collection->isEmpty()) {
+                array_push(
+                    $search_array,
+                    [
+                        "type" => "events",
+                        "data" => $events_collection
+                    ]
+                );
             }
 
-            if( !$constants_collection->isEmpty() ) {
-                array_push($search_array,
-                [
-                    "type" => "constants",
-                    "data" => $constants_collection
-                ]);
+            if (!$constants_collection->isEmpty()) {
+                array_push(
+                    $search_array,
+                    [
+                        "type" => "constants",
+                        "data" => $constants_collection
+                    ]
+                );
             }
 
-            if( !$constants_collection->isEmpty() ) {
-                array_push($search_array,
-                [
-                    "type" => "typedef",
-                    "data" => $typedef_collection
-                ]);
+            if (!$constants_collection->isEmpty()) {
+                array_push(
+                    $search_array,
+                    [
+                        "type" => "typedef",
+                        "data" => $typedef_collection
+                    ]
+                );
             }
-
         }
 
         return $search_array;

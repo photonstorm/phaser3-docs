@@ -91,6 +91,7 @@ const Searchbar = () => {
                         changeTermValue(e);
                     }}
                     onFocus={(e) => focusHandler(e) }
+                    onClick={focusHandler}
                 />
             </form>
 
@@ -117,7 +118,9 @@ const Searchbar = () => {
                                             result.data.map((res, index) =>
                                                 {
                                                     if (result.type.toLowerCase() === 'scene') {
-                                                        return <li key={res.longname + index}><a href={ `${res.longname}` }> this.{ res.name }</a></li>
+                                                        return <li key={res.longname + index}><a href={ `${res.longname}` }> {
+                                                                inputRef.current.value.split('.').filter((word, i) => (i != inputRef.current.value.split('.').length-1)).join('.')
+                                                        }.{res.name}</a></li>
                                                     } else {
                                                         return <li key={res.longname + index}><a href={ `${res.longname}` }> { res.longname }</a></li>
                                                     }

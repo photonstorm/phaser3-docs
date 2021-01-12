@@ -37,6 +37,7 @@
                 <h3 class="mt-4">Members</h3>
                 @foreach ($membersConstants as $memberConstant)
                         <x-member-card
+                            id="{{$memberConstant->name}}"
                             class="border-bottom border-danger mt-2 pt-2 pb-4"
                             name="{{$memberConstant->name}}"
                             :description="$memberConstant->description"
@@ -56,6 +57,7 @@
                     @endforeach
                     @foreach ($members as $member)
                         <x-member-card
+                            id="{{$member->name}}"
                             class="border-bottom border-danger mt-2 pt-2 pb-4"
                             name="{{$member->name}}"
                             :description="$member->description"
@@ -80,15 +82,10 @@
                 <h3>Methods</h3>
                     @foreach ($methods as $method)
                     @php
-                    echo $method->longname;
-
-                    // if($method->longname == "Phaser.GameObjects.GameObjectFactory#image") {
-                    //     dd($method);
-                    // }
-
-                    $methodConstructor = resolve('get_params_format')($method->params->all())
+                        $methodConstructor = resolve('get_params_format')($method->params->all())
                     @endphp
                     <x-member-card
+                        id="{{$method->name}}"
                         class="border-bottom border-danger mt-1 pt-2 pb-4"
                         name="{{$method->name}}({{$methodConstructor}})"
                         scope="{{$method->scope}}"
