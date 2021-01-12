@@ -56,7 +56,7 @@ class Searchbar extends Controller
 
                     if (count($keys) <= 2) {
 
-                        $scene_collection = new SearchbarResource($scene_members_class->get());
+                        $scene_collection = new SearchbarResource($scene_members_class->get()->sortBy("name"));
 
                         array_push($search_array, [
                             "type" => "scene",
@@ -66,7 +66,7 @@ class Searchbar extends Controller
                     } else if (count($keys) < 4) {
                         $type = $scene_members_class->first()->type;
                         $members = Functions::where("memberof", $type)->where("name", "like", "%$keys[2]%");
-                        $member_collection = new SearchbarResource($members->get());
+                        $member_collection = new SearchbarResource($members->get()->sortBy("name"));
 
                         array_push($search_array, [
                             "type" => "scene",

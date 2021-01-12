@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiPhaser;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\GameobjectsController;
 use Illuminate\Support\Facades\Route;
 
 // Controllers
@@ -33,6 +34,8 @@ Route::get('/{version}/namespace/{namespace}', [NamespacesController::class, 'sh
 
 Route::get('/{version}/classes', [ClassesController::class, 'index']);
 Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);
+
+Route::get('/{version}/gameobjects', [GameobjectsController::class, 'index']);
 
 Route::get('/{version}/events', [EventsController::class, 'index']);
 Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);

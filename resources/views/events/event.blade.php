@@ -8,6 +8,7 @@
             <div class="h2 text-danger">{{ ucfirst($event->getTable()) }}: {{ $event->name }}</div>
             <div class="h3 text-info">{{$event->longname }}</div>
             <x-member-card
+                id="{{$event->name}}"
                 class="border-bottom border-danger mt-0 pt-0 pb-4 "
                 scope="{{$event->scope}}"
                 :description="$event->description"

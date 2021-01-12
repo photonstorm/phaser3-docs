@@ -43,6 +43,7 @@
                 <ul>
                     @foreach ($events as $event)
                     <x-member-card
+                        id="{{$event->name}}"
                         class="border-bottom border-danger mt-2 pt-2 pb-4"
                         name="{{$event->name}}"
                         description="{!! $event->description !!}"

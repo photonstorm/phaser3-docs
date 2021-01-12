@@ -15,6 +15,11 @@
                 Events
             </a>
         </div>
+        <div class="menu-item text-center px-3">
+            <a href="./gameobjects" class="text-white">
+                Game Objects
+            </a>
+        </div>
         <div class="menu-version text-white d-flex align-items-center px-3">
             <select class="custom-select cursor-pointer" onchange='this.form.submit()'>
                 <option selected>{{Config::get('app.phaser_version')}}</option>

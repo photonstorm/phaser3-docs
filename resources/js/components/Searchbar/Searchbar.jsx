@@ -35,7 +35,6 @@ const Searchbar = () => {
 
             axios.get(`/api/search-bar?search=${query}`)
             .then(res => {
-                console.log("Resultado: ", res.data)
                 setSearchResult(res.data);
                 openSearchbar();
 

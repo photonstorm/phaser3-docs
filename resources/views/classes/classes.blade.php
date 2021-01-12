@@ -7,7 +7,7 @@
     </h3>
     <ul>
         @foreach ($classes as $class)
-            <li><a href="/{{Config::get('app.phaser_version')}}/{{ $class->longname }}">{{ $class->name }}</a></li>
+            <li><a href="{{ $class->longname }}">{{ $class->name }}</a></li>
         @endforeach
     </ul>
 </div>
