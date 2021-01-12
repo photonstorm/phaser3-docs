@@ -26,7 +26,7 @@ class Searchbar extends Controller
         $namespace_collection = new SearchbarResource($namespace);
 
         $events = Event::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
-        $events_collection = new SearchbarResource($namespace);
+        $events_collection = new SearchbarResource($events);
 
         $functions = Functions::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
         $functions_collection = new SearchbarResource($functions);

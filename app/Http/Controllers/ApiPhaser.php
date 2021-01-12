@@ -21,8 +21,10 @@ class ApiPhaser extends Controller
 
         $namespace = Namespaces::whereLongname($longname)->first();
         $class = Classes::whereLongname($longname)->first();
+
         $function = Functions::whereLongname($longname)->first();
         $param = Param::whereLongname($longname)->first();
+
         $event = Event::whereLongname($longname)->first();
         $typedef = Typedefs::whereLongname($longname)->first();
         $constant = Constant::whereLongname($longname)->first();
