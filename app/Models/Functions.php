@@ -18,9 +18,6 @@ class Functions extends Model
         }
         if( !$paramsNamespace->get()->isEmpty() ) {
             $params = $paramsNamespace;
-            // if($this->longname == "Phaser.GameObjects.GameObjectFactory#image") {
-                // dd($paramsNamespace->get()->isEmpty());
-            // }
         }
         if(empty($params)) {
             return $params = $paramsClass;;

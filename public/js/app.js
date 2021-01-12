@@ -68343,6 +68343,7 @@ var Searchbar = function Searchbar() {
 
     if (query.trim() !== '') {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query)).then(function (res) {
+        console.log("Resultado: ", res.data);
         setSearchResult(res.data);
         openSearchbar();
       });

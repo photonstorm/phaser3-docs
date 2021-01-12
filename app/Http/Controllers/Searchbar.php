@@ -19,25 +19,25 @@ class Searchbar extends Controller
         $keyword = $request->search;
         $search_array = [];
 
-        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
         $classes_collection = new SearchbarResource($classes);
 
-        $namespace = Namespaces::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $namespace = Namespaces::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
         $namespace_collection = new SearchbarResource($namespace);
 
-        $events = Event::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $events = Event::where('longname', 'like', "%$keyword%")->get()->take(5)->sortBy("longname")->flatten(1);
         $events_collection = new SearchbarResource($events);
 
-        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
         $functions_collection = new SearchbarResource($functions);
 
-        $constants = Constant::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $constants = Constant::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
         $constants_collection = new SearchbarResource($constants);
 
-        $members = Member::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $members = Member::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
         $members_collection = new SearchbarResource($members);
 
-        $typedef = Typedefs::where('longname', 'like', "%$keyword%")->get()->take(5)->flatten(1);
+        $typedef = Typedefs::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
         $typedef_collection = new SearchbarResource($typedef);
 
 
@@ -77,13 +77,22 @@ class Searchbar extends Controller
             }
 
             // Normal search
+
+            // ---- Namespaces
             if (!$namespace_collection->isEmpty()) {
-                array_push($search_array, [
-                    "type" => "namespaces",
-                    "data" => $namespace_collection
-                ]);
+                $namespace_filter = new SearchbarResource($namespace_collection->filter(function($namespace) {
+                    return ( !str_contains($namespace->longname, 'Type') );
+                }));
+                // dd($namespace_filter);
+                if(!$namespace_filter->isEmpty()) {
+                    array_push($search_array, [
+                        "type" => "namespaces",
+                        "data" => $namespace_filter
+                    ]);
+                }
             }
 
+            // ---- Classes
             if (!$classes_collection->isEmpty()) {
                 array_push(
                     $search_array,
@@ -94,6 +103,7 @@ class Searchbar extends Controller
                 );
             }
 
+            // ---- Members
             if (!$members_collection->isEmpty()) {
                 array_push(
                     $search_array,
@@ -104,6 +114,7 @@ class Searchbar extends Controller
                 );
             }
 
+            // ---- Functions
             if (!$functions_collection->isEmpty()) {
                 array_push(
                     $search_array,
@@ -114,6 +125,7 @@ class Searchbar extends Controller
                 );
             }
 
+            // ---- Events
             if (!$events_collection->isEmpty()) {
                 array_push(
                     $search_array,
@@ -124,6 +136,7 @@ class Searchbar extends Controller
                 );
             }
 
+            // ---- Constants
             if (!$constants_collection->isEmpty()) {
                 array_push(
                     $search_array,
@@ -134,7 +147,8 @@ class Searchbar extends Controller
                 );
             }
 
-            if (!$constants_collection->isEmpty()) {
+            // ---- Typedef
+            if (!$typedef_collection->isEmpty()) {
                 array_push(
                     $search_array,
                     [
