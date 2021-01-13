@@ -3,6 +3,7 @@ const SkipBlock = require('./SkipBlock');
 const HasTag = require('./HasTag');
 const { clear } = require('jsdoc-to-markdown');
 const InsertTypes = require('./InsertTypes');
+const GetMarkdownLink = require('./GetMarkdownLink');
 
 let id_generator = 0;
 
@@ -82,7 +83,7 @@ let InsertMember = function (db, data)
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
             name: block.name,
             memberof: block.memberof,
-            description: block.description,
+            description: GetMarkdownLink(block.description),
             type: (block.hasOwnProperty('type')) ? block.type.names.join(' | ') : '',
             defaultValue: (block.hasOwnProperty('defaultvalue')) ? block.defaultvalue : '',
             readOnly: (block.hasOwnProperty('readonly') && block.readonly) ? 1 : 0,
