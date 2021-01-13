@@ -37,11 +37,14 @@ const Searchbar = () => {
             .then(res => {
                 setSearchResult(res.data);
                 openSearchbar();
-
-            });
+            }).catch(error => {
+                setSearchResult([]);
+                openSearchbar();
+                console.log(error.response)
+            });;
 
         }
-    }, 1000);
+    }, 500);
 
     const openSearchbar = () => {
             results.current.style.display = 'block';

@@ -115,7 +115,11 @@
                 @endif
                 @if ($create_table_params_properties()['description'])
                 {{-- Description --}}
-                <td>{{$property->description}}</td>
+                <td>
+@markdown
+{!! $property->description !!}
+@endmarkdown
+                </td>
                 @endif
             </tr>
             @endforeach
@@ -167,7 +171,11 @@
                     @endif
                     @if ($create_table_params_properties()['description'])
                         {{-- Description --}}
-                        <td>{{$param->description}}</td>
+                        <td>
+@markdown
+{!! $param->description !!}
+@endmarkdown
+                        </td>
                     @endif
                 </tr>
                 @endforeach

@@ -68345,9 +68345,14 @@ var Searchbar = function Searchbar() {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query)).then(function (res) {
         setSearchResult(res.data);
         openSearchbar();
+      })["catch"](function (error) {
+        setSearchResult([]);
+        openSearchbar();
+        console.log(error.response);
       });
+      ;
     }
-  }, 1000);
+  }, 500);
 
   var openSearchbar = function openSearchbar() {
     results.current.style.display = 'block';
