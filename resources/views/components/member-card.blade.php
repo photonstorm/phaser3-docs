@@ -91,27 +91,34 @@
         <tbody>
             @foreach ($properties as $property)
             <tr>
+                {{-- Name --}}
                 @if ($create_table_params_properties()['name'])
-                    {{-- Name --}}
                     <th scope="row">{{ $property->name }}</th>
                 @endif
-                @if ($create_table_params_properties()['type'])
                 {{-- Type --}}
+                @if ($create_table_params_properties()['type'])
                 <td>
-                    {!!  resolve('get_types')($property)  !!}
+                    <ul>
+                    @foreach (explode('|', resolve('get_types')($property)) as $item )
+                        <li>
+                            {!! $item !!}
+                        </li>
+                    @endforeach
+                    </ul>
+                    {{-- {!! resolve('get_types')($property) !!} --}}
                 </td>
                 @endif
-                @if ($create_table_params_properties()['arguments'])
                 {{-- Arguments --}}
+                @if ($create_table_params_properties()['arguments'])
                 <td>
                     @if ($property->optional == 1)
                     {{"<optional>"}}
                     @endif
                 </td>
                 @endif
-                @if ($create_table_params_properties()['defaultValue'])
                 {{-- Default --}}
-                <td>{{$property->defaultValue}}</td>
+                @if ($create_table_params_properties()['defaultValue'])
+                    <td>{{$property->defaultValue}}</td>
                 @endif
                 @if ($create_table_params_properties()['description'])
                 {{-- Description --}}
@@ -147,30 +154,37 @@
             <tbody>
                 @foreach ($params as $param)
                 <tr>
+                    {{-- Name --}}
                     @if ($create_table_params_properties()['name'])
-                        {{-- Name --}}
                         <th scope="row">{{ $param->name }}</th>
                     @endif
+                    {{-- Type --}}
                     @if ($create_table_params_properties()['type'])
-                        {{-- Type --}}
                         <td>
-                            {!!  resolve('get_types')($param)  !!}
+                            {{-- <ul>
+                                @foreach (explode('|', resolve('get_types')($param)) as $item )
+                                    <li>
+                                        {!! $item !!}
+                                    </li>
+                                @endforeach
+                            </ul> --}}
+                            {!!  resolve('get_types')($param) !!}
                         </td>
                     @endif
+                    {{-- Arguments --}}
                     @if ($create_table_params_properties()['arguments'])
-                        {{-- Arguments --}}
                         <td>
                             @if ($param->optional == 1)
                             {{"<optional>"}}
                             @endif
                         </td>
                     @endif
+                    {{-- Default --}}
                     @if ($create_table_params_properties()['defaultValue'])
-                        {{-- Default --}}
                         <td>{{$param->defaultValue}}</td>
                     @endif
+                    {{-- Description --}}
                     @if ($create_table_params_properties()['description'])
-                        {{-- Description --}}
                         <td>
 @markdown
 {!! $param->description !!}

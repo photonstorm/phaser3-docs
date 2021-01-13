@@ -20,6 +20,16 @@
                 Game Objects
             </a>
         </div>
+        <div class="menu-item text-center px-3">
+            <a href="./physics" class="text-white">
+                Physics
+            </a>
+        </div>
+        <div class="menu-item text-center px-3">
+            <a href="./scenes" class="text-white">
+                Scenes
+            </a>
+        </div>
         <div class="menu-version text-white d-flex align-items-center px-3">
             <select class="custom-select cursor-pointer" onchange='this.form.submit()'>
                 <option selected>{{Config::get('app.phaser_version')}}</option>

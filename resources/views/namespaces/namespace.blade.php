@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         {{-- Show namespace properties Name, methods--}}
-        <div class="col-9">
+        <div class="col-10">
             <div class="h2 text-danger">{{ ucfirst($namespace->getTable()) }}: {{ $namespace->name }}</div>
             <div class="h3 text-info">{{$namespace->longname }}</div>
             <x-source-links class="mb-3" metaFileRoute="{{$namespace->metapath}}/{{$namespace->metafilename}}" metalineno="{{$namespace->metalineno}}" />
@@ -132,7 +132,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="col-3">
+        <div class="col-2">
             {{-- Aside --}}
         </div>
 

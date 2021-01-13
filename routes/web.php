@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\NamespacesController;
+use App\Http\Controllers\PhysicsController;
+use App\Http\Controllers\ScenesController;
 use App\Http\Middleware\SelectRouter;
 
 /*
@@ -36,6 +38,8 @@ Route::get('/{version}/classes', [ClassesController::class, 'index']);
 Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);
 
 Route::get('/{version}/gameobjects', [GameobjectsController::class, 'index']);
+Route::get('/{version}/physics', [PhysicsController::class, 'index']);
+Route::get('/{version}/scenes', [ScenesController::class, 'index']);
 
 Route::get('/{version}/events', [EventsController::class, 'index']);
 Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);
