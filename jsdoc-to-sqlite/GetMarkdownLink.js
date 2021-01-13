@@ -1,5 +1,5 @@
 const GetMarkDownLink = (text = '') => {
-    const pattern = /\[[ 0-9a-z.#\(\)_]{0,}\]{@link[ 0-9a-z.\(\):#\/\/]{0,}}|{@link[ 0-9a-z.\(\):#\/\/\|]{0,}}/gi;
+    const pattern = /\[[ 0-9a-z.#\(\)_]{0,}\]{@link[ 0-9a-z.\(\):#\/\/_]{0,}}|{@link[ 0-9a-z.\(\):#\/\/\|_]{0,}}/gi;
     
     return (text !== undefined) ? text.replace(pattern, (string) => {
         let link_result = '';
@@ -47,4 +47,5 @@ const GetMarkDownLink = (text = '') => {
         return link_result;
     }) : '';
 }
+
 module.exports = GetMarkDownLink;
