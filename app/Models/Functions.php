@@ -22,11 +22,7 @@ class Functions extends Model
         if(empty($params)) {
             return $params = $paramsClass;;
         }
-            // dd($paramsClass->get());
         return $params;
     }
-    // TODO: Remove if params function work fine for params namespace and params classes
-    // public function paramsNamespace() {
-    //     return $this->hasMany(Param::class, 'parentClass', 'longname');
-    // }
+
 }

@@ -16,4 +16,5 @@ require('./effects/scrolldown');
  */
 
 require('./components/Searchbar');
+require('./components/ChangeVersionSelector');
 

@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                 $constructor = '';
                 foreach($params as $key => $value) {
                     if($key !== 0) {
-                        $constructor .= ($value['optional'] == 1) ? ' [, ' : ', ';
+                        $constructor .= ($value['optional'] == 1) ? ', [' : ', ';
                     } else {
                         $constructor .= ($value['optional'] == 1) ? '[' : '';
                     }
@@ -37,8 +37,10 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+        // Get types from param or property relation
         $this->app->bind('get_types', function($app) {
             return function($param_or_property) {
+
                 $globals = $param_or_property->getGlobalTypes()->get();
                 $phaser_types = $param_or_property->getPhaserTypes()->get();
                 $phaser_typedef = $param_or_property->getTypedeftTypes()->get();
@@ -124,6 +126,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //use App\Helpers\DataBaseSelector;
+
     }
 }

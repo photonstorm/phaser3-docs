@@ -1,6 +1,7 @@
 <?php
-
 return [
+
+    'database_route' => 'database',
 
     'phaser_version' => '3.50.0',
 

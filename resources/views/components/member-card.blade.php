@@ -62,7 +62,10 @@
     @endif
     @if (!empty($description))
     <div class="pl-3">
-        <span class="font-weight-bold">Description:</span> @markdown {!! $description !!} @endmarkdown
+        <span class="font-weight-bold">Description:</span>
+@markdown
+{!! $description !!}
+@endmarkdown
     </div>
     @endif
     @if (!empty($type))
@@ -98,14 +101,14 @@
                 {{-- Type --}}
                 @if ($create_table_params_properties()['type'])
                 <td>
-                    <ul>
+                    {{-- <ul>
                     @foreach (explode('|', resolve('get_types')($property)) as $item )
                         <li>
                             {!! $item !!}
                         </li>
                     @endforeach
-                    </ul>
-                    {{-- {!! resolve('get_types')($property) !!} --}}
+                    </ul> --}}
+                    {!! resolve('get_types')($property) !!}
                 </td>
                 @endif
                 {{-- Arguments --}}
@@ -168,7 +171,7 @@
                                     </li>
                                 @endforeach
                             </ul> --}}
-                            {!!  resolve('get_types')($param) !!}
+                            {!! resolve('get_types')($param) !!}
                         </td>
                     @endif
                     {{-- Arguments --}}

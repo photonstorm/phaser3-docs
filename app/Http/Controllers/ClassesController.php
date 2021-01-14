@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class ClassesController extends Controller
 {
@@ -12,6 +14,11 @@ class ClassesController extends Controller
     }
 
     public function show($longname) {
+        // Config::set('database.connections.sqlite.database', database_path('3.24.1.db'));
+        // DB::purge('sqlite');
+
+        // dd(DataBaseSelector::getLastDB());
+
         $class = Classes::whereLongname($longname)->firstOrFail();
         $params = $class->params->all();
         $extends = $class->extends;
