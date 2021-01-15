@@ -4,6 +4,8 @@ const HasTag = require('./HasTag');
 const { clear } = require('jsdoc-to-markdown');
 const InsertTypes = require('./InsertTypes');
 const GetMarkdownLink = require('./GetMarkdownLink');
+const InsertExamples = require('./InsertExamples');
+
 
 let id_generator = 0;
 
@@ -78,6 +80,14 @@ let InsertMember = function (db, data)
             }
         }
         
+        // Insert examples
+        if( (block.hasOwnProperty('examples'))) {
+            InsertExamples({
+                fk_id: block.longname,
+                examples: block.examples
+            });
+        }
+
         memberQueries.push({
             longname: block.longname,
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
