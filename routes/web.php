@@ -29,11 +29,11 @@ use Illuminate\Support\Facades\DB;
 
 
 Route::get('/', function() {
-    return redirect("/".DataBaseSelector::getLastDB()."/home");
+    return redirect("/".DataBaseSelector::getLastDB()."/");
 });
 
 Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () {
-    Route::get('/{version}/home', function($version) {
+    Route::get('/{version}/', function($version) {
         return view('landing');
     });
 

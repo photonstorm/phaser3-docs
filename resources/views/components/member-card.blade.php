@@ -223,7 +223,12 @@
         </div>
     </div>
     @endif
-    @if (!empty($defaultValue))
+                        {{-- @php
+                    if($member->name == 'cameraFilter') {
+                        dd($member->name );
+                    }
+                @endphp --}}
+    @if (!empty($defaultValue) || $defaultValue == 0)
     <div class="text-info font-weight-bold pl-3">
         <div class="text-info">Default: {{$defaultValue}}</div>
     </div>
@@ -246,6 +251,27 @@
     </div>
     {{-- <div>Fires: {!! '<br />-'. implode('<br />-', explode(',', resolve('get_api_link')($fires))) !!}</div> --}}
     @endif
+
+    @if(!empty($examples))
+    <div>
+        <span class="font-weight-bold">Examples:</span>
+        <ul>
+
+            @foreach ($examples as $example)
+                <li>
+
+@markdown
+```javascript
+{{$example->example}}
+```
+@endmarkdown
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    {{-- <div>Fires: {!! '<br />-'. implode('<br />-', explode(',', resolve('get_api_link')($fires))) !!}</div> --}}
+    @endif
+
     <div class="text-danger">Since: {{$since}}</div>
     <x-source-links metaFileRoute={{$metaFileRoute}} metalineno={{$metalineno}}/>
 </div>

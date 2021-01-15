@@ -56,6 +56,11 @@
                         />
                     @endforeach
                     @foreach ($members as $member)
+                    @php
+                        if($member->longname == 'Phaser.Physics.Arcade.Sprite#cameraFilter') {
+                            // dd($member->getExamples->all());
+                        }
+                    @endphp
                         <x-member-card
                             id="{{$member->name}}"
                             class="border-bottom border-danger mt-2 pt-2 pb-4"
@@ -71,6 +76,7 @@
                             overrides="{{$member->overrides}}"
                             inherits="{{$member->inherits}}"
                             readOnly="{{$member->readOnly}}"
+                            :examples="$member->getExamples->all()"
                             nullable="{{$member->nullable}}"
                             scope="{{$member->scope}}"
 

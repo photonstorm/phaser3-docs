@@ -10,9 +10,11 @@ class MemberCard extends Component
     public $kind;
     // Name of element
     public $name;
-    // parameters. Is a array [] ? Use: :params
+    // the long name is an id
+    public $longname;
+    // parameters. Is an array [] ? Use: :params
     public $params;
-    // Properties. Is a array [] ?.  Use: :properties
+    // Properties. Is an array [] ?. Use: :properties
     public $properties;
     // The scope, IE: If is static, protected, etc..
     public $scope;
@@ -32,7 +34,8 @@ class MemberCard extends Component
     public $nullable;
     public $inherits;
     public $fires;
-    public $longname;
+    public $examples;
+
 
     public function __construct(
         $kind = "",
@@ -53,7 +56,8 @@ class MemberCard extends Component
         $nullable = "0",
         $inherits = "",
         $fires = "",
-        $longname = ""
+        $longname = "",
+        $examples = []
     )
     {
         $this->kind = $kind;
@@ -75,6 +79,7 @@ class MemberCard extends Component
         $this->inherits = $inherits;
         $this->fires = $fires;
         $this->longname = $longname;
+        $this->examples = $examples;
     }
 
     /**

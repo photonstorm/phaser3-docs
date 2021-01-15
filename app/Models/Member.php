@@ -20,4 +20,8 @@ class Member extends Model
     public function getGlobalTypes() {
         return $this->hasMany(GlobalType::class, 'fk_id', 'longname');
     }
+
+    public function getExamples() {
+        return $this->hasMany(Example::class, 'fk_id', 'longname');
+    }
 }
