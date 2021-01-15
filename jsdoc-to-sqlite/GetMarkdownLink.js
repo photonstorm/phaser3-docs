@@ -1,7 +1,9 @@
 const GetMarkDownLink = (text = '') => {
+
     const pattern = /\[[ 0-9a-z.#\(\)_]{0,}\]{@link[ 0-9a-z.\(\):#\/\/_]{0,}}|{@link[ 0-9a-z.\(\):#\/\/\|_]{0,}}/gi;
+    const pattern_url = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)/gi;
     
-    return (text !== undefined) ? text.replace(pattern, (string) => {
+    let link_markdown = (text !== undefined) ? text.replace(pattern, (string) => {
         let link_result = '';
         if (string.match(/\[[a-zA-Z\(\)_\/\/]{0,}\]/i)) {
             link = string.replace('}', ')')
@@ -46,6 +48,13 @@ const GetMarkDownLink = (text = '') => {
         }
         return link_result;
     }) : '';
+
+
+    link_markdown = (link_markdown !== '') ? link_markdown.replace(pattern_url, (string) => {
+        return ((/[\w:\\\\\/\/.]{0,}\)/gi).test(string)) ? string : `[${string}](${string})`;
+    }) : '';
+
+    return link_markdown;
 }
 
 module.exports = GetMarkDownLink;

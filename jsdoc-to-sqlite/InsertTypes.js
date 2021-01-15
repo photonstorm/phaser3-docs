@@ -8,6 +8,7 @@ let InsertTypes = (data) =>
     {
         data.types.forEach(type => {
             const fk_id = data.fk_id;
+            
             if (type.search('Phaser.Type') !== -1) {
                 typedefTypesQueries.push({
                     fk_id,

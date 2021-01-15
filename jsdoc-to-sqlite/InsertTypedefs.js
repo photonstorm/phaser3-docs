@@ -178,6 +178,7 @@ let InsertTypedefs = function (db, data)
                 let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
 
                 let idParams = IdGenerator('param');
+              
                 paramsQueries.push({
                     id: idParams,
                     parentClass: (block.type.names.join(' | ').toLowerCase() == 'class') ? typedefName : '',
@@ -195,7 +196,7 @@ let InsertTypedefs = function (db, data)
                     types: param.type.names
                 };
                 // Prepare to insert types
-                // InsertTypes(dataTypes);
+                InsertTypes(dataTypes);
             }
         }
     }

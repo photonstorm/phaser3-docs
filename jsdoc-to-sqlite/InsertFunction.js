@@ -6,6 +6,7 @@ const HasTag = require('./HasTag');
 const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
+const GetMarkdownLink = require('./GetMarkdownLink');
 
 let InsertFunction = function (db, data)
 {
@@ -207,12 +208,13 @@ let InsertFunction = function (db, data)
             inherits = block.inherits;
         }
     
+        const description = GetMarkdownLink(block.description);
         functionQueries.push({
             longname: block.longname,
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
             name: block.name,
             memberof: block.memberof,
-            description: block.description,
+            description: description,
             scope: block.scope,
             fires: fires,
             signature: signature,
