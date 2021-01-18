@@ -1,4 +1,4 @@
-<div class="aside ml-3">
+<div class="aside" id="scrollspy_aside">
     <h4 class="title">
         {{$title}}
     </h4>
@@ -85,6 +85,4 @@
             </ul>
         @endif
     </div>
-
-
 </div>

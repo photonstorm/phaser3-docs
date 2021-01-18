@@ -69203,6 +69203,13 @@ jQuery(function () {
   if (hash.startsWith('#')) {
     scrollToAnchor(hash);
   }
+
+  $('body').scrollspy({
+    target: '#scrollspy_aside'
+  });
+  $('[data-spy="scroll"]').each(function () {
+    var $spy = $(this).scrollspy('refresh');
+  });
 });
 
 /***/ }),

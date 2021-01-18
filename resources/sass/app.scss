@@ -1,7 +1,3 @@
-// TODO: Remove normalize in a future
-// Normalize
-@import 'normalize';
-
 // TODO: Remove debug file
 @import 'debug';
 
@@ -18,6 +14,8 @@
 
 // Components
 @import 'menu';
+
+@import 'aside';
 
 // syntax highlight theme
 pre {

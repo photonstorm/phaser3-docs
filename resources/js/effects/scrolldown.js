@@ -1,10 +1,10 @@
 import { startsWith } from "lodash";
 
 jQuery(() => {
-    const scrollToAnchor = (aid) =>{
+    const scrollToAnchor = (aid) => {
         let tag = $(aid);
 
-        if( tag.length ) {
+        if (tag.length) {
             $('html,body').animate({
                 scrollTop: tag.offset().top
             }, 'slow');
@@ -12,9 +12,14 @@ jQuery(() => {
     }
 
     const url = $(location).attr("href");
-    const hash = url.substring( url.indexOf("#") );
+    const hash = url.substring(url.indexOf("#"));
 
     if (hash.startsWith('#')) {
         scrollToAnchor(hash);
     }
+
+    $('body').scrollspy({ target: '#scrollspy_aside' });
+    $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this).scrollspy('refresh')
+    });
 })
