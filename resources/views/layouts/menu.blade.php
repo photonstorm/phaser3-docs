@@ -10,32 +10,32 @@
     </div>
     <div class="d-flex">
         <div class="menu-item text-center">
-            <a href="{{Config::get('app.phaser_version')}}/namespaces" class="text-white">
+            <a href="/{{Config::get('app.phaser_version')}}/namespaces" class="text-white">
                 Namespaces
             </a>
         </div>
         <div class="menu-item text-center">
-            <a href="{{Config::get('app.phaser_version')}}/classes" class="text-white">
+            <a href="/{{Config::get('app.phaser_version')}}/classes" class="text-white">
                 Classes
             </a>
         </div>
         <div class="menu-item text-center">
-            <a href="{{Config::get('app.phaser_version')}}/events" class="text-white">
+            <a href="/{{Config::get('app.phaser_version')}}/events" class="text-white">
                 Events
             </a>
         </div>
         <div class="menu-item text-center">
-            <a href="{{Config::get('app.phaser_version')}}/gameobjects" class="text-white">
+            <a href="/{{Config::get('app.phaser_version')}}/gameobjects" class="text-white">
                 Game Objects
             </a>
         </div>
         <div class="menu-item text-center">
-            <a href="{{Config::get('app.phaser_version')}}/physics" class="text-white">
+            <a href="/{{Config::get('app.phaser_version')}}/physics" class="text-white">
                 Physics
             </a>
         </div>
         <div class="menu-item text-center">
-            <a href="{{Config::get('app.phaser_version')}}/scenes" class="text-white">
+            <a href="/{{Config::get('app.phaser_version')}}/scenes" class="text-white">
                 Scenes
             </a>
         </div>

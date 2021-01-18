@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         {{-- Show namespace properties Name, methods--}}
-        <div class="col-9">
+        <div class="col-12">
             <div class="h2 text-danger">{{ ucfirst($event->getTable()) }}: {{ $event->name }}</div>
             <div class="h3 text-info">{{$event->longname }}</div>
             <x-member-card
@@ -21,10 +21,6 @@
                 {{-- returnsdescription="{{$method->returnsdescription}}" --}}
             />
         </div>
-        <div class="col-3">
-            Aside
-        </div>
-
     </div>
 </div>
 @endsection

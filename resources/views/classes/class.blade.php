@@ -1,10 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.show_content')
 @section('title', $class->longname)
-@section('content')
-<div class="container">
-    <div class="row">
 
-        <div class="col-9">
+@section('section_content')
             <div class="h2 text-danger">{{ ucfirst($class->getTable()) }}: {{ $class->name }}</div>
             <div class="h3 text-info">{{$class->longname }}</div>
 @markdown
@@ -109,10 +106,12 @@
                     @endforeach
                 {{-- <hr> --}}
             @endif
-        </div>
-        <div class="col-3">
-            {{-- Aside --}}
-        </div>
-    </div>
-</div>
+@endsection
+
+@section('aside')
+    <x-aside
+        title="Class: {{$class->name}}"
+        :members="$members"
+        :methods="$methods"
+    />
 @endsection
