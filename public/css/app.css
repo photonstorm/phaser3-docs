@@ -11471,15 +11471,32 @@ body {
 
 .menu {
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   background-color: #331053;
 }
 
-.menu-item {
+.menu-item a {
+  padding-left: 10px;
+  padding-right: 10px;
   min-width: 100px;
   height: 50px;
-  line-height: 50px;
+  display: inline-block;
   font-size: 1rem;
+  line-height: 50px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1210px) {
+  .menu-item a {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 1067px) {
+  .menu-item a {
+    min-width: 90px;
+  }
 }
 
 .menu-item:hover {
@@ -11489,6 +11506,16 @@ body {
 
 .menu-item-version {
   width: 150px;
+}
+
+.menu-item-version select {
+  width: 10px;
+}
+
+@media (max-width: 1210px) {
+  .menu #react-searchbar input {
+    width: 90px;
+  }
 }
 
 pre {

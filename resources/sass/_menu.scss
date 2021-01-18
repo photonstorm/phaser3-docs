@@ -2,20 +2,46 @@ $heigh-menu: 50px;
 
 .menu {
     width: 100%;
-    height: $heigh-menu;
+    min-height: $heigh-menu;
     background-color: $bg;
     &-item {
-        min-width: 100px;
-        height: $heigh-menu;
-        line-height: $heigh-menu;
-        font-size: 1rem;
-        // outline: 1px solid red;
+        a {
+            padding-left: 10px;
+            padding-right: 10px;
+            min-width: 100px;
+            height: $heigh-menu;
+            display: inline-block;
+            font-size: 1rem;
+            line-height: $heigh-menu;
+            white-space: nowrap;
+
+            @media (max-width: 1210px) {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+            @media (max-width: 1067px) {
+                min-width: 90px;
+            }
+
+        }
         &:hover {
             cursor: pointer;
             background-color: $purple;
         }
         &-version {
             width: 150px;
+            select {
+                width: 10px;
+            }
+        }
+    }
+
+    #react-searchbar {
+        input {
+            @media (max-width: 1210px) {
+                width: 90px;
+
+            }
         }
     }
 }
