@@ -145,7 +145,7 @@ let InsertTypedefs = function (db, data)
                     parentType: typedefName,
                     name: property.name,
                     position: i,
-                    description: property.description,
+                    description: GetMarkDownLink(property.description),
                     type: types,
                     optional: optional,
                     defaultValue: defaultValue
@@ -185,7 +185,7 @@ let InsertTypedefs = function (db, data)
                     parentFunction: (block.type.names.join(' | ').toLowerCase() == 'function') ? typedefName : '',
                     name: param.name,
                     position: i,
-                    description: param.description,
+                    description: GetMarkDownLink(param.description),
                     type: types,
                     optional: optional,
                     defaultValue: defaultValue
