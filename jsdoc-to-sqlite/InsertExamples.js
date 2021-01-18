@@ -10,7 +10,6 @@ let InsertExamples = (data) =>
                 fk_id,
                 example
             });
-            console.log(examplesQueries);
         });
     }
 
