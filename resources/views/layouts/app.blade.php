@@ -10,13 +10,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        body {
-            position: relative;
-        }
-    </style>
 </head>
-<body class="antialiased"  data-spy="scroll" data-target="#scrollspy_aside" data-offset="0">
+<body class="antialiased">
     @include('layouts.menu')
 
     @yield('content')

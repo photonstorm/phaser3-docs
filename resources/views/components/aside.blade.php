@@ -11,7 +11,7 @@
             <ul>
                 @foreach ($namespaces as $namespace)
                     <li>
-                        <a href="#{{$namespace->name}}">{{$namespace->name}}</a>
+                        <a class="list-group-item" href="#{{$namespace->name}}">{{$namespace->name}}</a>
                     </li>
                 @endforeach
             </ul>
@@ -23,7 +23,7 @@
             <ul>
                 @foreach ($classes as $class)
                     <li>
-                        <a href="#{{$class->name}}">{{$class->name}}</a>
+                        <a class="list-group-item" href="#{{$class->name}}">{{$class->name}}</a>
                     </li>
                 @endforeach
             </ul>
@@ -35,12 +35,12 @@
             <ul>
                 @foreach ($membersConstants as $member)
                     <li>
-                        <a href="#{{$member->name}}">{{$member->name}}</a>
+                        <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
                     </li>
                 @endforeach
                 @foreach ($members as $member)
                     <li>
-                        <a href="#{{$member->name}}">{{$member->name}}</a>
+                        <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
                     </li>
                 @endforeach
             </ul>
@@ -53,7 +53,7 @@
             <ul>
                 @foreach ($methods as $method)
                     <li>
-                        <a href="#{{$method->name}}">{{$method->name}}</a>
+                        <a class="list-group-item" href="#{{$method->name}}">{{$method->name}}</a>
                     </li>
                 @endforeach
             </ul>
@@ -66,7 +66,7 @@
             <ul>
                 @foreach ($typedefs as $typedef)
                     <li>
-                        <a href="#{{$typedef->name}}">{{$typedef->name}}</a>
+                        <a class="list-group-item" href="#{{$typedef->name}}">{{$typedef->name}}</a>
                     </li>
                 @endforeach
             </ul>
@@ -79,7 +79,7 @@
             <ul>
                 @foreach ($events as $event)
                     <li>
-                        <a href="#{{$event->name}}">{{$event->name}}</a>
+                        <a class="list-group-item" href="#{{$event->name}}">{{$event->name}}</a>
                     </li>
                 @endforeach
             </ul>

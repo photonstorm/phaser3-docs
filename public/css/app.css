@@ -11150,6 +11150,12 @@ body {
   border-radius: 5px;
 }
 
+.aside .list-group-item {
+  background-color: none;
+  border: none;
+  padding: 0px;
+}
+
 @media (max-width: 1200px) {
   .aside {
     width: 250px;
