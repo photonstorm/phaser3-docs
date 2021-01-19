@@ -1,4 +1,4 @@
-@extends('layouts.show_content')
+@extends('layouts.layout')
 @section('title', $class->longname)
 
 @section('section_content')
@@ -110,6 +110,7 @@
 
 @section('aside')
     <x-aside
+        class="w-100"
         title="Class: {{$class->name}}"
         :members="$members"
         :methods="$methods"

@@ -1,4 +1,4 @@
-@extends('layouts.show_content')
+@extends('layouts.layout')
 @section('title', $namespace->longname)
 
 @section('section_content')
@@ -141,7 +141,5 @@
         :methods="$methods"
         :typedefs="$typedefs"
         :events="$events"
-
-
     />
 @endsection

@@ -1,23 +1,29 @@
-.aside {
-    min-height: 200px;
-    max-height: 600px;
-    overflow-y: scroll;
-    padding: 10px;
-    position: fixed;
-    // width: 300px;
-    width: 300px;
-    border: 1px solid black;
-    border-radius: 5px;
-    .list-group-item {
-        background: none;
-        background-color: none !important;
-        border: none;
-        padding: 0px;
-        &.active {
-            color: $bg;
+.aside-container {
+    background-color: $light;
+    .aside-fixed {
+        position: fixed;
+        overflow-y: scroll;
+        height: calc(100vh - 50px);
+        left: 0px;
+        width: inherit;
+        max-width: inherit;
+    }
+    .aside {
+        // position: fixed;
+        .list-group-item {
+            background: none;
+            background-color: none !important;
+            border: none;
+            padding: 0px;
+            &.active {
+                color: $bg;
+            }
         }
     }
-    @media (max-width: 1200px) {
-        width: 250px;
-    }
+}
+
+// Set top 0 for create aside sticky
+.aside-sticky {
+    top: 0px !important;
+    height: 100vh !important;
 }

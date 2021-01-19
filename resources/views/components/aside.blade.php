@@ -1,7 +1,7 @@
-<div class="aside" id="scrollspy_aside">
-    <h4 class="title">
+<div class="aside w-100 pt-4 pl-3" id="scrollspy_aside">
+    {{-- <h4 class="title">
         {{$title}}
-    </h4>
+    </h4> --}}
 
     <div class="content">
         @if(!empty($namespaces) AND count($namespaces))
@@ -28,7 +28,7 @@
                 @endforeach
             </ul>
         @endif
-        @if(!empty($members) AND count($members))
+        @if((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
             <h5>
                 Members
             </h5>
@@ -40,11 +40,13 @@
                         </li>
                     @endforeach
                 @endif
-                @foreach ($members as $member)
-                    <li>
-                        <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
-                    </li>
-                @endforeach
+                @if((!empty($members) AND count($members)))
+                    @foreach ($members as $member)
+                        <li>
+                            <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         @endif
 

@@ -17,6 +17,10 @@
 
 @import 'aside';
 
+body {
+    background-color: $page-bg;
+}
+
 // syntax highlight theme
 pre {
     background-color: #2d2d2d;

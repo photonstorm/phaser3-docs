@@ -2,39 +2,39 @@
     use App\Helpers\DataBaseSelector;
 @endphp
 
-<nav class="menu d-flex justify-content-between align-items-center px-5 mb-4">
+<nav class="menu d-flex justify-content-between align-items-center px-5">
     <div>
         <a href="/">
             <img src="{{asset('images/logo.png')}}" alt="Phaser Logo">
         </a>
     </div>
     <div class="d-flex">
-        <div class="menu-item text-center">
+        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/namespaces')) ? 'menu-active' : '' }}">
             <a href="/{{Config::get('app.phaser_version')}}/namespaces" class="text-white">
                 Namespaces
             </a>
         </div>
-        <div class="menu-item text-center">
+        <div class="menu-item {{ (request()->is(Config::get('app.phaser_version').'/classes')) ? 'menu-active' : '' }} text-center">
             <a href="/{{Config::get('app.phaser_version')}}/classes" class="text-white">
                 Classes
             </a>
         </div>
-        <div class="menu-item text-center">
+        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/events')) ? 'menu-active' : '' }}">
             <a href="/{{Config::get('app.phaser_version')}}/events" class="text-white">
                 Events
             </a>
         </div>
-        <div class="menu-item text-center">
+        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/gameobjects')) ? 'menu-active' : '' }}">
             <a href="/{{Config::get('app.phaser_version')}}/gameobjects" class="text-white">
                 Game Objects
             </a>
         </div>
-        <div class="menu-item text-center">
+        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/physics')) ? 'menu-active' : '' }}">
             <a href="/{{Config::get('app.phaser_version')}}/physics" class="text-white">
                 Physics
             </a>
         </div>
-        <div class="menu-item text-center">
+        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/scenes')) ? 'menu-active' : '' }}">
             <a href="/{{Config::get('app.phaser_version')}}/scenes" class="text-white">
                 Scenes
             </a>
