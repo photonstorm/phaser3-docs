@@ -31,7 +31,7 @@ class NamespacesController extends Controller
             "classes" => $classes,
             "namespaces" => $namespaces,
             "methods" => $methods,
-            "methodConstructo" => $methodConstructor,
+            "methodConstructor" => $methodConstructor,
             "typedefs" => $typedefs,
             "members" => $members,
             "membersConstants" => $membersConstants,

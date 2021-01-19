@@ -5,7 +5,7 @@
     @if (!empty($name))
     <ul class="h4">
         <li>
-            <span class="text-danger">
+            <span class="text-danger" id="{{ $id }}">
                 @if ($scope == "static" || $scope == "protected" || $scope == "readonly" || $kind == "constant" || $nullable == "1" )
                     @php
                         $scope_out = '';

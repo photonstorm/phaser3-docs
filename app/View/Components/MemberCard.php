@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class MemberCard extends Component
 {
+    public $id;
     // The kind of card, IE: typedef, constant, member, class, etc..
     public $kind;
     // Name of element
@@ -38,6 +39,7 @@ class MemberCard extends Component
 
 
     public function __construct(
+        $id = "",
         $kind = "",
         $name = "",
         $description = "",
@@ -60,6 +62,7 @@ class MemberCard extends Component
         $examples = []
     )
     {
+        $this->id = $id;
         $this->kind = $kind;
         $this->name = $name;
         $this->description = $description;

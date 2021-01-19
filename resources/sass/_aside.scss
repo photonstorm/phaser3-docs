@@ -9,10 +9,13 @@
     border: 1px solid black;
     border-radius: 5px;
     .list-group-item {
-        background-color: none;
+        background: none;
+        background-color: none !important;
         border: none;
         padding: 0px;
-
+        &.active {
+            color: $bg;
+        }
     }
     @media (max-width: 1200px) {
         width: 250px;

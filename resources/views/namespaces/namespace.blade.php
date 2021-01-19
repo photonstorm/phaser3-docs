@@ -41,7 +41,7 @@
             <ul>
                 @foreach ($events as $event)
                 <x-member-card
-                    id="{{$event->name}}"
+                    :id="$event->name"
                     class="border-bottom border-danger mt-2 pt-2 pb-4"
                     name="{{$event->name}}"
                     description="{!! $event->description !!}"
@@ -118,7 +118,7 @@
         <h3>Type Definitions</h3>
             @foreach ($typedefs as $typedef)
             <x-member-card
-                id="{{$typedef->name}}"
+                :id="$typedef->name"
                 class="border-bottom border-danger mt-2 pt-2 pb-4"
                 longname="{{$typedef->longname}}"
                 kind="typedef"

@@ -33,11 +33,13 @@
                 Members
             </h5>
             <ul>
-                @foreach ($membersConstants as $member)
-                    <li>
-                        <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
-                    </li>
-                @endforeach
+                @if(!empty($membersConstants) AND count($membersConstants))
+                    @foreach ($membersConstants as $member)
+                        <li>
+                            <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
+                        </li>
+                    @endforeach
+                @endif
                 @foreach ($members as $member)
                     <li>
                         <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
