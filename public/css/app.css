@@ -11198,7 +11198,7 @@ pre > code {
 }
 
 .layout-container {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 183px);
 }
 
 .cursor-pointer {

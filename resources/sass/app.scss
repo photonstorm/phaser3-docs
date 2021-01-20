@@ -33,7 +33,7 @@ pre>code {
 
 // Global classes
 .layout-container {
-    min-height: calc(100vh - 50px)
+    min-height: calc(100vh - 183px)
 }
 
 .cursor {
@@ -41,7 +41,6 @@ pre>code {
         cursor: pointer;
     }
 }
-
 
 .card-show {
     background-color: $light;

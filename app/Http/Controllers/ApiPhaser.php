@@ -54,6 +54,7 @@ class ApiPhaser extends Controller
         // }
 
 
+        // TODO: send 404 if not found
         return (!empty($controller)) ? $controller->show($longname) : view('landing');
 
     }

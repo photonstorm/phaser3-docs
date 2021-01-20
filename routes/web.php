@@ -4,6 +4,7 @@ use App\Helpers\DataBaseSelector;
 use App\Http\Controllers\ApiPhaser;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\FocusController;
 use App\Http\Controllers\GameobjectsController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,8 @@ Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () 
     // Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);
 
     Route::get('/{version}/{api_word}', [ApiPhaser::class, 'show']);
+
+    Route::get('/{version}/focus/{api_word}', [FocusController::class, 'index']);
 });
 
 
