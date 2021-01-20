@@ -38,11 +38,10 @@
         {{-- Show anothers namespace --}}
         @if (!empty($events) AND count($events))
             <h3>Events</h3>
-            <ul>
                 @foreach ($events as $event)
                 <x-member-card
                     :id="$event->name"
-                    class="border-bottom border-danger mt-2 pt-2 pb-4"
+                    class="card-show"
                     name="{{$event->name}}"
                     description="{!! $event->description !!}"
                     :params="$event->params->all()"
@@ -52,7 +51,6 @@
                     metalineno="{{$event->metalineno}}"
                 />
                 @endforeach
-            </ul>
         @endif
 
         {{-- Members --}}
@@ -61,7 +59,7 @@
         @if (count($membersConstants))
             @foreach ($membersConstants as $memberConstant)
                 <x-member-card
-                    class="border-bottom border-danger mt-2 pt-2 pb-4"
+                    class="card-show"
                     name="{{$memberConstant->name}}"
                     scope="{{$memberConstant->scope}}"
                     description="{!! $memberConstant->description !!}"
@@ -75,7 +73,7 @@
         @elseif (count($members))
             @foreach ($members as $member)
             <x-member-card
-                class="border-bottom border-danger mt-2 pt-2 pb-4"
+                class="card-show"
                 name="{{$member->name}}"
                 scope="{{$member->scope}}"
                 description="{!! $member->description !!}"
@@ -97,7 +95,7 @@
                     $methodConstructor = resolve('get_params_format')($method->params);
                 @endphp
             <x-member-card
-                    class="border-bottom border-danger mt-2 pt-2 pb-4"
+                    class="card-show"
                     scope="{{$method->scope}}"
                     name="{{$method->name}}({{$methodConstructor}})"
                     :description="$method->description"
@@ -119,7 +117,7 @@
             @foreach ($typedefs as $typedef)
             <x-member-card
                 :id="$typedef->name"
-                class="border-bottom border-danger mt-2 pt-2 pb-4"
+                class="card-show"
                 longname="{{$typedef->longname}}"
                 kind="typedef"
                 name="{{$typedef->name}}"

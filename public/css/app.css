@@ -172,7 +172,7 @@ pre[class*="language-"] {
   --info: #6cb2eb;
   --warning: #ffed4a;
   --danger: #e3342f;
-  --light: #ecf0f1;
+  --light: #fafbfc;
   --dark: #343a40;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
@@ -2105,23 +2105,23 @@ pre code {
 .table-light,
 .table-light > th,
 .table-light > td {
-  background-color: #fafbfb;
+  background-color: #fefefe;
 }
 
 .table-light th,
 .table-light td,
 .table-light thead th,
 .table-light tbody + tbody {
-  border-color: #f5f7f8;
+  border-color: #fcfdfd;
 }
 
 .table-hover .table-light:hover {
-  background-color: #ecf0f0;
+  background-color: #f1f1f1;
 }
 
 .table-hover .table-light:hover > td,
 .table-hover .table-light:hover > th {
-  background-color: #ecf0f0;
+  background-color: #f1f1f1;
 }
 
 .table-dark,
@@ -3059,43 +3059,43 @@ fieldset:disabled a.btn {
 
 .btn-light {
   color: #212529;
-  background-color: #ecf0f1;
-  border-color: #ecf0f1;
+  background-color: #fafbfc;
+  border-color: #fafbfc;
 }
 
 .btn-light:hover {
   color: #212529;
-  background-color: #d6dfe1;
-  border-color: #cfd9db;
+  background-color: #e2e8ee;
+  border-color: #dae2e9;
 }
 
 .btn-light:focus,
 .btn-light.focus {
   color: #212529;
-  background-color: #d6dfe1;
-  border-color: #cfd9db;
-  box-shadow: 0 0 0 0.2rem rgba(206, 210, 211, 0.5);
+  background-color: #e2e8ee;
+  border-color: #dae2e9;
+  box-shadow: 0 0 0 0.2rem rgba(217, 219, 220, 0.5);
 }
 
 .btn-light.disabled,
 .btn-light:disabled {
   color: #212529;
-  background-color: #ecf0f1;
-  border-color: #ecf0f1;
+  background-color: #fafbfc;
+  border-color: #fafbfc;
 }
 
 .btn-light:not(:disabled):not(.disabled):active,
 .btn-light:not(:disabled):not(.disabled).active,
 .show > .btn-light.dropdown-toggle {
   color: #212529;
-  background-color: #cfd9db;
-  border-color: #c7d3d6;
+  background-color: #dae2e9;
+  border-color: #d2dbe4;
 }
 
 .btn-light:not(:disabled):not(.disabled):active:focus,
 .btn-light:not(:disabled):not(.disabled).active:focus,
 .show > .btn-light.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(206, 210, 211, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(217, 219, 220, 0.5);
 }
 
 .btn-dark {
@@ -3356,24 +3356,24 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-light {
-  color: #ecf0f1;
-  border-color: #ecf0f1;
+  color: #fafbfc;
+  border-color: #fafbfc;
 }
 
 .btn-outline-light:hover {
   color: #212529;
-  background-color: #ecf0f1;
-  border-color: #ecf0f1;
+  background-color: #fafbfc;
+  border-color: #fafbfc;
 }
 
 .btn-outline-light:focus,
 .btn-outline-light.focus {
-  box-shadow: 0 0 0 0.2rem rgba(236, 240, 241, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(250, 251, 252, 0.5);
 }
 
 .btn-outline-light.disabled,
 .btn-outline-light:disabled {
-  color: #ecf0f1;
+  color: #fafbfc;
   background-color: transparent;
 }
 
@@ -3381,14 +3381,14 @@ fieldset:disabled a.btn {
 .btn-outline-light:not(:disabled):not(.disabled).active,
 .show > .btn-outline-light.dropdown-toggle {
   color: #212529;
-  background-color: #ecf0f1;
-  border-color: #ecf0f1;
+  background-color: #fafbfc;
+  border-color: #fafbfc;
 }
 
 .btn-outline-light:not(:disabled):not(.disabled):active:focus,
 .btn-outline-light:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-light.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(236, 240, 241, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(250, 251, 252, 0.5);
 }
 
 .btn-outline-dark {
@@ -5591,19 +5591,19 @@ a.badge-danger.focus {
 
 .badge-light {
   color: #212529;
-  background-color: #ecf0f1;
+  background-color: #fafbfc;
 }
 
 a.badge-light:hover,
 a.badge-light:focus {
   color: #212529;
-  background-color: #cfd9db;
+  background-color: #dae2e9;
 }
 
 a.badge-light:focus,
 a.badge-light.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(236, 240, 241, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(250, 251, 252, 0.5);
 }
 
 .badge-dark {
@@ -5756,17 +5756,17 @@ a.badge-dark.focus {
 }
 
 .alert-light {
-  color: #7b7d7d;
-  background-color: #fbfcfc;
-  border-color: #fafbfb;
+  color: #828383;
+  background-color: #fefefe;
+  border-color: #fefefe;
 }
 
 .alert-light hr {
-  border-top-color: #ecf0f0;
+  border-top-color: #f1f1f1;
 }
 
 .alert-light .alert-link {
-  color: #626363;
+  color: dimgray;
 }
 
 .alert-dark {
@@ -6188,20 +6188,20 @@ a.badge-dark.focus {
 }
 
 .list-group-item-light {
-  color: #7b7d7d;
-  background-color: #fafbfb;
+  color: #828383;
+  background-color: #fefefe;
 }
 
 .list-group-item-light.list-group-item-action:hover,
 .list-group-item-light.list-group-item-action:focus {
-  color: #7b7d7d;
-  background-color: #ecf0f0;
+  color: #828383;
+  background-color: #f1f1f1;
 }
 
 .list-group-item-light.list-group-item-action.active {
   color: #fff;
-  background-color: #7b7d7d;
-  border-color: #7b7d7d;
+  background-color: #828383;
+  border-color: #828383;
 }
 
 .list-group-item-dark {
@@ -7166,14 +7166,14 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #ecf0f1 !important;
+  background-color: #fafbfc !important;
 }
 
 a.bg-light:hover,
 a.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
-  background-color: #cfd9db !important;
+  background-color: #dae2e9 !important;
 }
 
 .bg-dark {
@@ -7260,7 +7260,7 @@ button.bg-dark:focus {
 }
 
 .border-light {
-  border-color: #ecf0f1 !important;
+  border-color: #fafbfc !important;
 }
 
 .border-dark {
@@ -10888,12 +10888,12 @@ a.text-danger:focus {
 }
 
 .text-light {
-  color: #ecf0f1 !important;
+  color: #fafbfc !important;
 }
 
 a.text-light:hover,
 a.text-light:focus {
-  color: #c0cdd1 !important;
+  color: #cad5df !important;
 }
 
 .text-dark {
@@ -11156,7 +11156,7 @@ body {
 }
 
 .aside-container {
-  background-color: #ecf0f1;
+  background-color: #fafbfc;
 }
 
 .aside-container .aside-fixed {
@@ -11176,7 +11176,7 @@ body {
 }
 
 .aside-container .aside .list-group-item.active {
-  color: #1f2229;
+  color: #e67e22;
 }
 
 .aside-sticky {
@@ -11197,7 +11197,19 @@ pre > code {
   color: white;
 }
 
+.layout-container {
+  min-height: calc(100vh - 50px);
+}
+
 .cursor-pointer {
   cursor: pointer;
+}
+
+.card-show {
+  background-color: #fafbfc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
 }
 

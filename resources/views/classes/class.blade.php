@@ -3,7 +3,7 @@
 
 @section('section_content')
         <div class="h2 text-danger">{{ ucfirst($class->getTable()) }}: {{ $class->name }}</div>
-        <div class="h3 text-info">{{$class->longname }}</div>
+        <div class="h3 text-info">{{ $class->longname }}</div>
 @markdown
 {!! $class->description !!}
 @endmarkdown
@@ -12,9 +12,13 @@
         @php
             $classConstructor = resolve('get_params_format')($params)
         @endphp
+@markdown
+```javascript
+new {{ $class->name }}({{$classConstructor}})
+```
+@endmarkdown
         <x-member-card
-            class="border-bottom border-danger mt-1 pt-2 pb-4"
-            name="new {{ $class->name }}({{$classConstructor}})"
+            class="mt-1 pt-2 pb-4"
             :params=$params
             since="{{$class->since}}"
             metaFileRoute="{{$class->metapath}}/{{$class->metafilename}}"
@@ -31,11 +35,11 @@
         <hr>
         @endif
         @if ((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
-            <h3 class="mt-4">Members</h3>
+            <h2 class="mt-4">Members</h2>
             @foreach ($membersConstants as $memberConstant)
                     <x-member-card
                         :id="$memberConstant->name"
-                        class="border-bottom border-danger mt-2 pt-2 pb-4"
+                        class="card-show"
                         name="{{$memberConstant->name}}"
                         :description="$memberConstant->description"
                         kind="constant"
@@ -53,14 +57,9 @@
                     />
                 @endforeach
                 @foreach ($members as $member)
-                @php
-                    if($member->longname == 'Phaser.Physics.Arcade.Sprite#cameraFilter') {
-                        // dd($member->getExamples->all());
-                    }
-                @endphp
                     <x-member-card
                         :id="$member->name"
-                        class="border-bottom border-danger mt-2 pt-2 pb-4"
+                        class="card-show"
                         name="{{$member->name}}"
                         :description="$member->description"
                         kind="member"
@@ -79,17 +78,16 @@
 
                     />
                 @endforeach
-            <hr>
         @endif
         @if (!empty($methods) AND count($methods))
-            <h3>Methods</h3>
+            <h2 class="mt-4">Methods</h2>
                 @foreach ($methods as $method)
                 @php
                     $methodConstructor = resolve('get_params_format')($method->params->all())
                 @endphp
                 <x-member-card
                     :id="$method->name"
-                    class="border-bottom border-danger mt-1 pt-2 pb-4"
+                    class="card-show"
                     name="{{$method->name}}({{$methodConstructor}})"
                     scope="{{$method->scope}}"
                     :description="$method->description"
@@ -104,7 +102,6 @@
                 />
 
                 @endforeach
-            {{-- <hr> --}}
         @endif
 @endsection
 

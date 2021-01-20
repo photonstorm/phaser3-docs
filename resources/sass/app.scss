@@ -32,8 +32,21 @@ pre>code {
 @import "./../../node_modules/prismjs/themes/prism-tomorrow.css";
 
 // Global classes
+.layout-container {
+    min-height: calc(100vh - 50px)
+}
+
 .cursor {
     &-pointer {
         cursor: pointer;
     }
+}
+
+
+.card-show {
+    background-color: $light;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
 }
