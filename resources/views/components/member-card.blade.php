@@ -65,8 +65,8 @@
     </div>
     @endif
     @if (!empty($type))
-    <div class="pl-3">
-        Type: {!! resolve('get_api_link')($type) !!}
+    <div>
+        <span class="font-weight-bold">Type:</span> <span class="text-danger">{!! resolve('get_api_link')($type) !!}</span>
     </div>
     @endif
     @if (count($properties) > 0)
@@ -225,8 +225,8 @@
                     }
                 @endphp --}}
     @if (!empty($defaultValue) || $defaultValue == "0")
-    <div class="text-info font-weight-bold pl-3">
-        <div class="text-info">Default: {{ $defaultValue }}</div>
+    <div>
+        <span class="font-weight-bold">Default:</span><span class="text-danger"> {{ $defaultValue }}</span>
     </div>
     @endif
     @if(!empty($inherits))
@@ -268,7 +268,7 @@
     {{-- <div>Fires: {!! '<br />-'. implode('<br />-', explode(',', resolve('get_api_link')($fires))) !!}</div> --}}
     @endif
 
-    <div class="border-top pt-3">
+    <div class="border-top mt-2 pt-2">
         <div><span class="font-weight-bold">Since:</span> <span class="text-danger">{{ $since }}</span></div>
         <x-source-links metaFileRoute={{$metaFileRoute}} metalineno={{$metalineno}}/>
     </div>

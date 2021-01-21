@@ -6,7 +6,7 @@
     <ul>
         @foreach ($events as $event)
         <li>
-            <a href="{{$event->longname}}">{{$event->longname}}</a>
+            <a href="focus/{{$event->longname}}">{{$event->longname}}</a>
         </li>
         @endforeach
     </ul>

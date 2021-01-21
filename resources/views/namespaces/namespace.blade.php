@@ -59,6 +59,7 @@
         @if (count($membersConstants))
             @foreach ($membersConstants as $memberConstant)
                 <x-member-card
+                    :id="$memberConstant->name"
                     class="card-show"
                     name="{{$memberConstant->name}}"
                     scope="{{$memberConstant->scope}}"
