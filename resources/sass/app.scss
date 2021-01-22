@@ -1,3 +1,4 @@
+@import '~animate.css/animate.min.css';
 // TODO: Remove debug file
 @import 'debug';
 
@@ -48,4 +49,8 @@ pre>code {
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 5px;
+}
+
+.private {
+    display: none;
 }

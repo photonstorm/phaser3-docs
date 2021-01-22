@@ -36,7 +36,9 @@ class MemberCard extends Component
     public $inherits;
     public $fires;
     public $examples;
-
+    // set if the card have focus link
+    public $focus;
+    public $access;
 
     public function __construct(
         $id = "",
@@ -59,7 +61,9 @@ class MemberCard extends Component
         $inherits = "",
         $fires = "",
         $longname = "",
-        $examples = []
+        $examples = [],
+        $focus = false,
+        $access = ''
     )
     {
         $this->id = $id;
@@ -83,6 +87,8 @@ class MemberCard extends Component
         $this->fires = $fires;
         $this->longname = $longname;
         $this->examples = $examples;
+        $this->focus = $focus;
+        $this->access = $access;
     }
 
     /**

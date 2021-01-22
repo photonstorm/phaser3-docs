@@ -6356,7 +6356,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: calc(100vh - 50px);\n  position: absolute;\n  left: 0;\n  z-index: 1;\n  display: none;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
+exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: calc(100vh - 50px);\n  position: absolute;\n  left: 0;\n  z-index: 1;\n  display: none;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  right: 50px;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -68806,6 +68806,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! prismjs */ "./node_modules/prismjs/prism.js");
 
 __webpack_require__(/*! ./effects/scrolldown */ "./resources/js/effects/scrolldown.js");
+
+__webpack_require__(/*! ./effects/asideFilters */ "./resources/js/effects/asideFilters.js");
 /**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -68999,7 +69001,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 if (document.getElementById('react-searchbar')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_searchbar__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('react-searchbar'));
+  var el = document.getElementById('react-searchbar');
+  var props = Object.assign({}, el.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_searchbar__WEBPACK_IMPORTED_MODULE_2__["default"], props), el);
 }
 
 /***/ }),
@@ -69041,10 +69045,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var count = 0;
 
-var Searchbar = function Searchbar() {
+var Searchbar = function Searchbar(props) {
   var overlaySearchbar = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var results = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var inputRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  var version = props.phaser_version;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -69070,10 +69075,8 @@ var Searchbar = function Searchbar() {
   };
 
   var debouncedSearch = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["debounce"])(function (query) {
-    console.log('Server petition');
-
     if (query.trim() !== '') {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query, "&version=").concat(version)).then(function (res) {
         setSearchResult(res.data);
         openSearchbar();
       })["catch"](function (error) {
@@ -69174,17 +69177,65 @@ var Searchbar = function Searchbar() {
 
 /***/ }),
 
+/***/ "./resources/js/effects/asideFilters.js":
+/*!**********************************************!*\
+  !*** ./resources/js/effects/asideFilters.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+jQuery(function () {
+  var hide_inherits = $('#hide_inherited');
+  var inherits_list = $('.inherited');
+  var show_private = $('#show_private_members');
+  var private_list = $('.private');
+  hide_inherits.on('change', function (e) {
+    if (e.target.checked) {
+      Array.from(inherits_list).forEach(function (inherit) {
+        inherit.style.setProperty('--animate-duration', '.3s');
+        $(inherits_list).removeClass('animate__fadeIn');
+        $(inherits_list).addClass('animate__fadeOut');
+        setTimeout(function () {
+          inherit.style.display = 'none';
+        }, 300);
+      });
+    } else {
+      Array.from(inherits_list).forEach(function (inherit) {
+        $(inherits_list).removeClass('animate__fadeOut');
+        inherit.style.display = 'block';
+        $(inherits_list).addClass('animate__fadeIn');
+      });
+    }
+  });
+  show_private.on('change', function (e) {
+    if (e.target.checked) {
+      Array.from(private_list).forEach(function (_private) {
+        $(private_list).removeClass('animate__fadeOut');
+        _private.style.display = 'block';
+        $(private_list).addClass('animate__fadeIn');
+      });
+    } else {
+      Array.from(private_list).forEach(function (_private) {
+        _private.style.setProperty('--animate-duration', '.3s');
+
+        $(private_list).removeClass('animate__fadeIn');
+        $(private_list).addClass('animate__fadeOut');
+        setTimeout(function () {
+          _private.style.display = 'none';
+        }, 300);
+      });
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/effects/scrolldown.js":
 /*!********************************************!*\
   !*** ./resources/js/effects/scrolldown.js ***!
   \********************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 jQuery(function () {
   var scrollToAnchor = function scrollToAnchor(aid) {

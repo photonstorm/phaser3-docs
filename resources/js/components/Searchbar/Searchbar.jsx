@@ -6,11 +6,12 @@ import { debounce } from 'lodash';
 
 let count = 0;
 
-const Searchbar = () => {
+const Searchbar = (props) => {
 
     const overlaySearchbar = useRef(null);
     const results = useRef(null);
     const inputRef = useRef(null);
+    const version = props.phaser_version;
 
     const [searchTerm, setSearchTerm] = useState('');
     const [search_result, setSearchResult] = useState([]);
@@ -30,10 +31,9 @@ const Searchbar = () => {
     }
 
     const debouncedSearch = debounce((query) => {
-        console.log('Server petition');
         if (query.trim() !== '') {
 
-            axios.get(`/api/search-bar?search=${query}`)
+            axios.get(`/api/search-bar?search=${query}&version=${version}`)
             .then(res => {
                 setSearchResult(res.data);
                 openSearchbar();

@@ -41,6 +41,7 @@ new {{ $collection->name }}({{$classConstructor}})
                     class="card-show"
                     name="{{$collection->name}}{{$functionArguments}}"
                     kind="function"
+                    access="{{$collection->access}}"
                     :description="$collection->description"
                     :types="$collection"
                     since="{{$collection->since}}"

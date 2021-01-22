@@ -1,9 +1,16 @@
 <div class="aside w-100 pt-4 pl-3" id="scrollspy_aside">
-    {{-- <h4 class="title">
-        {{$title}}
-    </h4> --}}
-
     <div class="content">
+            <h5>Filter</h5>
+            <div class="mb-3 form-group">
+                <div class="ml-3">
+                    <label class="align-middle" for="hide_inherited">Hide inherited members:</label>
+                    <input type="checkbox" id="hide_inherited" />
+                </div>
+                <div class="ml-3">
+                    <label class="align-middle" for="show_private_members">show private members:</label>
+                    <input type="checkbox" id="show_private_members" />
+                </div>
+            </div>
         @if(!empty($namespaces) AND count($namespaces))
             <h5>
                 Namespace
@@ -35,16 +42,20 @@
             <ul>
                 @if(!empty($membersConstants) AND count($membersConstants))
                     @foreach ($membersConstants as $member)
+                    <div class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($membersConstants->access)) ? 'private' : '' }}">
                         <li>
                             <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
                         </li>
+                    </div>
                     @endforeach
                 @endif
                 @if((!empty($members) AND count($members)))
                     @foreach ($members as $member)
-                        <li>
-                            <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
-                        </li>
+                        <div class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($member->access)) ? 'private' : '' }}">
+                            <li>
+                                <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
+                            </li>
+                        </div>
                     @endforeach
                 @endif
             </ul>
@@ -56,9 +67,11 @@
             </h5>
             <ul>
                 @foreach ($methods as $method)
-                    <li>
-                        <a class="list-group-item" href="#{{$method->name}}">{{$method->name}}</a>
-                    </li>
+                    <div class="{{ (!empty($method->inherits)) ? 'inherited' : '' }} {{ (!empty($method->access)) ? 'private' : '' }}">
+                        <li>
+                            <a class="list-group-item" href="#{{$method->name}}">{{$method->name}}</a>
+                        </li>
+                    </div>
                 @endforeach
             </ul>
         @endif

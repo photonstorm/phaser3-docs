@@ -1,60 +1,73 @@
-<div {{ $attributes }}>
+<div {{ $attributes->merge([
+    'class' => ( ((!empty($access)) ? 'private' : '') .' '. ((!empty($inherits)) ? 'inherited' : ''))
+]) }}>
     @php
         $param_join = resolve('get_params_format')($params);
     @endphp
     @if (!empty($name))
-    <span class="h4 text-danger" id="{{ $id }}">
-        @if ($scope == "static" || $scope == "protected" || $scope == "readonly" || $kind == "constant" || $nullable == "1" )
-            @php
-                $scope_out = '';
-                if ($scope == 'static') {
-                    $scope_out .= 'static';
-                }
+        <div class="d-flex justify-content-between">
+            <div class="h4 text-danger" id="{{ $id }}">
+                @if ($scope == "static" || $scope == "protected" || $scope == "readonly" || $kind == "constant" || $nullable == "1" )
+                    @php
+                        $scope_out = '';
+                        if ($scope == 'static') {
+                            $scope_out .= 'static';
+                        }
 
-                if ($scope == 'protected') {
-                    if (!empty($scope_out)) {
-                        $scope_out .= ', ';
-                    }
-                    $scope_out .= 'protected';
-                }
+                        if ($scope == 'protected') {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'protected';
+                        }
 
-                if ($scope == 'readonly') {
-                    if (!empty($scope_out)) {
-                        $scope_out .= ', ';
-                    }
-                    $scope_out .= 'readonly';
-                }
+                        if ($scope == 'readonly') {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'readonly';
+                        }
 
-                if ($kind == 'constant') {
-                    if (!empty($scope_out)) {
-                        $scope_out .= ', ';
-                    }
-                    $scope_out .= 'constant';
-                }
+                        if ($kind == 'constant') {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'constant';
+                        }
 
-                if ($nullable == "1" ) {
-                    if (!empty($scope_out)) {
-                        $scope_out .= ', ';
-                    }
-                    $scope_out .= 'nullable';
-                }
-            @endphp
-            {{"<".$scope_out.">"}}
-        @endif
+                        if ($nullable == "1" ) {
+                            if (!empty($scope_out)) {
+                                $scope_out .= ', ';
+                            }
+                            $scope_out .= 'nullable';
+                        }
+                    @endphp
+                    {{"<".$scope_out.">"}}
+                @endif
+                {{-- set access --}}
+                @if(!empty($access))
+                    {{ "<$access>" }}
 
-        @if ($kind === "typedef")
-            @if (strtolower($type) == 'function')
-                {{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($name) }}({{$param_join}})
-            @elseif (strtolower($type) == 'object')
-                {{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($name) }}
+                @endif
+                @if ($kind === "typedef")
+                    @if (strtolower($type) == 'function')
+                        {{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($name) }}({{$param_join}})
+                    @elseif (strtolower($type) == 'object')
+                        {{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($name) }}
+                    @endif
+                @else
+                    {{ htmlspecialchars_decode($name) }}
+                @endif
+                @if ($kind === "constant" || $kind === "member")
+                    :{!! resolve('get_types')($types) !!}
+                @endif
+            </div>
+            @if($focus)
+                <div>
+                    <a href="focus/{{$longname}}"><img src="{{asset('images/aim.png')}}" alt="Focus"></a>
+                </div>
             @endif
-        @else
-            {{ htmlspecialchars_decode($name) }}
-        @endif
-        @if ($kind === "constant" || $kind === "member")
-            :{!! resolve('get_types')($types) !!}
-        @endif
-    </span>
+        </div>
     @endif
     @if (!empty($description))
     <div class="border-top pt-2 mt-2">

@@ -43,7 +43,7 @@
             <div id="react-change-version-selector" data-db_list="{{ json_encode(DataBaseSelector::getListDB()) }}"></div>
         </div>
         <div class="d-flex align-items-center">
-            <div id="react-searchbar"></div>
+            <div id="react-searchbar" data-phaser_version={{ Config::get('app.phaser_version') }}></div>
         </div>
     </div>
 </nav>

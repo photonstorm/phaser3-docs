@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@use-it/event-listener": "^0.1.6",
+        "animate.css": "^4.1.1",
         "prismjs": "^1.23.0",
         "url-parse": "^1.4.7"
     }

@@ -34,6 +34,7 @@ new {{ $class->name }}({{$classConstructor}})
         </ul>
         <hr>
         @endif
+        {{-- Members --}}
         @if ((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
             <h2 class="mt-4">Members</h2>
             @foreach ($membersConstants as $memberConstant)
@@ -41,6 +42,7 @@ new {{ $class->name }}({{$classConstructor}})
                         :id="$memberConstant->name"
                         class="card-show"
                         name="{{$memberConstant->name}}"
+                        access="{{$member->access}}"
                         :description="$memberConstant->description"
                         kind="constant"
                         :types="$memberConstant"
@@ -59,8 +61,9 @@ new {{ $class->name }}({{$classConstructor}})
                 @foreach ($members as $member)
                     <x-member-card
                         :id="$member->name"
-                        class="card-show"
+                        class="card-show animate__animated {{ (!empty($member->inherits)) ? 'inherited' : '' }}"
                         name="{{$member->name}}"
+                        access="{{$member->access}}"
                         :description="$member->description"
                         kind="member"
                         :types="$member"
@@ -75,10 +78,12 @@ new {{ $class->name }}({{$classConstructor}})
                         :examples="$member->getExamples->all()"
                         nullable="{{$member->nullable}}"
                         scope="{{$member->scope}}"
-
+                        longname="{{$member->longname}}"
+                        focus="true"
                     />
                 @endforeach
         @endif
+        {{-- Methods --}}
         @if (!empty($methods) AND count($methods))
             <h2 class="mt-4">Methods</h2>
                 @foreach ($methods as $method)
@@ -87,7 +92,7 @@ new {{ $class->name }}({{$classConstructor}})
                 @endphp
                 <x-member-card
                     :id="$method->name"
-                    class="card-show"
+                    class="card-show {{ (!empty($method->inherits)) ? 'inherited' : '' }}"
                     name="{{$method->name}}({{$methodConstructor}})"
                     scope="{{$method->scope}}"
                     :description="$method->description"
@@ -100,7 +105,6 @@ new {{ $class->name }}({{$classConstructor}})
                     returnstype="{{$method->returnstype}}"
                     returnsdescription="{{$method->returnsdescription}}"
                 />
-
                 @endforeach
         @endif
 @endsection
@@ -109,6 +113,7 @@ new {{ $class->name }}({{$classConstructor}})
     <x-aside
         class="w-100"
         title="Class: {{$class->name}}"
+        :membersConstants="$membersConstants"
         :members="$members"
         :methods="$methods"
     />

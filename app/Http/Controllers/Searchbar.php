@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DataBaseSelector;
 use App\Http\Resources\SearchbarResource;
 use App\Models\Classes;
 use App\Models\Constant;
@@ -17,6 +18,15 @@ class Searchbar extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
+        $version = $request->version;
+
+        // Change search version
+        if(!empty($version)) {
+            DataBaseSelector::setDataBase($version);
+        } else {
+            DataBaseSelector::setDataBase(DataBaseSelector::getLastDB());
+        }
+
         $search_array = [];
 
         $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
