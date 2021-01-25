@@ -5,10 +5,10 @@ let SkipBlock = function (type, block)
         return true;
     }
 
-    if (block.hasOwnProperty('access') && block.access === 'private')
-    {
-        return true;
-    }
+    // if (block.hasOwnProperty('access') && block.access === 'private')
+    // {
+    //     return true;
+    // }
 
     return false;
 };

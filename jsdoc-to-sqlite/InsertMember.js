@@ -5,6 +5,7 @@ const { clear } = require('jsdoc-to-markdown');
 const InsertTypes = require('./InsertTypes');
 const GetMarkdownLink = require('./GetMarkdownLink');
 const InsertExamples = require('./InsertExamples');
+const CleanHastagLongName = require('./CleanHashtagLongname');
 
 
 let id_generator = 0;
@@ -28,7 +29,8 @@ let InsertMember = function (db, data)
         inherited,
         inherits,
         nullable,
-        overrides
+        overrides,
+        access
     ) VALUES (
         @longname,
         @since,
@@ -46,7 +48,8 @@ let InsertMember = function (db, data)
         @inherited,
         @inherits,
         @nullable,
-        @overrides
+        @overrides,
+        @access
     )`);
 
     const insertMany = db.transaction((transaction, queries) => {
@@ -87,9 +90,10 @@ let InsertMember = function (db, data)
                 examples: block.examples
             });
         }
-
+        
+        const longname = CleanHastagLongName(block.longname);
         memberQueries.push({
-            longname: block.longname,
+            longname: longname,
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
             name: block.name,
             memberof: block.memberof,
@@ -105,13 +109,14 @@ let InsertMember = function (db, data)
             inherited: (block.hasOwnProperty('inherited') && block.inherited) ? 1 : 0,
             inherits: (block.hasOwnProperty('inherits') && block.inherited) ? block.inherits : '',
             nullable: (block.hasOwnProperty('nullable') && block.nullable) ? 1 : 0,
-            overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : ''
+            overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : '',
+            access:  (block.hasOwnProperty('access')) ? block.access : ''
         });
 
         if(block.hasOwnProperty('type')) {
             // Insert parameters types 
             const dataTypes = {
-                fk_id: block.longname,
+                fk_id: longname,
                 types: block.type.names
             };
             // Prepare to insert types

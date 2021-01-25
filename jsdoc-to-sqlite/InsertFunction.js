@@ -7,6 +7,7 @@ const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 const GetMarkdownLink = require('./GetMarkdownLink');
+const CleanHastagLongName = require('./CleanHashtagLongname');
 
 let InsertFunction = function (db, data)
 {
@@ -28,7 +29,8 @@ let InsertFunction = function (db, data)
         inherited,
         inherits,
         webgl,
-        overrides
+        overrides,
+        access
     ) VALUES (
         @longname,
         @since,
@@ -47,7 +49,8 @@ let InsertFunction = function (db, data)
         @inherited,
         @inherits,
         @webgl,
-        @overrides
+        @overrides,
+        @access
     )`);
 
     const paramsTransaction = db.prepare(`INSERT INTO params (
@@ -86,7 +89,7 @@ let InsertFunction = function (db, data)
     {
         let block = data.docs[i];
 
-        if (SkipBlock('function', block))
+        if (SkipBlock('function', block) || !block.hasOwnProperty('memberof'))
         {
             continue;
         }
@@ -210,7 +213,7 @@ let InsertFunction = function (db, data)
     
         const description = GetMarkdownLink(block.description);
         functionQueries.push({
-            longname: block.longname,
+            longname: CleanHastagLongName(block.longname),
             since: (block.hasOwnProperty('since')) ? block.since : '3.0.0',
             name: block.name,
             memberof: block.memberof,
@@ -227,7 +230,8 @@ let InsertFunction = function (db, data)
             inherited: inherited,
             inherits: (block.hasOwnProperty('inherits') && block.inherits) ? block.inherits : '',
             webgl: HasTag(block, 'webglOnly'),
-            overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : ''
+            overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : '',
+            access: (block.hasOwnProperty('access')) ? block.access : ''
         });
     }
 
