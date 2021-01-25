@@ -1,5 +1,5 @@
 <div {{ $attributes->merge([
-    'class' => ( ((!empty($access)) ? 'private' : '') .' '. ((!empty($inherits)) ? 'inherited' : ''))
+    'class' => ( ((!empty($access)) ? 'private hide-card' : '') .' '. ((!empty($inherits)) ? 'inherited' : ''))
 ]) }}>
     @php
         $param_join = resolve('get_params_format')($params);

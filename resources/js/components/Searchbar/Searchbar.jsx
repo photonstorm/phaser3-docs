@@ -120,11 +120,11 @@ const Searchbar = (props) => {
                                             result.data.map((res, index) =>
                                                 {
                                                     if (result.type.toLowerCase() === 'scene') {
-                                                        return <li key={res.longname + index}><a href={ `${res.longname}` }> {
+                                                        return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> {
                                                                 inputRef.current.value.split('.').filter((word, i) => (i != inputRef.current.value.split('.').length-1)).join('.')
                                                         }.{res.name}</a></li>
                                                     } else {
-                                                        return <li key={res.longname + index}><a href={ `${res.longname}` }> { res.longname }</a></li>
+                                                        return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> { res.longname }</a></li>
                                                     }
                                                 }
                                             )

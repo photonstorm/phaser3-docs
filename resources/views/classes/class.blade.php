@@ -42,7 +42,7 @@ new {{ $class->name }}({{$classConstructor}})
                         :id="$memberConstant->name"
                         class="card-show"
                         name="{{$memberConstant->name}}"
-                        access="{{$member->access}}"
+                        access="{{$memberConstant->access}}"
                         :description="$memberConstant->description"
                         kind="constant"
                         :types="$memberConstant"
@@ -55,13 +55,15 @@ new {{ $class->name }}({{$classConstructor}})
                         inherits="{{$memberConstant->inherits}}"
                         readOnly="{{$memberConstant->readOnly}}"
                         nullable="{{$memberConstant->nullable}}"
+                        longname="{{$memberConstant->longname}}"
+                        focus="true"
 
                     />
                 @endforeach
                 @foreach ($members as $member)
                     <x-member-card
                         :id="$member->name"
-                        class="card-show animate__animated {{ (!empty($member->inherits)) ? 'inherited' : '' }}"
+                        class="card-show animate__animated"
                         name="{{$member->name}}"
                         access="{{$member->access}}"
                         :description="$member->description"
@@ -92,7 +94,7 @@ new {{ $class->name }}({{$classConstructor}})
                 @endphp
                 <x-member-card
                     :id="$method->name"
-                    class="card-show {{ (!empty($method->inherits)) ? 'inherited' : '' }}"
+                    class="card-show"
                     name="{{$method->name}}({{$methodConstructor}})"
                     scope="{{$method->scope}}"
                     :description="$method->description"
@@ -104,6 +106,8 @@ new {{ $class->name }}({{$classConstructor}})
                     inherits="{{$method->inherits}}"
                     returnstype="{{$method->returnstype}}"
                     returnsdescription="{{$method->returnsdescription}}"
+                    longname="{{$method->longname}}"
+                    focus="true"
                 />
                 @endforeach
         @endif

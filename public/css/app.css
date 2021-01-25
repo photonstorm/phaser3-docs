@@ -11219,7 +11219,11 @@ pre > code {
   border-radius: 5px;
 }
 
-.private {
+.display-card {
+  display: block;
+}
+
+.hide-card {
   display: none;
 }
 
