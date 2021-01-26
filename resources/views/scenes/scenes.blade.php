@@ -1,37 +1,38 @@
 @extends('layouts.app')
 @section('title', 'Physics')
 @section('content')
-<div class="container">
+<div class="container layout-container">
     <div class="row">
         <div class="col-12">
             <div class="mt-4">
                 <h2>
                     Scenes Section.
                 </h2>
-                <ul>
 
+                <div class="row">
                     @foreach ($class_scene as $scene)
-                    <li>
-                        <a href="{{$scene->longname}}">{{$scene->name}}</a>
-                    </li>
+                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
+                        <a href="{{$scene->longname}}" class="btn-primary">{{$scene->name}}</a>
+                    </div>
                     @endforeach
-
-                    <br>
-
+                </div>
+                <div class="row">
                     @foreach ($memberof_scenes as $memberof_scene)
-                    <li>
-                        <a href="{{$memberof_scene->longname}}">{{$memberof_scene->name}}</a>
-                    </li>
+                        <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
+                            <a href="{{$memberof_scene->longname}}" class="btn-primary">{{$memberof_scene->name}}</a>
+                        </div>
                     @endforeach
+                </div>
 
-                    <br>
-                    <h3>Members</h3>
+                <h3 class="mt-4">Members</h3>
+                <div class="row">
+
                     @foreach ($scene_members_class as $scene_member_class)
-                    <li>
-                        <a href="{{$scene_member_class->longname}}">{{$scene_member_class->name}}</a>
-                    </li>
+                        <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
+                            <a href="{{$scene_member_class->longname}}" class="btn-primary">{{$scene_member_class->name}}</a>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
 
             </div>
         </div>

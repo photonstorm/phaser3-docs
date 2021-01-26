@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\DB;
 class ClassesController extends Controller
 {
     public function index() {
-        return view('classes.classes', ["classes" => Classes::all()]);
+        return view('layouts.list-creator', [
+            "name" => "Class",
+            "collections" => Classes::all()
+        ]);
     }
 
     public function show($longname) {
@@ -31,7 +34,7 @@ class ClassesController extends Controller
 
         $classConstructor = resolve('get_params_format')($params);
 
-        return view('classes.class', [
+        return view('class', [
             "class" => $class,
             "params" => $params,
             "classConstructor" => $classConstructor,

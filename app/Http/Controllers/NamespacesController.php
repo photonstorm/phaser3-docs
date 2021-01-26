@@ -10,7 +10,10 @@ class NamespacesController extends Controller
 {
     public function index()
     {
-        return view('namespaces.namespaces', ['namespaces' => Namespaces::all()->sortBy("longname")]);
+        return view('layouts.list-creator', [
+            "name" => "Namespace",
+            "collections" => Namespaces::all()->sortBy("longname")
+        ]);
     }
 
     public function show($longname)
@@ -26,7 +29,7 @@ class NamespacesController extends Controller
         $events = $namespace->events->sortBy("longname");
         $methodConstructor = "";
 
-        return view('namespaces.namespace', [
+        return view('namespace', [
             "namespace" => $namespace,
             "classes" => $classes,
             "namespaces" => $namespaces,

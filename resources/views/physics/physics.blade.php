@@ -9,17 +9,21 @@
                     Physics Section.
                 </h2>
                 <h3>Arcade</h3>
-                <ul>
+                <div class="row">
                     @foreach ($physics['arcade'] as $arcade)
-                    <li><a href="{{ $arcade->longname }}">{{ $arcade->name }}</a></li>
+                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
+                        <a href="{{ $arcade->longname }}" class="btn-primary">{{ $arcade->name }}</a>
+                    </div>
                     @endforeach
-                </ul>
-                <h3>MatterJS</h3>
-                <ul>
+                </div>
+                <h3 class="mt-3">MatterJS</h3>
+                <div class="row">
                     @foreach ($physics['matter'] as $matter)
-                    <li><a href="{{ $matter->longname }}">{{ $matter->name }}</a></li>
+                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
+                        <a href="{{ $matter->longname }}" class="btn-primary">{{ $matter->name }}</a>
+                    </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
 
         </div>

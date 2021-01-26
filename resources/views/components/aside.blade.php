@@ -42,7 +42,7 @@
             <ul>
                 @if(!empty($membersConstants) AND count($membersConstants))
                     @foreach ($membersConstants as $member)
-                    <div class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($membersConstants->access)) ? 'private' : '' }}">
+                    <div class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($membersConstants->access)) ? 'private hide-card' : '' }}">
                         <li>
                             <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
                         </li>
@@ -51,7 +51,7 @@
                 @endif
                 @if((!empty($members) AND count($members)))
                     @foreach ($members as $member)
-                        <div class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($member->access)) ? 'private' : '' }}">
+                        <div class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($member->access)) ? 'private hide-card' : '' }}">
                             <li>
                                 <a class="list-group-item" href="#{{$member->name}}">{{$member->name}}</a>
                             </li>

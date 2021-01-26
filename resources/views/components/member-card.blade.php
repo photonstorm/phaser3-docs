@@ -1,6 +1,7 @@
 <div {{ $attributes->merge([
     'class' => ( ((!empty($access)) ? 'private hide-card' : '') .' '. ((!empty($inherits)) ? 'inherited' : ''))
 ]) }}>
+    {{ $access}}
     @php
         $param_join = resolve('get_params_format')($params);
     @endphp
@@ -56,7 +57,8 @@
                         {{($scope == "static") ? "<static>" : "" }} {{ htmlspecialchars_decode($name) }}
                     @endif
                 @else
-                    {{ htmlspecialchars_decode($name) }}
+                    {{-- Name of card --}}
+                    {!! $name !!}
                 @endif
                 @if ($kind === "constant" || $kind === "member")
                     :{!! resolve('get_types')($types) !!}
@@ -71,7 +73,7 @@
     @endif
     @if (!empty($description))
     <div class="border-top pt-2 mt-2">
-        <h3>Description:</h3>
+        <h4>Description:</h4>
 @markdown
 {!! $description !!}
 @endmarkdown
@@ -146,9 +148,9 @@
     </table>
     @endif
     @if (count($params) > 0)
-        <h3>
+        <h4>
             Parameters:
-        </h3>
+        </h4>
         <table class="table table-light table-striped table-bordered shadow-sm">
             <thead class="thead-light">
                 <tr>
@@ -250,9 +252,8 @@
     @endif
     @if(!empty($fires))
     <div class="pl-4">
-        <h3>Fires:</h3>
+        <h4>Fires:</h4>
         <ul>
-
             @foreach (explode(',', $fires) as $fire)
                 <li>{!! resolve('get_api_link')($fire) !!}</li>
             @endforeach

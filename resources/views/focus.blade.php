@@ -33,32 +33,40 @@ new {{ $collection->name }}({{$classConstructor}})
                 </div>
 
             @else
-                @php
-                $params = (empty($collection->params)) ? [] : $collection->params->all();
-                $functionArguments = ($collection->getTable() === 'functions') ? "(" . resolve('get_params_format')($params) . ")"  : "";                @endphp
+                <div class="mt-3">
+                    @if(!empty($collection->memberof))
+                        <div class="card-member-style">
+                            <h3>Member of: {!! resolve('get_api_link')($collection->memberof) !!}</h3>
+                        </div>
+                        @endif
+                    @php
+                        $params = (empty($collection->params)) ? [] : $collection->params->all();
+                        $functionArguments = ($collection->getTable() === 'functions') ? "(" . resolve('get_params_format')($params) . ")"  : "";
+                    @endphp
 
-                <x-member-card
-                    class="card-show"
-                    name="{{$collection->name}}{{$functionArguments}}"
-                    kind="function"
-                    access="{{$collection->access}}"
-                    :description="$collection->description"
-                    :types="$collection"
-                    since="{{$collection->since}}"
-                    :params="$params"
-                    metaFileRoute="{{$collection->metapath}}/{{$collection->metafilename}}"
-                    returnstype="{{$collection->returnstype}}"
-                    metalineno="{{$collection->metalineno}}"
-                    defaultValue="{{$collection->defaultValue}}"
-                    returnsdescription="{{$collection->returnsdescription}}"
-                    overrides="{{$collection->overrides}}"
-                    fires="{{$collection->fires}}"
-                    inherits="{{$collection->inherits}}"
-                    readOnly="{{$collection->readOnly}}"
-                    nullable="{{$collection->nullable}}"
-                    scope="{{$collection->scope}}"
-                    :type="$collection->type"
-                />
+                    <x-member-card
+                        class="card-members-style show-important-card"
+                        name="{{$collection->name}}{{$functionArguments}}"
+                        kind="function"
+                        access="{{$collection->access}}"
+                        :description="$collection->description"
+                        :types="$collection"
+                        since="{{$collection->since}}"
+                        :params="$params"
+                        metaFileRoute="{{$collection->metapath}}/{{$collection->metafilename}}"
+                        returnstype="{{$collection->returnstype}}"
+                        metalineno="{{$collection->metalineno}}"
+                        defaultValue="{{$collection->defaultValue}}"
+                        returnsdescription="{{$collection->returnsdescription}}"
+                        overrides="{{$collection->overrides}}"
+                        fires="{{$collection->fires}}"
+                        inherits="{{$collection->inherits}}"
+                        readOnly="{{$collection->readOnly}}"
+                        nullable="{{$collection->nullable}}"
+                        scope="{{$collection->scope}}"
+                        :type="$collection->type"
+                    />
+                </div>
             @endif
         </div>
     </div>

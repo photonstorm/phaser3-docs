@@ -31,18 +31,22 @@ class ApiPhaser extends Controller
 
         if(!empty($namespace)) {
             $controller = new NamespacesController();
+            Config::set('app.actual_link', 'namespaces');
         }
 
         if(!empty($class)) {
             $controller = new ClassesController();
+            Config::set('app.actual_link', 'classes');
         }
 
         if(!empty($event)) {
             $controller  = new EventsController();
+            Config::set('app.actual_link', 'events');
         }
 
         if(!empty($typedef)) {
             $controller  = new TypedefsController();
+            Config::set('app.actual_link', 'namespaces');
         }
 
         if(!empty($constant)) {

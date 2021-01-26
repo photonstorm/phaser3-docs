@@ -11190,6 +11190,27 @@ body {
   height: 100vh !important;
 }
 
+.card-members-style,
+.card-member-style {
+  background-color: #fafbfc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.display-card {
+  display: block;
+}
+
+.hide-card {
+  display: none;
+}
+
+.show-important-card {
+  display: block !important;
+}
+
 body {
   background-color: #e0e4f1;
 }
@@ -11207,23 +11228,11 @@ pre > code {
   min-height: calc(100vh - 183px);
 }
 
+.layout-container .aside-container {
+  min-height: calc(100vh - 183px);
+}
+
 .cursor-pointer {
   cursor: pointer;
-}
-
-.card-show {
-  background-color: #fafbfc;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.display-card {
-  display: block;
-}
-
-.hide-card {
-  display: none;
 }
 

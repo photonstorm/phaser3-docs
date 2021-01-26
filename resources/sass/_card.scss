@@ -1,0 +1,19 @@
+.card-members-style, .card-member-style {
+    background-color: $light;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.display-card {
+    display: block;
+}
+
+.hide-card {
+    display: none;
+}
+
+.show-important-card {
+    display: block !important;
+}
