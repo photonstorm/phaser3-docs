@@ -2,7 +2,7 @@
 @section('title', $namespace->longname)
 
 @section('section_content')
-    {{-- Show namespace properties Name, methods--}}
+        {{-- Show namespace properties Name, methods--}}
         <div class="h2 text-danger">{{ ucfirst($namespace->getTable()) }}: {{ $namespace->name }}</div>
         <div class="h3 text-info">{{$namespace->longname }}</div>
         <x-source-links class="mb-3" metaFileRoute="{{$namespace->metapath}}/{{$namespace->metafilename}}" metalineno="{{$namespace->metalineno}}" />

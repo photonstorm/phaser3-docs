@@ -11232,6 +11232,12 @@ pre > code {
   min-height: calc(100vh - 183px);
 }
 
+.landing-page {
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 20px;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
