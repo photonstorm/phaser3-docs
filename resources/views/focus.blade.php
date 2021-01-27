@@ -4,13 +4,12 @@
     <div class="row">
         <div class="col-12">
             @if($collection->getTable() === 'event')
-
                 <div class="mt-3">
-                    <div class="h2 text-danger">{{ ucfirst($collection->getTable()) }}: {{ $collection->name }}</div>
-                    <div class="h3 text-info">{{ $collection->longname }}</div>
-@markdown
+                    {{-- <div class="h2 text-danger">{{ ucfirst($collection->getTable()) }}: {{ $collection->name }}</div>
+                    <div class="h3 text-info">{{ $collection->longname }}</div> --}}
+{{-- @markdown
 {!! $collection->description !!}
-@endmarkdown
+@endmarkdown --}}
                 @if($collection->getTable() === 'class')
                     <hr>
                     <h3>Constructor:</h3>
@@ -22,14 +21,18 @@
 new {{ $collection->name }}({{$classConstructor}})
 ```
 @endmarkdown
-                @endif
+                @else
                     <x-member-card
-                        class="mt-1 pt-2 pb-4"
+                        class="card-members-style"
                         :params="$collection->params->all()"
+                        name="{{$collection->name}}"
+                        description="{{$collection->description}}"
                         since="{{$collection->since}}"
                         metaFileRoute="{{$collection->metapath}}/{{$collection->metafilename}}"
                         metalineno="{{$collection->metalineno}}"
                     />
+                @endif
+
                 </div>
 
             @else
