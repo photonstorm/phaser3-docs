@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <div class="mt-4">
-                <h2>
+                <h2 class="text-center">
                     <u>
                         Physics Section.
                     </u>
