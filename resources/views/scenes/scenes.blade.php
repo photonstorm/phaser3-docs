@@ -29,7 +29,7 @@
 
                     @foreach ($scene_members_class as $scene_member_class)
                         <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
-                            <a href="{{$scene_member_class->longname}}" class="btn-primary">{{$scene_member_class->name}}</a>
+                            <a href="{{str_replace('-', '#', $scene_member_class->longname)}}" class="btn-primary">{{$scene_member_class->name}}</a>
                         </div>
                     @endforeach
                 </div>

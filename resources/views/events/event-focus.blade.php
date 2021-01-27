@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 @section('title', $event->longname)
-@section('content')
+@section('section_content')
 <div class="container">
     <div class="row">
         {{-- Show namespace properties Name, methods--}}
@@ -10,7 +10,7 @@
                 <div class="h3 text-info">{{$event->longname }}</div>
                 <x-member-card
                 id="{{$event->name}}"
-                class="border-bottom border-danger mt-0 pt-0 pb-4 "
+                class="card-members-style mt-0 pt-0 pb-4 "
                 scope="{{$event->scope}}"
                 :description="$event->description"
                 :type="$event->type"
@@ -23,4 +23,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('aside')
+    <x-aside-event memberof="{{$event->memberof}}" />
 @endsection
