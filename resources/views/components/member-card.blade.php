@@ -65,9 +65,14 @@
                 @endif
             </div>
             @if($focus)
-                <div>
+            <div class="d-flex">
+                <div class="mr-2 align-middle">
                     <a href="focus/{{$longname}}"><img src="{{asset('images/aim.png')}}" alt="Focus"></a>
                 </div>
+                <div class="copy-members-to-clipboard">
+                    <a href="#{{$name}}"><img src="{{asset('images/hashtag.png')}}" alt="Focus" width="30" id="{{$name}}"></a>
+                </div>
+            </div>
             @endif
         </div>
     @endif
