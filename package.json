@@ -25,9 +25,12 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^1.5.0",
         "@use-it/event-listener": "^0.1.6",
         "animate.css": "^4.1.1",
         "prismjs": "^1.23.0",
+        "react-redux": "^7.2.2",
+        "redux": "^4.0.5",
         "url-parse": "^1.4.7"
     }
 }

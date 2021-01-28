@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Searchbar.scss';
 import useEventListener from '@use-it/event-listener';
 import { debounce } from 'lodash';
+import { useSelector } from 'react-redux';
 
 let count = 0;
 
