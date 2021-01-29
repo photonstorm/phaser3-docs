@@ -75400,9 +75400,7 @@ __webpack_require__.r(__webpack_exports__);
 jQuery(function () {
   var members = $('.copy-members-to-clipboard');
   members.on('click', function (e) {
-    e.preventDefault();
-    window.location.href = "#".concat(e.target.id);
-    copyToClipboard(window.location.href);
+    copyToClipboard(e.target.id);
     var tstfy = toastify_js__WEBPACK_IMPORTED_MODULE_0___default()({
       "text": "copied to clipboard",
       "closeButton": false,
@@ -75420,9 +75418,8 @@ jQuery(function () {
       "hideEasing": "linear",
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
-    }); // tstfy.success('Copy to clipboard');
-
-    tstfy.showToast(); // Toastify.options(.options = );
+    });
+    tstfy.showToast();
   });
 });
 
@@ -75446,12 +75443,14 @@ var copyToClipboard = function copyToClipboard(text) {
 
 jQuery(function () {
   var scrollToAnchor = function scrollToAnchor(aid) {
-    var tag = $(aid);
+    if (aid.length > 1) {
+      var tag = $(aid);
 
-    if (tag.length) {
-      $('html,body').animate({
-        scrollTop: tag.offset().top
-      }, 'slow');
+      if (tag.length) {
+        $('html,body').animate({
+          scrollTop: tag.offset().top
+        }, 'slow');
+      }
     }
   };
 

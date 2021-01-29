@@ -8,7 +8,7 @@
                 <h1 class="my-3">
                     Phaser - HTML5 Game Framework
                 </h1>
-                <img src="{{asset('images/phaser-header.png')}}" alt="Phaser Logo">
+                <img src="{{asset('images/phaser-header.png')}}" class="img-fluid" alt="Phaser Logo">
                 <div class="mt-3">
                     <a href="https://discord.gg/phaser">
                         <img src="https://img.shields.io/discord/244245946873937922?style=for-the-badge"
@@ -48,9 +48,9 @@
                 <strong>Be awesome:</strong> <a href="#support">Support</a> the future of Phaser<br /></p>
                 <p>Grab the source and join the fun!</p>
                 <p class="text-center">
-                    <img src="https://phaser.io/images/github/div-whats-new.png" alt="What's New" title="What's New">
+                    <img src="https://phaser.io/images/github/div-whats-new.png" alt="What's New" title="What's New" class="img-fluid">
                 </p>
-            <div class="text-center"><img src="https://phaser.io/images/github/news.jpg"></div>
+            <div class="text-center"><img src="https://phaser.io/images/github/news.jpg" class="img-fluid"></div>
             <blockquote>
                 <p>5th January 2021</p>
             </blockquote>
@@ -98,8 +98,7 @@
             <p>Happy coding everyone!</p>
             <p>Cheers,</p>
             <p>Rich - <a href="https://twitter.com/photonstorm">@photonstorm</a> <img src="https://www.phaser.io/images/spacedancer.gif" alt="boogie"></p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-support-phaser.png" alt="Support Phaser"
-                    title="Support Phaser"></p>
+            <p class="text-center"><img src="https://phaser.io/images/github/div-support-phaser.png" alt="Support Phaser" title="Support Phaser" class="img-fluid"></p>
             <p>Because Phaser is an open source project, we cannot charge for it in the same way as traditional retail
                 software. What's more, we don't ever want to. After all, it's built on, and was born from, open web
                 standards. It's part of our manifesto that the core framework will always be free, even if you use it
@@ -110,7 +109,7 @@
                 secure a constant cycle of updates, fixes, new features and planning for the future.</p>
             <p>There are other benefits to <a href="https://www.patreon.com/join/photonstorm">backing Phaser</a>, too:
             </p>
-            <p class="text-center"><img src="https://phaser.io/images/github/patreon-perk-chart.png" alt="Backers Perks"></p>
+            <p class="text-center"><img src="https://phaser.io/images/github/patreon-perk-chart.png" alt="Backers Perks" class="img-fluid"></p>
             <p>We use <a href="https://www.patreon.com/photonstorm">Patreon</a> to manage the backing and you can <a
                     href="https://www.patreon.com/join/photonstorm?">support Phaser</a> from $1 per month. The amount
                 you pledge is entirely up to you and can be changed as often as you like. Patreon renews monthly, just
@@ -133,10 +132,8 @@
                 <li><a href="https://www.lagged.com">Lagged</a></li>
                 <li><a href="https://heroiclabs.com/phaserjs/">Nakama</a></li>
             </ul>
-            <p class="text-center"><img src="https://phaser.io/images/github/sponsors-2020-12.png" alt="Sponsors"
-                    title="Our Awesome Sponsors"></p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-download.png" alt="Download Phaser"
-                    title="Download Phaser">
+            <p class="text-center"><img src="https://phaser.io/images/github/sponsors-2020-12.png" alt="Sponsors" class="img-fluid" title="Our Awesome Sponsors"></p>
+            <p class="text-center"><img src="https://phaser.io/images/github/div-download.png" alt="Download Phaser" title="Download Phaser" class="img-fluid">
                 <a name="download"></a></p>
             <p>Phaser 3 is available via GitHub, npm and CDNs:</p>
             <ul>
@@ -159,8 +156,7 @@
 ```
 @endmarkdown
             <h3>CDN</h3>
-            <p><a href="https://www.jsdelivr.com/package/gh/photonstorm/phaser"><img
-                        src="https://data.jsdelivr.com/v1/package/gh/photonstorm/phaser/badge" alt=""></a></p>
+            <p><a href="https://www.jsdelivr.com/package/gh/photonstorm/phaser"><img src="https://data.jsdelivr.com/v1/package/gh/photonstorm/phaser/badge" alt=""></a></p>
             <p><a href="https://www.jsdelivr.com/projects/phaser">Phaser is on jsDelivr</a> which is a &quot;super-fast
                 CDN for developers&quot;. Include the following in your html:</p>
 @markdown
@@ -213,8 +209,7 @@
                 should now be able to use any other packager, like Parcel, without any config changes.</p>
             <h3>License</h3>
             <p>Phaser is released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-getting-started.png" alt="Getting Started"
-                    title="Getting Started">
+            <p class="text-center"><img src="https://phaser.io/images/github/div-getting-started.png" alt="Getting Started" title="Getting Started" class="img-fluid">
                 <a name="getting-started"></a></p>
             <img src="https://phaser.io/images/github/learn.jpg" align="right">
             <p>Tutorials and guides on Phaser 3 development are being published every week.</p>
@@ -354,27 +349,24 @@ function create ()
                 bounds. These properties will make our logo bounce around the screen. Finally, we tell the particle
                 emitter to follow the logo - so as the logo moves, the particles will flow from it.</p>
             <p>Run it in your browser and you'll see the following:</p>
-            <p class="text-center"><img src="https://phaser.io/images/github/300/sample1.png" alt="Phaser 3 Demo" title="Phaser 3 Demo"></p>
+            <p class="text-center"><img src="https://phaser.io/images/github/300/sample1.png" alt="Phaser 3 Demo" title="Phaser 3 Demo" class="img-fluid"></p>
             <p>(Got an error? Here's the <a
                     href="https://gist.github.com/photonstorm/46cb8fb4b19fc7717dcad514cdcec064">full code</a>)</p>
             <p>This is a tiny example, and there are hundreds more for you to explore, but hopefully it shows how
                 expressive and quick Phaser is to use. With just a few easily readable lines of code, we've got
                 something pretty impressive up on screen!</p>
-            <p class="text-center"><a href="https://blog.ourcade.co"><img src="https://phaser.io/images/github/ourcade.jpg"
-                        alt="Ourcade"></a></p>
+            <p class="text-center"><a href="https://blog.ourcade.co"><img src="https://phaser.io/images/github/ourcade.jpg" alt="Ourcade" class="img-fluid"></a></p>
             <p>Ourcade have published <a href="https://blog.ourcade.co">two great Phaser 3 books</a>. They'll take you
                 from getting set-up, through to finishing your first game using modern JavaScript or TypeScript and
                 they're both completely free! They also publish a huge range of quality tutorials and videos, so be sure
                 to check out their site every week.</p>
-            <p class="text-center"><a href="https://gumroad.com/a/244184179"><img src="https://phaser.io/images/github/feronato.png"
-                        alt="HTML5 Cross Platform Game Development with Phaser 3"></a></p>
+            <p class="text-center"><a href="https://gumroad.com/a/244184179"><img src="https://phaser.io/images/github/feronato.png" alt="HTML5 Cross Platform Game Development with Phaser 3" class="img-fluid"></a></p>
             <p>Learn the secrets of HTML5 game development with Phaser 3.50 while building a cross platform endless
                 runner game. Designed both for beginners and skilled programmers, the course guides you from an empty
                 folder introducing the bare bones of JavaScript to advanced Phaser 3 features. Find out more details
                 about <a href="https://gumroad.com/a/244184179">HTML5 Cross Platform Game Development with Phaser</a>.
             </p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-building-phaser.png" alt="Building Phaser"
-                    title="Building Phaser"></p>
+            <p class="text-center"><img src="https://phaser.io/images/github/div-building-phaser.png" alt="Building Phaser" title="Building Phaser" class="img-fluid"></p>
             <p>There are both plain and minified compiled versions of Phaser in the <code>dist</code> folder of the
                 repository. The plain version is for use during development, and the minified version is for production
                 use. You can and should also create your own builds.</p>
@@ -393,7 +385,7 @@ function create ()
                 which includes source maps for local testing. You can also <code>npm run dist</code> to create a
                 minified packaged build in the <code>dist</code> folder. For a list of all commands available use
                 <code>npm run help</code>.</p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-change-log.png" alt="Change Log" title="Change Log">
+            <p class="text-center"><img src="https://phaser.io/images/github/div-change-log.png" alt="Change Log" title="Change Log" class="img-fluid">
                 <a name="changelog"></a></p>
             <h1>Change Log</h1>
             <p>Traditionally we have always included the most recent Change Log in this README. It was a nice quick way
@@ -408,7 +400,7 @@ function create ()
                 something, join us on the Phaser Discord and feel free to ask.</p>
             <p>For versions prior to 3.50 you can read the previous <a
                     href="https://github.com/photonstorm/phaser/blob/master/CHANGELOG.md">Change Log</a> as well.</p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-contributing.png" alt="Contributing" title="Contributing">
+            <p class="text-center"><img src="https://phaser.io/images/github/div-contributing.png" alt="Contributing" title="Contributing" class="img-fluid">
                 <a name="contributing"></a></p>
             <p>The <a href="https://github.com/photonstorm/phaser/blob/master/.github/CONTRIBUTING.md">Contributors
                     Guide</a> contains full details on how to help with Phaser development. The main points are:</p>
@@ -432,7 +424,7 @@ function create ()
             </ul>
             <p>Written something cool in Phaser? Please tell us about it in the <a
                     href="https://phaser.discourse.group/">forum</a>, or email support@phaser.io</p>
-            <p class="text-center"><img src="https://phaser.io/images/github/div-created-by.png" alt="Created by" title="Created by"></p>
+            <p class="text-center"><img src="https://phaser.io/images/github/div-created-by.png" alt="Created by" title="Created by" class="img-fluid"></p>
             <div class="text-center">
 
                 <p>Phaser is a <a href="http://www.photonstorm.com">Photon Storm</a> production.</p>

@@ -70,7 +70,7 @@
                     <a href="focus/{{$longname}}"><img src="{{asset('images/aim.png')}}" alt="Focus"></a>
                 </div>
                 <div class="copy-members-to-clipboard">
-                    <a href="#{{$name}}"><img src="{{asset('images/hashtag.png')}}" alt="Focus" width="30" id="{{$name}}"></a>
+                    <a href="#{{$shortname}}"><img src="{{asset('images/hashtag.png')}}" alt="Focus" width="30" id="{{url()->to('')}}/{{Config::get('app.phaser_version')}}/focus/{{$longname}}"></a>
                 </div>
             </div>
             @endif

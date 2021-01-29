@@ -59,6 +59,7 @@ new {{ $class->name }}({{$classConstructor}})
                         nullable="{{$memberConstant->nullable}}"
                         longname="{{$memberConstant->longname}}"
                         focus="true"
+                        shortname="{{$memberConstant->shortname}}"
 
                     />
                 @endforeach
@@ -109,6 +110,7 @@ new {{ $class->name }}({{$classConstructor}})
                     returnstype="{{$method->returnstype}}"
                     returnsdescription="{{$method->returnsdescription}}"
                     longname="{{$method->longname}}"
+                    shortname="{{$method->name}}"
                     focus="true"
                 />
                 @endforeach

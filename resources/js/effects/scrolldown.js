@@ -1,12 +1,15 @@
 jQuery(() => {
     const scrollToAnchor = (aid) => {
-        let tag = $(aid);
 
-        if (tag.length) {
-            $('html,body').animate({
-                scrollTop: tag.offset().top
-            }, 'slow');
+        if(aid.length > 1) {
+            let tag = $(aid);
 
+            if (tag.length) {
+                $('html,body').animate({
+                    scrollTop: tag.offset().top
+                }, 'slow');
+
+            }
         }
     }
 

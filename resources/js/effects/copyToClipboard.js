@@ -4,9 +4,9 @@ jQuery(() => {
     const members = $('.copy-members-to-clipboard');
 
     members.on('click', (e) => {
-        e.preventDefault();
-        window.location.href = `#${e.target.id}`;
-        copyToClipboard(window.location.href);
+
+        copyToClipboard(e.target.id);
+
         const tstfy = Toastify({
             "text": "copied to clipboard",
             "closeButton": false,
@@ -25,9 +25,7 @@ jQuery(() => {
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         });
-        // tstfy.success('Copy to clipboard');
         tstfy.showToast();
-        // Toastify.options(.options = );
 
     });
 

@@ -36,6 +36,7 @@
         @endif
 
         {{-- Show anothers namespace --}}
+        {{-- Events --}}
         @if (!empty($events) AND count($events))
             <h3>Events</h3>
                 @foreach ($events as $event)
@@ -51,6 +52,7 @@
                     metalineno="{{$event->metalineno}}"
                     longname="{{$event->longname}}"
                     focus="true"
+                    shortname="{{$event->name}}"
                 />
                 @endforeach
         @endif
@@ -74,6 +76,7 @@
                     metalineno="{{$memberConstant->metalineno}}"
                     longname="{{$memberConstant->longname}}"
                     focus="true"
+                    shortname="{{$memberConstant->name}}"
                 />
             @endforeach
         @elseif (count($members))
@@ -92,6 +95,7 @@
                 metalineno="{{$member->metalineno}}"
                 longname="{{$member->longname}}"
                 focus="true"
+                shortname="{{$member->name}}"
             />
             @endforeach
         @endif
@@ -120,6 +124,7 @@
                     metalineno="{{$method->metalineno}}"
                     :returnstype="$method->returnstype"
                     returnsdescription="{{$method->returnsdescription}}"
+                    shortname="{{$method->name}}"
                 />
             @endforeach
         @endif

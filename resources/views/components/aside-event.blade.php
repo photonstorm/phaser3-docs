@@ -5,7 +5,7 @@
         <ul>
             @foreach ($collection as $item)
             <li>
-                <a class="list-group-item" href="#{{$item->name}}">{{$item->name}}</a>
+                <a class="list-group-item" href="{{$item->longname}}">{{$item->name}}</a>
             </li>
             @endforeach
         </ul>
