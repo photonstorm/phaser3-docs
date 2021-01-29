@@ -19,6 +19,7 @@ let InsertFunction = function (db, data)
         description,
         scope,
         fires,
+        listens,
         signature,
         returns,
         returnstype,
@@ -39,6 +40,7 @@ let InsertFunction = function (db, data)
         @description,
         @scope,
         @fires,
+        @listens,
         @signature,
         @returns,
         @returnstype,
@@ -177,6 +179,20 @@ let InsertFunction = function (db, data)
             fires = block.fires.join(',');
         }
 
+        // listens
+
+        let listens = '';
+
+        if (Array.isArray(block.listens) && block.listens.length > 0)
+        {
+            for (let e = 0; e < block.listens.length; e++)
+            {
+                block.listens[e] = CleanEventName(block.listens[e]);
+            }
+    
+            listens = block.listens.join(',');
+        }
+
         //  Function signature
         let signature = signatureParams.join(',');
 
@@ -220,6 +236,7 @@ let InsertFunction = function (db, data)
             description: description,
             scope: block.scope,
             fires: fires,
+            listens: listens,
             signature: signature,
             returns: returns,
             returnstype: returnsType,

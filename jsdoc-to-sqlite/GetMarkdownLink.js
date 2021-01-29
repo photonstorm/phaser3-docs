@@ -5,7 +5,7 @@ const GetMarkDownLink = (text = '') => {
     
     let link_markdown = (text !== undefined) ? text.replace(pattern, (string) => {
         let link_result = '';
-        if (string.match(/\[[a-zA-Z\(\)_\/\/]{0,}\]/i)) {
+        if (string.match(/\[[a-zA-Z\(\)_.\/\/]{0,}\]/i)) {
             link = string.replace('}', ')')
                 .replace('{@link', '(')
                 .replace('( ', '(');
