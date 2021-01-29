@@ -40,20 +40,22 @@
         @if (!empty($events) AND count($events))
             <h3>Events</h3>
                 @foreach ($events as $event)
-                <x-member-card
-                    :id="$event->name"
-                    class="card-member-style animate__animated"
-                    name="{{$event->name}}"
-                    description="{!! $event->description !!}"
-                    :params="$event->params->all()"
-                    :types="$event"
-                    since="{{$event->since}}"
-                    metaFileRoute="{{$event->metapath}}/{{$event->metafilename}}"
-                    metalineno="{{$event->metalineno}}"
-                    longname="{{$event->longname}}"
-                    focus="true"
-                    shortname="{{$event->name}}"
-                />
+                    <x-card :collection="$event" class="card" focus="true" />
+                    {{-- TODO: Remove this - next version --}}
+                    {{-- <x-member-card
+                        :id="$event->name"
+                        class="card-member-style animate__animated"
+                        name="{{$event->name}}"
+                        description="{!! $event->description !!}"
+                        :params="$event->params->all()"
+                        :types="$event"
+                        since="{{$event->since}}"
+                        metaFileRoute="{{$event->metapath}}/{{$event->metafilename}}"
+                        metalineno="{{$event->metalineno}}"
+                        longname="{{$event->longname}}"
+                        focus="true"
+                        shortname="{{$event->name}}"
+                    /> --}}
                 @endforeach
         @endif
 
@@ -62,7 +64,8 @@
         <h3>Members</h3>
         @if (count($membersConstants))
             @foreach ($membersConstants as $memberConstant)
-                <x-member-card
+            <x-card :collection="$memberConstant" class="card" focus="true" :id="$memberConstant->name"/>
+                {{-- <x-member-card
                     :id="$memberConstant->name"
                     class="card-members-style animate__animated"
                     access="{{$memberConstant->access}}"
@@ -77,11 +80,12 @@
                     longname="{{$memberConstant->longname}}"
                     focus="true"
                     shortname="{{$memberConstant->name}}"
-                />
+                /> --}}
             @endforeach
         @elseif (count($members))
             @foreach ($members as $member)
-            <x-member-card
+            <x-card :collection="$member" class="card" focus="true" :id="$member->name"/>
+            {{-- <x-member-card
                 :id="$member->name"
                 class="card-member-style"
                 access="{{$member->access}}"
@@ -96,7 +100,7 @@
                 longname="{{$member->longname}}"
                 focus="true"
                 shortname="{{$member->name}}"
-            />
+            /> --}}
             @endforeach
         @endif
         @endif
@@ -108,7 +112,9 @@
                 @php
                     $methodConstructor = resolve('get_params_format')($method->params);
                 @endphp
-            <x-member-card
+            <x-card :collection="$method" class="card" focus="true" :id="$method->name"/>
+            {{-- TODO: Remove this - next version --}}
+            {{-- <x-member-card
                     class="card-member-style"
                     scope="{{$method->scope}}"
                     name="{{$method->name}}({{$methodConstructor}})"
@@ -125,7 +131,7 @@
                     :returnstype="$method->returnstype"
                     returnsdescription="{{$method->returnsdescription}}"
                     shortname="{{$method->name}}"
-                />
+                /> --}}
             @endforeach
         @endif
 
@@ -133,7 +139,8 @@
         @if (!empty($typedefs) AND count($typedefs))
         <h3>Type Definitions</h3>
             @foreach ($typedefs as $typedef)
-            <x-member-card
+            <x-card :collection="$typedef" class="card" :id="$typedef->name" focus="true"/>
+            {{-- <x-member-card
                 :id="$typedef->name"
                 class="card-member-style"
                 longname="{{$typedef->longname}}"
@@ -143,7 +150,7 @@
                 type="{{$typedef->type}}"
                 :params="$typedef->params->all()"
                 :properties="$typedef->properties->all()"
-            />
+            /> --}}
             @endforeach
         @endif
 @endsection

@@ -215,6 +215,7 @@
             </tbody>
         </table>
     @endif
+
     @if(!empty($returnsdescription))
     <div class="pl-3">
         <h4>Returns:</h4>

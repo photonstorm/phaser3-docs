@@ -1,4 +1,12 @@
-.card-members-style, .card-member-style {
+.card-members-style_debug {
+    background-color: rgb(14, 233, 178);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.card, .card-members-style, .card-member-style {
     background-color: $light;
     margin-top: 20px;
     margin-bottom: 20px;

@@ -1,15 +1,11 @@
 @extends('layouts.app')
+@section('title', $collection->name)
 @section('content')
 <div class="container layout-container">
     <div class="row">
         <div class="col-12">
             @if($collection->getTable() === 'event')
                 <div class="mt-3">
-                    {{-- <div class="h2 text-danger">{{ ucfirst($collection->getTable()) }}: {{ $collection->name }}</div>
-                    <div class="h3 text-info">{{ $collection->longname }}</div> --}}
-{{-- @markdown
-{!! $collection->description !!}
-@endmarkdown --}}
                 @if($collection->getTable() === 'class')
                     <hr>
                     <h3>Constructor:</h3>
@@ -22,7 +18,8 @@ new {{ $collection->name }}({{$classConstructor}})
 ```
 @endmarkdown
                 @else
-                    <x-member-card
+                    <x-card class="card" :collection="$collection" />
+                    {{-- <x-member-card
                         class="card-members-style"
                         :params="$collection->params->all()"
                         name="{{$collection->name}}"
@@ -30,7 +27,7 @@ new {{ $collection->name }}({{$classConstructor}})
                         since="{{$collection->since}}"
                         metaFileRoute="{{$collection->metapath}}/{{$collection->metafilename}}"
                         metalineno="{{$collection->metalineno}}"
-                    />
+                    /> --}}
                 @endif
 
                 </div>
@@ -38,7 +35,7 @@ new {{ $collection->name }}({{$classConstructor}})
             @else
                 <div class="mt-3">
                     @if(!empty($collection->memberof))
-                        <div class="card-member-style">
+                        <div class="card">
                             <h3>Member of: {!! resolve('get_api_link')($collection->memberof) !!}</h3>
                         </div>
                         @endif
@@ -47,7 +44,8 @@ new {{ $collection->name }}({{$classConstructor}})
                         $functionArguments = ($collection->getTable() === 'functions') ? "(" . resolve('get_params_format')($params) . ")"  : "";
                     @endphp
 
-                    <x-member-card
+                    <x-card class="card" :collection="$collection" />
+                    {{-- <x-member-card
                         class="card-members-style show-important-card"
                         name="{{$collection->name}}{{$functionArguments}}"
                         kind="function"
@@ -68,7 +66,7 @@ new {{ $collection->name }}({{$classConstructor}})
                         nullable="{{$collection->nullable}}"
                         scope="{{$collection->scope}}"
                         :type="$collection->type"
-                    />
+                    /> --}}
                 </div>
             @endif
         </div>

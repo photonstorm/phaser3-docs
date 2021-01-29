@@ -18,7 +18,6 @@
 new {{ $class->name }}({{$classConstructor}})
 ```
 @endmarkdown
-
         <x-member-card
             class="mt-1 pt-2 pb-4"
             :params=$params
@@ -40,7 +39,8 @@ new {{ $class->name }}({{$classConstructor}})
         @if ((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
             <h2 class="mt-4">Members</h2>
             @foreach ($membersConstants as $memberConstant)
-                    <x-member-card
+                <x-card class="card" :id="$memberConstant->name" :collection="$memberConstant" focus="true" />
+                    {{-- <x-member-card
                         :id="$memberConstant->name"
                         class="card-members-style animate__animated"
                         name="{{$memberConstant->name}}"
@@ -61,10 +61,11 @@ new {{ $class->name }}({{$classConstructor}})
                         focus="true"
                         shortname="{{$memberConstant->shortname}}"
 
-                    />
+                    /> --}}
                 @endforeach
                 @foreach ($members as $member)
-                    <x-member-card
+                    <x-card class="card" :id="$member->name" :collection="$member" focus="true"/>
+                    {{-- <x-member-card
                         :id="$member->name"
                         class="card-members-style animate__animated"
                         name="{{$member->name}}"
@@ -85,7 +86,8 @@ new {{ $class->name }}({{$classConstructor}})
                         scope="{{$member->scope}}"
                         longname="{{$member->longname}}"
                         focus="true"
-                    />
+                        shortname="{{$member->name}}"
+                    /> --}}
                 @endforeach
         @endif
         {{-- Methods --}}
@@ -95,7 +97,8 @@ new {{ $class->name }}({{$classConstructor}})
                 @php
                     $methodConstructor = resolve('get_params_format')($method->params->all())
                 @endphp
-                <x-member-card
+                <x-card class="card" :id="$method->name" :collection="$method" focus="true"/>
+                {{-- <x-member-card
                     :id="$method->name"
                     class="card-members-style animate__animated"
                     name="{{$method->name}}({{$methodConstructor}})"
@@ -112,7 +115,7 @@ new {{ $class->name }}({{$classConstructor}})
                     longname="{{$method->longname}}"
                     shortname="{{$method->name}}"
                     focus="true"
-                />
+                /> --}}
                 @endforeach
         @endif
 @endsection
