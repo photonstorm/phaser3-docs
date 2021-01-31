@@ -124,7 +124,11 @@ const Searchbar = (props) => {
                                                         return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> {
                                                                 inputRef.current.value.split('.').filter((word, i) => (i != inputRef.current.value.split('.').length-1)).join('.')
                                                         }.{res.name}</a></li>
-                                                    } else {
+                                                    }
+                                                    else if (result.type.toLowerCase() === 'function') {
+                                                        return <li key={res.longname + index}><a href={ `/${version}/focus/${res.longname.replace('-', '#')}` }> { res.longname }</a></li>
+                                                    }
+                                                    else {
                                                         return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> { res.longname }</a></li>
                                                     }
                                                 }
