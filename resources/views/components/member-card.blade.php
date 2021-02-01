@@ -66,7 +66,7 @@
             </div>
             @if($focus)
             <div class="d-flex">
-                <div class="mr-2 align-middle">
+                <div class="me-2 align-middle">
                     <a href="focus/{{$longname}}"><img src="{{asset('images/aim.png')}}" alt="Focus"></a>
                 </div>
                 <div class="copy-members-to-clipboard">
@@ -217,9 +217,9 @@
     @endif
 
     @if(!empty($returnsdescription))
-    <div class="pl-3">
+    <div class="ps-3">
         <h4>Returns:</h4>
-        <div class="pl-4">
+        <div class="ps-4">
             @markdown
 {!! $returnsdescription !!}
             @endmarkdown
@@ -227,9 +227,9 @@
     </div>
     @endif
     @if(!empty($returnstype))
-    <div class="pl-3">
+    <div class="ps-3">
         <h4>Type:</h4>
-        <div class="pl-4">
+        <div class="ps-4">
             <ul>
                 @foreach (explode('|', $returnstype) as $returntype)
                     <li>
@@ -257,7 +257,7 @@
     <div>Overrides:  {!! resolve('get_api_link')($overrides) !!}</div>
     @endif
     @if(!empty($fires))
-    <div class="pl-4">
+    <div class="ps-4">
         <h4>Fires:</h4>
         <ul>
             @foreach (explode(',', $fires) as $fire)

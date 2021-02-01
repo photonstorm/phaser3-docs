@@ -1,12 +1,12 @@
-<div class="aside w-100 pt-4 pl-3" id="scrollspy_aside">
+<div class="aside w-100 pt-4 ps-3" id="scrollspy_aside">
     <div class="content">
             <h5>Filter</h5>
             <div class="mb-3 form-group">
-                <div class="ml-3">
+                <div class="me-3">
                     <label class="align-middle" for="hide_inherited">Hide inherited members:</label>
                     <input type="checkbox" id="hide_inherited" />
                 </div>
-                <div class="ml-3">
+                <div class="me-3">
                     <label class="align-middle" for="show_private_members">show private members:</label>
                     <input type="checkbox" id="show_private_members" />
                 </div>

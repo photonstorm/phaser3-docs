@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Physics')
 @section('content')
-<div class="container layout-container landing-page px-4">
+<div class="container layout-container landing-page px-5">
     <div class="row">
         <div class="col-12">
             <div class="mt-4">

@@ -19,4 +19,3 @@ require('./effects/copyToClipboard');
 
 require('./components/Searchbar');
 require('./components/ChangeVersionSelector');
-

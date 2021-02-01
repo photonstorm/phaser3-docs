@@ -84,7 +84,7 @@ const Searchbar = (props) => {
         <React.Fragment>
             <form className="form-inline my-2 my-lg-0" onSubmit={(e) => e.preventDefault()}>
                 <input
-                    className="form-control mr-sm-2"
+                    className="form-control me-sm-2"
                     type="search"
                     placeholder="Search..."
                     aria-label="Search"

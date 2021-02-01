@@ -10,7 +10,7 @@
                 </div>
 
                 @foreach ($list_longnames as $longname)
-                <div class="col-12 mt-4">
+                <div class="col-12 mt-4 ps-3">
                     <h2>{{$longname}}</h2>
 
                     @php

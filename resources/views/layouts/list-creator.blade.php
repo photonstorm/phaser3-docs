@@ -9,7 +9,7 @@
                     <h3><u>{{$name}}</u></h3>
                 </div>
 
-                <ul>
+                <ul class="ps-5">
                     @foreach ($collections as $collection)
                     <li>
                         <a href="{{$collection->longname}}">{{$collection->longname}}</a>

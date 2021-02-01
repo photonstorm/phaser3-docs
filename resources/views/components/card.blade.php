@@ -27,7 +27,7 @@
         </div>
         @if($focus)
             <div class="d-flex">
-                <div class="mr-2 align-middle">
+                <div class="me-2 align-middle">
                     <a href="focus/{{$collection->longname}}"><img src="{{asset('images/aim.png')}}" alt="Focus"></a>
                 </div>
                 <div class="copy-members-to-clipboard">
@@ -169,9 +169,9 @@
 
     {{-- Functions - ReturnsDescription --}}
     @if(!empty($collection->returnsdescription))
-        <div class="pl-3">
+        <div class="ps-3">
             <h4>Returns:</h4>
-            <div class="pl-4">
+            <div class="ps-4">
 @markdown
 {!! $collection->returnsdescription !!}
 @endmarkdown
@@ -181,9 +181,9 @@
 
     {{-- ReturnsType --}}
     @if(!empty($collection->returnstype))
-    <div class="pl-3">
+    <div class="ps-3">
         <h4>Type:</h4>
-        <div class="pl-4">
+        <div class="ps-4">
             <ul>
                 @foreach (explode('|', $collection->returnstype) as $returntype)
                     <li>
@@ -208,7 +208,7 @@
 
     {{-- Fires --}}
     @if(!empty($collection->fires))
-        <div class="pl-4">
+        <div class="ps-4">
             <h4>Fires:</h4>
             <ul>
                 @foreach (explode(',', $collection->fires) as $fire)
@@ -221,7 +221,7 @@
     {{-- Listeners --}}
     {{-- Fires --}}
     @if(!empty($collection->listens))
-        <div class="pl-4">
+        <div class="ps-4">
             <h4>Listens:</h4>
             <ul>
                 @foreach (explode(',', $collection->listens) as $listen)

@@ -8,7 +8,7 @@
                 @yield('aside')
             </div>
         </div>
-        <div class="col-12 col-lg-8 col-xl-9 pt-4 pl-4">
+        <div class="col-12 col-lg-8 col-xl-9 pt-4 ps-4">
             @yield('section_content')
         </div>
     </div>

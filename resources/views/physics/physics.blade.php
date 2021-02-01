@@ -16,19 +16,27 @@
                     </u>
                 </h3>
                 <div class="row">
-                    @foreach ($physics['arcade'] as $arcade)
-                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
-                        <a href="{{ $arcade->longname }}" class="btn-primary">{{ $arcade->name }}</a>
+                    <div class="col-12">
+                        <ul class="ps-4">
+                            @foreach ($physics['arcade'] as $arcade)
+                                <li>
+                                    <a href="{{ $arcade->longname }}">{{ $arcade->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
-                    @endforeach
                 </div>
                 <h3 class="mt-3">MatterJS</h3>
                 <div class="row">
-                    @foreach ($physics['matter'] as $matter)
-                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
-                        <a href="{{ $matter->longname }}" class="btn-primary">{{ $matter->name }}</a>
+                    <div class="col-12">
+                        <ul class="ps-4">
+                            @foreach ($physics['matter'] as $matter)
+                                <li>
+                                    <a href="{{ $matter->longname }}">{{ $matter->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
-                    @endforeach
                 </div>
             </div>
 
