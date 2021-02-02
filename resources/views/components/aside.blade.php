@@ -1,4 +1,4 @@
-<div class="aside w-100 pt-4 ps-3" id="scrollspy_aside">
+<div class="aside w-100 pt-4 ps-3 scrollspy_aside">
     <div class="content">
             <h5>Filter</h5>
             <div class="mb-3 form-group">
@@ -11,7 +11,9 @@
                     <input type="checkbox" id="show_private_members" />
                 </div>
             </div>
-        @if(!empty($namespaces) AND count($namespaces))
+
+            <div id="react-aside-search-list" data-list="{{ json_encode($aside_collection) }}"></div>
+        {{-- @if(!empty($namespaces) AND count($namespaces))
             <h5>
                 Namespace
             </h5>
@@ -100,6 +102,6 @@
                     </li>
                 @endforeach
             </ul>
-        @endif
+        @endif --}}
     </div>
 </div>

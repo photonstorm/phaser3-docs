@@ -20,25 +20,33 @@ jQuery(() => {
         scrollToAnchor(hash);
     }
 
-    $('body').scrollspy({ target: '#scrollspy_aside' });
-    $('[data-spy="scroll"]').each(function () {
-        var $spy = $(this).scrollspy('refresh');
-    });
+    comprobateOverflowAside();
+    activeAsideSticky();
+
+    // $('body').scrollspy({ target: '.scrollspy_aside' });
+    // $('[data-spy="scroll"]').each(function () {
+    //     var $spy = $(this).scrollspy('refresh');
+    // });
 
     // aside sticky
     $(window).on('scroll', function () {
-        if ($(window).scrollTop() > 50) {
-            $('.aside-fixed').addClass('aside-sticky');
-        } else {
-            $('.aside-fixed').removeClass('aside-sticky');
-            $('.aside-fixed').css('top', (50 - $(window).scrollTop()) + 'px');
-        }
+        activeAsideSticky();
     });
     $(window).on('resize', function () {
         comprobateOverflowAside();
     });
-    comprobateOverflowAside();
+
 });
+
+const activeAsideSticky = () => {
+    if ($(window).scrollTop() > 50) {
+        $('.aside-fixed').addClass('aside-sticky');
+    } else {
+        $('.aside-fixed').removeClass('aside-sticky');
+        $('.aside-fixed').css('top', (50 - $(window).scrollTop()) + 'px');
+    }
+}
+
 
 // Change scrollY of aside
 const comprobateOverflowAside = () => {
