@@ -76365,12 +76365,7 @@ var Searchbar = function Searchbar(props) {
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState4 = _slicedToArray(_useState3, 2),
       search_result = _useState4[0],
-      setSearchResult = _useState4[1]; // useEffect(() => {
-  //     if (searchTerm.length === 0) {
-  //         closeSearchbar();
-  //     }
-  // });
-
+      setSearchResult = _useState4[1];
 
   var changeTermValue = function changeTermValue(e) {
     debouncedSearch(e.target.value);
@@ -76382,7 +76377,7 @@ var Searchbar = function Searchbar(props) {
 
   var debouncedSearch = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["debounce"])(function (query) {
     if (query.trim() !== '') {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query, "&version=").concat(version)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query.replace('#', '-'), "&version=").concat(version)).then(function (res) {
         setSearchResult(res.data);
         openSearchbar();
       })["catch"](function (error) {
@@ -76473,13 +76468,13 @@ var Searchbar = function Searchbar(props) {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/".concat(version, "/focus/").concat(res.longname.replace('-', '#'))
-        }, " ", res.longname));
+        }, " ", res.longname.replace('-', '#')));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/".concat(version, "/").concat(res.longname.replace('-', '#'))
-        }, " ", res.longname));
+        }, " ", res.longname.replace('-', '#')));
       }
     }))));
   })));

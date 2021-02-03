@@ -12,11 +12,14 @@ use App\Models\Member;
 use App\Models\Namespaces;
 use App\Models\Typedefs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class Searchbar extends Controller
 {
+
     public function search(Request $request)
     {
+
         $keyword = $request->search;
         $version = $request->version;
 
@@ -29,25 +32,25 @@ class Searchbar extends Controller
 
         $search_array = [];
 
-        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
+        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $classes_collection = new SearchbarResource($classes);
 
-        $namespace = Namespaces::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
+        $namespace = Namespaces::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $namespace_collection = new SearchbarResource($namespace);
 
-        $events = Event::where('longname', 'like', "%$keyword%")->get()->take(5)->sortBy("longname")->flatten(1);
+        $events = Event::where('longname', 'like', "%$keyword%")->get()->take(Config::get('app.search_amount_return'))->sortBy("longname")->flatten(1);
         $events_collection = new SearchbarResource($events);
 
-        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
+        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $functions_collection = new SearchbarResource($functions);
 
-        $constants = Constant::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
+        $constants = Constant::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $constants_collection = new SearchbarResource($constants);
 
-        $members = Member::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
+        $members = Member::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $members_collection = new SearchbarResource($members);
 
-        $typedef = Typedefs::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(5)->flatten(1);
+        $typedef = Typedefs::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $typedef_collection = new SearchbarResource($typedef);
 
 

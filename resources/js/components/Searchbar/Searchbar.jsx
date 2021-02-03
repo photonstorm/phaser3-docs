@@ -17,12 +17,6 @@ const Searchbar = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [search_result, setSearchResult] = useState([]);
 
-    // useEffect(() => {
-    //     if (searchTerm.length === 0) {
-    //         closeSearchbar();
-    //     }
-    // });
-
     const changeTermValue = (e) => {
         debouncedSearch(e.target.value);
 
@@ -34,7 +28,7 @@ const Searchbar = (props) => {
     const debouncedSearch = debounce((query) => {
         if (query.trim() !== '') {
 
-            axios.get(`/api/search-bar?search=${query}&version=${version}`)
+            axios.get(`/api/search-bar?search=${query.replace('#', '-')}&version=${version}`)
             .then(res => {
                 setSearchResult(res.data);
                 openSearchbar();
@@ -126,10 +120,10 @@ const Searchbar = (props) => {
                                                         }.{res.name}</a></li>
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
-                                                        return <li key={res.longname + index}><a href={ `/${version}/focus/${res.longname.replace('-', '#')}` }> { res.longname }</a></li>
+                                                        return <li key={res.longname + index}><a href={ `/${version}/focus/${res.longname.replace('-', '#')}` }> { res.longname.replace('-', '#') }</a></li>
                                                     }
                                                     else {
-                                                        return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> { res.longname }</a></li>
+                                                        return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> { res.longname.replace('-', '#') }</a></li>
                                                     }
                                                 }
                                             )
