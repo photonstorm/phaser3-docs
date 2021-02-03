@@ -48,7 +48,6 @@ const AsideSearchList = (props) => {
                 return true;
             }
         })
-
         return new_data;
     }
 
@@ -74,7 +73,7 @@ const AsideSearchList = (props) => {
                         <ul>
                             {
                                 asideFilterPass(data.data, filter).map((el, key) => {
-                                    return <li key={key}><a href={`#${el.name}`} className="list-group-item">{el.name}</a></li>
+                                    return <li key={key}><a href={`#${el.name}`} className="list-group-item"> { (el.access === 'private') ? (<span class="badge bg-info text-dark">Private</span>) : ''} {el.name}</a></li>
                                 })
                             }
                         </ul>

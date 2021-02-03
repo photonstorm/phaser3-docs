@@ -76123,7 +76123,9 @@ var AsideSearchList = function AsideSearchList(props) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         href: "#".concat(el.name),
         className: "list-group-item"
-      }, el.name));
+      }, " ", el.access === 'private' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+        "class": "badge bg-info text-dark"
+      }, "Private") : '', " ", el.name));
     })));
   }));
 };

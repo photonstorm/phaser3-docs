@@ -4,11 +4,11 @@
             <div class="mb-3 form-group">
                 <div class="me-3">
                     <label class="align-middle" for="hide_inherited">Hide inherited members:</label>
-                    <input type="checkbox" id="hide_inherited" />
+                    <input type="checkbox" id="hide_inherited" autofill="off" autocomplete="off"/>
                 </div>
                 <div class="me-3">
                     <label class="align-middle" for="show_private_members">show private members:</label>
-                    <input type="checkbox" id="show_private_members" />
+                    <input type="checkbox" id="show_private_members" autofill="off" autocomplete="off"/>
                 </div>
             </div>
 

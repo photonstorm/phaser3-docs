@@ -1,8 +1,12 @@
 {{-- Test 1 http://localhost:8000/3.52.0/Phaser.Game#plugins --}}
 {{-- Test Constants: http://localhost:8000/3.52.0/Phaser.Core.Config --}}
-<div {{ $attributes->merge([
-    'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
-]) }}>
+@if($isFocusRoute)
+    <div {{ $attributes }}>
+@else
+    <div {{ $attributes->merge([
+        'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
+    ]) }}>
+@endif
     {{-- Members or membersConstants --}}
     <div class="d-flex justify-content-between">
         {{-- name --}}

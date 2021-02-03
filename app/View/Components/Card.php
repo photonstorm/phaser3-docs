@@ -9,17 +9,18 @@ class Card extends Component
     public $collection;
     public $focus;
     public $id;
+    public $isFocusRoute;
 
     // Members used by card
     public $table_name;
     public $metaFileRoute = "";
 
-
-    public function __construct($id = '', $collection, bool $focus = false)
+    public function __construct($id = '', $collection, bool $focus = false, bool $isFocusRoute = FALSE)
     {
         $this->collection = $collection;
         $this->focus = $focus;
         $this->id = $id;
+        $this->isFocusRoute = $isFocusRoute;
 
         // Members used by card
         $this->metaFileRoute = "$collection->metapath/$collection->metafilename";
@@ -37,6 +38,12 @@ class Card extends Component
             $scope_out .= 'static';
         }
 
+        if($this->collection->access == 'private') {
+            if (!empty($scope_out)) {
+                $scope_out .= ', ';
+            }
+            $scope_out .= 'private';
+        }
 
         if($this->collection->access == 'protected') {
             if (!empty($scope_out)) {

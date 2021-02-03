@@ -43,8 +43,7 @@ new {{ $collection->name }}({{$classConstructor}})
                         $params = (empty($collection->params)) ? [] : $collection->params->all();
                         $functionArguments = ($collection->getTable() === 'functions') ? "(" . resolve('get_params_format')($params) . ")"  : "";
                     @endphp
-
-                    <x-card class="card" :collection="$collection" />
+                    <x-card class="card" isFocusRoute="TRUE" :collection="$collection" />
                     {{-- <x-member-card
                         class="card-members-style show-important-card"
                         name="{{$collection->name}}{{$functionArguments}}"
