@@ -31,7 +31,6 @@ const AsideSearchList = (props) => {
     }
 
     const asideFilterPass = (data, aside_filter) => {
-
         let new_data = clone(data);
         // Hide all privates
         new_data = new_data.filter(f => {
@@ -55,32 +54,31 @@ const AsideSearchList = (props) => {
         <div>
             Search: <br />
             <input type="text" ref={searchBarListFilterInput} onChange={handleFilter} value={input_value} />
-            {
-                filter_data.map((data, key) => (
-                    <Fragment key={key}>
-                        {
-                            (data.data.length !== 0) &&
-                            <h5 className="mt-4">
-                                <u className="text-capitalize">
-                                {
-                                    (data.type === 'membersConstants') ?
-                                        lowerCase(data.type) :
-                                        data.type
-                                }
-                                </u>
-                            </h5>
-                        }
-                        <ul>
+                {
+                    filter_data.map((data, key) => (
+                        <Fragment key={key}>
                             {
-                                asideFilterPass(data.data, filter).map((el, key) => {
-                                    return <li key={key}><a href={`#${el.name}`} className="list-group-item"> { (el.access === 'private') ? (<span class="badge bg-info text-dark">Private</span>) : ''} {el.name}</a></li>
-                                })
+                                (data.data.length !== 0) &&
+                                <h5 className="mt-4">
+                                    <u className="text-capitalize">
+                                    {
+                                        (data.type === 'membersConstants') ?
+                                            lowerCase(data.type) :
+                                            data.type
+                                    }
+                                    </u>
+                                </h5>
                             }
-                        </ul>
-                    </Fragment>
-
-                ))
-            }
+                            <ul>
+                                {
+                                    asideFilterPass(data.data, filter).map((el, key) => {
+                                        return <li key={key}><a href={`#${el.name}`} className="list-group-item"> { (el.access === 'private') ? (<span class="badge bg-info text-dark">Private</span>) : ''} {el.name}</a></li>
+                                    })
+                                }
+                            </ul>
+                        </Fragment>
+                    ))
+                }
 
         </div>
     );

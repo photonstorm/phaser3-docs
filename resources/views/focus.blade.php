@@ -44,28 +44,6 @@ new {{ $collection->name }}({{$classConstructor}})
                         $functionArguments = ($collection->getTable() === 'functions') ? "(" . resolve('get_params_format')($params) . ")"  : "";
                     @endphp
                     <x-card class="card" isFocusRoute="TRUE" :collection="$collection" />
-                    {{-- <x-member-card
-                        class="card-members-style show-important-card"
-                        name="{{$collection->name}}{{$functionArguments}}"
-                        kind="function"
-                        access="{{$collection->access}}"
-                        :description="$collection->description"
-                        :types="$collection"
-                        since="{{$collection->since}}"
-                        :params="$params"
-                        metaFileRoute="{{$collection->metapath}}/{{$collection->metafilename}}"
-                        returnstype="{{$collection->returnstype}}"
-                        metalineno="{{$collection->metalineno}}"
-                        defaultValue="{{$collection->defaultValue}}"
-                        returnsdescription="{{$collection->returnsdescription}}"
-                        overrides="{{$collection->overrides}}"
-                        fires="{{$collection->fires}}"
-                        inherits="{{$collection->inherits}}"
-                        readOnly="{{$collection->readOnly}}"
-                        nullable="{{$collection->nullable}}"
-                        scope="{{$collection->scope}}"
-                        :type="$collection->type"
-                    /> --}}
                 </div>
             @endif
         </div>

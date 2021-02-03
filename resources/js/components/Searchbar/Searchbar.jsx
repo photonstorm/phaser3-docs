@@ -20,7 +20,7 @@ const Searchbar = (props) => {
     const changeTermValue = (e) => {
         debouncedSearch(e.target.value);
 
-        if(e.target.value.trim() == '') {
+        if (e.target.value.trim() == '') {
             closeSearchbar();
         }
     }
@@ -29,21 +29,21 @@ const Searchbar = (props) => {
         if (query.trim() !== '') {
 
             axios.get(`/api/search-bar?search=${query.replace('#', '-')}&version=${version}`)
-            .then(res => {
-                setSearchResult(res.data);
-                openSearchbar();
-            }).catch(error => {
-                setSearchResult([]);
-                openSearchbar();
-                console.log(error.response)
-            });;
+                .then(res => {
+                    setSearchResult(res.data);
+                    openSearchbar();
+                }).catch(error => {
+                    setSearchResult([]);
+                    openSearchbar();
+                    console.log(error.response)
+                });;
 
         }
     }, 500);
 
     const openSearchbar = () => {
-            results.current.style.display = 'block';
-            overlaySearchbar.current.style.display = 'block';
+        results.current.style.display = 'block';
+        overlaySearchbar.current.style.display = 'block';
 
     }
 
@@ -57,19 +57,26 @@ const Searchbar = (props) => {
 
     const scrollHandler = (e) => {
         // Check scroll only if searchTerm is not empty
-        if(inputRef.current.value.trim() !== '') {
-            if(globalThis.scrollY > 100) {
+        if (inputRef.current.value.trim() !== '') {
+            if (globalThis.scrollY > 100) {
                 closeSearchbar()
             }
         }
     }
 
     const focusHandler = (e) => {
-        if(e.target.value.trim() !== '') {
+        if (e.target.value.trim() !== '') {
             openSearchbar();
         } else {
             closeSearchbar();
         }
+    }
+
+    const mark = (text) => {
+        const regex = new RegExp(`${inputRef.current.value.trim()}`, 'gi');
+        return text.replace(regex, (obj) => {
+            return `<span class="text-danger">${obj}</span>`;
+        });
     }
 
     useEventListener('scroll', scrollHandler);
@@ -87,7 +94,7 @@ const Searchbar = (props) => {
                     onChange={(e) => {
                         changeTermValue(e);
                     }}
-                    onFocus={(e) => focusHandler(e) }
+                    onFocus={(e) => focusHandler(e)}
                     onClick={focusHandler}
                 />
             </form>
@@ -98,41 +105,56 @@ const Searchbar = (props) => {
             <div className="search-result p-2" ref={results}>
                 {
                     (search_result.length === 0)
-                    ?
+                        ?
                         <div className="search-card">
                             Not found
                         </div>
-                    :
-                    search_result.map((result, index) => {
-                        return (
-                            <div className="search-card" key={result.type + index}>
-                                <div className="title ">
-                                    {result.type}:
+                        :
+                        search_result.map((result, index) => {
+                            return (
+                                <div className="search-card" key={result.type + index}>
+                                    <div className="title ">
+                                        {result.type}:
                                 </div>
-                                <div className="body">
-                                    <ul>
-                                        {
-                                            result.data.map((res, index) =>
-                                                {
+                                    <div className="body">
+                                        <ul>
+                                            {
+                                                result.data.map((res, index) => {
                                                     if (result.type.toLowerCase() === 'scene') {
-                                                        return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> {
-                                                                inputRef.current.value.split('.').filter((word, i) => (i != inputRef.current.value.split('.').length-1)).join('.')
-                                                        }.{res.name}</a></li>
+                                                        return <li key={res.longname + index}>
+                                                                    <a href={`/${version}/${res.longname.replace('-', '#')}`}>
+                                                                        {
+                                                                            inputRef.current.value.split('.').filter((word, i) => (i != inputRef.current.value.split('.').length - 1)).join('.')
+                                                                        }.{res.name}
+                                                                    </a>
+                                                                </li>
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
-                                                        return <li key={res.longname + index}><a href={ `/${version}/focus/${res.longname.replace('-', '#')}` }> { res.longname.replace('-', '#') }</a></li>
+                                                        return <li key={res.longname + index}>
+                                                                    <a href={`/${version}/focus/${res.longname.replace('-', '#')}`}>
+                                                                        <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#'))}}>
+
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
                                                     }
                                                     else {
-                                                        return <li key={res.longname + index}><a href={ `/${version}/${res.longname.replace('-', '#')}` }> { res.longname.replace('-', '#') }</a></li>
+                                                        return <li key={res.longname + index}>
+                                                                    <a href={`/${version}/${res.longname.replace('-', '#')}`}>
+                                                                        <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#')) }}>
+
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
                                                     }
                                                 }
-                                            )
-                                        }
-                                    </ul>
+                                                )
+                                            }
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })
+                            );
+                        })
                 }
             </div>
         </React.Fragment>

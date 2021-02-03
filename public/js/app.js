@@ -76419,6 +76419,13 @@ var Searchbar = function Searchbar(props) {
     }
   };
 
+  var mark = function mark(text) {
+    var regex = new RegExp("".concat(inputRef.current.value.trim()), 'gi');
+    return text.replace(regex, function (obj) {
+      return "<span class=\"text-danger\">".concat(obj, "</span>");
+    });
+  };
+
   Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('scroll', scrollHandler);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "form-inline my-2 my-lg-0",
@@ -76462,7 +76469,7 @@ var Searchbar = function Searchbar(props) {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/".concat(version, "/").concat(res.longname.replace('-', '#'))
-        }, " ", inputRef.current.value.split('.').filter(function (word, i) {
+        }, inputRef.current.value.split('.').filter(function (word, i) {
           return i != inputRef.current.value.split('.').length - 1;
         }).join('.'), ".", res.name));
       } else if (result.type.toLowerCase() === 'function') {
@@ -76470,13 +76477,21 @@ var Searchbar = function Searchbar(props) {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/".concat(version, "/focus/").concat(res.longname.replace('-', '#'))
-        }, " ", res.longname.replace('-', '#')));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          dangerouslySetInnerHTML: {
+            __html: mark(res.longname.replace('-', '#'))
+          }
+        })));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/".concat(version, "/").concat(res.longname.replace('-', '#'))
-        }, " ", res.longname.replace('-', '#')));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          dangerouslySetInnerHTML: {
+            __html: mark(res.longname.replace('-', '#'))
+          }
+        })));
       }
     }))));
   })));

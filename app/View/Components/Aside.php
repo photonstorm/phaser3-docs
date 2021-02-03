@@ -44,6 +44,15 @@ class Aside extends Component
         $this->events = collect($events);
 
         $this->aside_collection = [];
+
+        if(!$this->namespaces->isEmpty()) {
+            array_push($this->aside_collection, [
+                "type" => "namespaces",
+                "show" => true,
+                "data" => $this->namespaces->values()
+            ]);
+        }
+
         if(!$this->members->isEmpty()) {
             array_push($this->aside_collection, [
                 "type" => "members",
@@ -73,14 +82,6 @@ class Aside extends Component
                 "type" => "classes",
                 "show" => true,
                 "data" => $this->classes->values()
-            ]);
-        }
-
-        if(!$this->namespaces->isEmpty()) {
-            array_push($this->aside_collection, [
-                "type" => "namespaces",
-                "show" => true,
-                "data" => $this->namespaces->values()
             ]);
         }
 
