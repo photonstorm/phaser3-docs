@@ -75802,6 +75802,54 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/State/AsideFilter/index.js":
+/*!*************************************************!*\
+  !*** ./resources/js/State/AsideFilter/index.js ***!
+  \*************************************************/
+/*! exports provided: AsideFilterDefault, HideInheritedMember, ShowPrivateMembers, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsideFilterDefault", function() { return AsideFilterDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HideInheritedMember", function() { return HideInheritedMember; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowPrivateMembers", function() { return ShowPrivateMembers; });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var AsideFilterDefault = {
+  hide_inherited_members: false,
+  show_private_members: false
+};
+var AsideState = Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__["createSlice"])({
+  name: 'AsideState',
+  initialState: AsideFilterDefault,
+  reducers: {
+    HideInheritedMember: function HideInheritedMember(state, action) {
+      return _objectSpread(_objectSpread({}, state), {}, {
+        hide_inherited_members: action.payload
+      });
+    },
+    ShowPrivateMembers: function ShowPrivateMembers(state, action) {
+      return _objectSpread(_objectSpread({}, state), {}, {
+        show_private_members: action.payload
+      });
+    }
+  }
+});
+var _AsideState$actions = AsideState.actions,
+    HideInheritedMember = _AsideState$actions.HideInheritedMember,
+    ShowPrivateMembers = _AsideState$actions.ShowPrivateMembers;
+
+/* harmony default export */ __webpack_exports__["default"] = (AsideState.reducer);
+
+/***/ }),
+
 /***/ "./resources/js/State/BaseState/index.js":
 /*!***********************************************!*\
   !*** ./resources/js/State/BaseState/index.js ***!
@@ -75864,10 +75912,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rootReducer", function() { return rootReducer; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _BaseState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseState */ "./resources/js/State/BaseState/index.js");
+/* harmony import */ var _AsideFilter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AsideFilter */ "./resources/js/State/AsideFilter/index.js");
+
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  BaseState: _BaseState__WEBPACK_IMPORTED_MODULE_1__["default"]
+  BaseState: _BaseState__WEBPACK_IMPORTED_MODULE_1__["default"],
+  AsideFilter: _AsideFilter__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),
@@ -75990,8 +76041,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -76009,56 +76059,73 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var AsideSearchList = function AsideSearchList(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(JSON.parse(props.list)),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
-      data = _useState2[0],
-      setData = _useState2[1];
+      input_value = _useState2[0],
+      set_input_value = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
-      _useState4 = _slicedToArray(_useState3, 2),
-      filter = _useState4[0],
-      set_filter = _useState4[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(JSON.parse(props.list)),
+      _useState4 = _slicedToArray(_useState3, 1),
+      data = _useState4[0];
 
-  var searchBarListFilterInput = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])(null);
+  var searchBarListFilterInput = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])(null); // Filters
+
+  var filter = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (store) {
+    return store.AsideFilter;
+  });
   var filter_data = data.map(function (data) {
     var data_filter = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["clone"])(data);
     data_filter.data = data_filter.data.filter(function (item) {
       return Object.keys(item).some(function (key) {
-        return key === 'name' ? item[key].toLowerCase().includes(filter) : false;
+        return key === 'name' ? item[key].toLowerCase().includes(input_value) : false;
       });
     });
     return data_filter;
   });
 
   var handleFilter = function handleFilter(event) {
-    set_filter(event.target.value.toLowerCase());
+    set_input_value(event.target.value.toLowerCase());
   };
 
-  return (
-    /*#__PURE__*/
-    // TODO: ADD INHERITED AND PRIVATE HIDEN class="{{ (!empty($member->inherits)) ? 'inherited' : '' }} {{ (!empty($membersConstants->access)) ? 'private hide-card' : '' }}"
-    react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-      type: "text",
-      ref: searchBarListFilterInput,
-      onChange: handleFilter,
-      value: filter
-    }), filter_data.map(function (data, key) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
+  var asideFilterPass = function asideFilterPass(data, aside_filter) {
+    var new_data = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["clone"])(data); // Hide all privates
+
+    new_data = new_data.filter(function (f) {
+      // Only hide if show_private_memebers is false
+      return aside_filter.show_private_members ? true : f.access !== 'private';
+    }); // Hide show members
+
+    new_data = new_data.filter(function (f) {
+      if (aside_filter.hide_inherited_members) {
+        return aside_filter.show_private_members && f.access === 'private' ? true : !(f.inherited == '1');
+      } else {
+        return true;
+      }
+    });
+    return new_data;
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    type: "text",
+    ref: searchBarListFilterInput,
+    onChange: handleFilter,
+    value: input_value
+  }), filter_data.map(function (data, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
+      key: key
+    }, data.data.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
+      className: "mt-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("u", {
+      className: "text-capitalize"
+    }, data.type === 'membersConstants' ? Object(lodash__WEBPACK_IMPORTED_MODULE_0__["lowerCase"])(data.type) : data.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, asideFilterPass(data.data, filter).map(function (el, key) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         key: key
-      }, data.data.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
-        className: "mt-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("u", {
-        className: "text-capitalize"
-      }, data.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, data.data.map(function (el, key) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-          key: key
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-          href: "#".concat(el.name),
-          className: "list-group-item"
-        }, el.name));
-      })));
-    }))
-  );
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        href: "#".concat(el.name),
+        className: "list-group-item"
+      }, el.name));
+    })));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AsideSearchList);
@@ -76078,7 +76145,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _AsideSearchList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AsideSearchList */ "./resources/js/components/AsideSearchList/AsideSearchList.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _State_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../State/store */ "./resources/js/State/store.js");
+/* harmony import */ var _AsideSearchList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AsideSearchList */ "./resources/js/components/AsideSearchList/AsideSearchList.jsx");
+
+
 
 
 
@@ -76086,7 +76157,9 @@ __webpack_require__.r(__webpack_exports__);
 if (document.getElementById('react-aside-search-list')) {
   var el = document.getElementById('react-aside-search-list');
   var props = Object.assign({}, el.dataset);
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AsideSearchList__WEBPACK_IMPORTED_MODULE_2__["default"], props), el);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
+    store: _State_store__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AsideSearchList__WEBPACK_IMPORTED_MODULE_4__["default"], props)), el);
 }
 
 /***/ }),
@@ -76420,8 +76493,14 @@ var Searchbar = function Searchbar(props) {
 /*!**********************************************!*\
   !*** ./resources/js/effects/asideFilters.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _State_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../State/store */ "./resources/js/State/store.js");
+/* harmony import */ var _State_AsideFilter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../State/AsideFilter */ "./resources/js/State/AsideFilter/index.js");
+
 
 jQuery(function () {
   var hide_inherits = $('#hide_inherited');
@@ -76430,7 +76509,8 @@ jQuery(function () {
   var private_list = $('.private');
   hide_inherits.on('change', function (e) {
     if (e.target.checked) {
-      // Hide inherits
+      _State_store__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch(Object(_State_AsideFilter__WEBPACK_IMPORTED_MODULE_1__["HideInheritedMember"])(true)); // Hide inherits
+
       Array.from(inherits_list).forEach(function (inherit) {
         if (!$(inherit).hasClass('private')) {
           inherit.style.setProperty('--animate-duration', '.3s');
@@ -76443,6 +76523,7 @@ jQuery(function () {
       });
     } // Show inherits
     else {
+        _State_store__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch(Object(_State_AsideFilter__WEBPACK_IMPORTED_MODULE_1__["HideInheritedMember"])(false));
         Array.from(inherits_list).forEach(function (inherit) {
           if (!$(inherit).hasClass('private')) {
             $(inherit).removeClass('animate__fadeOut');
@@ -76455,6 +76536,7 @@ jQuery(function () {
   show_private.on('change', function (e) {
     // Show private
     if (e.target.checked) {
+      _State_store__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch(Object(_State_AsideFilter__WEBPACK_IMPORTED_MODULE_1__["ShowPrivateMembers"])(true));
       Array.from(private_list).forEach(function (_private) {
         $(_private).removeClass('animate__fadeOut');
         $(_private).removeClass('hide-card');
@@ -76462,6 +76544,7 @@ jQuery(function () {
       });
     } // Hide private
     else {
+        _State_store__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch(Object(_State_AsideFilter__WEBPACK_IMPORTED_MODULE_1__["ShowPrivateMembers"])(false));
         Array.from(private_list).forEach(function (_private) {
           _private.style.setProperty('--animate-duration', '.3s');
 
@@ -76556,7 +76639,7 @@ jQuery(function () {
   comprobateOverflowAside();
   activeAsideSticky(); // $('body').scrollspy({ target: '.scrollspy_aside' });
   // $('[data-spy="scroll"]').each(function () {
-  //     var $spy = $(this).scrollspy('refresh');
+  // var $spy = $(this).scrollspy('refresh');
   // });
   // aside sticky
 
