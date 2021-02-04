@@ -11,35 +11,34 @@
                     </u>
                 </h2>
 
-                <div class="row">
+                <ul>
                     @foreach ($class_scene as $scene)
-                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
-                        <a href="{{$scene->longname}}" class="btn-primary">{{$scene->name}}</a>
-                    </div>
+                        <li>
+                            <a href="{{$scene->longname}}">{{$scene->name}}</a>
+                        </li>
                     @endforeach
-                </div>
-                <div class="row">
+                </ul>
+                <ul>
                     @foreach ($memberof_scenes as $memberof_scene)
-                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
-                        <a href="{{$memberof_scene->longname}}" class="btn-primary">{{$memberof_scene->name}}</a>
-                    </div>
+                    <li>
+                        <a href="{{$memberof_scene->longname}}">{{$memberof_scene->name}}</a>
+                    </li>
                     @endforeach
-                </div>
+                </ul>
 
                 <h3 class="mt-4">
                     <u>
                         Members
                     </u>
                 </h3>
-                <div class="row">
+                <ul class="row">
 
                     @foreach ($scene_members_class as $scene_member_class)
-                    <div class="col-auto mt-2 btn btn-primary mx-1 d-flex justify-content-center">
-                        <a href="{{str_replace('-', '#', $scene_member_class->longname)}}"
-                            class="btn-primary">{{$scene_member_class->name}}</a>
-                    </div>
+                    <li>
+                        <a href="{{str_replace('-', '#', $scene_member_class->longname)}}">{{$scene_member_class->name}}</a>
+                    </li>
                     @endforeach
-                </div>
+                </ul>
 
             </div>
         </div>
