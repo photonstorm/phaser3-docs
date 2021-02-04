@@ -45,5 +45,8 @@
         <div class="d-flex align-items-center">
             <div id="react-searchbar" data-phaser_version={{ Config::get('app.phaser_version') }}></div>
         </div>
+        <div class="d-flex align-items-center ms-3">
+            <img src="{{asset('images/user.png')}}" alt="Phaser Logo">
+        </div>
     </div>
 </nav>
