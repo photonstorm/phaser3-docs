@@ -5,40 +5,42 @@
     <div class="row">
         <div class="col-12">
             <div class="mt-4">
-                <h2 class="text-center">
-                    <u>
+                <div class="border-bottom">
+                    <h2 class="text-center">
                         Scenes Section.
-                    </u>
-                </h2>
-
-                <ul>
-                    @foreach ($class_scene as $scene)
+                    </h2>
+                </div>
+                <div class="mt-4">
+                    <ul>
+                        @foreach ($class_scene as $scene)
                         <li>
                             <a href="{{$scene->longname}}">{{$scene->name}}</a>
                         </li>
-                    @endforeach
-                </ul>
-                <ul>
-                    @foreach ($memberof_scenes as $memberof_scene)
-                    <li>
-                        <a href="{{$memberof_scene->longname}}">{{$memberof_scene->name}}</a>
-                    </li>
-                    @endforeach
-                </ul>
+                        @endforeach
+                    </ul>
+                    <ul>
+                        @foreach ($memberof_scenes as $memberof_scene)
+                        <li>
+                            <a href="{{$memberof_scene->longname}}">{{$memberof_scene->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
 
-                <h3 class="mt-4">
-                    <u>
-                        Members
-                    </u>
-                </h3>
-                <ul class="row">
+                    <h3 class="mt-4">
+                        <u>
+                            Members
+                        </u>
+                    </h3>
+                    <ul class="row">
 
-                    @foreach ($scene_members_class as $scene_member_class)
-                    <li>
-                        <a href="{{str_replace('-', '#', $scene_member_class->longname)}}">{{$scene_member_class->name}}</a>
-                    </li>
-                    @endforeach
-                </ul>
+                        @foreach ($scene_members_class as $scene_member_class)
+                        <li>
+                            <a
+                                href="{{str_replace('-', '#', $scene_member_class->longname)}}">{{$scene_member_class->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
 
             </div>
         </div>

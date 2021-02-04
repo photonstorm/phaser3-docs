@@ -19,15 +19,6 @@ new {{ $collection->name }}({{$classConstructor}})
 @endmarkdown
                 @else
                     <x-card class="card" :collection="$collection" />
-                    {{-- <x-member-card
-                        class="card-members-style"
-                        :params="$collection->params->all()"
-                        name="{{$collection->name}}"
-                        description="{{$collection->description}}"
-                        since="{{$collection->since}}"
-                        metaFileRoute="{{$collection->metapath}}/{{$collection->metafilename}}"
-                        metalineno="{{$collection->metalineno}}"
-                    /> --}}
                 @endif
 
                 </div>

@@ -41,21 +41,6 @@
             <h3>Events</h3>
                 @foreach ($events as $event)
                     <x-card :collection="$event" class="card" focus="true" />
-                    {{-- TODO: Remove this - next version --}}
-                    {{-- <x-member-card
-                        :id="$event->name"
-                        class="card-member-style animate__animated"
-                        name="{{$event->name}}"
-                        description="{!! $event->description !!}"
-                        :params="$event->params->all()"
-                        :types="$event"
-                        since="{{$event->since}}"
-                        metaFileRoute="{{$event->metapath}}/{{$event->metafilename}}"
-                        metalineno="{{$event->metalineno}}"
-                        longname="{{$event->longname}}"
-                        focus="true"
-                        shortname="{{$event->name}}"
-                    /> --}}
                 @endforeach
         @endif
 
@@ -64,43 +49,11 @@
         <h3>Members</h3>
         @if (count($membersConstants))
             @foreach ($membersConstants as $memberConstant)
-            <x-card :collection="$memberConstant" class="card" focus="true" :id="$memberConstant->name"/>
-                {{-- <x-member-card
-                    :id="$memberConstant->name"
-                    class="card-members-style animate__animated"
-                    access="{{$memberConstant->access}}"
-                    name="{{$memberConstant->name}}"
-                    scope="{{$memberConstant->scope}}"
-                    description="{!! $memberConstant->description !!}"
-                    kind="constant"
-                    :types="$memberConstant"
-                    since="{{$memberConstant->since}}"
-                    metaFileRoute="{{$memberConstant->metafilename}}"
-                    metalineno="{{$memberConstant->metalineno}}"
-                    longname="{{$memberConstant->longname}}"
-                    focus="true"
-                    shortname="{{$memberConstant->name}}"
-                /> --}}
+                <x-card :collection="$memberConstant" class="card" focus="true" :id="$memberConstant->name"/>
             @endforeach
         @elseif (count($members))
             @foreach ($members as $member)
-            <x-card :collection="$member" class="card" focus="true" :id="$member->name"/>
-            {{-- <x-member-card
-                :id="$member->name"
-                class="card-member-style"
-                access="{{$member->access}}"
-                name="{{$member->name}}"
-                scope="{{$member->scope}}"
-                description="{!! $member->description !!}"
-                kind="member"
-                :types="$member"
-                since="{{$member->since}}"
-                metaFileRoute="{{$member->metapath}}/{{$member->metafilename}}"
-                metalineno="{{$member->metalineno}}"
-                longname="{{$member->longname}}"
-                focus="true"
-                shortname="{{$member->name}}"
-            /> --}}
+                <x-card :collection="$member" class="card" focus="true" :id="$member->name"/>
             @endforeach
         @endif
         @endif
@@ -112,26 +65,7 @@
                 @php
                     $methodConstructor = resolve('get_params_format')($method->params);
                 @endphp
-            <x-card :collection="$method" class="card" focus="true" :id="$method->name"/>
-            {{-- TODO: Remove this - next version --}}
-            {{-- <x-member-card
-                    class="card-member-style"
-                    scope="{{$method->scope}}"
-                    name="{{$method->name}}({{$methodConstructor}})"
-                    longname="{{$method->longname}}"
-                    focus="true"
-                    access="{{$method->access}}"
-                    :description="$method->description"
-                    :type="$method->type"
-                    since="{{$method->since}}"
-                    scope="{{$method->scope}}"
-                    :params="$method->params->all()"
-                    metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
-                    metalineno="{{$method->metalineno}}"
-                    :returnstype="$method->returnstype"
-                    returnsdescription="{{$method->returnsdescription}}"
-                    shortname="{{$method->name}}"
-                /> --}}
+                <x-card :collection="$method" class="card" focus="true" :id="$method->name"/>
             @endforeach
         @endif
 
@@ -139,18 +73,7 @@
         @if (!empty($typedefs) AND count($typedefs))
         <h3>Type Definitions</h3>
             @foreach ($typedefs as $typedef)
-            <x-card :collection="$typedef" class="card" :id="$typedef->name" focus="true"/>
-            {{-- <x-member-card
-                :id="$typedef->name"
-                class="card-member-style"
-                longname="{{$typedef->longname}}"
-                kind="typedef"
-                name="{{$typedef->name}}"
-                description="{{$typedef->description}}"
-                type="{{$typedef->type}}"
-                :params="$typedef->params->all()"
-                :properties="$typedef->properties->all()"
-            /> --}}
+                <x-card :collection="$typedef" class="card" :id="$typedef->name" focus="true"/>
             @endforeach
         @endif
 @endsection

@@ -4,7 +4,7 @@
     <div {{ $attributes }}>
 @else
     <div {{ $attributes->merge([
-        'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
+        'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. (($collection->access == 'protected') ? 'protected' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
     ]) }}>
 @endif
     {{-- Members or membersConstants --}}

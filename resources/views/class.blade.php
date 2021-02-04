@@ -18,6 +18,7 @@
 new {{ $class->name }}({{$classConstructor}})
 ```
 @endmarkdown
+        {{-- TODO: rewrite this --}}
         <x-member-card
             class="mt-1 pt-2 pb-4"
             :params=$params
@@ -39,55 +40,10 @@ new {{ $class->name }}({{$classConstructor}})
         @if ((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
             <h2 class="mt-4">Members</h2>
             @foreach ($membersConstants as $memberConstant)
-                <x-card class="card" :id="$memberConstant->name" :collection="$memberConstant" focus="true" />
-                    {{-- <x-member-card
-                        :id="$memberConstant->name"
-                        class="card-members-style animate__animated"
-                        name="{{$memberConstant->name}}"
-                        access="{{$memberConstant->access}}"
-                        :description="$memberConstant->description"
-                        kind="constant"
-                        :types="$memberConstant"
-                        since="{{$memberConstant->since}}"
-                        metaFileRoute="{{$memberConstant->metapath}}/{{$memberConstant->metafilename}}"
-                        metalineno="{{$memberConstant->metalineno}}"
-                        defaultValue="{{$memberConstant->defaultValue}}"
-                        returnsdescription="{{$memberConstant->returnsdescription}}"
-                        overrides="{{$memberConstant->overrides}}"
-                        inherits="{{$memberConstant->inherits}}"
-                        readOnly="{{$memberConstant->readOnly}}"
-                        nullable="{{$memberConstant->nullable}}"
-                        longname="{{$memberConstant->longname}}"
-                        focus="true"
-                        shortname="{{$memberConstant->shortname}}"
-
-                    /> --}}
+                    <x-card class="card" :id="$memberConstant->name" :collection="$memberConstant" focus="true" />
                 @endforeach
                 @foreach ($members as $member)
                     <x-card class="card" :id="$member->name" :collection="$member" focus="true"/>
-                    {{-- <x-member-card
-                        :id="$member->name"
-                        class="card-members-style animate__animated"
-                        name="{{$member->name}}"
-                        access="{{$member->access}}"
-                        :description="$member->description"
-                        kind="member"
-                        :types="$member"
-                        since="{{$member->since}}"
-                        metaFileRoute="{{$member->metapath}}/{{$member->metafilename}}"
-                        metalineno="{{$member->metalineno}}"
-                        defaultValue="{{$member->defaultValue}}"
-                        returnsdescription="{{$member->returnsdescription}}"
-                        overrides="{{$member->overrides}}"
-                        inherits="{{$member->inherits}}"
-                        readOnly="{{$member->readOnly}}"
-                        :examples="$member->getExamples->all()"
-                        nullable="{{$member->nullable}}"
-                        scope="{{$member->scope}}"
-                        longname="{{$member->longname}}"
-                        focus="true"
-                        shortname="{{$member->name}}"
-                    /> --}}
                 @endforeach
         @endif
         {{-- Methods --}}
@@ -97,25 +53,7 @@ new {{ $class->name }}({{$classConstructor}})
                 @php
                     $methodConstructor = resolve('get_params_format')($method->params->all())
                 @endphp
-                <x-card class="card" :id="$method->name" :collection="$method" focus="true"/>
-                {{-- <x-member-card
-                    :id="$method->name"
-                    class="card-members-style animate__animated"
-                    name="{{$method->name}}({{$methodConstructor}})"
-                    scope="{{$method->scope}}"
-                    :description="$method->description"
-                    :params="$method->params->all()"
-                    since="{{$method->since}}"
-                    metaFileRoute="{{$method->metapath}}/{{$method->metafilename}}"
-                    metalineno="{{$method->metalineno}}"
-                    fires="{{$method->fires}}"
-                    inherits="{{$method->inherits}}"
-                    returnstype="{{$method->returnstype}}"
-                    returnsdescription="{{$method->returnsdescription}}"
-                    longname="{{$method->longname}}"
-                    shortname="{{$method->name}}"
-                    focus="true"
-                /> --}}
+                    <x-card class="card" :id="$method->name" :collection="$method" focus="true"/>
                 @endforeach
         @endif
 @endsection

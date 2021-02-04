@@ -1,3 +1,4 @@
+{{-- Help us to create main lists, IE: http://127.0.0.1:8000/3.52.0/namespaces --}}
 @extends('layouts.app')
 @section('title', $name)
 @section('content')
@@ -5,8 +6,8 @@
     <div class="row">
         <div class="col-12">
             <div class="row mt-4">
-                <div class="col-12 text-center my-4">
-                    <h3><u>{{$name}}</u></h3>
+                <div class="col-12 text-center my-4 border-bottom">
+                    <h3>{{$name}}</h3>
                 </div>
 
                 <ul class="ps-5">
