@@ -72,8 +72,23 @@ const Searchbar = (props) => {
         }
     }
 
+    const getPrefix = (text) => {
+        return text.split('.').filter((word, i) => (i != text.split('.').length - 1)).join('.')
+    }
+
     const mark = (text) => {
         const regex = new RegExp(`${inputRef.current.value.trim()}`, 'gi');
+        return text.replace(regex, (obj) => {
+            return `<span class="text-danger">${obj}</span>`;
+        });
+    }
+
+    const markScene = (text) => {
+        let text_clean = inputRef.current.value.trim().split('.');
+        text_clean = text_clean[text_clean.length - 1];
+
+        const regex = new RegExp(`${text_clean}`, 'gi');
+
         return text.replace(regex, (obj) => {
             return `<span class="text-danger">${obj}</span>`;
         });
@@ -124,8 +139,11 @@ const Searchbar = (props) => {
                                                         return <li key={res.longname + index}>
                                                                     <a href={`/${version}/${res.longname.replace('-', '#')}`}>
                                                                         {
-                                                                            inputRef.current.value.split('.').filter((word, i) => (i != inputRef.current.value.split('.').length - 1)).join('.')
-                                                                        }.{res.name}
+                                                                            getPrefix(inputRef.current.value)
+                                                                        }.
+                                                                        <span dangerouslySetInnerHTML={{__html: markScene(res.name)}}>
+
+                                                                        </span>
                                                                     </a>
                                                                 </li>
                                                     }

@@ -76419,8 +76419,23 @@ var Searchbar = function Searchbar(props) {
     }
   };
 
+  var getPrefix = function getPrefix(text) {
+    return text.split('.').filter(function (word, i) {
+      return i != text.split('.').length - 1;
+    }).join('.');
+  };
+
   var mark = function mark(text) {
     var regex = new RegExp("".concat(inputRef.current.value.trim()), 'gi');
+    return text.replace(regex, function (obj) {
+      return "<span class=\"text-danger\">".concat(obj, "</span>");
+    });
+  };
+
+  var markScene = function markScene(text) {
+    var text_clean = inputRef.current.value.trim().split('.');
+    text_clean = text_clean[text_clean.length - 1];
+    var regex = new RegExp("".concat(text_clean), 'gi');
     return text.replace(regex, function (obj) {
       return "<span class=\"text-danger\">".concat(obj, "</span>");
     });
@@ -76469,9 +76484,11 @@ var Searchbar = function Searchbar(props) {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "/".concat(version, "/").concat(res.longname.replace('-', '#'))
-        }, inputRef.current.value.split('.').filter(function (word, i) {
-          return i != inputRef.current.value.split('.').length - 1;
-        }).join('.'), ".", res.name));
+        }, getPrefix(inputRef.current.value), ".", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          dangerouslySetInnerHTML: {
+            __html: markScene(res.name)
+          }
+        })));
       } else if (result.type.toLowerCase() === 'function') {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
