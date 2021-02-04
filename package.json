@@ -29,6 +29,7 @@
         "animate.css": "^4.1.1",
         "bootstrap": "^5.0.0-beta1",
         "prismjs": "^1.23.0",
+        "pushbar.js": "^1.0.0",
         "react-redux": "^7.2.2",
         "redux": "^4.0.5",
         "toastify-js": "^1.9.3",

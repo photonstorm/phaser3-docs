@@ -12,6 +12,7 @@ require('prismjs');
 require('./effects/scrolldown');
 require('./effects/asideFilters');
 require('./effects/copyToClipboard');
+require('./effects/barLogin');
 
 /**
  * Next, we will create a fresh React component instance and attach it to

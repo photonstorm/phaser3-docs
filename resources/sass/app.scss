@@ -1,4 +1,10 @@
 @import '~animate.css/animate.min.css';
+@import '~pushbar.js/src/pushbar.css';
+
+.pushbar_overlay {
+    background-color: #000;
+}
+
 // TODO: Remove debug file
 @import 'debug';
 
