@@ -43106,12 +43106,9 @@ module.exports = ReactPropTypesSecret;
 /*!************************************************!*\
   !*** ./node_modules/pushbar.js/src/pushbar.js ***!
   \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pushbar; });
 class Pushbar {
     constructor(config = { overlay: true, blur: false }) {
         this.activeId;
@@ -43191,7 +43188,6 @@ class Pushbar {
         this.activeElement = null;
     }
 }
-
 
 /***/ }),
 
@@ -76694,8 +76690,9 @@ jQuery(function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var pushbar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pushbar.js */ "./node_modules/pushbar.js/src/pushbar.js");
+/* harmony import */ var pushbar_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pushbar_js__WEBPACK_IMPORTED_MODULE_0__);
 
-var pushbar = new pushbar_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
+var pushbar = new pushbar_js__WEBPACK_IMPORTED_MODULE_0___default.a({
   blur: true,
   overlay: true
 });
@@ -80887,8 +80884,8 @@ var comprobateOverflowAside = function comprobateOverflowAside() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\frank\Desktop\PHASER\phaser350-docs\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\frank\Desktop\PHASER\phaser350-docs\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/rich/Documents/GitHub/phaser350-docs/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/rich/Documents/GitHub/phaser350-docs/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
