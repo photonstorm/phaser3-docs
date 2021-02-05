@@ -45,16 +45,23 @@
         <div class="d-flex align-items-center">
             <div id="react-searchbar" data-phaser_version={{ Config::get('app.phaser_version') }}></div>
         </div>
-        <div class="d-flex align-items-center ms-3 cursor-pointer" data-pushbar-target="pushbar-user-login-register">
-            <img src="{{asset('images/user.png')}}" alt="Phaser Logo">
+        <div class="d-none align-items-center ms-3 cursor-pointer" data-pushbar-target="pushbar-user-login-register">
+            <img src="{{asset('images/user.png')}}" alt="User Logo">
         </div>
     </div>
 </nav>
 
 {{-- User data --}}
-<div data-pushbar-id="pushbar-user-login-register" data-pushbar-direction="right">
-    <h1>Login</h1>
-    <a href="login">Login</a>
+<div data-pushbar-id="pushbar-user-login-register" data-pushbar-direction="right" class="p-4 d-none">
+    <h3>Login</h3>
+    <form action="">
+        <div>
+            <input type="email" placeholder="Email">
+        </div>
+        <div class="mt-2">
+            <input type="password" placeholder="Password">
+        </div>
+    </form>
     <hr>
     <a href="register">Register</a>
 </div>
