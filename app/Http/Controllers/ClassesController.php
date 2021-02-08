@@ -34,6 +34,8 @@ class ClassesController extends Controller
 
         $classConstructor = resolve('get_params_format')($params);
 
+        // dd($class);
+
         return view('class', [
             "class" => $class,
             "params" => $params,

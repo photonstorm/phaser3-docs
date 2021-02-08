@@ -101,7 +101,7 @@
                             @if($key == 'defaultValue')
                                 <th scope="col">Default</th>
                             @else
-                                <th scope="col">{{$key}}</th>
+                                <th scope="col">{{ ucfirst($key) }}</th>
                             @endif
                         @endif
                     @endforeach
@@ -156,15 +156,15 @@
         <h4>
             Parameters:
         </h4>
-        <table class="table table-light table-striped table-bordered shadow-sm">
-            <thead class="thead-light">
+        <table class="table table-light table-bordered table-hover">
+            <thead class="table-dark">
                 <tr>
                     @foreach ($create_table_params_properties as $key => $value)
-                        @if($value)
-                            @if($key == 'defaultValue')
+                        @if ($value)
+                            @if ($key == 'defaultValue')
                                 <th scope="col">Default</th>
                             @else
-                                <th scope="col">{{$key}}</th>
+                                <th scope="col">{{ ucfirst($key) }}</th>
                             @endif
                         @endif
                     @endforeach
@@ -175,7 +175,7 @@
                 <tr>
                     {{-- Name --}}
                     @if ($create_table_params_properties()['name'])
-                        <th scope="row">{{ $param->name }}</th>
+                        <th scope="row" class="font-monospace">{{ $param->name }}</th>
                     @endif
                     {{-- Type --}}
                     @if ($create_table_params_properties()['type'])
