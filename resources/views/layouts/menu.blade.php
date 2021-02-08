@@ -45,7 +45,7 @@
         <div class="d-flex align-items-center">
             <div id="react-searchbar" data-phaser_version={{ Config::get('app.phaser_version') }}></div>
         </div>
-        <div class="d-flex align-items-center ms-3 cursor-pointer" data-pushbar-target="pushbar-user-login-register">
+        <div class="d-none align-items-center ms-3 cursor-pointer" data-pushbar-target="pushbar-user-login-register">
             <img src="{{asset('images/user.png')}}" alt="User Logo">
         </div>
     </div>
