@@ -52,16 +52,29 @@
 </nav>
 
 {{-- User data --}}
-<div data-pushbar-id="pushbar-user-login-register" data-pushbar-direction="right" class="p-4 d-none">
+<div data-pushbar-id="pushbar-user-login-register" data-pushbar-direction="right" class="d-none p-4">
     <h3>Login</h3>
     <form action="">
         <div>
-            <input type="email" placeholder="Email">
+            <input type="email" placeholder="Email" class="form-control w-100" aria-describedby="emailHelp" required>
         </div>
         <div class="mt-2">
-            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Password" class="form-control w-100" required>
+        </div>
+        <div class="mt-3">
+            <button class="btn btn-info w-100">Submit</button>
+        </div>
+        <div class="mt-1">
+            <a href="">I can't remember my password</a>
         </div>
     </form>
+    <button class="w-100 btn btn-danger text-white">
+        <span class="vertical-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" class="v-icon__svg" style="font-size: 24px; height: 24px; width: 24px; fill:white;"><path d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z"></path></svg>
+        </span>
+    </button>
+
     <hr>
+
     <a href="register">Register</a>
 </div>

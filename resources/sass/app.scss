@@ -1,6 +1,8 @@
 @import '~animate.css/animate.min.css';
-@import '~pushbar.js/src/pushbar.css';
 
+
+// Pushbar.js
+@import '../vendor/pushbar.js/pushbar.css';
 .pushbar_overlay {
     background-color: #000;
 }
