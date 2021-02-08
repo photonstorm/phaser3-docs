@@ -5,10 +5,14 @@
 @section('section_content')
 
 <?php
-    // dd($class);
+    // dd($namesplit);
 ?>
 
-<h1 class="py-2"><a href="/{{ Config::get('app.phaser_version') }}/{{ $class->memberof }}">{{ $class->memberof }}</a>.{{ $class->name }}</h1>
+<h1 class="py-2">
+@foreach ($namesplit as $parts)
+    <a href="/{{ $version }}/{{ $parts[0] }}">{{ $parts[1] }}</a> {{ $parts[2] }}
+@endforeach
+</h1>
 
 <div class="p-4">
 @markdown
@@ -17,6 +21,7 @@
 </div>
 
 <p class="font-monospace">Source file: {{ $class->metapath }}/{{ $class->metafilename }}</p>
+<p class="font-monospace">Since: {{ $class->since }}</p>
 
 <h3>Constructor:</h3>
 @php
