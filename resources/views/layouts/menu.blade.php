@@ -52,7 +52,7 @@
 </nav>
 
 {{-- User data --}}
-<div data-pushbar-id="pushbar-user-login-register" data-pushbar-direction="right" class="p-4">
+<div data-pushbar-id="pushbar-user-login-register" data-pushbar-direction="right" class="d-none p-4">
     <h3>Login</h3>
     <form action="">
         <div>
