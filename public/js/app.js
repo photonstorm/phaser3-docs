@@ -43102,95 +43102,6 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
-/***/ "./node_modules/pushbar.js/src/pushbar.js":
-/*!************************************************!*\
-  !*** ./node_modules/pushbar.js/src/pushbar.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-class Pushbar {
-    constructor(config = { overlay: true, blur: false }) {
-        this.activeId;
-        this.activeElement;
-        this.overlayElement;
-        if (config.overlay) {
-            this.overlayElement = document.createElement('div');
-            this.overlayElement.classList.add('pushbar_overlay');
-            document.querySelector('body').appendChild(this.overlayElement);
-        }
-        if (config.blur) {
-            const mainContent = document.querySelector('.pushbar_main_content');
-            if (mainContent) {
-                mainContent.classList.add('pushbar_blur');
-            }
-        }
-        this.bindEvents();
-    }
-
-    emitOpening() {
-        const event = new CustomEvent('pushbar_opening', { bubbles: true, detail: { element: this.activeElement, id: this.activeId } });
-        this.activeElement.dispatchEvent(event);
-    }
-
-    emitClosing() {
-        const event = new CustomEvent('pushbar_closing', { bubbles: true, detail: { element: this.activeElement, id: this.activeId } });
-        this.activeElement.dispatchEvent(event);
-    }
-
-    handleOpenEvent(e) {
-        e.preventDefault();
-        const pushbarId = e.currentTarget.getAttribute('data-pushbar-target');
-        this.open(pushbarId);
-    }
-
-    handleCloseEvent(e) {
-        e.preventDefault();
-        this.close();
-    }
-
-    handleKeyEvent(e) {
-        if (e.keyCode === 27) this.close();
-    }
-
-    bindEvents() {
-        const triggers = document.querySelectorAll('[data-pushbar-target]');
-        const closers = document.querySelectorAll('[data-pushbar-close]');
-        triggers.forEach(trigger => trigger.addEventListener('click', e => this.handleOpenEvent(e), false));
-        closers.forEach(closer => closer.addEventListener('click', e => this.handleCloseEvent(e), false));
-        if (this.overlayElement) {
-            this.overlayElement.addEventListener('click', e => this.handleCloseEvent(e), false);
-        }
-        document.addEventListener('keyup', e => this.handleKeyEvent(e));
-    }
-
-    open(pushbarId) {
-        if (this.activeId === String(pushbarId) || !pushbarId) return;
-        if (this.activeId && this.activeId !== String(pushbarId)) this.close();
-        this.activeId = pushbarId
-        this.activeElement = document.querySelector(`[data-pushbar-id="${this.activeId}"]`)
-        if (!this.activeElement) return;
-        this.emitOpening();
-        this.activeElement.classList.add('opened');
-        const pageRootElement = document.querySelector('html')
-        pageRootElement.classList.add('pushbar_locked');
-        pageRootElement.setAttribute('pushbar', pushbarId)
-    }
-
-    close() {
-        if (!this.activeId) return;
-        this.emitClosing();
-        this.activeElement.classList.remove('opened');
-        const pageRootElement = document.querySelector('html')
-        pageRootElement.classList.remove('pushbar_locked');
-        pageRootElement.removeAttribute('pushbar')
-        this.activeId = null;
-        this.activeElement = null;
-    }
-}
-
-/***/ }),
-
 /***/ "./node_modules/querystringify/index.js":
 /*!**********************************************!*\
   !*** ./node_modules/querystringify/index.js ***!
@@ -76689,10 +76600,9 @@ jQuery(function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var pushbar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pushbar.js */ "./node_modules/pushbar.js/src/pushbar.js");
-/* harmony import */ var pushbar_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pushbar_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vendor_pushbar_js_pushbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../vendor/pushbar.js/pushbar */ "./resources/vendor/pushbar.js/pushbar.js");
 
-var pushbar = new pushbar_js__WEBPACK_IMPORTED_MODULE_0___default.a({
+var pushbar = new _vendor_pushbar_js_pushbar__WEBPACK_IMPORTED_MODULE_0__["default"]({
   blur: true,
   overlay: true
 });
@@ -80877,6 +80787,157 @@ var comprobateOverflowAside = function comprobateOverflowAside() {
 
 /***/ }),
 
+/***/ "./resources/vendor/pushbar.js/pushbar.js":
+/*!************************************************!*\
+  !*** ./resources/vendor/pushbar.js/pushbar.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pushbar; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Pushbar = /*#__PURE__*/function () {
+  function Pushbar() {
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+      overlay: true,
+      blur: false
+    };
+
+    _classCallCheck(this, Pushbar);
+
+    this.activeId;
+    this.activeElement;
+    this.overlayElement;
+
+    if (config.overlay) {
+      this.overlayElement = document.createElement('div');
+      this.overlayElement.classList.add('pushbar_overlay');
+      document.querySelector('body').appendChild(this.overlayElement);
+    }
+
+    if (config.blur) {
+      var mainContent = document.querySelector('.pushbar_main_content');
+
+      if (mainContent) {
+        mainContent.classList.add('pushbar_blur');
+      }
+    }
+
+    this.bindEvents();
+  }
+
+  _createClass(Pushbar, [{
+    key: "emitOpening",
+    value: function emitOpening() {
+      var event = new CustomEvent('pushbar_opening', {
+        bubbles: true,
+        detail: {
+          element: this.activeElement,
+          id: this.activeId
+        }
+      });
+      this.activeElement.dispatchEvent(event);
+    }
+  }, {
+    key: "emitClosing",
+    value: function emitClosing() {
+      var event = new CustomEvent('pushbar_closing', {
+        bubbles: true,
+        detail: {
+          element: this.activeElement,
+          id: this.activeId
+        }
+      });
+      this.activeElement.dispatchEvent(event);
+    }
+  }, {
+    key: "handleOpenEvent",
+    value: function handleOpenEvent(e) {
+      e.preventDefault();
+      var pushbarId = e.currentTarget.getAttribute('data-pushbar-target');
+      this.open(pushbarId);
+    }
+  }, {
+    key: "handleCloseEvent",
+    value: function handleCloseEvent(e) {
+      e.preventDefault();
+      this.close();
+    }
+  }, {
+    key: "handleKeyEvent",
+    value: function handleKeyEvent(e) {
+      if (e.keyCode === 27) this.close();
+    }
+  }, {
+    key: "bindEvents",
+    value: function bindEvents() {
+      var _this = this;
+
+      var triggers = document.querySelectorAll('[data-pushbar-target]');
+      var closers = document.querySelectorAll('[data-pushbar-close]');
+      triggers.forEach(function (trigger) {
+        return trigger.addEventListener('click', function (e) {
+          return _this.handleOpenEvent(e);
+        }, false);
+      });
+      closers.forEach(function (closer) {
+        return closer.addEventListener('click', function (e) {
+          return _this.handleCloseEvent(e);
+        }, false);
+      });
+
+      if (this.overlayElement) {
+        this.overlayElement.addEventListener('click', function (e) {
+          return _this.handleCloseEvent(e);
+        }, false);
+      }
+
+      document.addEventListener('keyup', function (e) {
+        return _this.handleKeyEvent(e);
+      });
+    }
+  }, {
+    key: "open",
+    value: function open(pushbarId) {
+      if (this.activeId === String(pushbarId) || !pushbarId) return;
+      if (this.activeId && this.activeId !== String(pushbarId)) this.close();
+      this.activeId = pushbarId;
+      this.activeElement = document.querySelector("[data-pushbar-id=\"".concat(this.activeId, "\"]"));
+      if (!this.activeElement) return;
+      this.emitOpening();
+      this.activeElement.classList.add('opened');
+      var pageRootElement = document.querySelector('html');
+      pageRootElement.classList.add('pushbar_locked');
+      pageRootElement.setAttribute('pushbar', pushbarId);
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      if (!this.activeId) return;
+      this.emitClosing();
+      this.activeElement.classList.remove('opened');
+      var pageRootElement = document.querySelector('html');
+      pageRootElement.classList.remove('pushbar_locked');
+      pageRootElement.removeAttribute('pushbar');
+      this.activeId = null;
+      this.activeElement = null;
+    }
+  }]);
+
+  return Pushbar;
+}();
+
+
+
+/***/ }),
+
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -80884,8 +80945,8 @@ var comprobateOverflowAside = function comprobateOverflowAside() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rich/Documents/GitHub/phaser350-docs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rich/Documents/GitHub/phaser350-docs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\frank\Desktop\PHASER\phaser350-docs\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\frank\Desktop\PHASER\phaser350-docs\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
