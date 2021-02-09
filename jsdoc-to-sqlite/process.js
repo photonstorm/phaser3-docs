@@ -15,6 +15,9 @@ const InsertTutorials = require('./InsertTutorials');
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
 
+// Get Phaser last version:
+const {version} = fs.readJsonSync('../phaser/package.json');
+
 //  Open the copy to work on
 const db = new SQLite3('./db/phaser-working.db');
 
@@ -38,12 +41,7 @@ console.log('* Inserting Tutorials *\n');
 InsertTutorials().save(db);
 
 db.close();
-// TODO: Change this "if" for the release project 
-if (os.userInfo().username === 'frank') {
-    fs.copySync('./db/phaser-working.db', '../phaser350-docs/database/3.52.0.db');
-    console.log("** Copy database done! **")
-} else {
-    fs.copySync('./db/phaser-working.db', 'G:/www/phaser.io/site/app/database/3.52.0.db');
-}
 
+fs.copySync('./db/phaser-working.db', `../phaser350-docs/database/${version}.db`);
 console.log('** Complete **');
+
