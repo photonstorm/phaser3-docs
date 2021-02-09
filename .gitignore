@@ -1,3 +1,12 @@
+# System and IDE files
+Thumbs.db
+.DS_Store
+.idea
+.vscode
+*.suo
+*.sublime-project
+*.sublime-workspace
+
 /node_modules
 /public/hot
 /public/storage

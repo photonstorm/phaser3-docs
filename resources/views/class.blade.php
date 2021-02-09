@@ -21,7 +21,7 @@
 </div>
 
 <p class="font-monospace">Source file: {{ $class->metapath }}/{{ $class->metafilename }}</p>
-<p class="font-monospace">Since: {{ $class->since }}</p>
+<p class="font-monospace">Added in Phaser v{{ $class->since }}</p>
 
 <h3>Constructor:</h3>
 @php
@@ -46,7 +46,7 @@ new {{ $class->name }}({{$classConstructor}})
     <h3 class="mt-4">Extends</h3>
     <ul>
         @foreach ($extends as $extend)
-        <li><a href="/{{Config::get('app.phaser_version')}}/{{$extend->object}}">{{$extend->object}}</a></li>
+        <li><a href="/{{ $version }}/{{ $extend->object }}">{{ $extend->object }}</a></li>
         @endforeach
     </ul>
     <hr>
