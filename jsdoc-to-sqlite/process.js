@@ -10,6 +10,7 @@ const InsertTypedefs = require('./InsertTypedefs');
 const os = require('os');
 const InsertTypes = require('./InsertTypes');
 const InsertExamples = require('./InsertExamples');
+const InsertTutorials = require('./InsertTutorials');
 
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
@@ -29,9 +30,12 @@ InsertMember(db, data);
 InsertFunction(db, data);
 InsertTypedefs(db, data);
 
-console.log('* Inserting Types *');
+console.log('\n* Inserting Types *');
 InsertTypes().save(db);
+console.log('* Inserting Examples *');
 InsertExamples().save(db);
+console.log('* Inserting Tutorials *\n');
+InsertTutorials().save(db);
 
 db.close();
 // TODO: Change this "if" for the release project 

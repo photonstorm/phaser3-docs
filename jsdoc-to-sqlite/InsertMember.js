@@ -6,6 +6,7 @@ const InsertTypes = require('./InsertTypes');
 const GetMarkdownLink = require('./GetMarkdownLink');
 const InsertExamples = require('./InsertExamples');
 const CleanHastagLongName = require('./CleanHashtagLongname');
+const InsertTutorials = require('./InsertTutorials');
 
 
 let id_generator = 0;
@@ -79,18 +80,10 @@ let InsertMember = function (db, data)
         for(let x = 0; x < data.docs.length; x++) {
             if(block.longname == data.docs[x].longname && x !== i) {
                 block.longname = block.longname + `[${id_generator++}]`;
-                console.log(block.longname);
+                console.log('Repeated - ', block.longname);
             }
         }
-        
-        // Insert examples
-        if( (block.hasOwnProperty('examples'))) {
-            InsertExamples({
-                fk_id: block.longname,
-                examples: block.examples
-            });
-        }
-        
+
         const longname = CleanHastagLongName(block.longname);
         memberQueries.push({
             longname: longname,
@@ -121,6 +114,22 @@ let InsertMember = function (db, data)
             };
             // Prepare to insert types
             InsertTypes(dataTypes);
+        }
+
+        // Insert examples
+        if( (block.hasOwnProperty('examples'))) {
+            InsertExamples({
+                fk_id: longname,
+                examples: block.examples
+            });
+        }
+        
+        // Insert tutorials
+        if( (block.hasOwnProperty('tutorials'))) {
+            InsertTutorials({
+                fk_id: longname,
+                tutorials: block.tutorials
+            });
         }
     }
 

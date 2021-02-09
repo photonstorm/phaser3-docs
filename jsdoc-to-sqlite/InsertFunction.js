@@ -8,6 +8,7 @@ const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 const GetMarkdownLink = require('./GetMarkdownLink');
 const CleanHastagLongName = require('./CleanHashtagLongname');
+const InsertTutorials = require('./InsertTutorials');
 
 let InsertFunction = function (db, data)
 {
@@ -250,6 +251,14 @@ let InsertFunction = function (db, data)
             overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : '',
             access: (block.hasOwnProperty('access')) ? block.access : ''
         });
+        
+        // Insert tutorials
+        if( (block.hasOwnProperty('tutorials'))) {
+            InsertTutorials({
+                fk_id: CleanHastagLongName(block.longname),
+                tutorials: block.tutorials
+            });
+        }
     }
 
     if (functionQueries.length)

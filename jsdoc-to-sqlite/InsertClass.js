@@ -4,6 +4,7 @@ const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 const GetMarkdownLink = require('./GetMarkdownLink');
+const InsertTutorials = require('./InsertTutorials');
 
 let InsertClass = function (db, data)
 {
@@ -93,7 +94,6 @@ let InsertClass = function (db, data)
         });
 
         //  Augments
-
         if (Array.isArray(block.augments) && block.augments.length > 0)
         {
             for (let i = 0; i < block.augments.length; i++)
@@ -103,6 +103,14 @@ let InsertClass = function (db, data)
                     object: block.augments[i]
                 });
             }
+        }
+
+        // Insert tutorials
+        if( (block.hasOwnProperty('tutorials'))) {
+            InsertTutorials({
+                fk_id: block.longname,
+                tutorials: block.tutorials
+            });
         }
 
         //  Constructor Params
