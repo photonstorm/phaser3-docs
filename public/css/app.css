@@ -12051,16 +12051,6 @@ body {
   border-radius: 5px;
 }
 
-.card,
-.card-members-style,
-.card-member-style {
-  background-color: #fafbfc;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 5px;
-}
-
 .display-card {
   display: block;
 }

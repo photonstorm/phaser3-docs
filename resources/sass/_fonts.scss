@@ -1,0 +1,36 @@
+@font-face {
+    font-family: GothamNarrow;
+    src: url('/fonts/Gotham/GothamNarrow-Medium.otf');
+}
+
+@font-face {
+    font-family: GothamNarrow;
+    src: url('/fonts/Gotham/GothamNarrow-MediumItalic.otf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: GothamNarrow;
+    src: url('/fonts/Gotham/GothamNarrow-Bold.otf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: OperatorMono;
+    src: url('/fonts/OMono/OperatorMono-Light.otf');
+}
+
+@font-face {
+    font-family: OperatorMono;
+    src: url('/fonts/OMono/OperatorMono-LightItalic.otf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: OperatorMono;
+    src: url('/fonts/OMono/OperatorMono-Medium.otf');
+    font-weight: bold;
+}
+
+$font-family-head: GothamNarrow, Rubik, Lato, Lucida Grande, Lucida Sans Unicode, Tahoma, Sans-Serif;
+$font-family-mono: OperatorMono, Source Code Pro, Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;

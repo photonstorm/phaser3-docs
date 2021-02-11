@@ -9,8 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class ClassesController extends Controller
 {
-    public function index() {
-        return view('layouts.list-creator', [
+    public $version;
+
+    public function __construct ()
+    {
+        $this->version = Config::get('app.phaser_version');
+    }
+
+    public function index ()
+    {
+        return view ('layouts.list-creator', [
             "name" => "Class",
             "collections" => Classes::all(),
             "version" => Config::get('app.phaser_version')
@@ -34,9 +42,11 @@ class ClassesController extends Controller
 
         $methods = $class->functions->sortBy("longname");
 
-        $classConstructor = resolve('get_params_format')($params);
+        // $classConstructor = resolve('get_params_format')($params);
 
-        $version = Config::get('app.phaser_version');
+        $classConstructor = $this->getParamsFormat($params);
+
+        // $version = Config::get('app.phaser_version');
 
         $namesplit = [];
         $partlist = '';
@@ -56,19 +66,48 @@ class ClassesController extends Controller
             $namesplit[] = [ $partlist, $part, $i === count($parts) - 1 ? '' : '.' ];
         }
 
+        $hasMembers = (!empty($members) && count($members) > 0) || (!empty($membersConstants) && count($membersConstants) > 0);
+        $hasMethods = (!empty($methods) && count($methods) > 0);
+        $hasExtends = (!empty($extends) && count($extends) > 0);
+
         // dd($class);
 
-        return view('class', [
+        return view('docs.class', [
+            "version" => $this->version,
             "class" => $class,
-            "params" => $params,
             "classConstructor" => $classConstructor,
+            "namesplit" => $namesplit,
             "extends" => $extends,
+            "params" => $params,
             "members" => $members,
             "membersConstants" => $membersConstants,
             "methods" => $methods,
             "methodConstructor" => '',
-            "namesplit" => $namesplit,
-            "version" => $version
+            "hasMembers" => $hasMembers,
+            "hasMethods" => $hasMethods,
+            "hasExtends" => $hasExtends
         ]);
     }
+
+    public function getParamsFormat ($params)
+    {
+        $constructor = '';
+
+        foreach ($params as $key => $value)
+        {
+            if ($key !== 0)
+            {
+                $constructor .= ($value['optional'] == 1) ? ', [' : ', ';
+            }
+            else
+            {
+                $constructor .= ($value['optional'] == 1) ? '[' : '';
+            }
+
+            $constructor .= ($value['optional'] == 1) ? $value['name'].']' : $value['name'];
+        }
+
+        return $constructor;
+    }
+
 }
