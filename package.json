@@ -13,7 +13,7 @@
     "sqldev": "npm run json && npm run sql",
     "types": "node src/types.js",
     "total": "node total.js",
-    "build-docset": "dashing build phaser"
+    "build-docset": "dashing build --source docs"
   },
   "repository": {
     "type": "git",
