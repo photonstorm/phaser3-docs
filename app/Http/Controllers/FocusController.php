@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\URL;
 class FocusController extends Controller
 {
     public function index(Request $request) {
-        $longname = $request['api_word'];
+        $longname = $request['api'];
         $version = $request['version'];
 
         $namespace = Namespaces::whereLongname($longname)->first();

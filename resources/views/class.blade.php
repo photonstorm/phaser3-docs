@@ -6,7 +6,7 @@
 
 <h1 class="py-2">
 @foreach ($namesplit as $parts)
-    <a href="/{{ $version }}/{{ $parts[0] }}">{{ $parts[1] }}</a> {{ $parts[2] }}
+    <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
 @endforeach
 </h1>
 
@@ -42,7 +42,7 @@ new {{ $class->name }}({{$classConstructor}})
     <h3 class="mt-4">Extends</h3>
     <ul>
         @foreach ($extends as $extend)
-        <li><a href="/{{ $version }}/{{ $extend->object }}">{{ $extend->object }}</a></li>
+        <li><a href="{{route('docs.api.phaser', ['version' => $version, 'api' => $extend->object])}}">{{ $extend->object }}</a></li>
         @endforeach
     </ul>
     <hr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Docs\Namespaces;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 
 class NamespacesController extends Controller
@@ -29,6 +30,7 @@ class NamespacesController extends Controller
         $methodConstructor = "";
 
         return view('namespace', [
+            "version" => Config::get('app.phaser_version'),
             "namespace" => $namespace,
             "classes" => $classes,
             "namespaces" => $namespaces,

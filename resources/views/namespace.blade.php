@@ -13,7 +13,7 @@
             <ul>
                 @foreach ($classes as $class)
                 <li>
-                    <a href="/{{Config::get('app.phaser_version')}}/{{$class->longname}}">
+                    <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $class->longname])}}">
                         {{  $class->name }}
                     </a>
                 </li>
@@ -27,7 +27,7 @@
             <ul>
                 @foreach ($namespaces as $namespace)
                 <li>
-                    <a href="/{{Config::get('app.phaser_version')}}/{{$namespace->longname}}">
+                    <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $namespace->longname])}}">
                         {{ $namespace->name }}
                     </a>
                 </li>

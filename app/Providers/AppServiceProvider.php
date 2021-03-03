@@ -97,7 +97,7 @@ class AppServiceProvider extends ServiceProvider
                 if(preg_match($pattern, $clean_html_entities_type, $found_type)) {
                     $find_type = $found_type[0];
 
-                    $replace_str ='<a href="/'. $this->app->Config::get('app.phaser_version') .'/'. rtrim($find_type, '.') .'">' . $find_type . '</a>';
+                    $replace_str ='<a href="' . route('docs.api.phaser', ["version" => $this->app->Config::get('app.phaser_version'), "api" => rtrim($find_type, '.')]) . '">' . $find_type . '</a>';
 
                     // $str = htmlentities(preg_replace($pattern, "-replace-", $clean_html_entities_type));
                     $str = preg_replace($pattern, "-replace-", $clean_html_entities_type);

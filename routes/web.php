@@ -49,8 +49,8 @@ Route::prefix('/docs/')->group(function () {
 
         Route::get('{version}/events', [EventsController::class, 'index'])->name('docs.events');
 
-        Route::get('{version}/{api_word}', [ApiPhaser::class, 'show']);
+        Route::get('{version}/{api}', [ApiPhaser::class, 'show'])->name('docs.api.phaser');
 
-        Route::get('{version}/focus/{api_word}', [FocusController::class, 'index'])->name('docs.focus');
+        Route::get('{version}/focus/{api}', [FocusController::class, 'index'])->name('docs.focus');
     });
 });

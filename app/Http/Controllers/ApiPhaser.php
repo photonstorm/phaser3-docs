@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Config;
 class ApiPhaser extends Controller
 {
     public function show(Request $request) {
-        $longname = $request['api_word'];
+        $longname = $request['api'];
         Config::set('phaser_version', $request['version']);
 
         $namespace = Namespaces::whereLongname($longname)->first();
