@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import './Searchbar.scss';
 import useEventListener from '@use-it/event-listener';
 import { debounce } from 'lodash';
-import { useSelector } from 'react-redux';
-
-let count = 0;
 
 const Searchbar = (props) => {
 
@@ -137,7 +134,7 @@ const Searchbar = (props) => {
                                                 result.data.map((res, index) => {
                                                     if (result.type.toLowerCase() === 'scene') {
                                                         return <li key={res.longname + index}>
-                                                                    <a href={`/${version}/${res.longname.replace('-', '#')}`}>
+                                                                    <a href={`/docs/${version}/${res.longname.replace('-', '#')}`}>
                                                                         {
                                                                             getPrefix(inputRef.current.value)
                                                                         }.
@@ -149,7 +146,7 @@ const Searchbar = (props) => {
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
                                                         return <li key={res.longname + index}>
-                                                                    <a href={`/${version}/focus/${res.longname.replace('-', '#')}`}>
+                                                                    <a href={`/docs/${version}/focus/${res.longname.replace('-', '#')}`}>
                                                                         <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#'))}}>
 
                                                                         </span>
@@ -158,7 +155,7 @@ const Searchbar = (props) => {
                                                     }
                                                     else {
                                                         return <li key={res.longname + index}>
-                                                                    <a href={`/${version}/${res.longname.replace('-', '#')}`}>
+                                                                    <a href={`/docs/${version}/${res.longname.replace('-', '#')}`}>
                                                                         <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#')) }}>
 
                                                                         </span>

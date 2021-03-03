@@ -76199,7 +76199,10 @@ var ChangeVersionSelector = function ChangeVersionSelector(props) {
   var url = new Url(window.location.href);
   var pathname_splited = url.pathname.split('/').filter(function (x) {
     return x.trim() !== '';
-  });
+  }); // Remove docs prefix
+
+  pathname_splited.shift(); // Get version
+
   var actual_version = pathname_splited.shift();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(JSON.parse(props.db_list)),
@@ -76207,7 +76210,7 @@ var ChangeVersionSelector = function ChangeVersionSelector(props) {
       dbList = _useState2[0];
 
   var submitHandler = function submitHandler(e) {
-    url.pathname = "/".concat(e.currentTarget.value, "/").concat(pathname_splited.join('/'));
+    url.pathname = "/docs/".concat(e.currentTarget.value, "/").concat(pathname_splited.join('/'));
     location.href = url.toString();
   };
 
@@ -76334,7 +76337,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @use-it/event-listener */ "./node_modules/@use-it/event-listener/dist/event-listener.m.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -76352,8 +76354,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-var count = 0;
 
 var Searchbar = function Searchbar(props) {
   var overlaySearchbar = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
@@ -76485,7 +76485,7 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/".concat(version, "/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(res.longname.replace('-', '#'))
         }, getPrefix(inputRef.current.value), ".", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: markScene(res.name)
@@ -76495,7 +76495,7 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/".concat(version, "/focus/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/focus/").concat(res.longname.replace('-', '#'))
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: mark(res.longname.replace('-', '#'))
@@ -76505,7 +76505,7 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/".concat(version, "/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(res.longname.replace('-', '#'))
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: mark(res.longname.replace('-', '#'))

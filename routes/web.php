@@ -13,9 +13,9 @@ use App\Http\Controllers\NamespacesController;
 use App\Http\Controllers\PhysicsController;
 use App\Http\Controllers\ScenesController;
 use App\Http\Middleware\PhaserVersionCheckMiddleware;
-use App\Http\Middleware\SelectRouter;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
+// use App\Http\Middleware\SelectRouter;
+// use Illuminate\Support\Facades\Config;
+// use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,32 +28,29 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-
-Route::get('/', function() {
-    return redirect("/".DataBaseSelector::getLastDB()."/");
+Route::get('/', function () {
+    return redirect("/docs/" . DataBaseSelector::getLastDB() . "/");
 });
 
-Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () {
-    Route::get('/{version}/', function($version) {
-        return view('landing');
+Route::prefix('/docs/')->group(function () {
+    Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () {
+        Route::get('/{version}/', function ($version) {
+            return view('landing');
+        });
+
+        Route::get('{version}/namespaces', [NamespacesController::class, 'index'])->name('docs.namespaces');
+        Route::get('{version}/namespace/{namespace}', [NamespacesController::class, 'show'])->name('docs.namespace');
+
+        Route::get('{version}/classes', [ClassesController::class, 'index'])->name('docs.classes');
+
+        Route::get('{version}/gameobjects', [GameobjectsController::class, 'index'])->name('docs.gameobjects');
+        Route::get('{version}/physics', [PhysicsController::class, 'index'])->name('docs.physics');
+        Route::get('{version}/scenes', [ScenesController::class, 'index'])->name('docs.scenes');
+
+        Route::get('{version}/events', [EventsController::class, 'index'])->name('docs.events');
+
+        Route::get('{version}/{api_word}', [ApiPhaser::class, 'show']);
+
+        Route::get('{version}/focus/{api_word}', [FocusController::class, 'index'])->name('docs.focus');
     });
-
-    Route::get('/{version}/namespaces', [NamespacesController::class, 'index']);
-    Route::get('/{version}/namespace/{namespace}', [NamespacesController::class, 'show']);
-
-    Route::get('/{version}/classes', [ClassesController::class, 'index']);
-    // Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);
-
-    Route::get('/{version}/gameobjects', [GameobjectsController::class, 'index']);
-    Route::get('/{version}/physics', [PhysicsController::class, 'index']);
-    Route::get('/{version}/scenes', [ScenesController::class, 'index']);
-
-    Route::get('/{version}/events', [EventsController::class, 'index']);
-    // Route::get('/{version}/class/{longname}', [ClassesController::class, 'show']);
-
-    Route::get('/{version}/{api_word}', [ApiPhaser::class, 'show']);
-
-    Route::get('/{version}/focus/{api_word}', [FocusController::class, 'index']);
 });
-
-
