@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-12">
             <div class="row mt-4">
-                <div class="col-12 text-center my-4">
-                    <h3><u>{{$name}}</u></h3>
+                <div class="col-12 text-center my-4 border-bottom">
+                    <h3>{{$name}}</h3>
                 </div>
 
                 @foreach ($list_longnames as $longname)

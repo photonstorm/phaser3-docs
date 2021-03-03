@@ -4,10 +4,6 @@
 
 @section('section_content')
 
-<?php
-    // dd($namesplit);
-?>
-
 <h1 class="py-2">
 @foreach ($namesplit as $parts)
     <a href="/{{ $version }}/{{ $parts[0] }}">{{ $parts[1] }}</a> {{ $parts[2] }}

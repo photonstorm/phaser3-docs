@@ -4,11 +4,9 @@
 <div class="container layout-container landing-page px-4">
     <div class="row">
         <div class="col-12">
-            <div class="mt-4">
-                <div class="border-bottom">
-                    <h2 class="text-center">
-                        Physics Section.
-                    </h2>
+            <div class="row mt-4">
+                <div class="col-12 text-center my-4 border-bottom">
+                    <h3>Physics</h3>
                 </div>
                 <div class="mt-4">
                     <h3>
