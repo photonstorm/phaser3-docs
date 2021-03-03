@@ -4,15 +4,16 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-require('./jquery');
+// ---- Dependencies
+ require('./jquery');
 require('@popperjs/core');
 require('./bootstrap');
 require('prismjs');
 
+// ---- Page Effects
 require('./effects/scrolldown');
 require('./effects/asideFilters');
 require('./effects/copyToClipboard');
-require('./effects/barLogin');
 
 /**
  * Next, we will create a fresh React component instance and attach it to
