@@ -10,7 +10,7 @@ class GameobjectsController extends Controller
     public function index() {
         $gameobjects = Classes::where("memberof", "Phaser.GameObjects")->get()->sortBy('name');
         return view('layouts.list-creator', [
-            "name" => "Game Objects Section",
+            "name" => "Game Objects",
             "collections" => $gameobjects
         ]);
     }

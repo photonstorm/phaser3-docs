@@ -4,12 +4,11 @@
 <div class="container layout-container landing-page px-5">
     <div class="row">
         <div class="col-12">
-            <div class="mt-4">
-                <div class="border-bottom">
-                    <h2 class="text-center">
-                        Scenes Section.
-                    </h2>
+            <div class="row mt-4">
+                <div class="col-12 text-center my-4 border-bottom">
+                    <h3>Scenes</h3>
                 </div>
+
                 <div class="mt-4">
                     <ul>
                         @foreach ($class_scene as $scene)
