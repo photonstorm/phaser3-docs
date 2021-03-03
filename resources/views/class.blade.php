@@ -40,10 +40,9 @@ new {{ $class->name }}({{$classConstructor}})
     since="{{$class->since}}"
     metaFileRoute="{{$class->metapath}}/{{$class->metafilename}}"
     metalineno="{{$class->metalineno}}"
-    :version="$version"
 />
 
-    @if ($showExtends)
+    @if (!empty($extends) AND count($extends))
     <h3 class="mt-4">Extends</h3>
     <ul>
         @foreach ($extends as $extend)
@@ -53,23 +52,25 @@ new {{ $class->name }}({{$classConstructor}})
     <hr>
     @endif
 
-    @if ($showMembers)
+    {{-- Members --}}
+    @if ((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
         <h2 class="mt-4">Members</h2>
         @foreach ($membersConstants as $memberConstant)
-                <x-card class="card" :id="$memberConstant->name" :collection="$memberConstant" :version="$version" focus="true" />
+                <x-card class="card" :id="$memberConstant->name" :collection="$memberConstant" focus="true" />
             @endforeach
             @foreach ($members as $member)
-                <x-card class="card" :id="$member->name" :collection="$member" :version="$version" focus="true"/>
+                <x-card class="card" :id="$member->name" :collection="$member" focus="true"/>
             @endforeach
     @endif
 
-    @if ($showMethods)
+    {{-- Methods --}}
+    @if (!empty($methods) AND count($methods))
         <h2 class="mt-4">Methods</h2>
             @foreach ($methods as $method)
             @php
                 $methodConstructor = resolve('get_params_format')($method->params->all())
             @endphp
-                <x-card class="card" :id="$method->name" :collection="$method" :version="$version" focus="true"/>
+                <x-card class="card" :id="$method->name" :collection="$method" focus="true"/>
             @endforeach
     @endif
 
@@ -82,6 +83,5 @@ new {{ $class->name }}({{$classConstructor}})
         :membersConstants="$membersConstants"
         :members="$members"
         :methods="$methods"
-        :version="$version"
     />
 @endsection

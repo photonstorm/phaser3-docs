@@ -1,8 +1,11 @@
-<div class="d-flex bd-highlight mb-3">
-    <div class="p-2 bd-highlight">
-        <a href="https://github.com/photonstorm/phaser/blob/v{{ $version }}/src/{{ $metaFileRoute }}">src/{{ $metaFileRoute }}</a> (Line <a href="https://github.com/photonstorm/phaser/blob/v{{ $version }}/src/{{ $metaFileRoute }}#L{{ $collection->metalineno }}">{{ $collection->metalineno }}</a>)
+<div class="border-top mt-2 pt-2">
+        <div>
+            <span class="font-weight-bold">Since:</span> <span class="text-danger">{{ $collection->since }}</span>
+        </div>
+
+        <div>
+            <span class="font-weight-bold">Source:</span>
+            <a href="https://github.com/photonstorm/phaser/blob/v{{config('app.phaser_version')}}/src/{{$metaFileRoute}}">src/{{$metaFileRoute}}</a>
+            (Line <a href="https://github.com/photonstorm/phaser/blob/v{{config('app.phaser_version')}}/src/{{$metaFileRoute}}#L{{$collection->metalineno}}">{{$collection->metalineno}}</a>)
+        </div>
     </div>
-    <div class="ms-auto p-2 bd-highlight">
-        Since: v{{ $collection->since }}
-    </div>
-</div>
