@@ -1,15 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
-use App\Models\Namespaces;
-use App\Models\Functions;
-use App\Models\Param;
+use App\Models\Docs\Classes;
+use App\Models\Docs\Param;
+use App\Models\Docs\Constant;
+use App\Models\Docs\Functions;
+use App\Models\Docs\Typedefs;
+use App\Models\Docs\Namespaces;
+use App\Models\Docs\Event;
 
 use App\Http\Controllers\ClassesController;
-use App\Models\Constant;
-use App\Models\Event;
-use App\Models\Typedefs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 

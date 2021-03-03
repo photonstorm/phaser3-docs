@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Models\Event;
+use App\Models\Docs\Event;
 use Illuminate\View\Component;
 
 class asideEvent extends Component

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Constant;
+use App\Models\Docs\Constant;
 use Illuminate\Http\Request;
 
 class ConstantController extends Controller

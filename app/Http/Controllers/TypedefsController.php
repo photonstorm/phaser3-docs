@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Typedefs;
+use App\Models\Docs\Typedefs;
 use Illuminate\Http\Request;
 
 class TypedefsController extends Controller

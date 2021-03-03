@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Models;
+namespace App\Models\Docs;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+    protected $connection = 'sqlite';
 
     public function getTypedeftTypes() {
         return $this->hasMany(TypedefType::class, 'fk_id', 'longname');

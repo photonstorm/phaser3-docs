@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Docs;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Param extends Model
 {
-    protected $primaryKey = 'parentClass';
     use HasFactory;
+    protected $connection = 'sqlite';
+    protected $primaryKey = 'parentClass';
 
     public function getTypedeftTypes() {
         return $this->hasMany(TypedefType::class, 'fk_id', 'id');

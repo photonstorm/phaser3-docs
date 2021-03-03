@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
-use App\Models\Namespaces;
+use App\Models\Docs\Namespaces;
 use Illuminate\Http\Request;
 
 class NamespacesController extends Controller

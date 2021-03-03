@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Docs;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Functions extends Model
 {
     use HasFactory;
+    protected $connection = 'sqlite';
 
     public function params() {
         $paramsClass = $this->hasMany(Param::class, 'parentFunction', 'name')->where('parentClass', $this->memberof);

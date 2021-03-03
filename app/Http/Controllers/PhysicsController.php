@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Docs\Classes;
+
 use Illuminate\Http\Request;
 
 class PhysicsController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Docs;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,19 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Classes extends Model
 {
     use HasFactory;
-
+    protected $connection = 'sqlite';
     protected $table = 'class';
-    // protected $primaryKey = 'longname';
 
-    // public function namespaces() {
-    //     return $this->hasManyThrough(Namespaces::class, 'memberof', 'longname');
-    // }
-
-
-    // public function namespace() {
-        //     return $this->belongsTo(Namespaces::class, 'memberof', 'longname');
-        // }
-    // Get all parameters from a class
     public function params() {
         return $this->hasMany(Param::class, "parentClass", "longname")->where('parentFunction', '');
     }

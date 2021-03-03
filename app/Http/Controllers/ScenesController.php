@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
-use App\Models\Member;
+use App\Models\Docs\Classes;
+use App\Models\Docs\Member;
+
 use Illuminate\Http\Request;
 
 class ScenesController extends Controller

@@ -1,7 +1,6 @@
 <?php
 namespace App\Helpers;
 
-use App\Models\Classes;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
