@@ -1,21 +1,18 @@
 <?php
-
-use App\Helpers\DataBaseSelector;
-use App\Http\Controllers\ApiPhaser;
-use App\Http\Controllers\ClassesController;
-use App\Http\Controllers\EventsController;
-use App\Http\Controllers\FocusController;
-use App\Http\Controllers\GameobjectsController;
 use Illuminate\Support\Facades\Route;
 
+use App\Helpers\DataBaseSelector;
+
 // Controllers
+use App\Http\Controllers\GameobjectsController;
+use App\Http\Controllers\FocusController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ApiPhaserController;
 use App\Http\Controllers\NamespacesController;
 use App\Http\Controllers\PhysicsController;
 use App\Http\Controllers\ScenesController;
 use App\Http\Middleware\PhaserVersionCheckMiddleware;
-// use App\Http\Middleware\SelectRouter;
-// use Illuminate\Support\Facades\Config;
-// use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +25,7 @@ use App\Http\Middleware\PhaserVersionCheckMiddleware;
 |
 */
 
+// TODO: Remove this route when the page is with Phser.io site
 Route::get('/', function () {
     return redirect("/docs/" . DataBaseSelector::getLastDB() . "/");
 });
@@ -49,7 +47,7 @@ Route::prefix('/docs/')->group(function () {
 
         Route::get('{version}/events', [EventsController::class, 'index'])->name('docs.events');
 
-        Route::get('{version}/{api}', [ApiPhaser::class, 'show'])->name('docs.api.phaser');
+        Route::get('{version}/{api}', [ApiPhaserController::class, 'show'])->name('docs.api.phaser');
 
         Route::get('{version}/focus/{api}', [FocusController::class, 'index'])->name('docs.focus');
     });

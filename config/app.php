@@ -1,6 +1,6 @@
 <?php
 return [
-    'database_route' => 'database',
+    'database_route' => 'docs',
     'phaser_version' => '3.50.0',
     'actual_link' => 'home',
     'search_amount_return' => 10,

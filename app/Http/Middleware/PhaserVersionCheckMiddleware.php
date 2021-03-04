@@ -5,7 +5,9 @@ namespace App\Http\Middleware;
 use App\Helpers\DataBaseSelector;
 use Closure;
 use Illuminate\Http\Request;
-
+/**
+ * This middlewre help to know if the route has the correct version (if we have this version inside database)
+ */
 class PhaserVersionCheckMiddleware
 {
     /**

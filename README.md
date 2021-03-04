@@ -17,8 +17,10 @@ The new documentation system for Phaser 3.
 
 `resources/views` = page layout blades (classes, name spaces, etc)
 
-`app/Http/Controllers/` = various controllers (Classes, Game Objects, etc)
-`app/Models/Controllers/` = section specific app models (classes, etc)
+`app/Http/Controllers/Docs` = various controllers (Classes, Game Objects, etc)
+`app/Models/Controllers/Docs` = section specific app models (classes, etc)
 
-`app/Http/Controllers/ApiPhaser` = handles controller routing
+`app/Http/Controllers/Docs/ApiPhaserController` = handles controller routing
+
+`PhaserVersionCheckMiddleware` = This middlewre help to know if the route has the correct version (if we have this version inside database)
 

@@ -13,7 +13,7 @@ use App\Http\Controllers\ClassesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-class ApiPhaser extends Controller
+class ApiPhaserController extends Controller
 {
     public function show(Request $request) {
         $longname = $request['api'];
