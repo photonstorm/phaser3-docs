@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Docs;
 
-use App\Models\Docs\Classes;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+
+use App\Models\Docs\Classes;
 
 class GameobjectsController extends Controller
 {

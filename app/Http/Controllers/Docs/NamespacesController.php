@@ -1,6 +1,7 @@
 <?php
+namespace App\Http\Controllers\Docs;
 
-namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Namespaces;
 use Illuminate\Support\Facades\Config;

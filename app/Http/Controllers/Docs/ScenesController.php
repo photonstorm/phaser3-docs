@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Docs;
+use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Classes;
 use App\Models\Docs\Member;

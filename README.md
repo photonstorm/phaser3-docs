@@ -22,5 +22,5 @@ The new documentation system for Phaser 3.
 
 `app/Http/Controllers/Docs/ApiPhaserController` = handles controller routing
 
-`PhaserVersionCheckMiddleware` = This middlewre help to know if the route has the correct version (if we have this version inside database)
+`Docs/PhaserVersionCheckMiddleware` = This middlewre help to know if the route has the correct version (if we have this version inside database)
 

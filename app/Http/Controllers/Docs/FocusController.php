@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Docs;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Classes;
 use App\Models\Docs\Constant;
@@ -11,7 +13,6 @@ use App\Models\Docs\Typedefs;
 use App\Models\Docs\Event;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 
 class FocusController extends Controller
 {

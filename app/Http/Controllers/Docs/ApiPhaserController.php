@@ -1,15 +1,15 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Docs;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Classes;
-use App\Models\Docs\Param;
 use App\Models\Docs\Constant;
-use App\Models\Docs\Functions;
 use App\Models\Docs\Typedefs;
 use App\Models\Docs\Namespaces;
 use App\Models\Docs\Event;
+use App\Http\Controllers\Docs\ClassesController;
 
-use App\Http\Controllers\ClassesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -21,9 +21,6 @@ class ApiPhaserController extends Controller
 
         $namespace = Namespaces::whereLongname($longname)->first();
         $class = Classes::whereLongname($longname)->first();
-
-        $function = Functions::whereLongname($longname)->first();
-        $param = Param::whereLongname($longname)->first();
 
         $event = Event::whereLongname($longname)->first();
         $typedef = Typedefs::whereLongname($longname)->first();
@@ -52,11 +49,6 @@ class ApiPhaserController extends Controller
         if(!empty($constant)) {
             $controller = new ConstantController();
         }
-
-        // if(!empty($param)) {
-        //     $controller  = $param;
-        // }
-
 
         // TODO: send 404 if not found
         return (!empty($controller)) ? $controller->show($longname) : view('landing');

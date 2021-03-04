@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Docs;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Classes;
 use App\Models\Docs\Member;
@@ -15,7 +17,7 @@ use App\Http\Resources\SearchbarResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-class Searchbar extends Controller
+class SearchbarController extends Controller
 {
 
     public function search(Request $request)

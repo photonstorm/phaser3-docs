@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Docs;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Constant;
 use Illuminate\Http\Request;

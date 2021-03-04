@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Models\Docs\Event;
 use Illuminate\View\Component;
 
-class asideEvent extends Component
+class AsideEvent extends Component
 {
     /**
      * Create a new component instance.

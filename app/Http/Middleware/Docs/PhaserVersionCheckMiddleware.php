@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Docs;
 
 use App\Helpers\DataBaseSelector;
 use Closure;

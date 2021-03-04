@@ -4,15 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Helpers\DataBaseSelector;
 
 // Controllers
-use App\Http\Controllers\GameobjectsController;
-use App\Http\Controllers\FocusController;
-use App\Http\Controllers\EventsController;
-use App\Http\Controllers\ClassesController;
-use App\Http\Controllers\ApiPhaserController;
-use App\Http\Controllers\NamespacesController;
-use App\Http\Controllers\PhysicsController;
-use App\Http\Controllers\ScenesController;
-use App\Http\Middleware\PhaserVersionCheckMiddleware;
+use App\Http\Controllers\Docs\ApiPhaserController;
+use App\Http\Controllers\Docs\EventsController;
+use App\Http\Controllers\Docs\NamespacesController;
+use App\Http\Controllers\Docs\ClassesController;
+use App\Http\Controllers\Docs\FocusController;
+use App\Http\Controllers\Docs\GameobjectsController;
+use App\Http\Controllers\Docs\PhysicsController;
+use App\Http\Controllers\Docs\ScenesController;
+
+use App\Http\Middleware\Docs\PhaserVersionCheckMiddleware;
 
 /*
 |--------------------------------------------------------------------------
