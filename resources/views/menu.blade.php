@@ -1,50 +1,69 @@
-@php
-    use App\Helpers\DataBaseSelector;
-    $version = Config::get('app.phaser_version');
-@endphp
+<header id="docs-header" class="w-100 mb-5">
+    <div class="w-100 container-xl d-none d-md-block">
+        <strong class="logo"><a href="http://phaser.io">Home</a></strong>
+        <div class="toggle-slide">
+            <div class="holder">
+                <nav class="navigation">
+                    <ul>
+                        <li class="active"><a href="http://phaser.io/news">News</a></li>
+                        <li ><a href="http://phaser.io/learn">Learn</a></li>
+                        <li><a href="http://phaser.io/download">Download</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="holder">
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="http://phaser.io/examples">Examples</a></li>
+                        <li><a href="http://phaser.io/community">Community</a></li>
+                        <li><a href="http://phaser.io/shop">Plugins</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="w-100 container-fluid d-block d-xl-none">
+        Another menu
+    </div> --}}
+</header>
 
-<nav class="menu d-flex justify-content-between align-items-center px-5">
-    <div>
-        <a href="/">
-            <img src="{{asset('images/logo.png')}}" alt="Phaser Logo">
-        </a>
+{{-- <div id="wrapper">
+    <div class="container-fluid">
+
+        <div id="topper">
+
+
+            <header id="header">
+                <strong class="logo"><a href="http://phaser.io">Home</a></strong>
+                <div class="toggle-slide">
+                    <div class="holder">
+                        <nav class="navigation">
+                            <ul>
+                                <li><a href="http://phaser.io/news">News</a></li>
+
+                                <li class="active"><a href="http://phaser.io/learn">Learn</a></li>
+
+                                <li><a href="http://phaser.io/download">Download</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="holder">
+                        <nav class="navigation">
+                            <ul>
+                                <li><a href="http://phaser.io/examples">Examples</a></li>
+
+                                <li><a href="http://phaser.io/community">Community</a></li>
+
+                                <li><a href="http://phaser.io/shop">Plugins</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+        </div>
+
     </div>
-    <div class="d-flex">
-        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/namespaces') OR (Config::get('app.actual_link') === 'namespaces')) ? 'menu-active' : '' }}">
-            <a href="{{route('docs.namespaces', ['version' => $version])}}" class="text-white">
-                Namespaces
-            </a>
-        </div>
-        <div class="menu-item {{ (request()->is(Config::get('app.phaser_version').'/classes') OR (Config::get('app.actual_link') === 'classes')) ? 'menu-active' : '' }} text-center">
-            <a href="{{route('docs.classes', ['version' => $version])}}" class="text-white">
-                Classes
-            </a>
-        </div>
-        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/events') OR (Config::get('app.actual_link') === 'events')) ? 'menu-active' : '' }}">
-            <a href="{{route('docs.events', ['version' => $version])}}" class="text-white">
-                Events
-            </a>
-        </div>
-        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/gameobjects')) ? 'menu-active' : '' }}">
-            <a href="{{route('docs.gameobjects', ['version' => $version])}}" class="text-white">
-                Game Objects
-            </a>
-        </div>
-        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/physics')) ? 'menu-active' : '' }}">
-            <a href="{{route('docs.physics', ['version' => $version])}}" class="text-white">
-                Physics
-            </a>
-        </div>
-        <div class="menu-item text-center {{ (request()->is(Config::get('app.phaser_version').'/scenes')) ? 'menu-active' : '' }}">
-            <a href="{{route('docs.scenes', ['version' => $version])}}" class="text-white">
-                Scenes
-            </a>
-        </div>
-        <div class="menu-version text-white d-flex align-items-center px-3">
-            <div id="react-change-version-selector" data-db_list="{{ json_encode(DataBaseSelector::getListDB()) }}"></div>
-        </div>
-        <div class="d-flex align-items-center">
-            <div id="react-searchbar" data-phaser_version={{ Config::get('app.phaser_version') }}></div>
-        </div>
-    </div>
-</nav>
+</div> --}}

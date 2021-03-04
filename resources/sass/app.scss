@@ -1,9 +1,6 @@
 // TODO: Remove debug file
 @import 'debug';
 
-// Fonts
-// @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
@@ -17,6 +14,9 @@
 @import 'menu';
 @import 'aside';
 @import 'card';
+
+// # Phaser.io styles
+@import 'menu_phaser_web';
 
 @import 'highlight_markdown';
 
