@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('docs.layouts.layout')
 @section('title', $event->longname)
 @section('section_content')
 {{-- Show namespace properties Name, methods--}}

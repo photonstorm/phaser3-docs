@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('title', 'Physics')
 @section('content')
 <div class="container layout-container landing-page px-5">

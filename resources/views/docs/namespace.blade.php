@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('docs.layouts.layout')
 @section('title', $namespace->longname)
 
 @section('section_content')

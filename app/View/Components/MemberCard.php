@@ -101,7 +101,7 @@ class MemberCard extends Component
      */
     public function render()
     {
-        return view('components.member-card');
+        return view('components.docs.member-card');
     }
 
     public function create_table_params_properties() {

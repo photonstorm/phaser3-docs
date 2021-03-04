@@ -111,6 +111,6 @@ class Aside extends Component
      */
     public function render()
     {
-        return view('components.aside');
+        return view('components.docs.aside');
     }
 }

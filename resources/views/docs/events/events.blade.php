@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('title', $name)
 @section('content')
 <div class="container layout-container landing-page px-4">

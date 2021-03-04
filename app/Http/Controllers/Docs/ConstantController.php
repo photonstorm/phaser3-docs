@@ -10,12 +10,12 @@ use Illuminate\Http\Request;
 class ConstantController extends Controller
 {
     public function index() {
-        return view('constants.constant',["constants" => Constant::all()]);
+        return view('docs.constants.constant',["constants" => Constant::all()]);
     }
 
     public function show($longname) {
         $constant = Constant::whereLongname($longname)->first();
-        return view('constants.constant', [
+        return view('docs.constants.constant', [
             "constant" => $constant
         ]);
     }

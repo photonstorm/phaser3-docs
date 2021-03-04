@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('title', $collection->name)
 @section('content')
 <div class="container layout-container">

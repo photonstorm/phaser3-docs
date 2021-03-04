@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/*!
+/*!
  * Toastify js 1.9.3
  * https://github.com/apvarun/toastify-js
  * @license MIT licensed
@@ -11967,17 +11967,7 @@ body {
   height: 100vh !important;
 }
 
-.card-members-style_debug {
-  background-color: #0ee9b2;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.card,
-.card-members-style,
-.card-member-style {
+.card {
   background-color: #fafbfc;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -12004,10 +11994,12 @@ pre {
 
 pre > code {
   color: white;
+  font-size: 0.7rem;
 }
 
 body {
   background-color: #e0e4f1;
+  font: 18px/30px "freight-sans-pro", Arial, Helvetica, sans-serif;
 }
 
 .layout-container {

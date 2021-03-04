@@ -25,6 +25,6 @@ class SourceLinks extends Component
      */
     public function render()
     {
-        return view('components.source-links');
+        return view('components.docs.source-links');
     }
 }

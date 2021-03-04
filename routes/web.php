@@ -34,7 +34,7 @@ Route::get('/', function () {
 Route::prefix('/docs/')->group(function () {
     Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () {
         Route::get('/{version}/', function ($version) {
-            return view('landing');
+            return view('docs.landing');
         });
 
         Route::get('{version}/namespaces', [NamespacesController::class, 'index'])->name('docs.namespaces');

@@ -10,7 +10,7 @@ class EventsController extends Controller
 {
     public function index() {
         $list_longnames = $this->create_longnames_list(Event::all()->pluck('longname')->toArray());
-        return view('events.events',
+        return view('docs.events.events',
         [
             "name" => "Events",
             "list_longnames" => $list_longnames,
@@ -20,7 +20,7 @@ class EventsController extends Controller
 
     public function show($longname) {
         $event = Event::whereLongname($longname)->first();
-        return view('events.event-focus', [
+        return view('docs.events.event-focus', [
             "event" => $event
         ]);
     }

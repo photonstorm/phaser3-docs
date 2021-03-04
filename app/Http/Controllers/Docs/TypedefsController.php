@@ -12,7 +12,7 @@ class TypedefsController extends Controller
     {
         $typedef = Typedefs::whereLongname($longname)->first();
 
-        return view('typedefs.typedef', [
+        return view('docs.typedef', [
             "typedef" => $typedef
         ]);
     }

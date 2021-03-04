@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@php
+// TODO: Remove this route and file
+
+@endphp
+
+@extends('app')
 @section('title', $typedef->scope)
 @section('content')
 <div class="container layout-container">

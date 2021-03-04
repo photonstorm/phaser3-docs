@@ -64,7 +64,7 @@ class FocusController extends Controller
             return abort(404);
         }
 
-        return view('focus', ['collection' => $collection]);
+        return view('docs.focus', ['collection' => $collection]);
 
     }
 }

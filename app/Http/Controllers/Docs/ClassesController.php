@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ClassesController extends Controller
 {
     public function index() {
-        return view('layouts.list-creator', [
+        return view('docs.layouts.list-creator', [
             "name" => "Class",
             "collections" => Classes::all(),
             "version" => Config::get('app.phaser_version')
@@ -59,7 +59,7 @@ class ClassesController extends Controller
 
         // dd($class);
 
-        return view('class', [
+        return view('docs.class', [
             "class" => $class,
             "params" => $params,
             "classConstructor" => $classConstructor,

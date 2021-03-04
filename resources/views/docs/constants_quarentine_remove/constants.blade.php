@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@php
+// TODO: Remove this.
+@endphp
+@extends('app')
 @section('title', 'Constants')
 @section('content')
 <div class="container">

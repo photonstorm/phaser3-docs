@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Phaser 3 API Documentation - @yield('title')</title>
 
+    <!-- Adobe Fonts -->
+    <script src="//use.typekit.net/fmc0gtt.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -13,11 +17,11 @@
 </head>
 
 <body class="antialiased">
-    @include('layouts.menu')
+    @include('menu')
 
     @yield('content')
 
-    @include('layouts.footer')
+    @include('footer')
 </body>
 
 </html>

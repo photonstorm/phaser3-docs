@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@php
+// TODO: Remove this blade and route
+@endphp
+@extends('app')
 @section('title', $constant->longname)
 @section('content')
 <div class="container">

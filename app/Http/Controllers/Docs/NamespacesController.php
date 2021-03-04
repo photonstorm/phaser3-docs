@@ -11,7 +11,7 @@ class NamespacesController extends Controller
 {
     public function index()
     {
-        return view('layouts.list-creator', [
+        return view('docs.layouts.list-creator', [
             "name" => "Namespace",
             "collections" => Namespaces::all()->sortBy("longname")
         ]);
@@ -30,7 +30,7 @@ class NamespacesController extends Controller
         $events = $namespace->events->sortBy("longname");
         $methodConstructor = "";
 
-        return view('namespace', [
+        return view('docs.namespace', [
             "version" => Config::get('app.phaser_version'),
             "namespace" => $namespace,
             "classes" => $classes,

@@ -15,7 +15,7 @@ class ScenesController extends Controller
         $memberof_scenes = Classes::where("memberof", "Phaser.Scenes")->get()->sortBy('name');
         $scene_members_class = Member::where("memberof", "Phaser.Scene")->get()->sortBy('name');
 
-        return view('scenes.scenes', [
+        return view('docs.scenes', [
             "class_scene" => $class_scene,
             "memberof_scenes" => $memberof_scenes,
             "scene_members_class" => $scene_members_class

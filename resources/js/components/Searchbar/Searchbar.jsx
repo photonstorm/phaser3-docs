@@ -146,7 +146,7 @@ const Searchbar = (props) => {
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
                                                         return <li key={res.longname + index}>
-                                                                    <a href={`/docs/${version}/focus/${res.longname.replace('-', '#')}`}>
+                                                                    <a href={`/docs/${version}/focus/${res.longname}`}>
                                                                         <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#'))}}>
 
                                                                         </span>

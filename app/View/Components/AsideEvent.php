@@ -29,6 +29,6 @@ class AsideEvent extends Component
      */
     public function render()
     {
-        return view('components.aside-event');
+        return view('components.docs.aside-event');
     }
 }

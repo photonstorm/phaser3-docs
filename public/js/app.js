@@ -76495,7 +76495,7 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/focus/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/focus/").concat(res.longname)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: mark(res.longname.replace('-', '#'))

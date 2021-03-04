@@ -13,7 +13,7 @@ class PhysicsController extends Controller
     public function index() {
         $arcade = Classes::where("memberof", "Phaser.Physics.Arcade")->get();
         $matter = Classes::where("memberof", "Phaser.Physics.Matter")->get();
-        return view('physics.physics', [
+        return view('docs.physics', [
             "physics" => [
                 "arcade" => $arcade,
                 "matter" => $matter

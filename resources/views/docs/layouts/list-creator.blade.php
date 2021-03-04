@@ -1,5 +1,5 @@
 {{-- Help us to create main lists, IE: http://127.0.0.1:8000/3.52.0/namespaces --}}
-@extends('layouts.app')
+@extends('app')
 @section('title', $name)
 @section('content')
 <div class="container layout-container landing-page px-4">
