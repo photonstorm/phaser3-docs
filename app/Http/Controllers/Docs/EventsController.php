@@ -10,6 +10,7 @@ class EventsController extends Controller
 {
     public function index() {
         $list_longnames = $this->create_longnames_list(Event::all()->pluck('longname')->toArray());
+
         return view('docs.events.events',
         [
             "name" => "Events",

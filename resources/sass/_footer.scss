@@ -1,0 +1,132 @@
+
+#footer {
+	color: #fff;
+	font-size: 15px;
+	line-height: 20px;
+	position: relative;
+	padding: 246px 0 164px;
+	text-shadow: 1px 1px 0 #000;
+	background: url(//phaser.io/images/bg-footer.jpg) no-repeat 50% 100% #e0e4f1;
+	background-size: 100% auto;
+}
+
+.home-page #footer { padding: 562px 0 56px; }
+.get-start-page #footer {
+	margin: -335px 0 0;
+	padding: 742px 0 56px;
+	background: url(//phaser.io/images/bg-footer2.jpg) no-repeat 50% 100% #e0e4f1;
+}
+.showcase-page #footer {
+	background: none;
+	padding: 38px 0 56px;
+}
+.showcase-page #footer .holder { max-width: 1160px; }
+#footer .holder {
+	margin: 0 auto;
+	padding: 0 10px;
+	max-width: 1140px;
+	position: relative;
+}
+#footer .img-rocket {
+	display: block;
+	margin: 0 0 13px 23px;
+	position: relative;
+	top: 21px;
+}
+#footer .footer-info {
+	float: left;
+	width: 470px;
+	padding: 0 0 0 10px;
+}
+#footer .site-rights {
+	float: left;
+	width: 180px;
+	padding: 3px 0 0 0;
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+#footer .site-rights p { margin: 0 0 5px; }
+#footer .logo {
+	width: 113px;
+	height: 15px;
+	display: block;
+	margin: 0 0 5px;
+	overflow: hidden;
+	text-indent: -9999px;
+	background: url(//phaser.io/images/sprite.png) no-repeat -80px -170px;
+}
+#footer .copyright {
+	display: block;
+	font-weight: bold;
+}
+
+#footer .footer-links {
+	float: right;
+	width: 200px;
+	position: relative;
+	padding: 4px 0 0 42px;
+}
+
+#footer .footer-links p { margin: 0 0 3px; }
+
+#footer .footer-links a {
+	color: #fff;
+	vertical-align: top;
+	display: inline-block;
+	text-decoration: none;
+}
+
+#footer .footer-links a:hover { text-decoration: underline; }
+
+.social-links {
+	margin: 0;
+	float: right;
+	font-weight: bold;
+	padding: 12px 0 0 10px;
+}
+.social-links li {
+	float: left;
+	z-index: 2;
+	position: relative;
+	margin: 0 0 0 42px;
+	list-style: none outside;
+}
+.social-links li:first-child { margin: 0; }
+.social-links li a {
+	color: #fff;
+	display: block;
+	position: relative;
+	padding: 0 0 0 50px;
+	text-decoration: none;
+}
+.social-links li a:hover { text-decoration: underline; }
+.social-links li a:before {
+	left: -8px;
+	top: 50%;
+	width: 69px;
+	content: '';
+	height: 66px;
+	margin: -33px 0 0;
+	position: absolute;
+	background: url(//phaser.io/images/sprite.png) no-repeat -280px -100px;
+}
+.social-links li.twitter a:before {
+	background-position: -360px -100px;
+	left: -7px;
+}
+.social-links li.github a:before {
+	background-position: 0 -170px;
+	left: -4px;
+}
+.panel:after,
+.publish:after,
+section.step .holder:after,
+#main:after {
+	clear: both;
+	content: '';
+	display: block;
+}

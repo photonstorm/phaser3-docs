@@ -1,8 +1,6 @@
 @extends('app')
 @section('title', 'Index')
 
-@include('docs.layouts.header')
-
 @section('content')
 <div class="container layout-container landing-page px-5">
     <div class="row">

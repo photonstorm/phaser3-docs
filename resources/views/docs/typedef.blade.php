@@ -5,6 +5,7 @@
 
 @extends('app')
 @section('title', $typedef->scope)
+
 @section('content')
 <div class="container layout-container">
     <div class="row">

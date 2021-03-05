@@ -1,5 +1,8 @@
 @extends('app')
 @section('title', $name)
+
+@include('docs.layouts.header')
+
 @section('content')
 <div class="container layout-container landing-page px-4">
     <div class="row">

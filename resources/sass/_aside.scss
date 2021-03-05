@@ -1,12 +1,16 @@
 .aside-container {
-    background-color: $light;
+    // background-color: $light;
     .aside-fixed {
         position: fixed;
         overflow-y: scroll;
+        // overflow-x: hidden;
         height: calc(100vh - 50px);
         left: 0px;
+        top: 241px;
         width: inherit;
         max-width: inherit;
+        display: flex;
+        justify-content: flex-end;
     }
     .aside {
         .list-group-item {
@@ -21,7 +25,7 @@
     }
 
     .aside-fixed {
-        background-color: $light;
+        // background-color: $light;
     }
 }
 

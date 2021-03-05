@@ -76680,25 +76680,30 @@ jQuery(function () {
   $(window).on('resize', function () {
     comprobateOverflowAside();
   });
-});
+}); // Scrolldown aside offsetY
+
+var offsetY = 240;
 
 var activeAsideSticky = function activeAsideSticky() {
-  if ($(window).scrollTop() > 50) {
+  if ($(window).scrollTop() > offsetY) {
     $('.aside-fixed').addClass('aside-sticky');
   } else {
     $('.aside-fixed').removeClass('aside-sticky');
-    $('.aside-fixed').css('top', 50 - $(window).scrollTop() + 'px');
+    $('.aside-fixed').css('top', offsetY - $(window).scrollTop() + 'px');
   }
 }; // Change scrollY of aside
 
 
 var comprobateOverflowAside = function comprobateOverflowAside() {
-  var offsetY = 10;
+  if ($('.aside-fixed .aside ul').position() !== undefined) {
+    console.log('EWntra la vaina');
+    var aside_size = $('.aside-fixed .aside ul').height() + $('.aside-fixed .aside ul').position().top;
 
-  if ($('.aside-fixed .aside').height() + offsetY < $('.aside-fixed').height()) {
-    $('.aside-fixed').css('overflow-y', 'initial');
-  } else {
-    $('.aside-fixed').css('overflow-y', 'scroll');
+    if (aside_size < $('.aside-fixed').height()) {
+      $('.aside-fixed').css('overflow-y', 'initial');
+    } else {
+      $('.aside-fixed').css('overflow-y', 'scroll');
+    }
   }
 };
 

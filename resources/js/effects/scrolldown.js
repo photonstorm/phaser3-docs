@@ -1,7 +1,7 @@
 jQuery(() => {
     const scrollToAnchor = (aid) => {
 
-        if(aid.length > 1) {
+        if (aid.length > 1) {
             let tag = $(aid);
 
             if (tag.length) {
@@ -25,7 +25,7 @@ jQuery(() => {
 
     // $('body').scrollspy({ target: '.scrollspy_aside' });
     // $('[data-spy="scroll"]').each(function () {
-        // var $spy = $(this).scrollspy('refresh');
+    // var $spy = $(this).scrollspy('refresh');
     // });
 
     // aside sticky
@@ -38,22 +38,29 @@ jQuery(() => {
 
 });
 
+// Scrolldown aside offsetY
+const offsetY = 240;
+
 const activeAsideSticky = () => {
-    if ($(window).scrollTop() > 50) {
+    if ($(window).scrollTop() > offsetY) {
         $('.aside-fixed').addClass('aside-sticky');
     } else {
         $('.aside-fixed').removeClass('aside-sticky');
-        $('.aside-fixed').css('top', (50 - $(window).scrollTop()) + 'px');
+        $('.aside-fixed').css('top', (offsetY - $(window).scrollTop()) + 'px');
     }
 }
 
 
 // Change scrollY of aside
 const comprobateOverflowAside = () => {
-    const offsetY = 10;
-    if($('.aside-fixed .aside').height() + offsetY < $('.aside-fixed').height()) {
-        $('.aside-fixed').css('overflow-y', 'initial');
-    } else {
-        $('.aside-fixed').css('overflow-y', 'scroll');
+
+    if ($('.aside-fixed .aside ul').position()  !== undefined) {
+        console.log('EWntra la vaina')
+        const aside_size = $('.aside-fixed .aside ul').height() + $('.aside-fixed .aside ul').position().top;
+        if (aside_size < $('.aside-fixed').height()) {
+            $('.aside-fixed').css('overflow-y', 'initial');
+        } else {
+            $('.aside-fixed').css('overflow-y', 'scroll');
+        }
     }
 }
