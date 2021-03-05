@@ -1,6 +1,8 @@
 {{-- Principal layout with aside and container, use in: http://127.0.0.1:8000/3.52.0/Phaser.Game --}}
 @extends('app')
 
+@include('docs.layouts.header')
+
 @section('content')
 <div class="container-fluid layout-container">
     <div class="row">

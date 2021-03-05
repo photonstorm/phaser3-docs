@@ -1,13 +1,12 @@
-
 // ##### Menu Phaser
 #docs-header {
-	margin: 0 auto;
-	background: url(https://phaser.io/images/bg-body2.jpg) no-repeat 50% 0;
-	background-size: 100% auto;
-    height: 239px;
-
+    margin: 0 auto;
+    background: url(https://phaser.io/images/bg-body2.jpg) no-repeat 50% 0;
+    background-size: 100% auto;
     overflow: hidden;
+}
 
+#phaser-menu {
     .logo {
         top: 10px;
         left: 50%;
@@ -32,7 +31,7 @@
         // background: rgba(0,0,0,0.7);
     }
     .toggle-slide:after {
-        content: '';
+        content: "";
         clear: both;
         display: block;
     }
@@ -55,19 +54,19 @@
         text-transform: uppercase;
         font: bold 15px/18px Arial, Helvetica, sans-serif;
     }
-    .navigation>ul {
+    .navigation > ul {
         margin: 0;
         padding: 0;
         width: 100%;
         display: table;
         table-layout: fixed;
     }
-    .navigation>ul>li {
+    .navigation > ul > li {
         display: table-cell;
         vertical-align: top;
         list-style: none outside;
     }
-    .navigation>ul>li>a {
+    .navigation > ul > li > a {
         color: #fff;
         display: block;
         position: relative;
@@ -75,36 +74,48 @@
         word-break: break-all;
         text-decoration: none;
     }
-    .navigation> ul> li.active> a,
-    .navigation> ul> li> a:hover {
+    .navigation > ul > li.active > a,
+    .navigation > ul > li > a:hover {
         -webkit-border-radius: 31px;
         border-radius: 31px;
         text-decoration: none;
         box-shadow: 0 -1px 1px 0 #3c373f inset;
-        background: #222025 url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzIyMjAyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iIzE5MTYxYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iIzE5MTUxYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkzJSIgc3RvcC1jb2xvcj0iIzBjMDkwZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZDA4MTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: #222025
+            url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzIyMjAyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iIzE5MTYxYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iIzE5MTUxYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkzJSIgc3RvcC1jb2xvcj0iIzBjMDkwZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZDA4MTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
         background: -moz-linear-gradient(top, #222025 0%, #19161c 38%, #19151b 48%, #0c090f 93%, #0d0810 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222025), color-stop(38%, #19161c), color-stop(48%, #19151b), color-stop(93%, #0c090f), color-stop(100%, #0d0810));
+        background: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            color-stop(0%, #222025),
+            color-stop(38%, #19161c),
+            color-stop(48%, #19151b),
+            color-stop(93%, #0c090f),
+            color-stop(100%, #0d0810)
+        );
         background: -webkit-linear-gradient(top, #222025 0%, #19161c 38%, #19151b 48%, #0c090f 93%, #0d0810 100%);
         background: -o-linear-gradient(top, #222025 0%, #19161c 38%, #19151b 48%, #0c090f 93%, #0d0810 100%);
         background: -ms-linear-gradient(top, #222025 0%, #19161c 38%, #19151b 48%, #0c090f 93%, #0d0810 100%);
         background: linear-gradient(to bottom, #222025 0%, #19161c 38%, #19151b 48%, #0c090f 93%, #0d0810 100%);
     }
-    .navigation> ul> li>  a:after {
+    .navigation > ul > li > a:after {
         width: 12px;
-        content: '';
+        content: "";
         height: 7px;
         vertical-align: top;
         margin: 5px 0 0 7px;
         display: inline-block;
-        background: url(/images/sprite.png) no-repeat -90px -140px;
+        background: url(https://phaser.io/images/sprite.png) no-repeat -90px -140px;
     }
-    .navigation> ul> li.active> a:after,
-    .navigation> ul> li> a:hover:after { background-position: -330px -450px; }
+    .navigation > ul > li.active > a:after,
+    .navigation > ul > li > a:hover:after {
+        background-position: -330px -450px;
+    }
     .holder:after {
         top: 0;
         left: 100%;
         width: 10px;
-        content: '';
+        content: "";
         height: 59px;
         position: absolute;
         margin: 0 -9999px 0 0;
@@ -118,11 +129,14 @@
         margin: 0 0 0 -9999px;
         padding: 0 0 0 9999px;
     }
-    @media screen and ( max-width:1140px ) {
+    @media screen and (max-width: 1140px) {
+        .container {
+            background-size: auto auto;
+        }
 
-        .container { background-size: auto auto; }
-
-        .toggle-slide { margin: 0 -10px; }
+        .toggle-slide {
+            margin: 0 -10px;
+        }
 
         .interphase-logo,
         .labs-logo,
@@ -130,10 +144,6 @@
             display: none;
         }
 
-        // .showcase-page #header .logo { margin: 10px 0 !important; }
-        // .example-page #header .logo { margin: 10px 0 !important; }
-        // .get-start-page #header .holder:first-child,
-        // .get-start-page #header .holder,
         .holder,
         .holder:first-child {
             width: 50%;
@@ -143,17 +153,22 @@
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
             background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ4NDg0YSIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAzMDMwOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-            background: -moz-linear-gradient(top, rgba(72,72,74,0.5) 0%, rgba(3,3,8,1) 100%);
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(72,72,74,0.5)), color-stop(100%, rgba(3,3,8,1)));
-            background: -webkit-linear-gradient(top, rgba(72,72,74,0.5) 0%, rgba(3,3,8,1) 100%);
-            background: -o-linear-gradient(top, rgba(72,72,74,0.5) 0%, rgba(3,3,8,1) 100%);
-            background: -ms-linear-gradient(top, rgba(72,72,74,0.5) 0%, rgba(3,3,8,1) 100%);
-            background: linear-gradient(to bottom, rgba(72,72,74,0.5) 0%, rgba(3,3,8,1) 100%);
+            background: -moz-linear-gradient(top, rgba(72, 72, 74, 0.5) 0%, rgba(3, 3, 8, 1) 100%);
+            background: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                color-stop(0%, rgba(72, 72, 74, 0.5)),
+                color-stop(100%, rgba(3, 3, 8, 1))
+            );
+            background: -webkit-linear-gradient(top, rgba(72, 72, 74, 0.5) 0%, rgba(3, 3, 8, 1) 100%);
+            background: -o-linear-gradient(top, rgba(72, 72, 74, 0.5) 0%, rgba(3, 3, 8, 1) 100%);
+            background: -ms-linear-gradient(top, rgba(72, 72, 74, 0.5) 0%, rgba(3, 3, 8, 1) 100%);
+            background: linear-gradient(to bottom, rgba(72, 72, 74, 0.5) 0%, rgba(3, 3, 8, 1) 100%);
         }
 
-        .navigation ul { table-layout: auto; }
+        .navigation ul {
+            table-layout: auto;
+        }
     }
-
-
 }
-

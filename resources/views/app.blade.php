@@ -17,8 +17,6 @@
 </head>
 
 <body class="antialiased">
-    @include('menu')
-
     @yield('content')
 
     @include('footer')
