@@ -46,14 +46,14 @@ const activeAsideSticky = () => {
         $('.aside-fixed').addClass('aside-sticky');
     } else {
         $('.aside-fixed').removeClass('aside-sticky');
-        // $('.aside-fixed').css('top', (offsetY - $(window).scrollTop()) + 'px');
+        $('.aside-fixed').css('top', (offsetY - $(window).scrollTop()) + 'px');
     }
     // TODO: Fix aside with footer
     if ($('.aside-elements-container').position()  !== undefined) {
         if($(window).scrollTop() > $('#footer').position().top - $('#footer').height() - 756) {
             // const remove_size = $(window).scrollTop() - ($('#footer').position().top - $('#footer').height() - 756);
             // console.log('Realsize: ',($('.aside-fixed').height() - remove_size) + 'px' )
-            // // $('.aside-fixed').css("height",  ($('.aside-fixed').height() - remove_size) + 'px');
+            // $('.aside-fixed').css("height",  ($('.aside-fixed').height() - remove_size) + 'px');
             // $('.aside-container').css("height", '30px');
         }
     }
