@@ -12,6 +12,8 @@
             </div>
         </div>
 
-        <div id="react-aside-search-list" data-list="{{ json_encode($aside_collection) }}"></div>
+        <div class="aside-elements-container">
+            <div id="react-aside-search-list" data-list="{{ json_encode($aside_collection) }}"></div>
+        </div>
     </div>
 </div>
