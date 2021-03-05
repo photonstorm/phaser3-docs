@@ -1,5 +1,5 @@
 <nav class="menu-docs d-flex justify-content-center py-1 mt-3">
-    <div class="menu-item mx-2 text-center {{ (request()->is(Config::get('app.phaser_version').'/namespaces') OR (Config::get('app.actual_link') === 'namespaces')) ? 'menu-active' : '' }}">
+    <div class="menu-item mx-2 text-center {{ (request()->routeIs('docs.namespaces', ["version" => Config::get('app.phaser_version')]) OR (Config::get('app.actual_link') === 'namespaces')) ? 'menu-active' : '' }}">
         <a href="{{route('docs.namespaces', ['version' => $version])}}">
             Namespaces
         </a>
