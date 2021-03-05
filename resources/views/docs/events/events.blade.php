@@ -1,9 +1,9 @@
 @extends('app')
 @section('title', $name)
 
-@include('docs.layouts.header')
 
 @section('content')
+@include('docs.layouts.header')
 <div class="container layout-container landing-page px-4">
     <div class="row">
         <div class="col-12">

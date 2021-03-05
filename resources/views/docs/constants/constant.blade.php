@@ -4,6 +4,7 @@
 @extends('app')
 @section('title', $constant->longname)
 @section('content')
+@include('docs.layouts.header')
 <div class="container">
     <div class="row">
         {{-- Show namespace properties Name, methods--}}

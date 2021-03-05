@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Phaser 3 API Documentation - @yield('title')</title>
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
     <!-- Adobe Fonts -->
     <script src="//use.typekit.net/fmc0gtt.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
@@ -12,8 +16,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="antialiased">
