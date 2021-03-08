@@ -6,7 +6,7 @@
         // overflow-x: hidden;
         height: calc(100vh - 243px);
         left: 0px;
-        top: 241px;
+        top: 243px;
         width: inherit;
         max-width: inherit;
         display: flex;
@@ -27,13 +27,10 @@
         }
     }
 
-    .aside-fixed {
-        // background-color: $light;
-    }
 }
 
 // Set top 0 for create aside sticky
-.aside-sticky {
-    top: 0px !important;
-    height: 100vh !important;
-}
+// .aside-sticky {
+//     top: 0px !important;
+//     height: 100vh ;
+// }

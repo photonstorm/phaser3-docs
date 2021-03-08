@@ -11,7 +11,7 @@ require('./bootstrap');
 require('prismjs');
 
 // ---- Page Effects
-require('./effects/scrolldown');
+require('./effects/scrolldownAndScrollAside');
 require('./effects/asideFilters');
 require('./effects/copyToClipboard');
 

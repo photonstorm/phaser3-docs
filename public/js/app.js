@@ -75965,7 +75965,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! prismjs */ "./node_modules/prismjs/prism.js"); // ---- Page Effects
 
 
-__webpack_require__(/*! ./effects/scrolldown */ "./resources/js/effects/scrolldown.js");
+__webpack_require__(/*! ./effects/scrolldownAndScrollAside */ "./resources/js/effects/scrolldownAndScrollAside.js");
 
 __webpack_require__(/*! ./effects/asideFilters */ "./resources/js/effects/asideFilters.js");
 
@@ -76640,12 +76640,15 @@ var copyToClipboard = function copyToClipboard(text) {
 
 /***/ }),
 
-/***/ "./resources/js/effects/scrolldown.js":
-/*!********************************************!*\
-  !*** ./resources/js/effects/scrolldown.js ***!
-  \********************************************/
+/***/ "./resources/js/effects/scrolldownAndScrollAside.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/effects/scrolldownAndScrollAside.js ***!
+  \**********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    debounce = _require.debounce;
 
 jQuery(function () {
   var scrollToAnchor = function scrollToAnchor(aid) {
@@ -76668,46 +76671,51 @@ jQuery(function () {
   }
 
   comprobateOverflowAside();
-  activeAsideSticky(); // $('body').scrollspy({ target: '.scrollspy_aside' });
-  // $('[data-spy="scroll"]').each(function () {
-  // var $spy = $(this).scrollspy('refresh');
-  // });
-  // aside sticky
+  activeAsideSticky(); // aside sticky
 
-  $(window).on('scroll', function () {
-    activeAsideSticky();
+  $(window).on('scroll', function (e) {
+    activeAsideSticky(e);
   });
   $(window).on('resize', function () {
     comprobateOverflowAside();
   });
-}); // Scrolldown aside offsetY
+});
+var timerScroll; // Scrolldown aside offsetY
 
-var offsetY = 243;
+var offsetTop = 243;
 
-var activeAsideSticky = function activeAsideSticky() {
-  if ($(window).scrollTop() > offsetY) {
-    $('.aside-fixed').addClass('aside-sticky');
-  } else {
-    $('.aside-fixed').removeClass('aside-sticky');
-    $('.aside-fixed').css('top', offsetY - $(window).scrollTop() + 'px');
-  } // TODO: Fix aside with footer
+var activeAsideSticky = function activeAsideSticky(e) {
+  if ($(window).scrollTop() > offsetTop) {
+    $('.aside-fixed').css({
+      'top': '0px'
+    });
+    var footer_resize = $(window).scrollTop() + $(window).height() - $('#footer-container').position().top;
 
-
-  if ($('.aside-elements-container').position() !== undefined) {
-    if ($(window).scrollTop() > $('#footer').position().top - $('#footer').height() - 756) {// const remove_size = $(window).scrollTop() - ($('#footer').position().top - $('#footer').height() - 756);
-      // console.log('Realsize: ',($('.aside-fixed').height() - remove_size) + 'px' )
-      // $('.aside-fixed').css("height",  ($('.aside-fixed').height() - remove_size) + 'px');
-      // $('.aside-container').css("height", '30px');
+    if (footer_resize > 0) {
+      $('.aside-fixed').css({
+        'height': "calc(100vh - ".concat(footer_resize, "px)")
+      });
+    } else {
+      $('.aside-fixed').css({
+        'height': '100vh'
+      });
     }
-  }
+  } else {
+    $('.aside-fixed').css({
+      'top': offsetTop - $(window).scrollTop() + 'px',
+      'height': 'calc(100vh - 243px)'
+    });
+  } // Prevents rare tremors
+
+
+  clearTimeout(timerScroll);
+  timerScroll = setTimeout(comprobateOverflowAside, 100);
 }; // Change scrollY of aside
 
 
 var comprobateOverflowAside = function comprobateOverflowAside() {
   if ($('.aside-elements-container').position() !== undefined) {
     var aside_size = $('.aside-elements-container').height() + $('.aside-elements-container').position().top;
-    console.log(aside_size);
-    console.log('Aside-fixed ', $('.aside-fixed').height());
 
     if (aside_size < $('.aside-fixed').height()) {
       $('.aside-fixed').css('overflow-y', 'initial');

@@ -1,3 +1,4 @@
+<div id="footer-container">
 <footer id="footer" class="mt-4">
     <div class="holder">
         <img src="https://phaser.io/images/img10.png" alt="rocketman" class="img-rocket">
@@ -21,3 +22,5 @@
         </ul>
     </div>
 </footer>
+
+</div>

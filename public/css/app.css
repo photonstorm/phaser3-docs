@@ -11913,7 +11913,7 @@ $heigh-menu: 50px;
   overflow-y: scroll;
   height: calc(100vh - 243px);
   left: 0px;
-  top: 241px;
+  top: 243px;
   width: inherit;
   max-width: inherit;
   display: flex;
@@ -11933,11 +11933,6 @@ $heigh-menu: 50px;
 
 .aside-container .aside ul:last-of-type {
   padding-bottom: 40px;
-}
-
-.aside-sticky {
-  top: 0px !important;
-  height: 100vh !important;
 }
 
 .card {
