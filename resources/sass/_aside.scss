@@ -22,6 +22,9 @@
                 color: $color-primary;
             }
         }
+        ul:last-of-type {
+            padding-bottom: 40px;
+        }
     }
 
     .aside-fixed {

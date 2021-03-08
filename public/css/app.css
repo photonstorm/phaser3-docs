@@ -11931,6 +11931,10 @@ $heigh-menu: 50px;
   color: #e67e22;
 }
 
+.aside-container .aside ul:last-of-type {
+  padding-bottom: 40px;
+}
+
 .aside-sticky {
   top: 0px !important;
   height: 100vh !important;
