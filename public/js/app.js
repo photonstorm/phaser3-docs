@@ -76682,7 +76682,7 @@ jQuery(function () {
   });
 }); // Scrolldown aside offsetY
 
-var offsetY = 240;
+var offsetY = 243;
 
 var activeAsideSticky = function activeAsideSticky() {
   if ($(window).scrollTop() > offsetY) {

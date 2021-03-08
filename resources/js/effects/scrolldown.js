@@ -39,7 +39,7 @@ jQuery(() => {
 });
 
 // Scrolldown aside offsetY
-const offsetY = 240;
+const offsetY = 243;
 
 const activeAsideSticky = () => {
     if ($(window).scrollTop() > offsetY) {

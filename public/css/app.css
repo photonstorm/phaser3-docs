@@ -11911,7 +11911,7 @@ $heigh-menu: 50px;
 .aside-container .aside-fixed {
   position: fixed;
   overflow-y: scroll;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 243px);
   left: 0px;
   top: 241px;
   width: inherit;
