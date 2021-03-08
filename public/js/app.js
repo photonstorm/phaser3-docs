@@ -76715,11 +76715,14 @@ var activeAsideSticky = function activeAsideSticky(e) {
 
 var comprobateOverflowAside = function comprobateOverflowAside() {
   if ($('.aside-elements-container').position() !== undefined) {
-    var aside_size = $('.aside-elements-container').height() + $('.aside-elements-container').position().top;
+    var aside_position = $('.aside-elements-container').position().top;
+    var aside_height = $('.aside-elements-container').height();
+    var aside_size = Math.floor(aside_height + aside_position);
 
-    if (aside_size < $('.aside-fixed').height()) {
+    if (Math.floor(aside_size) < $('.aside-fixed').height()) {
       $('.aside-fixed').css('overflow-y', 'initial');
     } else {
+      console.log('Remove overflow');
       $('.aside-fixed').css('overflow-y', 'scroll');
     }
   }
