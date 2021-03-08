@@ -75806,7 +75806,7 @@ module.exports = function(module) {
 /*!*************************************************!*\
   !*** ./resources/js/State/AsideFilter/index.js ***!
   \*************************************************/
-/*! exports provided: AsideFilterDefault, HideInheritedMember, ShowPrivateMembers, default */
+/*! exports provided: AsideFilterDefault, HideInheritedMember, ShowPrivateMembers, SetSearching, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75814,6 +75814,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsideFilterDefault", function() { return AsideFilterDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HideInheritedMember", function() { return HideInheritedMember; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowPrivateMembers", function() { return ShowPrivateMembers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SetSearching", function() { return SetSearching; });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -75824,7 +75825,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var AsideFilterDefault = {
   hide_inherited_members: false,
-  show_private_members: false
+  show_private_members: false,
+  searching: false
 };
 var AsideState = Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__["createSlice"])({
   name: 'AsideState',
@@ -75839,12 +75841,18 @@ var AsideState = Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__["createSli
       return _objectSpread(_objectSpread({}, state), {}, {
         show_private_members: action.payload
       });
+    },
+    SetSearching: function SetSearching(state, action) {
+      return _objectSpread(_objectSpread({}, state), {}, {
+        searching: action.payload
+      });
     }
   }
 });
 var _AsideState$actions = AsideState.actions,
     HideInheritedMember = _AsideState$actions.HideInheritedMember,
-    ShowPrivateMembers = _AsideState$actions.ShowPrivateMembers;
+    ShowPrivateMembers = _AsideState$actions.ShowPrivateMembers,
+    SetSearching = _AsideState$actions.SetSearching;
 
 /* harmony default export */ __webpack_exports__["default"] = (AsideState.reducer);
 
@@ -76044,6 +76052,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _State_AsideFilter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../State/AsideFilter */ "./resources/js/State/AsideFilter/index.js");
+/* harmony import */ var _ReactiveScrollspy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ReactiveScrollspy */ "./resources/js/components/AsideSearchList/ReactiveScrollspy.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -76060,7 +76070,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+var searchingDebounce;
+
 var AsideSearchList = function AsideSearchList(props) {
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       input_value = _useState2[0],
@@ -76086,7 +76101,10 @@ var AsideSearchList = function AsideSearchList(props) {
   });
 
   var handleFilter = function handleFilter(event) {
-    set_input_value(event.target.value.toLowerCase());
+    searchingDebounce = setTimeout(function () {
+      dispatch(Object(_State_AsideFilter__WEBPACK_IMPORTED_MODULE_3__["SetSearching"])(true));
+    }, 200);
+    set_input_value(event.target.value.toLowerCase().trim());
   };
 
   var asideFilterPass = function asideFilterPass(data, aside_filter) {
@@ -76107,7 +76125,9 @@ var AsideSearchList = function AsideSearchList(props) {
     return new_data;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ReactiveScrollspy__WEBPACK_IMPORTED_MODULE_4__["ReactiveScrollSpy"], {
+    reference: "reactive-scrolspy"
+  }, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     type: "text",
     ref: searchBarListFilterInput,
     onChange: handleFilter,
@@ -76120,7 +76140,6 @@ var AsideSearchList = function AsideSearchList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("u", {
       className: "text-capitalize"
     }, data.type === 'membersConstants' ? Object(lodash__WEBPACK_IMPORTED_MODULE_0__["lowerCase"])(data.type) : data.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, asideFilterPass(data.data, filter).map(function (el, key) {
-      console.log(el.inherited === '1');
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         key: key
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
@@ -76134,6 +76153,29 @@ var AsideSearchList = function AsideSearchList(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AsideSearchList);
+
+/***/ }),
+
+/***/ "./resources/js/components/AsideSearchList/ReactiveScrollspy.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/AsideSearchList/ReactiveScrollspy.js ***!
+  \**********************************************************************/
+/*! exports provided: ReactiveScrollSpy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactiveScrollSpy", function() { return ReactiveScrollSpy; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ReactiveScrollSpy = function ReactiveScrollSpy(props) {
+  console.log(props.reference);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.children);
+};
+
+
 
 /***/ }),
 
@@ -76645,8 +76687,14 @@ var copyToClipboard = function copyToClipboard(text) {
 /*!**********************************************************!*\
   !*** ./resources/js/effects/scrolldownAndScrollAside.js ***!
   \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _State_AsideFilter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../State/AsideFilter */ "./resources/js/State/AsideFilter/index.js");
+/* harmony import */ var _State_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../State/store */ "./resources/js/State/store.js");
+
 
 jQuery(function () {
   var scrollToAnchor = function scrollToAnchor(aid) {
@@ -76725,7 +76773,17 @@ var comprobateOverflowAside = function comprobateOverflowAside() {
     } else {
       $('.aside-fixed').css('overflow-y', 'scroll');
     }
-  }
+  } // Comprobate size when the filter is searching
+
+
+  _State_store__WEBPACK_IMPORTED_MODULE_1__["default"].subscribe(function () {
+    var isSearching = _State_store__WEBPACK_IMPORTED_MODULE_1__["default"].getState().AsideFilter.searching;
+
+    if (isSearching) {
+      comprobateOverflowAside();
+      _State_store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch(Object(_State_AsideFilter__WEBPACK_IMPORTED_MODULE_0__["SetSearching"])(false));
+    }
+  });
 };
 
 /***/ }),

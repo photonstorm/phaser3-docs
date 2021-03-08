@@ -1,8 +1,15 @@
 import { clone, lowerCase } from 'lodash';
 import React, { Fragment, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { SetSearching } from '../../State/AsideFilter'
+import { ReactiveScrollSpy } from './ReactiveScrollspy';
+
+var searchingDebounce;
 const AsideSearchList = (props) => {
+
+    const dispatch = useDispatch();
+
     const [input_value, set_input_value] = useState('');
 
     const [data] = useState(JSON.parse(props.list));
@@ -27,7 +34,11 @@ const AsideSearchList = (props) => {
     });
 
     const handleFilter = (event) => {
-        set_input_value(event.target.value.toLowerCase());
+        searchingDebounce = setTimeout(() => {
+            dispatch(SetSearching(true));
+        }, 200);
+
+        set_input_value(event.target.value.toLowerCase().trim());
     }
 
     const asideFilterPass = (data, aside_filter) => {
@@ -51,7 +62,7 @@ const AsideSearchList = (props) => {
     }
 
     return (
-        <div>
+        <ReactiveScrollSpy reference="reactive-scrolspy">
             Search: <br />
             <input type="text" ref={searchBarListFilterInput} onChange={handleFilter} value={input_value} />
             {
@@ -72,12 +83,11 @@ const AsideSearchList = (props) => {
                         <ul>
                             {
                                 asideFilterPass(data.data, filter).map((el, key) => {
-                                    console.log(el.inherited === '1')
                                     return (
                                         <li key={key}>
                                             <a href={`#${el.name}`} className="list-group-item">
                                                 {/* {(el.inherited === '1') ? (<span className="badge bg-warning text-dark">Inherited </span>) : ''} */}
-                                                {(el.access === 'private') ? (<span className="badge bg-info text-dark">Private</span>)  : ''} {el.name}
+                                                {(el.access === 'private') ? (<span className="badge bg-info text-dark">Private</span>) : ''} {el.name}
                                             </a>
                                         </li>
                                     );
@@ -88,7 +98,7 @@ const AsideSearchList = (props) => {
                 ))
             }
 
-        </div>
+        </ReactiveScrollSpy>
     );
 }
 

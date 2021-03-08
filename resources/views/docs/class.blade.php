@@ -52,10 +52,10 @@ new {{ $class->name }}({{$classConstructor}})
     @if ((!empty($members) AND count($members)) OR (!empty($membersConstants) AND count($membersConstants)))
         <h2 class="mt-4">Members</h2>
         @foreach ($membersConstants as $memberConstant)
-                <x-card class="card" :id="$memberConstant->name" :collection="$memberConstant" focus="true" />
+                <x-card class="card reactive-scrollspy" :id="$memberConstant->name" :collection="$memberConstant" focus="true" />
             @endforeach
             @foreach ($members as $member)
-                <x-card class="card" :id="$member->name" :collection="$member" focus="true"/>
+                <x-card class="card reactive-scrollspy" :id="$member->name" :collection="$member" focus="true"/>
             @endforeach
     @endif
 
@@ -66,7 +66,7 @@ new {{ $class->name }}({{$classConstructor}})
             @php
                 $methodConstructor = resolve('get_params_format')($method->params->all())
             @endphp
-                <x-card class="card" :id="$method->name" :collection="$method" focus="true"/>
+                <x-card class="card reactive-scrollspy" :id="$method->name" :collection="$method" focus="true"/>
             @endforeach
     @endif
 

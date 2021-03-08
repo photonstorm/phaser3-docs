@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between">
 
-    <div class="h4" id="{{ $id }}">
+    <div class="h4">
 
         @if ($getTableName() === 'members' OR $getTableName() === 'constants')
             @php

@@ -1,7 +1,7 @@
 @if ($isFocusRoute)
-    <div {{ $attributes }}>
+    <div id="{{ $id }}" {{ $attributes }}>
 @else
-    <div {{ $attributes->merge([
+    <div id="{{ $id }}" {{ $attributes->merge([
         'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. (($collection->access == 'protected') ? 'protected' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
     ]) }}>
 @endif

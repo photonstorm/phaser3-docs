@@ -1,3 +1,6 @@
+import { SetSearching } from '../State/AsideFilter';
+import store from '../State/store';
+
 jQuery(() => {
     const scrollToAnchor = (aid) => {
 
@@ -80,4 +83,13 @@ const comprobateOverflowAside = () => {
         }
 
     }
+
+    // Comprobate size when the filter is searching
+    store.subscribe(() => {
+        const isSearching = store.getState().AsideFilter.searching;
+        if(isSearching) {
+            comprobateOverflowAside();
+            store.dispatch(SetSearching(false));
+        }
+    });
 }
