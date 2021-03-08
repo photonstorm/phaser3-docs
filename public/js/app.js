@@ -76120,13 +76120,14 @@ var AsideSearchList = function AsideSearchList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("u", {
       className: "text-capitalize"
     }, data.type === 'membersConstants' ? Object(lodash__WEBPACK_IMPORTED_MODULE_0__["lowerCase"])(data.type) : data.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, asideFilterPass(data.data, filter).map(function (el, key) {
+      console.log(el.inherited === '1');
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         key: key
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         href: "#".concat(el.name),
         className: "list-group-item"
-      }, " ", el.access === 'private' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
-        "class": "badge bg-info text-dark"
+      }, el.access === 'private' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+        className: "badge bg-info text-dark"
       }, "Private") : '', " ", el.name));
     })));
   }));
@@ -76645,10 +76646,7 @@ var copyToClipboard = function copyToClipboard(text) {
   !*** ./resources/js/effects/scrolldownAndScrollAside.js ***!
   \**********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
-    debounce = _require.debounce;
+/***/ (function(module, exports) {
 
 jQuery(function () {
   var scrollToAnchor = function scrollToAnchor(aid) {
@@ -76685,11 +76683,13 @@ var timerScroll; // Scrolldown aside offsetY
 var offsetTop = 243;
 
 var activeAsideSticky = function activeAsideSticky(e) {
-  if ($(window).scrollTop() > offsetTop) {
+  var scrollTop = $(window).scrollTop();
+
+  if (scrollTop > offsetTop) {
     $('.aside-fixed').css({
       'top': '0px'
     });
-    var footer_resize = $(window).scrollTop() + $(window).height() - $('#footer-container').position().top;
+    var footer_resize = scrollTop + $(window).height() - $('#footer-container').position().top;
 
     if (footer_resize > 0) {
       $('.aside-fixed').css({
@@ -76701,9 +76701,10 @@ var activeAsideSticky = function activeAsideSticky(e) {
       });
     }
   } else {
+    // this adjust the start size
     $('.aside-fixed').css({
-      'top': offsetTop - $(window).scrollTop() + 'px',
-      'height': 'calc(100vh - 243px)'
+      'top': offsetTop - scrollTop + 'px',
+      'height': "calc(100vh - ".concat(offsetTop - Math.min(scrollTop, offsetTop), "px)")
     });
   } // Prevents rare tremors
 
@@ -76722,7 +76723,6 @@ var comprobateOverflowAside = function comprobateOverflowAside() {
     if (Math.floor(aside_size) < $('.aside-fixed').height()) {
       $('.aside-fixed').css('overflow-y', 'initial');
     } else {
-      console.log('Remove overflow');
       $('.aside-fixed').css('overflow-y', 'scroll');
     }
   }

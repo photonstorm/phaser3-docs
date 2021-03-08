@@ -54,31 +54,39 @@ const AsideSearchList = (props) => {
         <div>
             Search: <br />
             <input type="text" ref={searchBarListFilterInput} onChange={handleFilter} value={input_value} />
-                {
-                    filter_data.map((data, key) => (
-                        <Fragment key={key}>
-                            {
-                                (data.data.length !== 0) &&
-                                <h5 className="mt-4">
-                                    <u className="text-capitalize">
+            {
+                filter_data.map((data, key) => (
+                    <Fragment key={key}>
+                        {
+                            (data.data.length !== 0) &&
+                            <h5 className="mt-4">
+                                <u className="text-capitalize">
                                     {
                                         (data.type === 'membersConstants') ?
                                             lowerCase(data.type) :
                                             data.type
                                     }
-                                    </u>
-                                </h5>
+                                </u>
+                            </h5>
+                        }
+                        <ul>
+                            {
+                                asideFilterPass(data.data, filter).map((el, key) => {
+                                    console.log(el.inherited === '1')
+                                    return (
+                                        <li key={key}>
+                                            <a href={`#${el.name}`} className="list-group-item">
+                                                {/* {(el.inherited === '1') ? (<span className="badge bg-warning text-dark">Inherited </span>) : ''} */}
+                                                {(el.access === 'private') ? (<span className="badge bg-info text-dark">Private</span>)  : ''} {el.name}
+                                            </a>
+                                        </li>
+                                    );
+                                })
                             }
-                            <ul>
-                                {
-                                    asideFilterPass(data.data, filter).map((el, key) => {
-                                        return <li key={key}><a href={`#${el.name}`} className="list-group-item"> { (el.access === 'private') ? (<span class="badge bg-info text-dark">Private</span>) : ''} {el.name}</a></li>
-                                    })
-                                }
-                            </ul>
-                        </Fragment>
-                    ))
-                }
+                        </ul>
+                    </Fragment>
+                ))
+            }
 
         </div>
     );

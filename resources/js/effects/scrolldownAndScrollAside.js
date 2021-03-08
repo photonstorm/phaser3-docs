@@ -1,5 +1,3 @@
-const { debounce } = require("lodash");
-
 jQuery(() => {
     const scrollToAnchor = (aid) => {
 
@@ -41,19 +39,24 @@ let timerScroll;
 const offsetTop = 243;
 const activeAsideSticky = (e) => {
 
-    if ($(window).scrollTop() > offsetTop) {
+    const scrollTop = $(window).scrollTop();
+
+    if (scrollTop > offsetTop) {
         $('.aside-fixed').css({ 'top': '0px' });
 
-        const footer_resize = ($(window).scrollTop() + $(window).height()) - $('#footer-container').position().top;
+        const footer_resize = (scrollTop + $(window).height()) - $('#footer-container').position().top;
+
         if (footer_resize > 0) {
             $('.aside-fixed').css({ 'height': `calc(100vh - ${footer_resize}px)` });
         } else {
             $('.aside-fixed').css({ 'height': '100vh' });
         }
     } else {
+
+        // this adjust the start size
         $('.aside-fixed').css({
-            'top': (offsetTop - $(window).scrollTop()) + 'px',
-            'height': 'calc(100vh - 243px)'
+            'top': (offsetTop - scrollTop) + 'px',
+            'height': `calc(100vh - ${offsetTop - (Math.min(scrollTop, offsetTop))}px)`
         });
     }
     // Prevents rare tremors
@@ -73,7 +76,6 @@ const comprobateOverflowAside = () => {
         if (Math.floor(aside_size) < $('.aside-fixed').height()) {
             $('.aside-fixed').css('overflow-y', 'initial');
         } else {
-            console.log('Remove overflow')
             $('.aside-fixed').css('overflow-y', 'scroll');
         }
 
