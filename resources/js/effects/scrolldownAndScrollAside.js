@@ -68,7 +68,7 @@ const comprobateOverflowAside = () => {
         const aside_position = $('.aside-elements-container').position().top;
         const aside_height = $('.aside-elements-container').height();
 
-        const aside_size = Math.floor(aside_height + aside_position);
+        const aside_size = Math.ceil(aside_height + aside_position);
 
         if (Math.floor(aside_size) < $('.aside-fixed').height()) {
             $('.aside-fixed').css('overflow-y', 'initial');
