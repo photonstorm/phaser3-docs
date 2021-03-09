@@ -1,3 +1,7 @@
+.principal-search {
+    width: 100%;
+}
+
 .search-bar-overlay {
     width: 100%;
     height: calc(100vh - 50px);
@@ -7,12 +11,13 @@
     z-index: 1;
     display: none;
 }
+
 .search-result {
     display: none;
     background-color: white;
     border-radius: 3px;
     position: absolute;
-    left: 100px;
+    // left: 100px;
     min-width: 400px;
     min-height: 200px;
     max-height: calc(100vh - 200px);

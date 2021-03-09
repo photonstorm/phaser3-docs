@@ -17,7 +17,7 @@ const ChangeVersionSelector = (props) => {
     }
 
     return (
-    <select className="custom-select cursor-pointer" onChange={submitHandler}  defaultValue={actual_version}>
+    <select className="form-control custom-select cursor-pointer" onChange={submitHandler}  defaultValue={actual_version}>
         {
             dbList.map((db, index) => {
                 return (

@@ -39,10 +39,9 @@ jQuery(() => {
 let timerScroll;
 
 // Scrolldown aside offsetY
-const offsetTop = 243;
 const activeAsideSticky = (e) => {
-
     const scrollTop = $(window).scrollTop();
+    const offsetTop = $('#docs-header').height();
 
     if (scrollTop > offsetTop) {
         $('.aside-fixed').css({ 'top': '0px' });

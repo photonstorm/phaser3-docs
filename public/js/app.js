@@ -86,6 +86,133 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+
+module.exports = _arrayWithoutHoles;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -140,6 +267,243 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
   return target;
 }
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/extends.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/extends.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/inherits.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableSpread;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
+
+var iterableToArray = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
+
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
 
 /***/ }),
 
@@ -12000,6 +12364,87 @@ onDOMContentLoaded(function () {
 
 /***/ }),
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/js/components/AsideSearchList/ReactiveScrollspy.scss":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/js/components/AsideSearchList/ReactiveScrollspy.scss ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".is-current a {\n  color: orangered;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/js/components/Searchbar/Searchbar.scss":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/js/components/Searchbar/Searchbar.scss ***!
@@ -12012,7 +12457,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".search-bar-overlay {\n  width: 100%;\n  height: calc(100vh - 50px);\n  position: absolute;\n  left: 0;\n  z-index: 1;\n  display: none;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  left: 100px;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
+exports.push([module.i, ".principal-search {\n  width: 100%;\n}\n\n.search-bar-overlay {\n  width: 100%;\n  height: calc(100vh - 50px);\n  position: absolute;\n  left: 0;\n  z-index: 1;\n  display: none;\n}\n\n.search-result {\n  display: none;\n  background-color: white;\n  border-radius: 3px;\n  position: absolute;\n  min-width: 400px;\n  min-height: 200px;\n  max-height: calc(100vh - 200px);\n  z-index: 2;\n  box-shadow: 2px 5px 5px 0px black;\n  overflow-y: scroll;\n}\n.search-result .search-card {\n  border-bottom: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -70156,6 +70601,398 @@ function warning(message) {
 
 /***/ }),
 
+/***/ "./node_modules/react-scrollspy/lib/scrollspy.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-scrollspy/lib/scrollspy.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _throttle = _interopRequireDefault(__webpack_require__(/*! ./throttle */ "./node_modules/react-scrollspy/lib/throttle.js"));
+
+function isEqualArray(a, b) {
+  return a.length === b.length && a.every(function (item, index) {
+    return item === b[index];
+  });
+}
+
+var Scrollspy =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Scrollspy, _React$Component);
+  (0, _createClass2.default)(Scrollspy, null, [{
+    key: "propTypes",
+    get: function get() {
+      return {
+        items: _propTypes.default.arrayOf(_propTypes.default.string).isRequired,
+        currentClassName: _propTypes.default.string.isRequired,
+        scrolledPastClassName: _propTypes.default.string,
+        style: _propTypes.default.object,
+        componentTag: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.elementType]),
+        offset: _propTypes.default.number,
+        rootEl: _propTypes.default.string,
+        onUpdate: _propTypes.default.func
+      };
+    }
+  }, {
+    key: "defaultProps",
+    get: function get() {
+      return {
+        items: [],
+        currentClassName: '',
+        style: {},
+        componentTag: 'ul',
+        offset: 0,
+        onUpdate: function onUpdate() {}
+      };
+    }
+  }]);
+
+  function Scrollspy(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Scrollspy);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Scrollspy).call(this, props));
+    _this.state = {
+      targetItems: [],
+      inViewState: [],
+      isScrolledPast: [] // manually bind as ES6 does not apply this
+      // auto binding as React.createClass does
+
+    };
+    _this._handleSpy = _this._handleSpy.bind((0, _assertThisInitialized2.default)(_this));
+    return _this;
+  }
+
+  (0, _createClass2.default)(Scrollspy, [{
+    key: "_initSpyTarget",
+    value: function _initSpyTarget(items) {
+      var targetItems = items.map(function (item) {
+        return document.getElementById(item);
+      });
+      return targetItems;
+    } // https://github.com/makotot/react-scrollspy/pull/45
+
+  }, {
+    key: "_fillArray",
+    value: function _fillArray(array, val) {
+      var newArray = [];
+
+      for (var i = 0, max = array.length; i < max; i++) {
+        newArray[i] = val;
+      }
+
+      return newArray;
+    }
+  }, {
+    key: "_isScrolled",
+    value: function _isScrolled() {
+      return this._getScrollDimension().scrollTop > 0;
+    }
+  }, {
+    key: "_getScrollDimension",
+    value: function _getScrollDimension() {
+      var doc = document;
+      var rootEl = this.props.rootEl;
+      var scrollTop = rootEl ? doc.querySelector(rootEl).scrollTop : doc.documentElement.scrollTop || doc.body.parentNode.scrollTop || doc.body.scrollTop;
+      var scrollHeight = rootEl ? doc.querySelector(rootEl).scrollHeight : doc.documentElement.scrollHeight || doc.body.parentNode.scrollHeight || doc.body.scrollHeight;
+      return {
+        scrollTop: scrollTop,
+        scrollHeight: scrollHeight
+      };
+    }
+  }, {
+    key: "_getElemsViewState",
+    value: function _getElemsViewState(targets) {
+      var elemsInView = [];
+      var elemsOutView = [];
+      var viewStatusList = [];
+      var targetItems = targets ? targets : this.state.targetItems;
+      var hasInViewAlready = false;
+
+      for (var i = 0, max = targetItems.length; i < max; i++) {
+        var currentContent = targetItems[i];
+        var isInView = hasInViewAlready ? false : this._isInView(currentContent);
+
+        if (isInView) {
+          hasInViewAlready = true;
+          elemsInView.push(currentContent);
+        } else {
+          elemsOutView.push(currentContent);
+        }
+
+        var isLastItem = i === max - 1;
+
+        var isScrolled = this._isScrolled(); // https://github.com/makotot/react-scrollspy/pull/26#issue-167413769
+
+
+        var isLastShortItemAtBottom = this._isAtBottom() && this._isInView(currentContent) && !isInView && isLastItem && isScrolled;
+
+        if (isLastShortItemAtBottom) {
+          elemsOutView.pop();
+          elemsOutView.push.apply(elemsOutView, (0, _toConsumableArray2.default)(elemsInView));
+          elemsInView = [currentContent];
+          viewStatusList = this._fillArray(viewStatusList, false);
+          isInView = true;
+        }
+
+        viewStatusList.push(isInView);
+      }
+
+      return {
+        inView: elemsInView,
+        outView: elemsOutView,
+        viewStatusList: viewStatusList,
+        scrolledPast: this.props.scrolledPastClassName && this._getScrolledPast(viewStatusList)
+      };
+    }
+  }, {
+    key: "_isInView",
+    value: function _isInView(el) {
+      if (!el) {
+        return false;
+      }
+
+      var _this$props = this.props,
+          rootEl = _this$props.rootEl,
+          offset = _this$props.offset;
+      var rootRect;
+
+      if (rootEl) {
+        rootRect = document.querySelector(rootEl).getBoundingClientRect();
+      }
+
+      var rect = el.getBoundingClientRect();
+      var winH = rootEl ? rootRect.height : window.innerHeight;
+
+      var _this$_getScrollDimen = this._getScrollDimension(),
+          scrollTop = _this$_getScrollDimen.scrollTop;
+
+      var scrollBottom = scrollTop + winH;
+      var elTop = rootEl ? rect.top + scrollTop - rootRect.top + offset : rect.top + scrollTop + offset;
+      var elBottom = elTop + el.offsetHeight;
+      return elTop < scrollBottom && elBottom > scrollTop;
+    }
+  }, {
+    key: "_isAtBottom",
+    value: function _isAtBottom() {
+      var rootEl = this.props.rootEl;
+
+      var _this$_getScrollDimen2 = this._getScrollDimension(),
+          scrollTop = _this$_getScrollDimen2.scrollTop,
+          scrollHeight = _this$_getScrollDimen2.scrollHeight;
+
+      var winH = rootEl ? document.querySelector(rootEl).getBoundingClientRect().height : window.innerHeight;
+      var scrolledToBottom = scrollTop + winH >= scrollHeight;
+      return scrolledToBottom;
+    }
+  }, {
+    key: "_getScrolledPast",
+    value: function _getScrolledPast(viewStatusList) {
+      if (!viewStatusList.some(function (item) {
+        return item;
+      })) {
+        return viewStatusList;
+      }
+
+      var hasFoundInView = false;
+      var scrolledPastItems = viewStatusList.map(function (item) {
+        if (item && !hasFoundInView) {
+          hasFoundInView = true;
+          return false;
+        }
+
+        return !hasFoundInView;
+      });
+      return scrolledPastItems;
+    }
+  }, {
+    key: "_spy",
+    value: function _spy(targets) {
+      var _this2 = this;
+
+      var elemensViewState = this._getElemsViewState(targets);
+
+      var currentStatuses = this.state.inViewState;
+      this.setState({
+        inViewState: elemensViewState.viewStatusList,
+        isScrolledPast: elemensViewState.scrolledPast
+      }, function () {
+        _this2._update(currentStatuses);
+      });
+    }
+  }, {
+    key: "_update",
+    value: function _update(prevStatuses) {
+      if (isEqualArray(this.state.inViewState, prevStatuses)) {
+        return;
+      }
+
+      this.props.onUpdate(this.state.targetItems[this.state.inViewState.indexOf(true)]);
+    }
+  }, {
+    key: "_handleSpy",
+    value: function _handleSpy() {
+      (0, _throttle.default)(this._spy(), 100);
+    }
+  }, {
+    key: "_initFromProps",
+    value: function _initFromProps() {
+      var targetItems = this._initSpyTarget(this.props.items);
+
+      this.setState({
+        targetItems: targetItems
+      });
+
+      this._spy(targetItems);
+    }
+  }, {
+    key: "offEvent",
+    value: function offEvent() {
+      var el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window;
+      el.removeEventListener('scroll', this._handleSpy);
+    }
+  }, {
+    key: "onEvent",
+    value: function onEvent() {
+      var el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window;
+      el.addEventListener('scroll', this._handleSpy);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._initFromProps();
+
+      this.onEvent();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.offEvent();
+    }
+  }, {
+    key: "UNSAFE_componentWillReceiveProps",
+    value: function UNSAFE_componentWillReceiveProps() {
+      this._initFromProps();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var Tag = this.props.componentTag;
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          className = _this$props2.className,
+          scrolledPastClassName = _this$props2.scrolledPastClassName,
+          style = _this$props2.style;
+      var counter = 0;
+
+      var items = _react.default.Children.map(children, function (child, idx) {
+        var _classNames;
+
+        if (!child) {
+          return null;
+        }
+
+        var ChildTag = child.type;
+        var isScrolledPast = scrolledPastClassName && _this3.state.isScrolledPast[idx];
+        var childClass = (0, _classnames.default)((_classNames = {}, (0, _defineProperty2.default)(_classNames, "".concat(child.props.className), child.props.className), (0, _defineProperty2.default)(_classNames, "".concat(_this3.props.currentClassName), _this3.state.inViewState[idx]), (0, _defineProperty2.default)(_classNames, "".concat(_this3.props.scrolledPastClassName), isScrolledPast), _classNames));
+        return _react.default.createElement(ChildTag, (0, _extends2.default)({}, child.props, {
+          className: childClass,
+          key: counter++
+        }), child.props.children);
+      });
+
+      var itemClass = (0, _classnames.default)((0, _defineProperty2.default)({}, "".concat(className), className));
+      return _react.default.createElement(Tag, {
+        className: itemClass,
+        style: style
+      }, items);
+    }
+  }]);
+  return Scrollspy;
+}(_react.default.Component);
+
+exports.default = Scrollspy;
+
+/***/ }),
+
+/***/ "./node_modules/react-scrollspy/lib/throttle.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-scrollspy/lib/throttle.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var throttle = function throttle(fn) {
+  var threshold = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+  var last;
+  var timer;
+  return function () {
+    var now = +new Date();
+    var timePassed = !!last && now < last + threshold;
+
+    if (timePassed) {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        last = now;
+        fn();
+      }, threshold);
+    } else {
+      last = now;
+      fn();
+    }
+  };
+};
+
+var _default = throttle;
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -76053,7 +76890,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _State_AsideFilter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../State/AsideFilter */ "./resources/js/State/AsideFilter/index.js");
-/* harmony import */ var _ReactiveScrollspy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ReactiveScrollspy */ "./resources/js/components/AsideSearchList/ReactiveScrollspy.js");
+/* harmony import */ var react_scrollspy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-scrollspy */ "./node_modules/react-scrollspy/lib/scrollspy.js");
+/* harmony import */ var react_scrollspy__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_scrollspy__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ReactiveScrollspy_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReactiveScrollspy.scss */ "./resources/js/components/AsideSearchList/ReactiveScrollspy.scss");
+/* harmony import */ var _ReactiveScrollspy_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ReactiveScrollspy_scss__WEBPACK_IMPORTED_MODULE_5__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -76065,6 +76905,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -76123,25 +76964,48 @@ var AsideSearchList = function AsideSearchList(props) {
       }
     });
     return new_data;
+  }; // SCROLLSPY
+
+
+  var scrollSpy = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
+
+  var updateScrollSpy = function updateScrollSpy(el) {// TODO: Scroll top system
+    // console.log(document.querySelector(`.scrollspy-items-${el.id}`));
+    // scrollSpy.current.props.children.map((el) => {
+    //     console.log(el.props.className);
+    // });
+    // if(el !== undefined) {
+    //     const position = Math.ceil(document.querySelector(`.sscrollspy-items-${el.id}`).getBoundingClientRect().top);
+    //     console.log(position);
+    //     document.querySelector('.aside-fixed').scrollTo({top: `-${position}px`});
+    // }
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ReactiveScrollspy__WEBPACK_IMPORTED_MODULE_4__["ReactiveScrollSpy"], {
-    reference: "reactive-scrolspy"
-  }, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     type: "text",
     ref: searchBarListFilterInput,
     onChange: handleFilter,
     value: input_value
   }), filter_data.map(function (data, key) {
+    var data_scroll = asideFilterPass(data.data, filter).map(function (el) {
+      return el.name;
+    });
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
       key: key
     }, data.data.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
       className: "mt-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("u", {
       className: "text-capitalize"
-    }, data.type === 'membersConstants' ? Object(lodash__WEBPACK_IMPORTED_MODULE_0__["lowerCase"])(data.type) : data.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, asideFilterPass(data.data, filter).map(function (el, key) {
+    }, data.type === 'membersConstants' ? Object(lodash__WEBPACK_IMPORTED_MODULE_0__["lowerCase"])(data.type) : data.type)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_scrollspy__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      items: data_scroll,
+      currentClassName: "is-current",
+      offset: -150,
+      onUpdate: updateScrollSpy,
+      ref: scrollSpy
+    }, asideFilterPass(data.data, filter).map(function (el, key) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        key: key
+        key: key,
+        className: "scrollspy-items-".concat(el.name)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         href: "#".concat(el.name),
         className: "list-group-item"
@@ -76156,26 +77020,33 @@ var AsideSearchList = function AsideSearchList(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/AsideSearchList/ReactiveScrollspy.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/AsideSearchList/ReactiveScrollspy.js ***!
-  \**********************************************************************/
-/*! exports provided: ReactiveScrollSpy */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactiveScrollSpy", function() { return ReactiveScrollSpy; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/***/ "./resources/js/components/AsideSearchList/ReactiveScrollspy.scss":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/AsideSearchList/ReactiveScrollspy.scss ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 
-var ReactiveScrollSpy = function ReactiveScrollSpy(props) {
-  console.log(props.reference);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.children);
-};
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./ReactiveScrollspy.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/js/components/AsideSearchList/ReactiveScrollspy.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -76258,7 +77129,7 @@ var ChangeVersionSelector = function ChangeVersionSelector(props) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    className: "custom-select cursor-pointer",
+    className: "form-control custom-select cursor-pointer",
     onChange: submitHandler,
     defaultValue: actual_version
   }, dbList.map(function (db, index) {
@@ -76486,14 +77357,24 @@ var Searchbar = function Searchbar(props) {
     });
   };
 
+  var positionateDropDown = function positionateDropDown() {
+    console.log(results.current);
+    results.current.style.left = inputRef.current.offsetLeft + 'px';
+  };
+
+  var resizeEvent = function resizeEvent() {
+    positionateDropDown();
+  };
+
   Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('scroll', scrollHandler);
+  Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('resize', resizeEvent);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "form-inline my-2 my-lg-0",
     onSubmit: function onSubmit(e) {
       return e.preventDefault();
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "form-control me-sm-2",
+    className: "form-control me-sm-2 principal-search",
     type: "search",
     placeholder: "Search...",
     "aria-label": "Search",
@@ -76728,10 +77609,9 @@ jQuery(function () {
 });
 var timerScroll; // Scrolldown aside offsetY
 
-var offsetTop = 243;
-
 var activeAsideSticky = function activeAsideSticky(e) {
   var scrollTop = $(window).scrollTop();
+  var offsetTop = $('#docs-header').height();
 
   if (scrollTop > offsetTop) {
     $('.aside-fixed').css({

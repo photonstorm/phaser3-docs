@@ -91,13 +91,24 @@ const Searchbar = (props) => {
         });
     }
 
+    const positionateDropDown = () => {
+        console.log(results.current);
+
+        results.current.style.left = inputRef.current.offsetLeft + 'px';
+    }
+
+    const resizeEvent = () => {
+        positionateDropDown();
+    }
+
     useEventListener('scroll', scrollHandler);
+    useEventListener('resize', resizeEvent);
 
     return (
         <React.Fragment>
             <form className="form-inline my-2 my-lg-0" onSubmit={(e) => e.preventDefault()}>
                 <input
-                    className="form-control me-sm-2"
+                    className="form-control me-sm-2 principal-search"
                     type="search"
                     placeholder="Search..."
                     aria-label="Search"
