@@ -1,19 +1,21 @@
 @if (!collect($collection->properties)->isEmpty())
-    <h5>
-        Properties:
-    </h5>
+<h5>
+    Properties:
+</h5>
+<div class="table-responsive">
+
     <table class="table table-light table-striped table-bordered shadow-sm">
         <thead class="thead-light">
             <tr>
-                    @foreach ($create_table_params_properties as $key => $value)
-                        @if($value)
-                            @if($key == 'defaultValue')
-                                <th scope="col">Default</th>
-                            @else
-                                <th scope="col">{{$key}}</th>
-                            @endif
-                        @endif
-                    @endforeach
+                @foreach ($create_table_params_properties as $key => $value)
+                @if($value)
+                @if($key == 'defaultValue')
+                <th scope="col">Default</th>
+                @else
+                <th scope="col">{{$key}}</th>
+                @endif
+                @endif
+                @endforeach
             </tr>
         </thead>
         <tbody>
@@ -21,7 +23,7 @@
             <tr>
                 {{-- Name --}}
                 @if ($create_table_params_properties()['name'])
-                    <th scope="row">{{ $property->name }}</th>
+                <th scope="row">{{ $property->name }}</th>
                 @endif
                 {{-- Type --}}
                 @if ($create_table_params_properties()['type'])
@@ -39,19 +41,20 @@
                 @endif
                 {{-- Default --}}
                 @if ($create_table_params_properties()['defaultValue'])
-                    <td>{{$property->defaultValue}}</td>
+                <td>{{$property->defaultValue}}</td>
                 @endif
                 @if ($create_table_params_properties()['description'])
                 {{-- Description --}}
                 <td>
-@markdown
-{!! $property->description !!}
-@endmarkdown
+                    @markdown
+                    {!! $property->description !!}
+                    @endmarkdown
                 </td>
                 @endif
             </tr>
             @endforeach
         </tbody>
     </table>
-@endif
+</div>
 
+@endif
