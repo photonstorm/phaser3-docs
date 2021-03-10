@@ -77358,7 +77358,6 @@ var Searchbar = function Searchbar(props) {
   };
 
   var positionateDropDown = function positionateDropDown() {
-    console.log(results.current);
     results.current.style.left = inputRef.current.offsetLeft + 'px';
   };
 

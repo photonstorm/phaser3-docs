@@ -4,13 +4,26 @@
 
 @section('section_content')
 
-<h1 class="py-2">
-@foreach ($namesplit as $parts)
-    <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
-@endforeach
-</h1>
-
+<div class="d-none d-md-block">
+    <h1 class="py-2">
+        @foreach ($namesplit as $parts)
+        <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
+        @endforeach
+    </h1>
+</div>
 <div class="p-4">
+    <div class="float-none float-md-end d-flex d-md-block justify-content-center mx-3">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI5KQN&placement=phaserio"
+            id="_carbonads_js"></script>
+    </div>
+    {{-- Mobile name --}}
+    <div class="d-block d-md-none">
+        <h1 class="my-3">
+            @foreach ($namesplit as $parts)
+            <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
+            @endforeach
+        </h1>
+    </div>
 @markdown
 {!! $class->description !!}
 @endmarkdown

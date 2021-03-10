@@ -7,10 +7,8 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-3"></div>
-        <div class="col-6 layout-container landing-page">
-            <div class="row">
-
+        <div class="offset-0 offset-lg-1 offset-xl-2 col-12 col-lg-8 col-xl-8 order-2 order-md-1 layout-container landing-page">
+            <div class="row px-2">
                 <div class="col-12">
                     <div class="text-center my-4">
                         <h1 class="my-3">
@@ -633,7 +631,7 @@ function create ()
 
 
         </div>
-        <div class="col-3 mt-4">
+        <div class="col-12 col-lg-2 mt-4 order-1 d-flex d-md-block justify-content-center">
             <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI5KQN&placement=phaserio"
                 id="_carbonads_js"></script>
         </div>

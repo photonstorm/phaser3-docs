@@ -92,7 +92,6 @@ const Searchbar = (props) => {
     }
 
     const positionateDropDown = () => {
-        console.log(results.current);
 
         results.current.style.left = inputRef.current.offsetLeft + 'px';
     }
