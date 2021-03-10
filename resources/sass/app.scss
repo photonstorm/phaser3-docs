@@ -1,29 +1,31 @@
 // TODO: Remove debug file
-@import 'debug';
+@import "debug";
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // ------ Dependencies
-@import '~bootstrap/scss/bootstrap';
-@import '~toastify-js/src/toastify.css';
-@import '~animate.css/animate.min.css';
+@import "~bootstrap/scss/bootstrap";
+@import "~toastify-js/src/toastify.css";
+@import "~animate.css/animate.min.css";
 
 // Components
-@import 'scrollbar';
-@import 'menu_docs';
-@import 'aside';
-@import 'card';
+@import "scrollbar";
+@import "menu_docs";
+@import "aside";
+@import "card";
 
 // # Phaser.io styles
-@import 'menu_phaser_web';
-@import 'footer';
+@import "menu_phaser_web";
+@import "footer";
 
-@import 'highlight_markdown';
+@import "highlight_markdown";
+
+@import "carbon_ads";
 
 body {
     background-color: $page-bg;
-    font: 18px/30px 'freight-sans-pro', Arial, Helvetica, sans-serif;
+    font: 18px/30px "freight-sans-pro", Arial, Helvetica, sans-serif;
 }
 
 @import "./../../node_modules/prismjs/themes/prism-tomorrow.css";
@@ -47,3 +49,4 @@ body {
         cursor: pointer;
     }
 }
+

@@ -12285,6 +12285,55 @@ pre > code {
   font-size: 0.7rem;
 }
 
+#carbonads {
+  display: block;
+  overflow: hidden;
+  max-width: 192px;
+  border: 1px solid #c6cbd2;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #f2f4f9 0%, #e5e9ee 100%);
+  box-shadow: inset 0 1px #fff;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 1rem 1rem 1.5rem 1rem;
+}
+
+#carbonads img {
+  margin: 0 auto 10px auto;
+  display: block;
+  width: 164px;
+}
+
+#carbonads span {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+#carbonads .carbon-wrap {
+  margin-bottom: 10px;
+}
+
+#carbonads .carbon-wrap a {
+  color: black;
+  text-decoration: none;
+}
+
+#carbonads .carbon-wrap a:hover {
+  text-decoration: underline;
+}
+
+#carbonads .carbon-poweredby {
+  color: black;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+#carbonads .carbon-poweredby:hover {
+  text-decoration: underline;
+}
+
 body {
   background-color: #e0e4f1;
   font: 18px/30px "freight-sans-pro", Arial, Helvetica, sans-serif;
