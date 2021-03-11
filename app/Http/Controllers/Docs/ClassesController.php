@@ -25,7 +25,6 @@ class ClassesController extends Controller
         // If exist cache
         $cache = Cache::get("docs.scene.$longname");
         if($cache) {
-            dd('Exist cache');
             return $cache;
         }
 
@@ -66,19 +65,21 @@ class ClassesController extends Controller
             $namesplit[] = [ $partlist, $part, $i === count($parts) - 1 ? '' : '.' ];
         }
 
-        return Cache::remember("docs.scene.$longname", Carbon::parse('1 week'), function() use ($class, $params, $classConstructor, $extends, $members, $membersConstants, $methods, $namesplit, $version) {
-            return view('docs.class', [
-                "class" => $class,
-                "params" => $params,
-                "classConstructor" => $classConstructor,
-                "extends" => $extends,
-                "members" => $members,
-                "membersConstants" => $membersConstants,
-                "methods" => $methods,
-                "methodConstructor" => '',
-                "namesplit" => $namesplit,
-                "version" => $version
-            ])->render();
+        $var_view = [
+            "class" => $class,
+            "params" => $params,
+            "classConstructor" => $classConstructor,
+            "extends" => $extends,
+            "members" => $members,
+            "membersConstants" => $membersConstants,
+            "methods" => $methods,
+            "methodConstructor" => '',
+            "namesplit" => $namesplit,
+            "version" => $version
+        ];
+
+        return Cache::remember("docs.scene.$longname", Carbon::parse('1 week'), function() use ($var_view) {
+            return view('docs.class', $var_view)->render();
         });
     }
 }
