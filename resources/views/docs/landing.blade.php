@@ -14,8 +14,8 @@
                             Phaser - HTML5 Game Framework
                             TEST - LOCAL OR PRODUCTION = <br>
                             @if(App::environment('local'))
-                                IS LOCAL
-                                {{env('APP_DEBUG')}}
+
+                                {{env('APP_ENV')}}
                             @endif
                             @if(App::environment('staging'))
                             IS STAGING
