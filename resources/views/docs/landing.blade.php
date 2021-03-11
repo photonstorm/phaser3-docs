@@ -15,6 +15,7 @@
                             TEST - LOCAL OR PRODUCTION = <br>
                             @if(App::environment('local'))
                                 IS LOCAL
+                                {{env('APP_DEBUG')}}
                             @endif
                             @if(App::environment('staging'))
                             IS STAGING
