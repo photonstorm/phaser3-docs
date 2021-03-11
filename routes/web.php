@@ -14,6 +14,7 @@ use App\Http\Controllers\Docs\PhysicsController;
 use App\Http\Controllers\Docs\ScenesController;
 use App\Http\Middleware\Docs\DocsVersionCheckMiddleware;
 use App\Http\Middleware\Docs\PhaserVersionCheckMiddleware;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,10 @@ Route::get('/', function () {
 });
 
 Route::prefix('/docs/')->group(function () {
-    Route::Group(['middleware' => [PhaserVersionCheckMiddleware::class, DocsVersionCheckMiddleware::class]], function () {
+    Route::get('/admin/cleancache', function() {
+        Cache::flush();
+    });
+    Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () {
         Route::get('/{version}/', function ($version) {
             return view('docs.landing');
         });

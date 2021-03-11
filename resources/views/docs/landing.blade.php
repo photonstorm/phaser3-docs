@@ -4,18 +4,21 @@
 
 @section('content')
 @include('docs.layouts.header')
-@if (app()->environment() === 'production')
-    PRODUCTION
-@endif
 <div class="container-fluid">
     <div class="row">
-
         <div class="offset-0 offset-lg-1 offset-xl-2 col-12 col-lg-8 col-xl-8 order-2 order-md-1 layout-container landing-page">
             <div class="row px-2">
                 <div class="col-12">
                     <div class="text-center my-4">
                         <h1 class="my-3">
                             Phaser - HTML5 Game Framework
+                            TEST - LOCAL OR PRODUCTION = <br>
+                            @if(App::environment('local'))
+                                IS LOCAL
+                            @endif
+                            @if(App::environment('staging'))
+                                IS LOCAL
+                            @endif
                         </h1>
                         <img src="{{asset('images/phaser-header.png')}}" class="img-fluid" alt="Phaser Logo">
                         <div class="mt-3">

@@ -25,6 +25,7 @@ class ClassesController extends Controller
         // If exist cache
         $cache = Cache::get("docs.scene.$longname");
         if($cache) {
+            dd('Exist cache');
             return $cache;
         }
 
