@@ -17,7 +17,10 @@
                                 IS LOCAL
                             @endif
                             @if(App::environment('staging'))
-                                IS PRODUCTION
+                            IS STAGING
+                            @endif
+                            @if(App::environment('production'))
+                            IS PRODUCTION
                             @endif
                         </h1>
                         <img src="{{asset('images/phaser-header.png')}}" class="img-fluid" alt="Phaser Logo">
