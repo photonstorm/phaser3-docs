@@ -12,17 +12,6 @@
                     <div class="text-center my-4">
                         <h1 class="my-3">
                             Phaser - HTML5 Game Framework
-                            <br>
-                            = <br>
-                            @env('staging')
-                                APP IS IN STAGING
-                            @endenv
-                            @env('production')
-                                APP IS IN production
-                            @endenv
-                            @env('local')
-                                APP IS IN LOCAL
-                            @endenv
                         </h1>
                         <img src="{{asset('images/phaser-header.png')}}" class="img-fluid" alt="Phaser Logo">
                         <div class="mt-3">

@@ -35,6 +35,7 @@ Route::get('/', function () {
 Route::prefix('/docs/')->group(function () {
     Route::get('/admin/cleancache', function() {
         Cache::flush();
+        return redirect("/docs/" . DataBaseSelector::getLastDB() . "/");
     });
     Route::Group(['middleware' => PhaserVersionCheckMiddleware::class], function () {
         Route::get('/{version}/', function ($version) {
