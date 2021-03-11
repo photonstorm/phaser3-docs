@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Docs;
 use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Classes;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +22,12 @@ class ClassesController extends Controller
 
     public function show ($longname)
     {
+        // If exist cache
+        $cache = Cache::get("docs.scene.$longname");
+        if($cache) {
+            return $cache;
+        }
+
         $class = Classes::whereLongname($longname)->firstOrFail();
 
         $params = $class->params->all();
@@ -57,19 +65,19 @@ class ClassesController extends Controller
             $namesplit[] = [ $partlist, $part, $i === count($parts) - 1 ? '' : '.' ];
         }
 
-        // dd($class);
-
-        return view('docs.class', [
-            "class" => $class,
-            "params" => $params,
-            "classConstructor" => $classConstructor,
-            "extends" => $extends,
-            "members" => $members,
-            "membersConstants" => $membersConstants,
-            "methods" => $methods,
-            "methodConstructor" => '',
-            "namesplit" => $namesplit,
-            "version" => $version
-        ]);
+        return Cache::remember("docs.scene.$longname", Carbon::parse('1 week'), function() use ($class, $params, $classConstructor, $extends, $members, $membersConstants, $methods, $namesplit, $version) {
+            return view('docs.class', [
+                "class" => $class,
+                "params" => $params,
+                "classConstructor" => $classConstructor,
+                "extends" => $extends,
+                "members" => $members,
+                "membersConstants" => $membersConstants,
+                "methods" => $methods,
+                "methodConstructor" => '',
+                "namesplit" => $namesplit,
+                "version" => $version
+            ])->render();
+        });
     }
 }

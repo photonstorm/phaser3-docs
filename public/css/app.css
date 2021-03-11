@@ -11845,6 +11845,12 @@ fieldset:disabled .btn {
   text-decoration: underline;
 }
 
+@media (max-width: 576px) {
+  .menu-docs {
+    background: #11161a;
+  }
+}
+
 .aside-container .aside-fixed {
   position: fixed;
   overflow-y: scroll;
@@ -12270,6 +12276,13 @@ pre > code {
 
 #carbonads .carbon-poweredby:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 991.98px) {
+  #carbonads {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 body {

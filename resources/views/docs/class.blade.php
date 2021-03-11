@@ -4,7 +4,7 @@
 
 @section('section_content')
 
-<div class="d-none d-md-block">
+<div class="d-none d-lg-block">
     <h1 class="py-2">
         @foreach ($namesplit as $parts)
         <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
@@ -12,12 +12,12 @@
     </h1>
 </div>
 <div class="p-4">
-    <div class="float-none float-md-end d-flex d-md-block justify-content-center mx-3">
+    <div class="float-none float-md-end d-flex d-lg-block justify-content-center mx-3">
         <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI5KQN&placement=phaserio"
             id="_carbonads_js"></script>
     </div>
     {{-- Mobile name --}}
-    <div class="d-block d-md-none">
+    <div class="d-block d-lg-none">
         <h1 class="my-3">
             @foreach ($namesplit as $parts)
             <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}

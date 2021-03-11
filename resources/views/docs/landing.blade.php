@@ -4,6 +4,9 @@
 
 @section('content')
 @include('docs.layouts.header')
+@if (app()->environment() === 'production')
+    PRODUCTION
+@endif
 <div class="container-fluid">
     <div class="row">
 
