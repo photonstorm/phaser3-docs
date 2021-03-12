@@ -1,7 +1,6 @@
 @extends('app')
 @section('title', 'Index')
 
-
 @section('content')
 @include('docs.layouts.header')
 <div class="container-fluid">

@@ -33,6 +33,10 @@ Route::get('/', function () {
 });
 
 Route::prefix('/docs/')->group(function () {
+    Route::get('', function() {
+        return redirect("/docs/" . DataBaseSelector::getLastDB() . "/");
+    });
+
     Route::get('/admin/cleancache', function() {
         Cache::flush();
         return redirect("/docs/" . DataBaseSelector::getLastDB() . "/");

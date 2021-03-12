@@ -1,4 +1,7 @@
 @extends('app')
+
+@section('title', '404')
+
 @section('content')
 {{-- HEADER --}}
 @include('docs.layouts.header')
