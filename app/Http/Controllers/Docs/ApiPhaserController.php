@@ -50,8 +50,7 @@ class ApiPhaserController extends Controller
             $controller = new ConstantController();
         }
 
-        // TODO: send 404 if not found
-        return (!empty($controller)) ? $controller->show($longname) : view('docs.landing');
+        return (!empty($controller)) ? $controller->show($longname) : abort(404);
 
     }
 }
