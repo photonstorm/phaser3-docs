@@ -66,7 +66,7 @@
                         <strong>Discord:</strong> Join us on <a
                             href="https://phaser.io/community/discord">Discord</a><br />
                         <strong>Extend:</strong> With <a href="https://phaser.io/shop/plugins">Phaser Plugins</a><br />
-                        <strong>Be awesome:</strong> <a href="#support">Support</a> the future of Phaser<br /></p>
+                        <strong>Be awesome:</strong> <a href="http://phaser.io/community/donate">Support</a> the future of Phaser<br /></p>
                     <p>Grab the source and join the fun!</p>
                     <p class="text-center">
                         <img src="https://phaser.io/images/github/div-whats-new.png" alt="What's New" title="What's New"
