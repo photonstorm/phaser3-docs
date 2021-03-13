@@ -42,6 +42,6 @@ InsertTutorials().save(db);
 
 db.close();
 
-fs.copySync('./db/phaser-working.db', `../phaser350-docs/database/${version}.db`);
+fs.copySync('./db/phaser-working.db', `../phaser350-docs/database/docs/${version}.db`);
 console.log('** Complete **');
 
