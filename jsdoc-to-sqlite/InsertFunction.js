@@ -9,9 +9,9 @@ const SkipBlock = require('./SkipBlock');
 const GetMarkdownLink = require('./GetMarkdownLink');
 const CleanHastagLongName = require('./CleanHashtagLongname');
 const InsertTutorials = require('./InsertTutorials');
+const InsertExamples = require('./InsertExamples');
 
-let InsertFunction = function (db, data)
-{
+let InsertFunction = function (db, data) {
     const functionTransaction = db.prepare(`INSERT INTO functions (
         longname,
         since,
@@ -79,8 +79,7 @@ let InsertFunction = function (db, data)
     )`);
 
     const insertMany = db.transaction((transaction, queries) => {
-        for (const query of queries)
-        {
+        for (const query of queries) {
             transaction.run(query);
         }
     });
@@ -88,12 +87,10 @@ let InsertFunction = function (db, data)
     let functionQueries = [];
     let paramsQueries = [];
 
-    for (let i = 0; i < data.docs.length; i++)
-    {
+    for (let i = 0; i < data.docs.length; i++) {
         let block = data.docs[i];
 
-        if (SkipBlock('function', block) || !block.hasOwnProperty('memberof'))
-        {
+        if (SkipBlock('function', block) || !block.hasOwnProperty('memberof')) {
             continue;
         }
 
@@ -101,25 +98,21 @@ let InsertFunction = function (db, data)
         let params = [];
         let signatureParams = [];
 
-        if (Array.isArray(block.params) && block.params.length > 0)
-        {
-            for (let i = 0; i < block.params.length; i++)
-            {
+        if (Array.isArray(block.params) && block.params.length > 0) {
+            for (let i = 0; i < block.params.length; i++) {
                 let param = block.params[i];
 
-                if (!param.type)
-                {
+                if (!param.type) {
                     console.log('>>> Parameter Error');
                     console.log(block.longname);
                     console.log(param);
                     process.exit();
                 }
-    
+
                 let types = param.type.names.join('|');
                 let optional = -1;
 
-                if (param.hasOwnProperty('optional'))
-                {
+                if (param.hasOwnProperty('optional')) {
                     optional = (param.optional) ? 1 : 0;
                 }
 
@@ -136,7 +129,7 @@ let InsertFunction = function (db, data)
                     optional: optional,
                     defaultValue: defaultValue
                 });
-                
+
                 // Insert parameters types 
                 const dataTypes = {
                     fk_id: idParams,
@@ -148,18 +141,16 @@ let InsertFunction = function (db, data)
                 //  Add to the params array (for injection to the functions table)
 
                 let paramStr = param.name;
-                
-                if (optional === 1)
-                {
+
+                if (optional === 1) {
                     paramStr += '?';
                 }
-                
+
                 paramStr += ':' + types;
 
                 signatureParams.push(paramStr);
 
-                if (defaultValue !== '')
-                {
+                if (defaultValue !== '') {
                     paramStr += ' = ' + defaultValue;
                 }
 
@@ -170,13 +161,11 @@ let InsertFunction = function (db, data)
         //  Fires
         let fires = '';
 
-        if (Array.isArray(block.fires) && block.fires.length > 0)
-        {
-            for (let e = 0; e < block.fires.length; e++)
-            {
+        if (Array.isArray(block.fires) && block.fires.length > 0) {
+            for (let e = 0; e < block.fires.length; e++) {
                 block.fires[e] = CleanEventName(block.fires[e]);
             }
-    
+
             fires = block.fires.join(',');
         }
 
@@ -184,13 +173,11 @@ let InsertFunction = function (db, data)
 
         let listens = '';
 
-        if (Array.isArray(block.listens) && block.listens.length > 0)
-        {
-            for (let e = 0; e < block.listens.length; e++)
-            {
+        if (Array.isArray(block.listens) && block.listens.length > 0) {
+            for (let e = 0; e < block.listens.length; e++) {
                 block.listens[e] = CleanEventName(block.listens[e]);
             }
-    
+
             listens = block.listens.join(',');
         }
 
@@ -202,11 +189,9 @@ let InsertFunction = function (db, data)
         let returnsType = '';
         let returnsDescription = '';
 
-        if (Array.isArray(block.returns) && block.returns.length > 0)
-        {
+        if (Array.isArray(block.returns) && block.returns.length > 0) {
             //  For Phaser we only need concern ourselves with the first returns element
-            if (!block.returns[0].hasOwnProperty('type'))
-            {
+            if (!block.returns[0].hasOwnProperty('type')) {
                 console.log('>>> Returns Error');
                 console.log(block.longname);
                 console.log(block.returns[0]);
@@ -222,12 +207,11 @@ let InsertFunction = function (db, data)
         let inherited = 0;
         let inherits = '';
 
-        if (block.hasOwnProperty('inherited') && block.inherited)
-        {
+        if (block.hasOwnProperty('inherited') && block.inherited) {
             inherited = 1;
             inherits = block.inherits;
         }
-    
+
         const description = GetMarkdownLink(block.description);
         functionQueries.push({
             longname: CleanHastagLongName(block.longname),
@@ -251,9 +235,17 @@ let InsertFunction = function (db, data)
             overrides: (block.hasOwnProperty('overrides') && block.overrides) ? block.overrides : '',
             access: (block.hasOwnProperty('access')) ? block.access : ''
         });
-        
+
+        // Insert examples
+        if ((block.hasOwnProperty('examples'))) {
+            InsertExamples({
+                fk_id: CleanHastagLongName(block.longname),
+                examples: block.examples
+            });
+        }
+
         // Insert tutorials
-        if( (block.hasOwnProperty('tutorials'))) {
+        if ((block.hasOwnProperty('tutorials'))) {
             InsertTutorials({
                 fk_id: CleanHastagLongName(block.longname),
                 tutorials: block.tutorials
@@ -261,13 +253,11 @@ let InsertFunction = function (db, data)
         }
     }
 
-    if (functionQueries.length)
-    {
+    if (functionQueries.length) {
         insertMany(functionTransaction, functionQueries);
     }
 
-    if (paramsQueries.length)
-    {
+    if (paramsQueries.length) {
         insertMany(paramsTransaction, paramsQueries);
     }
 };

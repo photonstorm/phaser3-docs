@@ -15,7 +15,7 @@ const InsertTutorials = require('./InsertTutorials');
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
 
-// Get Phaser last version:
+// Get last Phaser version:
 const {version} = fs.readJsonSync('../phaser/package.json');
 
 //  Open the copy to work on

@@ -106,8 +106,8 @@ let InsertMember = function (db, data)
             access:  (block.hasOwnProperty('access')) ? block.access : ''
         });
 
+        // Insert parameters types 
         if(block.hasOwnProperty('type')) {
-            // Insert parameters types 
             const dataTypes = {
                 fk_id: longname,
                 types: block.type.names
