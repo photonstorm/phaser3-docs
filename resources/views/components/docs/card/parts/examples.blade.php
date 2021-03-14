@@ -1,16 +1,12 @@
-@if(!empty($examples))
-    <div>
-        <span class="font-weight-bold">Examples:</span>
-        <ul>
-            @foreach ($collection->getExamples->all() as $example)
-                <li>
+@if(!empty($collection->examples))
+<div>
+    <span class="font-weight-bold">Examples:</span>
+    @foreach ($collection->examples->all() as $example)
 @markdown
 ```javascript
-{{$example->example}}
+{!! $example !!}
 ```
 @endmarkdown
-                </li>
-            @endforeach
-        </ul>
-    </div>
+    @endforeach
+</div>
 @endif

@@ -26,4 +26,8 @@ class Functions extends Model
         return $params;
     }
 
+    public function examples() {
+        return $this->hasMany(Example::class, 'fk_id', 'longname');
+    }
+
 }
