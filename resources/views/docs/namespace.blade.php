@@ -4,6 +4,10 @@
 @section('section_content')
 
 <div class="row">
+    <div class="issue-card issue-card-strip w-100 mt-2 py-1 h3">
+        This is a <strong>beta</strong> release of our new docs system. Found an <strong>issue</strong>?<br /> Please tell us about it in the <strong>#</strong>📖<strong>-newdocs-feedback</strong> channel
+        on the <a href="https://discord.gg/phaser"> Phaser Discord</a>
+    </div>
     <div class="col-12 col-md-9 col-xxl-10 d-flex flex-column justify-content-center order-2 order-md-1">
         {{-- Show namespace properties Name, methods--}}
         <div class="h2 text-danger">{{ ucfirst($namespace->getTable()) }}: {{ $namespace->name }}</div>

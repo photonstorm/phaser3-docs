@@ -12205,7 +12205,8 @@ pre > code {
   font-size: 0.7rem;
 }
 
-#carbonads {
+#carbonads,
+.issue-card {
   display: block;
   overflow: hidden;
   max-width: 192px;
@@ -12219,46 +12220,63 @@ pre > code {
   padding: 1rem 1rem 1.5rem 1rem;
 }
 
-#carbonads img {
+#carbonads img,
+.issue-card img {
   margin: 0 auto 10px auto;
   display: block;
   width: 164px;
 }
 
-#carbonads span {
+#carbonads span,
+.issue-card span {
   width: 100%;
   display: block;
   overflow: hidden;
 }
 
-#carbonads .carbon-wrap {
+#carbonads .carbon-wrap,
+.issue-card .carbon-wrap {
   margin-bottom: 10px;
 }
 
-#carbonads .carbon-wrap a {
+#carbonads .carbon-wrap a,
+.issue-card .carbon-wrap a {
   color: black;
   text-decoration: none;
 }
 
-#carbonads .carbon-wrap a:hover {
+#carbonads .carbon-wrap a:hover,
+.issue-card .carbon-wrap a:hover {
   text-decoration: underline;
 }
 
-#carbonads .carbon-poweredby {
+#carbonads .carbon-poweredby,
+.issue-card .carbon-poweredby {
   color: black;
   margin-top: 20px;
   text-decoration: none;
 }
 
-#carbonads .carbon-poweredby:hover {
+#carbonads .carbon-poweredby:hover,
+.issue-card .carbon-poweredby:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 991.98px) {
-  #carbonads {
+  #carbonads,
+  .issue-card {
     max-width: 100%;
     width: 100%;
   }
+}
+
+.issue-card {
+  border: 4px dotted chocolate;
+  font-size: 15px;
+}
+
+.issue-card-strip {
+  max-width: 100% !important;
 }
 
 body {

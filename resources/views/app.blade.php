@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phaser 3 API Documentation - @yield('title')</title>
+    <title>Phaser 3 API Documentation (beta) - @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
 
     <!-- Adobe Fonts -->
     <script src="//use.typekit.net/fmc0gtt.js"></script>

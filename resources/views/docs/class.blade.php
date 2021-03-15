@@ -5,6 +5,10 @@
 @section('section_content')
 
 <div class="d-none d-lg-block">
+    <div class="issue-card issue-card-strip w-100 mt-2 py-1 h3">
+        This is a <strong>beta</strong> release of our new docs system. Found an <strong>issue</strong>?<br /> Please tell us about it in the <strong>#</strong>📖<strong>-newdocs-feedback</strong> channel
+        on the <a href="https://discord.gg/phaser"> Phaser Discord</a>
+    </div>
     <h1 class="py-2">
         @foreach ($namesplit as $parts)
         <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
@@ -12,12 +16,16 @@
     </h1>
 </div>
 <div class="p-4">
-    <div class="float-none float-md-end d-flex d-lg-block justify-content-center mx-3">
+    <div class="float-none float-lg-end d-flex d-lg-block justify-content-center mx-3">
         <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI5KQN&placement=phaserio"
             id="_carbonads_js"></script>
     </div>
     {{-- Mobile name --}}
     <div class="d-block d-lg-none">
+        <div class="issue-card issue-card-strip w-100 mt-3 py-1 h3">
+            This is a <strong>beta</strong> release of our new docs system. Found an <strong>issue</strong>?<br /> Please tell us about it in the <strong>#</strong>📖<strong>-newdocs-feedback</strong> channel
+            on the <a href="https://discord.gg/phaser"> Phaser Discord</a>
+        </div>
         <h1 class="my-3">
             @foreach ($namesplit as $parts)
             <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}

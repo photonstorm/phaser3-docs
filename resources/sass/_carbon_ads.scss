@@ -1,4 +1,5 @@
-#carbonads {
+#carbonads,
+.issue-card {
     display: block;
     overflow: hidden;
     max-width: 192px;
@@ -44,4 +45,13 @@
         max-width: 100%;
         width: 100%;
     }
+}
+
+.issue-card {
+    border: 4px dotted chocolate;
+    font-size: 15px;
+}
+
+.issue-card-strip {
+    max-width: 100% !important;
 }
