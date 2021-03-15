@@ -1,7 +1,6 @@
 @extends('app')
 @section('title', $collection->name)
 
-
 @section('content')
 @include('docs.layouts.header')
 <div class="container layout-container">

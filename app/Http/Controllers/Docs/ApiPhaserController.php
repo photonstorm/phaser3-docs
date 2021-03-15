@@ -43,7 +43,7 @@ class ApiPhaserController extends Controller
 
         if(!empty($typedef)) {
             $controller  = new TypedefsController();
-            Config::set('app.actual_link', 'namespaces');
+            Config::set('app.actual_link', 'typedef');
         }
 
         if(!empty($constant)) {
