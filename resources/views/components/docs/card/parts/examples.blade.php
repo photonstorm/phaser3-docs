@@ -4,7 +4,7 @@
     @foreach ($collection->examples->all() as $example)
 @markdown
 ```javascript
-{!! $example !!}
+{!! $example->example !!}
 ```
 @endmarkdown
     @endforeach
