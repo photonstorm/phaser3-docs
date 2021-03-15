@@ -77339,7 +77339,8 @@ var Searchbar = function Searchbar(props) {
     return text.split('.').filter(function (word, i) {
       return i != text.split('.').length - 1;
     }).join('.');
-  };
+  }; // Highlight text
+
 
   var mark = function mark(text) {
     var regex = new RegExp("".concat(inputRef.current.value.trim()), 'gi');
@@ -77418,7 +77419,7 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: res.longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/focus/").concat(res.longname)
+          href: "/docs/".concat(version, "/").concat(res.longname.replace('-', '#'))
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: mark(res.longname.replace('-', '#'))

@@ -73,6 +73,7 @@ const Searchbar = (props) => {
         return text.split('.').filter((word, i) => (i != text.split('.').length - 1)).join('.')
     }
 
+    // Highlight text
     const mark = (text) => {
         const regex = new RegExp(`${inputRef.current.value.trim()}`, 'gi');
         return text.replace(regex, (obj) => {
@@ -156,7 +157,7 @@ const Searchbar = (props) => {
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
                                                         return <li key={res.longname + index}>
-                                                                    <a href={`/docs/${version}/focus/${res.longname}`}>
+                                                                    <a href={`/docs/${version}/${res.longname.replace('-', '#')}`}>
                                                                         <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#'))}}>
 
                                                                         </span>
