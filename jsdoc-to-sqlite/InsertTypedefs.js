@@ -4,8 +4,7 @@ const IdGenerator = require('./IdGenerator');
 const InsertTypes = require('./InsertTypes');
 const SkipBlock = require('./SkipBlock');
 
-let InsertTypedefs = function (db, data)
-{
+let InsertTypedefs = function (db, data) {
     const typedefsTransaction = db.prepare(`INSERT INTO typedefs (
         longname,
         memberof,
@@ -16,6 +15,9 @@ let InsertTypedefs = function (db, data)
         metafilename,
         metalineno,
         metapath,
+        returns,
+        returnstype,
+        returnsdescription,
         since
     ) VALUES (
         @longname,
@@ -27,6 +29,9 @@ let InsertTypedefs = function (db, data)
         @metafilename,
         @metalineno,
         @metapath,
+        @returns,
+        @returnstype,
+        @returnsdescription,
         @since
     )`);
 
@@ -73,8 +78,7 @@ let InsertTypedefs = function (db, data)
     )`);
 
     const insertMany = db.transaction((transaction, queries) => {
-        for (const query of queries)
-        {
+        for (const query of queries) {
             transaction.run(query);
         }
     });
@@ -83,22 +87,35 @@ let InsertTypedefs = function (db, data)
     let propertiesQueries = [];
     let paramsQueries = [];
 
-    for (let i = 0; i < data.docs.length; i++)
-    {
+    for (let i = 0; i < data.docs.length; i++) {
         let block = data.docs[i];
 
-        if (SkipBlock('typedef', block))
-        {
+        if (SkipBlock('typedef', block)) {
             continue;
         }
-        
+
         if (block.scope === 'global') {
             continue;
         }
 
-        // if (block.longname === 'Phaser.Types.Actions.CallCallback') {
-        //     console.log(block);
-        // }
+
+        //  Returns
+        let returns = 0;
+        let returnsType = '';
+        let returnsDescription = '';
+        if (Array.isArray(block.returns) && block.returns.length > 0) {
+            //  For Phaser we only need concern ourselves with the first returns element
+            if (!block.returns[0].hasOwnProperty('type')) {
+                console.log('>>> Returns Error');
+                console.log(block.longname);
+                console.log(block.returns[0]);
+                process.exit();
+            }
+
+            returns = 1;
+            returnsType = block.returns[0].type.names.join('|');
+            returnsDescription = block.returns[0].description;
+        }
 
         let typedefName = block.longname;
 
@@ -112,7 +129,10 @@ let InsertTypedefs = function (db, data)
             defaultValue: (block.hasOwnProperty('defaultvalue')) ? String(block.defaultvalue) : '',
             metafilename: block.meta.filename,
             metalineno: block.meta.lineno,
-            metapath: GetPath(block.meta.path)
+            metapath: GetPath(block.meta.path),
+            returns,
+            returnstype: returnsType,
+            returnsdescription: returnsDescription
         });
 
         // Insert parameters types 
@@ -124,17 +144,14 @@ let InsertTypedefs = function (db, data)
         InsertTypes(dataTypes);
 
         //  Typedef Properties
-        if (Array.isArray(block.properties) && block.properties.length > 0)
-        {
-            for (let i = 0; i < block.properties.length; i++)
-            {
+        if (Array.isArray(block.properties) && block.properties.length > 0) {
+            for (let i = 0; i < block.properties.length; i++) {
                 let property = block.properties[i];
-              
+
                 let types = property.type.names.join(' | ');
                 let optional = -1;
 
-                if (property.hasOwnProperty('optional'))
-                {
+                if (property.hasOwnProperty('optional')) {
                     optional = (property.optional) ? 1 : 0;
                 }
 
@@ -161,24 +178,21 @@ let InsertTypedefs = function (db, data)
         }
 
         // Typedef Params: 
-        if (Array.isArray(block.params) && block.params.length > 0)
-        {
-            for (let i = 0; i < block.params.length; i++)
-            {
+        if (Array.isArray(block.params) && block.params.length > 0) {
+            for (let i = 0; i < block.params.length; i++) {
                 let param = block.params[i];
-              
+
                 let types = param.type.names.join(' | ');
                 let optional = -1;
 
-                if (param.hasOwnProperty('optional'))
-                {
+                if (param.hasOwnProperty('optional')) {
                     optional = (param.optional) ? 1 : 0;
                 }
 
                 let defaultValue = (param.hasOwnProperty('defaultvalue')) ? String(param.defaultvalue) : '';
 
                 let idParams = IdGenerator('param');
-              
+
                 paramsQueries.push({
                     id: idParams,
                     parentClass: (block.type.names.join(' | ').toLowerCase() == 'class') ? typedefName : '',
@@ -201,18 +215,15 @@ let InsertTypedefs = function (db, data)
         }
     }
 
-    if (typedefQueries.length)
-    {
+    if (typedefQueries.length) {
         insertMany(typedefsTransaction, typedefQueries);
     }
 
-    if (propertiesQueries.length)
-    {
+    if (propertiesQueries.length) {
         insertMany(propertiesTransaction, propertiesQueries);
     }
 
-    if (paramsQueries.length)
-    {
+    if (paramsQueries.length) {
         insertMany(paramsTransaction, paramsQueries);
     }
 };
