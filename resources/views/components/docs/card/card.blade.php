@@ -1,11 +1,11 @@
 @if ($isFocusRoute)
-    <div id="{{ $id }}" {{ $attributes }}>
+<div id="{{ $id }}" {{ $attributes }}>
 @else
-    <div id="{{ $id }}" {{ $attributes->merge([
-        'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. (($collection->access == 'protected') ? 'protected' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
-    ]) }}>
-@endif
+<div id="{{ $id }}" {{ $attributes->merge([
+    'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. (($collection->access == 'protected') ? 'protected' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
+]) }}>
 
+@endif
     @include('components.docs.card.parts.name')
     @include('components.docs.card.parts.description')
     @include('components.docs.card.parts.parameters')
@@ -19,5 +19,4 @@
     @include('components.docs.card.parts.listens')
     @include('components.docs.card.parts.examples')
     @include('components.docs.card.parts.source')
-
 </div>

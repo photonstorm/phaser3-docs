@@ -11,6 +11,7 @@
 @endmarkdown
             </div>
         </div>
+    </div>
 @endif
 
 {{-- ReturnsType --}}
