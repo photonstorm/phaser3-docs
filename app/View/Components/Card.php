@@ -104,7 +104,6 @@ class Card extends Component
         }
 
         if (!collect($this->collection->properties)->isEmpty()) {
-            dd('is PROPERTIES');
             $params_or_properties = $this->collection->properties;
         }
 
