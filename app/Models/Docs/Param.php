@@ -11,7 +11,7 @@ class Param extends Model
     protected $connection = 'sqlite';
     protected $primaryKey = 'parentClass';
 
-    public function getTypedeftTypes() {
+    public function getTypedefTypes() {
         return $this->hasMany(TypedefType::class, 'fk_id', 'id');
     }
 

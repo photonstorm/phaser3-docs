@@ -208,6 +208,30 @@ pre[class*="language-"] {
 }
 @charset "UTF-8";
 
+.debug {
+  outline: 1px solid red;
+}
+
+.debug-white {
+  outline: 1px solid white;
+}
+
+.debug-orange {
+  outline: 1px solid orange;
+}
+
+.debug-red {
+  outline: 1px solid red;
+}
+
+.debug-blue {
+  outline: 1px solid blue;
+}
+
+.debug-green {
+  outline: 1px solid green;
+}
+
 /*!
  * Bootstrap v5.0.0-beta1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -11860,6 +11884,7 @@ fieldset:disabled .btn {
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .display-card {
@@ -11872,6 +11897,10 @@ fieldset:disabled .btn {
 
 .show-important-card {
   display: block !important;
+}
+
+.overflow-break-word {
+  overflow-wrap: break-word;
 }
 
 #docs-header {

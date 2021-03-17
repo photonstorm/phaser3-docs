@@ -26,6 +26,14 @@ class Card extends Component
         $this->metaFileRoute = "$collection->metapath/$collection->metafilename";
     }
 
+    public function isTypedef() {
+        $result = '';
+        if($this->getTableName() === 'typedefs') {
+            $result = ($this->collection->type === 'function') ? 'functions': 'typedefs';
+        }
+        return $result;
+    }
+
     public function getTableName()
     {
         return $this->collection->getTable() ?? '';
@@ -91,11 +99,12 @@ class Card extends Component
 
         $params_or_properties = [];
 
-        if (!empty($this->collection->params)) {
+        if (!collect($this->collection->params)->isEmpty()) {
             $params_or_properties = $this->collection->params;
         }
 
-        if (!empty($this->collection->properties)) {
+        if (!collect($this->collection->properties)->isEmpty()) {
+            dd('is PROPERTIES');
             $params_or_properties = $this->collection->properties;
         }
 

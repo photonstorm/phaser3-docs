@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
 
                 $globals = $param_or_property->getGlobalTypes()->get();
                 $phaser_types = $param_or_property->getPhaserTypes()->get();
-                $phaser_typedef = $param_or_property->getTypedeftTypes()->get();
+                $phaser_typedef = $param_or_property->getTypedefTypes()->get();
 
                 $str_output = '';
 
@@ -88,7 +88,6 @@ class AppServiceProvider extends ServiceProvider
         // Resolve the link from a string
         $this->app->bind('get_api_link', function($app) {
             return function($type) {
-
                 $pattern = '/Phaser.[a-zA-Z0-9._#]*/i';
 
                 $api_link_output = '';

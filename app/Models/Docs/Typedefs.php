@@ -10,6 +10,19 @@ class Typedefs extends Model
     use HasFactory;
     protected $connection = 'sqlite';
 
+
+    public function getTypedefTypes() {
+        return $this->hasMany(TypedefType::class, 'fk_id', 'longname');
+    }
+
+    public function getPhaserTypes() {
+        return $this->hasMany(PhaserType::class, 'fk_id', 'longname');
+    }
+
+    public function getGlobalTypes() {
+        return $this->hasMany(GlobalType::class, 'fk_id', 'longname');
+    }
+
     public function properties() {
         return $this->hasMany(Property::class, 'parentType', 'longname');
     }

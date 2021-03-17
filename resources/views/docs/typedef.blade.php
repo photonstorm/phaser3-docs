@@ -23,13 +23,15 @@
 
                     $partlist = $partlist . $part;
 
-                    $namesplit[] = [$partlist, $part, $i === count($parts) - 1 ? '' : '&nbsp;.'];
+                    $namesplit[] = [$partlist, $part, $i === count($parts) - 1 ? '' : '.'];
                 }
                 @endphp
-                <div class="h2 card d-flex flex-row">
-                    @foreach ($namesplit as $parts)
-                        <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{!! $parts[1] !!}</a> {!! $parts[2] !!}&nbsp;
-                    @endforeach
+                <div class="h2 card">
+                    <div class="d-inline">
+                        @foreach ($namesplit as $parts)
+                        <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}" class="d-inline">{!! $parts[1] !!}</a> {!! $parts[2] !!}
+                        @endforeach
+                    </div>
                 </div>
                 <x-card class="card reactive-scrollspy" :id="$typedef->name" :collection="$typedef" :focus="FALSE" />
             </div>

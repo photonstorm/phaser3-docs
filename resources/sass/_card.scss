@@ -4,6 +4,7 @@
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .display-card {
@@ -16,4 +17,8 @@
 
 .show-important-card {
     display: block !important;
+}
+
+.overflow-break-word {
+    overflow-wrap: break-word;
 }

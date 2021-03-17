@@ -1,5 +1,4 @@
-<div class="d-flex justify-content-between">
-
+<div class="d-flex justify-content-between border-bottom pb-1 mb-3">
     <div class="h4 ">
         @if ($getTableName() === 'members' OR $getTableName() === 'constants')
             @php
@@ -8,10 +7,10 @@
             {{$getAccess()}} {{$collection->name}}: {!! $types !!}
 
             {{-- Typedefs / Events--}}
-        @elseif($getTableName() === 'typedefs' OR $getTableName() === 'event')
+        @elseif($isTypedef() === 'typedefs' OR $getTableName() === 'event')
             {{$getAccess()}} {{$collection->name}}
-            {{-- Functions / Methods --}}
-        @elseif($getTableName() === 'functions')
+            {{-- Functions / Methods OR if typedef is some type like function --}}
+        @elseif($getTableName() === 'functions' || $isTypedef() === 'functions')
             @php
                 $methodConstructor = resolve('get_params_format')($collection->params);
             @endphp

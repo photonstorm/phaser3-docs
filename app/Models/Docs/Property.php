@@ -12,7 +12,7 @@ class Property extends Model
     protected $primaryKey = "id";
     protected $keyType = 'string';
 
-    public function getTypedeftTypes() {
+    public function getTypedefTypes() {
         return $this->hasMany(TypedefType::class, 'fk_id', 'id');
     }
 
