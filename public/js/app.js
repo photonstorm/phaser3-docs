@@ -77366,6 +77366,10 @@ var Searchbar = function Searchbar(props) {
     positionateDropDown();
   };
 
+  var isStatic = function isStatic(scope) {
+    return scope === 'static';
+  };
+
   Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('scroll', scrollHandler);
   Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('resize', resizeEvent);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -77405,34 +77409,37 @@ var Searchbar = function Searchbar(props) {
     }, result.type, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, result.data.map(function (res, index) {
+      var longname = res.longname;
+
       if (result.type.toLowerCase() === 'scene') {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: res.longname + index
+          key: longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(longname.replace('-', '#'))
         }, getPrefix(inputRef.current.value), ".", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: markScene(res.name)
           }
         })));
       } else if (result.type.toLowerCase() === 'function') {
+        var link = isStatic(res.scope) ? longname.replace(/.(?!.*\.)/, '#').replace('-', '#') : longname.replace('-', '#');
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: res.longname + index
+          key: longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(link)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
-            __html: mark(res.longname.replace('-', '#'))
+            __html: mark(longname.replace('-', '#'))
           }
         })));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: res.longname + index
+          key: longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/").concat(res.longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(longname.replace('-', '#'))
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
-            __html: mark(res.longname.replace('-', '#'))
+            __html: mark(longname.replace('-', '#'))
           }
         })));
       }

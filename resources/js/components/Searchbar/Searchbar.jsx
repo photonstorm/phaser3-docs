@@ -101,6 +101,10 @@ const Searchbar = (props) => {
         positionateDropDown();
     }
 
+    const isStatic = (scope) => {
+        return (scope === 'static');
+    }
+
     useEventListener('scroll', scrollHandler);
     useEventListener('resize', resizeEvent);
 
@@ -143,9 +147,10 @@ const Searchbar = (props) => {
                                         <ul>
                                             {
                                                 result.data.map((res, index) => {
+                                                    const longname = res.longname;
                                                     if (result.type.toLowerCase() === 'scene') {
-                                                        return <li key={res.longname + index}>
-                                                                    <a href={`/docs/${version}/${res.longname.replace('-', '#')}`}>
+                                                        return <li key={longname + index}>
+                                                                    <a href={`/docs/${version}/${longname.replace('-', '#')}`}>
                                                                         {
                                                                             getPrefix(inputRef.current.value)
                                                                         }.
@@ -156,18 +161,21 @@ const Searchbar = (props) => {
                                                                 </li>
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
-                                                        return <li key={res.longname + index}>
-                                                                    <a href={`/docs/${version}/${res.longname.replace('-', '#')}`}>
-                                                                        <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#'))}}>
+                                                        const link = (isStatic(res.scope)) ?
+                                                            longname.replace(/.(?!.*\.)/, '#').replace('-', '#') :
+                                                            longname.replace('-', '#');
+                                                        return <li key={longname + index}>
+                                                                    <a href={`/docs/${version}/${link}`}>
+                                                                        <span dangerouslySetInnerHTML={{__html: mark(longname.replace('-', '#'))}}>
 
                                                                         </span>
                                                                     </a>
                                                                 </li>
                                                     }
                                                     else {
-                                                        return <li key={res.longname + index}>
-                                                                    <a href={`/docs/${version}/${res.longname.replace('-', '#')}`}>
-                                                                        <span dangerouslySetInnerHTML={{__html: mark(res.longname.replace('-', '#')) }}>
+                                                        return <li key={longname + index}>
+                                                                    <a href={`/docs/${version}/${longname.replace('-', '#')}`}>
+                                                                        <span dangerouslySetInnerHTML={{__html: mark(longname.replace('-', '#')) }}>
 
                                                                         </span>
                                                                     </a>
