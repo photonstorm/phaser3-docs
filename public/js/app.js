@@ -77422,6 +77422,7 @@ var Searchbar = function Searchbar(props) {
           }
         })));
       } else if (result.type.toLowerCase() === 'function') {
+        // Static methods fix
         var link = isStatic(res.scope) ? longname.replace(/.(?!.*\.)/, '#').replace('-', '#') : longname.replace('-', '#');
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: longname + index

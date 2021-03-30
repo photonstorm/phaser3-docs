@@ -161,6 +161,7 @@ const Searchbar = (props) => {
                                                                 </li>
                                                     }
                                                     else if (result.type.toLowerCase() === 'function') {
+                                                        // Static methods fix
                                                         const link = (isStatic(res.scope)) ?
                                                             longname.replace(/.(?!.*\.)/, '#').replace('-', '#') :
                                                             longname.replace('-', '#');
