@@ -63,7 +63,10 @@ new {{ $class->name }}({{$classConstructor}})
     <h3 class="mt-4">Extends</h3>
     <ul>
         @foreach ($extends as $extend)
-        <li><a href="{{route('docs.api.phaser', ['version' => $version, 'api' => $extend->object])}}">{{ $extend->object }}</a></li>
+        <li>
+            {{-- {!! resolve('get_api_link')($extend->object) !!} --}}
+            <a href="{{route('docs.api.phaser', ['version' => $version, 'api' => $extend->object])}}">{{ $extend->object }}</a>
+        </li>
         @endforeach
     </ul>
     <hr>

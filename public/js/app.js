@@ -77408,7 +77408,9 @@ var Searchbar = function Searchbar(props) {
       className: "title "
     }, result.type, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, result.data.map(function (res, index) {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object(lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"])(result.data, function (o) {
+      return o.longname.length;
+    }, ["asc"]).map(function (res, index) {
       var longname = res.longname;
 
       if (result.type.toLowerCase() === 'scene') {

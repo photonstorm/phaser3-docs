@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import './Searchbar.scss';
 import useEventListener from '@use-it/event-listener';
-import { debounce } from 'lodash';
+import { debounce, orderBy } from 'lodash';
 
 const Searchbar = (props) => {
 
@@ -146,7 +146,7 @@ const Searchbar = (props) => {
                                     <div className="body">
                                         <ul>
                                             {
-                                                result.data.map((res, index) => {
+                                                orderBy(result.data, (o) => o.longname.length, ["asc"]).map((res, index) => {
                                                     const longname = res.longname;
                                                     if (result.type.toLowerCase() === 'scene') {
                                                         return <li key={longname + index}>
