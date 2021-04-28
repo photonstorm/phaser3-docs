@@ -11,12 +11,15 @@ const os = require('os');
 const InsertTypes = require('./InsertTypes');
 const InsertExamples = require('./InsertExamples');
 const InsertTutorials = require('./InsertTutorials');
+const InsertChangelog = require('./InsertChangelog');
 
 //  Copy the Structure DB to one we can populate
 fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
 
 // Get last Phaser version:
 const {version} = fs.readJsonSync('../phaser/package.json');
+const changelog = fs.readFileSync('../phaser/CHANGELOG.md', 'utf-8');
+
 
 //  Open the copy to work on
 const db = new SQLite3('./db/phaser-working.db');
@@ -24,6 +27,8 @@ const db = new SQLite3('./db/phaser-working.db');
 //  Open the JSON file to parse
 const data = fs.readJsonSync('./json/phaser.json');
 console.log('** Start **');
+
+InsertChangelog(db, changelog);
 
 InsertClass(db, data);
 InsertEvent(db, data);
