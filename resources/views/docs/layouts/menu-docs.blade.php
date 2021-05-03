@@ -29,4 +29,9 @@
             Scenes
         </a>
     </div>
+    <div class="menu-item mx-2 text-center {{ (request()->routeIs('docs.changelog', ['version' => $version]))  ? 'menu-active' : '' }}">
+        <a href="{{route('docs.changelog', ['version' => $version])}}">
+            Changelog
+        </a>
+    </div>
 </nav>

@@ -5,6 +5,7 @@ use App\Helpers\DataBaseSelector;
 
 // Controllers
 use App\Http\Controllers\Docs\ApiPhaserController;
+use App\Http\Controllers\Docs\ChangelogController;
 use App\Http\Controllers\Docs\EventsController;
 use App\Http\Controllers\Docs\NamespacesController;
 use App\Http\Controllers\Docs\ClassesController;
@@ -54,6 +55,7 @@ Route::prefix('/docs/')->group(function () {
         Route::get('{version}/gameobjects', [GameobjectsController::class, 'index'])->name('docs.gameobjects');
         Route::get('{version}/physics', [PhysicsController::class, 'index'])->name('docs.physics');
         Route::get('{version}/scenes', [ScenesController::class, 'index'])->name('docs.scenes');
+        Route::get('{version}/changelog', [ChangelogController::class, 'index'])->name('docs.changelog');
 
         Route::get('{version}/events', [EventsController::class, 'index'])->name('docs.events');
 
