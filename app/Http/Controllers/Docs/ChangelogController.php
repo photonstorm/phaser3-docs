@@ -13,6 +13,7 @@ class ChangelogController extends Controller
     public function index() {
 
         $changelog = Changelog::get('page')->first();
-        return view('docs.changelog', ["changelogPage" => $changelog->page]);
+        $changelog_formatted = preg_replace('/---[\w\W]{0,}--/m', '', $changelog->page);
+        return view('docs.changelog', ["changelogPage" => $changelog_formatted]);
     }
 }
