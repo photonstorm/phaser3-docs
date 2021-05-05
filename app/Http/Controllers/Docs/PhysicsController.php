@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 
 class PhysicsController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $arcade = Classes::where("memberof", "Phaser.Physics.Arcade")->get();
         $matter = Classes::where("memberof", "Phaser.Physics.Matter")->get();
         return view('docs.physics', [

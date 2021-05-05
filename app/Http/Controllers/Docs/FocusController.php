@@ -16,7 +16,8 @@ use Illuminate\Http\Request;
 
 class FocusController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $longname = $request['api'];
         $version = $request['version'];
 
@@ -32,39 +33,46 @@ class FocusController extends Controller
 
         $collection = collect();
 
-        if(!empty($namespace)) {
+        if (!empty($namespace))
+        {
             return redirect("$version/$longname");
         }
 
-        if(!empty($class)) {
+        if (!empty($class))
+        {
             return redirect("$version/$longname");
         }
 
-        if(!empty($members)) {
+        if (!empty($members))
+        {
             $collection = $members;
         }
 
-        if(!empty($event)) {
+        if (!empty($event))
+        {
             $collection = $event;
         }
 
-        if(!empty($function)) {
+        if (!empty($function))
+        {
             $collection = $function;
         }
 
-        if(!empty($typedef)) {
+        if (!empty($typedef))
+        {
             $collection = $typedef;
         }
 
-        if(!empty($constant)) {
+        if (!empty($constant))
+        {
             $collection = $constant;
         }
 
-        if(empty($collection->all())) {
+        if (empty($collection->all()))
+        {
             return abort(404);
         }
 
         return view('docs.focus', ['collection' => $collection]);
-
     }
 }

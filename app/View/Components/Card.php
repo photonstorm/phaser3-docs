@@ -26,10 +26,12 @@ class Card extends Component
         $this->metaFileRoute = "$collection->metapath/$collection->metafilename";
     }
 
-    public function isTypedef() {
+    public function isTypedef()
+    {
         $result = '';
-        if($this->getTableName() === 'typedefs') {
-            $result = ($this->collection->type === 'function') ? 'functions': 'typedefs';
+        if ($this->getTableName() === 'typedefs')
+        {
+            $result = ($this->collection->type === 'function') ? 'functions' : 'typedefs';
         }
         return $result;
     }
@@ -42,53 +44,66 @@ class Card extends Component
     public function getAccess()
     {
         $scope_out = '';
-        if ($this->collection->scope == 'static') {
+        if ($this->collection->scope == 'static')
+        {
             $scope_out .= 'static';
         }
 
-        if($this->collection->access == 'private') {
-            if (!empty($scope_out)) {
+        if ($this->collection->access == 'private')
+        {
+            if (!empty($scope_out))
+            {
                 $scope_out .= ', ';
             }
             $scope_out .= 'private';
         }
 
-        if($this->collection->access == 'protected') {
-            if (!empty($scope_out)) {
+        if ($this->collection->access == 'protected')
+        {
+            if (!empty($scope_out))
+            {
                 $scope_out .= ', ';
             }
             $scope_out .= 'protected';
         }
 
-        if ($this->collection->readOnly == '1') {
-            if (!empty($scope_out)) {
+        if ($this->collection->readOnly == '1')
+        {
+            if (!empty($scope_out))
+            {
                 $scope_out .= ', ';
             }
             $scope_out .= 'readonly';
         }
 
-        if ($this->getTableName() == 'constants') {
-            if (!empty($scope_out)) {
+        if ($this->getTableName() == 'constants')
+        {
+            if (!empty($scope_out))
+            {
                 $scope_out .= ', ';
             }
             $scope_out .= 'constant';
         }
 
-        if ($this->collection->nullable == "1") {
-            if (!empty($scope_out)) {
+        if ($this->collection->nullable == "1")
+        {
+            if (!empty($scope_out))
+            {
                 $scope_out .= ', ';
             }
             $scope_out .= 'nullable';
         }
 
-        if(!empty($scope_out)) {
+        if (!empty($scope_out))
+        {
             $scope_out = "<$scope_out>";
         }
         return $scope_out;
     }
 
 
-    public function create_table_params_properties() {
+    public function create_table_params_properties()
+    {
         $table = [
             "name" => FALSE,
             "type" => FALSE,
@@ -99,21 +114,27 @@ class Card extends Component
 
         $params_or_properties = [];
 
-        if (!collect($this->collection->params)->isEmpty()) {
+        if (!collect($this->collection->params)->isEmpty())
+        {
             $params_or_properties = $this->collection->params;
         }
 
-        if (!collect($this->collection->properties)->isEmpty()) {
+        if (!collect($this->collection->properties)->isEmpty())
+        {
             $params_or_properties = $this->collection->properties;
         }
 
-        foreach($params_or_properties as $key => $param_or_property) {
-            foreach($table as $key => $value) {
-                if(!$table[$key]) {
+        foreach ($params_or_properties as $key => $param_or_property)
+        {
+            foreach ($table as $key => $value)
+            {
+                if (!$table[$key])
+                {
                     $table[$key] = !empty($param_or_property[$key]);
                 }
             }
-            if(!$table['arguments']) {
+            if (!$table['arguments'])
+            {
                 $table['arguments'] = ($param_or_property['optional'] == 1);
             }
         }

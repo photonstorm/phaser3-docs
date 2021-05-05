@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Docs;
 
 use App\Http\Controllers\Controller;
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Config;
 
 class ApiPhaserController extends Controller
 {
-    public function show(Request $request) {
+    public function show(Request $request)
+    {
         $longname = $request['api'];
         Config::set('phaser_version', $request['version']);
 
@@ -26,31 +28,35 @@ class ApiPhaserController extends Controller
         $typedef = Typedefs::whereLongname($longname)->first();
         $constant = Constant::whereLongname($longname)->first();
 
-        if(!empty($namespace)) {
+        if (!empty($namespace))
+        {
             $controller = new NamespacesController();
             Config::set('app.actual_link', 'namespaces');
         }
 
-        if(!empty($class)) {
+        if (!empty($class))
+        {
             $controller = new ClassesController();
             Config::set('app.actual_link', 'classes');
         }
 
-        if(!empty($event)) {
+        if (!empty($event))
+        {
             $controller  = new EventsController();
             Config::set('app.actual_link', 'events');
         }
 
-        if(!empty($typedef)) {
+        if (!empty($typedef))
+        {
             $controller  = new TypedefsController();
             Config::set('app.actual_link', 'typedef');
         }
 
-        if(!empty($constant)) {
+        if (!empty($constant))
+        {
             $controller = new ConstantController();
         }
 
         return (!empty($controller)) ? $controller->show($longname) : abort(404);
-
     }
 }

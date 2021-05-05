@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models\Docs;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,19 +10,23 @@ class Member extends Model
     use HasFactory;
     protected $connection = 'sqlite';
 
-    public function getTypedefTypes() {
+    public function getTypedefTypes()
+    {
         return $this->hasMany(TypedefType::class, 'fk_id', 'longname');
     }
 
-    public function getPhaserTypes() {
+    public function getPhaserTypes()
+    {
         return $this->hasMany(PhaserType::class, 'fk_id', 'longname');
     }
 
-    public function getGlobalTypes() {
+    public function getGlobalTypes()
+    {
         return $this->hasMany(GlobalType::class, 'fk_id', 'longname');
     }
 
-    public function getExamples() {
+    public function getExamples()
+    {
         return $this->hasMany(Example::class, 'fk_id', 'longname');
     }
 }

@@ -27,9 +27,12 @@ class SearchbarController extends Controller
         $version = $request->version;
 
         // Change search version
-        if(!empty($version)) {
+        if (!empty($version))
+        {
             DataBaseSelector::setDataBase($version);
-        } else {
+        }
+        else
+        {
             DataBaseSelector::setDataBase(DataBaseSelector::getLastDB());
         }
 
@@ -57,20 +60,26 @@ class SearchbarController extends Controller
         $typedef_collection = new SearchbarResource($typedef);
 
 
-        if (empty($keyword)) {
+        if (empty($keyword))
+        {
             $search_array = [];
-        } else {
+        }
+        else
+        {
             // search by this.add
-            if (str_starts_with($keyword, "this.")) {
+            if (str_starts_with($keyword, "this."))
+            {
                 $keys = explode('.', $keyword);
 
                 $scene_members_class = Member::where("memberof", "Phaser.Scene")->where("name", "like", "%$keys[1]%");
 
                 $scene_collection = [];
 
-                if (!$scene_members_class->get()->isEmpty()) {
+                if (!$scene_members_class->get()->isEmpty())
+                {
 
-                    if (count($keys) <= 2) {
+                    if (count($keys) <= 2)
+                    {
 
                         $scene_collection = new SearchbarResource($scene_members_class->get()->sortBy("name"));
 
@@ -79,7 +88,9 @@ class SearchbarController extends Controller
                             "data" => $scene_collection
                         ]);
                         // dd($members_class->get);
-                    } else if (count($keys) < 4) {
+                    }
+                    else if (count($keys) < 4)
+                    {
                         $type = $scene_members_class->first()->type;
                         $members = Functions::where("memberof", $type)->where("name", "like", "%$keys[2]%");
                         $member_collection = new SearchbarResource($members->get()->sortBy("name"));
@@ -95,12 +106,15 @@ class SearchbarController extends Controller
             // Normal search
 
             // ---- Namespaces
-            if (!$namespace_collection->isEmpty()) {
-                $namespace_filter = new SearchbarResource($namespace_collection->filter(function($namespace) {
-                    return ( !str_contains($namespace->longname, 'Type') );
+            if (!$namespace_collection->isEmpty())
+            {
+                $namespace_filter = new SearchbarResource($namespace_collection->filter(function ($namespace)
+                {
+                    return (!str_contains($namespace->longname, 'Type'));
                 }));
                 // dd($namespace_filter);
-                if(!$namespace_filter->isEmpty()) {
+                if (!$namespace_filter->isEmpty())
+                {
                     array_push($search_array, [
                         "type" => "namespaces",
                         "data" => $namespace_filter
@@ -109,7 +123,8 @@ class SearchbarController extends Controller
             }
 
             // ---- Classes
-            if (!$classes_collection->isEmpty()) {
+            if (!$classes_collection->isEmpty())
+            {
                 array_push(
                     $search_array,
                     [
@@ -120,7 +135,8 @@ class SearchbarController extends Controller
             }
 
             // ---- Members
-            if (!$members_collection->isEmpty()) {
+            if (!$members_collection->isEmpty())
+            {
                 array_push(
                     $search_array,
                     [
@@ -131,7 +147,8 @@ class SearchbarController extends Controller
             }
 
             // ---- Functions
-            if (!$functions_collection->isEmpty()) {
+            if (!$functions_collection->isEmpty())
+            {
                 array_push(
                     $search_array,
                     [
@@ -142,7 +159,8 @@ class SearchbarController extends Controller
             }
 
             // ---- Events
-            if (!$events_collection->isEmpty()) {
+            if (!$events_collection->isEmpty())
+            {
                 array_push(
                     $search_array,
                     [
@@ -153,7 +171,8 @@ class SearchbarController extends Controller
             }
 
             // ---- Constants
-            if (!$constants_collection->isEmpty()) {
+            if (!$constants_collection->isEmpty())
+            {
                 array_push(
                     $search_array,
                     [
@@ -164,7 +183,8 @@ class SearchbarController extends Controller
             }
 
             // ---- Typedef
-            if (!$typedef_collection->isEmpty()) {
+            if (!$typedef_collection->isEmpty())
+            {
                 array_push(
                     $search_array,
                     [

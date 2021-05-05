@@ -12,15 +12,18 @@ class Property extends Model
     protected $primaryKey = "id";
     protected $keyType = 'string';
 
-    public function getTypedefTypes() {
+    public function getTypedefTypes()
+    {
         return $this->hasMany(TypedefType::class, 'fk_id', 'id');
     }
 
-    public function getPhaserTypes() {
+    public function getPhaserTypes()
+    {
         return $this->hasMany(PhaserType::class, 'fk_id', 'id');
     }
 
-    public function getGlobalTypes() {
+    public function getGlobalTypes()
+    {
         return $this->hasMany(GlobalType::class, 'fk_id', 'id');
     }
 }

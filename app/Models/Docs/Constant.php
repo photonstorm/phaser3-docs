@@ -10,15 +10,18 @@ class Constant extends Model
     use HasFactory;
     protected $connection = 'sqlite';
 
-    public function getTypedefTypes() {
+    public function getTypedefTypes()
+    {
         return $this->hasMany(TypedefType::class, 'fk_id', 'longname');
     }
 
-    public function getPhaserTypes() {
+    public function getPhaserTypes()
+    {
         return $this->hasMany(PhaserType::class, 'fk_id', 'longname');
     }
 
-    public function getGlobalTypes() {
+    public function getGlobalTypes()
+    {
         return $this->hasMany(GlobalType::class, 'fk_id', 'longname');
     }
 }

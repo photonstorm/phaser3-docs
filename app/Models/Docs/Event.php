@@ -11,7 +11,8 @@ class Event extends Model
     protected $connection = 'sqlite';
     protected $table = "event";
 
-    public function params() {
+    public function params()
+    {
         return $this->hasMany(Param::class, "parentClass", "longname");
     }
 }

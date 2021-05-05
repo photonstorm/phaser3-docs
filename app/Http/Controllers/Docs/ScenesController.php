@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Docs;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Docs\Classes;
@@ -10,7 +11,8 @@ use Illuminate\Http\Request;
 
 class ScenesController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $class_scene = Classes::where("longname", "Phaser.Scene")->get()->sortBy('name');
         $memberof_scenes = Classes::where("memberof", "Phaser.Scenes")->get()->sortBy('name');
         $scene_members_class = Member::where("memberof", "Phaser.Scene")->get()->sortBy('name');

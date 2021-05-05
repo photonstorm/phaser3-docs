@@ -21,9 +21,12 @@ class PhaserVersionCheckMiddleware
     public function handle(Request $request, Closure $next)
     {
         $version = $request->version;
-        if (DataBaseSelector::has($version)) {
+        if (DataBaseSelector::has($version))
+        {
             DataBaseSelector::setDataBase($version);
-        } else {
+        }
+        else
+        {
             abort(404);
         }
 

@@ -49,8 +49,8 @@ class MemberCard extends Component
         $scope = "",
         $type = "",
         $types = "",
-        Array $params = [],
-        Array $properties = [],
+        array $params = [],
+        array $properties = [],
         $since = "3.0.0",
         $metaFileRoute = "",
         $metalineno = 0,
@@ -104,7 +104,8 @@ class MemberCard extends Component
         return view('components.docs.member-card');
     }
 
-    public function create_table_params_properties() {
+    public function create_table_params_properties()
+    {
         $table = [
             "name" => FALSE,
             "type" => FALSE,
@@ -115,21 +116,27 @@ class MemberCard extends Component
 
         $params_or_properties = [];
 
-        if (count($this->params) > 0 ) {
+        if (count($this->params) > 0)
+        {
             $params_or_properties = $this->params;
         }
 
-        if (count($this->properties) > 0 ) {
+        if (count($this->properties) > 0)
+        {
             $params_or_properties = $this->properties;
         }
 
-        foreach($params_or_properties as $key => $param_or_property) {
-            foreach($table as $key => $value) {
-                if(!$table[$key]) {
+        foreach ($params_or_properties as $key => $param_or_property)
+        {
+            foreach ($table as $key => $value)
+            {
+                if (!$table[$key])
+                {
                     $table[$key] = !empty($param_or_property[$key]);
                 }
             }
-            if(!$table['arguments']) {
+            if (!$table['arguments'])
+            {
                 $table['arguments'] = ($param_or_property['optional'] == 1);
             }
         }

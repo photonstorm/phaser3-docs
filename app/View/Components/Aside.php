@@ -45,7 +45,8 @@ class Aside extends Component
 
         $this->aside_collection = [];
 
-        if(!$this->namespaces->isEmpty()) {
+        if (!$this->namespaces->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "namespaces",
                 "show" => true,
@@ -53,7 +54,8 @@ class Aside extends Component
             ]);
         }
 
-        if(!$this->members->isEmpty()) {
+        if (!$this->members->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "members",
                 "show" => true,
@@ -61,7 +63,8 @@ class Aside extends Component
             ]);
         }
 
-        if(!$this->membersConstants->isEmpty() ) {
+        if (!$this->membersConstants->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "membersConstants",
                 "show" => true,
@@ -69,15 +72,17 @@ class Aside extends Component
             ]);
         }
 
-        if(!$this->methods->isEmpty()) {
+        if (!$this->methods->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "methods",
                 "show" => true,
                 "data" => $this->methods->values()
-                ]);
+            ]);
         }
 
-        if(!$this->classes->isEmpty()) {
+        if (!$this->classes->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "classes",
                 "show" => true,
@@ -85,7 +90,8 @@ class Aside extends Component
             ]);
         }
 
-        if(!$this->typedefs->isEmpty()) {
+        if (!$this->typedefs->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "typedefs",
                 "show" => true,
@@ -93,7 +99,8 @@ class Aside extends Component
             ]);
         }
 
-        if(!$this->events->isEmpty()) {
+        if (!$this->events->isEmpty())
+        {
             array_push($this->aside_collection, [
                 "type" => "events",
                 "show" => true,

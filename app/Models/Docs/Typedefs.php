@@ -11,23 +11,28 @@ class Typedefs extends Model
     protected $connection = 'sqlite';
 
 
-    public function getTypedefTypes() {
+    public function getTypedefTypes()
+    {
         return $this->hasMany(TypedefType::class, 'fk_id', 'longname');
     }
 
-    public function getPhaserTypes() {
+    public function getPhaserTypes()
+    {
         return $this->hasMany(PhaserType::class, 'fk_id', 'longname');
     }
 
-    public function getGlobalTypes() {
+    public function getGlobalTypes()
+    {
         return $this->hasMany(GlobalType::class, 'fk_id', 'longname');
     }
 
-    public function properties() {
+    public function properties()
+    {
         return $this->hasMany(Property::class, 'parentType', 'longname');
     }
 
-    public function params() {
+    public function params()
+    {
         return $this->hasMany(Param::class, "parentFunction", "longname");
     }
 }

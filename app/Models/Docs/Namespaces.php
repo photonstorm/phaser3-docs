@@ -14,33 +14,40 @@ class Namespaces extends Model
     // protected $primaryKey = 'longname';
 
 
-    public function namespaces() {
+    public function namespaces()
+    {
         return $this->hasMany(Namespaces::class, 'memberof', 'longname');
     }
 
     // Members
-    public function membersConstants() {
+    public function membersConstants()
+    {
         return $this->hasMany(Constant::class, 'memberof', 'longname');
     }
 
-    public function members() {
+    public function members()
+    {
         return $this->hasMany(Member::class, 'memberof', 'longname');
     }
 
-    public function classes() {
+    public function classes()
+    {
         return $this->hasMany(Classes::class, 'memberof', 'longname');
     }
 
-    public function functions() {
+    public function functions()
+    {
         return $this->hasMany(Functions::class, 'memberof', 'longname');
     }
 
-    public function typedefs() {
+    public function typedefs()
+    {
         return $this->hasMany(Typedefs::class, 'memberof', 'longname');
     }
 
     // Events
-    public function events() {
+    public function events()
+    {
         return $this->hasMany(Event::class, 'memberof', 'longname');
     }
 }

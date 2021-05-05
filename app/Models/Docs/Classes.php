@@ -11,24 +11,29 @@ class Classes extends Model
     protected $connection = 'sqlite';
     protected $table = 'class';
 
-    public function params() {
+    public function params()
+    {
         return $this->hasMany(Param::class, "parentClass", "longname")->where('parentFunction', '');
     }
 
-    public function extends() {
+    public function extends()
+    {
         return $this->hasMany(Extend::class, "class", "longname");
     }
 
     // Members
-    public function membersConstants() {
+    public function membersConstants()
+    {
         return $this->hasMany(Constant::class, 'memberof', 'longname');
     }
 
-    public function members() {
+    public function members()
+    {
         return $this->hasMany(Member::class, "memberOf", "longname");
     }
 
-    public function functions() {
+    public function functions()
+    {
         return $this->hasMany(Functions::class, "memberof", "longname");
     }
 }

@@ -26,7 +26,8 @@ class ClassesController extends Controller
     {
         // If exist cache
         $cache = Cache::get("docs.scene.$longname");
-        if ($cache && !env('APP_DEBUG')) {
+        if ($cache && !env('APP_DEBUG'))
+        {
             return $cache;
         }
 
@@ -53,10 +54,12 @@ class ClassesController extends Controller
         $partlist = '';
         $parts = explode('.', $class->longname);
 
-        for ($i = 0; $i < count($parts); $i++) {
+        for ($i = 0; $i < count($parts); $i++)
+        {
             $part = $parts[$i];
 
-            if ($i > 0) {
+            if ($i > 0)
+            {
                 $partlist = $partlist . '.';
             }
 
@@ -79,10 +82,14 @@ class ClassesController extends Controller
         ];
 
         // Cache system: if is in debug mode then don't set cache
-        if (env('APP_DEBUG')) {
+        if (env('APP_DEBUG'))
+        {
             return view('docs.class', $var_view);
-        } else {
-            return Cache::remember("docs.scene.$longname", Carbon::parse('1 week'), function () use ($var_view) {
+        }
+        else
+        {
+            return Cache::remember("docs.scene.$longname", Carbon::parse('1 week'), function () use ($var_view)
+            {
                 return view('docs.class', $var_view)->render();
             });
         }
