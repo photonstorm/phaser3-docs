@@ -38,7 +38,7 @@
 </div>
 
 {{-- <p class="font-monospace">Source file: {{ $class->metapath }}/{{ $class->metafilename }}</p>
-{{-- <p class="font-monospace">Added in Phaser v{{ $class->since }}</p> --}} --}}
+{{-- <p class="font-monospace">Added in Phaser v{{ $class->since }}</p> --}}
 
 <h3>Constructor:</h3>
 @php
