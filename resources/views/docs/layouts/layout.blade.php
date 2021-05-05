@@ -15,4 +15,5 @@
         </div>
     </div>
 </div>
+<div id="react-scroll-up"></div>
 @endsection

@@ -23,3 +23,4 @@ require('./effects/copyToClipboard');
 require('./components/Searchbar');
 require('./components/AsideSearchList');
 require('./components/ChangeVersionSelector');
+require('./components/ScrollUp');

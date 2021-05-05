@@ -12445,6 +12445,25 @@ exports.push([module.i, ".is-current a {\n  color: orangered;\n}", ""]);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/js/components/ScrollUp/ScrollUp.scss":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/js/components/ScrollUp/ScrollUp.scss ***!
+  \*******************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".scrollup-container {\n  position: fixed;\n  z-index: 3;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background-color: #212529c7;\n  right: 10px;\n  bottom: 10px;\n  color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 6rem;\n  cursor: pointer;\n  transition: 500ms all;\n}\n.scrollup-container img {\n  margin-top: -3px;\n  width: 25px;\n}\n.scrollup-container:hover {\n  background-color: #30363bc7;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/js/components/Searchbar/Searchbar.scss":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/js/components/Searchbar/Searchbar.scss ***!
@@ -76828,6 +76847,8 @@ __webpack_require__(/*! ./components/AsideSearchList */ "./resources/js/componen
 
 __webpack_require__(/*! ./components/ChangeVersionSelector */ "./resources/js/components/ChangeVersionSelector/index.js");
 
+__webpack_require__(/*! ./components/ScrollUp */ "./resources/js/components/ScrollUp/index.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -77160,6 +77181,139 @@ if (document.getElementById('react-change-version-selector')) {
     store: _State_store__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChangeVersionSelector__WEBPACK_IMPORTED_MODULE_4__["default"], props)), el);
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/ScrollUp/ScrollUp.jsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/ScrollUp/ScrollUp.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _up_arrow_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./up-arrow.png */ "./resources/js/components/ScrollUp/up-arrow.png");
+/* harmony import */ var _up_arrow_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_up_arrow_png__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ScrollUp_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ScrollUp.scss */ "./resources/js/components/ScrollUp/ScrollUp.scss");
+/* harmony import */ var _ScrollUp_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ScrollUp_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @use-it/event-listener */ "./node_modules/@use-it/event-listener/dist/event-listener.m.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var ScrollUp = function ScrollUp() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showScrollUp = _useState2[0],
+      setShowScrollUp = _useState2[1];
+
+  var scrollHandler = function scrollHandler(e) {
+    if (globalThis.scrollY > 2000) {
+      setShowScrollUp(true);
+    } else {
+      setShowScrollUp(false);
+    }
+  };
+
+  var clickHandler = function clickHandler() {
+    window.document.body.scrollTo = 0;
+    window.document.body.scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+  Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('scroll', scrollHandler);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, showScrollUp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "scrollup-container",
+    onClick: clickHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _up_arrow_png__WEBPACK_IMPORTED_MODULE_1___default.a
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ScrollUp);
+
+/***/ }),
+
+/***/ "./resources/js/components/ScrollUp/ScrollUp.scss":
+/*!********************************************************!*\
+  !*** ./resources/js/components/ScrollUp/ScrollUp.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./ScrollUp.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/js/components/ScrollUp/ScrollUp.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/components/ScrollUp/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/ScrollUp/index.js ***!
+  \***************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ScrollUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ScrollUp */ "./resources/js/components/ScrollUp/ScrollUp.jsx");
+
+
+
+
+if (document.getElementById('react-scroll-up')) {
+  var el = document.getElementById('react-scroll-up');
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScrollUp__WEBPACK_IMPORTED_MODULE_2__["default"], null), el);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/ScrollUp/up-arrow.png":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/ScrollUp/up-arrow.png ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/up-arrow.png?a2991e84a56565056232e2406e4f62b9";
 
 /***/ }),
 
