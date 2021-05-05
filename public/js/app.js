@@ -76968,19 +76968,6 @@ var AsideSearchList = function AsideSearchList(props) {
 
 
   var scrollSpy = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
-
-  var updateScrollSpy = function updateScrollSpy(el) {// TODO: Scroll top system
-    // console.log(document.querySelector(`.scrollspy-items-${el.id}`));
-    // scrollSpy.current.props.children.map((el) => {
-    //     console.log(el.props.className);
-    // });
-    // if(el !== undefined) {
-    //     const position = Math.ceil(document.querySelector(`.sscrollspy-items-${el.id}`).getBoundingClientRect().top);
-    //     console.log(position);
-    //     document.querySelector('.aside-fixed').scrollTo({top: `-${position}px`});
-    // }
-  };
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, "Search: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     type: "text",
     ref: searchBarListFilterInput,
@@ -77000,7 +76987,6 @@ var AsideSearchList = function AsideSearchList(props) {
       items: data_scroll,
       currentClassName: "is-current",
       offset: -150,
-      onUpdate: updateScrollSpy,
       ref: scrollSpy
     }, asideFilterPass(data.data, filter).map(function (el, key) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {

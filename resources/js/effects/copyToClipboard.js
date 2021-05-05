@@ -1,12 +1,12 @@
 import Toastify from 'toastify-js';
 
-jQuery(() => {
+jQuery(() =>
+{
     const members = $('.copy-members-to-clipboard');
-
-    members.on('click', (e) => {
+    members.on('click', (e) =>
+    {
 
         copyToClipboard(e.target.id);
-
         const tstfy = Toastify({
             "text": "copied to clipboard",
             "closeButton": false,
@@ -31,7 +31,8 @@ jQuery(() => {
 
 });
 
-const copyToClipboard = (text) => {
+const copyToClipboard = (text) =>
+{
     const elem = document.createElement('textarea');
     elem.value = text;
     document.body.appendChild(elem);

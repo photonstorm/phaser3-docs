@@ -6,7 +6,8 @@ const BaseState = createSlice({
     name: 'BaseState',
     initialState: BaseStateDefault,
     reducers: {
-        SetBase: (state, action) => {
+        SetBase: (state, action) =>
+        {
             const new_payload = action.payload.map(data => ({
                 ...data,
             }));

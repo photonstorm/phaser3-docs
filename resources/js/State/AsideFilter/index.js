@@ -10,9 +10,9 @@ const AsideState = createSlice({
     name: 'AsideState',
     initialState: AsideFilterDefault,
     reducers: {
-        HideInheritedMember: (state, action) => ({...state, hide_inherited_members: action.payload}),
-        ShowPrivateMembers: (state, action) => ({...state, show_private_members: action.payload}),
-        SetSearching: (state, action) => ({...state, searching: action.payload})
+        HideInheritedMember: (state, action) => ({ ...state, hide_inherited_members: action.payload }),
+        ShowPrivateMembers: (state, action) => ({ ...state, show_private_members: action.payload }),
+        SetSearching: (state, action) => ({ ...state, searching: action.payload })
     }
 });
 
