@@ -77317,6 +77317,73 @@ module.exports = "/images/up-arrow.png?a2991e84a56565056232e2406e4f62b9";
 
 /***/ }),
 
+/***/ "./resources/js/components/Searchbar/HistorySearchBar.jsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Searchbar/HistorySearchBar.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var HistorySearchBar = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function (prop, ref) {
+  var list = JSON.parse(localStorage.getItem('search-history-list'));
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(list !== null ? list : []),
+      _useState2 = _slicedToArray(_useState, 2),
+      searchHistoryList = _useState2[0],
+      setSearchHistoryList = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useImperativeHandle"])(ref, function () {
+    return {
+      setHistory: function setHistory(url) {
+        if (searchHistoryList.length > 10) {
+          searchHistoryList.pop();
+        }
+
+        var list = JSON.stringify([url].concat(_toConsumableArray(searchHistoryList)));
+        localStorage.setItem('search-history-list', list);
+      },
+      searchHistoryList: searchHistoryList
+    };
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, searchHistoryList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "title text-capitalize"
+  }, "History:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, searchHistoryList.map(function (historyList, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: i
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "/docs/".concat(historyList.version, "/").concat(historyList.link)
+    }, "v", historyList.version, " - ", historyList.name));
+  }))));
+});
+/* harmony default export */ __webpack_exports__["default"] = (HistorySearchBar);
+
+/***/ }),
+
 /***/ "./resources/js/components/Searchbar/Searchbar.scss":
 /*!**********************************************************!*\
   !*** ./resources/js/components/Searchbar/Searchbar.scss ***!
@@ -77391,6 +77458,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @use-it/event-listener */ "./node_modules/@use-it/event-listener/dist/event-listener.m.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _HistorySearchBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HistorySearchBar */ "./resources/js/components/Searchbar/HistorySearchBar.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -77409,7 +77477,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Searchbar = function Searchbar(props) {
+  var historyComponentRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var overlaySearchbar = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var results = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var inputRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
@@ -77435,6 +77505,7 @@ var Searchbar = function Searchbar(props) {
 
   var debouncedSearch = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["debounce"])(function (query) {
     if (query.trim() !== '') {
+      setSearchTerm(query.trim());
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/search-bar?search=".concat(query.replace('#', '-'), "&version=").concat(version)).then(function (res) {
         setSearchResult(res.data);
         openSearchbar();
@@ -77468,7 +77539,9 @@ var Searchbar = function Searchbar(props) {
   };
 
   var focusHandler = function focusHandler(e) {
-    if (e.target.value.trim() !== '') {
+    var historyList = historyComponentRef.current.searchHistoryList;
+
+    if (e.target.value.trim() !== '' || historyList.length > 0) {
       openSearchbar();
     } else {
       closeSearchbar();
@@ -77510,6 +77583,10 @@ var Searchbar = function Searchbar(props) {
     return scope === 'static';
   };
 
+  var redirectHandler = function redirectHandler(url) {
+    historyComponentRef.current.setHistory(url); // window.location.href = url;
+  };
+
   Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('scroll', scrollHandler);
   Object(_use_it_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"])('resize', resizeEvent);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -77529,8 +77606,8 @@ var Searchbar = function Searchbar(props) {
     },
     onFocus: function onFocus(e) {
       return focusHandler(e);
-    },
-    onClick: focusHandler
+    } // onClick={focusHandler}
+
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-bar-overlay",
     onClick: closeSearchbar,
@@ -77538,14 +77615,16 @@ var Searchbar = function Searchbar(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-result p-2",
     ref: results
-  }, search_result.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HistorySearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    ref: historyComponentRef
+  }), search_result.length === 0 ? searchTerm.trim() === '' ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-card"
   }, "Not found") : search_result.map(function (result, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "search-card",
       key: result.type + index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "title "
+      className: "title text-capitalize"
     }, result.type, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object(lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"])(result.data, function (o) {
@@ -77557,7 +77636,14 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/").concat(longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(longname.replace('-', '#')),
+          onClick: function onClick() {
+            return redirectHandler({
+              version: version,
+              link: link,
+              name: longname.replace('-', '#')
+            });
+          }
         }, getPrefix(inputRef.current.value), ".", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: markScene(res.name)
@@ -77565,11 +77651,19 @@ var Searchbar = function Searchbar(props) {
         })));
       } else if (result.type.toLowerCase() === 'function') {
         // Static methods fix
-        var link = isStatic(res.scope) ? longname.replace(/.(?!.*\.)/, '#').replace('-', '#') : longname.replace('-', '#');
+        var _link = isStatic(res.scope) ? longname.replace(/.(?!.*\.)/, '#').replace('-', '#') : longname.replace('-', '#');
+
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/").concat(link)
+          href: "/docs/".concat(version, "/").concat(_link),
+          onClick: function onClick() {
+            return redirectHandler({
+              version: version,
+              link: _link,
+              name: longname.replace('-', '#')
+            });
+          }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: mark(longname.replace('-', '#'))
@@ -77579,7 +77673,14 @@ var Searchbar = function Searchbar(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: longname + index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/docs/".concat(version, "/").concat(longname.replace('-', '#'))
+          href: "/docs/".concat(version, "/").concat(longname.replace('-', '#')),
+          onClick: function onClick() {
+            return redirectHandler({
+              version: version,
+              link: longname.replace('-', '#'),
+              name: longname.replace('-', '#')
+            });
+          }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           dangerouslySetInnerHTML: {
             __html: mark(longname.replace('-', '#'))
