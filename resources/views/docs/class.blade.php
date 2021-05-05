@@ -51,13 +51,10 @@ new {{ $class->name }}({{$classConstructor}})
 ```
 @endmarkdown
 
-<x-member-card
-    class="mt-1 pt-2 pb-4"
-    :params=$params
-    since="{{$class->since}}"
-    metaFileRoute="{{$class->metapath}}/{{$class->metafilename}}"
-    metalineno="{{$class->metalineno}}"
-/>
+    <x-create-table-params-properties
+        class="mt-1 pt-2 pb-4"
+        :collection="$class"
+    />
 
     @if (!empty($extends) AND count($extends))
     <h3 class="mt-4">Extends</h3>

@@ -11,7 +11,10 @@
         <div class="col-9">
             <div class="h2 text-danger">{{ ucfirst($constant->getTable()) }}: {{ $constant->name }}</div>
             <div class="h3 text-info">{{$constant->longname }}</div>
-            <x-member-card
+
+            <x-card class="border-bottom border-danger mt-0 pt-0 pb-4" :id="$constant->name" :collection="$constant" focus="true"/>
+
+            {{-- <x-member-card
                 class="border-bottom border-danger mt-0 pt-0 pb-4 "
                 scope="{{$constant->scope}}"
                 :description="$constant->description"
@@ -19,9 +22,7 @@
                 since="{{$constant->since}}"
                 metaFileRoute="{{$constant->metapath}}/{{$constant->metafilename}}"
                 metalineno="{{$constant->metalineno}}"
-                {{-- :returnstype="$method->returnstype" --}}
-                {{-- returnsdescription="{{$method->returnsdescription}}" --}}
-            />
+            /> --}}
         </div>
         <div class="col-3">
             Aside
