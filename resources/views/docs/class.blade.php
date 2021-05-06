@@ -61,8 +61,7 @@ new {{ $class->name }}({{$classConstructor}})
     <ul>
         @foreach ($extends as $extend)
         <li>
-            {{-- {!! resolve('get_api_link')($extend->object) !!} --}}
-            <a href="{{route('docs.api.phaser', ['version' => $version, 'api' => $extend->object])}}">{{ $extend->object }}</a>
+            {!! resolve('get_api_link')($extend->object) !!}
         </li>
         @endforeach
     </ul>

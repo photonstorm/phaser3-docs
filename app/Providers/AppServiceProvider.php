@@ -113,22 +113,20 @@ class AppServiceProvider extends ServiceProvider
         {
             return function ($type)
             {
+                // var_dump(htmlentities($type));
                 $pattern = '/Phaser.[a-zA-Z0-9._#]*/i';
 
-                $api_link_output = '';
-
                 $clean_html_entities_type = str_replace('>', '&gt;', $type);
-                $clean_html_entities_type = str_replace('<', '&lt;', $clean_html_entities_type);
+                $api_link_output = str_replace('<', '&lt;', $clean_html_entities_type);
 
-                if (preg_match($pattern, $clean_html_entities_type, $found_type))
+                if (preg_match_all($pattern, $api_link_output, $found_type))
                 {
                     $find_type = $found_type[0];
-
-                    $replace_str = '<a href="' . route('docs.api.phaser', ["version" => $this->app->Config::get('app.phaser_version'), "api" => rtrim($find_type, '.')]) . '">' . $find_type . '</a>';
-
-                    // $str = htmlentities(preg_replace($pattern, "-replace-", $clean_html_entities_type));
-                    $str = preg_replace($pattern, "-replace-", $clean_html_entities_type);
-                    $api_link_output = str_replace("-replace-", $replace_str, $str);
+                    foreach ($find_type as $key => $value)
+                    {
+                        $replace_str = '<a href="' . route('docs.api.phaser', ["version" => $this->app->Config::get('app.phaser_version'), "api" => rtrim($value, '.')]) . '">' . $value . '</a>';
+                        $api_link_output = str_replace($value, $replace_str, $api_link_output);
+                    }
                 }
                 else
                 {
