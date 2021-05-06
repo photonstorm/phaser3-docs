@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, useEffect, useImperativeHandle, useState } from 'react';
+import React, { forwardRef, Fragment, useImperativeHandle, useState } from 'react';
 
 const HistorySearchBar = forwardRef((prop, ref) =>
 {

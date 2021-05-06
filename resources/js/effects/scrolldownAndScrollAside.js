@@ -1,26 +1,25 @@
 import { SetSearching } from '../State/AsideFilter';
 import store from '../State/store';
 
-jQuery(() =>
+
+const scrolldownAndScrollAside = () =>
 {
     const scrollToAnchor = (aid) =>
     {
-
         if (aid.length > 1)
         {
-            let tag = $(aid);
+            let tag = document.querySelector(aid);
 
-            if (tag.length)
+            if (tag !== null)
             {
-                $('html,body').animate({
-                    scrollTop: tag.offset().top
-                }, 'slow');
-
+                tag.scrollIntoView({
+                    behavior: "smooth"
+                });
             }
         }
     }
 
-    const url = $(location).attr("href");
+    const url = location.href;
     const hash = url.substring(url.indexOf("#"));
 
     if (hash.startsWith('#'))
@@ -32,47 +31,55 @@ jQuery(() =>
     activeAsideSticky();
 
     // aside sticky
-    $(window).on('scroll', function (e)
+    window.addEventListener('scroll', (e) =>
     {
         activeAsideSticky(e);
     });
-    $(window).on('resize', function ()
+
+    window.addEventListener('resize', (e) =>
     {
         comprobateOverflowAside();
     });
 
-});
+};
 
 let timerScroll;
-
 // Scrolldown aside offsetY
 const activeAsideSticky = (e) =>
 {
-    const scrollTop = $(window).scrollTop();
-    const offsetTop = $('#docs-header').height();
+    const scrollTop = window.scrollY;
+    const offsetTop = document.querySelector("#docs-header").offsetHeight;
 
-    if (scrollTop > offsetTop)
+    const asideFixedElement = document.querySelector(".aside-fixed");
+
+    if (asideFixedElement !== null)
     {
-        $('.aside-fixed').css({ 'top': '0px' });
 
-        const footer_resize = (scrollTop + $(window).height()) - $('#footer-container').position().top;
+        if (scrollTop > offsetTop)
+        {
 
-        if (footer_resize > 0)
-        {
-            $('.aside-fixed').css({ 'height': `calc(100vh - ${footer_resize}px)` });
-        } else
-        {
-            $('.aside-fixed').css({ 'height': '100vh' });
+            asideFixedElement.style.top = '0px';
+
+            const footerContainerElementTop = document.querySelector('#footer-container').offsetTop
+            const footer_resize = (scrollTop + window.innerHeight) - footerContainerElementTop;
+
+            if (footer_resize > 0)
+            {
+                asideFixedElement.style.height = `calc(100vh - ${footer_resize}px)`;
+            }
+            else
+            {
+                asideFixedElement.style.height = '100vh';
+            }
         }
-    } else
-    {
-
-        // this adjust the start size
-        $('.aside-fixed').css({
-            'top': (offsetTop - scrollTop) + 'px',
-            'height': `calc(100vh - ${offsetTop - (Math.min(scrollTop, offsetTop))}px)`
-        });
+        else
+        {
+            // this adjust the start size
+            asideFixedElement.style.top = (offsetTop - scrollTop) + 'px';
+            asideFixedElement.style.height = `calc(100vh - ${offsetTop - (Math.min(scrollTop, offsetTop))}px)`;
+        }
     }
+
     // Prevents rare tremors
     clearTimeout(timerScroll);
     timerScroll = setTimeout(comprobateOverflowAside, 100);
@@ -81,19 +88,23 @@ const activeAsideSticky = (e) =>
 // Change scrollY of aside
 const comprobateOverflowAside = () =>
 {
-    if ($('.aside-elements-container').position() !== undefined)
+    const asideContainerElement = document.querySelector('.aside-elements-container');
+
+    if (asideContainerElement !== null)
     {
+        const asideFixedElement = document.querySelector('.aside-fixed');
 
-        const aside_position = $('.aside-elements-container').position().top;
-        const aside_height = $('.aside-elements-container').height();
-        const aside_size = Math.ceil(aside_height + aside_position);
+        const aside_position_new = asideContainerElement.offsetTop;
+        const aside_height_new = asideContainerElement.clientHeight;
 
-        if (Math.floor(aside_size) < $('.aside-fixed').height())
+        const aside_size = Math.ceil(aside_height_new + aside_position_new)
+
+        if (Math.floor(aside_size) < asideFixedElement.clientHeight)
         {
-            $('.aside-fixed').css('overflow-y', 'initial');
+            asideFixedElement.style.overflowY = "initial";
         } else
         {
-            $('.aside-fixed').css('overflow-y', 'scroll');
+            asideFixedElement.style.overflowY = "scroll";
         }
 
     }
@@ -109,3 +120,5 @@ const comprobateOverflowAside = () =>
         }
     });
 }
+
+export default scrolldownAndScrollAside;

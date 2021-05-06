@@ -1,69 +1,64 @@
 import store from "../State/store";
 import { HideInheritedMember, ShowPrivateMembers } from '../State/AsideFilter';
 
-jQuery(() =>
+const asideFilter = () =>
 {
-    const hide_inherits = $('#hide_inherited');
-    const inherits_list = $('.inherited');
+    const hideInheritsElement = document.querySelector("#hide_inherited");
+    const inherits_list = document.querySelectorAll('.inherited');
 
-    const show_private = $('#show_private_members');
-    const private_list = $('.private');
+    const showPrivateElement = document.querySelector('#show_private_members');
+    const private_list = document.querySelectorAll('.private');
 
-    hide_inherits.on('change', (e) =>
+    if (hideInheritsElement === null || showPrivateElement === null)
+    {
+        return true;
+    }
+
+    hideInheritsElement.addEventListener('change', (e) =>
     {
         if (e.target.checked)
         {
-
             store.dispatch(HideInheritedMember(true));
+
             // Hide inherits
             Array.from(inherits_list).forEach(inherit =>
             {
-
-                if (!$(inherit).hasClass('private'))
+                if (!inherit.classList.contains('private'))
                 {
-                    inherit.style.setProperty('--animate-duration', '.3s')
-                    $(inherit).removeClass('animate__fadeIn');
-                    $(inherit).addClass('animate__fadeOut');
-                    setTimeout(() =>
-                    {
-                        $(inherit).addClass('hide-card');
-                    }, 300);
+                    inherit.classList.add('hide-card');
                 }
             });
         }
+
         // Show inherits
         else
         {
-
             store.dispatch(HideInheritedMember(false));
 
             Array.from(inherits_list).forEach(inherit =>
             {
-                if (!$(inherit).hasClass('private'))
+                if (!inherit.classList.contains('private'))
                 {
-
-                    $(inherit).removeClass('animate__fadeOut');
-                    $(inherit).removeClass('hide-card');
-                    $(inherit).addClass('animate__fadeIn');
+                    inherit.classList.remove('hide-card');
                 }
             });
 
         }
     });
 
-    show_private.on('change', (e) =>
+    showPrivateElement.addEventListener('change', (e) =>
     {
         // Show private
         if (e.target.checked)
         {
             store.dispatch(ShowPrivateMembers(true));
+
             Array.from(private_list).forEach(_private =>
             {
-                $(_private).removeClass('animate__fadeOut');
-                $(_private).removeClass('hide-card');
-                $(_private).addClass('animate__fadeIn');
+                _private.classList.remove('hide-card');
             });
         }
+
         // Hide private
         else
         {
@@ -71,14 +66,10 @@ jQuery(() =>
 
             Array.from(private_list).forEach(_private =>
             {
-                _private.style.setProperty('--animate-duration', '.3s');
-                $(_private).removeClass('animate__fadeIn');
-                $(_private).addClass('animate__fadeOut');
-                setTimeout(() =>
-                {
-                    $(_private).addClass('hide-card');
-                }, 300);
+                _private.classList.add('hide-card');
             });
         }
     });
-});
+};
+
+export default asideFilter;

@@ -4,16 +4,26 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
+
+
 // ---- Dependencies
- require('./jquery');
+// require('./jquery');
 require('@popperjs/core');
 require('./bootstrap');
 require('prismjs');
 
 // ---- Page Effects
-require('./effects/scrolldownAndScrollAside');
-require('./effects/asideFilters');
-require('./effects/copyToClipboard');
+import copyToClipboard from './effects/copyToClipboard';
+import scrolldownAndScrollAside from './effects/scrolldownAndScrollAside';
+import asideFilter from './effects/asideFilters';
+
+window.addEventListener("load", function ()
+{
+    copyToClipboard();
+    scrolldownAndScrollAside();
+    asideFilter();
+});
+
 
 /**
  * Next, we will create a fresh React component instance and attach it to

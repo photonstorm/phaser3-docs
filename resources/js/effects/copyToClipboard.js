@@ -1,37 +1,39 @@
 import Toastify from 'toastify-js';
 
-jQuery(() =>
+const copyToClipboard = () =>
 {
-    const members = $('.copy-members-to-clipboard');
-    members.on('click', (e) =>
-    {
+    const members = document.querySelectorAll('.copy-members-to-clipboard');
+    Array.from(members).forEach((member) => {
+        member.addEventListener('click', (e) =>
+        {
+            copy(e.target.id);
 
-        copyToClipboard(e.target.id);
-        const tstfy = Toastify({
-            "text": "copied to clipboard",
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
+            const tstfy = Toastify({
+                "text": "copied to clipboard",
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            });
+            tstfy.showToast();
+
         });
-        tstfy.showToast();
-
     });
 
-});
+};
 
-const copyToClipboard = (text) =>
+const copy = (text) =>
 {
     const elem = document.createElement('textarea');
     elem.value = text;
@@ -40,3 +42,5 @@ const copyToClipboard = (text) =>
     document.execCommand('copy');
     document.body.removeChild(elem);
 }
+
+export default copyToClipboard;
