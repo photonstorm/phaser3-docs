@@ -188,8 +188,8 @@ const Searchbar = (props) =>
                                     <div className="body">
                                         <ul>
                                             {
-                                                orderBy(result.data, (o) => o.longname.length, ["asc"])
-                                                    .map((res, index) =>
+                                                // orderBy(result.data, (o) => o.longname.length, ["asc"])
+                                                result.data.map((res, index) =>
                                                     {
                                                         const longname = res.longname;
                                                         if (result.type.toLowerCase() === 'scene')
@@ -215,17 +215,31 @@ const Searchbar = (props) =>
                                                                 </a>
                                                             </li>
                                                         }
-                                                        else
-                                                        {
-                                                            return <li key={longname + index}>
+
+                                                    }
+                                                    )
+                                                }
+                                                {
+                                                    orderBy(result.data, (o) => o.longname.length, ["asc"])
+                                                        .map((res, index) => {
+                                                            const longname = res.longname;
+                                                            if(result.type.toLowerCase() === 'classes') {
+                                                                return <li key={longname + index}>
                                                                 <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link: longname.replace('-', '#'), name: longname.replace('-', '#') })} >
                                                                     <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
                                                                 </a>
                                                             </li>
-                                                        }
-                                                    }
-                                                    )
-                                            }
+                                                            }
+                                                            else
+                                                            {
+                                                                return <li key={longname + index}>
+                                                                    <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link: longname.replace('-', '#'), name: longname.replace('-', '#') })} >
+                                                                        <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                        })
+                                                }
                                         </ul>
                                     </div>
                                 </div>

@@ -47,7 +47,7 @@ class SearchbarController extends Controller
         $events = Event::where('longname', 'like', "%$keyword%")->get()->take(Config::get('app.search_amount_return'))->sortBy("longname")->flatten(1);
         $events_collection = new SearchbarResource($events);
 
-        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->sortBy("inherits")->take(Config::get('app.search_amount_return'))->flatten(1);
         $functions_collection = new SearchbarResource($functions);
 
         $constants = Constant::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
