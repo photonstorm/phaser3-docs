@@ -46,9 +46,9 @@
                 @if ($create_table_params_properties()['description'])
                 {{-- Description --}}
                 <td>
-                    @markdown
-                    {!! $property->description !!}
-                    @endmarkdown
+@markdown
+{!! $property->description !!}
+@endmarkdown
                 </td>
                 @endif
             </tr>
