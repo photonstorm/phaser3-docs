@@ -1,5 +1,5 @@
 @extends('app')
-@section('title', $typedef->scope)
+@section('title', $typedef->longname)
 
 @section('content')
 @include('docs.layouts.header')
