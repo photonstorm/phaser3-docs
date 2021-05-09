@@ -5,7 +5,7 @@ return [
     'phaser_version' => '3.50.0',
     'actual_link' => 'home',
     // searchbar
-    'search_amount_return' => 20,
+    'search_amount_return' => 30,
 
     /*
     |--------------------------------------------------------------------------

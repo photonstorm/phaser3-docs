@@ -94,14 +94,30 @@ const Searchbar = (props) =>
         return text.split('.').filter((word, i) => (i != text.split('.').length - 1)).join('.')
     }
 
+    const regexScape = (text) => {
+        return encodeURI(text).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, (text) => {
+            return `\\${text}`
+        });
+    };
     // Highlight text
     const mark = (text) =>
     {
-        const regex = new RegExp(`${inputRef.current.value.trim()}`, 'gi');
-        return text.replace(regex, (obj) =>
+        if (searchTerm.trim() === '')
         {
-            return `<span class="text-danger">${obj}</span>`;
-        });
+            return text;
+        }
+        else
+        {
+
+            const encode = regexScape(inputRef.current.value.trim());
+            const regex = new RegExp(`${encode}`, 'gi');
+            return text.replace(regex, (obj) =>
+            {
+                return `<span class="text-danger">${obj}</span>`;
+            });
+
+        }
+
     }
 
     const markScene = (text) =>
@@ -172,7 +188,7 @@ const Searchbar = (props) =>
                 {
                     (search_result.length === 0)
                         ?
-                        ((searchTerm.trim() === '' ) ? '' :
+                        ((searchTerm.trim() === '') ? '' :
                             <div className="search-card">
                                 Not found
                             </div>
@@ -190,56 +206,58 @@ const Searchbar = (props) =>
                                             {
                                                 // orderBy(result.data, (o) => o.longname.length, ["asc"])
                                                 result.data.map((res, index) =>
+                                                {
+                                                    const longname = res.longname;
+                                                    if (result.type.toLowerCase() === 'scene')
+                                                    {
+                                                        return <li key={longname + index}>
+                                                            <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link, name: longname.replace('-', '#') })}>
+                                                                {
+                                                                    getPrefix(inputRef.current.value)
+                                                                }.
+                                                                            <span dangerouslySetInnerHTML={{ __html: markScene(res.name) }}></span>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    else if (result.type.toLowerCase() === 'function')
+                                                    {
+                                                        // Static methods fix
+                                                        const link = (isStatic(res.scope)) ?
+                                                            longname.replace(/.(?!.*\.)/, '#').replace('-', '#') :
+                                                            longname.replace('-', '#');
+                                                        return <li key={longname + index}>
+                                                            <a href={`/docs/${version}/${link}`} onClick={() => redirectHandler({ version, link, name: longname.replace('-', '#') })}>
+                                                                <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
+                                                            </a>
+                                                        </li>
+                                                    }
+
+                                                }
+                                                )
+                                            }
+                                            {
+                                                orderBy(result.data, (o) => o.longname.length, ["asc"])
+                                                    .map((res, index) =>
                                                     {
                                                         const longname = res.longname;
-                                                        if (result.type.toLowerCase() === 'scene')
+                                                        if (result.type.toLowerCase() === 'classes')
                                                         {
                                                             return <li key={longname + index}>
-                                                                <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link, name: longname.replace('-', '#') })}>
-                                                                    {
-                                                                        getPrefix(inputRef.current.value)
-                                                                    }.
-                                                                            <span dangerouslySetInnerHTML={{ __html: markScene(res.name) }}></span>
-                                                                </a>
-                                                            </li>
-                                                        }
-                                                        else if (result.type.toLowerCase() === 'function')
-                                                        {
-                                                            // Static methods fix
-                                                            const link = (isStatic(res.scope)) ?
-                                                                longname.replace(/.(?!.*\.)/, '#').replace('-', '#') :
-                                                                longname.replace('-', '#');
-                                                            return <li key={longname + index}>
-                                                                <a href={`/docs/${version}/${link}`} onClick={() => redirectHandler({ version, link, name: longname.replace('-', '#') })}>
-                                                                    <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
-                                                                </a>
-                                                            </li>
-                                                        }
-
-                                                    }
-                                                    )
-                                                }
-                                                {
-                                                    orderBy(result.data, (o) => o.longname.length, ["asc"])
-                                                        .map((res, index) => {
-                                                            const longname = res.longname;
-                                                            if(result.type.toLowerCase() === 'classes') {
-                                                                return <li key={longname + index}>
                                                                 <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link: longname.replace('-', '#'), name: longname.replace('-', '#') })} >
                                                                     <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
                                                                 </a>
                                                             </li>
-                                                            }
-                                                            else
-                                                            {
-                                                                return <li key={longname + index}>
-                                                                    <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link: longname.replace('-', '#'), name: longname.replace('-', '#') })} >
-                                                                        <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
-                                                                    </a>
-                                                                </li>
-                                                            }
-                                                        })
-                                                }
+                                                        }
+                                                        else
+                                                        {
+                                                            return <li key={longname + index}>
+                                                                <a href={`/docs/${version}/${longname.replace('-', '#')}`} onClick={() => redirectHandler({ version, link: longname.replace('-', '#'), name: longname.replace('-', '#') })} >
+                                                                    <span dangerouslySetInnerHTML={{ __html: mark(longname.replace('-', '#')) }}></span>
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    })
+                                            }
                                         </ul>
                                     </div>
                                 </div>

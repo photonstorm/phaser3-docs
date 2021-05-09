@@ -66673,14 +66673,25 @@ var Searchbar = function Searchbar(props) {
     return text.split('.').filter(function (word, i) {
       return i != text.split('.').length - 1;
     }).join('.');
+  };
+
+  var regexScape = function regexScape(text) {
+    return encodeURI(text).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, function (text) {
+      return "\\".concat(text);
+    });
   }; // Highlight text
 
 
   var mark = function mark(text) {
-    var regex = new RegExp("".concat(inputRef.current.value.trim()), 'gi');
-    return text.replace(regex, function (obj) {
-      return "<span class=\"text-danger\">".concat(obj, "</span>");
-    });
+    if (searchTerm.trim() === '') {
+      return text;
+    } else {
+      var encode = regexScape(inputRef.current.value.trim());
+      var regex = new RegExp("".concat(encode), 'gi');
+      return text.replace(regex, function (obj) {
+        return "<span class=\"text-danger\">".concat(obj, "</span>");
+      });
+    }
   };
 
   var markScene = function markScene(text) {

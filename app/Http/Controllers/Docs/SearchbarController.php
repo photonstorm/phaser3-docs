@@ -38,7 +38,7 @@ class SearchbarController extends Controller
 
         $search_array = [];
 
-        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortByDesc("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $classes_collection = new SearchbarResource($classes);
 
         $namespace = Namespaces::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
