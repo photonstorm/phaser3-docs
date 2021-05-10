@@ -4,7 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phaser 3 API Documentation (beta) - @yield('title')</title>
+    <title>
+        @if($__env->yieldContent('title') === 'index')
+            Phaser 3 API Documentation (beta) - @yield('title')
+        @else
+            @yield('title') - Phaser 3 API Documentation (beta)
+        @endif
+    </title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
