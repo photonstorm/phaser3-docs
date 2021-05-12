@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        @if($__env->yieldContent('title') === 'index')
+        @if($__env->yieldContent('title') === 'Index')
             Phaser 3 API Documentation (beta) - @yield('title')
         @else
             @yield('title') - Phaser 3 API Documentation (beta)

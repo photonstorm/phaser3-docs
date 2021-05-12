@@ -108,9 +108,11 @@ const Searchbar = (props) =>
         }
         else
         {
-
             const encode = regexScape(inputRef.current.value.trim());
-            const regex = new RegExp(`${encode}`, 'gi');
+            const splitted = encode.split("%20").filter(element => element.trim() !== "");
+
+            const regex = new RegExp(`${splitted.join("|")}`, 'gi');
+
             return text.replace(regex, (obj) =>
             {
                 return `<span class="text-danger">${obj}</span>`;

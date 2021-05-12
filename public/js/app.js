@@ -66687,7 +66687,10 @@ var Searchbar = function Searchbar(props) {
       return text;
     } else {
       var encode = regexScape(inputRef.current.value.trim());
-      var regex = new RegExp("".concat(encode), 'gi');
+      var splitted = encode.split("%20").filter(function (element) {
+        return element.trim() !== "";
+      });
+      var regex = new RegExp("".concat(splitted.join("|")), 'gi');
       return text.replace(regex, function (obj) {
         return "<span class=\"text-danger\">".concat(obj, "</span>");
       });

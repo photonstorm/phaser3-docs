@@ -23,8 +23,20 @@ class SearchbarController extends Controller
     public function search(Request $request)
     {
 
-        $keyword = $request->search;
         $version = $request->version;
+        $search_values = $request->search;
+        $keywords = array_values(array_filter(explode(' ', trim($search_values))));
+
+        $keyword_search = "";
+
+        if (count($keywords) === 1)
+        {
+            $keyword_search = (empty($keywords[0])) ? "" : $keywords[0];
+        }
+        else
+        {
+            $keyword_search = (empty($keywords)) ? "" : implode('%', $keywords);
+        }
 
         // Change search version
         if (!empty($version))
@@ -38,38 +50,38 @@ class SearchbarController extends Controller
 
         $search_array = [];
 
-        $classes = Classes::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $classes = Classes::where('longname', 'like', "%$keyword_search%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $classes_collection = new SearchbarResource($classes);
 
-        $namespace = Namespaces::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $namespace = Namespaces::where('longname', 'like', "%$keyword_search%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $namespace_collection = new SearchbarResource($namespace);
 
-        $events = Event::where('longname', 'like', "%$keyword%")->get()->take(Config::get('app.search_amount_return'))->sortBy("longname")->flatten(1);
+        $events = Event::where('longname', 'like', "%$keyword_search%")->get()->take(Config::get('app.search_amount_return'))->sortBy("longname")->flatten(1);
         $events_collection = new SearchbarResource($events);
 
-        $functions = Functions::where('longname', 'like', "%$keyword%")->get()->sortBy("inherits")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $functions = Functions::where('longname', 'like', "%$keyword_search%")->get()->sortBy("inherits")->take(Config::get('app.search_amount_return'))->flatten(1);
         $functions_collection = new SearchbarResource($functions);
 
-        $constants = Constant::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $constants = Constant::where('longname', 'like', "%$keyword_search%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $constants_collection = new SearchbarResource($constants);
 
-        $members = Member::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $members = Member::where('longname', 'like', "%$keyword_search%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $members_collection = new SearchbarResource($members);
 
-        $typedef = Typedefs::where('longname', 'like', "%$keyword%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
+        $typedef = Typedefs::where('longname', 'like', "%$keyword_search%")->get()->sortBy("longname")->take(Config::get('app.search_amount_return'))->flatten(1);
         $typedef_collection = new SearchbarResource($typedef);
 
 
-        if (empty($keyword))
+        if (empty($keyword_search))
         {
             $search_array = [];
         }
         else
         {
             // search by this.add
-            if (str_starts_with($keyword, "this."))
+            if (str_starts_with($keyword_search, "this."))
             {
-                $keys = explode('.', $keyword);
+                $keys = explode('.', $keyword_search);
 
                 $scene_members_class = Member::where("memberof", "Phaser.Scene")->where("name", "like", "%$keys[1]%");
 
