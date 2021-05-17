@@ -10,6 +10,7 @@ const InsertTutorials = require('./InsertTutorials');
 
 
 let id_generator = 0;
+let repeated = false;
 
 let InsertMember = function (db, data)
 {
@@ -79,9 +80,16 @@ let InsertMember = function (db, data)
 
         for(let x = 0; x < data.docs.length; x++) {
             if(block.longname == data.docs[x].longname && x !== i) {
-                block.longname = block.longname + `[${id_generator++}]`;
-                console.log('Repeated - ', block.longname);
+                // continue;
+                block.longname = block.longname + `removed_me-${id_generator++}`;
+                // console.log('Repeated - ', block.longname);
+                repeated = true;
             }
+        }
+
+        if(repeated) {
+            repeated = false;
+            continue;
         }
 
         const longname = CleanHastagLongName(block.longname);
