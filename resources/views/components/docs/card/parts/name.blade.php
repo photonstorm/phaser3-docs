@@ -1,5 +1,10 @@
 <div class="d-flex justify-content-between border-bottom pb-1 mb-3">
     <div class="h4 ">
+        @if ($collection->webgl == "1")
+            <span class="badge bg-info text-dark">
+                Only webGL
+            </span>
+        @endif
         @if ($getTableName() === 'members' OR $getTableName() === 'constants')
             @php
             $types = resolve('get_types')($collection);

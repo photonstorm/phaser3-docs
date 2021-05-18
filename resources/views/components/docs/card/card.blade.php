@@ -2,9 +2,12 @@
 <div id="{{ $id }}" {{ $attributes }}>
 @else
 <div id="{{ $id }}" {{ $attributes->merge([
-    'class' => ( (($collection->access == 'private') ? 'private hide-card' : '' ) .' '. (($collection->access == 'protected') ? 'protected' : '' ) .' '. ((!empty($collection->inherits)) ? 'inherited' : ''))
+    'class' => (
+        (($collection->access == 'private') ? 'private hide-card' : '' ) .
+        (($collection->webgl == '1') ? 'webglonly' : '' ) .
+        (($collection->access == 'protected') ? 'protected' : '' ) .
+        ((!empty($collection->inherits)) ? 'inherited' : ''))
 ]) }}>
-
 @endif
     @include('components.docs.card.parts.name')
     @include('components.docs.card.parts.description')
