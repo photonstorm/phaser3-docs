@@ -7,17 +7,33 @@
             {
                 "requiretext": "^Namespace:",
                 "type": "Namespace",
-                "matchpath": "docs/.*\\.html"
+                "regexp": "^Namespace\\:\\s",
+                "replacement": "",
+                "matchpath": "docs/(Phaser|Camera|Matter|Spine).*\\.html$"
             },
             {
                 "requiretext": "^Class:",
                 "type": "Class",
-                "matchpath": "docs/.*\\.html"
+                "regexp": "^Class\\:\\s",
+                "replacement": "",
+                "matchpath": "docs/(Phaser|Camera|Matter|Spine).*\\.html$"
             }
         ],
+        "dl > dt.name > h4": {
+            "type": "Member",
+            "regexp": "(\\:.+)|(<[^>]*>)",
+            "replacement": "",
+            "matchpath": "docs/(Phaser|Camera|Matter|Spine).*\\.html$"
+        },
+        "dl > dt > h4.name": {
+            "type": "Method",
+            "regexp": "\\(.*\\)|(<[^>]*>)",
+            "replacement": "",
+            "matchpath": "docs/(Phaser|Camera|Matter|Spine).*\\.html$"
+        },
         "h4[id^=\"event:\"]": {
             "type": "Event",
-            "matchpath": "docs/.*\\.html"
+            "matchpath": "docs/(Phaser|Camera|Matter|Spine).*\\.html$"
         }
     },
     "ignore": [],
