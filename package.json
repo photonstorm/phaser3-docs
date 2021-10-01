@@ -13,6 +13,7 @@
     "sqldev": "npm run json && npm run sql",
     "types": "node src/types.js",
     "total": "node total.js",
+    "dash": "node src/create-dash-docset.js",
     "build-docset": "dashing build phaser"
   },
   "repository": {
