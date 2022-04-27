@@ -1,15 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import './Searchbar.scss';
 import useEventListener from '@use-it/event-listener';
 import { debounce, orderBy } from 'lodash';
 import HistorySearchBar from './HistorySearchBar';
+import { setLocalHistory } from '../../Helpers/localStorage';
+import store from '../../State/store';
 
 const Searchbar = (props) =>
 {
-
-    const historyComponentRef = useRef(null);
-
     const overlaySearchbar = useRef(null);
     const results = useRef(null);
     const inputRef = useRef(null);
@@ -78,8 +77,7 @@ const Searchbar = (props) =>
 
     const focusHandler = (e) =>
     {
-        const historyList = historyComponentRef.current.searchHistoryList;
-        if (e.target.value.trim() !== '' || historyList.length > 0)
+        if (e.target.value.trim() !== '' || store.getState().SearchHistoryList.history.length > 0)
         {
             openSearchbar();
         }
@@ -154,9 +152,20 @@ const Searchbar = (props) =>
     const redirectHandler = (url) =>
     {
 
-        historyComponentRef.current.setHistory(url);
+        setLocalHistory(url);
+        // historyComponentRef.current.setHistory(url);
         // window.location.href = url;
     }
+
+    useEffect(() => {
+        const historyListListener = store.subscribe(() => {
+            if (store.getState().SearchHistoryList.history.length === 0)
+            {
+                closeSearchbar();
+            }
+        });
+        return () => historyListListener();
+    })
 
     useEventListener('scroll', scrollHandler);
     useEventListener('resize', resizeEvent);
@@ -185,7 +194,7 @@ const Searchbar = (props) =>
 
             <div className="search-result p-2" ref={results}>
 
-                <HistorySearchBar ref={historyComponentRef} />
+                <HistorySearchBar />
 
                 {
                     (search_result.length === 0)

@@ -1,24 +1,20 @@
-import React, { forwardRef, Fragment, useImperativeHandle, useState } from 'react';
+import { css } from 'glamor';
+import React, { Fragment, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { removeItemHistory } from '../../Helpers/localStorage';
 
-const HistorySearchBar = forwardRef((prop, ref) =>
+const HistorySearchBar = (prop) =>
 {
-    const list = JSON.parse(localStorage.getItem('search-history-list'));
-    const [searchHistoryList, setSearchHistoryList] = useState((list !== null) ? list : []);
+    const searchHistoryList = useSelector((store) => (store.SearchHistoryList.history));
 
+    const removeItem = (id) =>
+    {
+        removeItemHistory(id);
+    }
 
-    useImperativeHandle(ref, () =>
-    ({
-        setHistory (url)
-        {
-            if (searchHistoryList.length > 10)
-            {
-                searchHistoryList.pop();
-            }
-            const list = JSON.stringify([url, ...searchHistoryList]);
-            localStorage.setItem('search-history-list', list);
-        },
-        searchHistoryList
-    }));
+    const buttonCloseSizeStyle = css({
+        backgroundSize: "10px 10px",
+    });
 
     return (
         <Fragment>
@@ -28,26 +24,26 @@ const HistorySearchBar = forwardRef((prop, ref) =>
                     <div className="title text-capitalize">
                         History:
                     </div>
-                    <ul>
+                    <div>
                         {
-
                             searchHistoryList.map((historyList, i) =>
                             {
                                 return (
-                                    <li key={i}>
+                                    <div key={i}>
+                                        <button onClick={() => removeItem(historyList.id)} type="button" className={`btn-close align-middle ${buttonCloseSizeStyle}`} aria-label="Close"></button>
                                         <a href={`/docs/${historyList.version}/${historyList.link}`}>
-                                            v{historyList.version} - {historyList.name}
+                                            - v{historyList.version} - {historyList.name}
                                         </a>
-                                    </li>
+                                    </div>
                                 );
                             })
                         }
-                    </ul>
+                    </div>
+                    <hr />
                 </div>
             }
-
         </Fragment>
     );
-});
+}
 
 export default HistorySearchBar;
