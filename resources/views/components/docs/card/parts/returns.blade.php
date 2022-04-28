@@ -22,7 +22,12 @@
             <ul>
                 @foreach (explode('|', $collection->returnstype) as $returntype)
                     <li>
-                        {!! resolve('get_api_link')($returntype) !!}
+                        {{-- Comprobate if exist <a in the string --}}
+                        @if(strpos(resolve('get_api_link')($returntype), '<a') !== false)
+                            {!! resolve('get_api_link')($returntype) !!}
+                        @else
+                            {{ resolve('get_api_link')($returntype) }}
+                        @endif
                     </li>
                 @endforeach
             </ul>

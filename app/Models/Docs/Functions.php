@@ -25,7 +25,7 @@ class Functions extends Model
         }
         if (empty($params))
         {
-            return $params = $paramsClass;;
+            return $params = $paramsClass;
         }
         return $params;
     }
