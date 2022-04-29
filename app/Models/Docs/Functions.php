@@ -34,4 +34,9 @@ class Functions extends Model
     {
         return $this->hasMany(Example::class, 'fk_id', 'longname');
     }
+
+    public function getExamples()
+    {
+        return $this->hasMany(Example::class, 'fk_id', 'longname');
+    }
 }

@@ -27,6 +27,7 @@ class Member extends Model
 
     public function getExamples()
     {
+
         return $this->hasMany(Example::class, 'fk_id', 'longname');
     }
 }
