@@ -69874,7 +69874,7 @@ var Searchbar = function Searchbar(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var historyListListener = _State_store__WEBPACK_IMPORTED_MODULE_7__["default"].subscribe(function () {
-      if (_State_store__WEBPACK_IMPORTED_MODULE_7__["default"].getState().SearchHistoryList.history.length === 0) {
+      if (_State_store__WEBPACK_IMPORTED_MODULE_7__["default"].getState().SearchHistoryList.history.length === 0 && searchTerm.length === 0) {
         closeSearchbar();
       }
     });

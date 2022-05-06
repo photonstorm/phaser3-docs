@@ -159,7 +159,7 @@ const Searchbar = (props) =>
 
     useEffect(() => {
         const historyListListener = store.subscribe(() => {
-            if (store.getState().SearchHistoryList.history.length === 0)
+            if (store.getState().SearchHistoryList.history.length === 0 && searchTerm.length === 0)
             {
                 closeSearchbar();
             }
