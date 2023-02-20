@@ -2,6 +2,8 @@ import { css } from 'glamor';
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { removeItemHistory } from '../../Helpers/localStorage';
+import { ClearSearchHistoryList } from '../../State/SearchHistoryList';
+import { storeAppDispatch } from '../../State/store';
 
 const HistorySearchBar = (prop) =>
 {
@@ -10,6 +12,10 @@ const HistorySearchBar = (prop) =>
     const removeItem = (id) =>
     {
         removeItemHistory(id);
+    }
+
+    const clearHistory = () => {
+        storeAppDispatch(ClearSearchHistoryList());
     }
 
     const buttonCloseSizeStyle = css({
@@ -21,8 +27,9 @@ const HistorySearchBar = (prop) =>
             {
                 (searchHistoryList.length) > 0 &&
                 <div>
-                    <div className="title text-capitalize">
-                        History:
+                    <div className="title d-flex justify-content-between mb-2">
+                        <div className="text-capitalize">History:</div>
+                        <button type="button" onClick={clearHistory} className="text-white btn btn-sm btn-danger" >Clear</button>
                     </div>
                     <div>
                         {

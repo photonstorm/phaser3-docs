@@ -17,10 +17,16 @@ const SearchHistoryList = createSlice({
             return {
                 "history": action.payload
             }
+        },
+        ClearSearchHistoryList: () => {
+            localStorage.removeItem(SEARCH_HISTORY_LIST);
+            return {
+                "history": []
+            }
         }
     }
 });
 
-export const { SetSearchHistoryList } = SearchHistoryList.actions;
+export const { SetSearchHistoryList, ClearSearchHistoryList } = SearchHistoryList.actions;
 export default SearchHistoryList.reducer;
 
