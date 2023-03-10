@@ -51,7 +51,6 @@
 new {{ $class->name }}({{$classConstructor}})
 ```
 @endmarkdown
-
     <x-create-table-params-properties
         class="mt-1 pt-2 pb-4"
         :collection="$class"
@@ -92,13 +91,7 @@ new {{ $class->name }}({{$classConstructor}})
     @endif
 
     {{-- Examples section --}}
-    <div class="card reactive-scrollspy">
-        <div class="fw-bold">
-            Possible examples
-        </div>
-        <div id="react-exampleslink-container" class="w-100 mb-3" data-quantity="16" data-title-to-search={{ $class->longname }}> </div>
-    </div>
-
+    <x-examples-link :quantity="24" :searchName="$class->longname" />
 @endsection
 
 @section('aside')

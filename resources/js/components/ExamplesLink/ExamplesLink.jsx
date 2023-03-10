@@ -90,9 +90,11 @@ const searchDocuments = (query, data) =>
     {
         var match = matchDocument(index[i], terms);
         var score = scoreDocument(match);
+        const name = index[i].name;
         results.push({
             path: i,
-            score: score
+            score: score,
+            name
         });
     }
 
@@ -127,20 +129,25 @@ export const ExamplesLink = (props) =>
             {
                 var results = searchDocuments(lastSearch, data).slice(0, props.quantity ?? 8);
                 setSearchData(results);
-            }
-            );
+            });
     }, []);
 
-    console.log("Debug examples link")
     return (
         <div className="w-100 border-bottom">
             <div className="d-flex justify-content-center flex-wrap">
                 {searchData.map((item, index) =>
                 {
                     return (
-                        <div className={"m-2"} key={index}>
+                        <div className={"m-3"} key={index}>
                             <a href={`https://labs.phaser.io/view.html?src=src/${item.path}`} target="_blank">
-                                <img width="150" src={`https://labs.phaser.io/screenshots/${item.path.replace(/\.js|\.ts/, ".png")}`} alt="" />
+                                <div className="text-center d-flex flex-column">
+                                    <div>
+                                        <img width="150" src={`https://labs.phaser.io/screenshots/${item.path.replace(/\.js|\.ts/, ".png")}`} alt="" />
+                                    </div>
+                                    <div style={{ marginTop: "-5px" }}>
+                                        {item.name.replace(/\.js|\.ts/, "")}
+                                    </div>
+                                </div>
                             </a>
                         </div>
                     )

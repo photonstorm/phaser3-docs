@@ -69590,7 +69590,6 @@ var searchDocuments = function searchDocuments(query, data) {
 var ExamplesLink = function ExamplesLink(props) {
   var testToSearch = props.titleToSearch.split(".");
   var lastSearch = testToSearch[testToSearch.length - 1];
-  console.log("Props: ", props);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -69601,18 +69600,16 @@ var ExamplesLink = function ExamplesLink(props) {
     fetch("https://labs.phaser.io/documentIndex.json").then(function (response) {
       return response.json();
     }).then(function (data) {
-      console.log(data);
-      var results = searchDocuments(lastSearch, data).slice(0, 8);
+      var _props$quantity;
+
+      var results = searchDocuments(lastSearch, data).slice(0, (_props$quantity = props.quantity) !== null && _props$quantity !== void 0 ? _props$quantity : 8);
       setSearchData(results);
-      console.log("Results: ", results);
     });
   }, []);
   console.log("Debug examples link");
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "w-100 border-bottom"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center h4 fw-bold"
-  }, "Examples"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-center flex-wrap"
   }, searchData.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
