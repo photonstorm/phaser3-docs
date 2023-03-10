@@ -9,6 +9,7 @@
         This is a <strong>beta</strong> release of our new docs system. Found an <strong>issue</strong>?<br /> Please tell us about it in the <strong>#</strong>📖<strong>-newdocs-feedback</strong> channel
         on the <a href="https://discord.gg/phaser"> Phaser Discord</a>
     </div>
+
     <h1 class="py-2">
         @foreach ($namesplit as $parts)
         <a href="{{route('docs.api.phaser', ["version" => $version, "api" => $parts[0]])}}">{{ $parts[1] }}</a> {{ $parts[2] }}
@@ -89,6 +90,14 @@ new {{ $class->name }}({{$classConstructor}})
                 <x-card class="card reactive-scrollspy" :id="$method->name" :collection="$method" focus="true"/>
             @endforeach
     @endif
+
+    {{-- Examples section --}}
+    <div class="card reactive-scrollspy">
+        <div class="fw-bold">
+            Possible examples
+        </div>
+        <div id="react-exampleslink-container" class="w-100 mb-3" data-quantity="16" data-title-to-search={{ $class->longname }}> </div>
+    </div>
 
 @endsection
 
