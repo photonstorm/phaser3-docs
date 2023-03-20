@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-12">
             @if($collection->getTable() === 'event')
+
                 <div class="mt-3">
                 @if($collection->getTable() === 'class')
                     <hr>
@@ -22,7 +23,6 @@ new {{ $collection->name }}({{$classConstructor}})
                 @else
                     <x-card class="card" :collection="$collection" />
                 @endif
-
                 </div>
 
             @else
@@ -39,6 +39,8 @@ new {{ $collection->name }}({{$classConstructor}})
                     <x-card class="card" isFocusRoute="TRUE" :collection="$collection" />
                 </div>
             @endif
+                {{-- Examples section --}}
+                <x-examples-link :quantity="24" :searchName="$collection->name" />
         </div>
     </div>
 </div>
