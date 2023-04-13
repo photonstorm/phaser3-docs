@@ -10,6 +10,7 @@
     "json": "jsdoc -c jsdoc.data.json",
     "_sql": "node src/jsdoc-to-sqlite.js",
     "sql": "node jsdoc-to-sqlite/process.js",
+    "sqlrich": "node jsdoc-to-sqlite/process-rich.js",
     "sqldev": "npm run json && npm run sql",
     "types": "node src/types.js",
     "total": "node total.js",
@@ -30,7 +31,7 @@
   },
   "homepage": "https://github.com/photonstorm/phaser3-docs#readme",
   "devDependencies": {
-    "better-sqlite3": "^5.4.0",
+    "better-sqlite3": "^8.3.0",
     "directory-tree": "^2.2.4",
     "doctrine": "^3.0.0",
     "dts-dom": "^3.5.0",
