@@ -874,7 +874,7 @@ every step. If a collision, or overlap, occurs it will invoke the given callback
 <dd>
     
     <div class="description">
-        <p>Whether to check for collisions or overlaps.</p>
+        <p>Whether to check for collisions or overlaps. Note, if checking for overlaps with a TilemapLayer, every tile in the layer, regardless of tile ID will be checked for collision. Even if the layer has had only a subset of tile IDs enabled for collision, all tiles will still be checked for overlap.  </p>
     </div>
     
 
