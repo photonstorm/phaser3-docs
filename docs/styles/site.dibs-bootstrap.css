@@ -1,4 +1,8 @@
 /* @group Base */
+.input-group-btn .btn{
+  outline: none;
+}
+
 .chzn-container {
   position: relative;
   display: inline-block;
