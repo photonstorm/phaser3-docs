@@ -17,3 +17,14 @@ The TypeScript defs have been moved to the [main Phaser repository](https://gith
 Phaser uses the popular [jsdoc](http://usejsdoc.org/), which means the documentation itself is written in the source code in the [Phaser](https://github.com/photonstorm/phaser/) repository. In order to regenerate the docs, you'll need to clone that repository and it must be in a folder named `phaser` in the parent directory.
 
 Then run `npm install` to install dependencies, and finally run `npm run gen`. The generated docs will be in a new directory called `out/`. Double click on `out/index.html` to browse the generated documentation.
+
+## Apple Silicon notes
+
+```bash
+ npm uninstall sqlite3
+ sudo npm install sqlite3 --build-from-source --target_arch=arm64 --fallback-to-build
+ ncu -u
+ sudo npm i
+ npm run sqlrich
+ ```
+ 
