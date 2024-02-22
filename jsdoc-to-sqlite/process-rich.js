@@ -18,7 +18,7 @@ fs.copySync('./db/phaser-structure.db', './db/phaser-working.db');
 
 // Get last Phaser version:
 const {version} = fs.readJsonSync('../phaser/package.json');
-const changelog = fs.readFileSync(`../phaserio/site/public_html/content/releases/${version}.md`, 'utf-8');
+const changelog = fs.readFileSync(`../phaser/changelog/3.70/CHANGELOG-v3.70.md`, 'utf-8');
 
 
 //  Open the copy to work on
