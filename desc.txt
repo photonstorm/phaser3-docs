@@ -1,3 +1,0 @@
- total = 0
-
-Total: 0
